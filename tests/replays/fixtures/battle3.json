@@ -1,0 +1,1696 @@
+{
+  "meta": {
+    "recordId": "local-bg-chillet-03",
+    "deck": "Blue/Green Chillet (construction, ladder-#16-derived)",
+    "player": "Edify (P1)",
+    "opponent": "FluffysFury",
+    "opponent_colors": "Blue/Red (Suzaku / Ignis, gear-heavy)",
+    "result": "WIN turn 7",
+    "notes": [
+      "lethal turn was ~37% to connect on both attacks; opponent had milled 10 cards with zero Lucky",
+      "ANOMALY at T7 - Ignis attacks twice then blocks on Edify's turn; per 7.2.1 it should still be rested. Flag for engine test / client behaviour check."
+    ]
+  },
+  "events": [
+    {
+      "line_index": 8,
+      "turn": 1,
+      "phase": "main",
+      "actor": "player",
+      "action": "setup",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase."
+    },
+    {
+      "line_index": 9,
+      "turn": 1,
+      "phase": "main",
+      "actor": "player",
+      "action": "mulligan",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Mulliganed. Redrew 5."
+    },
+    {
+      "line_index": 10,
+      "turn": 1,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Antique Mirror"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 1,
+        "cost": 1
+      },
+      "caused_by_line": null,
+      "text": "Deployed Antique Mirror to slot 1 for 1 Souls."
+    },
+    {
+      "line_index": 11,
+      "turn": 1,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1."
+    },
+    {
+      "line_index": 12,
+      "turn": 1,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Antique Mirror"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 2,
+        "cost": 1
+      },
+      "caused_by_line": null,
+      "text": "Deployed Antique Mirror to slot 2 for 1 Souls."
+    },
+    {
+      "line_index": 13,
+      "turn": 1,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1."
+    },
+    {
+      "line_index": 14,
+      "turn": 1,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 15,
+      "turn": 2,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 2
+      },
+      "caused_by_line": null,
+      "text": "Turn 2, Stand Phase."
+    },
+    {
+      "line_index": 16,
+      "turn": 2,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 17,
+      "turn": 2,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 18,
+      "turn": 2,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2,
+        "total": 4,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 2 Souls (4/10)."
+    },
+    {
+      "line_index": 19,
+      "turn": 2,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 20,
+      "turn": 2,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 3,
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Deployed Elphidran – Gentle Radiance to slot 3 for 4 Souls."
+    },
+    {
+      "line_index": 21,
+      "turn": 2,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal_declined",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chose not to reveal a Dragon."
+    },
+    {
+      "line_index": 22,
+      "turn": 2,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 10,
+        "life_after": 8
+      },
+      "caused_by_line": null,
+      "text": "Elphidran – Gentle Radiance attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life."
+    },
+    {
+      "line_index": 23,
+      "turn": 2,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 24,
+      "turn": 3,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Single-Shot Rifle"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Single-Shot Rifle."
+    },
+    {
+      "line_index": 25,
+      "turn": 2,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "destroyed",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 1500
+      },
+      "caused_by_line": null,
+      "text": "Elphidran – Gentle Radiance took 1500 damage and was destroyed."
+    },
+    {
+      "line_index": 26,
+      "turn": 3,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 3
+      },
+      "caused_by_line": null,
+      "text": "Turn 3, Stand Phase."
+    },
+    {
+      "line_index": 27,
+      "turn": 3,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 28,
+      "turn": 3,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 29,
+      "turn": 3,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2,
+        "total": 6,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 2 Souls (6/10)."
+    },
+    {
+      "line_index": 30,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 31,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 3,
+        "cost": 6
+      },
+      "caused_by_line": null,
+      "text": "Deployed Elphidran Aqua – Gentle Ripples to slot 3 for 6 Souls."
+    },
+    {
+      "line_index": 32,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2
+      },
+      "caused_by_line": null,
+      "text": "Drew 2 cards."
+    },
+    {
+      "line_index": 33,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "put_on_top",
+      "cards": [
+        "Found an Egg!"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Put Found an Egg! on top of the deck."
+    },
+    {
+      "line_index": 34,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack_interrupted",
+      "cards": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Elphidran Aqua – Gentle Ripples's attack was interrupted."
+    },
+    {
+      "line_index": 35,
+      "turn": 3,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 36,
+      "turn": 4,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Single-Shot Rifle"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Single-Shot Rifle."
+    },
+    {
+      "line_index": 37,
+      "turn": 3,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "destroyed",
+      "cards": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 1500
+      },
+      "caused_by_line": null,
+      "text": "Elphidran Aqua – Gentle Ripples took 1500 damage and was destroyed."
+    },
+    {
+      "line_index": 38,
+      "turn": 4,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 4
+      },
+      "caused_by_line": null,
+      "text": "Turn 4, Stand Phase."
+    },
+    {
+      "line_index": 39,
+      "turn": 4,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 40,
+      "turn": 4,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 41,
+      "turn": 4,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2,
+        "total": 8,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 2 Souls (8/10)."
+    },
+    {
+      "line_index": 42,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 43,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "play_card",
+      "cards": [
+        "Found an Egg!"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 2
+      },
+      "caused_by_line": null,
+      "text": "Played Found an Egg! for 2 Souls."
+    },
+    {
+      "line_index": 44,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "look_and_take",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": {
+        "looked": 5
+      },
+      "caused_by_line": null,
+      "text": "Looked at top 5: took Jormuntide – Surging Sea Serpent to hand."
+    },
+    {
+      "line_index": 45,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Reindrix – Icy Gaze"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 3,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Reindrix – Icy Gaze to slot 3 for 5 Souls."
+    },
+    {
+      "line_index": 46,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Reindrix – Icy Gaze"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 8,
+        "life_after": 6
+      },
+      "caused_by_line": null,
+      "text": "Reindrix – Icy Gaze attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life."
+    },
+    {
+      "line_index": 47,
+      "turn": 4,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 48,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Suzaku – Hellfire Wings"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Suzaku – Hellfire Wings."
+    },
+    {
+      "line_index": 49,
+      "turn": 4,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "destroyed",
+      "cards": [
+        "Reindrix – Icy Gaze"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 900
+      },
+      "caused_by_line": null,
+      "text": "Reindrix – Icy Gaze took 900 damage and was destroyed."
+    },
+    {
+      "line_index": 50,
+      "turn": 5,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 5
+      },
+      "caused_by_line": null,
+      "text": "Turn 5, Stand Phase."
+    },
+    {
+      "line_index": 51,
+      "turn": 5,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 52,
+      "turn": 5,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 53,
+      "turn": 5,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2,
+        "total": 10,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 2 Souls (10/10)."
+    },
+    {
+      "line_index": 54,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 55,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "play_card",
+      "cards": [
+        "Aurora Guide"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 2
+      },
+      "caused_by_line": null,
+      "text": "Played Aurora Guide for 2 Souls."
+    },
+    {
+      "line_index": 56,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1 card."
+    },
+    {
+      "line_index": 57,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "put_on_top",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Put Jormuntide – Surging Sea Serpent on top of the deck."
+    },
+    {
+      "line_index": 58,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 3,
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Deployed Elphidran – Gentle Radiance to slot 3 for 4 Souls."
+    },
+    {
+      "line_index": 59,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [],
+      "resolution": {
+        "element": "Dragon",
+        "power_buff": 500
+      },
+      "caused_by_line": null,
+      "text": "Revealed Elphidran – Gentle Radiance (Dragon). Power +500 until end of turn."
+    },
+    {
+      "line_index": 60,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "block",
+      "cards": [
+        "Suzaku – Hellfire Wings"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "They blocked with Suzaku – Hellfire Wings."
+    },
+    {
+      "line_index": 61,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "battle_attack",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [
+        "Suzaku – Hellfire Wings"
+      ],
+      "resolution": {
+        "attacker_power_expr": "600+500 = 1100",
+        "attacker_power": 1100,
+        "defender_power": 1200
+      },
+      "caused_by_line": null,
+      "text": "Elphidran – Gentle Radiance (600+500 = 1100) attacked Suzaku – Hellfire Wings (1200)."
+    },
+    {
+      "line_index": 62,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "destroyed",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 1200,
+        "power": 1100
+      },
+      "caused_by_line": null,
+      "text": "Elphidran – Gentle Radiance destroyed, 1200 damage vs 1100 Power."
+    },
+    {
+      "line_index": 63,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Dinossom – Radiant Fragrance"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 3,
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Deployed Dinossom – Radiant Fragrance to slot 3 for 4 Souls."
+    },
+    {
+      "line_index": 64,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "battle_attack",
+      "cards": [
+        "Dinossom – Radiant Fragrance"
+      ],
+      "targets": [
+        "Suzaku – Hellfire Wings"
+      ],
+      "resolution": {
+        "attacker_power_expr": "400",
+        "attacker_power": 400,
+        "defender_power": 1200
+      },
+      "caused_by_line": null,
+      "text": "Dinossom – Radiant Fragrance (400) attacked Suzaku – Hellfire Wings (1200)."
+    },
+    {
+      "line_index": 65,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "destroyed",
+      "cards": [
+        "Suzaku – Hellfire Wings"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 1500,
+        "power": 1200
+      },
+      "caused_by_line": null,
+      "text": "Suzaku – Hellfire Wings destroyed, 1500 damage vs 1200 Power."
+    },
+    {
+      "line_index": 66,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "destroyed",
+      "cards": [
+        "Dinossom – Radiant Fragrance"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 1200,
+        "power": 400
+      },
+      "caused_by_line": null,
+      "text": "Dinossom – Radiant Fragrance destroyed, 1200 damage vs 400 Power."
+    },
+    {
+      "line_index": 67,
+      "turn": 5,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 68,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Grappling Gun"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Grappling Gun."
+    },
+    {
+      "line_index": 69,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Kitsun – Wyrmbane Fangs"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Kitsun – Wyrmbane Fangs."
+    },
+    {
+      "line_index": 70,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Grappling Gun"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Grappling Gun."
+    },
+    {
+      "line_index": 71,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Single-Shot Rifle"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Single-Shot Rifle."
+    },
+    {
+      "line_index": 72,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "power_buff",
+      "cards": [
+        "Kitsun – Wyrmbane Fangs"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 200
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Kitsun – Wyrmbane Fangs gets power +200 until end of turn."
+    },
+    {
+      "line_index": 73,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Single-Shot Rifle"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Single-Shot Rifle."
+    },
+    {
+      "line_index": 74,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "power_buff",
+      "cards": [
+        "Kitsun – Wyrmbane Fangs"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 200
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Kitsun – Wyrmbane Fangs gets power +200 until end of turn."
+    },
+    {
+      "line_index": 75,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Kitsun – Wyrmbane Fangs"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 2
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Kitsun – Wyrmbane Fangs attacks Edify for 2."
+    },
+    {
+      "line_index": 76,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack",
+      "cards": [
+        "Kitsun – Wyrmbane Fangs"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage_attempted": 2,
+        "damage": 0,
+        "milled": 1,
+        "lucky": true
+      },
+      "caused_by_line": null,
+      "text": "Kitsun – Wyrmbane Fangs attacked Edify for 2; Edify's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)"
+    },
+    {
+      "line_index": 77,
+      "turn": 6,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 6
+      },
+      "caused_by_line": null,
+      "text": "Turn 6, Stand Phase."
+    },
+    {
+      "line_index": 78,
+      "turn": 6,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 79,
+      "turn": 6,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 80,
+      "turn": 6,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 0,
+        "total": 10,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 0 Souls (10/10)."
+    },
+    {
+      "line_index": 81,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 82,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 3,
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Deployed Elphidran – Gentle Radiance to slot 3 for 4 Souls."
+    },
+    {
+      "line_index": 83,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal",
+      "cards": [
+        "Dinossom – Radiant Fragrance"
+      ],
+      "targets": [],
+      "resolution": {
+        "element": "Dragon",
+        "power_buff": 500
+      },
+      "caused_by_line": null,
+      "text": "Revealed Dinossom – Radiant Fragrance (Dragon). Power +500 until end of turn."
+    },
+    {
+      "line_index": 84,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 6,
+        "life_after": 4
+      },
+      "caused_by_line": null,
+      "text": "Elphidran – Gentle Radiance attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life."
+    },
+    {
+      "line_index": 85,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "rest_draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls_spent": 3,
+        "drew": 1
+      },
+      "caused_by_line": null,
+      "text": "Rested 3 Souls, drew 1 card."
+    },
+    {
+      "line_index": 86,
+      "turn": 6,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 87,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Jormuntide Ignis – Savage Lava Dragon"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Jormuntide Ignis – Savage Lava Dragon."
+    },
+    {
+      "line_index": 88,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Single-Shot Rifle"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Single-Shot Rifle."
+    },
+    {
+      "line_index": 89,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "power_buff",
+      "cards": [
+        "Kitsun – Wyrmbane Fangs"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 200
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Kitsun – Wyrmbane Fangs gets power +200 until end of turn."
+    },
+    {
+      "line_index": 90,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Single-Shot Rifle"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Single-Shot Rifle."
+    },
+    {
+      "line_index": 91,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "power_buff",
+      "cards": [
+        "Kitsun – Wyrmbane Fangs"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 200
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Kitsun – Wyrmbane Fangs gets power +200 until end of turn."
+    },
+    {
+      "line_index": 92,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Jormuntide Ignis – Savage Lava Dragon"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 4
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Jormuntide Ignis – Savage Lava Dragon attacks Edify for 4."
+    },
+    {
+      "line_index": 93,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack",
+      "cards": [
+        "Jormuntide Ignis – Savage Lava Dragon"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 4,
+        "milled": 4,
+        "lucky": false,
+        "life_before": 10,
+        "life_after": 6
+      },
+      "caused_by_line": null,
+      "text": "Jormuntide Ignis – Savage Lava Dragon hit Edify for 4. Damage Check: 4 cards milled, no Lucky. Edify 10 to 6 life."
+    },
+    {
+      "line_index": 94,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Jormuntide Ignis – Savage Lava Dragon"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Jormuntide Ignis – Savage Lava Dragon."
+    },
+    {
+      "line_index": 95,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "discard",
+      "cards": [
+        "Primitive Furnace",
+        "Primitive Furnace"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury discarded Primitive Furnace, Primitive Furnace to pay a cost."
+    },
+    {
+      "line_index": 96,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Grappling Gun"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Grappling Gun."
+    },
+    {
+      "line_index": 97,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Jormuntide Ignis – Savage Lava Dragon"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 4
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Jormuntide Ignis – Savage Lava Dragon attacks Edify for 4."
+    },
+    {
+      "line_index": 98,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "player",
+      "action": "interrupt",
+      "cards": [
+        "Dinossom – Radiant Fragrance"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": {
+          "type": "soul",
+          "amount": 1
+        },
+        "result": "nullified"
+      },
+      "caused_by_line": null,
+      "text": "Edify interrupted with Dinossom – Radiant Fragrance, paid 1 Soul. The attack was nullified."
+    },
+    {
+      "line_index": 99,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Kitsun – Wyrmbane Fangs"
+      ],
+      "targets": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury's Kitsun – Wyrmbane Fangs attacks Edify's Elphidran – Gentle Radiance."
+    },
+    {
+      "line_index": 100,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "player",
+      "action": "interrupt",
+      "cards": [
+        "Cryolinx – Arctic Ordeal"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": {
+          "type": "soul",
+          "amount": 1
+        },
+        "result": "nullified"
+      },
+      "caused_by_line": null,
+      "text": "Edify interrupted with Cryolinx – Arctic Ordeal, paid 1 Soul. The attack was nullified."
+    },
+    {
+      "line_index": 101,
+      "turn": 7,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 7
+      },
+      "caused_by_line": null,
+      "text": "Turn 7, Stand Phase."
+    },
+    {
+      "line_index": 102,
+      "turn": 7,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 103,
+      "turn": 7,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 104,
+      "turn": 7,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 0,
+        "total": 10,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 0 Souls (10/10)."
+    },
+    {
+      "line_index": 105,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 106,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 4,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Chillet – Dragon Whisperer to slot 4 for 5 Souls."
+    },
+    {
+      "line_index": 107,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal",
+      "cards": [
+        "Dinossom – Radiant Fragrance"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Revealed Dinossom – Radiant Fragrance."
+    },
+    {
+      "line_index": 108,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Dinossom – Radiant Fragrance"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 107,
+      "text": "Deployed Dinossom – Radiant Fragrance."
+    },
+    {
+      "line_index": 109,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Reindrix – Icy Gaze"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 6,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Reindrix – Icy Gaze to slot 6 for 5 Souls."
+    },
+    {
+      "line_index": 110,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": {
+        "element": "Dragon",
+        "power_buff": 500
+      },
+      "caused_by_line": null,
+      "text": "Revealed Jormuntide – Surging Sea Serpent (Dragon). Power +500 until end of turn."
+    },
+    {
+      "line_index": 111,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack_interrupted",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Elphidran – Gentle Radiance's attack was interrupted."
+    },
+    {
+      "line_index": 112,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Dinossom – Radiant Fragrance"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 4,
+        "life_after": 2
+      },
+      "caused_by_line": null,
+      "text": "Dinossom – Radiant Fragrance attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 4 to 2 life."
+    },
+    {
+      "line_index": 113,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "block",
+      "cards": [
+        "Jormuntide Ignis – Savage Lava Dragon"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "They blocked with Jormuntide Ignis – Savage Lava Dragon."
+    },
+    {
+      "line_index": 114,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "battle_attack",
+      "cards": [
+        "Reindrix – Icy Gaze"
+      ],
+      "targets": [
+        "Jormuntide Ignis – Savage Lava Dragon"
+      ],
+      "resolution": {
+        "attacker_power_expr": "600",
+        "attacker_power": 600,
+        "defender_power": 1700
+      },
+      "caused_by_line": null,
+      "text": "Reindrix – Icy Gaze (600) attacked Jormuntide Ignis – Savage Lava Dragon (1700)."
+    },
+    {
+      "line_index": 115,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "destroyed",
+      "cards": [
+        "Reindrix – Icy Gaze"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 1700,
+        "power": 600
+      },
+      "caused_by_line": null,
+      "text": "Reindrix – Icy Gaze destroyed, 1700 damage vs 600 Power."
+    },
+    {
+      "line_index": 116,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 2,
+        "life_after": 0
+      },
+      "caused_by_line": null,
+      "text": "Chillet – Dragon Whisperer attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 2 to 0 life."
+    }
+  ]
+}

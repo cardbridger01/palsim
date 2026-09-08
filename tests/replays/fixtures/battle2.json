@@ -1,0 +1,2664 @@
+{
+  "meta": {
+    "recordId": "local-bg-chillet-02",
+    "deck": "Blue/Green Chillet (construction, ladder-#16-derived)",
+    "player": "Edify (P2, on the draw)",
+    "opponent": "FluffysFury",
+    "opponent_colors": "Blue/Purple",
+    "result": "LOSS turn 10",
+    "notes": [
+      "pivot at T8 - all 10 souls spent on Relaxaurus + Victor's, Zoe's killed it immediately"
+    ]
+  },
+  "events": [
+    {
+      "line_index": 6,
+      "turn": 1,
+      "phase": "main",
+      "actor": "player",
+      "action": "setup",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase."
+    },
+    {
+      "line_index": 7,
+      "turn": 1,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "mulligan",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Mulliganed. Redrew 5."
+    },
+    {
+      "line_index": 8,
+      "turn": 2,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 2
+      },
+      "caused_by_line": null,
+      "text": "Turn 2, Stand Phase."
+    },
+    {
+      "line_index": 9,
+      "turn": 2,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 10,
+      "turn": 2,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 11,
+      "turn": 2,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2,
+        "total": 3,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 2 Souls (3/10)."
+    },
+    {
+      "line_index": 12,
+      "turn": 2,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 13,
+      "turn": 2,
+      "phase": "main",
+      "actor": "player",
+      "action": "play_card",
+      "cards": [
+        "Victor's Strategy"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 3
+      },
+      "caused_by_line": null,
+      "text": "Played Victor's Strategy for 3 Souls."
+    },
+    {
+      "line_index": 14,
+      "turn": 2,
+      "phase": "main",
+      "actor": "player",
+      "action": "look_and_take",
+      "cards": [
+        "Reindrix – Icy Gaze"
+      ],
+      "targets": [],
+      "resolution": {
+        "looked": 5
+      },
+      "caused_by_line": null,
+      "text": "Looked at top 5: took Reindrix – Icy Gaze to hand."
+    },
+    {
+      "line_index": 15,
+      "turn": 2,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 16,
+      "turn": 2,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Pengullet Rocket Launcher"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Pengullet Rocket Launcher."
+    },
+    {
+      "line_index": 17,
+      "turn": 3,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 3
+      },
+      "caused_by_line": null,
+      "text": "Turn 3, Stand Phase."
+    },
+    {
+      "line_index": 18,
+      "turn": 3,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 19,
+      "turn": 3,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 20,
+      "turn": 3,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2,
+        "total": 5,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 2 Souls (5/10)."
+    },
+    {
+      "line_index": 21,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 22,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 1,
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Deployed Elphidran – Gentle Radiance to slot 1 for 4 Souls."
+    },
+    {
+      "line_index": 23,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal_declined",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chose not to reveal a Dragon."
+    },
+    {
+      "line_index": 24,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage_attempted": 2,
+        "damage": 0,
+        "milled": 2,
+        "lucky": true
+      },
+      "caused_by_line": null,
+      "text": "Elphidran – Gentle Radiance attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)"
+    },
+    {
+      "line_index": 25,
+      "turn": 3,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 26,
+      "turn": 3,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Pengullet Rocket Launcher"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Pengullet Rocket Launcher."
+    },
+    {
+      "line_index": 27,
+      "turn": 4,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 4
+      },
+      "caused_by_line": null,
+      "text": "Turn 4, Stand Phase."
+    },
+    {
+      "line_index": 28,
+      "turn": 4,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 29,
+      "turn": 4,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 30,
+      "turn": 4,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2,
+        "total": 7,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 2 Souls (7/10)."
+    },
+    {
+      "line_index": 31,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 32,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "play_card",
+      "cards": [
+        "Aurora Guide"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 2
+      },
+      "caused_by_line": null,
+      "text": "Played Aurora Guide for 2 Souls."
+    },
+    {
+      "line_index": 33,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1 card."
+    },
+    {
+      "line_index": 34,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "put_on_top",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Put Jormuntide – Surging Sea Serpent on top of the deck."
+    },
+    {
+      "line_index": 35,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 2,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Chillet – Dragon Whisperer to slot 2 for 5 Souls."
+    },
+    {
+      "line_index": 36,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Revealed Jormuntide – Surging Sea Serpent."
+    },
+    {
+      "line_index": 37,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 36,
+      "text": "Deployed Jormuntide – Surging Sea Serpent."
+    },
+    {
+      "line_index": 38,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1."
+    },
+    {
+      "line_index": 39,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "no_valid_target",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "No valid target."
+    },
+    {
+      "line_index": 40,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 10,
+        "life_after": 8
+      },
+      "caused_by_line": null,
+      "text": "Chillet – Dragon Whisperer attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life."
+    },
+    {
+      "line_index": 41,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal_declined",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chose not to reveal a Dragon."
+    },
+    {
+      "line_index": 42,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 8,
+        "life_after": 6
+      },
+      "caused_by_line": null,
+      "text": "Elphidran – Gentle Radiance attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life."
+    },
+    {
+      "line_index": 43,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack_interrupted",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Jormuntide – Surging Sea Serpent's attack was interrupted."
+    },
+    {
+      "line_index": 44,
+      "turn": 4,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 45,
+      "turn": 4,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Pengullet – Yearning for the Sky"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Pengullet – Yearning for the Sky."
+    },
+    {
+      "line_index": 46,
+      "turn": 4,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Pengullet Rocket Launcher"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Pengullet Rocket Launcher."
+    },
+    {
+      "line_index": 47,
+      "turn": 4,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "power_buff",
+      "cards": [
+        "Pengullet – Yearning for the Sky"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 500
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Pengullet – Yearning for the Sky gets power +500 until end of turn."
+    },
+    {
+      "line_index": 48,
+      "turn": 4,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Pengullet Rocket Launcher"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Pengullet Rocket Launcher."
+    },
+    {
+      "line_index": 49,
+      "turn": 4,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "power_buff",
+      "cards": [
+        "Pengullet – Yearning for the Sky"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 500
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Pengullet – Yearning for the Sky gets power +500 until end of turn."
+    },
+    {
+      "line_index": 50,
+      "turn": 4,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Pengullet – Yearning for the Sky"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Pengullet – Yearning for the Sky."
+    },
+    {
+      "line_index": 51,
+      "turn": 4,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "play_card",
+      "cards": [
+        "Zoe's Strategy"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury played Zoe's Strategy."
+    },
+    {
+      "line_index": 52,
+      "turn": 4,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "return_to_hand",
+      "cards": [
+        "Reindrix – Icy Gaze"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury returned Reindrix – Icy Gaze from their graveyard to hand."
+    },
+    {
+      "line_index": 53,
+      "turn": 4,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "discard",
+      "cards": [
+        "Dinossom – Radiant Fragrance"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Discarded Dinossom – Radiant Fragrance."
+    },
+    {
+      "line_index": 54,
+      "turn": 5,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 5
+      },
+      "caused_by_line": null,
+      "text": "Turn 5, Stand Phase."
+    },
+    {
+      "line_index": 55,
+      "turn": 5,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 56,
+      "turn": 5,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 57,
+      "turn": 5,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2,
+        "total": 9,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 2 Souls (9/10)."
+    },
+    {
+      "line_index": 58,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 59,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 1,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Chillet – Dragon Whisperer to slot 1 for 5 Souls."
+    },
+    {
+      "line_index": 60,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal",
+      "cards": [
+        "Found an Egg!"
+      ],
+      "targets": [],
+      "resolution": {
+        "outcome": "added_to_hand"
+      },
+      "caused_by_line": null,
+      "text": "Revealed Found an Egg!, added to hand."
+    },
+    {
+      "line_index": 61,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "play_card",
+      "cards": [
+        "Victor's Strategy"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 3
+      },
+      "caused_by_line": null,
+      "text": "Played Victor's Strategy for 3 Souls."
+    },
+    {
+      "line_index": 62,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "look_and_take",
+      "cards": [
+        "Antique Mirror"
+      ],
+      "targets": [],
+      "resolution": {
+        "looked": 5
+      },
+      "caused_by_line": null,
+      "text": "Looked at top 5: took Antique Mirror to hand."
+    },
+    {
+      "line_index": 63,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Antique Mirror"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 2,
+        "cost": 1
+      },
+      "caused_by_line": null,
+      "text": "Deployed Antique Mirror to slot 2 for 1 Souls."
+    },
+    {
+      "line_index": 64,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1."
+    },
+    {
+      "line_index": 65,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack_interrupted",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chillet – Dragon Whisperer's attack was interrupted."
+    },
+    {
+      "line_index": 66,
+      "turn": 5,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 67,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Jormuntide – Surging Sea Serpent."
+    },
+    {
+      "line_index": 68,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "rested",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chillet – Dragon Whisperer was Rested."
+    },
+    {
+      "line_index": 69,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "status_effect",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [],
+      "resolution": {
+        "effect": "wont_stand_next_stand_phase"
+      },
+      "caused_by_line": null,
+      "text": "Chillet – Dragon Whisperer won't stand during its next Stand Phase."
+    },
+    {
+      "line_index": 70,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 3
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify for 3."
+    },
+    {
+      "line_index": 71,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "player",
+      "action": "interrupt",
+      "cards": [
+        "Reindrix – Icy Gaze"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": {
+          "type": "discard",
+          "card": "Found an Egg!"
+        },
+        "result": "nullified"
+      },
+      "caused_by_line": null,
+      "text": "Edify interrupted with Reindrix – Icy Gaze, discarded Found an Egg!. The attack was nullified."
+    },
+    {
+      "line_index": 72,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Pengullet Rocket Launcher"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Pengullet Rocket Launcher."
+    },
+    {
+      "line_index": 73,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "power_buff",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 200
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Jormuntide – Surging Sea Serpent gets power +200 until end of turn."
+    },
+    {
+      "line_index": 74,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Pengullet Rocket Launcher"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Pengullet Rocket Launcher."
+    },
+    {
+      "line_index": 75,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "power_buff",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 200
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Jormuntide – Surging Sea Serpent gets power +200 until end of turn."
+    },
+    {
+      "line_index": 76,
+      "turn": 6,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 6
+      },
+      "caused_by_line": null,
+      "text": "Turn 6, Stand Phase."
+    },
+    {
+      "line_index": 77,
+      "turn": 6,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 78,
+      "turn": 6,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 79,
+      "turn": 6,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1,
+        "total": 10,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 1 Soul (10/10)."
+    },
+    {
+      "line_index": 80,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 81,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "play_card",
+      "cards": [
+        "Aurora Guide"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 2
+      },
+      "caused_by_line": null,
+      "text": "Played Aurora Guide for 2 Souls."
+    },
+    {
+      "line_index": 82,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1 card."
+    },
+    {
+      "line_index": 83,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "put_on_top",
+      "cards": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Put Relaxaurus – Hungry Gunner on top of the deck."
+    },
+    {
+      "line_index": 84,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 3,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Chillet – Dragon Whisperer to slot 3 for 5 Souls."
+    },
+    {
+      "line_index": 85,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal",
+      "cards": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Revealed Relaxaurus – Hungry Gunner."
+    },
+    {
+      "line_index": 86,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 85,
+      "text": "Deployed Relaxaurus – Hungry Gunner."
+    },
+    {
+      "line_index": 87,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "no_valid_target",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "No valid target."
+    },
+    {
+      "line_index": 88,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "play_card",
+      "cards": [
+        "Lily's Strategy"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 3
+      },
+      "caused_by_line": null,
+      "text": "Played Lily's Strategy for 3 Souls."
+    },
+    {
+      "line_index": 89,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack_interrupted",
+      "cards": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Relaxaurus – Hungry Gunner's attack was interrupted."
+    },
+    {
+      "line_index": 90,
+      "turn": 6,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 6,
+        "life_after": 4
+      },
+      "caused_by_line": null,
+      "text": "Chillet – Dragon Whisperer attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life."
+    },
+    {
+      "line_index": 91,
+      "turn": 6,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 92,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Pengullet – Yearning for the Sky"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Pengullet – Yearning for the Sky."
+    },
+    {
+      "line_index": 93,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Pengullet Rocket Launcher"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Pengullet Rocket Launcher."
+    },
+    {
+      "line_index": 94,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "power_buff",
+      "cards": [
+        "Pengullet – Yearning for the Sky"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 500
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Pengullet – Yearning for the Sky gets power +500 until end of turn."
+    },
+    {
+      "line_index": 95,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Pengullet – Yearning for the Sky"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Pengullet – Yearning for the Sky."
+    },
+    {
+      "line_index": 96,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Cryolinx – Arctic Ordeal"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Cryolinx – Arctic Ordeal."
+    },
+    {
+      "line_index": 97,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Cryolinx – Arctic Ordeal"
+      ],
+      "targets": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury's Cryolinx – Arctic Ordeal attacks Edify's Relaxaurus – Hungry Gunner."
+    },
+    {
+      "line_index": 98,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "battle_attack",
+      "cards": [
+        "Cryolinx – Arctic Ordeal"
+      ],
+      "targets": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "resolution": {
+        "attacker_power_expr": "900",
+        "attacker_power": 900,
+        "defender_power": 1200
+      },
+      "caused_by_line": null,
+      "text": "Cryolinx – Arctic Ordeal (900) attacked Relaxaurus – Hungry Gunner (1200)."
+    },
+    {
+      "line_index": 99,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "destroyed",
+      "cards": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 2000,
+        "power": 1200
+      },
+      "caused_by_line": null,
+      "text": "Relaxaurus – Hungry Gunner destroyed, 2000 damage vs 1200 Power."
+    },
+    {
+      "line_index": 100,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "destroyed",
+      "cards": [
+        "Cryolinx – Arctic Ordeal"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 1200,
+        "power": 900
+      },
+      "caused_by_line": null,
+      "text": "Cryolinx – Arctic Ordeal destroyed, 1200 damage vs 900 Power."
+    },
+    {
+      "line_index": 101,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 3
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify for 3."
+    },
+    {
+      "line_index": 102,
+      "turn": 6,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 3,
+        "milled": 3,
+        "lucky": false,
+        "life_before": 10,
+        "life_after": 7
+      },
+      "caused_by_line": null,
+      "text": "Jormuntide – Surging Sea Serpent hit Edify for 3. Damage Check: 3 cards milled, no Lucky. Edify 10 to 7 life."
+    },
+    {
+      "line_index": 103,
+      "turn": 7,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 7
+      },
+      "caused_by_line": null,
+      "text": "Turn 7, Stand Phase."
+    },
+    {
+      "line_index": 104,
+      "turn": 7,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 105,
+      "turn": 7,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 106,
+      "turn": 7,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 0,
+        "total": 10,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 0 Souls (10/10)."
+    },
+    {
+      "line_index": 107,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 108,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Antique Mirror"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 1,
+        "cost": 1
+      },
+      "caused_by_line": null,
+      "text": "Deployed Antique Mirror to slot 1 for 1 Souls."
+    },
+    {
+      "line_index": 109,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1."
+    },
+    {
+      "line_index": 110,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 3,
+        "cost": 6
+      },
+      "caused_by_line": null,
+      "text": "Deployed Elphidran Aqua – Gentle Ripples to slot 3 for 6 Souls."
+    },
+    {
+      "line_index": 111,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2
+      },
+      "caused_by_line": null,
+      "text": "Drew 2 cards."
+    },
+    {
+      "line_index": 112,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "put_on_top",
+      "cards": [
+        "Dinossom – Radiant Fragrance"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Put Dinossom – Radiant Fragrance on top of the deck."
+    },
+    {
+      "line_index": 113,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "play_card",
+      "cards": [
+        "Lily's Strategy"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 3
+      },
+      "caused_by_line": null,
+      "text": "Played Lily's Strategy for 3 Souls."
+    },
+    {
+      "line_index": 114,
+      "turn": 7,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage_attempted": 2,
+        "damage": 0,
+        "milled": 2,
+        "lucky": true
+      },
+      "caused_by_line": null,
+      "text": "Elphidran Aqua – Gentle Ripples attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)"
+    },
+    {
+      "line_index": 115,
+      "turn": 7,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 116,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify's Elphidran Aqua – Gentle Ripples."
+    },
+    {
+      "line_index": 117,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "battle_attack",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "resolution": {
+        "attacker_power_expr": "1600",
+        "attacker_power": 1600,
+        "defender_power": 900
+      },
+      "caused_by_line": null,
+      "text": "Jormuntide – Surging Sea Serpent (1600) attacked Elphidran Aqua – Gentle Ripples (900)."
+    },
+    {
+      "line_index": 118,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "destroyed",
+      "cards": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 1600,
+        "power": 900
+      },
+      "caused_by_line": null,
+      "text": "Elphidran Aqua – Gentle Ripples destroyed, 1600 damage vs 900 Power."
+    },
+    {
+      "line_index": 119,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Pengullet – Yearning for the Sky"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Pengullet – Yearning for the Sky."
+    },
+    {
+      "line_index": 120,
+      "turn": 7,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Elphidran – Gentle Radiance."
+    },
+    {
+      "line_index": 121,
+      "turn": 8,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 8
+      },
+      "caused_by_line": null,
+      "text": "Turn 8, Stand Phase."
+    },
+    {
+      "line_index": 122,
+      "turn": 8,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 123,
+      "turn": 8,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 124,
+      "turn": 8,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 0,
+        "total": 10,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 0 Souls (10/10)."
+    },
+    {
+      "line_index": 125,
+      "turn": 8,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 126,
+      "turn": 8,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 3,
+        "cost": 7
+      },
+      "caused_by_line": null,
+      "text": "Deployed Relaxaurus – Hungry Gunner to slot 3 for 7 Souls."
+    },
+    {
+      "line_index": 127,
+      "turn": 8,
+      "phase": "main",
+      "actor": "player",
+      "action": "play_card",
+      "cards": [
+        "Victor's Strategy"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 3
+      },
+      "caused_by_line": null,
+      "text": "Played Victor's Strategy for 3 Souls."
+    },
+    {
+      "line_index": 128,
+      "turn": 8,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2,
+        "note": "one per structure"
+      },
+      "caused_by_line": null,
+      "text": "Drew 2 (one per structures)."
+    },
+    {
+      "line_index": 129,
+      "turn": 8,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 130,
+      "turn": 8,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "play_card",
+      "cards": [
+        "Zoe's Strategy"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury played Zoe's Strategy."
+    },
+    {
+      "line_index": 131,
+      "turn": 8,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "destroyed",
+      "cards": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Relaxaurus – Hungry Gunner was destroyed."
+    },
+    {
+      "line_index": 132,
+      "turn": 8,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Relaxaurus – Hungry Gunner."
+    },
+    {
+      "line_index": 133,
+      "turn": 8,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 3
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify for 3."
+    },
+    {
+      "line_index": 134,
+      "turn": 8,
+      "phase": "waiting",
+      "actor": "player",
+      "action": "interrupt",
+      "cards": [
+        "Dinossom – Radiant Fragrance"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": {
+          "type": "discard",
+          "card": "Dinossom – Radiant Fragrance"
+        },
+        "result": "nullified"
+      },
+      "caused_by_line": null,
+      "text": "Edify interrupted with Dinossom – Radiant Fragrance, discarded Dinossom – Radiant Fragrance. The attack was nullified."
+    },
+    {
+      "line_index": 135,
+      "turn": 8,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 3
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Relaxaurus – Hungry Gunner attacks Edify for 3."
+    },
+    {
+      "line_index": 136,
+      "turn": 8,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack",
+      "cards": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 3,
+        "milled": 3,
+        "lucky": false,
+        "life_before": 7,
+        "life_after": 4
+      },
+      "caused_by_line": null,
+      "text": "Relaxaurus – Hungry Gunner hit Edify for 3. Damage Check: 3 cards milled, no Lucky. Edify 7 to 4 life."
+    },
+    {
+      "line_index": 137,
+      "turn": 9,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 9
+      },
+      "caused_by_line": null,
+      "text": "Turn 9, Stand Phase."
+    },
+    {
+      "line_index": 138,
+      "turn": 9,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 139,
+      "turn": 9,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 140,
+      "turn": 9,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 0,
+        "total": 10,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 0 Souls (10/10)."
+    },
+    {
+      "line_index": 141,
+      "turn": 9,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 142,
+      "turn": 9,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Antique Mirror"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 3,
+        "cost": 1
+      },
+      "caused_by_line": null,
+      "text": "Deployed Antique Mirror to slot 3 for 1 Souls."
+    },
+    {
+      "line_index": 143,
+      "turn": 9,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1."
+    },
+    {
+      "line_index": 144,
+      "turn": 9,
+      "phase": "main",
+      "actor": "player",
+      "action": "rest_draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls_spent": 3,
+        "drew": 1
+      },
+      "caused_by_line": null,
+      "text": "Rested 3 Souls, drew 1 card."
+    },
+    {
+      "line_index": 145,
+      "turn": 9,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 146,
+      "turn": 9,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Jormuntide – Surging Sea Serpent."
+    },
+    {
+      "line_index": 147,
+      "turn": 9,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 3
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify for 3."
+    },
+    {
+      "line_index": 148,
+      "turn": 9,
+      "phase": "waiting",
+      "actor": "player",
+      "action": "interrupt",
+      "cards": [
+        "Reindrix – Icy Gaze"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": {
+          "type": "soul",
+          "amount": 1
+        },
+        "result": "nullified"
+      },
+      "caused_by_line": null,
+      "text": "Edify interrupted with Reindrix – Icy Gaze, paid 1 Soul. The attack was nullified."
+    },
+    {
+      "line_index": 149,
+      "turn": 9,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 2
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Elphidran – Gentle Radiance attacks Edify for 2."
+    },
+    {
+      "line_index": 150,
+      "turn": 9,
+      "phase": "waiting",
+      "actor": "player",
+      "action": "interrupt",
+      "cards": [
+        "Cryolinx – Arctic Ordeal"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": {
+          "type": "soul",
+          "amount": 1
+        },
+        "result": "nullified"
+      },
+      "caused_by_line": null,
+      "text": "Edify interrupted with Cryolinx – Arctic Ordeal, paid 1 Soul. The attack was nullified."
+    },
+    {
+      "line_index": 151,
+      "turn": 9,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 3
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Relaxaurus – Hungry Gunner attacks Edify for 3."
+    },
+    {
+      "line_index": 152,
+      "turn": 9,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack",
+      "cards": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage_attempted": 3,
+        "damage": 0,
+        "milled": 1,
+        "lucky": true
+      },
+      "caused_by_line": null,
+      "text": "Relaxaurus – Hungry Gunner attacked Edify for 3; Edify's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)"
+    },
+    {
+      "line_index": 153,
+      "turn": 9,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 3
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify for 3."
+    },
+    {
+      "line_index": 154,
+      "turn": 9,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage_attempted": 3,
+        "damage": 0,
+        "milled": 2,
+        "lucky": true
+      },
+      "caused_by_line": null,
+      "text": "Jormuntide – Surging Sea Serpent attacked Edify for 3; Edify's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)"
+    },
+    {
+      "line_index": 155,
+      "turn": 10,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 10
+      },
+      "caused_by_line": null,
+      "text": "Turn 10, Stand Phase."
+    },
+    {
+      "line_index": 156,
+      "turn": 10,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 157,
+      "turn": 10,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 158,
+      "turn": 10,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 0,
+        "total": 10,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 0 Souls (10/10)."
+    },
+    {
+      "line_index": 159,
+      "turn": 10,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 160,
+      "turn": 10,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 4,
+        "cost": 6
+      },
+      "caused_by_line": null,
+      "text": "Deployed Elphidran Aqua – Gentle Ripples to slot 4 for 6 Souls."
+    },
+    {
+      "line_index": 161,
+      "turn": 10,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2
+      },
+      "caused_by_line": null,
+      "text": "Drew 2 cards."
+    },
+    {
+      "line_index": 162,
+      "turn": 10,
+      "phase": "main",
+      "actor": "player",
+      "action": "put_on_top",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Put Jormuntide – Surging Sea Serpent on top of the deck."
+    },
+    {
+      "line_index": 163,
+      "turn": 10,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack_interrupted",
+      "cards": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Elphidran Aqua – Gentle Ripples's attack was interrupted."
+    },
+    {
+      "line_index": 164,
+      "turn": 10,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 165,
+      "turn": 10,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 3
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify for 3."
+    },
+    {
+      "line_index": 166,
+      "turn": 10,
+      "phase": "waiting",
+      "actor": "player",
+      "action": "interrupt",
+      "cards": [
+        "Reindrix – Icy Gaze"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": {
+          "type": "soul",
+          "amount": 1
+        },
+        "result": "nullified"
+      },
+      "caused_by_line": null,
+      "text": "Edify interrupted with Reindrix – Icy Gaze, paid 1 Soul. The attack was nullified."
+    },
+    {
+      "line_index": 167,
+      "turn": 10,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "targets": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury's Relaxaurus – Hungry Gunner attacks Edify's Elphidran Aqua – Gentle Ripples."
+    },
+    {
+      "line_index": 168,
+      "turn": 10,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "battle_attack",
+      "cards": [
+        "Relaxaurus – Hungry Gunner"
+      ],
+      "targets": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "resolution": {
+        "attacker_power_expr": "1200",
+        "attacker_power": 1200,
+        "defender_power": 900
+      },
+      "caused_by_line": null,
+      "text": "Relaxaurus – Hungry Gunner (1200) attacked Elphidran Aqua – Gentle Ripples (900)."
+    },
+    {
+      "line_index": 169,
+      "turn": 10,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "destroyed",
+      "cards": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 1200,
+        "power": 900
+      },
+      "caused_by_line": null,
+      "text": "Elphidran Aqua – Gentle Ripples destroyed, 1200 damage vs 900 Power."
+    },
+    {
+      "line_index": 170,
+      "turn": 10,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Chillet – Dragon Whisperer."
+    },
+    {
+      "line_index": 171,
+      "turn": 10,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "reveal",
+      "cards": [
+        "Pyrin Noct – Steed of Azure Flames"
+      ],
+      "targets": [],
+      "resolution": {
+        "outcome": "added_to_hand"
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury revealed Pyrin Noct – Steed of Azure Flames and added it to their hand."
+    },
+    {
+      "line_index": 172,
+      "turn": 10,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 2
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Chillet – Dragon Whisperer attacks Edify for 2."
+    },
+    {
+      "line_index": 173,
+      "turn": 10,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage_attempted": 2,
+        "damage": 0,
+        "milled": 1,
+        "lucky": true
+      },
+      "caused_by_line": null,
+      "text": "Chillet – Dragon Whisperer attacked Edify for 2; Edify's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)"
+    },
+    {
+      "line_index": 174,
+      "turn": 10,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 2
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Elphidran – Gentle Radiance attacks Edify for 2."
+    },
+    {
+      "line_index": 175,
+      "turn": 10,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 4,
+        "life_after": 2
+      },
+      "caused_by_line": null,
+      "text": "Elphidran – Gentle Radiance hit Edify for 2. Damage Check: 2 cards milled, no Lucky. Edify 4 to 2 life."
+    },
+    {
+      "line_index": 176,
+      "turn": 10,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack_declare",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 3
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify for 3."
+    },
+    {
+      "line_index": 177,
+      "turn": 10,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "attack",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [
+        "Edify"
+      ],
+      "resolution": {
+        "damage": 3,
+        "milled": 3,
+        "lucky": false,
+        "life_before": 2,
+        "life_after": 0
+      },
+      "caused_by_line": null,
+      "text": "Jormuntide – Surging Sea Serpent hit Edify for 3. Damage Check: 3 cards milled, no Lucky. Edify 2 to 0 life."
+    }
+  ]
+}

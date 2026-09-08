@@ -1,0 +1,1022 @@
+{
+  "meta": {
+    "recordId": "local-bg-chillet-01",
+    "deck": "Blue/Green Chillet (construction, ladder-#16-derived)",
+    "player": "Edify (P1)",
+    "opponent": "FluffysFury",
+    "opponent_colors": "Blue/Purple",
+    "result": "WIN turn 5",
+    "notes": [
+      "opponent reported poor draw; did nothing until T4"
+    ]
+  },
+  "events": [
+    {
+      "line_index": 6,
+      "turn": 1,
+      "phase": "main",
+      "actor": "player",
+      "action": "setup",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase."
+    },
+    {
+      "line_index": 7,
+      "turn": 1,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 8,
+      "turn": 2,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 2
+      },
+      "caused_by_line": null,
+      "text": "Turn 2, Stand Phase."
+    },
+    {
+      "line_index": 9,
+      "turn": 2,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 10,
+      "turn": 2,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 11,
+      "turn": 2,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2,
+        "total": 4,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 2 Souls (4/10)."
+    },
+    {
+      "line_index": 12,
+      "turn": 2,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 13,
+      "turn": 2,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 1,
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Deployed Elphidran – Gentle Radiance to slot 1 for 4 Souls."
+    },
+    {
+      "line_index": 14,
+      "turn": 2,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [],
+      "resolution": {
+        "element": "Dragon",
+        "power_buff": 500
+      },
+      "caused_by_line": null,
+      "text": "Revealed Chillet – Dragon Whisperer (Dragon). Power +500 until end of turn."
+    },
+    {
+      "line_index": 15,
+      "turn": 2,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 10,
+        "life_after": 8
+      },
+      "caused_by_line": null,
+      "text": "Elphidran – Gentle Radiance attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life."
+    },
+    {
+      "line_index": 16,
+      "turn": 2,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 17,
+      "turn": 3,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Pengullet Rocket Launcher"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Pengullet Rocket Launcher."
+    },
+    {
+      "line_index": 18,
+      "turn": 3,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 3
+      },
+      "caused_by_line": null,
+      "text": "Turn 3, Stand Phase."
+    },
+    {
+      "line_index": 19,
+      "turn": 3,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 20,
+      "turn": 3,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 21,
+      "turn": 3,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2,
+        "total": 6,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 2 Souls (6/10)."
+    },
+    {
+      "line_index": 22,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 23,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 2,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Chillet – Dragon Whisperer to slot 2 for 5 Souls."
+    },
+    {
+      "line_index": 24,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Revealed Jormuntide – Surging Sea Serpent."
+    },
+    {
+      "line_index": 25,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 24,
+      "text": "Deployed Jormuntide – Surging Sea Serpent."
+    },
+    {
+      "line_index": 26,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1."
+    },
+    {
+      "line_index": 27,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "no_valid_target",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "No valid target."
+    },
+    {
+      "line_index": 28,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack_interrupted",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Jormuntide – Surging Sea Serpent's attack was interrupted."
+    },
+    {
+      "line_index": 29,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage_attempted": 2,
+        "damage": 0,
+        "milled": 1,
+        "lucky": true
+      },
+      "caused_by_line": null,
+      "text": "Chillet – Dragon Whisperer attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)"
+    },
+    {
+      "line_index": 30,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal_declined",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chose not to reveal a Dragon."
+    },
+    {
+      "line_index": 31,
+      "turn": 3,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage_attempted": 2,
+        "damage": 0,
+        "milled": 1,
+        "lucky": true
+      },
+      "caused_by_line": null,
+      "text": "Elphidran – Gentle Radiance attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)"
+    },
+    {
+      "line_index": 32,
+      "turn": 3,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 33,
+      "turn": 4,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "play_card",
+      "cards": [
+        "Strike from the Darkness"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury played Strike from the Darkness."
+    },
+    {
+      "line_index": 34,
+      "turn": 3,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "destroyed",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Jormuntide – Surging Sea Serpent was destroyed."
+    },
+    {
+      "line_index": 35,
+      "turn": 4,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "play_card",
+      "cards": [
+        "Dark Cannon"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury played Dark Cannon."
+    },
+    {
+      "line_index": 36,
+      "turn": 3,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "destroyed",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chillet – Dragon Whisperer was destroyed."
+    },
+    {
+      "line_index": 37,
+      "turn": 4,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 4
+      },
+      "caused_by_line": null,
+      "text": "Turn 4, Stand Phase."
+    },
+    {
+      "line_index": 38,
+      "turn": 4,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 39,
+      "turn": 4,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 40,
+      "turn": 4,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2,
+        "total": 8,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 2 Souls (8/10)."
+    },
+    {
+      "line_index": 41,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 42,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 2,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Chillet – Dragon Whisperer to slot 2 for 5 Souls."
+    },
+    {
+      "line_index": 43,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal",
+      "cards": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Revealed Elphidran Aqua – Gentle Ripples."
+    },
+    {
+      "line_index": 44,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 43,
+      "text": "Deployed Elphidran Aqua – Gentle Ripples."
+    },
+    {
+      "line_index": 45,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2
+      },
+      "caused_by_line": null,
+      "text": "Drew 2 cards."
+    },
+    {
+      "line_index": 46,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "put_on_top",
+      "cards": [
+        "Victor's Strategy"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Put Victor's Strategy on top of the deck."
+    },
+    {
+      "line_index": 47,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack_interrupted",
+      "cards": [
+        "Elphidran Aqua – Gentle Ripples"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Elphidran Aqua – Gentle Ripples's attack was interrupted."
+    },
+    {
+      "line_index": 48,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 8,
+        "life_after": 6
+      },
+      "caused_by_line": null,
+      "text": "Chillet – Dragon Whisperer attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life."
+    },
+    {
+      "line_index": 49,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal_declined",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chose not to reveal a Dragon."
+    },
+    {
+      "line_index": 50,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Elphidran – Gentle Radiance"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 6,
+        "life_after": 4
+      },
+      "caused_by_line": null,
+      "text": "Elphidran – Gentle Radiance attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life."
+    },
+    {
+      "line_index": 51,
+      "turn": 4,
+      "phase": "main",
+      "actor": "player",
+      "action": "rest_draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls_spent": 3,
+        "drew": 1
+      },
+      "caused_by_line": null,
+      "text": "Rested 3 Souls, drew 1 card."
+    },
+    {
+      "line_index": 52,
+      "turn": 4,
+      "phase": "end",
+      "actor": "player",
+      "action": "end_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "End Phase, damage cleared."
+    },
+    {
+      "line_index": 53,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "deploy",
+      "cards": [
+        "Pengullet – Yearning for the Sky"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury deployed Pengullet – Yearning for the Sky."
+    },
+    {
+      "line_index": 54,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Pengullet Rocket Launcher"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Pengullet Rocket Launcher."
+    },
+    {
+      "line_index": 55,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "power_buff",
+      "cards": [
+        "Pengullet – Yearning for the Sky"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 500
+      },
+      "caused_by_line": null,
+      "text": "FluffysFury's Pengullet – Yearning for the Sky gets power +500 until end of turn."
+    },
+    {
+      "line_index": 56,
+      "turn": 5,
+      "phase": "waiting",
+      "actor": "opponent",
+      "action": "activate",
+      "cards": [
+        "Pengullet – Yearning for the Sky"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "FluffysFury activated Pengullet – Yearning for the Sky."
+    },
+    {
+      "line_index": 57,
+      "turn": 5,
+      "phase": "stand",
+      "actor": "player",
+      "action": "stand_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "declared_turn": 5
+      },
+      "caused_by_line": null,
+      "text": "Turn 5, Stand Phase."
+    },
+    {
+      "line_index": 58,
+      "turn": 5,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Draw Phase."
+    },
+    {
+      "line_index": 59,
+      "turn": 5,
+      "phase": "draw",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew for the turn."
+    },
+    {
+      "line_index": 60,
+      "turn": 5,
+      "phase": "soul",
+      "actor": "player",
+      "action": "place_souls",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 2,
+        "total": 10,
+        "cap": 10
+      },
+      "caused_by_line": null,
+      "text": "Placed 2 Souls (10/10)."
+    },
+    {
+      "line_index": 61,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "main_phase",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "player": "Edify"
+      },
+      "caused_by_line": null,
+      "text": "Main Phase, Edify's move."
+    },
+    {
+      "line_index": 62,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 1,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Chillet – Dragon Whisperer to slot 1 for 5 Souls."
+    },
+    {
+      "line_index": 63,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Revealed Jormuntide – Surging Sea Serpent."
+    },
+    {
+      "line_index": 64,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 63,
+      "text": "Deployed Jormuntide – Surging Sea Serpent."
+    },
+    {
+      "line_index": 65,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1."
+    },
+    {
+      "line_index": 66,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "no_valid_target",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "No valid target."
+    },
+    {
+      "line_index": 67,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 3,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Chillet – Dragon Whisperer to slot 3 for 5 Souls."
+    },
+    {
+      "line_index": 68,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "reveal",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Revealed Jormuntide – Surging Sea Serpent."
+    },
+    {
+      "line_index": 69,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "deploy",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 68,
+      "text": "Deployed Jormuntide – Surging Sea Serpent."
+    },
+    {
+      "line_index": 70,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1."
+    },
+    {
+      "line_index": 71,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "no_valid_target",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "No valid target."
+    },
+    {
+      "line_index": 72,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Jormuntide – Surging Sea Serpent"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage": 3,
+        "milled": 3,
+        "lucky": false,
+        "life_before": 4,
+        "life_after": 1
+      },
+      "caused_by_line": null,
+      "text": "Jormuntide – Surging Sea Serpent attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 4 to 1 life."
+    },
+    {
+      "line_index": 73,
+      "turn": 5,
+      "phase": "main",
+      "actor": "player",
+      "action": "attack",
+      "cards": [
+        "Chillet – Dragon Whisperer"
+      ],
+      "targets": [
+        "opponent"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 1,
+        "life_after": 0
+      },
+      "caused_by_line": null,
+      "text": "Chillet – Dragon Whisperer attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 1 to 0 life."
+    }
+  ]
+}

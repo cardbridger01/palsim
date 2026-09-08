@@ -5,3 +5,9 @@ __pycache__/
 *.pyc
 .venv/
 .pytest_cache/
+
+# Scratch dumps of data/*.json for reading convenience while writing tests
+# (e.g. qa_dump_card_abilities.txt). Not a source of truth -- the JSON
+# under data/ is -- and would silently drift from it if committed and
+# never regenerated.
+/qa_dump*.txt

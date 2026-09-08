@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cargo:*)",
+      "Bash(rustc:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(wc:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(sed:*)",
+      "Bash(awk:*)",
+      "Bash(echo:*)",
+      "Bash(mkdir:*)",
+      "Bash(python:*)",
+      "Bash(py:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [
+      "Bash(git push:*)",
+      "Bash(rm -rf:*)",
+      "Bash(git config:*)"
+    ]
+  }
+}
