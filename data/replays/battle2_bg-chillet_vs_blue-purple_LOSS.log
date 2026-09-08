@@ -1,0 +1,177 @@
+# recordId: local-bg-chillet-02
+# deck: Blue/Green Chillet (construction, ladder-#16-derived)
+# player: Edify (P2, on the draw)  opponent: FluffysFury  opponent_colors: Blue/Purple
+# result: LOSS turn 10
+# note: pivot at T8 - all 10 souls spent on Relaxaurus + Victor's, Zoe's killed it immediately
+[T1 main] Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+[T1 waiting] Mulliganed. Redrew 5.
+[T2 stand] Turn 2, Stand Phase.
+[T2 draw] Draw Phase.
+[T2 draw] Drew for the turn.
+[T2 soul] Placed 2 Souls (3/10).
+[T2 main] Main Phase, Edify's move.
+[T2 main] Played Victor's Strategy for 3 Souls.
+[T2 main] Looked at top 5: took Reindrix – Icy Gaze to hand.
+[T2 end] End Phase, damage cleared.
+[T2 waiting] FluffysFury deployed Pengullet Rocket Launcher.
+[T3 stand] Turn 3, Stand Phase.
+[T3 draw] Draw Phase.
+[T3 draw] Drew for the turn.
+[T3 soul] Placed 2 Souls (5/10).
+[T3 main] Main Phase, Edify's move.
+[T3 main] Deployed Elphidran – Gentle Radiance to slot 1 for 4 Souls.
+[T3 main] Chose not to reveal a Dragon.
+[T3 main] Elphidran – Gentle Radiance attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+[T3 end] End Phase, damage cleared.
+[T3 waiting] FluffysFury deployed Pengullet Rocket Launcher.
+[T4 stand] Turn 4, Stand Phase.
+[T4 draw] Draw Phase.
+[T4 draw] Drew for the turn.
+[T4 soul] Placed 2 Souls (7/10).
+[T4 main] Main Phase, Edify's move.
+[T4 main] Played Aurora Guide for 2 Souls.
+[T4 main] Drew 1 card.
+[T4 main] Put Jormuntide – Surging Sea Serpent on top of the deck.
+[T4 main] Deployed Chillet – Dragon Whisperer to slot 2 for 5 Souls.
+[T4 main] Revealed Jormuntide – Surging Sea Serpent.
+[T4 main] Deployed Jormuntide – Surging Sea Serpent.
+[T4 main] Drew 1.
+[T4 main] No valid target.
+[T4 main] Chillet – Dragon Whisperer attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+[T4 main] Chose not to reveal a Dragon.
+[T4 main] Elphidran – Gentle Radiance attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+[T4 main] Jormuntide – Surging Sea Serpent's attack was interrupted.
+[T4 end] End Phase, damage cleared.
+[T4 waiting] FluffysFury deployed Pengullet – Yearning for the Sky.
+[T4 waiting] FluffysFury activated Pengullet Rocket Launcher.
+[T4 waiting] FluffysFury's Pengullet – Yearning for the Sky gets power +500 until end of turn.
+[T4 waiting] FluffysFury activated Pengullet Rocket Launcher.
+[T4 waiting] FluffysFury's Pengullet – Yearning for the Sky gets power +500 until end of turn.
+[T4 waiting] FluffysFury activated Pengullet – Yearning for the Sky.
+[T4 waiting] FluffysFury played Zoe's Strategy.
+[T4 waiting] FluffysFury returned Reindrix – Icy Gaze from their graveyard to hand.
+[T4 waiting] Discarded Dinossom – Radiant Fragrance.
+[T5 stand] Turn 5, Stand Phase.
+[T5 draw] Draw Phase.
+[T5 draw] Drew for the turn.
+[T5 soul] Placed 2 Souls (9/10).
+[T5 main] Main Phase, Edify's move.
+[T5 main] Deployed Chillet – Dragon Whisperer to slot 1 for 5 Souls.
+[T5 main] Revealed Found an Egg!, added to hand.
+[T5 main] Played Victor's Strategy for 3 Souls.
+[T5 main] Looked at top 5: took Antique Mirror to hand.
+[T5 main] Deployed Antique Mirror to slot 2 for 1 Souls.
+[T5 main] Drew 1.
+[T5 main] Chillet – Dragon Whisperer's attack was interrupted.
+[T5 end] End Phase, damage cleared.
+[T5 waiting] FluffysFury deployed Jormuntide – Surging Sea Serpent.
+[T5 waiting] Chillet – Dragon Whisperer was Rested.
+[T5 waiting] Chillet – Dragon Whisperer won't stand during its next Stand Phase.
+[T5 waiting] FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify for 3.
+[T5 waiting] Edify interrupted with Reindrix – Icy Gaze, discarded Found an Egg!. The attack was nullified.
+[T5 waiting] FluffysFury activated Pengullet Rocket Launcher.
+[T5 waiting] FluffysFury's Jormuntide – Surging Sea Serpent gets power +200 until end of turn.
+[T5 waiting] FluffysFury activated Pengullet Rocket Launcher.
+[T5 waiting] FluffysFury's Jormuntide – Surging Sea Serpent gets power +200 until end of turn.
+[T6 stand] Turn 6, Stand Phase.
+[T6 draw] Draw Phase.
+[T6 draw] Drew for the turn.
+[T6 soul] Placed 1 Soul (10/10).
+[T6 main] Main Phase, Edify's move.
+[T6 main] Played Aurora Guide for 2 Souls.
+[T6 main] Drew 1 card.
+[T6 main] Put Relaxaurus – Hungry Gunner on top of the deck.
+[T6 main] Deployed Chillet – Dragon Whisperer to slot 3 for 5 Souls.
+[T6 main] Revealed Relaxaurus – Hungry Gunner.
+[T6 main] Deployed Relaxaurus – Hungry Gunner.
+[T6 main] No valid target.
+[T6 main] Played Lily's Strategy for 3 Souls.
+[T6 main] Relaxaurus – Hungry Gunner's attack was interrupted.
+[T6 main] Chillet – Dragon Whisperer attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+[T6 end] End Phase, damage cleared.
+[T6 waiting] FluffysFury deployed Pengullet – Yearning for the Sky.
+[T6 waiting] FluffysFury activated Pengullet Rocket Launcher.
+[T6 waiting] FluffysFury's Pengullet – Yearning for the Sky gets power +500 until end of turn.
+[T6 waiting] FluffysFury activated Pengullet – Yearning for the Sky.
+[T6 waiting] FluffysFury deployed Cryolinx – Arctic Ordeal.
+[T6 waiting] FluffysFury's Cryolinx – Arctic Ordeal attacks Edify's Relaxaurus – Hungry Gunner.
+[T6 waiting] Cryolinx – Arctic Ordeal (900) attacked Relaxaurus – Hungry Gunner (1200).
+[T6 waiting] Relaxaurus – Hungry Gunner destroyed, 2000 damage vs 1200 Power.
+[T6 waiting] Cryolinx – Arctic Ordeal destroyed, 1200 damage vs 900 Power.
+[T6 waiting] FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify for 3.
+[T6 waiting] Jormuntide – Surging Sea Serpent hit Edify for 3. Damage Check: 3 cards milled, no Lucky. Edify 10 to 7 life.
+[T7 stand] Turn 7, Stand Phase.
+[T7 draw] Draw Phase.
+[T7 draw] Drew for the turn.
+[T7 soul] Placed 0 Souls (10/10).
+[T7 main] Main Phase, Edify's move.
+[T7 main] Deployed Antique Mirror to slot 1 for 1 Souls.
+[T7 main] Drew 1.
+[T7 main] Deployed Elphidran Aqua – Gentle Ripples to slot 3 for 6 Souls.
+[T7 main] Drew 2 cards.
+[T7 main] Put Dinossom – Radiant Fragrance on top of the deck.
+[T7 main] Played Lily's Strategy for 3 Souls.
+[T7 main] Elphidran Aqua – Gentle Ripples attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+[T7 end] End Phase, damage cleared.
+[T7 waiting] FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify's Elphidran Aqua – Gentle Ripples.
+[T7 waiting] Jormuntide – Surging Sea Serpent (1600) attacked Elphidran Aqua – Gentle Ripples (900).
+[T7 waiting] Elphidran Aqua – Gentle Ripples destroyed, 1600 damage vs 900 Power.
+[T7 waiting] FluffysFury deployed Pengullet – Yearning for the Sky.
+[T7 waiting] FluffysFury deployed Elphidran – Gentle Radiance.
+[T8 stand] Turn 8, Stand Phase.
+[T8 draw] Draw Phase.
+[T8 draw] Drew for the turn.
+[T8 soul] Placed 0 Souls (10/10).
+[T8 main] Main Phase, Edify's move.
+[T8 main] Deployed Relaxaurus – Hungry Gunner to slot 3 for 7 Souls.
+[T8 main] Played Victor's Strategy for 3 Souls.
+[T8 main] Drew 2 (one per structures).
+[T8 end] End Phase, damage cleared.
+[T8 waiting] FluffysFury played Zoe's Strategy.
+[T8 waiting] Relaxaurus – Hungry Gunner was destroyed.
+[T8 waiting] FluffysFury deployed Relaxaurus – Hungry Gunner.
+[T8 waiting] FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify for 3.
+[T8 waiting] Edify interrupted with Dinossom – Radiant Fragrance, discarded Dinossom – Radiant Fragrance. The attack was nullified.
+[T8 waiting] FluffysFury's Relaxaurus – Hungry Gunner attacks Edify for 3.
+[T8 waiting] Relaxaurus – Hungry Gunner hit Edify for 3. Damage Check: 3 cards milled, no Lucky. Edify 7 to 4 life.
+[T9 stand] Turn 9, Stand Phase.
+[T9 draw] Draw Phase.
+[T9 draw] Drew for the turn.
+[T9 soul] Placed 0 Souls (10/10).
+[T9 main] Main Phase, Edify's move.
+[T9 main] Deployed Antique Mirror to slot 3 for 1 Souls.
+[T9 main] Drew 1.
+[T9 main] Rested 3 Souls, drew 1 card.
+[T9 end] End Phase, damage cleared.
+[T9 waiting] FluffysFury deployed Jormuntide – Surging Sea Serpent.
+[T9 waiting] FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify for 3.
+[T9 waiting] Edify interrupted with Reindrix – Icy Gaze, paid 1 Soul. The attack was nullified.
+[T9 waiting] FluffysFury's Elphidran – Gentle Radiance attacks Edify for 2.
+[T9 waiting] Edify interrupted with Cryolinx – Arctic Ordeal, paid 1 Soul. The attack was nullified.
+[T9 waiting] FluffysFury's Relaxaurus – Hungry Gunner attacks Edify for 3.
+[T9 waiting] Relaxaurus – Hungry Gunner attacked Edify for 3; Edify's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+[T9 waiting] FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify for 3.
+[T9 waiting] Jormuntide – Surging Sea Serpent attacked Edify for 3; Edify's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+[T10 stand] Turn 10, Stand Phase.
+[T10 draw] Draw Phase.
+[T10 draw] Drew for the turn.
+[T10 soul] Placed 0 Souls (10/10).
+[T10 main] Main Phase, Edify's move.
+[T10 main] Deployed Elphidran Aqua – Gentle Ripples to slot 4 for 6 Souls.
+[T10 main] Drew 2 cards.
+[T10 main] Put Jormuntide – Surging Sea Serpent on top of the deck.
+[T10 main] Elphidran Aqua – Gentle Ripples's attack was interrupted.
+[T10 end] End Phase, damage cleared.
+[T10 waiting] FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify for 3.
+[T10 waiting] Edify interrupted with Reindrix – Icy Gaze, paid 1 Soul. The attack was nullified.
+[T10 waiting] FluffysFury's Relaxaurus – Hungry Gunner attacks Edify's Elphidran Aqua – Gentle Ripples.
+[T10 waiting] Relaxaurus – Hungry Gunner (1200) attacked Elphidran Aqua – Gentle Ripples (900).
+[T10 waiting] Elphidran Aqua – Gentle Ripples destroyed, 1200 damage vs 900 Power.
+[T10 waiting] FluffysFury deployed Chillet – Dragon Whisperer.
+[T10 waiting] FluffysFury revealed Pyrin Noct – Steed of Azure Flames and added it to their hand.
+[T10 waiting] FluffysFury's Chillet – Dragon Whisperer attacks Edify for 2.
+[T10 waiting] Chillet – Dragon Whisperer attacked Edify for 2; Edify's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+[T10 waiting] FluffysFury's Elphidran – Gentle Radiance attacks Edify for 2.
+[T10 waiting] Elphidran – Gentle Radiance hit Edify for 2. Damage Check: 2 cards milled, no Lucky. Edify 4 to 2 life.
+[T10 waiting] FluffysFury's Jormuntide – Surging Sea Serpent attacks Edify for 3.
+[T10 waiting] Jormuntide – Surging Sea Serpent hit Edify for 3. Damage Check: 3 cards milled, no Lucky. Edify 2 to 0 life.

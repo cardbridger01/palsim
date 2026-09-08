@@ -1,0 +1,73 @@
+# recordId: local-bg-chillet-01
+# deck: Blue/Green Chillet (construction, ladder-#16-derived)
+# player: Edify (P1)  opponent: FluffysFury  opponent_colors: Blue/Purple
+# result: WIN turn 5
+# note: opponent reported poor draw; did nothing until T4
+[T1 main] Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+[T1 end] End Phase, damage cleared.
+[T2 stand] Turn 2, Stand Phase.
+[T2 draw] Draw Phase.
+[T2 draw] Drew for the turn.
+[T2 soul] Placed 2 Souls (4/10).
+[T2 main] Main Phase, Edify's move.
+[T2 main] Deployed Elphidran – Gentle Radiance to slot 1 for 4 Souls.
+[T2 main] Revealed Chillet – Dragon Whisperer (Dragon). Power +500 until end of turn.
+[T2 main] Elphidran – Gentle Radiance attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+[T2 end] End Phase, damage cleared.
+[T3 waiting] FluffysFury deployed Pengullet Rocket Launcher.
+[T3 stand] Turn 3, Stand Phase.
+[T3 draw] Draw Phase.
+[T3 draw] Drew for the turn.
+[T3 soul] Placed 2 Souls (6/10).
+[T3 main] Main Phase, Edify's move.
+[T3 main] Deployed Chillet – Dragon Whisperer to slot 2 for 5 Souls.
+[T3 main] Revealed Jormuntide – Surging Sea Serpent.
+[T3 main] Deployed Jormuntide – Surging Sea Serpent.
+[T3 main] Drew 1.
+[T3 main] No valid target.
+[T3 main] Jormuntide – Surging Sea Serpent's attack was interrupted.
+[T3 main] Chillet – Dragon Whisperer attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+[T3 main] Chose not to reveal a Dragon.
+[T3 main] Elphidran – Gentle Radiance attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+[T3 end] End Phase, damage cleared.
+[T4 waiting] FluffysFury played Strike from the Darkness.
+[T3 waiting] Jormuntide – Surging Sea Serpent was destroyed.
+[T4 waiting] FluffysFury played Dark Cannon.
+[T3 waiting] Chillet – Dragon Whisperer was destroyed.
+[T4 stand] Turn 4, Stand Phase.
+[T4 draw] Draw Phase.
+[T4 draw] Drew for the turn.
+[T4 soul] Placed 2 Souls (8/10).
+[T4 main] Main Phase, Edify's move.
+[T4 main] Deployed Chillet – Dragon Whisperer to slot 2 for 5 Souls.
+[T4 main] Revealed Elphidran Aqua – Gentle Ripples.
+[T4 main] Deployed Elphidran Aqua – Gentle Ripples.
+[T4 main] Drew 2 cards.
+[T4 main] Put Victor's Strategy on top of the deck.
+[T4 main] Elphidran Aqua – Gentle Ripples's attack was interrupted.
+[T4 main] Chillet – Dragon Whisperer attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+[T4 main] Chose not to reveal a Dragon.
+[T4 main] Elphidran – Gentle Radiance attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+[T4 main] Rested 3 Souls, drew 1 card.
+[T4 end] End Phase, damage cleared.
+[T5 waiting] FluffysFury deployed Pengullet – Yearning for the Sky.
+[T5 waiting] FluffysFury activated Pengullet Rocket Launcher.
+[T5 waiting] FluffysFury's Pengullet – Yearning for the Sky gets power +500 until end of turn.
+[T5 waiting] FluffysFury activated Pengullet – Yearning for the Sky.
+[T5 stand] Turn 5, Stand Phase.
+[T5 draw] Draw Phase.
+[T5 draw] Drew for the turn.
+[T5 soul] Placed 2 Souls (10/10).
+[T5 main] Main Phase, Edify's move.
+[T5 main] Deployed Chillet – Dragon Whisperer to slot 1 for 5 Souls.
+[T5 main] Revealed Jormuntide – Surging Sea Serpent.
+[T5 main] Deployed Jormuntide – Surging Sea Serpent.
+[T5 main] Drew 1.
+[T5 main] No valid target.
+[T5 main] Deployed Chillet – Dragon Whisperer to slot 3 for 5 Souls.
+[T5 main] Revealed Jormuntide – Surging Sea Serpent.
+[T5 main] Deployed Jormuntide – Surging Sea Serpent.
+[T5 main] Drew 1.
+[T5 main] No valid target.
+[T5 main] Jormuntide – Surging Sea Serpent attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 4 to 1 life.
+[T5 main] Chillet – Dragon Whisperer attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 1 to 0 life.

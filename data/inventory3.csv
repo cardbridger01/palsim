@@ -1,0 +1,144 @@
+CardNumber,CardName,Subtitle,Color,Type,Cost,Lucky,Qty_DeckA,Qty_TDdecks,Qty_Transcripts,Qty_TOTAL,Note,Evidence
+BP01-048,Aurora Guide,,Blue,Event,2,,0,0,5,5,,T1:Five Aurora Guide
+BP01-023,Axel's Strategy,,Red,Event,4,,0,0,2,2,,T1:Axel's Strategy | T1:Axel Strategically Strateg
+BP01-097,Black Marketeer,,Purple,Event,5,,0,0,4,4,,T2:Black Marketer | T2:Black Marketer | T2:Black Marketer
+BP01-072,Blessing of the Flower Spirit,,Green,Event,3,,0,0,2,2,,T2:Blessing of the Flower Spi | T2:blessing of the flower spi
+TD01-022,Crystal Breath,,Blue,Event,2,,0,4,3,7,,T2:Crystal Breath | T2:Crystal Breath | T2:Crist stoic
+BP01-096,Dark Cannon,,Purple,Event,3,,0,0,5,5,E-verified,T1:two Dark Cannon | T2:Dark Cannon | T2:dark cannon
+BP01-071,Found an Egg!,,Green,Event,2,,4,0,0,4,,
+TD01-011,Ignis Breath,,Red,Event,2,,0,4,0,4,,
+BP01-070,Lily's Strategy,,Green,Event,3,,0,0,2,3,E-confirmed physical count,T3:Two Lily Strategy
+TD02-022,Medical Supplies,,Purple,Event,7,,0,4,0,4,,
+BP01-047,Pal Sphere,,Blue,Event,4,,3,0,5,8,E-verified,T1:Four Palisphere | T2:Palsphere
+TD02-011,Stone Blast,,Green,Event,2,,0,4,0,4,,
+TD02-021,Strike from the Darkness,,Purple,Event,4,,0,4,0,4,,
+BP01-100,The Adventure Begins,,Colorless,Event,2,,0,0,4,4,,T2:The adventure begins | T2:The adventure begins | T2:The adventure begins
+BP01-024,Treasure Chest Found!,,Red,Event,2,,0,0,5,5,,T2:treasure chest found | T2:Treasure chest found | T2:Treasure chest found
+BP01-046,Victor's Strategy,,Blue,Event,3,,2,0,2,4,,T1:two Victor Strategy
+BP01-095,Zoe's Strategy,,Purple,Event,3,,0,0,2,2,,T1:two Zoe's Strategy
+TD02-020,Cawgnito Hat,,Purple,Gear,4,,0,4,0,4,,
+BP01-068,Digtoise's Headband,,Green,Gear,3,,4,0,0,4,,
+BP01-069,Farming Hat,,Green,Gear,3,,0,0,2,2,,T2:farming hat | T2:farming hat
+BP01-019,Foxparks' Harness,,Red,Gear,3,,0,0,1,1,,T1:Foxbark's Harness
+BP01-045,Grappling Gun,,Blue,Gear,5,,0,0,3,3,,T2:grappling gun | T2:grappling gun | T2:grappling gun
+BP01-021,Makeshift Handgun,,Red,Gear,2,,0,0,1,1,,T2:Makehift Handgun
+BP01-093,Meat Cleaver,,Purple,Gear,2,,0,0,3,3,,T1:Meatcleaver | T1:Meat cleaver | T1:meat cleaver
+BP01-044,Pengullet Rocket Launcher,,Blue,Gear,4,,4,0,1,5,,T1:Pangalit Rocket Launcher S
+BP01-020,Pump-Action Shotgun,,Red,Gear,7,,0,0,3,3,,T1:Pump Action Shotgun | T1:Pump Action Shotgun | T1:pump action shotgun
+TD02-010,Refined Metal Spear,,Green,Gear,6,,0,4,0,4,,
+TD01-010,Single-Shot Rifle,,Red,Gear,4,,0,4,0,4,,
+TD01-021,Single-Shot Sphere Launcher,,Blue,Gear,3,,0,4,1,5,,T2:single shot sphere launche
+BP01-022,Stone Pickaxe,,Red,Gear,3,,0,0,1,1,,T2:Stone Pickaxe
+TD01-005,Arsox,Burning Spoils,Red,Pal,5,,0,6,2,8,,T2:Arsocks Burning | T2:R Sox burning
+TD02-012,Astegon,Aegis Wyvern of Death,Purple,Pal,8,Y,0,4,0,4,,
+BP01-029,Azurobe,Water Dragon Waltz,Blue,Pal,6,Y,0,0,2,2,,T1:Two Azorob Water Dragon
+BP01-061,Beegarde,Knight of the Flower Garden,Green,Pal,3,,0,0,4,4,,T2:Begard Knight | T2:Begard Knight | T2:Biggerd Knight
+TD01-007,Blazamut,Molten Sovereign,Red,Pal,8,Y,0,4,0,4,,
+BP01-014,Blazehowl,Hellflame Defender,Red,Pal,7,,0,0,5,5,E-verified,T2:Blazehowl Hell Flame | T2:Blaze howl Hell flame | T2:Blazehowl Hellflame
+TD02-017,Blazehowl Noct,Darkflame Defender,Purple,Pal,6,,0,4,0,4,,
+TD02-006,Broncherry,Brimming Adoration,Green,Pal,7,Y,0,4,0,4,,
+BP01-004,Bushi,Ephemeral Blade,Red,Pal,5,Y,0,0,5,5,,T1:Bushy Ephemeral SR | T1:Bushy Ephemeral | T1:Bushy Ephemeral Blade Time
+TD02-023,Cattiva,My First Pal,Colorless,Pal,2,,0,4,2,6,,T3:two Kativa
+TD02-015,Cawgnito,Looming Shadow,Purple,Pal,4,,0,4,0,4,,
+BP01-036,Celaray,Loop De Loop,Blue,Pal,3,,0,0,4,4,,T2:Way | T2:Cellaree Loop | T2:Cellaree Loop
+TD02-024,Chikipi,My First Pal,Colorless,Pal,2,,0,4,0,4,,
+BP01-025,Chillet,Dragon Whisperer,Blue,Pal,5,Y,0,0,9,5,E-confirmed 5; T1/T3 recorded the same 5 twice,T1:five Chillet Dragon Whispe | T3:Four Chillet Dragon Whispe
+BP01-038,Cryolinx,Arctic Ordeal,Blue,Pal,6,,3,0,5,8,E-verified,T2:cryolinks arctic | T2:Cryolink's Arctic | T2:Cryolynx Artic
+BP01-082,Daedream,Deep Slumber,Purple,Pal,3,,0,0,1,1,,T3:Daydream Deep Slumber Prom
+BP01-080,Daedream,First Slumber,Purple,Pal,2,,0,0,2,2,,T2:Daydream first | T2:Daydream First Slumber
+BP01-079,Depresso,Late Night Hustler,Purple,Pal,2,,0,0,2,2,E-verified,T1:Depresso Late Night SR | T2:Depresso late night
+BP01-059,Digtoise,Keen Needleback,Green,Pal,5,,4,0,1,5,,T1:Key Needleback
+BP01-050,Digtoise,Seismic Drillback,Green,Pal,6,Y,4,0,3,7,,T1:Two Digtoys | T1:Digtoy seismic drillback
+TD02-004,Dinossom,Radiant Fragrance,Green,Pal,4,,2,4,0,6,,
+BP01-099,Direhowl,Proud Fang,Colorless,Pal,3,,0,0,3,3,,T2:dire howl proud | T2:Direhal Proud | T2:Dire Hal proud
+BP01-057,Dumud,Mellow Bounty,Green,Pal,4,,0,0,5,5,,T2:doomed mellow | T2:Dumud mellow | T2:Dood Mud Mellow
+TD02-005,Eikthyrdeer Terra,Guardian of Nature,Green,Pal,6,,0,6,0,6,,
+BP01-053,Elizabee,Queen of the Flower Garden,Green,Pal,5,Y,0,0,3,3,,T1:Elizabeth Queen | T1:Elizabeth Queen | T1:Elizabeth Queen
+BP01-098,Elphidran,Gentle Radiance,Colorless,Pal,4,,0,0,7,7,E-verified,T1:Five Alphadran Gentle Radi | T2:elfidrian gentle | T2:Alphadran Gentle
+TD01-012,Elphidran Aqua,Gentle Ripples,Blue,Pal,6,,0,4,4,8,,T3:four Alphadran Aqua Gentle
+TD02-018,Felbat,Lifestealer,Purple,Pal,7,Y,0,4,1,5,,T1:Fellbat Life Stealer SR
+BP01-012,Flambelle,Scorching Tears,Red,Pal,3,,0,0,4,4,E-verified,T2:Flame bell scorching | T2:Hell flame | T2:Flamebell Scorching
+TD02-003,Flopie,Snack Lover,Green,Pal,3,,2,4,0,6,,
+TD01-004,Foxparks,A Toasty Hug,Red,Pal,4,,0,4,0,4,,
+BP01-006,Foxparks,Light of Courage,Red,Pal,2,,0,0,4,4,,T2:foxbark's light | T2:Fox Park's light blazes | T2:Foxbark's light
+BP01-032,Fuack,Manic Wave Ripper,Blue,Pal,2,,0,0,3,3,,T2:Fuwak manic | T2:Fuak manic | T2:Fouac Manic
+BP01-003,Gobfin Ignis,Blazing Hothead,Red,Pal,4,,0,0,1,1,,T1:Goblin Ignis Blazing
+TD01-001,Grizzbolt,Rumbling Tank,Red,Pal,7,Y,0,4,1,5,,T1:Grisbolt Rumbling Tank SR
+BP01-058,Gumoss,Curious Sprout,Green,Pal,4,,0,0,4,4,E-verified,T2:Gamoss Curious | T3:Gamoss Curious Spout Promo | T3:Gamas Curious
+TD02-002,Gumoss,Dreamy Seedling,Green,Pal,2,,0,4,0,4,,
+TD01-015,Hangyu Cryst,Frigid Wanderer,Blue,Pal,4,,0,4,0,4,,
+BP01-073,Helzephyr,Wings of the Moonless Night,Purple,Pal,7,Y,0,0,2,2,,T1:Two Helzephyr wings of the
+TD02-013,Hoocrates,Embodiment of Wisdom,Purple,Pal,2,,0,6,0,6,,
+TD02-016,Incineram,Lurking Stalker,Purple,Pal,5,,0,4,0,4,,
+TD01-002,Jolthog,Shocking Yet Innocent,Red,Pal,2,,0,4,2,6,,T2:Joltog Shocking Yet | T2:jolt hog
+TD01-013,Jolthog Cryst,Stoic Yet Innocent,Blue,Pal,2,,0,6,2,8,,T2:Joltog Crist Stoic | T2:Joltog Crist Stoic
+BP01-027,Jormuntide,Surging Sea Serpent,Blue,Pal,8,Y,0,0,5,5,,T1:three Jormentide Surging S | T1:Two Jormontide surging sea
+BP01-001,Jormuntide Ignis,Savage Lava Dragon,Red,Pal,8,Y,0,0,1,1,,T1:Jormentide Ignis Savage
+BP01-075,Katress,Abyssal Sorcerer,Purple,Pal,6,Y,0,0,1,1,,T1:Catrice Abyssal Sorcerer O
+TD01-003,Kelpsea Ignis,Balmy Magma,Red,Pal,3,,0,4,2,6,,T2:Kelpsey Ignis Balmy | T2:Kelpsey Ignis Balmy
+BP01-007,Kitsun,Wyrmbane Fangs,Red,Pal,5,,0,0,2,2,,T2:Kitsune Wormbane | T2:Kitsune wormbane
+PR-001,Lamball,My First Pal,Colorless,Pal,2,,0,0,4,4,E-verified,T1:Glacial | T2:Lamb ball | T2:my first pal
+TD01-023,Lamball,My First Pal,Colorless,Pal,2,,0,4,0,4,,
+TD02-014,Leezpunk,Treasure Bandit,Purple,Pal,3,,0,4,0,4,,
+BP01-056,Lifmunk,Promising Newbie,Green,Pal,3,,0,0,4,4,E-verified,T1:Lift Monk Promising SR | T2:Lithmunk Promising | T2:Lifmonk promising
+BP01-087,Loupmoon,Glinting Moonlight,Purple,Pal,4,,0,0,3,3,,T2:Loop moon glinting | T2:Loop Moon Glinting | T2:Loop Moon Glinting
+BP01-081,Lovander,Heartstealer,Purple,Pal,5,,0,0,7,7,,T2:lavender heartstealer | T2:Lavender Heart Stealer | T2:Lavender Heart Stealer
+BP01-049,Lyleen,Blessing of the Goddess,Green,Pal,7,Y,4,0,1,5,,T3:Lilene Blessing of the God
+BP01-078,Lyleen Noct,Providence of the Goddess,Purple,Pal,8,,0,0,3,3,,T1:Lilene Nocht Providence | T1:Lilene Knocked Providence | T1:Lilian knocked Providence
+TD02-007,Mammorest,Roar of the Wilds,Green,Pal,8,Y,0,4,0,4,,
+TD01-018,Mammorest Cryst,Roar of the Tundra,Blue,Pal,8,Y,0,4,1,5,,T2:Memarest Crist Roar
+BP01-085,Maraith,Twilight Messenger,Purple,Pal,6,,0,0,3,3,,T2:Morayth twilight black mar | T2:Marathe Twilight | T2:Marathe Twilight
+BP01-035,Mau Cryst,Harbinger of Riches,Blue,Pal,3,,0,0,4,4,E-verified,T2:malcrist harbinger | T2:Malcrist Harbinger | T2:Malchrist Harbinger
+BP01-084,Menasting,Darkness-Dwelling Scorpion,Purple,Pal,5,Y,0,0,1,1,,T2:menacing darkness
+TD02-001,Mossanda,Guard Captain,Green,Pal,5,,0,4,0,4,,
+TD01-006,Mossanda Lux,Vanguard Captain,Red,Pal,6,,0,4,1,5,,T2:Masonda Lux Vanguard
+BP01-086,Nox,The Silent One,Purple,Pal,3,,0,0,2,2,,T2:Knocks the silent | T2:Knox the Silent
+TD01-014,Pengullet,Frequent Flyer,Blue,Pal,3,,4,4,0,8,,
+BP01-028,Pengullet,Yearning for the Sky,Blue,Pal,4,,4,0,1,5,,T1:Pingulet yearning for the 
+BP01-031,Penking,Mighty Warrior of the Deep,Blue,Pal,5,,2,0,0,2,,
+BP01-051,Petallia,Sweet Blessings,Green,Pal,6,,0,0,1,1,,T1:Petalia Suite
+BP01-013,Pyrin,Cinder Steed,Red,Pal,6,,0,0,4,4,,T2:Hyran Cinder Steed | T2:Pyron Cinder | T2:Pyren Cinder
+BP01-077,Pyrin Noct,Steed of Azure Flames,Purple,Pal,7,,0,0,4,4,E-confirmed physical count,T3:Four Pyron Knocked Steed
+BP01-010,Ragnahawk,Emberwing Striker,Red,Pal,6,Y,0,0,5,5,,T2:Ragna hawk emberwing | T2:Ragnarok | T2:Emberwing
+TD01-016,Reindrix,Icy Gaze,Blue,Pal,5,,4,4,0,8,,
+BP01-026,Relaxaurus,Hungry Gunner,Blue,Pal,7,,0,0,4,4,,T1:four Relaxaurus Hungry Gun
+BP01-030,Reptyro Cryst,Glacial Devourer,Blue,Pal,8,,0,0,1,1,,T1:Reptyro Christ
+TD01-024,Ribbuny,Little Princess,Colorless,Pal,2,,0,4,0,4,,
+BP01-011,Rooby,Brave Sparks,Red,Pal,2,,0,0,1,1,,T2:Ruby Brave
+BP01-052,Rushoar,Reckless Destruction,Green,Pal,2,,0,0,4,4,,T1:Rushore Reckless SR | T1:Rushore Reckless | T1:Rushore Reckless
+BP01-008,Sparkit,Hazardous Contact,Red,Pal,3,,0,0,3,3,,T2:sparkit hazardous | T2:sparkit hazardous | T2:Sparky hazardous
+BP01-037,Surfent,Swift Swimmer,Blue,Pal,4,,0,0,4,4,,T2:Surfin' Swift | T2:Serpent Swift | T2:Serpent Swift
+BP01-002,Suzaku,Hellfire Wings,Red,Pal,7,Y,0,0,2,2,,T3:Two Suzaku Hellfire Wings
+TD01-017,Suzaku Aqua,Way of the Current,Blue,Pal,7,Y,0,4,2,6,E-verified,T1:Suzaka Aqua Way SR | T2:Suzaka Aqua
+BP01-060,Tanzee,Cheerful Worker,Green,Pal,2,,0,0,3,3,,T2:Tansy cheerful | T2:Tansy Cheerful | T2:Tansy Cheerful
+BP01-034,Teafant,Fountain of Cheer,Blue,Pal,2,,0,0,4,4,,T2:Tphant fountain | T2:Tphant fountain | T2:Tefant Fountain
+BP01-076,Tombat,Out of Nowhere!?,Purple,Pal,5,,0,0,2,2,,T1:Tombat Out of Nowhere | T1:tombat out of nowhere
+BP01-009,Univolt,Valiant Thunderclap,Red,Pal,4,,0,0,3,3,,T2:Univolt valiant | T2:Univolt valiant | T2:Univolt Valiant
+BP01-055,Vaelet,Bewitching Blossom,Green,Pal,8,Y,0,0,3,3,,T2:Valet bewitching | T2:Velet bewitching | T2:Veillet Bewitching
+BP01-083,Vanwyrm,Marauder of the Skies,Purple,Pal,4,,0,0,3,3,,T2:Vanworm marauder | T2:Vanworm Marauder | T2:Vanworm Marauder
+BP01-054,Warsect,Iron Fortress,Green,Pal,8,,0,0,3,3,,T1:Two war sect iron fortress | T1:war sect iron
+BP01-033,Wumpo,Frostpeak Sentinel,Blue,Pal,7,Y,0,0,4,4,,T2:Wumpo Frost Peak | T2:Wumpo Frost Peak | T2:Wumpo Frost Peak
+BP01-062,Wumpo Botan,Tropical Sentinel,Green,Pal,7,,0,0,3,3,,T2:Wumpo Botan Tropical | T2:Wumpo Botan Tropical | T2:Wumpo Botan Tropical
+BP01-018,Alarm Bell,,Red,Structure,3,,0,0,3,3,,T2:Alarm bell | T2:alarm bell | T2:Alarm Bell
+BP01-040,Antique Dresser,,Blue,Structure,4,,0,0,9,9,E-verified,T1:Six antique curtain | T2:antique dresser | T2:antique dresser
+BP01-042,Antique Mirror,,Blue,Structure,1,,0,0,6,6,E-verified,T1:Four Antique Mirror | T2:Antique Mirror | T2:Antique mirror
+TD01-019,Antique Wooden Chair,,Blue,Structure,2,,0,4,1,5,,T2:antique wooden chair
+TD02-008,Berry Plantation,,Green,Structure,1,,0,4,2,6,,T3:two Berry Plantation
+BP01-063,Breeding Farm,,Green,Structure,3,,0,0,4,4,,T1:Breeding farm | T1:Breeding farm | T1:breeding farm
+TD02-009,Campfire,,Green,Structure,3,,0,4,0,4,,
+BP01-065,Feed Box,,Green,Structure,2,,0,0,4,4,,T2:feed box | T2:Feed box | T2:Feed Box
+BP01-017,Flame Cauldron,,Red,Structure,2,,0,0,3,3,,T2:flame cauldron | T2:Flame cauldron | T2:Flame Cauldron
+TD02-019,Hanging Trap,,Purple,Structure,2,,0,4,0,4,,
+BP01-041,Hot Spring,,Blue,Structure,6,,0,0,2,2,,T2:hot spring | T2:Hot spring
+BP01-088,Lamp,,Purple,Structure,4,,0,0,1,1,,T1:lamp
+BP01-090,Medieval Medicine Workbench,,Purple,Structure,4,,0,0,3,3,,T2:Medieval medicine workbenc | T2:Medieval medicine workbenc | T2:Medieval medicine workbenc
+BP01-015,Mounted Machine Gun,,Red,Structure,4,,0,0,2,2,,T1:Mounted Machine Gun | T1:mounted machine gun
+BP01-067,No Pals Beyond Sign,,Green,Structure,5,,0,0,3,3,,T2:No Pals Beyond Sign | T2:No pals beyond sign | T2:No pals beyond sign
+BP01-016,Primitive Furnace,,Red,Structure,2,,0,0,2,2,,T2:primitive furnace | T2:Primitive furnace
+TD01-020,Primitive Workbench,,Blue,Structure,3,,0,4,0,4,,
+BP01-066,Ranch,,Green,Structure,2,,0,0,3,3,E-verified,T2:ranch | T2:Ranch | T3:Ranch
+BP01-043,Sphere Workbench,,Blue,Structure,2,,0,0,5,5,,T2:Sphere Workbench | T2:Sphere workbench | T2:Sphere Workbench
+TD01-008,Stone Pit,,Red,Structure,1,,0,4,1,5,,T2:stone pit
+BP01-092,Viewing Cage,,Purple,Structure,3,,0,0,5,5,,T2:Viewing cage | T2:Viewing cage | T2:viewing cage
+TD01-009,Weapon Workbench,,Red,Structure,3,,0,4,1,5,,T2:weapon workbench
+BP01-091,Wooden Wall,,Purple,Structure,3,,0,0,2,2,,T2:wooden wall | T2:wooden wall

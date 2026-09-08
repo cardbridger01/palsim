@@ -1,0 +1,116 @@
+# recordId: local-bg-chillet-03
+# deck: Blue/Green Chillet (construction, ladder-#16-derived)
+# player: Edify (P1)  opponent: FluffysFury  opponent_colors: Blue/Red (Suzaku / Ignis, gear-heavy)
+# result: WIN turn 7
+# note: lethal turn was ~37% to connect on both attacks; opponent had milled 10 cards with zero Lucky
+# note: ANOMALY at T7 - Ignis attacks twice then blocks on Edify's turn; per 7.2.1 it should
+#       still be rested. Flag for engine test / client behaviour check.
+[T1 main] Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+[T1 main] Mulliganed. Redrew 5.
+[T1 main] Deployed Antique Mirror to slot 1 for 1 Souls.
+[T1 main] Drew 1.
+[T1 main] Deployed Antique Mirror to slot 2 for 1 Souls.
+[T1 main] Drew 1.
+[T1 end] End Phase, damage cleared.
+[T2 stand] Turn 2, Stand Phase.
+[T2 draw] Draw Phase.
+[T2 draw] Drew for the turn.
+[T2 soul] Placed 2 Souls (4/10).
+[T2 main] Main Phase, Edify's move.
+[T2 main] Deployed Elphidran – Gentle Radiance to slot 3 for 4 Souls.
+[T2 main] Chose not to reveal a Dragon.
+[T2 main] Elphidran – Gentle Radiance attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+[T2 end] End Phase, damage cleared.
+[T3 waiting] FluffysFury deployed Single-Shot Rifle.
+[T2 waiting] Elphidran – Gentle Radiance took 1500 damage and was destroyed.
+[T3 stand] Turn 3, Stand Phase.
+[T3 draw] Draw Phase.
+[T3 draw] Drew for the turn.
+[T3 soul] Placed 2 Souls (6/10).
+[T3 main] Main Phase, Edify's move.
+[T3 main] Deployed Elphidran Aqua – Gentle Ripples to slot 3 for 6 Souls.
+[T3 main] Drew 2 cards.
+[T3 main] Put Found an Egg! on top of the deck.
+[T3 main] Elphidran Aqua – Gentle Ripples's attack was interrupted.
+[T3 end] End Phase, damage cleared.
+[T4 waiting] FluffysFury deployed Single-Shot Rifle.
+[T3 waiting] Elphidran Aqua – Gentle Ripples took 1500 damage and was destroyed.
+[T4 stand] Turn 4, Stand Phase.
+[T4 draw] Draw Phase.
+[T4 draw] Drew for the turn.
+[T4 soul] Placed 2 Souls (8/10).
+[T4 main] Main Phase, Edify's move.
+[T4 main] Played Found an Egg! for 2 Souls.
+[T4 main] Looked at top 5: took Jormuntide – Surging Sea Serpent to hand.
+[T4 main] Deployed Reindrix – Icy Gaze to slot 3 for 5 Souls.
+[T4 main] Reindrix – Icy Gaze attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+[T4 end] End Phase, damage cleared.
+[T5 waiting] FluffysFury deployed Suzaku – Hellfire Wings.
+[T4 waiting] Reindrix – Icy Gaze took 900 damage and was destroyed.
+[T5 stand] Turn 5, Stand Phase.
+[T5 draw] Draw Phase.
+[T5 draw] Drew for the turn.
+[T5 soul] Placed 2 Souls (10/10).
+[T5 main] Main Phase, Edify's move.
+[T5 main] Played Aurora Guide for 2 Souls.
+[T5 main] Drew 1 card.
+[T5 main] Put Jormuntide – Surging Sea Serpent on top of the deck.
+[T5 main] Deployed Elphidran – Gentle Radiance to slot 3 for 4 Souls.
+[T5 main] Revealed Elphidran – Gentle Radiance (Dragon). Power +500 until end of turn.
+[T5 waiting] They blocked with Suzaku – Hellfire Wings.
+[T5 main] Elphidran – Gentle Radiance (600+500 = 1100) attacked Suzaku – Hellfire Wings (1200).
+[T5 main] Elphidran – Gentle Radiance destroyed, 1200 damage vs 1100 Power.
+[T5 main] Deployed Dinossom – Radiant Fragrance to slot 3 for 4 Souls.
+[T5 main] Dinossom – Radiant Fragrance (400) attacked Suzaku – Hellfire Wings (1200).
+[T5 main] Suzaku – Hellfire Wings destroyed, 1500 damage vs 1200 Power.
+[T5 main] Dinossom – Radiant Fragrance destroyed, 1200 damage vs 400 Power.
+[T5 end] End Phase, damage cleared.
+[T6 waiting] FluffysFury deployed Grappling Gun.
+[T6 waiting] FluffysFury deployed Kitsun – Wyrmbane Fangs.
+[T6 waiting] FluffysFury activated Grappling Gun.
+[T6 waiting] FluffysFury activated Single-Shot Rifle.
+[T6 waiting] FluffysFury's Kitsun – Wyrmbane Fangs gets power +200 until end of turn.
+[T6 waiting] FluffysFury activated Single-Shot Rifle.
+[T6 waiting] FluffysFury's Kitsun – Wyrmbane Fangs gets power +200 until end of turn.
+[T6 waiting] FluffysFury's Kitsun – Wyrmbane Fangs attacks Edify for 2.
+[T6 waiting] Kitsun – Wyrmbane Fangs attacked Edify for 2; Edify's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+[T6 stand] Turn 6, Stand Phase.
+[T6 draw] Draw Phase.
+[T6 draw] Drew for the turn.
+[T6 soul] Placed 0 Souls (10/10).
+[T6 main] Main Phase, Edify's move.
+[T6 main] Deployed Elphidran – Gentle Radiance to slot 3 for 4 Souls.
+[T6 main] Revealed Dinossom – Radiant Fragrance (Dragon). Power +500 until end of turn.
+[T6 main] Elphidran – Gentle Radiance attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+[T6 main] Rested 3 Souls, drew 1 card.
+[T6 end] End Phase, damage cleared.
+[T7 waiting] FluffysFury deployed Jormuntide Ignis – Savage Lava Dragon.
+[T7 waiting] FluffysFury activated Single-Shot Rifle.
+[T7 waiting] FluffysFury's Kitsun – Wyrmbane Fangs gets power +200 until end of turn.
+[T7 waiting] FluffysFury activated Single-Shot Rifle.
+[T7 waiting] FluffysFury's Kitsun – Wyrmbane Fangs gets power +200 until end of turn.
+[T7 waiting] FluffysFury's Jormuntide Ignis – Savage Lava Dragon attacks Edify for 4.
+[T7 waiting] Jormuntide Ignis – Savage Lava Dragon hit Edify for 4. Damage Check: 4 cards milled, no Lucky. Edify 10 to 6 life.
+[T7 waiting] FluffysFury activated Jormuntide Ignis – Savage Lava Dragon.
+[T7 waiting] FluffysFury discarded Primitive Furnace, Primitive Furnace to pay a cost.
+[T7 waiting] FluffysFury activated Grappling Gun.
+[T7 waiting] FluffysFury's Jormuntide Ignis – Savage Lava Dragon attacks Edify for 4.
+[T6 waiting] Edify interrupted with Dinossom – Radiant Fragrance, paid 1 Soul. The attack was nullified.
+[T7 waiting] FluffysFury's Kitsun – Wyrmbane Fangs attacks Edify's Elphidran – Gentle Radiance.
+[T6 waiting] Edify interrupted with Cryolinx – Arctic Ordeal, paid 1 Soul. The attack was nullified.
+[T7 stand] Turn 7, Stand Phase.
+[T7 draw] Draw Phase.
+[T7 draw] Drew for the turn.
+[T7 soul] Placed 0 Souls (10/10).
+[T7 main] Main Phase, Edify's move.
+[T7 main] Deployed Chillet – Dragon Whisperer to slot 4 for 5 Souls.
+[T7 main] Revealed Dinossom – Radiant Fragrance.
+[T7 main] Deployed Dinossom – Radiant Fragrance.
+[T7 main] Deployed Reindrix – Icy Gaze to slot 6 for 5 Souls.
+[T7 main] Revealed Jormuntide – Surging Sea Serpent (Dragon). Power +500 until end of turn.
+[T7 main] Elphidran – Gentle Radiance's attack was interrupted.
+[T7 main] Dinossom – Radiant Fragrance attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 4 to 2 life.
+[T7 waiting] They blocked with Jormuntide Ignis – Savage Lava Dragon.
+[T7 main] Reindrix – Icy Gaze (600) attacked Jormuntide Ignis – Savage Lava Dragon (1700).
+[T7 main] Reindrix – Icy Gaze destroyed, 1700 damage vs 600 Power.
+[T7 main] Chillet – Dragon Whisperer attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 2 to 0 life.
