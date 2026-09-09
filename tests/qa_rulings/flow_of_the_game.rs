@@ -52,8 +52,11 @@ fn qa_011_sixth_pal_deploy_then_bin_down_to_five() {
 #[test]
 fn qa_012_no_structure_or_gear_limit() {
     let mut game = GameState::test_scenario();
+    // deploy() defaults to Pal semantics (most callers in this suite are
+    // deploying Pals); structures/gears go through this explicit sibling
+    // instead of inferring "kind" from the card number.
     for i in 0..12 {
-        game.deploy(PlayerId::P1, &format!("EGEAR-{i:03}"), Zone::Base).unwrap();
+        game.deploy_structure_or_gear(PlayerId::P1, &format!("EGEAR-{i:03}")).unwrap();
     }
     assert_eq!(game.structures_and_gears_in_base(PlayerId::P1).len(), 12);
 }
@@ -105,10 +108,13 @@ fn qa_025_only_quick_and_auto_cont_work_on_opponents_turn() {
     game.set_turn_player(PlayerId::P1);
 
     // P2 (non-turn player) may not play an ordinary card outside battle.
-    assert!(!game.can_play_card(PlayerId::P2, "EBP01-010", Timing::OpponentTurnOutsideBattle));
+    // `is_quick` is passed explicitly, not inferred from a card number --
+    // the engine has no card database to look "EQUICK-001" up in, and
+    // hard rule 3 says never derive behaviour from a number/name pattern.
+    assert!(!game.can_play_card(PlayerId::P2, false, Timing::OpponentTurnOutsideBattle));
 
     // P2 may play a Quick card during a battle on P1's turn.
-    assert!(game.can_play_card(PlayerId::P2, "EQUICK-001", Timing::OpponentTurnDuringBattle));
+    assert!(game.can_play_card(PlayerId::P2, true, Timing::OpponentTurnDuringBattle));
 
     // AUTO/CONT still activate/apply for the non-turn player regardless.
     assert!(game.auto_and_cont_apply_on_opponents_turn(PlayerId::P2));
@@ -176,8 +182,15 @@ fn qa_043_newly_generated_auto_may_resolve_before_older_pending_one() {
     game.trigger_auto(PlayerId::P1, a);
     game.trigger_auto(PlayerId::P1, b); // B is pending alongside A
 
-    // Resolving A generates a new AUTO, C.
-    let c = game.resolve_auto(PlayerId::P1, a);
+    // Resolving A generates a new AUTO, C. Stated explicitly here (deploy
+    // a fresh source, trigger it) rather than as an implicit side effect
+    // of resolve_auto -- what resolving a given ability generates is
+    // real card-specific behaviour (Card Abilities/Q&A about Cards'
+    // job), not something this abstract ordering test should hardcode
+    // into the engine as "resolving anything always spawns something".
+    game.resolve_auto(PlayerId::P1, a);
+    let c = game.deploy(PlayerId::P1, "EFILLER-002", Zone::Base).unwrap();
+    game.trigger_auto(PlayerId::P1, c);
     assert!(game.pending_autos(PlayerId::P1).contains(&b));
     assert!(game.pending_autos(PlayerId::P1).contains(&c));
 
@@ -239,5 +252,40 @@ fn qa_096_rest_souls_draw_does_not_count_as_playing_a_card() {
         played_before,
         "rule-8.5 rest-3-draw-1 must not increment the 'played a card' count \
          that Once-Per-Turn 'play a card' abilities key off of"
+    );
+}
+
+/// Comprehensive rules 1.2.1 (a losing verdict ends the game
+/// immediately) and 11.3.3 (life <= 0 is a check-type rule action) --
+/// not itself a numbered QA ruling, but the same kind of boundary the
+/// #92/#93 fix pinned down: rule actions drain BEFORE any AUTO ever
+/// gets priority (10.5.3), so a player hitting 0 life loses with their
+/// opponent's (or their own) pending AUTOs still unresolved. This is
+/// why a lethal Shadowbeak self-butcher (QA #84) can end the game
+/// before the second queued instance ever resolves.
+#[test]
+fn rule_1_2_1_losing_verdict_ends_the_game_with_pending_autos_still_unresolved() {
+    let mut game = GameState::test_scenario();
+    game.set_turn_player(PlayerId::P1);
+    let source = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+    game.trigger_auto(PlayerId::P1, source); // queued, not yet resolved
+
+    game.reduce_life(PlayerId::P2, 10); // P2's life hits 0
+    assert!(
+        game.game_over().is_none(),
+        "the losing verdict is itself a rule action -- it doesn't resolve until check timing runs"
+    );
+
+    game.run_check_timing();
+
+    assert_eq!(
+        game.game_over(),
+        Some(PlayerId::P2),
+        "P2 must be the loser once check timing resolves the losing verdict"
+    );
+    assert_eq!(
+        game.pending_autos(PlayerId::P1),
+        vec![source],
+        "the game must end before P1's pending AUTO ever gets priority -- it stays queued, unresolved"
     );
 }

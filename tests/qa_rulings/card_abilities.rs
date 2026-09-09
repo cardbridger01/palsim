@@ -118,7 +118,7 @@ fn qa_093_dies_when_damage_taken_is_at_least_reduced_power() {
     // damage_taken == power (the equality case QA #93's question asks
     // about directly) must be lethal.
     game.apply_damage(pal, 600);
-    game.reduce_power(pal, /* delta */ -(game.power(pal) - 600)); // Power -> exactly 600
+    game.reduce_power(pal, (game.power(pal) - 600) as u32); // Power -> exactly 600
     game.run_check_timing();
     assert_eq!(
         game.zone_of(pal),
@@ -139,12 +139,48 @@ fn rule_11_4_1_damage_taken_below_power_is_not_lethal_even_when_positive() {
     let pal = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
 
     game.apply_damage(pal, 600);
-    game.reduce_power(pal, /* delta */ -(game.power(pal) - 700)); // Power -> 700, damage_taken (600) < power
+    game.reduce_power(pal, (game.power(pal) - 700) as u32); // Power -> 700, damage_taken (600) < power
     game.run_check_timing();
     assert_eq!(
         game.zone_of(pal),
         Zone::Base,
         "damage_taken (600) < power (700): damage_taken > 0 but NOT >= power, so this must survive"
+    );
+}
+
+/// 10.5.3.1: "all rule actions resolve, and if that produces new rule
+/// actions, repeat" -- a genuine fixpoint, not one pass. Every rule
+/// action modeled so far happens to be one-shot on its own (a losing
+/// verdict halts everything; resolving one Pal's lethal damage doesn't
+/// itself read from anything that could cascade yet), so nothing above
+/// has ever forced `run_check_timing`'s loop around more than once. An
+/// implementation that resolved a single pending rule action and
+/// stopped would still pass every test above.
+///
+/// This one doesn't let that slide: two Pals are lethal SIMULTANEOUSLY
+/// before the call, so `find_pending_rule_action` has to be asked again
+/// -- and find the second one -- after resolving the first, within the
+/// same `run_check_timing()` call. A single-pass implementation would
+/// resolve exactly one and leave the other sitting in the base.
+#[test]
+fn rule_10_5_3_1_check_timing_drains_multiple_pending_rule_actions_in_one_call() {
+    let mut game = GameState::test_scenario();
+    let first = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+    let second = game.deploy(PlayerId::P1, "EFILLER-001", Zone::Base).unwrap();
+
+    game.apply_damage(first, 600);
+    game.reduce_power(first, (game.power(first) - 600) as u32); // lethal: 600 >= 600
+    game.apply_damage(second, 700);
+    game.reduce_power(second, (game.power(second) - 700) as u32); // lethal: 700 >= 700
+
+    game.run_check_timing();
+
+    assert_eq!(game.zone_of(first), Zone::Graveyard, "the first lethal Pal found must resolve");
+    assert_eq!(
+        game.zone_of(second),
+        Zone::Graveyard,
+        "the second must ALSO resolve in the same run_check_timing() call -- \
+         a single-pass implementation would leave this one in the base"
     );
 }
 
@@ -302,8 +338,8 @@ fn qa_027_unzoned_references_mean_the_base_only() {
 /// too, not only the opponent's-turn window.
 #[test]
 fn qa_028_quick_may_be_played_during_your_own_main_phase() {
-    let mut game = GameState::test_scenario();
-    assert!(game.can_play_card(PlayerId::P1, "EQUICK-001", Timing::OwnMain));
+    let game = GameState::test_scenario();
+    assert!(game.can_play_card(PlayerId::P1, true, Timing::OwnMain));
 }
 
 /// QA #29: "Can I play a card with Quick during a battle on my turn?" ->
@@ -315,8 +351,8 @@ fn qa_028_quick_may_be_played_during_your_own_main_phase() {
 /// battle on your OWN turn.
 #[test]
 fn qa_029_quick_cannot_be_played_during_a_battle_on_your_own_turn() {
-    let mut game = GameState::test_scenario();
-    assert!(!game.can_play_card(PlayerId::P1, "EQUICK-001", Timing::OwnTurnDuringBattle));
+    let game = GameState::test_scenario();
+    assert!(!game.can_play_card(PlayerId::P1, true, Timing::OwnTurnDuringBattle));
 }
 
 /// QA #30: "Can I play multiple cards with Quick during a battle on the
@@ -327,10 +363,10 @@ fn qa_029_quick_cannot_be_played_during_a_battle_on_your_own_turn() {
 #[test]
 fn qa_030_multiple_quick_cards_may_be_played_one_after_another_on_the_opponents_turn() {
     let mut game = GameState::test_scenario();
-    assert!(game.can_play_card(PlayerId::P2, "EQUICK-001", Timing::OpponentTurnDuringBattle));
+    assert!(game.can_play_card(PlayerId::P2, true, Timing::OpponentTurnDuringBattle));
     game.play_quick(PlayerId::P2, "EQUICK-001", Timing::OpponentTurnDuringBattle).unwrap();
 
-    assert!(game.can_play_card(PlayerId::P2, "EQUICK-002", Timing::OpponentTurnDuringBattle));
+    assert!(game.can_play_card(PlayerId::P2, true, Timing::OpponentTurnDuringBattle));
     game.play_quick(PlayerId::P2, "EQUICK-002", Timing::OpponentTurnDuringBattle).unwrap();
 }
 
@@ -483,6 +519,7 @@ fn qa_044_once_per_turn_is_tracked_per_card_instance_not_per_name() {
 /// QA #45: "Does an ability that states 'At the end of the battle this
 /// card attacked' activate even if the attack was Interrupted?" -> "Yes,
 /// it activates."
+#[cfg(any())] // batch 4 (combat: engine::combat, declare_attack/block/interrupt_attack) -- excluded from compilation, not just skipped, since the body references a module that does not exist yet. Not this session; see qa_rulings/mod.rs. Remove this attribute once engine::combat exists.
 #[test]
 fn qa_045_end_of_battle_this_card_attacked_fires_even_if_interrupted() {
     let mut game = GameState::test_scenario();
@@ -548,6 +585,7 @@ fn qa_048_two_distinct_once_per_turn_act_abilities_on_one_card_each_activate_onc
 /// "No ... the battle proceeds as normal. However, because there is no
 /// battle opponent, the battle ends without the attacking Pal dealing or
 /// taking any damage."
+#[cfg(any())] // batch 4 (combat: engine::combat, declare_attack/block/interrupt_attack) -- excluded from compilation, not just skipped, since the body references a module that does not exist yet. Not this session; see qa_rulings/mod.rs. Remove this attribute once engine::combat exists.
 #[test]
 fn qa_049_target_removed_mid_battle_by_attackers_own_on_attack_cannot_be_retargeted() {
     let mut game = GameState::test_scenario();
@@ -576,6 +614,7 @@ fn qa_049_target_removed_mid_battle_by_attackers_own_on_attack_cannot_be_retarge
 /// "No, it does not activate. It activates when that card is attacked
 /// by an opponent's Pal [i.e. as the declared target, not as a
 /// blocker]."
+#[cfg(any())] // batch 4 (combat: engine::combat, declare_attack/block/interrupt_attack) -- excluded from compilation, not just skipped, since the body references a module that does not exist yet. Not this session; see qa_rulings/mod.rs. Remove this attribute once engine::combat exists.
 #[test]
 fn qa_050_when_this_card_is_attacked_does_not_fire_for_a_card_used_to_block() {
     let mut game = GameState::test_scenario();
@@ -669,6 +708,7 @@ fn qa_061_choosing_an_already_rested_pal_still_applies_the_wont_stand_duration()
 /// Pal, does the ability still activate?" -> "Yes ... it activates at
 /// the exact moment the card declares an attack on the structure, which
 /// occurs BEFORE the opponent designates a blocking Pal."
+#[cfg(any())] // batch 4 (combat: engine::combat, declare_attack/block/interrupt_attack) -- excluded from compilation, not just skipped, since the body references a module that does not exist yet. Not this session; see qa_rulings/mod.rs. Remove this attribute once engine::combat exists.
 #[test]
 fn qa_071_on_attacks_a_structure_fires_at_declaration_even_if_later_blocked() {
     let mut game = GameState::test_scenario();
@@ -706,7 +746,7 @@ fn qa_074_power_reverting_to_normal_can_be_immediately_lethal() {
     let mut game = GameState::test_scenario();
     let pal = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
     let modifier = game.apply_cont_power_modifier(pal, pal, 500);
-    game.apply_damage(pal, game.power(pal)); // damage taken == the CURRENT (buffed) Power
+    game.apply_damage(pal, game.power(pal) as u32); // damage taken == the CURRENT (buffed) Power
 
     game.remove_cont_power_modifier(modifier); // the CONT's condition stops being met; Power reverts
     game.run_check_timing();

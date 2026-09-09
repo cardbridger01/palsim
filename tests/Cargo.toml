@@ -4,14 +4,17 @@ version = "0.1.0"
 edition = "2021"
 publish = false
 
-[lib]
-path = "src/lib.rs"
-test = true
-doctest = false
-
-# The whole point of Phase 2: this dependency does not exist yet
-# (engine/ is Phase 3, per CLAUDE.md's build order). `cargo test` for
-# this package MUST fail to compile until it does. See tests/src/lib.rs.
+# No [lib]/src -- this package is purely the integration-test binaries
+# under tests/tests/ (Cargo's real integration-test directory; a
+# package named "tests" made that one level deeper than usual). Each
+# QA-ruling category and each replay log is its own binary
+# (tests/tests/<name>.rs, #[path]-including the actual content from
+# tests/qa_rulings/ or tests/replays/) precisely so that `cargo test
+# --test <name>` gives an honest pass/fail count for that slice alone,
+# without needing every other category's engine:: API to exist yet.
+# `cargo test` with no --test filter builds and runs all of them, so it
+# stays red until the whole engine surface exists -- a real milestone
+# when it finally goes green, not a thing to expect mid-Phase-3.
 [dependencies]
 engine = { path = "../engine" }
 

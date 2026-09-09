@@ -23,8 +23,14 @@ pub fn deck_entry(number: &str, name: &str) -> DeckEntry {
 /// constraint (e.g. "products may mix") and need the rest of the deck to
 /// be unremarkable filler: 12 distinct synthetic names at 4 copies each
 /// (48), plus 2 more copies of a 13th name (50). Names are clearly
-/// synthetic ("Filler N") -- never real card names -- so these fixtures
-/// can't be mistaken for an asserted real-card interaction.
+/// synthetic ("Filler <prefix> N") -- never real card names -- so these
+/// fixtures can't be mistaken for an asserted real-card interaction.
+///
+/// The name embeds `number_prefix`, not just a counter, so that two
+/// calls with different prefixes (QA #1's "mix Booster Pack and Trial
+/// Deck numbering" scenario) never collide on the same generated name --
+/// a caller combining two `filler_deck_of` batches under different
+/// products already means "these are meant to be distinct cards".
 pub fn filler_deck_of(count: usize, number_prefix: &str) -> Vec<DeckEntry> {
     let mut entries = Vec::with_capacity(count);
     let mut name_index = 0;
@@ -36,7 +42,7 @@ pub fn filler_deck_of(count: usize, number_prefix: &str) -> Vec<DeckEntry> {
         }
         entries.push(deck_entry(
             &format!("{number_prefix}-{i:03}"),
-            &format!("Filler {name_index}"),
+            &format!("Filler {number_prefix} {name_index}"),
         ));
         copies_of_current += 1;
     }
