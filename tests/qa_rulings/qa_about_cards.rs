@@ -657,6 +657,40 @@ fn qa_086_doubling_cont_applies_to_breakthrough_autos_too() {
     );
 }
 
+/// 5.21.1, made explicit rather than left as an incidental fact of #82's
+/// setup: the doubling condition is "it is night" AND "I control a card
+/// with an active doubling CONT" -- nothing about that card's rest
+/// state. Shadowbeak actually has TWO separate CONTs (per its real
+/// printed text): one that requires the card be resting (unrelated to
+/// doubling), and the doubling one itself, which has no rest
+/// requirement and applies whenever the card is in the base and it's
+/// night. QA #83/#84's own question is explicit that night can come
+/// from a source other than Shadowbeak ("no effect OTHER than
+/// Shadowbeak causes night" is the scenario's stated exception, not the
+/// rule) -- guarding against exactly a standing Shadowbeak plus night
+/// from something else (Lamp, Shoddy Bed) still doubling.
+///
+/// Not itself covered as a stated purpose by #82 (which happens to
+/// leave Shadowbeak standing, but that's incidental to what #82 is
+/// testing) -- if `has_active_doubling_cont` ever grows a `resting`
+/// check, this is the test that catches it, not #82.
+#[test]
+fn rule_5_21_1_doubling_cont_applies_while_standing_and_regardless_of_nights_source() {
+    let mut game = GameState::test_scenario();
+    let shadowbeak = game.deploy(PlayerId::P1, "EBP01-074", Zone::Base).unwrap();
+    game.set_auto_doubling_cont(shadowbeak, true);
+    assert!(!game.is_resting(shadowbeak), "fixture check: Shadowbeak is standing, not rested, in this test");
+
+    game.set_night(true); // stands in for night caused by some other source (Lamp, Shoddy Bed), not Shadowbeak's own resting CONT
+
+    game.trigger_auto(PlayerId::P1, shadowbeak);
+    assert_eq!(
+        game.pending_autos(PlayerId::P1).iter().filter(|id| **id == shadowbeak).count(),
+        2,
+        "the doubling CONT must apply to a STANDING Shadowbeak, with night from any source"
+    );
+}
+
 /// QA #88: "If Katress is butchered, does the AUTO ability of the
 /// butchered Katress ITSELF activate?" -> "Yes ... Even if Katress
 /// itself is butchered, its own ability activates."
