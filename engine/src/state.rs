@@ -1223,8 +1223,8 @@ impl GameState {
 
     // --- combat (9.2-9.7; QA #45, #49, #50, #71) --------------------------
 
-    /// 9.3: declares a complete battle. Two rules enforced here, not
-    /// just documented:
+    /// 9.3: declares a complete battle. Rules enforced here, not just
+    /// documented:
     ///
     /// - 9.2.3: a Pal target must be RESTED. A standing Pal is never a
     ///   legal target -- panics rather than silently allowing it, since
@@ -1234,8 +1234,13 @@ impl GameState {
     ///   earlier one hasn't reached end of battle panics -- the turn
     ///   player only gets to decide on another attack after 9.7
     ///   concludes the current one.
+    /// - 9.3.2: declaring an attack rests the attacker, as part of
+    ///   declaration itself -- not a side effect of the damage step, and
+    ///   not undone by anything that happens later in the battle
+    ///   (interrupt_attack nullifies the attack's effect, 5.18.1, but
+    ///   never un-rests; see `rule_5_18_1_interrupted_attacker_stays_rested`).
     ///
-    /// On Attack fires AT declaration (9.3), before block declaration
+    /// On Attack fires AT declaration (9.3.2), before block declaration
     /// (9.4) -- QA #71's whole point. That's why the mechanical facts
     /// (`attacked_a_structure`, `was_declared_pal_target`) are recorded
     /// right here, not deferred to `block`/`resolve_battle`.
@@ -1258,6 +1263,8 @@ impl GameState {
             }
             AttackTarget::Player(_) => {}
         }
+
+        self.rest(attacker); // 9.3.2
 
         let id = self.fresh_attack_id();
         self.battles.insert(id, Battle { attacker, target: Some(target), concluded: false });
@@ -1284,34 +1291,82 @@ impl GameState {
         Err("a battle's target cannot be changed once declared".to_string())
     }
 
-    /// 9.6/9.7: with a target present, this needs the real damage step
-    /// (attacker's Strike vs the target's Power, and the reverse for a
-    /// Pal target) -- not implemented yet, since no currently-written
-    /// test exercises that path (only QA #49's "target removed, no
-    /// damage either way" case does). The replay tests will need this
-    /// for real; left as an explicit `todo!` rather than guessed at.
+    /// 9.6-9.7. Two things this gets right, not just documented:
+    ///
+    /// - **9.6.2 short-circuit**: if EITHER the attacker or a Pal/
+    ///   structure target ceased to exist for any reason (not just "the
+    ///   target was removed", QA #49's case -- the attacker itself could
+    ///   be gone too), skip straight to end of battle. No damage step,
+    ///   no damage check, for either side. This is an early return, not
+    ///   a zero computed by the normal damage logic.
+    /// - **9.6.3.1: damage is simultaneous.** Both sides' damage amounts
+    ///   are read from Power BEFORE either `apply_damage` call, then
+    ///   both applied -- not attacker-deals-damage-then-check-if-
+    ///   defender-survives-then-defender-deals-damage. This is what
+    ///   makes an equal-Power trade kill both sides (the `>=` boundary
+    ///   already pinned down by QA #93/`rule_11_4_1`). Lethal damage
+    ///   itself is 9.6.4, a check-type rule action -- resolved by the
+    ///   caller's own `run_check_timing()` afterward, same as everywhere
+    ///   else `apply_damage` is used; this method never calls it itself.
+    ///
+    /// Player/structure damage (11.2.1's *interrupt-type* player damage
+    /// resolution, with its own Lucky mill) is a different rule action
+    /// entirely and not implemented yet -- no currently-written test
+    /// exercises it. Left as an explicit `todo!` rather than guessed at.
     pub fn resolve_battle(&mut self, attack: AttackId) {
         let attacker = self.battles[&attack].attacker;
-        if self.battles[&attack].target.is_none() {
-            // QA #49: no battle opponent -- ends without either side
-            // dealing or taking damage.
+        let target = self.battles[&attack].target;
+
+        let attacker_gone = self.cards[&attacker].zone != Zone::Base;
+        let target_gone = match target {
+            None => true, // QA #49: target removed mid-battle
+            Some(AttackTarget::Pal(p)) => self.cards[&p].zone != Zone::Base,
+            Some(AttackTarget::Structure(s)) => self.cards[&s].zone != Zone::Base,
+            Some(AttackTarget::Player(_)) => false, // a player can't "cease to exist"
+        };
+
+        if attacker_gone || target_gone {
             self.cards.get_mut(&attacker).unwrap().end_of_battle_as_attacker_triggered = true;
             self.battles.get_mut(&attack).unwrap().concluded = true;
             return;
         }
-        todo!("resolve_battle: 9.6 damage step for a present target is not implemented yet")
+
+        match target.unwrap() {
+            AttackTarget::Pal(defender) => {
+                let attacker_power = self.power(attacker).max(0) as u32;
+                let defender_power = self.power(defender).max(0) as u32;
+                self.apply_damage(defender, attacker_power);
+                self.apply_damage(attacker, defender_power);
+            }
+            AttackTarget::Structure(_) | AttackTarget::Player(_) => {
+                todo!("resolve_battle: player/structure damage step (11.2.1) is not implemented yet")
+            }
+        }
+
+        self.cards.get_mut(&attacker).unwrap().end_of_battle_as_attacker_triggered = true;
+        self.battles.get_mut(&attack).unwrap().concluded = true;
     }
 
-    /// 9.4.2: the non-turn player rests a standing Pal to become the
-    /// battle's actual opponent. `blocker` becomes the battle opponent,
-    /// but is NOT the originally *declared* target -- QA #50's whole
-    /// point, which is why this doesn't set `was_declared_pal_target`.
+    /// 9.4.2: the non-turn player rests a STANDING Pal to become the
+    /// battle's actual opponent -- blocking is only legal for a
+    /// standing Pal, and rests it as a consequence, the same direction
+    /// as `declare_attack`'s target check (9.2.3: only a rested Pal is
+    /// attackable in the first place). Panics if `blocker` is already
+    /// rested rather than silently re-resting it, for the same reason
+    /// `declare_attack` panics on a standing target: this precondition
+    /// is easy to get backwards (a blocker that's ALREADY rested cannot
+    /// legally block at all).
+    ///
+    /// `blocker` becomes the battle opponent, but is NOT the originally
+    /// *declared* target -- QA #50's whole point, which is why this
+    /// doesn't set `was_declared_pal_target`.
     pub fn block(&mut self, attack: AttackId, blocker: CardId) {
-        self.rest(blocker);
-        // Recorded for completeness even though no current test reads
-        // it back; `declare_attack`'s own mechanical facts are what
-        // QA #50/#71 actually check.
         let _ = attack;
+        assert!(
+            !self.cards[&blocker].resting,
+            "block: {blocker:?} is already rested -- 9.4.2: only a STANDING Pal may block (blocking is what rests it)"
+        );
+        self.rest(blocker);
     }
 
     /// QA #45: fires even when the attack was Interrupted -- 12.8.2:

@@ -607,6 +607,49 @@ fn qa_049_target_removed_mid_battle_by_attackers_own_on_attack_cannot_be_retarge
     );
 }
 
+/// 9.6.3.1: damage is simultaneous, not attacker-deals-then-check-then-
+/// defender-deals. Not covered by any QA ruling directly, but load-
+/// bearing: this is what makes an equal-Power trade kill BOTH sides
+/// (the `>=` boundary QA #93/`rule_11_4_1` already pinned down at the
+/// single-Pal level; this is the same rule at the battle level, and
+/// nothing before this test exercised `resolve_battle`'s actual damage
+/// step -- QA #49's test only ever hits the "no target" early return).
+#[test]
+fn rule_9_6_3_1_equal_power_pal_battle_kills_both_sides() {
+    let mut game = GameState::test_scenario();
+    let attacker = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+    let defender = game.deploy(PlayerId::P2, "EFILLER-001", Zone::Base).unwrap();
+    game.rest(defender); // 9.2.3: only a rested Pal is a legal target
+    assert_eq!(game.power(attacker), game.power(defender), "fixture check: equal Power on both sides");
+
+    let attack = game.declare_attack(attacker, engine::combat::AttackTarget::Pal(defender));
+    game.resolve_battle(attack);
+    game.run_check_timing(); // 9.6.4: lethal damage resolves as a check-type rule action
+
+    assert_eq!(game.zone_of(attacker), Zone::Graveyard, "the attacker must also die to an equal-Power trade");
+    assert_eq!(game.zone_of(defender), Zone::Graveyard, "the defender must die to an equal-Power trade");
+}
+
+/// 9.6.2's short-circuit isn't only QA #49's "target removed" case --
+/// it applies just as much if the ATTACKER itself ceases to exist
+/// before the damage step (e.g. its own On Attack, or an effect
+/// resolving mid-battle). No damage either way, same as the
+/// target-removed case; without this test, only half of 9.6.2's
+/// condition (the target half) would ever be exercised.
+#[test]
+fn rule_9_6_2_short_circuits_if_the_attacker_itself_is_gone() {
+    let mut game = GameState::test_scenario();
+    let attacker = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+    let defender = game.deploy(PlayerId::P2, "EFILLER-001", Zone::Base).unwrap();
+    game.rest(defender);
+
+    let attack = game.declare_attack(attacker, engine::combat::AttackTarget::Pal(defender));
+    game.butcher(attacker); // the attacker itself ceases to exist mid-battle
+    game.resolve_battle(attack);
+
+    assert_eq!(game.damage_taken(defender), 0, "9.6.2: the attacker being gone must skip the damage step entirely, not just skip the attacker's own damage");
+}
+
 /// QA #50: "Does an ability that states 'When this card is attacked'
 /// activate even if I block using the card that has this ability?" ->
 /// "No, it does not activate. It activates when that card is attacked
@@ -616,8 +659,9 @@ fn qa_049_target_removed_mid_battle_by_attackers_own_on_attack_cannot_be_retarge
 fn qa_050_when_this_card_is_attacked_does_not_fire_for_a_card_used_to_block() {
     let mut game = GameState::test_scenario();
     let attacker = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+    // Standing, not rested -- 9.4.2: blocking is only legal for a
+    // STANDING Pal, which `block` itself rests as a consequence.
     let blocker = game.deploy(PlayerId::P2, "EFILLER-WHEN-ATTACKED", Zone::Base).unwrap();
-    game.rest(blocker);
 
     let attack = game.declare_attack(attacker, engine::combat::AttackTarget::Player(PlayerId::P2));
     game.block(attack, blocker);
@@ -710,8 +754,8 @@ fn qa_071_on_attacks_a_structure_fires_at_declaration_even_if_later_blocked() {
     let mut game = GameState::test_scenario();
     let attacker = game.deploy(PlayerId::P1, "EBP01-052", Zone::Base).unwrap();
     let structure = game.deploy(PlayerId::P2, "EFILLER-STRUCTURE", Zone::Base).unwrap();
+    // Standing, not rested -- see qa_050's fixture comment.
     let blocker = game.deploy(PlayerId::P2, "EFILLER-BLOCKER", Zone::Base).unwrap();
-    game.rest(blocker);
 
     let attack = game.declare_attack(attacker, engine::combat::AttackTarget::Structure(structure));
     assert!(game.on_attacks_structure_triggered(attacker), "the trigger fires the instant the attack is declared");
@@ -776,6 +820,39 @@ fn rule_9_7_4_cannot_declare_a_second_attack_before_the_first_battle_concludes()
     game.declare_attack(attacker, engine::combat::AttackTarget::Player(PlayerId::P2));
     // The first battle hasn't been resolved/interrupted -- still open.
     game.declare_attack(attacker, engine::combat::AttackTarget::Player(PlayerId::P2));
+}
+
+/// 5.18.1: Interrupt nullifies the attack, sending the battle straight
+/// to end of battle (9.7) -- but per QA #45 the attacker still counts
+/// as having attacked (its "when this card attacks" trigger already
+/// fired and stays fired), and the rest step at declaration (9.3.2)
+/// already happened. Nullification doesn't stand the attacker back up.
+///
+/// Worth its own test even though QA #45 already exercises Interrupt,
+/// because this exact interaction -- attacked, rested, later still
+/// rested regardless of what happens to the attack -- is the mechanism
+/// behind battle3's "known anomaly" (data/replays/README.md): Jormuntide
+/// Ignis attacks, re-stands via its own ACT, attacks again (nullified),
+/// then BLOCKS on Edify's next turn, which 7.2.1 says it should still be
+/// rested for (only the turn player's cards stand). This test pins down
+/// the "attacking rests you, nullification doesn't undo that" half of
+/// that puzzle; whether the *re-stand via ACT* half is a real card
+/// effect or a client bug is still open (CLAUDE.md), and is exactly what
+/// running that replay through this engine will help settle.
+#[test]
+fn rule_5_18_1_interrupted_attacker_stays_rested() {
+    let mut game = GameState::test_scenario();
+    let attacker = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+    assert!(!game.is_resting(attacker), "fixture check: standing before declaring");
+
+    game.declare_attack(attacker, engine::combat::AttackTarget::Player(PlayerId::P2));
+    assert!(game.is_resting(attacker), "9.3.2: declaring an attack rests the attacker");
+
+    game.interrupt_attack(attacker);
+    assert!(
+        game.is_resting(attacker),
+        "5.18.1: Interrupt nullifies the attack's effect, but does not stand the attacker back up"
+    );
 }
 
 /// QA #74: "A Pal had its Power increased by a CONT ability, but the
