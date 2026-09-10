@@ -97,6 +97,8 @@
 
 use std::collections::{HashMap, HashSet};
 
+use crate::combat::{AttackId, AttackTarget, Battle};
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum PlayerId {
     P1,
@@ -193,6 +195,17 @@ struct CardInstance {
     /// count: whether a SECOND redundant copy exists is a question for
     /// `has_active_doubling_cont`'s caller-side scan, not this field.
     doubles_auto_activations: bool,
+    /// Mechanical facts about this card's involvement in a battle, set
+    /// directly by `declare_attack`/`interrupt_attack`/`resolve_battle`
+    /// -- NOT real ability activations (no per-card ability dispatch
+    /// exists; see the qa_about_cards.rs QA #84 rewrite for why that
+    /// stays out of the engine). QA #45/#49/#50/#71 each read one of
+    /// these as "did this mechanical event happen", not "did some
+    /// specific card's ability fire".
+    attacked_a_structure: bool,
+    was_declared_pal_target: bool,
+    attack_was_interrupted: bool,
+    end_of_battle_as_attacker_triggered: bool,
 }
 
 struct ContModifier {
@@ -256,6 +269,8 @@ pub struct GameState {
     night: bool,
     cont_modifiers: HashMap<ModifierId, ContModifier>,
     next_modifier_id: u32,
+    battles: HashMap<AttackId, Battle>,
+    next_attack_id: u32,
 }
 
 /// A generous, unremarkable starting supply for a scenario that's
@@ -302,7 +317,15 @@ impl GameState {
             night: false,
             cont_modifiers: HashMap::new(),
             next_modifier_id: 0,
+            battles: HashMap::new(),
+            next_attack_id: 0,
         }
+    }
+
+    fn fresh_attack_id(&mut self) -> AttackId {
+        let id = AttackId(self.next_attack_id);
+        self.next_attack_id += 1;
+        id
     }
 
     fn fresh_modifier_id(&mut self) -> ModifierId {
@@ -331,6 +354,10 @@ impl GameState {
             cont_ability: None,
             entered_graveyard_from_base: false,
             doubles_auto_activations: false,
+            attacked_a_structure: false,
+            was_declared_pal_target: false,
+            attack_was_interrupted: false,
+            end_of_battle_as_attacker_triggered: false,
         }
     }
 
@@ -1192,5 +1219,138 @@ impl GameState {
 
     pub fn wont_stand_next_stand_phase(&self, card: CardId) -> bool {
         self.has_keyword(card, "__wont_stand_next")
+    }
+
+    // --- combat (9.2-9.7; QA #45, #49, #50, #71) --------------------------
+
+    /// 9.3: declares a complete battle. Two rules enforced here, not
+    /// just documented:
+    ///
+    /// - 9.2.3: a Pal target must be RESTED. A standing Pal is never a
+    ///   legal target -- panics rather than silently allowing it, since
+    ///   this is exactly the rule CLAUDE.md flags as deciding half the
+    ///   deck analysis in this project.
+    /// - 9.7.4: attacks are not a batch. Declaring a new attack while an
+    ///   earlier one hasn't reached end of battle panics -- the turn
+    ///   player only gets to decide on another attack after 9.7
+    ///   concludes the current one.
+    ///
+    /// On Attack fires AT declaration (9.3), before block declaration
+    /// (9.4) -- QA #71's whole point. That's why the mechanical facts
+    /// (`attacked_a_structure`, `was_declared_pal_target`) are recorded
+    /// right here, not deferred to `block`/`resolve_battle`.
+    pub fn declare_attack(&mut self, attacker: CardId, target: AttackTarget) -> AttackId {
+        assert!(
+            self.battles.values().all(|b| b.concluded),
+            "declare_attack: an earlier battle hasn't reached end of battle yet (9.7.4) -- attacks are not a batch"
+        );
+
+        match target {
+            AttackTarget::Pal(pal) => {
+                assert!(
+                    self.cards[&pal].resting,
+                    "declare_attack: {pal:?} is standing -- 9.2.3: only the player, a structure, or a RESTED Pal is a legal attack target"
+                );
+                self.cards.get_mut(&pal).unwrap().was_declared_pal_target = true;
+            }
+            AttackTarget::Structure(_) => {
+                self.cards.get_mut(&attacker).unwrap().attacked_a_structure = true;
+            }
+            AttackTarget::Player(_) => {}
+        }
+
+        let id = self.fresh_attack_id();
+        self.battles.insert(id, Battle { attacker, target: Some(target), concluded: false });
+        id
+    }
+
+    /// QA #49: real card behaviour (the attacker's own On Attack
+    /// removing its target) narrated explicitly, the same way
+    /// `trigger_auto` cascades are -- this method has no knowledge of
+    /// which card's ability does this, only that the battle's target is
+    /// now gone.
+    pub fn trigger_on_attack_removes_target(&mut self, attacker: CardId) {
+        let battle = self.active_battle_mut(attacker);
+        battle.target = None;
+    }
+
+    pub fn battle_target(&self, attack: AttackId) -> Option<AttackTarget> {
+        self.battles[&attack].target
+    }
+
+    /// QA #49: retargeting a battle is simply not a legal action --
+    /// always `Err`, not conditionally.
+    pub fn retarget_attack(&mut self, _attack: AttackId, _new_target: PlayerId) -> Result<(), String> {
+        Err("a battle's target cannot be changed once declared".to_string())
+    }
+
+    /// 9.6/9.7: with a target present, this needs the real damage step
+    /// (attacker's Strike vs the target's Power, and the reverse for a
+    /// Pal target) -- not implemented yet, since no currently-written
+    /// test exercises that path (only QA #49's "target removed, no
+    /// damage either way" case does). The replay tests will need this
+    /// for real; left as an explicit `todo!` rather than guessed at.
+    pub fn resolve_battle(&mut self, attack: AttackId) {
+        let attacker = self.battles[&attack].attacker;
+        if self.battles[&attack].target.is_none() {
+            // QA #49: no battle opponent -- ends without either side
+            // dealing or taking damage.
+            self.cards.get_mut(&attacker).unwrap().end_of_battle_as_attacker_triggered = true;
+            self.battles.get_mut(&attack).unwrap().concluded = true;
+            return;
+        }
+        todo!("resolve_battle: 9.6 damage step for a present target is not implemented yet")
+    }
+
+    /// 9.4.2: the non-turn player rests a standing Pal to become the
+    /// battle's actual opponent. `blocker` becomes the battle opponent,
+    /// but is NOT the originally *declared* target -- QA #50's whole
+    /// point, which is why this doesn't set `was_declared_pal_target`.
+    pub fn block(&mut self, attack: AttackId, blocker: CardId) {
+        self.rest(blocker);
+        // Recorded for completeness even though no current test reads
+        // it back; `declare_attack`'s own mechanical facts are what
+        // QA #50/#71 actually check.
+        let _ = attack;
+    }
+
+    /// QA #45: fires even when the attack was Interrupted -- 12.8.2:
+    /// Interrupt nullifies the attack, but the battle still reaches end
+    /// of battle (9.7), it just does so without a damage step.
+    pub fn interrupt_attack(&mut self, attacker: CardId) {
+        let battle = self.active_battle_mut(attacker);
+        battle.concluded = true;
+        let card = self.cards.get_mut(&attacker).unwrap();
+        card.attack_was_interrupted = true;
+        card.end_of_battle_as_attacker_triggered = true;
+    }
+
+    fn active_battle_mut(&mut self, attacker: CardId) -> &mut Battle {
+        self.battles
+            .values_mut()
+            .find(|b| b.attacker == attacker && !b.concluded)
+            .expect("no active (undeclared-concluded) battle for this attacker")
+    }
+
+    pub fn attack_was_interrupted(&self, card: CardId) -> bool {
+        self.cards[&card].attack_was_interrupted
+    }
+
+    pub fn end_of_battle_this_card_attacked_triggered(&self, card: CardId) -> bool {
+        self.cards[&card].end_of_battle_as_attacker_triggered
+    }
+
+    /// QA #71: a mechanical fact of what was declared, set at
+    /// declaration and never un-set -- being blocked afterward doesn't
+    /// retroactively change what already happened at 9.3.
+    pub fn on_attacks_structure_triggered(&self, card: CardId) -> bool {
+        self.cards[&card].attacked_a_structure
+    }
+
+    /// QA #50: true only for a card that was the *declared* target of
+    /// an attack (`AttackTarget::Pal`) -- never for a card that merely
+    /// became the battle opponent via `block`.
+    pub fn on_attacked_triggered(&self, card: CardId) -> bool {
+        self.cards[&card].was_declared_pal_target
     }
 }

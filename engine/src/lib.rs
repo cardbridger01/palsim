@@ -19,6 +19,7 @@
 //! was written against.
 
 pub mod cards;
+pub mod combat;
 pub mod deck;
 pub mod selection;
 pub mod setup;

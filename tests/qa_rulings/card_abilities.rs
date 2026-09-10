@@ -519,7 +519,6 @@ fn qa_044_once_per_turn_is_tracked_per_card_instance_not_per_name() {
 /// QA #45: "Does an ability that states 'At the end of the battle this
 /// card attacked' activate even if the attack was Interrupted?" -> "Yes,
 /// it activates."
-#[cfg(any())] // batch 4 (combat: engine::combat, declare_attack/block/interrupt_attack) -- excluded from compilation, not just skipped, since the body references a module that does not exist yet. Not this session; see qa_rulings/mod.rs. Remove this attribute once engine::combat exists.
 #[test]
 fn qa_045_end_of_battle_this_card_attacked_fires_even_if_interrupted() {
     let mut game = GameState::test_scenario();
@@ -585,7 +584,6 @@ fn qa_048_two_distinct_once_per_turn_act_abilities_on_one_card_each_activate_onc
 /// "No ... the battle proceeds as normal. However, because there is no
 /// battle opponent, the battle ends without the attacking Pal dealing or
 /// taking any damage."
-#[cfg(any())] // batch 4 (combat: engine::combat, declare_attack/block/interrupt_attack) -- excluded from compilation, not just skipped, since the body references a module that does not exist yet. Not this session; see qa_rulings/mod.rs. Remove this attribute once engine::combat exists.
 #[test]
 fn qa_049_target_removed_mid_battle_by_attackers_own_on_attack_cannot_be_retargeted() {
     let mut game = GameState::test_scenario();
@@ -614,7 +612,6 @@ fn qa_049_target_removed_mid_battle_by_attackers_own_on_attack_cannot_be_retarge
 /// "No, it does not activate. It activates when that card is attacked
 /// by an opponent's Pal [i.e. as the declared target, not as a
 /// blocker]."
-#[cfg(any())] // batch 4 (combat: engine::combat, declare_attack/block/interrupt_attack) -- excluded from compilation, not just skipped, since the body references a module that does not exist yet. Not this session; see qa_rulings/mod.rs. Remove this attribute once engine::combat exists.
 #[test]
 fn qa_050_when_this_card_is_attacked_does_not_fire_for_a_card_used_to_block() {
     let mut game = GameState::test_scenario();
@@ -708,7 +705,6 @@ fn qa_061_choosing_an_already_rested_pal_still_applies_the_wont_stand_duration()
 /// Pal, does the ability still activate?" -> "Yes ... it activates at
 /// the exact moment the card declares an attack on the structure, which
 /// occurs BEFORE the opponent designates a blocking Pal."
-#[cfg(any())] // batch 4 (combat: engine::combat, declare_attack/block/interrupt_attack) -- excluded from compilation, not just skipped, since the body references a module that does not exist yet. Not this session; see qa_rulings/mod.rs. Remove this attribute once engine::combat exists.
 #[test]
 fn qa_071_on_attacks_a_structure_fires_at_declaration_even_if_later_blocked() {
     let mut game = GameState::test_scenario();
@@ -725,6 +721,61 @@ fn qa_071_on_attacks_a_structure_fires_at_declaration_even_if_later_blocked() {
         game.on_attacks_structure_triggered(attacker),
         "being blocked afterward must not retroactively un-fire an already-fired trigger"
     );
+}
+
+/// 9.2.3: attack targets are the opposing player, their structures, or
+/// their RESTED Pals -- never a standing Pal. Not itself a numbered QA
+/// ruling, but flagged as deciding half the deck analysis in this
+/// project (CLAUDE.md), so it's enforced as a hard panic in
+/// `declare_attack`, not just documented -- this test is what catches a
+/// regression if that enforcement is ever loosened.
+#[test]
+#[should_panic(expected = "is standing")]
+fn rule_9_2_3_standing_pals_are_not_legal_attack_targets() {
+    let mut game = GameState::test_scenario();
+    let attacker = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+    let standing_target = game.deploy(PlayerId::P2, "EFILLER-001", Zone::Base).unwrap();
+    assert!(!game.is_resting(standing_target), "fixture check: the target is standing, not rested");
+
+    game.declare_attack(attacker, engine::combat::AttackTarget::Pal(standing_target));
+}
+
+/// 12.10.2/12.10.3: Taunt only compels targeting if the card CAN be
+/// targeted, and a standing Pal can't be (9.2.3) -- so a standing Taunt
+/// Pal taunts nothing. `taunt_compelled_targets` (Card Abilities batch
+/// 1) already filters to resting cards; this makes that the test's
+/// stated point instead of an accident of QA #40's setup (which only
+/// ever rests its Taunt Pals, so never exercises the exclusion).
+#[test]
+fn rule_12_10_2_a_standing_taunt_pal_compels_nothing() {
+    let mut game = GameState::test_scenario();
+    let standing_taunt = game.deploy(PlayerId::P2, "EFILLER-TAUNT", Zone::Base).unwrap();
+    game.grant_keyword(standing_taunt, "Taunt");
+    assert!(!game.is_resting(standing_taunt), "fixture check: this Taunt Pal is standing");
+
+    let legal_targets = game.taunt_compelled_targets(PlayerId::P1);
+    assert!(
+        !legal_targets.contains(&standing_taunt),
+        "a standing Taunt Pal must not appear among the attacker's compelled targets"
+    );
+}
+
+/// 9.7.4: only once a battle reaches end of battle does the turn player
+/// return to their play timing to decide on another attack -- attacks
+/// are never a batch. Enforced as a hard panic in `declare_attack`
+/// (declaring a second attack while an earlier one is still open),
+/// mirroring `rule_9_2_3`'s reasoning: too easy for a future "just batch
+/// the attacks for the replay/optimizer loop" shortcut to silently
+/// reintroduce this.
+#[test]
+#[should_panic(expected = "attacks are not a batch")]
+fn rule_9_7_4_cannot_declare_a_second_attack_before_the_first_battle_concludes() {
+    let mut game = GameState::test_scenario();
+    let attacker = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+
+    game.declare_attack(attacker, engine::combat::AttackTarget::Player(PlayerId::P2));
+    // The first battle hasn't been resolved/interrupted -- still open.
+    game.declare_attack(attacker, engine::combat::AttackTarget::Player(PlayerId::P2));
 }
 
 /// QA #74: "A Pal had its Power increased by a CONT ability, but the
