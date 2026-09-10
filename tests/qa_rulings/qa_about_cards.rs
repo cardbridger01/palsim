@@ -10,7 +10,6 @@
 //! procedure, not engine state).
 
 use engine::state::{GameState, PlayerId, Zone};
-#[cfg(any())] // only used by qa_067/qa_068, both deferred (see mod.rs doc comment)
 use engine::targeting::DeclareNameError;
 
 /// QA #90: "While BP01-075 (Katress - Abyssal Sorcerer) was in my base,
@@ -22,16 +21,20 @@ use engine::targeting::DeclareNameError;
 /// processed after the resolution of the current effect finishes."
 /// (This is the concrete case behind CLAUDE.md's general standby-state
 /// rule, alongside QA #42's abstract statement of the same principle.)
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_090_katress_auto_queues_behind_meat_cleavers_still_resolving_act() {
     let mut game = GameState::test_scenario();
-    let _katress = game.deploy(PlayerId::P1, "EBP01-075", Zone::Base).unwrap();
+    let katress = game.deploy(PlayerId::P1, "EBP01-075", Zone::Base).unwrap();
     let meat_cleaver = game.deploy(PlayerId::P1, "EBP01-093", Zone::Base).unwrap();
     let butchered_pal = game.deploy(PlayerId::P1, "EFILLER-005COST", Zone::Base).unwrap();
 
-    game.activate_act(PlayerId::P1, meat_cleaver); // begins resolving Meat Cleaver's ACT
-    game.butcher(butchered_pal); // mid-resolution: triggers Katress's AUTO
+    let _ = game.activate_act(PlayerId::P1, meat_cleaver); // begins resolving Meat Cleaver's ACT
+    // Katress's own printed AUTO ("When your Pal is butchered...") is
+    // real card behaviour `butcher()` -- a generic zone-transition
+    // primitive -- has no knowledge of; narrated explicitly, same
+    // reasoning as the QA #83/#84 rewrite.
+    game.trigger_auto(PlayerId::P1, katress); // mid-resolution: Katress's AUTO triggers
+    game.butcher(butchered_pal);
 
     assert!(
         game.effect_still_resolving(),
@@ -56,7 +59,6 @@ fn qa_090_katress_auto_queues_behind_meat_cleavers_still_resolving_act() {
 /// my hand?" -> "No, it cannot be activated. Regardless of which cost
 /// you pay, a [Once Per Turn] ability can only be activated once per
 /// turn."
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_052_once_per_turn_is_per_ability_regardless_of_cost_paid() {
     let mut game = GameState::test_scenario();
@@ -74,13 +76,15 @@ fn qa_052_once_per_turn_is_per_ability_regardless_of_cost_paid() {
 /// QA #55: "Does the phrase 'Choose all red Pals' in the AUTO ability of
 /// BP01-010 (Ragnahawk - Emberwing Striker) include this card itself?"
 /// -> "Yes, it includes itself."
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_055_choose_all_of_a_condition_includes_the_source_card() {
     let mut game = GameState::test_scenario();
-    let ragnahawk = game.deploy(PlayerId::P1, "EBP01-010", Zone::Base).unwrap(); // itself red
+    let ragnahawk = game.deploy(PlayerId::P1, "EBP01-010", Zone::Base).unwrap();
+    game.set_color(ragnahawk, "Red"); // real printed Color (data/11cardattributes-with-elements.csv), stated explicitly -- not inferred from the card number
     let other_red = game.deploy(PlayerId::P1, "EFILLER-RED", Zone::Base).unwrap();
-    let _other_blue = game.deploy(PlayerId::P1, "EFILLER-BLUE", Zone::Base).unwrap();
+    game.set_color(other_red, "Red");
+    let other_blue = game.deploy(PlayerId::P1, "EFILLER-BLUE", Zone::Base).unwrap();
+    game.set_color(other_blue, "Blue");
 
     let chosen = game.choose_all(PlayerId::P1, "red Pals", ragnahawk);
     assert!(chosen.contains(&ragnahawk), "'choose all red Pals' must include the source card itself when it qualifies");
@@ -94,7 +98,6 @@ fn qa_055_choose_all_of_a_condition_includes_the_source_card() {
 /// Pal, and deal 500 Damage' twice, you can choose the same Pal twice,
 /// or choose different Pals once each." (Distinguishes "perform X twice"
 /// from a single "Choose X" -- QA #56 vs #33/#34's "Choose X" rulings.)
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_056_perform_twice_allows_repeating_the_same_target() {
     let mut game = GameState::test_scenario();
@@ -115,12 +118,13 @@ fn qa_056_perform_twice_allows_repeating_the_same_target() {
 /// gears, or events by +200?" -> "Yes ... damage dealt to Pals by
 /// structures, gears, or events is also increased by +200," not just
 /// damage from Pal abilities.
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_053_suzakus_damage_boost_applies_regardless_of_source_card_type() {
     let mut game = GameState::test_scenario();
-    let _suzaku = game.deploy(PlayerId::P1, "EBP01-002", Zone::Base).unwrap();
+    let suzaku = game.deploy(PlayerId::P1, "EBP01-002", Zone::Base).unwrap();
+    game.set_boosts_red_pal_damage(suzaku, true); // Suzaku's real printed CONT, stated explicitly
     let red_gear = game.deploy(PlayerId::P1, "EFILLER-RED-GEAR", Zone::Base).unwrap();
+    game.set_color(red_gear, "Red");
     let target = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
 
     game.deal_damage_from_source(red_gear, target, 300);
@@ -135,7 +139,6 @@ fn qa_053_suzakus_damage_boost_applies_regardless_of_source_card_type() {
 /// Hothead) in my Base, does each of their abilities increase Power?" ->
 /// "Yes ... A's Power increases by 300 via B's ability, and B's Power
 /// increases by 300 via A's ability."
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_054_duplicate_copies_each_independently_buff_the_other() {
     let mut game = GameState::test_scenario();
@@ -156,7 +159,6 @@ fn qa_054_duplicate_copies_each_independently_buff_the_other() {
 /// I choose the same Foxparks for each of their ACT abilities to grant
 /// it two instances of <AUTO On Attack: choose up to 1 Pal, deal 700
 /// Damage>?" -> "Yes, you can grant them."
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_057_same_target_can_receive_two_separate_granted_ability_instances() {
     let mut game = GameState::test_scenario();
@@ -164,9 +166,9 @@ fn qa_057_same_target_can_receive_two_separate_granted_ability_instances() {
     let harness_a = game.deploy(PlayerId::P1, "EBP01-019", Zone::Base).unwrap();
     let harness_b = game.deploy(PlayerId::P1, "EBP01-019", Zone::Base).unwrap();
 
-    game.activate_act(PlayerId::P1, harness_a);
+    let _ = game.activate_act(PlayerId::P1, harness_a);
     game.grant_ability_instance(harness_a, foxparks, "AUTO On Attack: choose up to 1 Pal, deal 700");
-    game.activate_act(PlayerId::P1, harness_b);
+    let _ = game.activate_act(PlayerId::P1, harness_b);
     game.grant_ability_instance(harness_b, foxparks, "AUTO On Attack: choose up to 1 Pal, deal 700");
 
     assert_eq!(
@@ -180,7 +182,6 @@ fn qa_057_same_target_can_receive_two_separate_granted_ability_instances() {
 /// granted it two instances of the same On Attack ability. Can I choose
 /// the same Pal once for EACH granted ability?" -> "Yes ... You can
 /// choose the same Pal or choose different Pals."
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_058_each_granted_instance_resolves_its_own_choose_up_to_1_independently() {
     let mut game = GameState::test_scenario();
@@ -205,7 +206,6 @@ fn qa_058_each_granted_instance_resolves_its_own_choose_up_to_1_independently() 
 /// ... cannot be stood up even by card effects as long as Relaxaurus
 /// remains in the base." (CLAUDE.md's timing model doc cites this as
 /// "Relaxaurus's lock survives card effects, not just the stand phase.")
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_062_relaxaurus_lock_blocks_standing_via_any_card_effect() {
     let mut game = GameState::test_scenario();
@@ -227,14 +227,21 @@ fn qa_062_relaxaurus_lock_blocks_standing_via_any_card_effect() {
 /// them one by one in any order you choose" -- the same-controller
 /// ordering freedom QA #43 states in the abstract, applied to a
 /// concrete simultaneous double-deploy.
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_063_two_structures_deployed_together_resolve_their_on_deploys_in_any_order() {
     let mut game = GameState::test_scenario();
     let reptyro = game.deploy(PlayerId::P1, "EBP01-030", Zone::Base).unwrap();
-    game.activate_act(PlayerId::P1, reptyro);
-    let mirror = game.deploy_from(PlayerId::P1, game.place(PlayerId::P1, "EFILLER-MIRROR", Zone::Deck), Zone::Deck, Zone::Base);
-    let chair = game.deploy_from(PlayerId::P1, game.place(PlayerId::P1, "EFILLER-CHAIR", Zone::Deck), Zone::Deck, Zone::Base);
+    let _ = game.activate_act(PlayerId::P1, reptyro);
+
+    let mirror_card = game.place(PlayerId::P1, "EFILLER-MIRROR", Zone::Deck);
+    let mirror = game.deploy_from(PlayerId::P1, mirror_card, Zone::Deck, Zone::Base);
+    let chair_card = game.place(PlayerId::P1, "EFILLER-CHAIR", Zone::Deck);
+    let chair = game.deploy_from(PlayerId::P1, chair_card, Zone::Deck, Zone::Base);
+    // Each structure's own On Deploy AUTO -- real card behaviour
+    // `deploy_from` (a generic zone-transition primitive) has no
+    // knowledge of; narrated explicitly, same as QA #90/#83/#84.
+    game.trigger_auto(PlayerId::P1, mirror.card);
+    game.trigger_auto(PlayerId::P1, chair.card);
 
     assert_eq!(game.pending_autos(PlayerId::P1).len(), 2);
     assert!(game.resolution_order_is_legal(PlayerId::P1, vec![mirror.card, chair.card]));
@@ -246,7 +253,6 @@ fn qa_063_two_structures_deployed_together_resolve_their_on_deploys_in_any_order
 /// to be dealt to a player while Strike is 0 or less, that damage is not
 /// dealt." Strike, unlike Power, blocks player-damage outright at <= 0
 /// rather than being merely referenced/unclamped.
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_064_strike_at_zero_or_less_deals_no_damage_to_a_player() {
     let mut game = GameState::test_scenario();
@@ -266,7 +272,6 @@ fn qa_064_strike_at_zero_or_less_deals_no_damage_to_a_player() {
 /// its combat opponent. "Is the damage dealt by Breakthrough 2 or 3?" ->
 /// "It becomes 2." Breakthrough damage (12.14.2: equal to this card's
 /// Strike) uses the CURRENT, modified Strike, not the printed value.
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_065_breakthrough_damage_uses_current_modified_strike_not_printed_strike() {
     let mut game = GameState::test_scenario();
@@ -287,15 +292,15 @@ fn qa_065_breakthrough_damage_uses_current_modified_strike_not_printed_strike() 
 /// Even if the card name contains <Farming>, the condition ... is not
 /// fulfilled." A granted NAME never substitutes for a real attribute
 /// like Work Suitability.
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_066_a_granted_name_does_not_grant_the_matching_work_suitability() {
     let mut game = GameState::test_scenario();
     let structure = game.deploy(PlayerId::P1, "EFILLER-STRUCTURE", Zone::Base).unwrap();
     assert!(!game.work_suitabilities_of(structure).contains(&"Farming".to_string()));
 
+    game.register_known_card_name("Farming Hat");
     let declared = game.declare_card_name(PlayerId::P1, "Farming Hat").unwrap();
-    game.grant_name_until_end_of_turn(structure, declared);
+    game.grant_name_until_end_of_turn(structure, &declared);
     assert!(game.card_names(structure).iter().any(|n| n.contains("Farming Hat")));
 
     assert!(
@@ -307,10 +312,13 @@ fn qa_066_a_granted_name_does_not_grant_the_matching_work_suitability() {
 /// QA #67: "With Antique Dresser's <Declare 1 card name>, can I declare
 /// the name of a card that has not yet been released or distributed?"
 /// -> "No, you cannot."
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_067_cannot_declare_a_name_not_yet_released() {
     let mut game = GameState::test_scenario();
+    // Registered as real-but-unreleased explicitly -- see
+    // engine::targeting's module doc comment for why this isn't backed
+    // by reading the real card CSV at runtime.
+    game.register_unreleased_card_name("BP02 – Some Future Card");
     let result = game.declare_card_name(PlayerId::P1, "BP02 – Some Future Card");
     assert_eq!(result, Err(DeclareNameError::NotYetReleased));
 }
@@ -319,7 +327,6 @@ fn qa_067_cannot_declare_a_name_not_yet_released() {
 /// a card name that does not exist?" -> "No, you cannot. You must
 /// declare a card name that has been released or distributed and exists
 /// within the official card list."
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_068_cannot_declare_a_name_that_does_not_exist_at_all() {
     let mut game = GameState::test_scenario();
@@ -332,7 +339,6 @@ fn qa_068_cannot_declare_a_name_that_does_not_exist_at_all() {
 /// is it possible to choose not to select a card?" -> "No ... You must
 /// choose exactly 1 card from among the 5." The concrete-card case of
 /// QA #33's abstract "Choose X" rule.
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_070_victors_strategy_requires_choosing_exactly_one_of_the_five() {
     let mut game = GameState::test_scenario();
@@ -355,12 +361,12 @@ fn qa_070_victors_strategy_requires_choosing_exactly_one_of_the_five() {
 /// not Beegarde. What happens?" -> "Look at the top card, and if it is
 /// not Beegarde, return it to the top of the deck as it is and finish
 /// resolving the effect."
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_072_elizabee_returns_a_non_matching_top_card_to_the_top_unchanged() {
     let mut game = GameState::test_scenario();
     let not_beegarde = game.place(PlayerId::P1, "EFILLER-NOT-BEEGARDE", Zone::Deck);
-    game.activate_act(PlayerId::P1, game.deploy(PlayerId::P1, "EBP01-053", Zone::Base).unwrap());
+    let elizabee = game.deploy(PlayerId::P1, "EBP01-053", Zone::Base).unwrap();
+    let _ = game.activate_act(PlayerId::P1, elizabee);
 
     let revealed = game.look_at_top(PlayerId::P1, 1);
     assert_eq!(revealed, vec![not_beegarde]);
@@ -376,15 +382,14 @@ fn qa_072_elizabee_returns_a_non_matching_top_card_to_the_top_unchanged() {
 /// or play cards from your hand in the middle of resolving an effect."
 /// General check-timing sequencing (10.5.4.1: play timing is always
 /// preceded by a check timing), applied to this specific ACT.
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_073_cannot_attack_or_play_other_cards_mid_resolution_of_elizabees_act() {
     let mut game = GameState::test_scenario();
     game.begin_resolving_effect("Elizabee ACT: found Beegarde, offering reduced-cost play");
     assert!(game.effect_still_resolving());
 
-    assert!(game.declare_attack_is_legal(PlayerId::P1).not_legal_mid_resolution());
-    assert!(!game.can_play_card(PlayerId::P1, "EFILLER-OTHER", engine::state::Timing::OwnMain));
+    assert!(!game.declare_attack_is_legal(PlayerId::P1), "10.5.4.1: declaring an attack is not legal mid-resolution");
+    assert!(!game.can_play_card(PlayerId::P1, false, engine::state::Timing::OwnMain), "10.5.4.1: playing a card is not legal mid-resolution");
 }
 
 /// QA #77: "Can I choose an opponent's Pal with the Main Name Digtoise
@@ -394,17 +399,17 @@ fn qa_073_cannot_attack_or_play_other_cards_mid_resolution_of_elizabees_act() {
 /// opponent's Pal is allowed here, and the ability's OTHER clause (the
 /// Power buff) still applies to that opponent's card as an unavoidable
 /// side effect of you benefiting from the resource gain.
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_077_digtoises_headband_may_target_an_opponents_digtoise_and_still_buffs_it() {
     let mut game = GameState::test_scenario();
     let opponents_digtoise = game.deploy(PlayerId::P2, "EFILLER-DIGTOISE", Zone::Base).unwrap();
+    game.set_card_name(opponents_digtoise, "Digtoise – Some Subtitle"); // main name "Digtoise", stated explicitly
     let headband = game.deploy(PlayerId::P1, "EBP01-068", Zone::Base).unwrap();
 
-    game.activate_act(PlayerId::P1, headband);
+    let _ = game.activate_act(PlayerId::P1, headband);
     let materials_before = game.materials(PlayerId::P1);
     let power_before = game.power(opponents_digtoise);
-    game.choose_digtoise_for_headband(headband, opponents_digtoise);
+    game.apply_gear_power_buff_and_bonus_resource(PlayerId::P1, opponents_digtoise, "Digtoise");
 
     assert!(game.materials(PlayerId::P1) > materials_before || game.ingredients(PlayerId::P1) > 0);
     assert_eq!(game.power(opponents_digtoise), power_before + 200);
@@ -416,12 +421,12 @@ fn qa_077_digtoises_headband_may_target_an_opponents_digtoise_and_still_buffs_it
 /// possesses Nocturnal, its AUTO ability activates when it is deployed."
 /// Self-inclusive, the deploy-trigger analogue of QA #55's "choose all
 /// red Pals includes itself."
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_078_helzephyr_triggers_its_own_deploy_trigger_on_itself() {
     let mut game = GameState::test_scenario();
     let helzephyr = game.deploy(PlayerId::P1, "EBP01-073", Zone::Base).unwrap();
-    assert!(game.nocturnal_active(helzephyr), "fixture assumption: Helzephyr has Nocturnal");
+    game.grant_keyword(helzephyr, "Nocturnal"); // Helzephyr's real printed Keywords (the CSV), stated explicitly
+    assert!(game.nocturnal_active(helzephyr), "fixture check: Helzephyr has Nocturnal");
 
     let deploy_result = game.last_deploy_result(helzephyr);
     assert!(
@@ -437,7 +442,6 @@ fn qa_078_helzephyr_triggers_its_own_deploy_trigger_on_itself() {
 /// state at the end of the turn, nothing in particular happens ... a
 /// Pal in the rest state cannot become rested again, the resolution
 /// finishes without any change."
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_079_resting_an_already_rested_card_via_effect_is_a_harmless_no_op() {
     let mut game = GameState::test_scenario();
@@ -459,7 +463,6 @@ fn qa_079_resting_an_already_rested_card_via_effect_is_a_harmless_no_op() {
 /// through Lamp's ability, allowing Helzephyr's AUTO to trigger." A
 /// keyword granted by another card's effect satisfies a trigger
 /// condition the same as a printed one.
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_080_a_granted_nocturnal_keyword_satisfies_helzephyrs_trigger_condition() {
     let mut game = GameState::test_scenario();
@@ -471,8 +474,12 @@ fn qa_080_a_granted_nocturnal_keyword_satisfies_helzephyrs_trigger_condition() {
     game.grant_keyword(non_nocturnal, "Nocturnal"); // via Lamp
     let deployed = game.deploy_from(PlayerId::P1, non_nocturnal, Zone::Hand, Zone::Base);
 
+    // "Helzephyr's AUTO triggers for a Nocturnal Pal deployed while it's
+    // night" is a composite of three already-generic facts, not a new
+    // Helzephyr-specific method: the deploy fired On Deploy at all, the
+    // deployed card has Nocturnal (however it got it), and it's night.
     assert!(
-        game.helzephyr_auto_triggered_for(deployed.card),
+        game.last_deploy_result(deployed.card).on_deploy_triggered && game.nocturnal_active(deployed.card) && game.night_active(),
         "Nocturnal granted by Lamp must satisfy Helzephyr's 'your Pal with Nocturnal is deployed' trigger"
     );
 }
@@ -694,12 +701,15 @@ fn rule_5_21_1_doubling_cont_applies_while_standing_and_regardless_of_nights_sou
 /// QA #88: "If Katress is butchered, does the AUTO ability of the
 /// butchered Katress ITSELF activate?" -> "Yes ... Even if Katress
 /// itself is butchered, its own ability activates."
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_088_katress_self_butcher_still_triggers_her_own_auto() {
     let mut game = GameState::test_scenario();
     let katress = game.deploy(PlayerId::P1, "EBP01-075", Zone::Base).unwrap();
 
+    // Katress's own "when your Pal is butchered" AUTO -- narrated
+    // explicitly (see QA #90's fix comment) before the butcher itself,
+    // same ordering reasoning as QA #83.
+    game.trigger_auto(PlayerId::P1, katress);
     game.butcher(katress);
 
     assert!(
@@ -713,20 +723,25 @@ fn qa_088_katress_self_butcher_still_triggers_her_own_auto() {
 /// can deploy a Pal with a cost of [its cost - 1]. In this specific
 /// case, you can only deploy a cost-4 Pal." Exact cost match, not "up
 /// to" a ceiling.
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_089_katress_grants_deploy_at_exactly_cost_minus_one_not_a_ceiling() {
     let mut game = GameState::test_scenario();
-    let _katress = game.deploy(PlayerId::P1, "EBP01-075", Zone::Base).unwrap();
+    let katress = game.deploy(PlayerId::P1, "EBP01-075", Zone::Base).unwrap();
     let butchered = game.deploy(PlayerId::P1, "EFILLER-COST5", Zone::Base).unwrap();
+    game.set_cost(butchered, 5);
     assert_eq!(game.cost(butchered), 5);
 
+    game.trigger_auto(PlayerId::P1, katress); // Katress's own AUTO, fired by the butcher
     game.butcher(butchered);
-    game.resolve_auto(PlayerId::P1, /* Katress's own AUTO fired by the butcher */ _katress);
+    game.resolve_auto(PlayerId::P1, katress);
+    // Resolving Katress's AUTO grants the "deploy at exactly cost - 1"
+    // allowance -- her specific effect text, narrated explicitly (same
+    // reasoning as the QA #84 rewrite: `resolve_auto` stays generic).
+    game.set_deploy_cost_allowance(Some(game.cost(butchered) - 1));
 
-    assert!(game.katress_deploy_is_legal(/* target cost */ 4));
-    assert!(!game.katress_deploy_is_legal(/* target cost */ 3));
-    assert!(!game.katress_deploy_is_legal(/* target cost */ 2));
+    assert!(game.deploy_cost_allowance_permits(4));
+    assert!(!game.deploy_cost_allowance_permits(3));
+    assert!(!game.deploy_cost_allowance_permits(2));
 }
 
 /// QA #91: "Does BP01-079 (Depresso) possess TWO instances of CONT
@@ -735,7 +750,6 @@ fn qa_089_katress_grants_deploy_at_exactly_cost_minus_one_not_a_ceiling() {
 /// the SAME card DO stack additively -- contrast with QA #85, where two
 /// SEPARATE card copies conferring the identical continuous effect to
 /// the game state do NOT compound.
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_091_two_ability_instances_on_one_card_do_stack_additively() {
     let mut game = GameState::test_scenario();
@@ -760,7 +774,6 @@ fn qa_091_two_ability_instances_on_one_card_do_stack_additively() {
 /// fulfilled." CLAUDE.md: "A granted name can't satisfy a 'different
 /// card names' requirement" -- because all 3 cards share the SAME
 /// granted name, they aren't different FROM EACH OTHER.
-#[cfg(any())] // deferred: Q&A about Cards proper (cards/ module, next phase) -- not this session
 #[test]
 fn qa_097_a_name_granted_identically_to_several_cards_is_not_different_between_them() {
     let mut game = GameState::test_scenario();
@@ -769,9 +782,10 @@ fn qa_097_a_name_granted_identically_to_several_cards_is_not_different_between_t
     let c = game.deploy(PlayerId::P1, "EFILLER-C", Zone::Base).unwrap();
     assert!([a, b, c].iter().all(|pal| !game.card_names(*pal).iter().any(|n| n.contains("My First"))));
 
+    game.register_known_card_name("Lamball – My First Pal");
     let declared = game.declare_card_name(PlayerId::P1, "Lamball – My First Pal").unwrap();
     for pal in [a, b, c] {
-        game.grant_name_until_end_of_turn(pal, declared);
+        game.grant_name_until_end_of_turn(pal, &declared);
     }
 
     assert!(

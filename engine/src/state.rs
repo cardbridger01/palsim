@@ -98,6 +98,7 @@
 use std::collections::{HashMap, HashSet};
 
 use crate::combat::{AttackId, AttackTarget, Battle};
+use crate::targeting::{DeclareNameError, DeclaredName};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum PlayerId {
@@ -147,10 +148,13 @@ pub struct ModifierId(u32);
 #[derive(Debug)]
 pub struct DeployError(pub String);
 
-/// Result of `deploy_from`. A struct rather than a bare `bool` so a call
-/// site reads as `.on_deploy_triggered`, not an unlabeled boolean.
+/// Result of `deploy_from`/`last_deploy_result`. A struct rather than a
+/// bare `bool` so a call site reads as `.on_deploy_triggered`, not an
+/// unlabeled boolean, and so the deployed card's own id travels with the
+/// result (QA #63 chains straight into `trigger_auto(result.card)`).
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct DeployFromResult {
+    pub card: CardId,
     pub on_deploy_triggered: bool,
 }
 
@@ -206,11 +210,49 @@ struct CardInstance {
     was_declared_pal_target: bool,
     attack_was_interrupted: bool,
     end_of_battle_as_attacker_triggered: bool,
+    /// Signed, unclamped, same convention as `power` -- see `strike()`/
+    /// `reduce_strike`/`apply_cont_strike_modifier`. QA #64: distinct
+    /// from Power -- Strike <= 0 blocks player damage outright rather
+    /// than being merely referenced.
+    strike: i32,
+    /// Deploy cost. Not set by `deploy`/`place` (those are synthetic
+    /// test fixtures with no real printed cost) -- `set_cost` states it
+    /// explicitly wherever a ruling depends on it (QA #89).
+    cost: u32,
+    /// QA #53 (Suzaku): "when your red card would deal Damage other
+    /// than battle damage to a Pal, deal +200 instead" -- a dedicated
+    /// flag, same reasoning as `doubles_auto_activations`: explicit, not
+    /// inferred from a card number.
+    boosts_red_pal_damage: bool,
+    /// QA #62 (Relaxaurus): set by `lock_from_standing`, checked by
+    /// `stand_via_effect`. `Some(source)` means locked by `source` for
+    /// as long as `source` remains in the base.
+    locked_by: Option<CardId>,
+    /// Names granted "in addition" to the printed one (QA #66/#97) --
+    /// `card_names` returns the printed name plus all of these; the
+    /// printed name itself is never removed by a grant.
+    granted_names: Vec<String>,
 }
 
 struct ContModifier {
     target: CardId,
     amount: i32,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub struct GrantedInstanceId(u32);
+
+/// QA #57/#58: a specific instance of an ability granted to `target` by
+/// `source`'s effect -- kept distinct from `target`'s own printed
+/// abilities so two independently-granted copies of identical text are
+/// two instances, not one. `text` is the granted ability's own text
+/// (e.g. "AUTO OnAttack Choose up to 1 Pal, and deal 700 Damage"); the
+/// engine doesn't interpret it beyond `resolve_granted_on_attack`
+/// scanning for the "deal N Damage" number, so a new caller need not
+/// touch this module to grant a differently-worded instance.
+struct GrantedInstance {
+    target: CardId,
+    text: String,
 }
 
 #[derive(Default)]
@@ -271,6 +313,27 @@ pub struct GameState {
     next_modifier_id: u32,
     battles: HashMap<AttackId, Battle>,
     next_attack_id: u32,
+    cont_strike_modifiers: HashMap<ModifierId, ContModifier>,
+    granted_instances: HashMap<GrantedInstanceId, GrantedInstance>,
+    next_granted_instance_id: u32,
+    /// QA #67/#68: names a test has explicitly registered as real and
+    /// released (`declare_card_name` succeeds) vs. real-but-unreleased
+    /// (`declare_card_name` returns `NotYetReleased`) -- see
+    /// `engine::targeting`'s module doc comment for why this isn't
+    /// backed by the real CSV.
+    known_card_names: HashSet<String>,
+    known_unreleased_card_names: HashSet<String>,
+    /// QA #72 (Elizabee): a minimal, single-card "what's on top" fact --
+    /// not a full ordered deck model, just enough for `return_to_top_
+    /// unchanged`/`top_of_deck` to round-trip.
+    top_of_deck: HashMap<PlayerId, CardId>,
+    /// QA #89 (Katress): the one-time "you may deploy at exactly this
+    /// cost" allowance her AUTO grants, narrated explicitly by the
+    /// caller (see qa_about_cards.rs) rather than computed by
+    /// `resolve_auto` itself -- same reasoning as everywhere else a
+    /// specific card's effect is stated by the test, not guessed by the
+    /// engine.
+    deploy_cost_allowance: Option<u32>,
 }
 
 /// A generous, unremarkable starting supply for a scenario that's
@@ -289,6 +352,12 @@ const TEST_SCENARIO_STARTING_LIFE: i32 = 10;
 /// negative without special-casing; never meant to resemble a real
 /// card's printed Power.
 const TEST_SCENARIO_PAL_POWER: i32 = 1000;
+/// Baseline Strike for a synthetic test Pal, same rationale as Power
+/// above. 3 matches the "fixture assumption: printed Strike is 3" QA
+/// #65's test states directly, so it's not an arbitrary choice for that
+/// specific test, but it's still a synthetic default, not read from any
+/// real card.
+const TEST_SCENARIO_PAL_STRIKE: i32 = 3;
 
 impl GameState {
     pub fn test_scenario() -> Self {
@@ -319,6 +388,13 @@ impl GameState {
             next_modifier_id: 0,
             battles: HashMap::new(),
             next_attack_id: 0,
+            cont_strike_modifiers: HashMap::new(),
+            granted_instances: HashMap::new(),
+            next_granted_instance_id: 0,
+            known_card_names: HashSet::new(),
+            known_unreleased_card_names: HashSet::new(),
+            top_of_deck: HashMap::new(),
+            deploy_cost_allowance: None,
         }
     }
 
@@ -358,6 +434,11 @@ impl GameState {
             was_declared_pal_target: false,
             attack_was_interrupted: false,
             end_of_battle_as_attacker_triggered: false,
+            strike: TEST_SCENARIO_PAL_STRIKE,
+            cost: 0,
+            boosts_red_pal_damage: false,
+            locked_by: None,
+            granted_names: Vec::new(),
         }
     }
 
@@ -441,7 +522,7 @@ impl GameState {
         instance.zone = to_zone;
         *self.zone_counts.get_mut(&(player, from_zone)).unwrap() -= 1;
         *self.zone_counts.get_mut(&(player, to_zone)).unwrap() += 1;
-        DeployFromResult { on_deploy_triggered: to_zone == Zone::Base }
+        DeployFromResult { card, on_deploy_triggered: to_zone == Zone::Base }
     }
 
     /// QA #12: structures/gears in the base, with no limit. A sibling of
@@ -540,13 +621,27 @@ impl GameState {
     /// from what #29 says, and nothing in Flow of the Game's tests ever
     /// exercised `OwnTurnDuringBattle` to catch it. Found by QA #29
     /// failing here, not by inspection.
+    ///
+    /// QA #73/10.5.4.1: play timing is always preceded by a check
+    /// timing, so nothing is a legal play while an effect is still
+    /// resolving -- checked first, ahead of the per-timing rules above.
     pub fn can_play_card(&self, _player: PlayerId, is_quick: bool, timing: Timing) -> bool {
+        if self.resolving_effect {
+            return false;
+        }
         match timing {
             Timing::OwnMain => true,
             Timing::OpponentTurnDuringBattle => is_quick,
             Timing::OpponentTurnOutsideBattle => false,
             Timing::OwnTurnDuringBattle => false,
         }
+    }
+
+    /// QA #73/10.5.4.1, the same rule stated for attack declaration
+    /// instead of playing a card: not legal while an effect is still
+    /// resolving.
+    pub fn declare_attack_is_legal(&self, _player: PlayerId) -> bool {
+        !self.resolving_effect
     }
 
     /// QA #25: AUTO/CONT abilities are never turn-gated in this engine
@@ -921,8 +1016,15 @@ impl GameState {
         self.player_state(player).ingredients += amount;
     }
 
+    /// 3.3.3.1 (CLAUDE.md's numeric edge cases -- Resources below 0
+    /// *become* 0, unlike Life which is merely referenced as 0 and
+    /// Power which isn't clamped at all): saturating, not a bare `-=`.
+    /// Found by QA #56, the first test to consume materials without
+    /// gaining any first -- QA #14 (already passing) always gains
+    /// before it consumes, so the missing saturation never panicked
+    /// until this one exercised it.
     pub fn consume_materials(&mut self, player: PlayerId, amount: u32) {
-        self.player_state(player).materials -= amount;
+        self.player_state(player).materials = self.player_state(player).materials.saturating_sub(amount);
     }
 
     /// QA #15/#16: replaces the full set (each Work Suitability is
@@ -1077,6 +1179,13 @@ impl GameState {
     /// this at end of turn (no test exercises a second turn), so treat
     /// it as "locked out this session" rather than a fully turn-cycled
     /// model yet.
+    ///
+    /// A successful activation also begins resolving an effect (QA #90:
+    /// an ACT's effect is "in progress" the same way any other effect
+    /// is, so `effect_still_resolving()` reads true and a mid-resolution
+    /// AUTO trigger correctly queues to standby instead of resolving
+    /// immediately). The caller finishes it the same way any other
+    /// resolution finishes -- `finish_resolving_effect()`.
     pub fn activate_act_named(&mut self, player: PlayerId, card: CardId, ability: &str) -> Result<(), String> {
         let key = (card, ability.to_string());
         let state = self.player_state(player);
@@ -1084,6 +1193,7 @@ impl GameState {
             return Err(format!("ability {ability:?} on this card was already activated this turn"));
         }
         state.acted_this_turn.insert(key);
+        self.resolving_effect = true;
         Ok(())
     }
 
@@ -1407,5 +1517,332 @@ impl GameState {
     /// became the battle opponent via `block`.
     pub fn on_attacked_triggered(&self, card: CardId) -> bool {
         self.cards[&card].was_declared_pal_target
+    }
+
+    // --- Q&A about Cards: generic primitives, each grounded in the real
+    //     effect_text of the card(s) the ruling names (data/
+    //     11cardattributes-with-elements.csv), never the QA paraphrase
+    //     alone. See individual test doc comments in qa_about_cards.rs
+    //     for the citation; this section is the mechanism, not the
+    //     per-card behaviour, which stays out of engine/ (see the QA #84
+    //     rewrite's reasoning, restated throughout below). -------------
+
+    pub fn base_power(&self, card: CardId) -> i32 {
+        self.cards[&card].power
+    }
+
+    /// QA #52 (Jormuntide Ignis, "ACT 1/Turn [3] OR [Discard 2 cards]
+    /// Stand this card"): the lockout is per-ABILITY, not per-cost --
+    /// `activate_act_named`'s key is `(card, ability)`, never the cost
+    /// paid, so a second attempt with a *different* alternative cost is
+    /// still the same ability and still locked out. `cost_description`
+    /// is accepted so a call site can state which cost it's narrating,
+    /// but never affects the lockout key.
+    pub fn activate_act_paying(&mut self, player: PlayerId, card: CardId, _cost_description: &str) -> Result<(), String> {
+        self.activate_act_named(player, card, "")
+    }
+
+    /// QA #56 (Mounted Machine Gun, "[Consume X Material, assign 1 Pal]
+    /// Perform <Choose 1 Pal, deal 500> X times"): consumes the stated
+    /// materials for `player`. Takes the card's number rather than a
+    /// `CardId` because the ruling this backs never deploys the
+    /// structure at all (it's about the "perform...X times" idiom, not
+    /// this specific gear's own lockout), so there's nothing to key a
+    /// per-instance lockout on here.
+    pub fn activate_act_consuming(&mut self, player: PlayerId, _card_number: &str, materials: u32) {
+        self.consume_materials(player, materials);
+        self.resolving_effect = true;
+    }
+
+    /// QA #56: "perform <effect> X times" -- distinct from a single
+    /// "Choose X" (QA #33/#34's `Selector`), repeats the WHOLE
+    /// sub-effect, closure and all, X times. Generic on purpose: it
+    /// doesn't know or care what the closure does.
+    pub fn perform_n_times(&mut self, n: u32, mut effect: impl FnMut(&mut Self)) {
+        for _ in 0..n {
+            effect(self);
+        }
+    }
+
+    pub fn choose_one_and_deal_damage(&mut self, target: CardId, amount: u32) {
+        self.apply_damage(target, amount);
+    }
+
+    /// QA #53 (Suzaku, "CONT When your red card would deal Damage other
+    /// than battle damage to a Pal, deal +200 Damage instead"): a
+    /// dedicated flag, same reasoning as `set_auto_doubling_cont`.
+    pub fn set_boosts_red_pal_damage(&mut self, card: CardId, active: bool) {
+        self.cards.get_mut(&card).expect("set_boosts_red_pal_damage: unknown card").boosts_red_pal_damage = active;
+    }
+
+    /// QA #53: non-battle damage from a red source, boosted +200 if the
+    /// source's controller has an active damage-boosting CONT in the
+    /// base. "Other than battle damage" is exactly what this method
+    /// name says -- `resolve_battle`'s damage step calls `apply_damage`
+    /// directly, never this, so the boost can never double-apply to
+    /// combat damage.
+    pub fn deal_damage_from_source(&mut self, source: CardId, target: CardId, amount: u32) -> u32 {
+        let owner = self.cards[&source].owner;
+        let is_red = self.cards[&source].color.as_deref() == Some("Red");
+        let boosted = is_red
+            && self
+                .cards
+                .values()
+                .any(|c| c.owner == owner && c.zone == Zone::Base && c.boosts_red_pal_damage);
+        let total = if boosted { amount + 200 } else { amount };
+        self.apply_damage(target, total);
+        total
+    }
+
+    /// QA #57/#58 (Foxparks' Harness): grants `target` a new, distinct
+    /// instance of the ability described by `text`, sourced from
+    /// `source`. Two grants of identical text are two instances, not
+    /// one -- `granted_ability_instances` returns every live one.
+    pub fn grant_ability_instance(&mut self, _source: CardId, target: CardId, text: &str) -> GrantedInstanceId {
+        let id = GrantedInstanceId(self.next_granted_instance_id);
+        self.next_granted_instance_id += 1;
+        self.granted_instances.insert(id, GrantedInstance { target, text: text.to_string() });
+        id
+    }
+
+    pub fn granted_ability_instances(&self, target: CardId) -> Vec<GrantedInstanceId> {
+        let mut ids: Vec<GrantedInstanceId> =
+            self.granted_instances.iter().filter(|(_, g)| g.target == target).map(|(id, _)| *id).collect();
+        ids.sort_by_key(|id| id.0);
+        ids
+    }
+
+    /// QA #58: each granted instance resolves independently, so the same
+    /// Pal may be `chosen` by more than one instance. The damage amount
+    /// is read out of the instance's own granted text rather than
+    /// hardcoded, so granting a differently-worded instance doesn't
+    /// require touching this method -- the LAST whitespace-delimited
+    /// numeric token (e.g. "...deal 700"), not every digit in the text
+    /// concatenated. Text like "choose up to 1 Pal, deal 700" has TWO
+    /// numbers in it ("1" and "700"); concatenating every digit
+    /// character read that as 1700, not 700 -- caught by QA #58 itself
+    /// (700*2=1400 expected, got 1700*2=3400), fixed before it shipped
+    /// silently.
+    pub fn resolve_granted_on_attack(&mut self, instance: GrantedInstanceId, chosen: Option<CardId>) {
+        let Some(target) = chosen else { return };
+        let text = &self.granted_instances[&instance].text;
+        let amount: u32 = text.split_whitespace().rev().find_map(|word| word.trim_matches(|c: char| !c.is_ascii_digit()).parse().ok()).unwrap_or(0);
+        self.apply_damage(target, amount);
+    }
+
+    /// QA #62 (Relaxaurus, "...rest it. While this card is in the base,
+    /// that card does not stand"): `locked` cannot be stood by a card
+    /// effect while `source` remains in the base -- `stand_via_effect`
+    /// enforces it, `lock_from_standing` records it.
+    pub fn lock_from_standing(&mut self, locked: CardId, source: CardId) {
+        self.cards.get_mut(&locked).expect("lock_from_standing: unknown card").locked_by = Some(source);
+    }
+
+    pub fn stand_via_effect(&mut self, locked: CardId) -> Result<(), String> {
+        if let Some(source) = self.cards[&locked].locked_by {
+            if self.cards[&source].zone == Zone::Base {
+                return Err(format!("{locked:?} is locked from standing by {source:?}, still in the base"));
+            }
+        }
+        self.cards.get_mut(&locked).unwrap().resting = false;
+        Ok(())
+    }
+
+    /// QA #64 (Wumpo CONT: opponent's Pals get Strike -1). Signed,
+    /// unclamped, same convention as `power`/`reduce_power` -- see
+    /// `reduce_power`'s doc comment for why the split-method shape (vs.
+    /// one signed-delta method) is deliberate.
+    pub fn strike(&self, card: CardId) -> i32 {
+        let base = self.cards[&card].strike;
+        let modifiers: i32 = self.cont_strike_modifiers.values().filter(|m| m.target == card).map(|m| m.amount).sum();
+        base + modifiers
+    }
+
+    /// See `apply_cont_power_modifier` -- identical shape, for Strike
+    /// instead of Power.
+    pub fn apply_cont_strike_modifier(&mut self, _source: CardId, target: CardId, amount: i32) -> ModifierId {
+        let id = self.fresh_modifier_id();
+        self.cont_strike_modifiers.insert(id, ContModifier { target, amount });
+        id
+    }
+
+    /// QA #64: unlike Power (referenced but never clamped -- QA #92/93),
+    /// Strike <= 0 blocks player damage outright. No real player-damage/
+    /// Lucky-mill system exists yet (`resolve_battle`'s player-target
+    /// arm is still a `todo!`) -- this only implements the specific
+    /// Strike<=0 short-circuit QA #64 asks about, not the full 11.2.1
+    /// resolution.
+    pub fn deal_damage_to_player(&self, attacker: CardId, _target: PlayerId) -> u32 {
+        let s = self.strike(attacker);
+        if s <= 0 {
+            0
+        } else {
+            s as u32
+        }
+    }
+
+    /// 12.14.2 (Breakthrough, CLAUDE.md's keyword table): damage equals
+    /// this card's CURRENT Strike, not its printed value -- QA #65 is
+    /// exactly this, exercised through a CONT modifier.
+    pub fn breakthrough_damage(&self, card: CardId) -> i32 {
+        self.strike(card)
+    }
+
+    pub fn work_suitabilities_of(&self, card: CardId) -> Vec<String> {
+        self.cards[&card].work_suitabilities.clone()
+    }
+
+    /// QA #66's exact point: a real attribute like Work Suitability is
+    /// never satisfied by a granted NAME, however similar the text looks
+    /// -- this reads `work_suitabilities`, never `granted_names`.
+    pub fn assigned_structure_has_suitability(&self, structure: CardId, suitability: &str) -> bool {
+        self.has_work_suitability(structure, suitability)
+    }
+
+    /// Registers `name` as a real, released card name -- see
+    /// `engine::targeting`'s module doc comment for why this is an
+    /// explicit test-scenario registry rather than the real CSV.
+    pub fn register_known_card_name(&mut self, name: &str) {
+        self.known_card_names.insert(name.to_string());
+    }
+
+    /// Registers `name` as real but not yet released (QA #67).
+    pub fn register_unreleased_card_name(&mut self, name: &str) {
+        self.known_unreleased_card_names.insert(name.to_string());
+    }
+
+    /// QA #67/#68 (Antique Dresser, "Declare 1 card name"): `Ok` only for
+    /// a name registered via `register_known_card_name`; `NotYetReleased`
+    /// for one registered via `register_unreleased_card_name`;
+    /// `DoesNotExist` for anything else.
+    pub fn declare_card_name(&mut self, _player: PlayerId, name: &str) -> Result<DeclaredName, DeclareNameError> {
+        if self.known_card_names.contains(name) {
+            Ok(DeclaredName(name.to_string()))
+        } else if self.known_unreleased_card_names.contains(name) {
+            Err(DeclareNameError::NotYetReleased)
+        } else {
+            Err(DeclareNameError::DoesNotExist)
+        }
+    }
+
+    /// QA #66/#97: the declared name is granted "in addition" -- the
+    /// printed name is never removed, so `card_names` grows, it doesn't
+    /// replace. Takes `declared` by reference (rather than consuming it)
+    /// so QA #97's "grant the SAME declared name to several cards" reads
+    /// naturally in a loop instead of needing `.clone()` at every call.
+    pub fn grant_name_until_end_of_turn(&mut self, card: CardId, declared: &DeclaredName) {
+        self.cards.get_mut(&card).expect("grant_name_until_end_of_turn: unknown card").granted_names.push(declared.0.clone());
+    }
+
+    /// The printed name (if set via `set_card_name`) plus every granted
+    /// name still in effect.
+    pub fn card_names(&self, card: CardId) -> Vec<String> {
+        let instance = &self.cards[&card];
+        instance.card_name.iter().cloned().chain(instance.granted_names.iter().cloned()).collect()
+    }
+
+    /// QA #97: "3 Pals with DIFFERENT card names containing X" counts
+    /// DISTINCT qualifying names across the player's base, not distinct
+    /// Pals -- three Pals sharing one identical granted name contribute
+    /// exactly one distinct name, so this returns false for them (QA
+    /// #97's whole point: a name granted identically to several cards
+    /// isn't "different" between them).
+    pub fn has_n_pals_with_distinct_names_containing(&self, player: PlayerId, substring: &str, n: usize) -> bool {
+        let mut names: Vec<String> = self
+            .cards
+            .iter()
+            .filter(|(_, c)| c.owner == player && c.zone == Zone::Base)
+            .flat_map(|(id, _)| self.card_names(*id))
+            .filter(|name| name.contains(substring))
+            .collect();
+        names.sort();
+        names.dedup();
+        names.len() >= n
+    }
+
+    /// QA #70 (Victor's Strategy): marks that a card was played --
+    /// reuses the same per-turn counter QA #96 already established
+    /// (rest-3-draw-1 deliberately does NOT increment this one).
+    pub fn play_card(&mut self, player: PlayerId, _card_number: &str) {
+        self.player_state(player).cards_played_this_turn += 1;
+    }
+
+    /// QA #70: "choose 1" (not "choose up to 1") -- legal iff exactly
+    /// `min(1, available.len())` were chosen. The specific "1" is
+    /// Victor's Strategy's own printed wording, not a general "choose
+    /// exactly N" parameter, because no other ruling here needs a
+    /// different N; `engine::selection::Selector::choose_exact` is the
+    /// general form if a future one does.
+    pub fn choose_exactly_n_to_hand(&self, _player: PlayerId, available: &[CardId], chosen_count: usize) -> Result<(), String> {
+        let required = 1usize.min(available.len());
+        if chosen_count == required {
+            Ok(())
+        } else {
+            Err(format!("must choose exactly {required}, chose {chosen_count}"))
+        }
+    }
+
+    /// QA #72 (Elizabee ACT): puts `card` back on top of the deck,
+    /// unchanged -- a minimal, single-card "what's on top" fact, not a
+    /// full ordered deck model (nothing else here needs deck order).
+    pub fn return_to_top_unchanged(&mut self, player: PlayerId, card: CardId) {
+        self.top_of_deck.insert(player, card);
+    }
+
+    pub fn top_of_deck(&self, player: PlayerId) -> Option<CardId> {
+        self.top_of_deck.get(&player).copied()
+    }
+
+    /// QA #77 (Digtoise's Headband / Foxparks' Harness-shaped gears:
+    /// "[Rest this card] Choose 1 Pal, +200 Power until EOT. If its main
+    /// name is X, get 2 Material or 2 Ingredient"): generic over which
+    /// main name qualifies for the resource bonus, so this isn't a
+    /// Digtoise (or Foxparks) special case -- QA #77's specific point is
+    /// that `target` may be the OPPONENT's Pal and still gets buffed.
+    pub fn apply_gear_power_buff_and_bonus_resource(&mut self, player: PlayerId, target: CardId, matching_main_name: &str) {
+        self.increase_power(target, 200);
+        if self.main_name_of(target) == matching_main_name {
+            self.gain_materials(player, 2);
+        }
+    }
+
+    /// QA #78/#80 (Helzephyr): "your Pal with Nocturnal is deployed" --
+    /// Nocturnal is a keyword like any other (`grant_keyword`/
+    /// `has_keyword`), printed or granted, checked the same way either
+    /// case.
+    pub fn nocturnal_active(&self, card: CardId) -> bool {
+        self.has_keyword(card, "Nocturnal")
+    }
+
+    /// The mechanical fact `deploy`/`deploy_from` would report if asked
+    /// right after deploying `card`: On Deploy fires on any move into
+    /// the base (QA #32), so this is simply "is `card` currently in the
+    /// base" -- no separate tracking needed, since nothing currently
+    /// moves a card into Base without also meaning to deploy it.
+    pub fn last_deploy_result(&self, card: CardId) -> DeployFromResult {
+        DeployFromResult { card, on_deploy_triggered: self.cards[&card].zone == Zone::Base }
+    }
+
+    pub fn set_cost(&mut self, card: CardId, cost: u32) {
+        self.cards.get_mut(&card).expect("set_cost: unknown card").cost = cost;
+    }
+
+    pub fn cost(&self, card: CardId) -> u32 {
+        self.cards[&card].cost
+    }
+
+    /// QA #89 (Katress): the one-time "deploy at exactly [butchered
+    /// cost - 1]" allowance her AUTO grants -- narrated explicitly by
+    /// the caller (computed from `cost(butchered) - 1`), not derived
+    /// here, since knowing WHICH butchered Pal grants WHICH allowance is
+    /// Katress's specific effect text, not a generic engine fact.
+    pub fn set_deploy_cost_allowance(&mut self, allowance: Option<u32>) {
+        self.deploy_cost_allowance = allowance;
+    }
+
+    /// QA #89: exact match, not a ceiling -- a cost-4 Pal is legal, a
+    /// cost-3 or cost-2 Pal is not, when the allowance is exactly 4.
+    pub fn deploy_cost_allowance_permits(&self, cost: u32) -> bool {
+        self.deploy_cost_allowance == Some(cost)
     }
 }
