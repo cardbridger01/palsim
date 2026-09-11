@@ -650,6 +650,73 @@ fn rule_9_6_2_short_circuits_if_the_attacker_itself_is_gone() {
     assert_eq!(game.damage_taken(defender), 0, "9.6.2: the attacker being gone must skip the damage step entirely, not just skip the attacker's own damage");
 }
 
+/// 11.2.1/11.2.2: player damage resolution -- the common case, no Lucky
+/// card among the milled cards. The default test-scenario attacker's
+/// Strike is 3 (`TEST_SCENARIO_PAL_STRIKE`), so a clean attack on the
+/// player must mill exactly 3 cards to the graveyard and reduce life by
+/// exactly 3.
+#[test]
+fn rule_11_2_1_player_damage_mills_cards_and_reduces_life_by_full_damage() {
+    let mut game = GameState::test_scenario();
+    let attacker = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+    let starting_life = game.life(PlayerId::P2);
+    let starting_deck = game.zone_count(PlayerId::P2, Zone::Deck);
+
+    let attack = game.declare_attack(attacker, engine::combat::AttackTarget::Player(PlayerId::P2));
+    game.resolve_battle(attack);
+
+    assert_eq!(game.zone_count(PlayerId::P2, Zone::Graveyard), 3, "must mill exactly 3 cards for a Strike-3 attack");
+    assert_eq!(game.zone_count(PlayerId::P2, Zone::Deck), starting_deck - 3);
+    assert_eq!(game.life(PlayerId::P2), starting_life - 3, "life drops by the full damage amount");
+}
+
+/// 11.2.2.2: the instant a milled card has the Lucky icon, ALL
+/// remaining damage is cancelled -- even though the attacker's Strike
+/// is 3, only the 1 Lucky card gets milled, and life does not move at
+/// all. This is the case a naive "mill N cards, then check if any were
+/// Lucky, then decide whether to apply damage" implementation gets
+/// backwards from a "stop the instant Lucky is seen" implementation --
+/// both would pass a test that doesn't check the mill COUNT.
+#[test]
+fn rule_11_2_2_lucky_card_milled_cancels_all_remaining_damage() {
+    let mut game = GameState::test_scenario();
+    let attacker = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+    let starting_life = game.life(PlayerId::P2);
+    let lucky = game.place(PlayerId::P2, "EFILLER-LUCKY", Zone::Deck); // lowest id -> top of deck
+    game.grant_keyword(lucky, "Lucky");
+
+    let attack = game.declare_attack(attacker, engine::combat::AttackTarget::Player(PlayerId::P2));
+    game.resolve_battle(attack);
+
+    assert_eq!(game.zone_count(PlayerId::P2, Zone::Graveyard), 1, "the mill loop must stop the instant a Lucky card is milled, not continue to 3");
+    assert_eq!(game.life(PlayerId::P2), starting_life, "a Lucky cancel means the player loses no life at all");
+}
+
+/// 11.2.2.3: when the deck is SHORTER than the damage, the mill loop
+/// mills whatever remains and stops -- but life still drops by the
+/// full damage amount, not by however many cards were actually milled.
+/// This is the one place "cards milled" and "life lost" diverge, and
+/// the only test that can tell an (incorrect) `reduce_life(milled)` from
+/// the correct `reduce_life(damage)` apart. Also confirms the mill loop
+/// itself never touches `game_over` -- draining the deck to 0 mid-
+/// resolution is not a loss condition here (QA #38/#39's principle;
+/// 11.3.2's separate deck-out-on-draw rule is not what this is).
+#[test]
+fn rule_11_2_2_3_deck_shorter_than_damage_still_reduces_life_by_full_damage_not_mill_count() {
+    let mut game = GameState::test_scenario();
+    let attacker = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+    game.set_deck_size_for_test(PlayerId::P2, 2); // fewer than the attacker's Strike of 3
+    let starting_life = game.life(PlayerId::P2);
+
+    let attack = game.declare_attack(attacker, engine::combat::AttackTarget::Player(PlayerId::P2));
+    game.resolve_battle(attack);
+
+    assert_eq!(game.zone_count(PlayerId::P2, Zone::Deck), 0, "must mill everything the deck has, then stop");
+    assert_eq!(game.zone_count(PlayerId::P2, Zone::Graveyard), 2);
+    assert_eq!(game.life(PlayerId::P2), starting_life - 3, "life drops by the full Strike-3 damage, not by the 2 cards actually milled");
+    assert!(!game.has_lost(PlayerId::P2), "resolve_battle/resolve_player_damage must never set game_over directly -- the losing verdict is life's job, at check timing, not the mill loop's");
+}
+
 /// QA #50: "Does an ability that states 'When this card is attacked'
 /// activate even if I block using the card that has this ability?" ->
 /// "No, it does not activate. It activates when that card is attacked

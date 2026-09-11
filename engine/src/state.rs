@@ -1109,6 +1109,14 @@ impl GameState {
         self.cards[&card].keywords.contains(keyword)
     }
 
+    /// The Lucky icon (CLAUDE.md's deck-construction table, and
+    /// `resolve_player_damage`'s mill loop) is modeled as an ordinary
+    /// keyword -- `grant_keyword(card, "Lucky")` -- not a dedicated
+    /// field, the same generic-primitive choice as Taunt/Interrupt.
+    fn is_lucky(&self, card: CardId) -> bool {
+        self.has_keyword(card, "Lucky")
+    }
+
     /// QA #40: every one of the non-attacking player's rested Pals with
     /// Taunt is a legal target -- the attacker chooses among ALL of
     /// them, not a single forced one.
@@ -1276,6 +1284,27 @@ impl GameState {
         ids
     }
 
+    /// Materializes the single top card of `player`'s deck WITHOUT
+    /// decrementing the deck's zone count -- unlike
+    /// `look_or_reveal_top_n`, the card returned here is about to be
+    /// actually moved (`move_to_graveyard`, in `resolve_player_damage`'s
+    /// mill loop), and that call does the zone-count bookkeeping itself.
+    /// Doing it here too would double-decrement. `None` once the deck's
+    /// count has already reached 0 -- the mill loop's "or the deck is
+    /// empty" exit (11.2.2.3).
+    fn take_top_of_deck(&mut self, player: PlayerId) -> Option<CardId> {
+        if self.zone_counts[&(player, Zone::Deck)] == 0 {
+            return None;
+        }
+        let top = self.cards.iter().filter(|(_, c)| c.owner == player && c.zone == Zone::Deck).map(|(id, _)| *id).min();
+        let id = top.unwrap_or_else(|| {
+            let id = self.fresh_card_id();
+            self.cards.insert(id, Self::new_card_instance(player, Zone::Deck, CardKind::Pal));
+            id
+        });
+        Some(id)
+    }
+
     pub fn look_at_top(&mut self, player: PlayerId, x: usize) -> Vec<CardId> {
         self.look_or_reveal_top_n(player, x)
     }
@@ -1419,10 +1448,14 @@ impl GameState {
     ///   caller's own `run_check_timing()` afterward, same as everywhere
     ///   else `apply_damage` is used; this method never calls it itself.
     ///
-    /// Player/structure damage (11.2.1's *interrupt-type* player damage
-    /// resolution, with its own Lucky mill) is a different rule action
-    /// entirely and not implemented yet -- no currently-written test
-    /// exercises it. Left as an explicit `todo!` rather than guessed at.
+    /// Player damage (the `AttackTarget::Player` arm) is 11.2.1's
+    /// *interrupt-type* rule action, resolved by `resolve_player_damage`
+    /// -- an ordinary call made directly from here, never queued,
+    /// exactly as the module doc's "interrupt-type actions... will be
+    /// ordinary function calls" note promises. Structure damage is a
+    /// separate, still-unimplemented rule (no `Durability` field exists
+    /// on `CardInstance`, and no currently-written test exercises it) --
+    /// left as an explicit `todo!` rather than guessed at.
     pub fn resolve_battle(&mut self, attack: AttackId) {
         let attacker = self.battles[&attack].attacker;
         let target = self.battles[&attack].target;
@@ -1448,13 +1481,62 @@ impl GameState {
                 self.apply_damage(defender, attacker_power);
                 self.apply_damage(attacker, defender_power);
             }
-            AttackTarget::Structure(_) | AttackTarget::Player(_) => {
-                todo!("resolve_battle: player/structure damage step (11.2.1) is not implemented yet")
+            AttackTarget::Player(player) => {
+                self.resolve_player_damage(attacker, player);
+            }
+            AttackTarget::Structure(_) => {
+                todo!("resolve_battle: structure damage step is not implemented yet -- no Durability field exists on CardInstance")
             }
         }
 
         self.cards.get_mut(&attacker).unwrap().end_of_battle_as_attacker_triggered = true;
         self.battles.get_mut(&attack).unwrap().concluded = true;
+    }
+
+    /// 11.2.1/11.2.2: player damage resolution. `deal_damage_to_player`
+    /// already encodes QA #64 (Strike <= 0 deals no damage at all --
+    /// the mill loop below never starts).
+    ///
+    /// 11.2.2.1/11.2.2.2: mill the top card of the deck one at a time.
+    /// The instant a milled card has the Lucky icon, the loop stops and
+    /// ALL remaining damage is cancelled outright -- no life is lost,
+    /// even if only 1 of N cards has been milled so far. This is a
+    /// `return`, not a `break`: falling through to the `reduce_life`
+    /// call below would be exactly the bug this rule exists to prevent.
+    ///
+    /// 11.2.2.3: absent a Lucky card, the loop stops once the mill count
+    /// reaches the damage amount, OR the deck runs out first -- and in
+    /// BOTH of those exits, life drops by the FULL damage amount, never
+    /// by however many cards were actually milled. Those two numbers
+    /// only diverge in the endgame case (deck shorter than the damage),
+    /// which is exactly the case worth a dedicated test for, since the
+    /// common case can't tell the two readings apart.
+    ///
+    /// Milling the deck to 0 here is NOT itself a loss (QA #38/#39,
+    /// same principle as `look_or_reveal_top_n`) -- the losing verdict
+    /// (11.3.3) is a check-type rule action that only `run_check_timing`
+    /// ever evaluates, via `life`, never `game_over` set directly here.
+    /// (Drawing from an empty deck, 11.3.2, is a different rule action
+    /// entirely and not modeled by this method.)
+    fn resolve_player_damage(&mut self, attacker: CardId, target: PlayerId) {
+        let damage = self.deal_damage_to_player(attacker, target);
+        if damage == 0 {
+            return;
+        }
+
+        let mut milled = 0u32;
+        while let Some(card) = self.take_top_of_deck(target) {
+            self.move_to_graveyard(card, Zone::Deck);
+            milled += 1;
+            if self.is_lucky(card) {
+                return; // 11.2.2.2: cancels ALL remaining damage.
+            }
+            if milled >= damage {
+                break;
+            }
+        }
+
+        self.reduce_life(target, damage as i32); // 11.2.2.3: full damage, not `milled`.
     }
 
     /// 9.4.2: the non-turn player rests a STANDING Pal to become the
