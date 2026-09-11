@@ -151,6 +151,8 @@ All three are O(size) per call, fine within one bounded game (a few dozen attack
 
 **Phase 4 must allocate a fresh `GameState` per playout, never reuse one across games.** That's the one design constraint this benchmark actually changes about the Phase 4 plan — worth stating as a hard requirement there, not just a footnote here.
 
+**If a future Phase 4 wants to reuse state anyway** (allocation pressure at high playout rates, say), **the fix is pruning `self.cards` and `self.battles`** — dropping graveyarded/milled cards and concluded battles that no remaining rule or ability can still reference — **not caching or otherwise short-circuiting the re-derive-fresh scans themselves.** `find_pending_rule_action` re-scanning fresh every call is what makes QA #74 (a removed modifier visible on the very next check) and the 9.6.4/1.2.1 fixpoint correct at all; memoizing it is exactly the kind of change that would pass every currently-green test and then silently misjudge a lethal-damage or losing-verdict check the next time state changes mid-loop. The scans are correct. The maps just need to stop growing forever.
+
 ---
 
 ## 2. Repository layout
