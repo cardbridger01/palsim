@@ -3,6 +3,13 @@
 version = 4
 
 [[package]]
+name = "cards"
+version = "0.1.0"
+dependencies = [
+ "engine",
+]
+
+[[package]]
 name = "engine"
 version = "0.1.0"
 
@@ -23,6 +30,7 @@ name = "palsim_tests"
 version = "0.1.0"
 dependencies = [
  "engine",
+ "replay",
  "serde",
  "serde_json",
 ]
@@ -43,6 +51,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001"
 dependencies = [
  "proc-macro2",
+]
+
+[[package]]
+name = "replay"
+version = "0.1.0"
+dependencies = [
+ "cards",
+ "engine",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]

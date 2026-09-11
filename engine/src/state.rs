@@ -334,6 +334,13 @@ pub struct GameState {
     /// specific card's effect is stated by the test, not guessed by the
     /// engine.
     deploy_cost_allowance: Option<u32>,
+    /// `engine::replay`'s `last_on_deploy_triggered`: which card
+    /// `deploy`/`deploy_from` most recently placed. Not a general rules
+    /// concept (no QA ruling needs "what was the last card deployed" as
+    /// a queryable fact) -- a small, generically-useful bookkeeping
+    /// convenience, kept here rather than in `engine::replay` because
+    /// nothing outside `GameState` sees `deploy`/`deploy_from` mutate.
+    last_deployed: Option<CardId>,
 }
 
 /// A generous, unremarkable starting supply for a scenario that's
@@ -395,6 +402,7 @@ impl GameState {
             known_unreleased_card_names: HashSet::new(),
             top_of_deck: HashMap::new(),
             deploy_cost_allowance: None,
+            last_deployed: None,
         }
     }
 
@@ -501,6 +509,7 @@ impl GameState {
         let id = self.fresh_card_id();
         self.cards.insert(id, Self::new_card_instance(player, zone, CardKind::Pal));
         *self.zone_counts.get_mut(&(player, zone)).unwrap() += 1;
+        self.last_deployed = Some(id);
         Ok(id)
     }
 
@@ -525,17 +534,24 @@ impl GameState {
     /// an On Deploy trigger. QA #32: On Deploy fires on ANY move into
     /// the base, regardless of source zone -- deck, graveyard, hand,
     /// wherever -- so `on_deploy_triggered` is simply `to_zone ==
-    /// Zone::Base`. There's no per-card On Deploy ability system yet (no
-    /// real card scripts exist), so this reports the mechanical fact a
-    /// future ability-activation layer would key off of, not an actual
-    /// ability firing.
+    /// Zone::Base`. This reports the mechanical fact `cards::`'s actual
+    /// On Deploy functions (or, in `engine::replay`, a check-timing step
+    /// that decides whether to run one) key off of; it doesn't run any
+    /// ability itself.
     pub fn deploy_from(&mut self, player: PlayerId, card: CardId, from_zone: Zone, to_zone: Zone) -> DeployFromResult {
         let instance = self.cards.get_mut(&card).expect("deploy_from: unknown card");
         assert_eq!(instance.zone, from_zone, "deploy_from: card is not actually in from_zone");
         instance.zone = to_zone;
         *self.zone_counts.get_mut(&(player, from_zone)).unwrap() -= 1;
         *self.zone_counts.get_mut(&(player, to_zone)).unwrap() += 1;
+        if to_zone == Zone::Base {
+            self.last_deployed = Some(card);
+        }
         DeployFromResult { card, on_deploy_triggered: to_zone == Zone::Base }
+    }
+
+    pub fn last_deployed(&self) -> Option<CardId> {
+        self.last_deployed
     }
 
     /// QA #12: structures/gears in the base, with no limit. A sibling of
@@ -927,6 +943,19 @@ impl GameState {
         self.cards.get_mut(&card).expect("increase_power: unknown card").power += magnitude as i32;
     }
 
+    /// Sets base Power directly -- the `set_cost`/`set_strike` sibling
+    /// for Power. `engine::replay` needs this to seed a Pal-vs-Pal
+    /// `battle_attack` log line's two participants with the EXACT
+    /// Power the client already computed (buffs, OnAttack reveals, and
+    /// all), read straight off that event's own `attacker_power`/
+    /// `defender_power` resolution fields -- reproducing that number
+    /// from card_meta plus ability simulation isn't in scope for a
+    /// driver that never scripted most of these cards (see the
+    /// `replay` crate's own module doc comment).
+    pub fn set_power(&mut self, card: CardId, power: i32) {
+        self.cards.get_mut(&card).expect("set_power: unknown card").power = power;
+    }
+
     pub fn damage_taken(&self, card: CardId) -> u32 {
         self.cards[&card].damage_taken
     }
@@ -1088,6 +1117,15 @@ impl GameState {
         full.split(" – ").next().unwrap_or(&full).to_string()
     }
 
+    /// The untruncated name `set_card_name` stored -- `main_name_of`
+    /// deliberately stops at the en dash (QA #26); `engine::replay`
+    /// needs the whole printed name to match a client log's exact
+    /// text, e.g. distinguishing "Pengullet – Yearning for the Sky"
+    /// from "Pengullet – Frequent Flyer".
+    pub fn full_name_of(&self, card: CardId) -> String {
+        self.cards[&card].card_name.clone().unwrap_or_default()
+    }
+
     // --- CONT zone-effectiveness, keywords/resting/Taunt (QA #27, #31,
     //     #40, #47, #51) --------------------------------------------------
 
@@ -1112,6 +1150,25 @@ impl GameState {
 
     pub fn is_resting(&self, card: CardId) -> bool {
         self.cards[&card].resting
+    }
+
+    /// 7.2.1: the stand phase stands only the TURN PLAYER's own cards
+    /// (CLAUDE.md's own combat-sequencing note -- a Pal that ends the
+    /// opponent's turn rested is a legal attack target on yours,
+    /// implying the opponent's own cards are untouched by this call).
+    /// `wont_stand_next_stand_phase` (QA #61's "does not stand during
+    /// your opponent's next stand phase") suppresses exactly ONE stand
+    /// phase for a marked card -- the marker is cleared here regardless
+    /// of whether it fired, since it's a one-shot duration, not a
+    /// standing rule.
+    pub fn stand_phase(&mut self, player: PlayerId) {
+        for card in self.pals_in_base(player) {
+            if self.wont_stand_next_stand_phase(card) {
+                self.cards.get_mut(&card).unwrap().keywords.remove("__wont_stand_next");
+            } else {
+                self.cards.get_mut(&card).unwrap().resting = false;
+            }
+        }
     }
 
     pub fn grant_keyword(&mut self, card: CardId, keyword: &str) {
@@ -1308,7 +1365,22 @@ impl GameState {
     /// #72), which is for the "look and leave it in the deck" shape and
     /// decrements immediately since nothing moves it further. `None`
     /// once the deck's count has already reached 0.
+    ///
+    /// Consults (and consumes) `top_of_deck` first, same as `draw` --
+    /// TD01-012's "put it on the top of the deck" has to mean the same
+    /// thing to whichever primitive next reads "the top of the deck",
+    /// not just to `draw` specifically. Before this checked the marker,
+    /// a card placed on top and then immediately consumed by THIS
+    /// method (BP01-025 Chillet's own On Deploy reveal, which moves the
+    /// card out of Deck without ever clearing the marker) left the
+    /// marker dangling -- pointing at a card that had already left the
+    /// deck entirely -- so the next unrelated `draw` would still find it
+    /// and yank that card, now sitting in Base or the graveyard, back
+    /// into Hand.
     pub fn take_top_of_deck(&mut self, player: PlayerId) -> Option<CardId> {
+        if let Some(card) = self.top_of_deck.remove(&player) {
+            return Some(card);
+        }
         if self.zone_counts[&(player, Zone::Deck)] == 0 {
             return None;
         }
@@ -1424,6 +1496,19 @@ impl GameState {
         let id = self.fresh_attack_id();
         self.battles.insert(id, Battle { attacker, target: Some(target), concluded: false });
         id
+    }
+
+    /// 9.7.4: at most one battle is ever unconcluded at a time
+    /// (`declare_attack` panics otherwise), so "the pending attack" is
+    /// unambiguous. `engine::replay` needs this for log lines that
+    /// react to an attack already in progress (an Interrupt, a battle's
+    /// own resolution) without themselves naming the attacker.
+    pub fn pending_attack(&self) -> Option<AttackId> {
+        self.battles.iter().find(|(_, b)| !b.concluded).map(|(&id, _)| id)
+    }
+
+    pub fn attacker_of(&self, attack: AttackId) -> CardId {
+        self.battles[&attack].attacker
     }
 
     /// QA #49: real card behaviour (the attacker's own On Attack
@@ -1569,12 +1654,20 @@ impl GameState {
     /// *declared* target -- QA #50's whole point, which is why this
     /// doesn't set `was_declared_pal_target`.
     pub fn block(&mut self, attack: AttackId, blocker: CardId) {
-        let _ = attack;
         assert!(
             !self.cards[&blocker].resting,
             "block: {blocker:?} is already rested -- 9.4.2: only a STANDING Pal may block (blocking is what rests it)"
         );
         self.rest(blocker);
+        // The blocker becomes the battle's actual opponent for the
+        // damage step -- `resolve_battle` reads `target` straight off
+        // the `Battle`, so without this reassignment it would still
+        // resolve against whatever was originally declared (QA #50's
+        // own fixture never calls `resolve_battle` afterward, which is
+        // why this was missed). `was_declared_pal_target` deliberately
+        // stays untouched -- that flag means "was the ORIGINAL declared
+        // target," which a blocker never is (QA #50).
+        self.battles.get_mut(&attack).unwrap().target = Some(AttackTarget::Pal(blocker));
     }
 
     /// QA #45: fires even when the attack was Interrupted -- 12.8.2:
@@ -1944,6 +2037,16 @@ impl GameState {
 
     pub fn set_cost(&mut self, card: CardId, cost: u32) {
         self.cards.get_mut(&card).expect("set_cost: unknown card").cost = cost;
+    }
+
+    /// Sets this card's base Strike directly -- distinct from
+    /// `apply_cont_strike_modifier`, which adds a continuous modifier on
+    /// top rather than replacing the base value. `engine::replay` needs
+    /// this to seed a materialized card with its real printed Strike
+    /// (`data/11cardattributes-with-elements.csv`), the same way
+    /// `set_cost` already does for Cost.
+    pub fn set_strike(&mut self, card: CardId, strike: i32) {
+        self.cards.get_mut(&card).expect("set_strike: unknown card").strike = strike;
     }
 
     pub fn cost(&self, card: CardId) -> u32 {

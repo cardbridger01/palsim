@@ -12,8 +12,7 @@
 //! Encoding a specific resolution now would be inventing an answer this
 //! project doesn't have yet.
 
-use super::support::{load_fixture, replay_and_assert_every_life_check};
-use engine::state::PlayerId;
+use super::support::{expected_life_check_count, load_fixture, replay_and_assert_every_life_check};
 
 const T7_ANOMALY_LINES: std::ops::Range<usize> = 92..102; // lines 92-101 inclusive
 const EXPECTED_TURNS_92_TO_101: [i64; 10] = [7, 7, 7, 7, 7, 7, 6, 7, 6, 7];
@@ -23,11 +22,17 @@ fn battle3_replays_to_a_win_on_turn_7_with_matching_life_totals_throughout() {
     let log = load_fixture("battle3");
     assert_eq!(log.meta.result, "WIN turn 7");
 
-    let mut game = engine::replay::new_game_for_replay(&log.meta);
-    replay_and_assert_every_life_check(&mut game, &log);
+    let mut game = replay::new_game_for_replay(&log.meta);
+    let checks_performed = replay_and_assert_every_life_check(&mut game, &log);
 
+    // See battle1's identical comment -- guards against the harness
+    // silently skipping lines it's supposed to check.
+    assert_eq!(checks_performed, expected_life_check_count(&log));
+
+    // 3.2.1.2: life below 0 is referenced as 0 but not set to 0 -- see
+    // battle1's identical comment.
     assert_eq!(
-        game.life(PlayerId::opponent_of_replay_owner(&log.meta)),
+        game.life(replay::opponent_of_replay_owner(&log.meta)).max(0),
         0,
         "the replay's own result ('WIN turn 7') means the opponent's life must be 0 at the end"
     );
@@ -43,11 +48,11 @@ fn battle3_chillet_free_deploy_chain_still_fires_its_own_on_deploy() {
         .collect();
     assert_eq!(free_deploys.len(), 1, "battle3 is known to contain exactly 1 reveal-then-free-deploy chain (lines 107-108)");
 
-    let mut game = engine::replay::new_game_for_replay(&log.meta);
+    let mut game = replay::new_game_for_replay(&log.meta);
     for event in &log.events {
-        engine::replay::apply_event(&mut game, event);
+        replay::apply_event(&mut game, &log.meta, event);
         if event.caused_by_line.is_some() {
-            assert!(engine::replay::last_on_deploy_triggered(&game), "line {}", event.line_index);
+            assert!(replay::last_on_deploy_triggered(&game), "line {}", event.line_index);
         }
     }
 }
@@ -73,10 +78,7 @@ fn battle3_t7_anomaly_events_are_applied_in_file_line_order_not_turn_order() {
         "the harness must iterate log.events in array order, which is file line order"
     );
 
-    let turns: Vec<i64> = events_in_range
-        .iter()
-        .map(|e| e.turn.expect("every real log line has a turn"))
-        .collect();
+    let turns: Vec<i64> = events_in_range.iter().map(|e| e.turn as i64).collect();
     assert_eq!(
         turns, EXPECTED_TURNS_92_TO_101,
         "turn numbers must be replayed exactly as logged -- including the T6 regressions at lines 98 and 100 -- \
@@ -88,8 +90,8 @@ fn battle3_t7_anomaly_events_are_applied_in_file_line_order_not_turn_order() {
     // that would mean something upstream of this loop (not this test)
     // sorted by turn, which is exactly the bug this fixture exists to
     // catch.
-    let mut game = engine::replay::new_game_for_replay(&log.meta);
+    let mut game = replay::new_game_for_replay(&log.meta);
     for event in &log.events {
-        engine::replay::apply_event(&mut game, event);
+        replay::apply_event(&mut game, &log.meta, event);
     }
 }

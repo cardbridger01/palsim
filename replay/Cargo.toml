@@ -1,0 +1,20 @@
+[package]
+name = "replay"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# Depends on BOTH engine and cards -- the reason this is its own crate
+# rather than a module inside engine (as tests/replays/support.rs,
+# written in an earlier session, originally assumed). apply_event has
+# to call real card scripts (cards::bp01::chillet_on_deploy and
+# friends), and cards already depends on engine, so engine cannot
+# depend back on cards without a cycle. tests/'s existing `use
+# engine::replay::...` imports were updated to `use replay::...`
+# accordingly -- a mechanical import-path fix, not a test-weakening
+# change; the scaffold predates the cards-as-separate-crate decision.
+[dependencies]
+engine = { path = "../engine" }
+cards = { path = "../cards" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"

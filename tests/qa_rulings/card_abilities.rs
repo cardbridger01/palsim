@@ -516,6 +516,73 @@ fn qa_044_once_per_turn_is_tracked_per_card_instance_not_per_name() {
     );
 }
 
+/// 7.2.1 (CLAUDE.md's own combat-sequencing note): the stand phase
+/// stands only the turn player's own cards -- `engine::replay` needs
+/// this for battle1 (Elphidran GR attacks in T2, T3, and T4, so it
+/// must stand back up between turns), but it's a generic rule with no
+/// QA number of its own, not a replay-specific mechanic.
+#[test]
+fn rule_7_2_1_stand_phase_stands_only_the_turn_players_own_rested_cards() {
+    let mut game = GameState::test_scenario();
+    let own_rested = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+    game.rest(own_rested);
+    let opponents_rested = game.deploy(PlayerId::P2, "EFILLER-001", Zone::Base).unwrap();
+    game.rest(opponents_rested);
+
+    game.stand_phase(PlayerId::P1);
+
+    assert!(!game.is_resting(own_rested), "the turn player's own rested card must stand");
+    assert!(game.is_resting(opponents_rested), "the OTHER player's card must not stand on this call");
+}
+
+/// QA #61's "does not stand during your opponent's next stand phase" is
+/// a ONE-SHOT suppression -- it must not carry over to the stand phase
+/// after that.
+#[test]
+fn rule_7_2_1_wont_stand_next_suppresses_exactly_one_stand_phase() {
+    let mut game = GameState::test_scenario();
+    let card = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+    game.choose_and_rest_wont_stand_next(PlayerId::P1, card);
+
+    game.stand_phase(PlayerId::P1);
+    assert!(game.is_resting(card), "the marked stand phase must be suppressed");
+
+    game.rest(card); // simulate another attack during the turn in between
+    game.stand_phase(PlayerId::P1);
+    assert!(!game.is_resting(card), "the SECOND stand phase must stand it normally -- the suppression was one-shot");
+}
+
+/// `engine::replay`'s `last_on_deploy_triggered` reads this with no
+/// other argument, so it has to come from somewhere queryable off
+/// `GameState` alone.
+#[test]
+fn last_deployed_tracks_the_most_recent_deploy_into_the_base() {
+    let mut game = GameState::test_scenario();
+    let first = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+    assert_eq!(game.last_deployed(), Some(first));
+
+    let staged = game.place(PlayerId::P1, "EFILLER-001", Zone::Hand);
+    let result = game.deploy_from(PlayerId::P1, staged, Zone::Hand, Zone::Base);
+    assert_eq!(game.last_deployed(), Some(result.card));
+
+    let to_hand = game.place(PlayerId::P1, "EFILLER-002", Zone::Deck);
+    game.deploy_from(PlayerId::P1, to_hand, Zone::Deck, Zone::Hand); // not a deploy: doesn't move it
+    assert_eq!(game.last_deployed(), Some(result.card), "a move that isn't INTO the base must not update this");
+}
+
+/// QA #26: `main_name_of` stops at the en dash. `engine::replay` needs
+/// the untruncated printed name to disambiguate two cards that share a
+/// main name but not a subtitle (e.g. two different "Pengullet" prints).
+#[test]
+fn full_name_of_returns_the_untruncated_printed_name() {
+    let mut game = GameState::test_scenario();
+    let card = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+    game.set_card_name(card, "Pengullet – Yearning for the Sky");
+
+    assert_eq!(game.full_name_of(card), "Pengullet – Yearning for the Sky");
+    assert_eq!(game.main_name_of(card), "Pengullet");
+}
+
 /// QA #45: "Does an ability that states 'At the end of the battle this
 /// card attacked' activate even if the attack was Interrupted?" -> "Yes,
 /// it activates."

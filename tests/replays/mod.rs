@@ -5,11 +5,11 @@
 //! to shell out to Python), through the engine and assert state at every
 //! line that the log itself states a life total for.
 //!
-//! `engine::replay::ReplayLog` / `ReplayEvent` are meant to be exactly
-//! the JSON schema `parser/replay_parser.py` documents in its module
-//! docstring (line_index, turn, phase, actor, action, cards, targets,
-//! resolution, caused_by_line, text) -- Phase 3 should derive `Deserialize`
-//! for them from that schema directly rather than re-describing it.
+//! `replay::ReplayLog` / `ReplayEvent` are meant to be exactly the JSON
+//! schema `parser/replay_parser.py` documents in its module docstring
+//! (line_index, turn, phase, actor, action, cards, targets, resolution,
+//! caused_by_line, text) -- they derive `Deserialize` from that schema
+//! directly rather than re-describing it.
 //!
 //! Events are replayed in `events` array order, i.e. file line order,
 //! **never** sorted or grouped by the `turn` field -- battle3's T7
