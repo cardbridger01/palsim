@@ -115,9 +115,41 @@ Install MSVC build tools **before** Rust, or you'll hit a confusing linker error
 
 **Rust for engine and search, Python for orchestration**, bridged with PyO3/maturin. Cloud cost: $0.
 
-These are conservative. The 96MB of 3D V-Cache suits a search workload full of small random-access lookups (card data, zone state, RNG) better than raw core count suggests. **Benchmark once the engine exists** — time 100k random playouts and extrapolate — rather than trusting this table.
+**Unvalidated.** This table is the original pre-engine estimate — extrapolated from nothing, before any engine code existed. It cannot yet be replaced with a real games/sec figure: that needs Phase 4's turn-structure loop and legal-move enumeration, neither of which exists yet (`sim/` is empty). What's now measured is §1.4.1 below — the primitive costs a games/sec figure would be built out of. Re-benchmark this table once Phase 4 exists; until then, treat every row above as a guess.
 
 **The 4070 is not needed.** Only relevant if ISMCTS proves too weak and you train a policy/value net, which is unlikely given the tiny branching factor. Don't let the GPU pull you toward an AlphaZero architecture you don't need.
+
+#### 1.4.1 Measured primitive costs
+
+`engine/examples/bench_primitives.rs` — `cargo run --release --example bench_primitives` (release, `target-cpu=native`, single-threaded, 2026-09-11 on the 9800X3D). Not a games/sec figure; see above.
+
+| Primitive | Realistic condition | Per-op cost |
+|---|---|---|
+| `deploy` | fresh `GameState` | ~350 ns |
+| `declare_attack` + `resolve_battle` | bounded, ~20 attacks/game (fresh `GameState` every 20) | ~680 ns |
+| `run_check_timing` | board = 100 tracked cards (a plausible full-game ceiling) | ~110 ns |
+| `run_check_timing` | board = 300 tracked cards | ~310 ns |
+
+At realistic per-game scale, none of this is the bottleneck the ~250k figure worried about — these are all sub-microsecond.
+
+**But there's a real scaling trap underneath it, found while isolating these numbers.** Three places re-derive from a full scan on every call, deliberately, for correctness, not as bugs:
+
+- `find_pending_rule_action` (inside `run_check_timing`'s fixpoint loop) re-scans `self.cards` every call — QA #74 needs a removed modifier visible on the very next check.
+- `declare_attack`'s precondition (`self.battles.values().all(...)`, 9.7.4) scans every battle ever declared on this `GameState` — `battles` is never pruned.
+- The player-damage mill loop's `take_top_of_deck` (called once per milled card, 3× per attack at the default Strike) scans `self.cards` for the target's deck — also never pruned; a milled card stays in `self.cards` with its zone changed to Graveyard, not removed.
+
+All three are O(size) per call, fine within one bounded game (a few dozen attacks, a few hundred tracked cards). They stop being fine if a search process **reuses one `GameState` across many simulated games** instead of allocating fresh per playout — `self.cards` and `self.battles` only grow, never shrink, across that instance's lifetime. Isolated measurement:
+
+| Metric | Value |
+|---|---|
+| `declare_attack` marginal cost, battles-history = 0 | ~203 ns |
+| `declare_attack` marginal cost, battles-history = 50,000 | ~30 µs (**148×**) |
+| `resolve_battle` (player target, milling) marginal cost, `self.cards` ~ 0 | ~519 ns |
+| `resolve_battle` (player target, milling) marginal cost, `self.cards` ~ 50,000 | ~457 µs (**880×**) |
+
+50,000 is roughly what ~800 unreset games' worth of milling would accumulate on one instance — not a realistic single-game size, but a realistic outcome of "for speed, don't reallocate `GameState` between playouts."
+
+**Phase 4 must allocate a fresh `GameState` per playout, never reuse one across games.** That's the one design constraint this benchmark actually changes about the Phase 4 plan — worth stating as a hard requirement there, not just a footnote here.
 
 ---
 
