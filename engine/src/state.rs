@@ -460,10 +460,23 @@ impl GameState {
 
     /// Draws exactly 1 card from the deck to the hand. QA #22: this is
     /// the only Draw Phase action -- there is no opt-out.
+    ///
+    /// Consults `top_of_deck` first: TD01-012 (Elphidran Aqua)'s real
+    /// On Deploy ends with "...put it on the top of the deck"
+    /// (`move_to_top_of_deck`), and that fact must actually be what the
+    /// NEXT draw returns, or "put on top" would be purely cosmetic --
+    /// the next draw would materialize an unrelated card instead of the
+    /// one just placed. Consuming (removing) the entry is what makes it
+    /// apply to exactly the next draw, not every one after.
     pub fn draw(&mut self, player: PlayerId) -> CardId {
         let deck_count = self.zone_counts.get_mut(&(player, Zone::Deck)).unwrap();
         *deck_count = deck_count.saturating_sub(1);
         *self.zone_counts.get_mut(&(player, Zone::Hand)).unwrap() += 1;
+
+        if let Some(card) = self.top_of_deck.remove(&player) {
+            self.cards.get_mut(&card).expect("draw: top_of_deck card unknown").zone = Zone::Hand;
+            return card;
+        }
 
         let id = self.fresh_card_id();
         // kind is arbitrary (Pal) for a drawn-but-otherwise-untracked test card.
@@ -1285,14 +1298,17 @@ impl GameState {
     }
 
     /// Materializes the single top card of `player`'s deck WITHOUT
-    /// decrementing the deck's zone count -- unlike
-    /// `look_or_reveal_top_n`, the card returned here is about to be
-    /// actually moved (`move_to_graveyard`, in `resolve_player_damage`'s
-    /// mill loop), and that call does the zone-count bookkeeping itself.
-    /// Doing it here too would double-decrement. `None` once the deck's
-    /// count has already reached 0 -- the mill loop's "or the deck is
-    /// empty" exit (11.2.2.3).
-    fn take_top_of_deck(&mut self, player: PlayerId) -> Option<CardId> {
+    /// decrementing the deck's zone count -- the card returned here is
+    /// about to be actually moved by the caller's own subsequent call
+    /// (`move_to_graveyard` in `resolve_player_damage`'s mill loop;
+    /// `deploy_from` in BP01-025 Chillet's real On Deploy, `cards/`'s
+    /// first consumer), and that call does the zone-count bookkeeping
+    /// itself -- doing it here too would double-decrement. Unlike
+    /// `look_or_reveal_top_n` (Look/Reveal-top-X, QA #38/#39/#59/#60/
+    /// #72), which is for the "look and leave it in the deck" shape and
+    /// decrements immediately since nothing moves it further. `None`
+    /// once the deck's count has already reached 0.
+    pub fn take_top_of_deck(&mut self, player: PlayerId) -> Option<CardId> {
         if self.zone_counts[&(player, Zone::Deck)] == 0 {
             return None;
         }
@@ -1873,6 +1889,27 @@ impl GameState {
 
     pub fn top_of_deck(&self, player: PlayerId) -> Option<CardId> {
         self.top_of_deck.get(&player).copied()
+    }
+
+    /// A generic "move `card` from `from_zone` to the top of `player`'s
+    /// deck" primitive, with REAL zone bookkeeping -- unlike
+    /// `return_to_top_unchanged`, which only ever puts back a card
+    /// `look_at_top` already decremented the deck count for (so it
+    /// deliberately leaves zone_counts alone, since that card never
+    /// really left). Here the card is coming from a genuinely different
+    /// zone (TD01-012 Elphidran Aqua's real On Deploy: "...choose 1
+    /// card from your hand, and put it on the top of the deck"), so
+    /// this decrements `from_zone` and increments Deck for real, then
+    /// sets the same `top_of_deck` fact -- `draw`'s "consult
+    /// top_of_deck first" is what makes that fact actually observed by
+    /// the next draw, not just a queryable side-channel.
+    pub fn move_to_top_of_deck(&mut self, player: PlayerId, card: CardId, from_zone: Zone) {
+        let instance = self.cards.get_mut(&card).expect("move_to_top_of_deck: unknown card");
+        assert_eq!(instance.zone, from_zone, "move_to_top_of_deck: card is not actually in from_zone");
+        instance.zone = Zone::Deck;
+        *self.zone_counts.get_mut(&(player, from_zone)).unwrap() -= 1;
+        *self.zone_counts.get_mut(&(player, Zone::Deck)).unwrap() += 1;
+        self.top_of_deck.insert(player, card);
     }
 
     /// QA #77 (Digtoise's Headband / Foxparks' Harness-shaped gears:

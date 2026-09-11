@@ -6,10 +6,12 @@ __pycache__/
 .venv/
 .pytest_cache/
 
-# engine/ is a library with no external dependencies of its own,
-# consumed only via tests/'s path dependency -- tests/Cargo.lock is the
-# one that matters and is committed (an "application" test harness).
+# engine/ and cards/ are libraries with no external dependencies of
+# their own, consumed only via tests/'s path dependency -- tests/
+# Cargo.lock is the one that matters and is committed (an
+# "application" test harness).
 /engine/Cargo.lock
+/cards/Cargo.lock
 
 # Scratch dumps of data/*.json for reading convenience while writing tests
 # (e.g. qa_dump_card_abilities.txt). Not a source of truth -- the JSON

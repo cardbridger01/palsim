@@ -1,0 +1,16 @@
+[package]
+name = "cards"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# Phase 3 of CLAUDE.md's build order, the second half ("engine/, cards/").
+# One module per set (bp01.rs, td01.rs, td02.rs), each card's effect
+# body citing its effect_text verbatim from
+# data/11cardattributes-with-elements.csv. Every function here is an
+# ordinary call over engine::state's generic primitives -- engine/
+# itself has no dispatch table and knows nothing about any card number
+# (the QA #84 decision: engine stays generic, card-specific behaviour
+# lives here instead).
+[dependencies]
+engine = { path = "../engine" }
