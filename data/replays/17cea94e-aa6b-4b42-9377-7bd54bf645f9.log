@@ -1,0 +1,223 @@
+----- TIER 2 MATCH 7/10 done (worklist row 7, recordId 17cea94e-aa6b-4b42-9377-7bd54bf645f9, Inqory vs Campo) -----
+
+=====================================================================
+MATCH: Campo vs Inqory
+recordId: 17cea94e-aa6b-4b42-9377-7bd54bf645f9
+RESULT: INQORY WINS - Campo ran out of cards (deck-out loss, NOT a life-reduction knockout). Final life: Inqory (WINNER) 8, Campo 2.
+NOTE: Inqory's deck titled "BLUE/GREEN DECK (AUG 21)" in HUD. Long 30-turn grind.
+NOTE: 8 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 3:  Blazehowl interrupts Digtoise's attack
+  Turn 10: Foxparks interrupts Lyleen's attack
+  Turn 10: Cryolinx interrupts Pengullet's attack (second bare interrupt this turn)
+  Turn 14: Reindrix interrupts Rushoar's attack
+  Turn 19: Foxparks interrupts Reindrix's attack
+  Turn 21: Reindrix interrupts Digtoise's attack
+  Turn 21: Blazehowl interrupts Lyleen's attack (second bare interrupt this turn)
+  Turn 29: Cryolinx interrupts Reindrix's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+CAMPO
+Inqory interrupted with Cryolinx, discarded Found an Egg!. The attack was nullified.
+TURN 2
+CAMPO
+Played Pal Sphere for 4 Souls.
+Drew 3.
+Deployed Pengullet Rocket Launcher to slot 2 for 4 Souls.
+TURN 3
+INQORY
+Blazehowl
+Digtoise's attack was interrupted.
+TURN 4
+CAMPO
+Campo activated Pengullet Rocket Launcher.
+Campo's Jormuntide Ignis gets power +200 until end of turn.
+Campo activated Pengullet Rocket Launcher.
+Campo's Jormuntide Ignis gets power +200 until end of turn.
+Campo's Jormuntide Ignis attacks Inqory's Digtoise.
+TURN 5
+CAMPO
+Inqory interrupted with Dinossom, paid 1 Soul. The attack was nullified.
+TURN 6
+CAMPO
+Campo activated Jormuntide Ignis.
+Campo's Jormuntide Ignis attacks Inqory's Digtoise.
+TURN 7
+CAMPO
+Inqory interrupted with Dinossom, paid 1 Soul. The attack was nullified.
+TURN 8
+CAMPO
+Campo deployed Pengullet Rocket Launcher.
+Campo activated Pengullet Rocket Launcher.
+Campo's Jormuntide gets power +200 until end of turn.
+Campo activated Single-Shot Rifle.
+Campo's Jormuntide gets power +200 until end of turn.
+Campo's Jormuntide attacks Inqory's Digtoise.
+Jormuntide (1600+400 = 2000) attacked Digtoise (900+1000 = 1900).
+Jormuntide
+Digtoise destroyed, 2000 damage vs 1900 Power.
+Deployed Pengullet to slot 1 for 4 Souls.
+Played Lily's Strategy for 3 Souls.
+All Inqory's Pals get power +1000 until end of turn.
+Pengullet gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 2100 to every Campo Pal, then sacrificed this card.
+Played Found an Egg! for 2 Souls.
+Looked at top 5: took Dinossom to hand.
+TURN 9
+CAMPO
+Campo deployed Pengullet.
+Campo's Pengullet attacks Inqory for 2.
+Pengullet hit Inqory for 2. Damage Check: 2 cards milled, no Lucky. Inqory 10 to 8 life.
+Deployed Pengullet to slot 1 for 3 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Dealt 1000 to every Campo Pal, then sacrificed this card.
+Deployed Lyleen to slot 1 for 7 Souls.
+Got 3 .
+Spent 3 (0 left).
+Looked at top 5: deployed Pengullet.
+TURN 10
+INQORY
+Foxparks
+Lyleen's attack was interrupted.
+Cryolinx
+Pengullet's attack was interrupted.
+Drew 1.
+TURN 11
+CAMPO
+Campo deployed Pump-Action Shotgun.
+Deployed Digtoise to slot 1 for 6 Souls.
+Played Pal Sphere for 4 Souls.
+Drew 3.
+TURN 12
+INQORY
+✦
+Digtoise attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+TURN 13
+CAMPO
+Campo deployed Pengullet.
+Campo activated Pengullet Rocket Launcher.
+Campo's Pengullet gets power +500 until end of turn.
+Campo activated Pengullet Rocket Launcher.
+Campo's Pengullet gets power +500 until end of turn.
+Campo activated Pump-Action Shotgun.
+Campo's Pengullet gets power +200 until end of turn.
+Campo activated Pengullet Rocket Launcher.
+Campo's Pengullet gets power +500 until end of turn.
+Campo activated Pengullet.
+Campo deployed Primitive Furnace.
+Deployed Rushoar to slot 1 for 2 Souls.
+power +800 until end of turn.
+TURN 14
+INQORY
+Reindrix
+Rushoar's attack was interrupted.
+Deployed Elphidran Aqua to slot 3 for 6 Souls.
+Drew 2 cards.
+Put Pengullet Rocket Launcher on top of the deck.
+Elphidran Aqua (900) struck Primitive Furnace (800).
+Elphidran Aqua
+Primitive Furnace destroyed, 900 damage vs 800 Power.
+TURN 15
+CAMPO
+Campo deployed Pump-Action Shotgun.
+Played Pal Sphere for 4 Souls.
+Drew 3.
+Deployed Cryolinx to slot 1 for 6 Souls.
+TURN 16
+INQORY
+Cryolinx attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+TURN 17
+CAMPO
+Campo deployed Pengullet.
+Campo activated Pengullet Rocket Launcher.
+Campo's Pengullet gets power +500 until end of turn.
+Campo's Pengullet attacks Inqory's Cryolinx.
+TURN 18
+CAMPO
+Inqory interrupted with Dinossom, discarded Pengullet Rocket Launcher. The attack was nullified.
+TURN 19
+INQORY
+✦
+Cryolinx attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Deployed Pengullet to slot 3 for 4 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1100 to every Campo Pal, then sacrificed this card.
+Deployed Reindrix to slot 3 for 5 Souls.
+Foxparks
+Reindrix's attack was interrupted.
+TURN 20
+CAMPO
+Campo deployed Pump-Action Shotgun.
+Deployed Lyleen to slot 1 for 7 Souls.
+Got 3 .
+Spent 3 (0 left).
+Looked at top 5: deployed Digtoise.
+TURN 21
+INQORY
+Reindrix
+Digtoise's attack was interrupted.
+Blazehowl
+Lyleen's attack was interrupted.
+TURN 22
+CAMPO
+Campo deployed Pengullet.
+Campo activated Pengullet Rocket Launcher.
+Campo's Pengullet gets power +500 until end of turn.
+Campo activated Pengullet Rocket Launcher.
+Campo's Pengullet gets power +500 until end of turn.
+Campo activated Pengullet Rocket Launcher.
+Campo's Pengullet gets power +500 until end of turn.
+Campo activated Pengullet.
+Deployed Reindrix to slot 1 for 5 Souls.
+Deployed Reindrix to slot 3 for 5 Souls.
+TURN 23
+INQORY
+Reindrix attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+Reindrix attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 4 to 2 life.
+TURN 24
+CAMPO
+Campo deployed Jormuntide.
+TURN 25
+CAMPO
+Reindrix was Rested.
+Reindrix won't stand during its next Stand Phase.
+TURN 26
+CAMPO
+Campo's Jormuntide attacks Inqory's Reindrix.
+TURN 27
+CAMPO
+Inqory interrupted with Cryolinx, discarded Pengullet Rocket Launcher. The attack was nullified.
+TURN 28
+CAMPO
+Deployed Pengullet to slot 4 for 3 Souls.
+Deployed Antique Wooden Chair to slot 5 for 2 Souls.
+Pengullet gets power +1000 until end of turn.
+Pengullet gets power +500 and the explode skill until end of turn.
+Dealt 2000 to every Campo Pal, then sacrificed this card.
+Played Found an Egg! for 2 Souls.
+Looked at top 5: took Reindrix to hand.
+TURN 29
+INQORY
+Cryolinx
+Reindrix's attack was interrupted.
+TURN 30
+CAMPO
+Campo deployed Pengullet.
+Campo activated Pengullet Rocket Launcher.
+Campo's Pengullet gets power +500 until end of turn.
+Campo activated Pengullet.
+
+INQORY WINS
+Campo ran out of cards.
+FINAL LIFE: Inqory (WINNER) 8, Campo 2.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Long 30-turn grind, decided by deck-out rather than life loss. Campo's Jormuntide Ignis repeatedly attacked Inqory's Digtoise but was twice nullified by paid-Soul Dinossom interrupts (turns 5, 7) before finally destroying it turn 8, at the cost of Inqory's own board-wipe Lily's Strategy response. Both players leaned heavily on Pengullet explode-sacrifice plays to clear boards (turns 8, 9, 19, 28) while a steady stream of bare-form interrupts (Blazehowl, Foxparks, Cryolinx, Reindrix - turns 3, 10 x2, 14, 19, 21 x2, 29) and several paid/discarded full-form interrupts (turns 1, 5, 7, 18, 27) nullified attack after attack on both sides. Inqory's Cryolinx and twin Reindrix eventually ground Campo's life down (8->6->4->2, turns 16-23) via Pengullet Rocket Launcher buffed strikes and direct Reindrix hits, but Campo held at 2 life as the deck ran dry on turn 30, handing Inqory the win by deck-out.
+
+

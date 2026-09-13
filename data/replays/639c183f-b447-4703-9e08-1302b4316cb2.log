@@ -1,0 +1,210 @@
+----- TIER 1 MATCH 15/34 (recordId 639c183f-b447-4703-9e08-1302b4316cb2) -----
+
+=====================================================================
+MATCH: Porkchop vs GizmoHey
+recordId: 639c183f-b447-4703-9e08-1302b4316cb2
+RESULT: PORKCHOP WINS - GizmoHey's life hit zero. Final life: Porkchop (WINNER) 10, GizmoHey 0.
+NOTE: GizmoHey's deck titled "PURPLE/BLUE BUTCHER PENGULLET" in HUD.
+NOTE: 3 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 7:  Foxparks interrupts Shadowbeak's attack
+  Turn 21: Reindrix interrupts Katress's attack
+  Turn 27: Foxparks interrupts Shadowbeak's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+PORKCHOP
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+Porkchop deployed Flame Cauldron.
+Rested 3 Souls, drew 1 card.
+TURN 2
+PORKCHOP
+Porkchop deployed Foxparks.
+Porkchop deployed Primitive Furnace.
+Porkchop activated Primitive Furnace.
+Porkchop activated Primitive Furnace.
+Porkchop deployed Grappling Gun.
+Porkchop activated Grappling Gun.
+Deployed Katress to slot 1 for 6 Souls.
+TURN 3
+GIZMOHEY
+They blocked with Foxparks.
+Katress (900) attacked Foxparks (200+200 = 400).
+Katress
+Foxparks destroyed, 900 damage vs 400 Power.
+TURN 4
+PORKCHOP
+Porkchop deployed Ragnahawk.
+Porkchop activated Grappling Gun.
+Porkchop's Ragnahawk attacks GizmoHey's Katress.
+TURN 5
+PORKCHOP
+GizmoHey interrupted with Blazehowl Noct, discarded Tombat. The attack was nullified.
+TURN 6
+PORKCHOP
+Deployed Shadowbeak to slot 2 for 8 Souls.
+TURN 7
+GIZMOHEY
+Foxparks
+Shadowbeak's attack was interrupted.
+Shadowbeak: butchered GizmoHey's Katress.
+Deployed Tombat from the graveyard (rested).
+Looked at top 3: took Blazehowl Noct to hand. Graveyard: Pengullet, Medieval Medicine Workbench.
+Looked at top 3: took Lyleen Noct to hand. Graveyard: Strike from the Darkness, Victor's Strategy.
+TURN 8
+PORKCHOP
+Porkchop deployed Reptyro.
+Porkchop activated Reptyro.
+Porkchop activated Grappling Gun.
+Porkchop's Reptyro attacks GizmoHey's Shadowbeak.
+TURN 9
+PORKCHOP
+GizmoHey interrupted with Blazehowl Noct, discarded Lyleen Noct. The attack was nullified.
+TURN 10
+PORKCHOP
+Deployed Leezpunk to slot 3 for 3 Souls.
+TURN 11
+GIZMOHEY
+They blocked with Reptyro.
+Shadowbeak (1300) attacked Reptyro (1500+200 = 1700).
+Shadowbeak destroyed, 1700 damage vs 1300 Power.
+Deployed Relaxaurus to slot 2 for 7 Souls.
+No valid target.
+Tombat (600) attacked Reptyro (1500+200 = 1700).
+Tombat
+Reptyro destroyed, 1900 damage vs 1700 Power.
+Tombat destroyed, 1700 damage vs 600 Power.
+✦
+Relaxaurus attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 12
+PORKCHOP
+Porkchop deployed Gobfin Ignis.
+Porkchop deployed Ragnahawk.
+Porkchop activated Grappling Gun.
+Porkchop's Ragnahawk attacks GizmoHey's Relaxaurus.
+GizmoHey blocked with Leezpunk.
+TURN 13
+PORKCHOP
+Porkchop must discard 1.
+TURN 14
+PORKCHOP
+Ragnahawk (1000+1200 = 2200) attacked Leezpunk (200).
+Ragnahawk
+Leezpunk destroyed, 2200 damage vs 200 Power.
+TURN 15
+PORKCHOP
+Porkchop discarded Foxparks.
+TURN 16
+PORKCHOP
+Porkchop activated Primitive Furnace.
+Deployed Lyleen Noct to slot 1 for 8 Souls.
+Discarded Pengullet to pay a cost.
+Deployed Katress from the graveyard (rested).
+TURN 17
+GIZMOHEY
+Relaxaurus (1200) struck Flame Cauldron (900).
+Relaxaurus
+Flame Cauldron destroyed, 1200 damage vs 900 Power.
+TURN 18
+PORKCHOP
+Porkchop activated Primitive Furnace.
+Porkchop deployed Grappling Gun.
+Porkchop activated Primitive Furnace.
+Porkchop deployed Single-Shot Rifle.
+TURN 19
+PORKCHOP
+Relaxaurus took 1500 damage and was destroyed.
+TURN 20
+PORKCHOP
+Porkchop activated Grappling Gun.
+Porkchop activated Grappling Gun.
+Porkchop activated Single-Shot Rifle.
+Porkchop's Ragnahawk gets power +200 until end of turn.
+Porkchop's Ragnahawk attacks GizmoHey's Lyleen Noct.
+Ragnahawk (1000+1200 = 2200) attacked Lyleen Noct (1700).
+Ragnahawk
+Lyleen Noct destroyed, 2200 damage vs 1700 Power.
+Deployed Medieval Medicine Workbench to slot 1 for 4 Souls.
+Deployed Leezpunk to slot 2 for 3 Souls.
+Rested 3 Souls to pay a cost (0 standing).
+Assigned Leezpunk.
+Deployed Tombat from the graveyard (rested).
+Looked at top 3: took Pyrin Noct to hand. Graveyard: Zoe's Strategy, Zoe's Strategy.
+Porkchop must discard 1.
+Butchered Leezpunk.
+power +1000 until end of turn.
+strike +1 until end of turn.
+Porkchop discarded Primitive Furnace.
+TURN 21
+GIZMOHEY
+Reindrix
+Katress's attack was interrupted.
+TURN 22
+PORKCHOP
+Porkchop deployed Reptyro.
+Porkchop activated Reptyro.
+TURN 23
+PORKCHOP
+Porkchop revealed Single-Shot Rifle and deployed it.
+TURN 24
+PORKCHOP
+Porkchop looked at 5 cards and deployed Single-Shot Rifle.
+TURN 25
+PORKCHOP
+Katress took 1500 damage and was destroyed.
+TURN 26
+PORKCHOP
+Porkchop activated Grappling Gun.
+Porkchop activated Grappling Gun.
+Porkchop activated Single-Shot Rifle.
+Porkchop's Gobfin Ignis gets power +200 until end of turn.
+Porkchop activated Single-Shot Rifle.
+Porkchop's Gobfin Ignis gets power +200 until end of turn.
+Porkchop's Ragnahawk attacks GizmoHey for 3.
+Ragnahawk hit GizmoHey for 3. Damage Check: 3 cards milled, no Lucky. GizmoHey 10 to 7 life.
+Porkchop's Gobfin Ignis attacks GizmoHey for 3.
+✦
+Gobfin Ignis attacked GizmoHey for 3; GizmoHey's Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+Porkchop's Reptyro attacks GizmoHey for 4.
+Reptyro hit GizmoHey for 4. Damage Check: 4 cards milled, no Lucky. GizmoHey 7 to 3 life.
+Deployed Shadowbeak to slot 2 for 8 Souls.
+TURN 27
+GIZMOHEY
+Foxparks
+Shadowbeak's attack was interrupted.
+Shadowbeak: butchered GizmoHey's Shadowbeak.
+Shadowbeak: butchered GizmoHey's Tombat.
+TURN 28
+PORKCHOP
+Porkchop deployed Reptyro.
+Porkchop activated Reptyro.
+TURN 29
+PORKCHOP
+Porkchop revealed Foxparks' Harness and deployed it.
+TURN 30
+PORKCHOP
+Porkchop looked at 5 cards and deployed Foxparks' Harness.
+Porkchop activated Reptyro.
+Porkchop activated Grappling Gun.
+Porkchop activated Grappling Gun.
+Porkchop's Reptyro attacks GizmoHey for 3.
+TURN 31
+PORKCHOP
+GizmoHey interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+TURN 32
+PORKCHOP
+Porkchop's Reptyro attacks GizmoHey for 3.
+Reptyro hit GizmoHey for 3. Damage Check: 3 cards milled, no Lucky. GizmoHey 3 to 0 life.
+
+PORKCHOP WINS
+GizmoHey's life hit zero.
+FINAL LIFE: Porkchop (WINNER) 10, GizmoHey 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+32-turn game. Porkchop built a Grappling Gun/Primitive Furnace/Single-Shot Rifle engine and repeatedly deployed and pinged down Reptyro copies while chip-attacking with Ragnahawk/Gobfin Ignis/Reptyro. GizmoHey's Blazehowl Noct/Foxparks/Reindrix/Pyrin Noct interrupted several of Porkchop's attacks (turns 5, 7, 9, 21, 27, 31). Combat trades: Katress destroyed GizmoHey's Foxparks (turn 3); GizmoHey's Shadowbeak/Tombat combo destroyed Porkchop's Reptyro in a double-block (turn 11); Ragnahawk destroyed GizmoHey's Leezpunk and Lyleen Noct (turns 14, 20); GizmoHey's Relaxaurus destroyed Porkchop's Flame Cauldron (turn 17) before being pinged down itself (turn 19); GizmoHey's own Shadowbeak butchered its Shadowbeak and Tombat for card advantage (turn 27). Porkchop closed with Ragnahawk/Gobfin Ignis/Reptyro chip damage (10->7->3->0).
+
+

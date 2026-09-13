@@ -1,0 +1,246 @@
+=====================================================================
+MATCH: Pingu vs amata  [Pingu's match #5 of 10 pulled]
+recordId: cd758866-550f-4041-aae0-6bac98de3684
+RESULT: PINGU WINS - amata surrendered. Final life: Pingu (WINNER) 6, amata 1.
+NOTE: The longest game in the Pingu batch so far (34 turns, 207 total playback steps) and the
+first surrender-type win seen for Pingu (all 4 prior Pingu wins were life-hit-zero). amata
+conceded at 1 life immediately after a Cryolinx-then-Pengullet-then-Reindrix sequence on Pingu's
+turn 34 cleared their board and dropped them from 5 to 1 — the same "concede once tempo/board is
+clearly lost" pattern seen repeatedly across Ze's surrender wins.
+NOTE: Both life totals are fully accounted for — Pingu takes exactly two hits (10->8->6, both on
+turn 13); amata drops in four named hits (10->7->5->3->1, turns 14, 22, 34 x2) — NO unexplained
+gap. Fifth fully clean game in a row for Pingu across this entire 5-game stretch so far.
+NOTE: Deck labeled "BLUE/PURPLE DRAGON CONTROL" on Pingu's HUD, same as matches 1-4.
+NOTE: Unlike every other game in both the Ze and Pingu batches so far, Turn 1 in THIS game DOES
+show an explicit "PINGU" header immediately — the "missing header on turns 1-3" quirk seen
+repeatedly elsewhere does not appear here.
+NOTE: 2 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 8:  Foxparks interrupts Jormuntide's attack
+  Turn 19: Foxparks interrupts Chillet's attack
+5 additional FULL-form interrupts occurred (Turn 4 Blazehowl Noct; Turn 6 Cryolinx; Turn 17
+Cryolinx; Turn 25 Pyrin Noct; Turn 32 Reindrix) — not counted in the bare-form total, included in
+the verbatim body only.
+=====================================================================
+TURN 1
+PINGU
+Deployed Elphidran to slot 1 for 4 Souls.
+Revealed Elphidran (Dragon). Power +500 until end of turn.
+Elphidran (600+500 = 1100) attacked Elphidran Aqua (900).
+Elphidran
+Elphidran Aqua destroyed, 1100 damage vs 900 Power.
+Played Zoe's Strategy for 3 Souls.
+Returned Jormuntide from graveyard to hand.
+amata must discard 1.
+amata discarded Elphidran.
+TURN 2
+PINGU
+Turn opened — Souls 10/10 · Hand: Chillet, Elphidran, Elphidran Aqua, Jormuntide, Pengullet, Pengullet Rocket Launcher
+TURN 3
+AMATA
+amata activated Pump-Action Shotgun.
+amata's Reptyro gets power +200 until end of turn.
+amata's Reptyro attacks Pingu's Jormuntide.
+TURN 4
+AMATA
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Chillet, Cryolinx, Elphidran, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Zoe's Strategy
+Pingu interrupted with Blazehowl Noct, paid 1 Soul. The attack was nullified.
+TURN 5
+AMATA
+Turn opened — Souls 10/10 · Hand: Chillet, Elphidran, Elphidran Aqua, Jormuntide, Pengullet, Pengullet Rocket Launcher
+amata deployed Elphidran Aqua.
+amata's Elphidran Aqua attacks Pingu's Elphidran.
+TURN 6
+AMATA
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Chillet, Cryolinx, Elphidran, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Zoe's Strategy
+Pingu interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 7
+AMATA
+Turn opened — Souls 10/10 · Hand: Chillet, Elphidran, Elphidran Aqua, Jormuntide, Pengullet, Pengullet Rocket Launcher
+amata played Pal Sphere.
+TURN 8
+PINGU
+Foxparks
+Jormuntide's attack was interrupted.
+Revealed Chillet (Dragon). Power +500 until end of turn.
+Elphidran (600+500 = 1100) attacked Reptyro (1500).
+Elphidran destroyed, 1500 damage vs 1100 Power.
+Deployed Pengullet Rocket Launcher to slot 1 for 4 Souls.
+Deployed Pengullet to slot 3 for 4 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1100 to every amata Pal, then sacrificed this card.
+TURN 9
+PINGU
+Turn opened — Souls 10/10 · Hand: Chillet, Chillet, Elphidran, Elphidran Aqua, Jormuntide, Pengullet
+TURN 10
+AMATA
+amata deployed Jormuntide Ignis.
+amata's Jormuntide Ignis attacks Pingu's Jormuntide.
+Jormuntide Ignis (1700) attacked Jormuntide (1600).
+Jormuntide Ignis
+Jormuntide destroyed, 1700 damage vs 1600 Power.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Pengullet Rocket Launcher, added to hand.
+TURN 11
+PINGU
+Chillet (900) attacked Jormuntide Ignis (1700).
+Chillet destroyed, 1700 damage vs 900 Power.
+Deployed Pengullet to slot 2 for 4 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1100 to every amata Pal, then sacrificed this card.
+TURN 12
+PINGU
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Elphidran, Elphidran Aqua, Jormuntide, Pengullet Rocket Launcher, Strike from the Darkness
+TURN 13
+AMATA
+amata deployed Elphidran Aqua.
+amata's Elphidran Aqua attacks Pingu for 2.
+Elphidran Aqua hit Pingu for 2. Damage Check: 2 cards milled, no Lucky. Pingu 10 to 8 life.
+amata deployed Elphidran.
+amata's Elphidran attacks Pingu for 2.
+Elphidran hit Pingu for 2. Damage Check: 2 cards milled, no Lucky. Pingu 8 to 6 life.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide on top of the deck.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Jormuntide.
+Deployed Jormuntide.
+Drew 1.
+TURN 14
+PINGU
+Chillet (900) attacked Elphidran (600).
+Chillet
+Elphidran destroyed, 900 damage vs 600 Power.
+Jormuntide attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 10 to 7 life.
+Rested 3 Souls, drew 1 card.
+TURN 15
+PINGU
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Elphidran, Elphidran Aqua, Pengullet, Pengullet Rocket Launcher, Strike from the Darkness
+TURN 16
+AMATA
+amata deployed Jormuntide Ignis.
+amata's Jormuntide Ignis attacks Pingu's Jormuntide.
+TURN 17
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Elphidran, Elphidran Aqua, Jormuntide, Pengullet Rocket Launcher, Strike from the Darkness
+Pingu interrupted with Cryolinx, discarded Elphidran. The attack was nullified.
+TURN 18
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Elphidran, Elphidran Aqua, Pengullet, Pengullet Rocket Launcher, Strike from the Darkness
+amata activated Jormuntide Ignis.
+amata discarded Relaxaurus, Foxparks to pay a cost.
+amata's Jormuntide Ignis attacks Pingu's Jormuntide.
+Jormuntide Ignis (1700) attacked Jormuntide (1600).
+Jormuntide Ignis
+Jormuntide destroyed, 1700 damage vs 1600 Power.
+Played Strike from the Darkness for 4 Souls.
+Chillet gets power +200 until end of turn.
+TURN 19
+PINGU
+Foxparks
+Chillet's attack was interrupted.
+Deployed Elphidran to slot 3 for 4 Souls.
+Revealed Elphidran Aqua (Dragon). Power +500 until end of turn.
+Elphidran (600+500 = 1100) attacked Elphidran Aqua (900).
+Elphidran
+Elphidran Aqua destroyed, 1100 damage vs 900 Power.
+TURN 20
+PINGU
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Cryolinx, Elphidran Aqua, Pengullet, Pengullet Rocket Launcher
+TURN 21
+AMATA
+amata deployed Pump-Action Shotgun.
+Deployed Elphidran Aqua to slot 2 for 6 Souls.
+Drew 2 cards.
+Put Aurora Guide on top of the deck.
+TURN 22
+PINGU
+Elphidran Aqua attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 7 to 5 life.
+Rested 3 Souls, drew 1 card.
+TURN 23
+PINGU
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Cryolinx, Pengullet, Pengullet Rocket Launcher, Pyrin Noct, Reindrix
+TURN 24
+AMATA
+amata deployed Chillet.
+amata revealed Single-Shot Rifle and added it to their hand.
+amata activated Pump-Action Shotgun.
+amata's Chillet gets power +200 until end of turn.
+amata's Chillet attacks Pingu's Elphidran Aqua.
+TURN 25
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Cryolinx, Elphidran Aqua, Pengullet, Pengullet Rocket Launcher
+Pingu interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+TURN 26
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Cryolinx, Pengullet, Pengullet Rocket Launcher, Pyrin Noct, Reindrix
+amata deployed Single-Shot Rifle.
+TURN 27
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Cryolinx, Elphidran Aqua, Pengullet, Pengullet Rocket Launcher
+Elphidran Aqua took 1500 damage and was destroyed.
+TURN 28
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Cryolinx, Pengullet, Pengullet Rocket Launcher, Pyrin Noct, Reindrix
+Rested 3 Souls, drew 1 card.
+Deployed Cryolinx to slot 2 for 6 Souls.
+Cryolinx gets power +200 until end of turn.
+TURN 29
+PINGU
+Cryolinx (900+200 = 1100) attacked Chillet (900).
+Cryolinx
+Chillet destroyed, 1100 damage vs 900 Power.
+TURN 30
+PINGU
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Cryolinx, Pengullet, Pengullet Rocket Launcher, Pyrin Noct, Reindrix
+TURN 31
+AMATA
+amata deployed Pengullet.
+amata activated Pump-Action Shotgun.
+amata's Pengullet gets power +200 until end of turn.
+amata activated Single-Shot Rifle.
+amata's Pengullet gets power +200 until end of turn.
+amata's Pengullet attacks Pingu's Cryolinx.
+TURN 32
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Cryolinx, Pengullet, Pengullet Rocket Launcher, Pyrin Noct, Reindrix
+Pingu interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 33
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Cryolinx, Pengullet, Pengullet Rocket Launcher, Pyrin Noct, Reindrix
+TURN 34
+PINGU
+Cryolinx (900) attacked Pengullet (600).
+Cryolinx
+Pengullet destroyed, 900 damage vs 600 Power.
+Deployed Pengullet to slot 3 for 4 Souls.
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 5 to 3 life.
+Deployed Reindrix to slot 4 for 5 Souls.
+Reindrix attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 3 to 1 life.
+
+PINGU WINS
+amata surrendered.
+FINAL LIFE: Pingu (WINNER) 6, amata 1.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+A long 34-turn grind where Pingu absorbed all its damage early (two hits on turn 13 alone, down
+to 6 life) and then never took further damage the rest of the game, protected by a deep interrupt
+suite (Blazehowl Noct, Cryolinx x2, Pyrin Noct, Reindrix) that stopped every subsequent amata
+attack cold. amata leaned on a Jormuntide Ignis package that twice destroyed Pingu's own
+Jormuntide, but Pingu's Elphidran/Chillet/Cryolinx line kept trading up and eventually took over
+the game, closing amata from 10 down to 1 in four separate hits spread across turns 14-34. amata
+conceded the turn after a Cryolinx-Pengullet-Reindrix combo cleared their last blocker and dealt
+the final visible damage. Every life-total change on both sides is cleanly traceable — the fifth
+consecutive clean game for Pingu.
+
+CLARIFICATION FLAGS for user review:
+- Batch-level pattern holding at 5/5: every Pingu game so far has been fully clean with no
+  unexplained life gaps, a clear contrast to the Ze batch where roughly a third of games showed
+  the "10 to 6"-style gap. Worth stating this contrast explicitly in the final cross-batch
+  summary once all 10 Pingu games are done.
+- Same open scope note as matches 1-4: Pingu's "BLUE/PURPLE DRAGON CONTROL" archetype hasn't been
+  cross-referenced against a saved decklist (out of scope for this pass).

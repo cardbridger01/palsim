@@ -1,0 +1,129 @@
+----- TIER 1 MATCH 22/34 (recordId 8ac5f375-aa50-4d69-a6da-4d09c80dc73a) -----
+
+=====================================================================
+MATCH: ZUZU vs thegrumpygamerdad
+recordId: 8ac5f375-aa50-4d69-a6da-4d09c80dc73a
+RESULT: ZUZU WINS - thegrumpygamerdad's life hit zero. Final life: ZUZU (WINNER) 8, thegrumpygamerdad 0.
+NOTE: thegrumpygamerdad's deck titled "META SLOP" in HUD.
+NOTE: 2 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 8:  Cryolinx interrupts Suzaku's attack
+  Turn 14: Reindrix interrupts Lamball's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+TURN 2
+Rested 3 Souls, drew 1 card.
+TURN 3
+ZUZU
+ZUZU deployed Chillet.
+ZUZU deployed Relaxaurus.
+ZUZU's Chillet attacks thegrumpygamerdad for 2.
+✦
+Chillet attacked thegrumpygamerdad for 2; thegrumpygamerdad's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+ZUZU's Relaxaurus attacks thegrumpygamerdad for 3.
+TURN 4
+ZUZU
+thegrumpygamerdad interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 5
+ZUZU
+Deployed Kitsun to slot 1 for 5 Souls.
+TURN 6
+THEGRUMPYGAMERDAD
+Kitsun attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+TURN 7
+ZUZU
+ZUZU deployed Chillet.
+ZUZU revealed Cryolinx and added it to their hand.
+ZUZU's Chillet attacks thegrumpygamerdad's Kitsun.
+Chillet (900) attacked Kitsun (400).
+Chillet
+Kitsun destroyed, 900 damage vs 400 Power.
+ZUZU's Chillet attacks thegrumpygamerdad for 2.
+Chillet hit thegrumpygamerdad for 2. Damage Check: 2 cards milled, no Lucky. thegrumpygamerdad 10 to 8 life.
+Deployed Suzaku to slot 1 for 7 Souls.
+TURN 8
+THEGRUMPYGAMERDAD
+Cryolinx
+Suzaku's attack was interrupted.
+TURN 9
+ZUZU
+ZUZU deployed Jormuntide.
+TURN 10
+ZUZU
+Suzaku was Rested.
+Suzaku won't stand during its next Stand Phase.
+TURN 11
+ZUZU
+ZUZU's Jormuntide attacks thegrumpygamerdad for 3.
+TURN 12
+ZUZU
+thegrumpygamerdad interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 13
+ZUZU
+ZUZU's Chillet attacks thegrumpygamerdad for 2.
+✦
+Chillet attacked thegrumpygamerdad for 2; thegrumpygamerdad's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Deployed Lamball to slot 2 for 2 Souls.
+TURN 14
+THEGRUMPYGAMERDAD
+Reindrix
+Lamball's attack was interrupted.
+Deployed Jormuntide Ignis to slot 3 for 8 Souls.
+✦
+Jormuntide Ignis attacked them for 4; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 15
+ZUZU
+ZUZU deployed Fuack.
+ZUZU deployed Elphidran.
+ZUZU played Strike from the Darkness.
+TURN 16
+ZUZU
+Jormuntide Ignis was destroyed.
+TURN 17
+ZUZU
+ZUZU's Elphidran attacks thegrumpygamerdad for 2.
+✦
+Elphidran attacked thegrumpygamerdad for 2; thegrumpygamerdad's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+ZUZU's Fuack attacks thegrumpygamerdad for 1.
+Fuack hit thegrumpygamerdad for 1. Damage Check: 1 card milled, no Lucky. thegrumpygamerdad 8 to 7 life.
+ZUZU's Chillet attacks thegrumpygamerdad for 2.
+Chillet hit thegrumpygamerdad for 2. Damage Check: 2 cards milled, no Lucky. thegrumpygamerdad 7 to 5 life.
+ZUZU's Jormuntide attacks thegrumpygamerdad's Suzaku.
+TURN 18
+ZUZU
+thegrumpygamerdad interrupted with Foxparks, discarded Mounted Machine Gun. The attack was nullified.
+TURN 19
+ZUZU
+Deployed Single-Shot Rifle to slot 3 for 4 Souls.
+Rested 3 Souls, drew 1 card.
+Deployed Primitive Furnace to slot 4 for 2 Souls.
+TURN 20
+THEGRUMPYGAMERDAD
+Suzaku (1200) attacked Chillet (900).
+Suzaku
+Chillet destroyed, 1200 damage vs 900 Power.
+Lamball gets power +200 until end of turn.
+Lamball (200+200 = 400) attacked Fuack (200+300 = 500).
+Lamball destroyed, 500 damage vs 400 Power.
+TURN 21
+ZUZU
+ZUZU deployed Relaxaurus.
+ZUZU's Elphidran attacks thegrumpygamerdad for 2.
+Elphidran hit thegrumpygamerdad for 2. Damage Check: 2 cards milled, no Lucky. thegrumpygamerdad 5 to 3 life.
+ZUZU's Relaxaurus attacks thegrumpygamerdad for 3.
+Relaxaurus hit thegrumpygamerdad for 3. Damage Check: 3 cards milled, no Lucky. thegrumpygamerdad 3 to 0 life.
+
+ZUZU WINS
+thegrumpygamerdad's life hit zero.
+FINAL LIFE: ZUZU (WINNER) 8, thegrumpygamerdad 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+21-turn game. ZUZU deployed Chillet/Relaxaurus early; several ZUZU attacks were nullified by thegrumpygamerdad's Reindrix/Cryolinx/Foxparks interrupts (turns 4, 8 bare-form, 12, 14 bare-form, 18). ZUZU's Chillet destroyed thegrumpygamerdad's Kitsun (turn 7) and chipped away steadily; thegrumpygamerdad's Jormuntide Ignis attack was cancelled by Lucky Pal (turn 14) before ZUZU's Strike from the Darkness destroyed it (turn 16). A trade exchange occurred turn 20 (thegrumpygamerdad's Suzaku destroyed ZUZU's Chillet; Lamball destroyed ZUZU's Fuack). ZUZU's Elphidran/Chillet/Fuack ground thegrumpygamerdad down (10->8->7->5), and Relaxaurus/Elphidran finished with 2+3 damage (5 to 3 to 0, turn 21).
+
+

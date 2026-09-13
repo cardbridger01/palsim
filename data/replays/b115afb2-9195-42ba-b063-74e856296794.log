@@ -1,0 +1,211 @@
+----- TIER 1 MATCH 25/34 (recordId b115afb2-9195-42ba-b063-74e856296794) -----
+
+=====================================================================
+MATCH: Bandit vs Jsn (styled "𝙅𝙨𝙣")
+recordId: b115afb2-9195-42ba-b063-74e856296794
+RESULT: JSN WINS - Bandit surrendered. Final life: Jsn (WINNER) 10, Bandit 3.
+NOTE: Jsn's deck titled "SUZAKU GUN CONTROL TOURNAMENT EDITION" in HUD (Jsn's 2nd Tier 1
+match, won both: this one and vs Carbon).
+NOTE: 6 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 3:  Cryolinx interrupts Suzaku's attack
+  Turn 6:  Pyrin Noct interrupts Suzaku's attack
+  Turn 9:  Cryolinx interrupts Reptyro Cryst's attack
+  Turn 12: Cryolinx interrupts Bushi's attack
+  Turn 15: Reindrix interrupts Reptyro Cryst's attack
+  Turn 25: Cryolinx interrupts Bushi's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+BANDIT
+Bandit played Victor's Strategy.
+Bandit looked at 5 cards and took 1 into their hand.
+TURN 2
+BANDIT
+Deployed Mounted Machine Gun to slot 4 for 4 Souls.
+Deployed Flambelle to slot 5 for 3 Souls.
+Got 2 .
+Assigned Flambelle.
+Spent 2 .
+TURN 3
+𝙅𝙨𝙣
+Cryolinx
+Suzaku's attack was interrupted.
+TURN 4
+BANDIT
+Bandit deployed Jormuntide.
+Suzaku was Rested.
+Suzaku won't stand during its next Stand Phase.
+Bandit's Jormuntide attacks 𝙅𝙨𝙣's Mounted Machine Gun.
+𝙅𝙨𝙣 interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 5
+BANDIT
+Deployed Suzaku to slot 6 for 7 Souls.
+Assigned Flambelle.
+Spent 1 .
+TURN 6
+𝙅𝙨𝙣
+Pyrin Noct
+Suzaku's attack was interrupted.
+TURN 7
+BANDIT
+Bandit deployed Pengullet.
+Bandit activated Pengullet Rocket Launcher.
+Bandit's Pengullet gets power +500 until end of turn.
+Bandit activated Pengullet Rocket Launcher.
+Bandit's Pengullet gets power +500 until end of turn.
+Bandit activated Pengullet.
+Bandit deployed Elphidran Aqua.
+Bandit's Elphidran Aqua attacks 𝙅𝙨𝙣 for 2.
+𝙅𝙨𝙣 interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 8
+BANDIT
+Deployed Reptyro Cryst to slot 2 for 8 Souls.
+Drew 1.
+TURN 9
+𝙅𝙨𝙣
+Cryolinx
+Reptyro Cryst's attack was interrupted.
+Deployed Lamball to slot 5 for 2 Souls.
+Assigned Lamball.
+Spent 2 .
+TURN 10
+BANDIT
+Bandit deployed Chillet.
+Bandit revealed Pengullet Rocket Launcher and added it to their hand.
+Bandit activated Pengullet Rocket Launcher.
+Bandit's Chillet gets power +200 until end of turn.
+Bandit's Chillet attacks 𝙅𝙨𝙣's Mounted Machine Gun.
+𝙅𝙨𝙣 interrupted with Reindrix, discarded Grappling Gun. The attack was nullified.
+Bandit played Zoe's Strategy.
+Bandit returned Chillet from their graveyard to hand.
+Discarded Grappling Gun.
+TURN 11
+BANDIT
+Assigned Lamball.
+Spent 2 .
+TURN 12
+𝙅𝙨𝙣
+✦
+Reptyro Cryst attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Deployed Flambelle to slot 6 for 3 Souls.
+Got 2 .
+Flambelle attacked them for 1. Damage Check: 1 card milled, no Lucky. They 8 to 7 life.
+Deployed Bushi to slot 7 for 5 Souls.
+Cryolinx
+Bushi's attack was interrupted.
+Bushi returned to hand.
+TURN 13
+BANDIT
+Bandit deployed Chillet.
+Bandit deployed Jormuntide.
+Flambelle was Rested.
+Flambelle won't stand during its next Stand Phase.
+Bandit activated Pengullet Rocket Launcher.
+Bandit's Chillet gets power +200 until end of turn.
+Bandit's Chillet attacks 𝙅𝙨𝙣's Mounted Machine Gun.
+𝙅𝙨𝙣 interrupted with Foxparks, paid 1 Soul. The attack was nullified.
+Bandit's Jormuntide attacks 𝙅𝙨𝙣's Mounted Machine Gun.
+𝙅𝙨𝙣 interrupted with Foxparks, paid 1 Soul. The attack was nullified.
+Bandit deployed Pengullet.
+Bandit activated Pengullet Rocket Launcher.
+Bandit's Pengullet gets power +500 until end of turn.
+Bandit activated Pengullet.
+TURN 14
+BANDIT
+Deployed Reptyro Cryst to slot 5 for 8 Souls.
+Drew 1.
+Assigned Reptyro Cryst.
+Spent 6 .
+TURN 15
+𝙅𝙨𝙣
+Reindrix
+Reptyro Cryst's attack was interrupted.
+TURN 16
+BANDIT
+Bandit deployed Pengullet Rocket Launcher.
+Bandit deployed Pengullet.
+Bandit activated Pengullet Rocket Launcher.
+Bandit's Pengullet gets power +500 until end of turn.
+Bandit activated Pengullet Rocket Launcher.
+Bandit's Pengullet gets power +500 until end of turn.
+Bandit activated Pengullet.
+TURN 17
+BANDIT
+Deployed Lamball to slot 2 for 2 Souls.
+Assigned Lamball.
+Got 3 .
+Drew 1.
+Deployed Bushi to slot 5 for 5 Souls.
+TURN 18
+𝙅𝙨𝙣
+Bushi attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 7 to 5 life.
+Bushi returned to hand.
+TURN 19
+BANDIT
+Bandit deployed Relaxaurus.
+Lamball was Rested.
+Lamball won't stand while the source stays in play.
+Bandit's Relaxaurus attacks 𝙅𝙨𝙣 for 3.
+𝙅𝙨𝙣 interrupted with Foxparks, paid 1 Soul. The attack was nullified.
+TURN 20
+BANDIT
+Deployed Pump-Action Shotgun to slot 5 for 7 Souls.
+Dealt 1200 to every Bandit Pal.
+Bandit deployed Relaxaurus.
+Lamball was Rested.
+Lamball won't stand while the source stays in play.
+Bandit's Relaxaurus attacks 𝙅𝙨𝙣 for 3.
+𝙅𝙨𝙣 interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 21
+BANDIT
+Deployed Single-Shot Rifle to slot 6 for 4 Souls.
+Deployed Flambelle to slot 7 for 3 Souls.
+Got 2 .
+TURN 22
+𝙅𝙨𝙣
+Flambelle attacked them for 1. Damage Check: 1 card milled, no Lucky. They 5 to 4 life.
+Deployed Stone Pit to slot 8 for 1 Souls.
+TURN 23
+BANDIT
+Bandit deployed Relaxaurus.
+Flambelle was Rested.
+Flambelle won't stand while the source stays in play.
+Bandit's Relaxaurus attacks 𝙅𝙨𝙣 for 3.
+𝙅𝙨𝙣 interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 24
+BANDIT
+Assigned Lamball.
+Spent 3 .
+Deployed Bushi to slot 9 for 5 Souls.
+TURN 25
+𝙅𝙨𝙣
+Cryolinx
+Bushi's attack was interrupted.
+Bushi returned to hand.
+Rested 3 Souls, drew 1 card.
+TURN 26
+BANDIT
+Bandit deployed Relaxaurus.
+Flambelle was Rested.
+Flambelle won't stand while the source stays in play.
+Bandit's Relaxaurus attacks 𝙅𝙨𝙣 for 3.
+𝙅𝙨𝙣 interrupted with Bushi, paid 1 Soul. The attack was nullified.
+TURN 27
+𝙅𝙨𝙣
+Lamball attacked them for 1. Damage Check: 1 card milled, no Lucky. They 4 to 3 life.
+Deployed Pump-Action Shotgun to slot 9 for 7 Souls.
+Dealt 1200 to every Bandit Pal.
+Rested 3 Souls, drew 1 card.
+
+𝙅𝙨𝙣 WINS
+Bandit surrendered.
+FINAL LIFE: 𝙅𝙨𝙣 (WINNER) 10, Bandit 3.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+27-turn grind. Bandit ran a wide multi-Pengullet/Reptyro Cryst/Relaxaurus/Jormuntide board with Pengullet Rocket Launcher buffs, but nearly every attack was nullified by Jsn's deep interrupt suite (Cryolinx x4, Reindrix x3, Foxparks x3, Pyrin Noct, Bushi). Jsn's small chip attackers (Suzaku, Flambelle, Bushi, Lamball) whittled Bandit down turn by turn (10->8->7->5->4->3) while Bandit's own Pump-Action Shotgun self-damage triggers (1200 to own Pals) repeatedly weakened Bandit's board. Jsn also used Bushi as a repeatable "attack then return to hand" interrupt-bounce three times (turns 12, 22-equivalent, 25) to reset it as a blocker/interrupt fodder. Bandit's Relaxaurus attacks were nullified 4 separate times (turns 19, 20, 23, 26) by Jsn's interrupt chain, and eventually Bandit surrendered still at 3 life to Jsn's 10.
+
+

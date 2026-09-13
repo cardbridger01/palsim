@@ -1,0 +1,223 @@
+=====================================================================
+MATCH: Pingu vs Max005  [Pingu's match #4 of 10 pulled]
+recordId: 40ff6c2c-4051-4e9a-8baf-d97278bfc04e
+RESULT: PINGU WINS - "Max005's life hit zero." Final life: Pingu (WINNER) 5, Max005 0.
+NOTE: Fourth fully clean game in a row for Pingu (matches 1-4) — both life totals are completely
+accounted for by named damage lines. Pingu takes three hits totaling exactly 5 life (10->7->6->5,
+turns 7, 19, 25); Max005 drops in five named hits totaling exactly 10 (10->8->6->4->1->0, turns
+6, 15, 18, 24, 27). No unexplained gap in any Pingu game seen so far — a clear contrast with the
+recurring gaps in several of Ze's games.
+NOTE: Deck labeled "BLUE/PURPLE DRAGON CONTROL" on Pingu's HUD, same as matches 1-3.
+NOTE: Turn 13 has a garbled/malformed log line: "Pingu's Max005's Shadowbeak butchered one of
+their Pals, put 1 of Pingu's Pals into the graveyard." — the possessive chain ("Pingu's Max005's
+Shadowbeak") looks like a rendering bug (likely meant to read simply "Max005's Shadowbeak...").
+Transcribed verbatim per the standing rule against "fixing" apparent log text; worth flagging to
+the site if a bug report is filed.
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 9:  Foxparks interrupts Jormuntide's attack (1st of 2 occurrences)
+  Turn 18: Foxparks interrupts Jormuntide's attack (2nd occurrence)
+  Turn 21: Foxparks interrupts Elphidran's attack (1st of 2 occurrences)
+  Turn 24: Foxparks interrupts Elphidran's attack (2nd occurrence)
+4 additional FULL-form interrupts occurred (Turn 10 and Turn 13, both "Pingu interrupted with
+Reindrix, paid 1 Soul"; Turn 16 "Pingu interrupted with Cryolinx, paid 1 Soul"; Turn 22 "Pingu
+interrupted with Pyrin Noct, paid 1 Soul") — not counted in the bare-form total, included in the
+verbatim body only.
+NOTE: Turns 1-3 again show no acting-player header (same recurring pattern seen throughout this
+batch) — inferred as Pingu's turns from context and labeled PINGU below.
+=====================================================================
+TURN 1
+PINGU
+Turn opened — Souls 1/1 · Hand: Aurora Guide, Pengullet Rocket Launcher, Reindrix, Strike from the Darkness, Zoe's Strategy
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+TURN 2
+PINGU
+Turn opened — Souls 3/3 · Hand: Aurora Guide, Elphidran Aqua, Elphidran Aqua, Pengullet Rocket Launcher, Zoe's Strategy, Zoe's Strategy
+Rested 3 Souls, drew 1 card.
+TURN 3
+PINGU
+Turn opened — Souls 5/5 · Hand: Aurora Guide, Elphidran Aqua, Elphidran Aqua, Jormuntide, Pengullet Rocket Launcher, Pengullet Rocket Launcher, Zoe's Strategy, Zoe's Strategy
+Deployed Pengullet Rocket Launcher to slot 1 for 4 Souls.
+TURN 4
+MAX005
+Max005 deployed Foxparks' Harness.
+TURN 5
+MAX005
+Turn opened — Souls 7/7 · Hand: Aurora Guide, Elphidran Aqua, Elphidran Aqua, Jormuntide, Pengullet, Pengullet Rocket Launcher, Zoe's Strategy, Zoe's Strategy
+Deployed Elphidran Aqua to slot 2 for 6 Souls.
+Drew 2 cards.
+Put Pyrin Noct on top of the deck.
+TURN 6
+PINGU
+Elphidran Aqua attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+TURN 7
+MAX005
+Max005 deployed Suzaku.
+Elphidran Aqua took 900 damage and was destroyed.
+Max005's Suzaku attacks Pingu for 3.
+Suzaku hit Pingu for 3. Damage Check: 3 cards milled, no Lucky. Pingu 10 to 7 life.
+TURN 8
+MAX005
+Turn opened — Souls 9/9 · Hand: Aurora Guide, Elphidran Aqua, Jormuntide, Pengullet, Pengullet Rocket Launcher, Reindrix, Reindrix, Zoe's Strategy, Zoe's Strategy
+Deployed Jormuntide to slot 2 for 8 Souls.
+Drew 1.
+TURN 9
+PINGU
+Foxparks
+Jormuntide's attack was interrupted.
+TURN 10
+MAX005
+Max005 played Axel's Strategy.
+Jormuntide took 1700 damage and was destroyed.
+Max005 deployed Menasting.
+Max005's Menasting attacks Pingu for 2.
+Pingu interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 11
+MAX005
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Elphidran Aqua, Jormuntide, Pengullet, Pengullet Rocket Launcher, Reindrix, Relaxaurus, Zoe's Strategy, Zoe's Strategy
+Deployed Jormuntide to slot 2 for 8 Souls.
+Drew 1.
+TURN 12
+PINGU
+Jormuntide (1600) attacked Suzaku (1200).
+Jormuntide
+Suzaku destroyed, 1600 damage vs 1200 Power.
+TURN 13
+MAX005
+Max005 deployed Shadowbeak.
+Max005's Shadowbeak attacks Pingu for 3.
+Pingu interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+Pingu's Max005's Shadowbeak butchered one of their Pals, put 1 of Pingu's Pals into the graveyard.
+Max005's Shadowbeak: Pingu's Jormuntide was put into the graveyard.
+Max005 returned Foxparks from their graveyard to hand.
+Max005 returned Foxparks from their graveyard to hand.
+TURN 14
+MAX005
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Elphidran Aqua, Pengullet, Pengullet Rocket Launcher, Pyrin Noct, Relaxaurus, Relaxaurus, Zoe's Strategy, Zoe's Strategy
+Deployed Elphidran Aqua to slot 2 for 6 Souls.
+Drew 2 cards.
+Put Relaxaurus on top of the deck.
+TURN 15
+PINGU
+Elphidran Aqua attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+Played Zoe's Strategy for 3 Souls.
+Butchered Elphidran Aqua.
+TURN 16
+MAX005
+Max005 deployed Menasting.
+Max005 deployed Foxparks' Harness.
+Max005's Menasting attacks Pingu for 2.
+Pingu interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 17
+MAX005
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Pengullet, Pengullet Rocket Launcher, Pyrin Noct, Relaxaurus, Relaxaurus, Zoe's Strategy
+Played Zoe's Strategy for 3 Souls.
+Returned Jormuntide from graveyard to hand.
+Max005 must discard 1.
+Max005 discarded Foxparks.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide on top of the deck.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Jormuntide.
+Deployed Jormuntide.
+Drew 1.
+TURN 18
+PINGU
+Foxparks
+Jormuntide's attack was interrupted.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+TURN 19
+MAX005
+Max005 deployed Foxparks.
+Max005 deployed Pump-Action Shotgun.
+Max005 activated Foxparks' Harness.
+Max005 activated Foxparks' Harness.
+Jormuntide took 700 damage and was destroyed.
+Max005's Foxparks attacks Pingu for 1.
+Foxparks hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 7 to 6 life.
+TURN 20
+MAX005
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Pengullet, Pengullet, Pengullet Rocket Launcher, Pyrin Noct, Relaxaurus, Relaxaurus, Strike from the Darkness
+Deployed Pengullet to slot 2 for 4 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1100 to every Max005 Pal, then sacrificed this card.
+Max005 returned Foxparks from their graveyard to hand.
+Deployed Elphidran to slot 2 for 4 Souls.
+Chose not to reveal a Dragon.
+TURN 21
+PINGU
+Foxparks
+Elphidran's attack was interrupted.
+TURN 22
+MAX005
+Max005 deployed Leezpunk.
+Max005 activated Pump-Action Shotgun.
+Max005's Leezpunk gets power +200 until end of turn.
+Max005 activated Foxparks' Harness.
+Max005 activated Foxparks' Harness.
+Max005's Leezpunk attacks Pingu's Elphidran.
+Pingu interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+Max005 played Zoe's Strategy.
+Max005 returned Foxparks from their graveyard to hand.
+Discarded Aurora Guide.
+TURN 23
+MAX005
+Turn opened — Souls 10/10 · Hand: Jormuntide, Pengullet, Pengullet Rocket Launcher, Relaxaurus, Relaxaurus, Strike from the Darkness
+Chose not to reveal a Dragon.
+TURN 24
+PINGU
+Foxparks
+Elphidran's attack was interrupted.
+Deployed Jormuntide to slot 3 for 8 Souls.
+Drew 1.
+Jormuntide attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 4 to 1 life.
+TURN 25
+MAX005
+Max005 played Zoe's Strategy.
+Max005 returned Foxparks from their graveyard to hand.
+Discarded Pengullet Rocket Launcher.
+Max005 deployed Kitsun.
+Jormuntide took 1200 damage.
+Max005 deployed Foxparks.
+Max005 activated Foxparks' Harness.
+Max005 activated Foxparks' Harness.
+Jormuntide took 700 damage and was destroyed.
+Elphidran took 700 damage and was destroyed.
+Max005's Foxparks attacks Pingu for 1.
+Foxparks hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 6 to 5 life.
+TURN 26
+MAX005
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Pengullet, Reindrix, Relaxaurus, Relaxaurus, Strike from the Darkness
+Deployed Relaxaurus to slot 2 for 7 Souls.
+TURN 27
+PINGU
+Relaxaurus attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 1 to 0 life.
+
+PINGU WINS
+Max005's life hit zero.
+FINAL LIFE: Pingu (WINNER) 5, Max005 0.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+A long, back-and-forth 27-turn game where Max005's Foxparks' Harness / Pump-Action Shotgun
+removal package repeatedly picked off Pingu's threats (two separate Jormuntides, an Elphidran)
+while Pingu's own Foxparks and Reindrix/Cryolinx/Pyrin Noct interrupts kept Max005's bigger
+attackers (Suzaku, Shadowbeak, Menasting, Leezpunk) from landing cleanly. Pingu's offense came in
+short bursts from whichever threat survived the removal each time — an early Elphidran Aqua, a
+Jormuntide that later traded for Suzaku, a Chillet, and finally a fresh Jormuntide and Relaxaurus
+that closed out the last 9 life in two big swings (turns 24 and 27). Max005 chipped away at
+Pingu's own life more patiently, mostly in 1-point Foxparks pokes, bringing Pingu down to 5 by
+the end but never seriously threatening the win. Every life-total change on both sides is fully
+traceable — the fourth clean game running for Pingu.
+
+CLARIFICATION FLAGS for user review:
+- The garbled "Pingu's Max005's Shadowbeak..." line on turn 13 is worth reporting as a site
+  rendering bug if a Discord report is ever filed for this batch.
+- Batch-level observation building across matches 1-4: Pingu's games are consistently fully
+  clean (no unexplained life gaps), which increasingly suggests the gap pattern seen in several
+  Ze games may correlate with something specific to those matches rather than being a universal
+  site-wide issue — worth confirming once the remaining 6 Pingu games are checked.

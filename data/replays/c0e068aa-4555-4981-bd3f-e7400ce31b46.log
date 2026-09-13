@@ -1,0 +1,195 @@
+----- TIER 1 MATCH 28/34 (recordId c0e068aa-4555-4981-bd3f-e7400ce31b46) -----
+
+=====================================================================
+MATCH: Interrupt Addict vs Hakurai
+recordId: c0e068aa-4555-4981-bd3f-e7400ce31b46
+RESULT: INTERRUPT ADDICT WINS - Hakurai's life hit zero. Final life: Interrupt Addict 6, Hakurai 0.
+NOTE: Hakurai's deck titled "DRAGONCHEESE" in HUD.
+NOTE: TURN headers do not reliably name the acting player. Confirmed by direct in-client
+verification (attack-targeting tooltips triggered while scrubbing the replay): e.g. TURN 2 is
+headed INTERRUPT ADDICT but the "Deployed Fuack" line that follows is actually HAKURAI'S card
+(the site's own tooltip read "HAKURAI'S ATTACK: FUACK -> INTERRUPT ADDICT" one step later). This
+looks like the site logs a reactive/instant-speed play by the non-active player under the
+active player's turn header. Do not build per-player turn counts, or per-player card-ownership
+tables, on the TURN header field alone.
+NOTE: This match has a near-mirror card pool - both players field their own copies of Reindrix,
+Relaxaurus, Chillet, Fuack, and (confirmed at turns 4 and 20) even Cryolinx - so card name alone
+never identifies a bare interrupt's owner in this game specifically.
+NOTE: 8 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 4:  Cryolinx interrupts Fuack's attack       [FRAME-VERIFIED: Interrupt Addict — confirmed
+                                                       via replay playback overlay, cost still not shown]
+  Turn 10: Cryolinx interrupts Reindrix's attack
+  Turn 13: Blazehowl interrupts Relaxaurus's attack
+  Turn 13: Blazehowl interrupts Chillet's attack
+  Turn 16: Cryolinx interrupts Relaxaurus's attack
+  Turn 19: Cryolinx interrupts Relaxaurus's attack
+  Turn 19: Foxparks interrupts Chillet's attack
+  Turn 22: Reindrix interrupts Elphidran Aqua's attack
+Cost is confirmed not shown anywhere in the client for any of these (checked both the static
+log DOM and the interrupt animation overlay) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+INTERRUPT ADDICT
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+Interrupt Addict deployed Primitive Furnace.
+TURN 2
+INTERRUPT ADDICT
+Deployed Fuack to slot 1 for 2 Souls.
+TURN 3
+HAKURAI
+Fuack attacked them for 1. Damage Check: 1 card milled, no Lucky. They 10 to 9 life.
+TURN 4
+HAKURAI
+Deployed Reindrix to slot 2 for 5 Souls.
+Reindrix (600) struck Primitive Furnace (800).
+Cryolinx
+Fuack's attack was interrupted.
+TURN 5
+INTERRUPT ADDICT
+Interrupt Addict deployed Reindrix.
+Interrupt Addict activated Primitive Furnace.
+TURN 6
+INTERRUPT ADDICT
+Played Victor's Strategy for 3 Souls.
+Looked at top 5: took Relaxaurus to hand.
+TURN 7
+HAKURAI
+Fuack attacked them for 1. Damage Check: 1 card milled, no Lucky. They 9 to 8 life.
+Reindrix attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+Played Zoe's Strategy for 3 Souls.
+Butchered Fuack.
+TURN 8
+INTERRUPT ADDICT
+Interrupt Addict deployed Relaxaurus.
+Reindrix was Rested.
+Reindrix won't stand while the source stays in play.
+Interrupt Addict activated Primitive Furnace.
+TURN 9
+INTERRUPT ADDICT
+Deployed Reindrix to slot 1 for 5 Souls.
+Deployed Fuack to slot 3 for 2 Souls.
+TURN 10
+HAKURAI
+Cryolinx
+Reindrix's attack was interrupted.
+✦
+Fuack attacked them for 1; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 11
+INTERRUPT ADDICT
+Interrupt Addict activated Primitive Furnace.
+Interrupt Addict activated Primitive Furnace.
+Interrupt Addict deployed Single-Shot Rifle.
+Reindrix took 1500 damage and was destroyed.
+Interrupt Addict deployed Reindrix.
+Interrupt Addict's Reindrix attacks Hakurai's Fuack.
+Hakurai interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 12
+INTERRUPT ADDICT
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Relaxaurus on top of the deck.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Relaxaurus.
+Deployed Relaxaurus.
+TURN 13
+HAKURAI
+Blazehowl
+Relaxaurus's attack was interrupted.
+Blazehowl
+Chillet's attack was interrupted.
+✦
+Fuack attacked them for 1; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 14
+INTERRUPT ADDICT
+Interrupt Addict activated Primitive Furnace.
+Interrupt Addict deployed Pump-Action Shotgun.
+Interrupt Addict activated Primitive Furnace.
+Interrupt Addict deployed Foxparks.
+Interrupt Addict's Foxparks attacks Hakurai for 2.
+Foxparks hit Hakurai for 2. Damage Check: 2 cards milled, no Lucky. Hakurai 10 to 8 life.
+TURN 15
+INTERRUPT ADDICT
+Deployed Relaxaurus to slot 1 for 7 Souls.
+TURN 16
+HAKURAI
+Cryolinx
+Relaxaurus's attack was interrupted.
+Rested 3 Souls, drew 1 card.
+TURN 17
+INTERRUPT ADDICT
+Interrupt Addict activated Single-Shot Rifle.
+Interrupt Addict's Relaxaurus gets power +200 until end of turn.
+Interrupt Addict activated Primitive Furnace.
+Interrupt Addict deployed Jormuntide.
+Relaxaurus was Rested.
+Relaxaurus won't stand during its next Stand Phase.
+Interrupt Addict's Relaxaurus attacks Hakurai's Relaxaurus.
+Relaxaurus (1200+200 = 1400) attacked Relaxaurus (1200).
+Relaxaurus destroyed, 1400 damage vs 1200 Power.
+Interrupt Addict's Jormuntide attacks Hakurai for 3.
+Jormuntide hit Hakurai for 3. Damage Check: 3 cards milled, no Lucky. Hakurai 8 to 5 life.
+TURN 18
+INTERRUPT ADDICT
+Played Zoe's Strategy for 3 Souls.
+Returned Chillet from graveyard to hand.
+Interrupt Addict must discard 1.
+Interrupt Addict discarded Primitive Furnace.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Relaxaurus.
+Deployed Relaxaurus.
+TURN 19
+HAKURAI
+Cryolinx
+Relaxaurus's attack was interrupted.
+Foxparks
+Chillet's attack was interrupted.
+TURN 20
+INTERRUPT ADDICT
+Interrupt Addict activated Primitive Furnace.
+Interrupt Addict activated Primitive Furnace.
+Interrupt Addict deployed Single-Shot Rifle.
+Relaxaurus took 1500 damage and was destroyed.
+Interrupt Addict deployed Elphidran Aqua.
+Interrupt Addict activated Single-Shot Rifle.
+Interrupt Addict's Elphidran Aqua gets power +200 until end of turn.
+Interrupt Addict's Elphidran Aqua attacks Hakurai's Chillet.
+Hakurai interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+Interrupt Addict's Relaxaurus attacks Hakurai's Chillet.
+Hakurai interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+Interrupt Addict's Jormuntide attacks Hakurai's Chillet.
+Jormuntide (1600) attacked Chillet (900).
+Jormuntide
+Chillet destroyed, 1600 damage vs 900 Power.
+TURN 21
+INTERRUPT ADDICT
+Deployed Elphidran Aqua to slot 1 for 6 Souls.
+Drew 2 cards.
+Put Aurora Guide on top of the deck.
+TURN 22
+HAKURAI
+Reindrix
+Elphidran Aqua's attack was interrupted.
+Deployed Fuack to slot 2 for 2 Souls.
+✦
+Fuack attacked them for 1; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 23
+INTERRUPT ADDICT
+Interrupt Addict activated Primitive Furnace.
+Interrupt Addict deployed Pump-Action Shotgun.
+Interrupt Addict's Jormuntide attacks Hakurai for 3.
+Jormuntide hit Hakurai for 3. Damage Check: 3 cards milled, no Lucky. Hakurai 5 to 2 life.
+Interrupt Addict's Reindrix attacks Hakurai for 2.
+Reindrix hit Hakurai for 2. Damage Check: 2 cards milled, no Lucky. Hakurai 2 to 0 life.
+
+INTERRUPT ADDICT WINS
+Hakurai's life hit zero.
+FINAL LIFE: Interrupt Addict (WINNER) 6, Hakurai 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+23-turn game. Interrupt Addict ran a Primitive Furnace/Single-Shot Rifle self-ping engine (repeatedly destroying own overcosted Reindrix/Relaxaurus at 1500 dmg to reset board) alongside small beaters (Fuack, Reindrix, Foxparks, Jormuntide, Elphidran Aqua, Relaxaurus). Hakurai's Fuack/Reindrix chipped Interrupt Addict early (10->9->8->6) but Interrupt Addict stabilized with Relaxaurus/Chillet blockers and Cryolinx/Reindrix/Blazehowl interrupts on both sides throughout. Interrupt Addict's Relaxaurus (1400) destroyed Hakurai's Relaxaurus (1200) turn 17; Jormuntide chipped Hakurai repeatedly (10->8 turn14 Foxparks, 8->5 turn17, 5->2 turn23) and finished with Reindrix hitting for 2 (2 to 0) same turn.
+
+

@@ -1,0 +1,190 @@
+----- TIER 1 MATCH 4/34 (recordId 31a79e47-c77d-4008-b5c1-2951734b4ca6) -----
+
+=====================================================================
+MATCH: LavenousCAM vs xNIGHTn
+recordId: 31a79e47-c77d-4008-b5c1-2951734b4ca6
+RESULT: LAVENOUSCAM WINS - xNIGHTn's life hit zero. Final life: LavenousCAM (WINNER) 8, xNIGHTn 0.
+NOTE: LavenousCAM's deck labeled "PURE FUEL" in HUD.
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 5:  Reindrix interrupts Ragnahawk's attack
+  Turn 9:  Blazehowl Noct interrupts Jormuntide Ignis's attack
+  Turn 11: Cryolinx interrupts Jormuntide Ignis's attack
+  Turn 14: Blazehowl Noct interrupts Ragnahawk's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+LAVENOUSCAM
+Assigned Rooby — its On Assign ability triggers.
+Foxparks gets power +400 until end of turn.
+Got 3 .
+Drew 1.
+Deployed Foxparks' Harness to slot 4 for 3 Souls.
+Foxparks gets Power +200 until end of turn.
+power +300 until end of turn.
+Foxparks (200+900 = 1100) attacked Elphidran (600).
+Foxparks
+Elphidran destroyed, 1100 damage vs 600 Power.
+TURN 2
+XNIGHTN
+xNIGHTn deployed Chillet.
+xNIGHTn revealed Reindrix and added it to their hand.
+xNIGHTn played Zoe's Strategy.
+xNIGHTn returned Elphidran from their graveyard to hand.
+Discarded Suzaku.
+xNIGHTn's Chillet attacks LavenousCAM's Foxparks.
+Chillet (900) attacked Foxparks (200).
+Chillet
+Foxparks destroyed, 900 damage vs 200 Power.
+TURN 3
+XNIGHTN
+Played Pal Sphere for 4 Souls.
+Drew 3.
+Assigned Rooby — its On Assign ability triggers.
+Rooby gets power +400 until end of turn.
+Got 3 .
+Drew 1.
+Played Pal Sphere for 4 Souls.
+Drew 3.
+xNIGHTn deployed Lyleen Noct.
+xNIGHTn's Lyleen Noct attacks LavenousCAM for 3.
+LavenousCAM interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+xNIGHTn's Chillet attacks LavenousCAM for 2.
+Chillet hit LavenousCAM for 2. Damage Check: 2 cards milled, no Lucky. LavenousCAM 10 to 8 life.
+TURN 4
+XNIGHTN
+Deployed Mounted Machine Gun to slot 3 for 4 Souls.
+Deployed Ragnahawk to slot 5 for 6 Souls.
+Assigned Rooby — its On Assign ability triggers.
+Ragnahawk gets power +400 until end of turn.
+Spent 6 .
+All LavenousCAM's Red Pals get power +500 until end of turn.
+All LavenousCAM's Red Pals get strike +1 until end of turn.
+TURN 5
+LAVENOUSCAM
+Reindrix
+Ragnahawk's attack was interrupted.
+TURN 6
+XNIGHTN
+xNIGHTn played Aurora Guide.
+xNIGHTn deployed Lyleen Noct.
+xNIGHTn activated Lyleen Noct.
+xNIGHTn discarded Victor's Strategy to pay a cost.
+xNIGHTn deployed Relaxaurus.
+Ragnahawk was Rested.
+Ragnahawk won't stand while the source stays in play.
+xNIGHTn's Relaxaurus attacks LavenousCAM's Mounted Machine Gun.
+Relaxaurus (1200) struck Mounted Machine Gun (1000).
+Relaxaurus
+Mounted Machine Gun destroyed, 1200 damage vs 1000 Power.
+TURN 7
+XNIGHTN
+Deployed Foxparks to slot 3 for 2 Souls.
+Deployed Rooby to slot 6 for 2 Souls.
+Assigned Rooby — its On Assign ability triggers.
+Foxparks gets power +400 until end of turn.
+Got 3 .
+Drew 1.
+Foxparks gets Power +200 until end of turn.
+Deployed Stone Pit to slot 7 for 1 Souls.
+Assigned Rooby — its On Assign ability triggers.
+Foxparks gets power +400 until end of turn.
+Got 3 .
+Drew 1.
+Deployed Mounted Machine Gun to slot 8 for 4 Souls.
+Assigned Foxparks.
+Spent 9 .
+xNIGHTn played Strike from the Darkness.
+Ragnahawk was destroyed.
+xNIGHTn deployed Elphidran.
+xNIGHTn's Elphidran attacks LavenousCAM's Foxparks.
+LavenousCAM interrupted with Foxparks, paid 1 Soul. The attack was nullified.
+TURN 8
+XNIGHTN
+Foxparks gets Power +200 until end of turn.
+Assigned Rooby — its On Assign ability triggers.
+Foxparks gets power +400 until end of turn.
+Got 3 .
+Drew 1.
+power +300 until end of turn.
+TURN 9
+LAVENOUSCAM
+Foxparks attacked them for 1. Damage Check: 1 card milled, no Lucky. They 10 to 9 life.
+Deployed Jormuntide Ignis to slot 5 for 8 Souls.
+Blazehowl Noct
+Jormuntide Ignis's attack was interrupted.
+Assigned Rooby — its On Assign ability triggers.
+Jormuntide Ignis gets power +400 until end of turn.
+Got 3 .
+Drew 1.
+TURN 10
+XNIGHTN
+xNIGHTn played Victor's Strategy.
+xNIGHTn looked at 5 cards and took 1 into their hand.
+TURN 11
+LAVENOUSCAM
+Cryolinx
+Jormuntide Ignis's attack was interrupted.
+Rested 3 Souls to pay a cost (7 standing).
+Stood this card.
+Jormuntide Ignis attacked them for 4. Damage Check: 4 cards milled, no Lucky. They 9 to 5 life.
+Played Axel's Strategy for 4 Souls.
+Choose up to 1 rested Pal to stand.
+Jormuntide Ignis was Stood.
+✦
+Jormuntide Ignis attacked them for 4; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Assigned Rooby — its On Assign ability triggers.
+Jormuntide Ignis gets power +400 until end of turn.
+Got 3 .
+Drew 1.
+Assigned Rooby — its On Assign ability triggers.
+Foxparks gets power +400 until end of turn.
+Got 3 .
+Drew 1.
+power +300 until end of turn.
+Foxparks attacked them for 1. Damage Check: 1 card milled, no Lucky. They 5 to 4 life.
+TURN 12
+XNIGHTN
+xNIGHTn deployed Chillet.
+xNIGHTn deployed Astegon.
+Jormuntide Ignis gets power -1000 until end of turn.
+xNIGHTn's Astegon attacks LavenousCAM's Jormuntide Ignis.
+LavenousCAM interrupted with Bushi, paid 1 Soul. The attack was nullified.
+TURN 13
+XNIGHTN
+Deployed Ragnahawk to slot 2 for 6 Souls.
+All LavenousCAM's Red Pals get power +500 until end of turn.
+All LavenousCAM's Red Pals get strike +1 until end of turn.
+TURN 14
+LAVENOUSCAM
+Blazehowl Noct
+Ragnahawk's attack was interrupted.
+✦
+Jormuntide Ignis attacked them for 5; their Damage Check revealed a Lucky Pal, cancelled, no damage. (5 cards milled)
+Rested 3 Souls to pay a cost (1 standing).
+Stood this card.
+Assigned Jormuntide Ignis.
+Spent 5 .
+TURN 15
+XNIGHTN
+xNIGHTn played Pal Sphere.
+TURN 16
+XNIGHTN
+All LavenousCAM's Red Pals get power +500 until end of turn.
+All LavenousCAM's Red Pals get strike +1 until end of turn.
+TURN 17
+LAVENOUSCAM
+Ragnahawk attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 4 to 1 life.
+Jormuntide Ignis attacked them for 5. Damage Check: 5 cards milled, no Lucky. They 1 to 0 life.
+
+LAVENOUSCAM WINS
+xNIGHTn's life hit zero.
+FINAL LIFE: LavenousCAM (WINNER) 8, xNIGHTn 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Turn 1: LavenousCAM assigns Rooby (On Assign trigger), buffs Foxparks, deploys Foxparks' Harness (3 souls), Foxparks (1100 total buffed) destroys xNIGHTn's Elphidran (600). Turn 2: xNIGHTn deploys Chillet, reveals Reindrix, plays Zoe's Strategy returning Elphidran, discards Suzaku; Chillet (900) destroys LavenousCAM's Foxparks (200). Turn 3: xNIGHTn plays Pal Sphere twice (4 souls each, draws 3 each time), assigns Rooby (buff+draw), deploys Lyleen Noct; its attack on LavenousCAM nullified by Reindrix interrupt; Chillet hits LavenousCAM for 2 (10->8 life). Turn 4: xNIGHTn deploys Mounted Machine Gun (4 souls) and Ragnahawk (6 souls), assigns Rooby (buff), buffs all LavenousCAM's Red Pals +500/+1 strike (odd effect, likely a card ability triggered). Turn 5: Ragnahawk's attack interrupted by Reindrix. Turn 6: xNIGHTn plays Aurora Guide, deploys Lyleen Noct, activates it (discards Victor's Strategy as cost), deploys Relaxaurus; Ragnahawk rested; Relaxaurus (1200) destroys LavenousCAM's Mounted Machine Gun (1000). Turn 7: xNIGHTn deploys Foxparks (2 souls), Rooby (2 souls, assign trigger+buff+draw), Stone Pit (1 soul, another Rooby trigger+buff+draw), Mounted Machine Gun (4 souls, assigns Foxparks); plays Strike from the Darkness (Ragnahawk destroyed as cost), deploys Elphidran; its attack on LavenousCAM's Foxparks nullified by Foxparks interrupt (1 soul). Turn 8: xNIGHTn buffs Foxparks repeatedly via Rooby assigns and draws. Turn 9: LavenousCAM's Foxparks attacks xNIGHTn for 1 (10->9 life); deploys Jormuntide Ignis (8 souls); its attack interrupted by Blazehowl Noct; Rooby assign buffs+draws. Turn 10: xNIGHTn plays Victor's Strategy, tutors 1 of 5. Turn 11: LavenousCAM's Jormuntide Ignis interrupted by Cryolinx, rests 3 souls to pay cost then stands it, attacks xNIGHTn for 4 (9->5 life); plays Axel's Strategy (4 souls) standing Jormuntide Ignis again, its second attack cancelled by Lucky Pal; more Rooby buff/draw cycles; Foxparks attacks for 1 (5->4 life). Turn 12: xNIGHTn deploys Chillet and Astegon, debuffs Jormuntide Ignis -1000 power; Astegon's attack on Jormuntide Ignis nullified by Bushi interrupt (1 soul). Turn 13: xNIGHTn deploys Ragnahawk (6 souls), buffs all LavenousCAM's Red Pals +500/+1 strike (again, likely a recurring negative-for-self / opponent-buff mechanic tied to a specific card). Turn 14: Ragnahawk's attack interrupted by Blazehowl Noct; LavenousCAM's Jormuntide Ignis attacks for 5, cancelled by Lucky Pal; rests 3 souls to pay cost, stands it, assigns it. Turn 15: xNIGHTn plays Pal Sphere. Turn 16: xNIGHTn again buffs all LavenousCAM's Red Pals +500/+1 strike. Turn 17: LavenousCAM's Ragnahawk (buffed) attacks for 3 (4->1 life); Jormuntide Ignis (buffed) attacks for 5, life hits 1->0.
+
+

@@ -1,0 +1,211 @@
+----- TIER 2 MATCH 6/10 done (worklist row 6, recordId 0ecf5728-c5be-4258-a356-9cc11c4280cb, lonely whale vs Guccjiit) -----
+
+=====================================================================
+MATCH: Guccjiit vs lonely whale
+recordId: 0ecf5728-c5be-4258-a356-9cc11c4280cb
+RESULT: LONELY WHALE WINS - Guccjiit's life hit zero. Final life: lonely whale (WINNER) 11, Guccjiit 0.
+NOTE: lonely whale's deck titled "PURP STEALER" in HUD. Long 22-turn grind featuring a
+Menasting/Reptyro/Felbat lifegain engine on lonely whale's side (final life 11, above the
+starting 10).
+NOTE: 5 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 6:  Wumpo Botan interrupts Reptyro's attack
+  Turn 9:  Dinossom interrupts Reptyro's attack
+  Turn 13: Wumpo Botan interrupts Reptyro's attack
+  Turn 19: Wumpo Botan interrupts Felbat's attack
+  Turn 19: Wumpo Botan interrupts Reptyro's attack (second bare interrupt this turn)
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+GUCCJIIT
+Guccjiit's Rushoar attacks lonely whale's Primitive Furnace.
+Rushoar (200+800 = 1000) struck Primitive Furnace (800).
+Rushoar
+Primitive Furnace destroyed, 1000 damage vs 800 Power.
+TURN 2
+GUCCJIIT
+Deployed Flambelle to slot 3 for 3 Souls.
+Got 2 .
+Assigned Flambelle.
+Got 3 .
+Drew 1.
+Menasting gets power +200 until end of turn.
+TURN 3
+LONELY WHALE
+Menasting (700+200 = 900) attacked Digtoise (800).
+Menasting
+Digtoise destroyed, 900 damage vs 800 Power.
+Deployed Foxparks to slot 5 for 4 Souls.
+Deployed Primitive Furnace to slot 6 for 2 Souls.
+Assigned Foxparks.
+Got 3 .
+Drew 1.
+TURN 4
+GUCCJIIT
+Guccjiit's Rushoar attacks lonely whale's Primitive Furnace.
+Rushoar (200+800 = 1000) struck Primitive Furnace (800).
+Rushoar
+Primitive Furnace destroyed, 1000 damage vs 800 Power.
+Guccjiit deployed Berry Plantation.
+Guccjiit deployed Chikipi.
+Guccjiit activated Berry Plantation.
+Guccjiit deployed Flopie.
+Guccjiit's Flopie attacks lonely whale for 1.
+lonely whale interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+TURN 5
+GUCCJIIT
+Deployed Reptyro to slot 1 for 8 Souls.
+Got 3 .
+Spent 3 (14 left).
+Looked at top 5: deployed Pump-Action Shotgun.
+Dealt 1200 to every Guccjiit Pal.
+Assigned Flambelle.
+Got 3 .
+Drew 1.
+TURN 6
+LONELY WHALE
+Wumpo Botan
+Reptyro's attack was interrupted.
+Foxparks attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 11 to 9 life.
+TURN 7
+GUCCJIIT
+Guccjiit deployed Pump-Action Shotgun.
+Returned Blazehowl Noct from graveyard to hand.
+TURN 8
+GUCCJIIT
+Played Zoe's Strategy for 3 Souls.
+Returned Menasting from graveyard to hand.
+Guccjiit must discard 1.
+Guccjiit discarded Ranch.
+Played Zoe's Strategy for 3 Souls.
+Returned Flambelle from graveyard to hand.
+Guccjiit must discard 1.
+Guccjiit discarded Petallia.
+Deployed Foxparks to slot 2 for 2 Souls.
+Assigned Foxparks.
+Got 3 .
+Drew 1.
+TURN 9
+LONELY WHALE
+Dinossom
+Reptyro's attack was interrupted.
+TURN 10
+LONELY WHALE
+Assigned Foxparks.
+Got 3 .
+Drew 1.
+Deployed Flambelle to slot 3 for 3 Souls.
+Got 2 .
+Deployed Menasting to slot 5 for 5 Souls.
+Flambelle gets power +200 until end of turn.
+Flambelle gets power +200 until end of turn.
+Flambelle (400+400 = 800) struck Berry Plantation (600).
+Flambelle
+Berry Plantation destroyed, 800 damage vs 600 Power.
+✦
+Reptyro attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+✦
+Menasting attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 11
+GUCCJIIT
+Guccjiit deployed Digtoise.
+Guccjiit activated Digtoise's Headband.
+Guccjiit's Digtoise attacks lonely whale's Reptyro.
+lonely whale interrupted with Blazehowl Noct, paid 1 Soul. The attack was nullified.
+TURN 12
+GUCCJIIT
+Assigned Foxparks.
+Got 3 .
+Drew 1.
+Played Strike from the Darkness for 4 Souls.
+Deployed Wooden Wall to slot 8 for 3 Souls.
+Spent 2 .
+Next Gear costs 1 less this turn.
+Next Gear costs 2 less this turn.
+Deployed Foxparks' Harness to slot 9 for 1 Souls.
+TURN 13
+LONELY WHALE
+Flambelle attacked them for 1. Damage Check: 1 card milled, no Lucky. They 9 to 8 life.
+Wumpo Botan
+Reptyro's attack was interrupted.
+✦
+Menasting attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 14
+GUCCJIIT
+Guccjiit deployed Rushoar.
+Guccjiit's Rushoar attacks lonely whale's Wooden Wall.
+Drew 1.
+Rushoar (200+800 = 1000) struck Wooden Wall (300).
+Rushoar
+Wooden Wall destroyed, 1000 damage vs 300 Power.
+TURN 15
+GUCCJIIT
+Deployed Felbat to slot 8 for 7 Souls.
+Assigned Flambelle.
+Got 3 .
+Drew 1.
+Foxparks gets Power +200 until end of turn.
+power +300 until end of turn.
+TURN 16
+LONELY WHALE
+✦
+Foxparks attacked them for 1; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+✦
+Reptyro attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Felbat: gained 1 life (9).
+✦
+Felbat attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Menasting attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+TURN 17
+GUCCJIIT
+Guccjiit deployed Berry Plantation.
+Guccjiit deployed Flopie.
+Guccjiit activated Berry Plantation.
+TURN 18
+GUCCJIIT
+Assigned Flambelle.
+Got 3 .
+Drew 1.
+Rested 3 Souls, drew 1 card.
+Foxparks gets Power +200 until end of turn.
+power +300 until end of turn.
+TURN 19
+LONELY WHALE
+Foxparks attacked them for 1. Damage Check: 1 card milled, no Lucky. They 6 to 5 life.
+Felbat: gained 1 life (10).
+Wumpo Botan
+Felbat's attack was interrupted.
+Wumpo Botan
+Reptyro's attack was interrupted.
+Menasting attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 5 to 3 life.
+TURN 20
+GUCCJIIT
+Guccjiit deployed Rushoar.
+Guccjiit's Rushoar attacks lonely whale's Primitive Furnace.
+lonely whale interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+TURN 21
+GUCCJIIT
+Assigned Flambelle.
+Got 3 .
+Drew 1.
+Foxparks gets Power +200 until end of turn.
+power +300 until end of turn.
+TURN 22
+LONELY WHALE
+Foxparks attacked them for 1. Damage Check: 1 card milled, no Lucky. They 3 to 2 life.
+Felbat: gained 1 life (11).
+✦
+Felbat attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Reptyro attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 2 to 0 life.
+
+LONELY WHALE WINS
+Guccjiit's life hit zero.
+FINAL LIFE: lonely whale (WINNER) 11, Guccjiit 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Long 22-turn grind. Guccjiit's Rushoar repeatedly demolished lonely whale's cheap Primitive Furnace rebuilds (turns 1, 4) while lonely whale's Menasting traded up into Guccjiit's Digtoise (turn 3). Guccjiit's early Flopie poke was fully nullified by a paid-Soul Pyrin Noct interrupt (turn 4), and lonely whale's Reptyro survived repeated bare-form interrupts across the game - Wumpo Botan (turns 6, 13, 19) and Dinossom (turn 9) - while Guccjiit's own Digtoise swing was nullified by a paid-Soul Blazehowl Noct (turn 11) and a later Rushoar swing nullified by a paid-Soul Pyrin Noct (turn 20). lonely whale's Foxparks/Menasting/Reptyro ground Guccjiit down steadily from turn 6 onward (11->9->8->6->5->3->2->0) while a Felbat lifegain engine (gained 1 life per attack, turns 16/19/22) pushed lonely whale's own life above its starting total, closing at 11. Several of lonely whale's own attacks were also Lucky-Pal-cancelled along the way (turns 10, 13, 16, 22). Reptyro landed the final blow turn 22 (2 to 0).
+
+

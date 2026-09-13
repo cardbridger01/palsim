@@ -1,0 +1,185 @@
+----- TIER 1 MATCH 29/34 (recordId c127842b-d1e7-4716-8ce6-2d337d21027d) -----
+
+=====================================================================
+MATCH: Beicon vs Cayde
+recordId: c127842b-d1e7-4716-8ce6-2d337d21027d
+RESULT: BEICON WINS - Cayde's life hit zero. Final life: Beicon (WINNER) 8, Cayde 0.
+NOTE: Cayde's deck titled "DRAGON CULTIVATION TEST" in HUD (2nd Tier 1 match for Cayde, lost
+both this one and vs Bandit). Beicon's 2nd Tier 1 win.
+NOTE: 2 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 8:  Cryolinx interrupts Relaxaurus's attack
+  Turn 20: Cryolinx interrupts Jormuntide Ignis's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+TURN 2
+Rested 3 Souls, drew 1 card.
+TURN 3
+BEICON
+Beicon deployed Pengullet.
+Beicon's Pengullet attacks Cayde for 2.
+Pengullet hit Cayde for 2. Damage Check: 2 cards milled, no Lucky. Cayde 10 to 8 life.
+TURN 4
+BEICON
+Deployed Pengullet to slot 1 for 4 Souls.
+TURN 5
+CAYDE
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+TURN 6
+BEICON
+Beicon deployed Elphidran Aqua.
+Beicon's Elphidran Aqua attacks Cayde's Pengullet.
+Drew 1.
+Elphidran Aqua (900) attacked Pengullet (600).
+Elphidran Aqua
+Pengullet destroyed, 900 damage vs 600 Power.
+Beicon's Pengullet attacks Cayde for 2.
+✦
+Pengullet attacked Cayde for 2; Cayde's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 7
+BEICON
+Deployed Relaxaurus to slot 1 for 7 Souls.
+TURN 8
+CAYDE
+Cryolinx
+Relaxaurus's attack was interrupted.
+TURN 9
+BEICON
+Beicon played Strike from the Darkness.
+Relaxaurus was destroyed.
+Beicon's Elphidran Aqua attacks Cayde for 2.
+Elphidran Aqua hit Cayde for 2. Damage Check: 2 cards milled, no Lucky. Cayde 8 to 6 life.
+TURN 10
+BEICON
+Played Victor's Strategy for 3 Souls.
+Looked at top 5: took Reindrix to hand.
+Deployed Elphidran to slot 1 for 4 Souls.
+Revealed Elphidran Aqua (Dragon). Power +500 until end of turn.
+TURN 11
+CAYDE
+Elphidran (600+500 = 1100) attacked Elphidran Aqua (900).
+Elphidran
+Elphidran Aqua destroyed, 1100 damage vs 900 Power.
+TURN 12
+BEICON
+Beicon deployed Grappling Gun.
+Beicon deployed Penking.
+Beicon's Pengullet attacks Cayde's Elphidran.
+Cayde interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+Beicon activated Grappling Gun.
+Beicon's Penking attacks Cayde's Elphidran.
+Penking (600+200 = 800) attacked Elphidran (600).
+Penking
+Elphidran destroyed, 800 damage vs 600 Power.
+TURN 13
+BEICON
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Deployed Relaxaurus to slot 1 for 7 Souls.
+Beicon deployed Jormuntide.
+Relaxaurus was Rested.
+Relaxaurus won't stand during its next Stand Phase.
+Beicon's Jormuntide attacks Cayde's Relaxaurus.
+Jormuntide (1600) attacked Relaxaurus (1200).
+Jormuntide
+Relaxaurus destroyed, 1600 damage vs 1200 Power.
+Beicon activated Grappling Gun.
+TURN 14
+BEICON
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Deployed Single-Shot Rifle to slot 1 for 4 Souls.
+Beicon deployed Pengullet Rocket Launcher.
+Beicon deployed Penking.
+Beicon's Jormuntide attacks Cayde for 3.
+Cayde interrupted with Foxparks, paid 1 Soul. The attack was nullified.
+Beicon's Pengullet attacks Cayde for 2.
+✦
+Pengullet attacked Cayde for 2; Cayde's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Beicon activated Grappling Gun.
+TURN 15
+BEICON
+Deployed Pengullet to slot 2 for 4 Souls.
+Deployed Pengullet Rocket Launcher to slot 3 for 4 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Pengullet gets power +200 until end of turn.
+Drew 1.
+Dealt 1300 to every Beicon Pal, then sacrificed this card.
+Beicon's Jormuntide attacks Cayde for 3.
+✦
+Jormuntide attacked Cayde for 3; Cayde's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Beicon activated Grappling Gun.
+Beicon deployed Pengullet.
+Beicon's Pengullet attacks Cayde for 2.
+Pengullet hit Cayde for 2. Damage Check: 2 cards milled, no Lucky. Cayde 6 to 4 life.
+TURN 16
+BEICON
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide Ignis on top of the deck.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Jormuntide Ignis.
+Deployed Jormuntide Ignis.
+Rested 3 Souls, drew 1 card.
+TURN 17
+CAYDE
+Jormuntide Ignis (1700) attacked Pengullet (600).
+Jormuntide Ignis
+Pengullet destroyed, 1700 damage vs 600 Power.
+Discarded Elphidran Aqua, Elphidran Aqua to pay a cost.
+Stood this card.
+TURN 18
+BEICON
+Beicon deployed Pengullet.
+Beicon deployed Antique Wooden Chair.
+Beicon's Pengullet gets power +1000 until end of turn.
+Beicon activated Pengullet Rocket Launcher.
+Beicon's Pengullet gets power +500 until end of turn.
+Beicon activated Pengullet.
+Beicon deployed Menasting.
+Beicon activated Grappling Gun.
+Beicon's Jormuntide attacks Cayde for 3.
+✦
+Jormuntide attacked Cayde for 3; Cayde's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Beicon's Menasting attacks Cayde for 2.
+Menasting hit Cayde for 2. Damage Check: 2 cards milled, no Lucky. Cayde 4 to 2 life.
+TURN 19
+BEICON
+Deployed Jormuntide Ignis to slot 2 for 8 Souls.
+Jormuntide Ignis gets power +200 until end of turn.
+Jormuntide Ignis gets power +200 until end of turn.
+TURN 20
+CAYDE
+Cryolinx
+Jormuntide Ignis's attack was interrupted.
+Discarded Elphidran Aqua, Pal Sphere to pay a cost.
+Stood this card.
+TURN 21
+BEICON
+Beicon's Menasting attacks Cayde for 2.
+Cayde blocked with Jormuntide Ignis.
+Menasting (700) attacked Jormuntide Ignis (1700).
+Jormuntide Ignis was dragged down by Menasting's Retaliate.
+Menasting
+Jormuntide Ignis destroyed, 700 damage vs 1700 Power.
+Menasting destroyed, 1700 damage vs 700 Power.
+Beicon returned Cryolinx from their graveyard to hand.
+Beicon's Jormuntide attacks Cayde for 3.
+Jormuntide hit Cayde for 3. Damage Check: 3 cards milled, no Lucky. Cayde 2 to 0 life.
+
+BEICON WINS
+Cayde's life hit zero.
+FINAL LIFE: Beicon (WINNER) 8, Cayde 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+21-turn game. Beicon's Pengullet/Elphidran Aqua chip damage early (Cayde 10->8->6, some Lucky Pal cancels). Relaxaurus destroyed by Cayde's Cryolinx-interrupt-then-Strike-from-Darkness combo (turn 9, self-sacrifice for tempo). Beicon's Elphidran traded/destroyed Cayde's Elphidran Aqua and Elphidran across turns 10-12 (via Elphidran Aqua Dragon-reveal +500 power, then Penking finishing). Beicon deployed Jormuntide (1600) destroying Cayde's Relaxaurus (turn 13), then chip-attacked Cayde repeatedly with Jormuntide (3 dmg, several Lucky-Pal-cancelled) and Pengullet/Menasting (2 dmg each) grinding Cayde from 8->6->4->2. A Pengullet explode-skill self-wipe (1300 to own board) reset Beicon's board turn 15. Cayde's own Jormuntide Ignis destroyed a Beicon Pengullet (turn 17) and later traded with Beicon's Menasting via Retaliate (both destroyed, turn 21) before Beicon's remaining Jormuntide hit Cayde for the final 3 (2 to 0).
+
+

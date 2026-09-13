@@ -1,0 +1,114 @@
+----- TIER 1 MATCH 17/34 (recordId 6be62c7f-f33b-45b8-8b90-3a734e7a48ec) -----
+
+=====================================================================
+MATCH: Slowpoke vs Charcola
+recordId: 6be62c7f-f33b-45b8-8b90-3a734e7a48ec
+RESULT: SLOWPOKE WINS - Charcola's life hit zero. Final life: Slowpoke (WINNER) 8, Charcola 0.
+NOTE: Charcola's deck titled "FINAL TOURNEY" in HUD.
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified. All
+interrupts in this game are bare-form - there are zero full-form interrupts.
+  Turn 5:  Pyrin Noct interrupts Elphidran Aqua's attack
+  Turn 8:  Pyrin Noct interrupts Pengullet's attack
+  Turn 11: Cryolinx interrupts Pengullet's attack
+  Turn 11: Cryolinx interrupts Elphidran Aqua's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+SLOWPOKE
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Slowpoke deployed Antique Mirror.
+TURN 2
+SLOWPOKE
+Played The Adventure Begins for 2 Souls.
+Drew 2.
+Deployed Antique Mirror to slot 1 for 1 Souls.
+Drew 1.
+TURN 3
+SLOWPOKE
+Deployed Antique Mirror to slot 2 for 1 Souls.
+Drew 1.
+Rested 3 Souls, drew 1 card.
+Slowpoke deployed Elphidran.
+Slowpoke's Elphidran attacks Charcola for 2.
+Elphidran hit Charcola for 2. Damage Check: 2 cards milled, no Lucky. Charcola 10 to 8 life.
+TURN 4
+SLOWPOKE
+Deployed Antique Mirror to slot 3 for 1 Souls.
+Drew 1.
+Deployed Elphidran Aqua to slot 4 for 6 Souls.
+Drew 2 cards.
+Put Mammorest Cryst on top of the deck.
+TURN 5
+CHARCOLA
+Pyrin Noct
+Elphidran Aqua's attack was interrupted.
+TURN 6
+SLOWPOKE
+Slowpoke deployed Relaxaurus.
+Elphidran Aqua was Rested.
+Elphidran Aqua won't stand while the source stays in play.
+Slowpoke's Elphidran attacks Charcola for 2.
+✦
+Elphidran attacked Charcola for 2; Charcola's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Slowpoke's Relaxaurus attacks Charcola for 3.
+Relaxaurus hit Charcola for 3. Damage Check: 3 cards milled, no Lucky. Charcola 8 to 5 life.
+TURN 7
+SLOWPOKE
+Deployed Single-Shot Rifle to slot 5 for 4 Souls.
+Deployed Pengullet to slot 6 for 4 Souls.
+Pengullet gets power +200 until end of turn.
+TURN 8
+CHARCOLA
+Pyrin Noct
+Pengullet's attack was interrupted.
+TURN 9
+SLOWPOKE
+Slowpoke deployed Elphidran Aqua.
+Slowpoke revealed Jormuntide (Dragon).
+Slowpoke's Elphidran attacks Charcola's Elphidran Aqua.
+Elphidran (600+500 = 1100) attacked Elphidran Aqua (900).
+Elphidran
+Elphidran Aqua destroyed, 1100 damage vs 900 Power.
+Slowpoke's Elphidran Aqua attacks Charcola for 2.
+Elphidran Aqua hit Charcola for 2. Damage Check: 2 cards milled, no Lucky. Charcola 5 to 3 life.
+Slowpoke deployed Antique Mirror.
+TURN 10
+SLOWPOKE
+Deployed Elphidran Aqua to slot 4 for 6 Souls.
+Drew 2 cards.
+Put Mammorest Cryst on top of the deck.
+Elphidran Aqua gets power +200 until end of turn.
+TURN 11
+CHARCOLA
+Cryolinx
+Pengullet's attack was interrupted.
+Cryolinx
+Elphidran Aqua's attack was interrupted.
+Deployed Cattiva to slot 7 for 2 Souls.
+Deployed Chikipi to slot 8 for 2 Souls.
+Cattiva attacked them for 1. Damage Check: 1 card milled, no Lucky. They 10 to 9 life.
+Chikipi attacked them for 1. Damage Check: 1 card milled, no Lucky. They 9 to 8 life.
+TURN 12
+SLOWPOKE
+Slowpoke deployed Pengullet.
+Slowpoke deployed Pengullet.
+Slowpoke's Elphidran attacks Charcola for 2.
+✦
+Elphidran attacked Charcola for 2; Charcola's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Slowpoke's Elphidran Aqua attacks Charcola for 2.
+Elphidran Aqua hit Charcola for 2. Damage Check: 2 cards milled, no Lucky. Charcola 3 to 1 life.
+Slowpoke's Pengullet attacks Charcola for 2.
+Pengullet hit Charcola for 2. Damage Check: 2 cards milled, no Lucky. Charcola 1 to 0 life.
+
+SLOWPOKE WINS
+Charcola's life hit zero.
+FINAL LIFE: Slowpoke (WINNER) 8, Charcola 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Short 12-turn game. Slowpoke built a wide Antique Mirror engine for card draw while deploying Elphidran/Elphidran Aqua/Relaxaurus/Pengullet threats. Several of Slowpoke's attacks were nullified by Charcola's Pyrin Noct/Cryolinx interrupts (turns 5, 8, 11), but Slowpoke's Elphidran (Dragon-buffed, 1100 power) destroyed Charcola's own Elphidran Aqua in return (turn 9). Slowpoke ground Charcola down steadily via Elphidran/Elphidran Aqua/Relaxaurus/Pengullet chip damage (10->8->5->3->1->0) across just 12 turns, closing with a final Pengullet hit for 2.
+
+

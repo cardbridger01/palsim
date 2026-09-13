@@ -1,0 +1,84 @@
+=====================================================================
+MATCH: Ze (in-game name "bel") vs amata (shown on-screen as "Opponent")  [Ze's match #4 of 10]
+recordId: 948fce41-3f14-425a-a318-601184df328b
+RESULT: BEL WINS - Opponent surrendered. Final life: bel (WINNER) 8, Opponent 6.
+NOTE: Third surrender/concede win in this 4-game batch (see matches 1 and 2). This is by far the
+shortest and most lopsided of the three — only 7 turns, both life totals still high (8 vs 6),
+and the opponent conceded on their own Turn 7 right after deploying a Jormuntide with "No valid
+target," i.e. before doing anything with it.
+NOTE: FORMATTING DIFFERENCE from every other file in this project: the opponent's name is
+rendered on-screen and in the log as the literal word "Opponent" rather than their account name
+"amata" (which is what match_list.tsv shows from the profile page). Also, Turns 1-3 have NO
+acting-player name line before their action text (every other game's turn blocks open with
+"BEL" or the opponent's name on its own line) — those three turns' actions are unambiguously
+bel's (mulligan, then deploying Elphidran, a card from bel's Blue/Purple list) so they were
+transcribed under an inferred "BEL" header per turn, consistent with the site's normal layout;
+flagging the missing headers as a capture quirk rather than silently normalizing without note.
+NOTE: Deck labeled "BLUE/PURPLE DECK" on bel's HUD, same generic label as matches 1-3.
+NOTE: Zero bare-form interrupts this game (no interrupts of any kind occurred).
+NOTE: Both life totals are fully accounted for by named damage lines (bel 10->8 via one
+Pengullet hit; opponent 10->8->6 via two Chillet hits) — no unexplained gap this game, unlike
+matches 1 and 3.
+=====================================================================
+TURN 1
+BEL
+Turn opened — Souls 2/2 · Hand: Aurora Guide, Blazehowl Noct, Jormuntide, Jormuntide, Pengullet Rocket Launcher
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+TURN 2
+BEL
+Turn opened — Souls 4/4 · Hand: Astegon, Blazehowl Noct, Chillet, Elphidran, Jormuntide, Zoe's Strategy
+Deployed Elphidran to slot 1 for 4 Souls.
+TURN 3
+BEL
+Turn opened — Souls 6/6 · Hand: Astegon, Blazehowl Noct, Chillet, Jormuntide, Strike from the Darkness, Zoe's Strategy
+TURN 4
+OPPONENT
+Opponent deployed Pengullet.
+Opponent's Pengullet attacks bel for 2.
+Pengullet hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 10 to 8 life.
+Revealed Chillet (Dragon). Power +500 until end of turn.
+TURN 5
+BEL
+Elphidran (600+500 = 1100) attacked Pengullet (600).
+Elphidran
+Pengullet destroyed, 1100 damage vs 600 Power.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Chillet.
+Deployed Chillet.
+Revealed Reindrix, added to hand.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+TURN 6
+BEL
+Turn opened — Souls 8/8 · Hand: Astegon, Blazehowl Noct, Jormuntide, Pengullet Rocket Launcher, Reindrix, Strike from the Darkness, Zoe's Strategy
+TURN 7
+OPPONENT
+Opponent deployed Pump-Action Shotgun.
+Deployed Jormuntide to slot 1 for 8 Souls.
+Drew 1.
+No valid target.
+
+BEL WINS
+Opponent surrendered.
+FINAL LIFE: bel (WINNER) 8, Opponent 6.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+A quick, clean win for bel: a slow 3-turn setup (Elphidran deployed turn 2, nothing turn 3) paid
+off immediately once amata/Opponent committed a Pengullet attack on turn 4 — bel's boosted
+Elphidran one-shot it in return, then a double-Chillet swing on turn 5 (via a Zoe's-Strategy-style
+recursion play, deploying Chillet twice off one reveal) took the opponent from 10 to 6 in a
+single turn. The opponent never answered and conceded two turns later without ever attacking
+again, right after deploying a Jormuntide that had no valid target to hit. Unlike matches 1 and
+3, both players' final life totals are fully explained by the log's own lines — no unexplained
+gap this game.
+
+CLARIFICATION FLAGS for user review:
+- The on-screen/log opponent name reads "Opponent" rather than "amata" — likely a
+  privacy/anonymization setting on that specific account rather than a data problem, but flagging
+  since it's the first time in this project a player's real display name wasn't shown.
+- Turns 1-3 had no explicit acting-player header in the raw log (inferred as bel's turns from
+  context/card ownership) — worth watching whether this recurs on other amata or Opponent-labeled
+  games in this batch.

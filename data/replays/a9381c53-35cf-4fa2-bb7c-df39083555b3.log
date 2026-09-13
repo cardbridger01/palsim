@@ -1,0 +1,201 @@
+----- TIER 1 MATCH 24/34 (recordId a9381c53-35cf-4fa2-bb7c-df39083555b3) -----
+
+=====================================================================
+MATCH: "Opponent" (name not resolved by site - likely deleted/private account) vs Trxvor
+recordId: a9381c53-35cf-4fa2-bb7c-df39083555b3
+RESULT: TRXVOR WINS - Opponent surrendered. Final life: Trxvor (WINNER) 4, Opponent 9.
+NOTE: The site displayed this opponent's name as the literal placeholder "OPPONENT" throughout
+(HUD, attack banners, win screen) rather than a real username - could not be identified from
+the replay page. Trxvor's deck titled "PURPLE/BLUE TREVOR TOURNEY" in HUD.
+NOTE: Game genuinely ends at turn 19 despite a high step count (285 playback steps) - this
+game has an unusually high steps-per-turn ratio due to repeated Primitive Furnace/Single-Shot
+Rifle activations and stacked Pengullet-explode self-damage triggers each turn. Confirmed via
+the FINAL LIFE values (Trxvor 4, Opponent 9) matching exactly the life totals already visible
+in the turn 8/17/19 log lines below - the log is not truncated.
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 3:  Blazehowl interrupts Pengullet's attack
+  Turn 6:  Reindrix interrupts Blazehowl Noct's attack
+  Turn 11: Foxparks interrupts Astegon's attack
+  Turn 16: Blazehowl interrupts Elphidran Aqua's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+OPPONENT
+Opponent activated Primitive Furnace.
+Opponent activated Primitive Furnace.
+Opponent deployed Pump-Action Shotgun.
+TURN 2
+OPPONENT
+Deployed Pengullet to slot 2 for 4 Souls.
+Deployed Single-Shot Sphere Launcher to slot 4 for 3 Souls.
+Drew 1.
+Pengullet gets power +200 until end of turn.
+TURN 3
+TRXVOR
+Blazehowl
+Pengullet's attack was interrupted.
+TURN 4
+OPPONENT
+Opponent deployed Chillet.
+Opponent revealed Foxparks and added it to their hand.
+Opponent activated Primitive Furnace.
+Opponent's Chillet attacks Trxvor's Pengullet.
+Trxvor interrupted with Blazehowl Noct, paid 1 Soul. The attack was nullified.
+Opponent activated Primitive Furnace.
+Opponent deployed Single-Shot Rifle.
+Drew 1.
+Pengullet took 1500 damage and was destroyed.
+TURN 5
+OPPONENT
+Rested 3 Souls, drew 1 card.
+Deployed Blazehowl Noct to slot 2 for 6 Souls.
+TURN 6
+TRXVOR
+Reindrix
+Blazehowl Noct's attack was interrupted.
+TURN 7
+OPPONENT
+Opponent activated Primitive Furnace.
+Opponent activated Primitive Furnace.
+Opponent deployed Single-Shot Rifle.
+Blazehowl Noct took 1500 damage and was destroyed.
+Opponent deployed Elphidran.
+Opponent's Chillet attacks Trxvor for 2.
+Trxvor interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+Opponent's Elphidran attacks Trxvor for 2.
+✦
+Elphidran attacked Trxvor for 2; Trxvor's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 8
+OPPONENT
+Deployed Lyleen Noct to slot 2 for 8 Souls.
+Discarded Pengullet Rocket Launcher to pay a cost.
+Deployed Chillet from the graveyard (rested).
+Revealed Relaxaurus.
+Deployed Relaxaurus.
+Opponent activated Primitive Furnace.
+Opponent activated Primitive Furnace.
+Opponent deployed Pump-Action Shotgun.
+Opponent activated Pump-Action Shotgun.
+Opponent's Elphidran gets power +200 until end of turn.
+Opponent activated Single-Shot Rifle.
+Opponent's Elphidran gets power +200 until end of turn.
+Opponent activated Single-Shot Rifle.
+Opponent's Elphidran gets power +200 until end of turn.
+Opponent activated Pump-Action Shotgun.
+Opponent's Elphidran gets power +200 until end of turn.
+Opponent revealed Elphidran (Dragon).
+Opponent's Elphidran attacks Trxvor's Lyleen Noct.
+Elphidran (600+1300 = 1900) attacked Lyleen Noct (1700).
+Elphidran
+Lyleen Noct destroyed, 3100 damage vs 1700 Power.
+Opponent deployed Elphidran.
+Opponent's Elphidran attacks Trxvor for 2.
+Elphidran hit Trxvor for 2. Damage Check: 2 cards milled, no Lucky. Trxvor 10 to 8 life.
+TURN 9
+OPPONENT
+Deployed Pengullet to slot 2 for 3 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Dealt 1000 to every Opponent Pal, then sacrificed this card.
+Rested 3 Souls, drew 1 card.
+Played Zoe's Strategy for 3 Souls.
+Returned Astegon from graveyard to hand.
+Opponent must discard 1.
+Opponent discarded Primitive Furnace.
+Opponent deployed Chillet.
+Opponent deployed Elphidran.
+Opponent's Chillet attacks Trxvor for 2.
+✦
+Chillet attacked Trxvor for 2; Trxvor's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Opponent activated Primitive Furnace.
+TURN 10
+OPPONENT
+Deployed Astegon to slot 2 for 8 Souls.
+All Pals with Power 300 or less destroyed.
+TURN 11
+TRXVOR
+Foxparks
+Astegon's attack was interrupted.
+TURN 12
+OPPONENT
+Opponent activated Primitive Furnace.
+Opponent deployed Single-Shot Rifle.
+Astegon took 1500 damage and was destroyed.
+Opponent deployed Jormuntide.
+Opponent's Jormuntide attacks Trxvor for 3.
+✦
+Jormuntide attacked Trxvor for 3; Trxvor's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Opponent activated Primitive Furnace.
+TURN 13
+OPPONENT
+Deployed Pengullet to slot 2 for 3 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Pengullet gets power +500 and the explode skill until end of turn.
+Pengullet gets power +500 and the explode skill until end of turn.
+Pengullet gets power +200 until end of turn.
+Dealt 2200 to every Opponent Pal, then sacrificed this card.
+Rested 3 Souls, drew 1 card.
+Deployed Single-Shot Sphere Launcher to slot 2 for 3 Souls.
+Drew 1.
+Opponent deployed Jormuntide.
+Opponent's Jormuntide attacks Trxvor for 3.
+Trxvor interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 14
+OPPONENT
+Played Strike from the Darkness for 4 Souls.
+Rested 3 Souls, drew 1 card.
+Played Zoe's Strategy for 3 Souls.
+Returned Pengullet from graveyard to hand.
+Opponent must discard 1.
+Opponent discarded Primitive Furnace.
+Opponent deployed Elphidran Aqua.
+Opponent deployed Foxparks.
+Opponent's Elphidran Aqua attacks Trxvor for 2.
+Trxvor interrupted with Blazehowl Noct, discarded Single-Shot Sphere Launcher. The attack was nullified.
+Opponent's Foxparks attacks Trxvor for 2.
+✦
+Foxparks attacked Trxvor for 2; Trxvor's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 15
+OPPONENT
+Deployed Pengullet to slot 6 for 4 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Pengullet gets power +500 and the explode skill until end of turn.
+Pengullet gets power +500 and the explode skill until end of turn.
+Pengullet gets power +200 until end of turn.
+Pengullet gets power +200 until end of turn.
+Drew 1.
+Dealt 2500 to every Opponent Pal, then sacrificed this card.
+Deployed Elphidran Aqua to slot 6 for 6 Souls.
+Drew 2 cards.
+Put Medieval Medicine Workbench on top of the deck.
+TURN 16
+TRXVOR
+Blazehowl
+Elphidran Aqua's attack was interrupted.
+TURN 17
+OPPONENT
+Opponent deployed Cryolinx.
+Opponent deployed Foxparks.
+Opponent's Cryolinx attacks Trxvor for 2.
+Cryolinx hit Trxvor for 2. Damage Check: 2 cards milled, no Lucky. Trxvor 8 to 6 life.
+Opponent's Foxparks attacks Trxvor for 2.
+Foxparks hit Trxvor for 2. Damage Check: 2 cards milled, no Lucky. Trxvor 6 to 4 life.
+TURN 18
+OPPONENT
+Deployed Pengullet to slot 7 for 4 Souls.
+Deployed Pengullet to slot 8 for 3 Souls.
+TURN 19
+TRXVOR
+Pengullet attacked them for 1. Damage Check: 1 card milled, no Lucky. They 10 to 9 life.
+
+TRXVOR WINS
+Opponent surrendered.
+FINAL LIFE: Trxvor (WINNER) 4, Opponent 9.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Long 19-turn game dominated by Opponent's Primitive Furnace/Single-Shot Rifle ping engine (destroyed own overcosted threats intentionally?) and repeated "exploding Pengullet" plays (Pengullet + explode skill, dealing self-damage to own board: 1000, then 2200, then 2500 dealt to Opponent's own Pals across turns 9/13/15 - a deliberate board-wipe/reset tech). Opponent's Elphidran (1900 power via stacked buffs) destroyed Trxvor's Lyleen Noct (turn 8). Opponent chip-attacked Trxvor with Chillet/Elphidran/Jormuntide/Cryolinx/Foxparks, several nullified by Trxvor's Blazehowl Noct/Cryolinx/Reindrix interrupts. Trxvor's Blazehowl Noct nullified attacks on turns 3, 4, and 16. By turn 18 Opponent still had 9 life but a wide, low-power board (mostly freshly-deployed Pengullets); Trxvor's own Pengullet chipped Opponent for 1 (10 to 9) on turn 19, after which Opponent surrendered despite the life lead (9 vs Trxvor's 4) - likely a resignation on board state / hand exhaustion rather than life total.
+
+

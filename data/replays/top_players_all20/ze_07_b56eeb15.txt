@@ -1,0 +1,270 @@
+=====================================================================
+MATCH: Ze (in-game name "bel") vs Tsumayoji  [Ze's match #7 of 10 pulled]
+recordId: b56eeb15-6746-491d-a931-0f338e1162ec
+RESULT: BEL WINS - "Tsumayoji's life hit zero." Final life: bel (WINNER) 1, Tsumayoji 0.
+NOTE: The longest and closest game in this batch (45 turns, 140 total playback steps) — both
+players ended at effectively lethal range (bel at 1, Tsumayoji at 0). Despite the length and
+complexity, EVERY point of life change on both sides is fully traceable through named damage
+lines below — no unexplained gaps, matching ze_05 and ze_06 rather than ze_01/ze_03.
+NOTE: This game has the clearest, most repeated example yet of the turn-header-mismatch quirk
+(HANDOFF.md 5.2): three separate times (Turns 34/35, 38/39, 42/43) an opponent attack is
+DECLARED under one turn header with no resolution line, and the nullifying interrupt appears
+under the NEXT turn's header instead. All three are transcribed verbatim in place, and all three
+were confirmed (by tracking bel's life total) to have actually been nullified, not simply
+un-logged.
+NOTE: Deck labeled "BLUE/PURPLE DECK" on bel's HUD, same generic label as matches 1-6.
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 27: "Blazehowl" interrupts Jormuntide's attack (1st of 2 this turn; rendered without
+           "Noct" again, same truncation seen in ze_02)
+  Turn 27: "Blazehowl" interrupts Relaxaurus's attack (2nd of 2 this turn, same truncated name)
+  Turn 32: "Blazehowl" interrupts Elphidran Aqua's attack (1st of 2 this turn, truncated)
+  Turn 32: "Blazehowl Noct" interrupts Elphidran's attack (2nd of 2 this turn — full name this
+           time, same card, within the same turn as the truncated version above)
+3 additional FULL-form interrupts occurred (Turn 35 Cryolinx, Turn 39 Blazehowl Noct, Turn 43
+Reindrix) — not counted in the bare-form total, included in the verbatim body only.
+=====================================================================
+TURN 1
+TSUMAYOJI
+Tsumayoji deployed Leezpunk.
+Tsumayoji's Leezpunk attacks bel for 1.
+Leezpunk hit bel for 1. Damage Check: 1 card milled, no Lucky. bel 10 to 9 life.
+Rested 3 Souls, drew 1 card.
+TURN 2
+TSUMAYOJI
+Turn opened — Souls 6/6 · Hand: Aurora Guide, Chillet, Cryolinx, Elphidran Aqua, Jormuntide, Jormuntide, Reindrix, Relaxaurus
+Tsumayoji's Leezpunk attacks bel for 1.
+Leezpunk hit bel for 1. Damage Check: 1 card milled, no Lucky. bel 9 to 8 life.
+Tsumayoji deployed Menasting.
+Tsumayoji's Menasting attacks bel for 2.
+Menasting hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 8 to 6 life.
+Deployed Elphidran Aqua to slot 1 for 6 Souls.
+Drew 2 cards.
+Put Relaxaurus on top of the deck.
+TURN 3
+BEL
+Elphidran Aqua (900) attacked Menasting (700).
+Elphidran Aqua was dragged down by Menasting's Retaliate.
+Elphidran Aqua
+Menasting destroyed, 900 damage vs 700 Power.
+Elphidran Aqua destroyed, 700 damage vs 900 Power.
+TURN 4
+BEL
+Turn opened — Souls 8/8 · Hand: Aurora Guide, Chillet, Cryolinx, Cryolinx, Elphidran, Jormuntide, Jormuntide, Reindrix, Reindrix
+TURN 5
+TSUMAYOJI
+Tsumayoji's Leezpunk attacks bel for 1.
+Leezpunk hit bel for 1. Damage Check: 1 card milled, no Lucky. bel 6 to 5 life.
+Tsumayoji deployed Foxparks' Harness.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide on top of the deck.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Jormuntide.
+Deployed Jormuntide.
+Drew 1.
+TURN 6
+BEL
+Jormuntide attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 10 to 7 life.
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 7
+BEL
+Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Cryolinx, Elphidran, Jormuntide, Reindrix, Reindrix, Relaxaurus, Zoe's Strategy
+TURN 8
+TSUMAYOJI
+Tsumayoji played Strike from the Darkness.
+TURN 9
+TSUMAYOJI
+Turn opened — Souls 8/8 · Hand: Aurora Guide, Chillet, Cryolinx, Cryolinx, Elphidran, Jormuntide, Jormuntide, Reindrix, Reindrix
+Jormuntide was destroyed.
+TURN 10
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Cryolinx, Elphidran, Jormuntide, Reindrix, Reindrix, Relaxaurus, Zoe's Strategy
+Tsumayoji played Strike from the Darkness.
+TURN 11
+TSUMAYOJI
+Turn opened — Souls 8/8 · Hand: Aurora Guide, Chillet, Cryolinx, Cryolinx, Elphidran, Jormuntide, Jormuntide, Reindrix, Reindrix
+Chillet was destroyed.
+TURN 12
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Cryolinx, Elphidran, Jormuntide, Reindrix, Reindrix, Relaxaurus, Zoe's Strategy
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Cryolinx, added to hand.
+TURN 13
+BEL
+Chillet (900) attacked Leezpunk (200).
+Chillet
+Leezpunk destroyed, 900 damage vs 200 Power.
+Discarded Relaxaurus.
+Deployed Elphidran to slot 2 for 4 Souls.
+Chose not to reveal a Dragon.
+Elphidran attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 7 to 5 life.
+TURN 14
+BEL
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Jormuntide, Pengullet Rocket Launcher, Reindrix, Reindrix, Zoe's Strategy
+TURN 15
+TSUMAYOJI
+Tsumayoji deployed Menasting.
+Tsumayoji's Menasting attacks bel's Elphidran.
+TURN 16
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Cryolinx, Elphidran, Jormuntide, Reindrix, Reindrix, Relaxaurus, Zoe's Strategy
+bel interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 17
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Jormuntide, Pengullet Rocket Launcher, Reindrix, Reindrix, Zoe's Strategy
+Tsumayoji deployed Foxparks.
+Tsumayoji activated Foxparks' Harness.
+TURN 18
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Cryolinx, Elphidran, Jormuntide, Reindrix, Reindrix, Relaxaurus, Zoe's Strategy
+Elphidran took 700 damage and was destroyed.
+TURN 19
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Jormuntide, Pengullet Rocket Launcher, Reindrix, Reindrix, Zoe's Strategy
+Tsumayoji's Foxparks attacks bel for 1.
+Foxparks hit bel for 1. Damage Check: 1 card milled, no Lucky. bel 5 to 4 life.
+Tsumayoji played Zoe's Strategy.
+TURN 20
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Cryolinx, Elphidran, Jormuntide, Reindrix, Reindrix, Relaxaurus, Zoe's Strategy
+Chillet was destroyed.
+TURN 21
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Jormuntide, Pengullet Rocket Launcher, Reindrix, Reindrix, Zoe's Strategy
+Deployed Jormuntide to slot 1 for 8 Souls.
+Drew 1.
+TURN 22
+BEL
+Jormuntide attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 5 to 2 life.
+TURN 23
+BEL
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Pengullet Rocket Launcher, Reindrix, Reindrix, Strike from the Darkness, Zoe's Strategy, Zoe's Strategy
+TURN 24
+TSUMAYOJI
+Tsumayoji played Black Marketeer.
+TURN 25
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Jormuntide, Pengullet Rocket Launcher, Reindrix, Reindrix, Zoe's Strategy
+Tsumayoji returned Kitsun from their graveyard to hand.
+Tsumayoji returned Foxparks from their graveyard to hand.
+TURN 26
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Pengullet Rocket Launcher, Reindrix, Reindrix, Strike from the Darkness, Zoe's Strategy, Zoe's Strategy
+TURN 27
+BEL
+Blazehowl
+Jormuntide's attack was interrupted.
+Played Zoe's Strategy for 3 Souls.
+Returned Relaxaurus from graveyard to hand.
+Tsumayoji must discard 1.
+Tsumayoji discarded Foxparks' Harness.
+Deployed Relaxaurus to slot 2 for 7 Souls.
+Blazehowl
+Relaxaurus's attack was interrupted.
+TURN 28
+BEL
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Reindrix, Strike from the Darkness, Zoe's Strategy
+TURN 29
+TSUMAYOJI
+Tsumayoji deployed Kitsun.
+TURN 30
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Pengullet Rocket Launcher, Reindrix, Reindrix, Strike from the Darkness, Zoe's Strategy, Zoe's Strategy
+Relaxaurus took 1200 damage and was destroyed.
+TURN 31
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Reindrix, Strike from the Darkness, Zoe's Strategy
+Tsumayoji's Kitsun attacks bel for 2.
+Kitsun hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 4 to 2 life.
+TURN 32
+BEL
+✦
+Jormuntide attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+Deployed Elphidran Aqua to slot 2 for 6 Souls.
+Drew 2 cards.
+Put Strike from the Darkness on top of the deck.
+Blazehowl
+Elphidran Aqua's attack was interrupted.
+Deployed Elphidran to slot 3 for 4 Souls.
+No Dragon Pal to reveal.
+Blazehowl Noct
+Elphidran's attack was interrupted.
+TURN 33
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Reindrix
+TURN 34
+TSUMAYOJI
+Tsumayoji's Kitsun attacks bel for 2.
+TURN 35
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Reindrix, Strike from the Darkness, Zoe's Strategy
+bel interrupted with Cryolinx, discarded Pengullet Rocket Launcher. The attack was nullified.
+TURN 36
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Reindrix
+Tsumayoji deployed Foxparks.
+Tsumayoji activated Foxparks' Harness.
+TURN 37
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Reindrix, Strike from the Darkness, Zoe's Strategy
+Elphidran took 700 damage and was destroyed.
+TURN 38
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Reindrix
+Tsumayoji's Foxparks attacks bel for 1.
+Foxparks hit bel for 1. Damage Check: 1 card milled, no Lucky. bel 2 to 1 life.
+Tsumayoji's Menasting attacks bel for 2.
+TURN 39
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Reindrix, Strike from the Darkness, Zoe's Strategy
+bel interrupted with Blazehowl Noct, discarded Zoe's Strategy. The attack was nullified.
+TURN 40
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Reindrix
+Tsumayoji deployed Suzaku.
+TURN 41
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Reindrix, Strike from the Darkness, Zoe's Strategy
+Elphidran Aqua took 900 damage and was destroyed.
+TURN 42
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Reindrix
+Tsumayoji's Suzaku attacks bel for 3.
+TURN 43
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Cryolinx, Cryolinx, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Reindrix, Strike from the Darkness, Zoe's Strategy
+bel interrupted with Reindrix, discarded Cryolinx. The attack was nullified.
+TURN 44
+TSUMAYOJI
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Reindrix
+TURN 45
+BEL
+Jormuntide attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 2 to 0 life.
+
+BEL WINS
+Tsumayoji's life hit zero.
+FINAL LIFE: bel (WINNER) 1, Tsumayoji 0.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+The tensest, longest game in this batch: bel raced out to an early Jormuntide-driven damage lead
+(10->7->5->2 on Tsumayoji's life across turns 6, 13, and 22) while absorbing steady small chip
+damage from Leezpunk, Menasting, Foxparks and Kitsun that brought bel down from 10 to 2 over the
+same span. From turn 30 on, Tsumayoji's hand degraded to just two cards (Aurora Guide, Reindrix)
+while bel held a full grip — but with Tsumayoji's board (Kitsun, Foxparks, Suzaku) still landing
+occasional hits, bel had to burn three separate interrupts (Cryolinx, Blazehowl Noct, Reindrix)
+across turns 35, 39, and 43 just to survive at 1 life, before finally closing it out with a third
+Jormuntide swing on turn 45. Every life-total change on both sides is fully explained here,
+including three "declared-attack-then-interrupted-next-turn" sequences that would otherwise look
+like missing damage.
+
+CLARIFICATION FLAGS for user review:
+- This game is a strong example for the "how does bel actually close out close games" question —
+  worth flagging for direct comparison against Edify's own near-losses once the datasets are
+  cross-analyzed, since bel survived to 1 life three separate times via held interrupts rather
+  than board strength.
+- Same open scope note as matches 1-6: Ze's "BLUE/PURPLE DECK" hasn't been cross-referenced
+  against a saved decklist from Ze's own Decks page (out of scope for this pass).

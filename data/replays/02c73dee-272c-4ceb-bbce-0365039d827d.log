@@ -1,0 +1,188 @@
+----- TIER 2 MATCH 2/10 done (worklist row 2, recordId 02c73dee-272c-4ceb-bbce-0365039d827d, FluffysFury vs ThePuffinMan) -----
+
+=====================================================================
+MATCH: ThePuffinMan vs FluffysFury
+recordId: 02c73dee-272c-4ceb-bbce-0365039d827d
+RESULT: THEPUFFINMAN WINS - FluffysFury's life hit zero. Final life: ThePuffinMan (WINNER) 6, FluffysFury 0.
+NOTE: FluffysFury's deck titled "RED/BLUE TRIAL FOXPARK" in HUD.
+NOTE: 1 bare-form interrupt (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 7: Cryolinx interrupts Suzaku Aqua's attack
+Cost is confirmed not shown anywhere in the client for this (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+THEPUFFINMAN
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+ThePuffinMan deployed Rushoar.
+ThePuffinMan's Rushoar attacks FluffysFury for 1.
+Rushoar hit FluffysFury for 1. Damage Check: 1 card milled, no Lucky. FluffysFury 10 to 9 life.
+TURN 2
+THEPUFFINMAN
+Rested 3 Souls, drew 1 card.
+ThePuffinMan's Rushoar attacks FluffysFury for 1.
+Rushoar hit FluffysFury for 1. Damage Check: 1 card milled, no Lucky. FluffysFury 9 to 8 life.
+ThePuffinMan deployed Elphidran.
+ThePuffinMan's Elphidran attacks FluffysFury for 2.
+Elphidran hit FluffysFury for 2. Damage Check: 2 cards milled, no Lucky. FluffysFury 8 to 6 life.
+TURN 3
+THEPUFFINMAN
+Deployed Jolthog Cryst to slot 1 for 2 Souls.
+Deployed Weapon Workbench to slot 2 for 3 Souls.
+TURN 4
+FLUFFYSFURY
+Jolthog Cryst (300) attacked Rushoar (200).
+Jolthog Cryst
+Rushoar destroyed, 300 damage vs 200 Power.
+ThePuffinMan revealed Chillet (Dragon).
+TURN 5
+THEPUFFINMAN
+ThePuffinMan's Elphidran attacks FluffysFury's Weapon Workbench.
+Elphidran (600+500 = 1100) struck Weapon Workbench (1100).
+Elphidran
+Weapon Workbench destroyed, 1100 damage vs 1100 Power.
+ThePuffinMan deployed Chillet.
+ThePuffinMan revealed Pengullet Rocket Launcher and added it to their hand.
+ThePuffinMan's Chillet attacks FluffysFury for 2.
+✦
+Chillet attacked FluffysFury for 2; FluffysFury's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 6
+THEPUFFINMAN
+Deployed Suzaku Aqua to slot 2 for 7 Souls.
+TURN 7
+FLUFFYSFURY
+Jolthog Cryst attacked them for 1. Damage Check: 1 card milled, no Lucky. They 10 to 9 life.
+Cryolinx
+Suzaku Aqua's attack was interrupted.
+TURN 8
+THEPUFFINMAN
+ThePuffinMan deployed Pengullet Rocket Launcher.
+ThePuffinMan deployed Pengullet Rocket Launcher.
+TURN 9
+THEPUFFINMAN
+Deployed Pump-Action Shotgun to slot 3 for 7 Souls.
+Dealt 1200 to every ThePuffinMan Pal.
+Jolthog Cryst gets power +200 until end of turn.
+TURN 10
+FLUFFYSFURY
+Jolthog Cryst attacked them for 1. Damage Check: 1 card milled, no Lucky. They 9 to 8 life.
+✦
+Suzaku Aqua attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 11
+THEPUFFINMAN
+ThePuffinMan played Found an Egg!.
+ThePuffinMan revealed Pengullet and added it to their hand.
+ThePuffinMan looked at 5 cards and took 1 into their hand.
+ThePuffinMan deployed Petallia.
+ThePuffinMan deployed Pengullet.
+ThePuffinMan activated Pengullet Rocket Launcher.
+ThePuffinMan's Pengullet gets power +500 until end of turn.
+ThePuffinMan activated Pengullet Rocket Launcher.
+ThePuffinMan's Pengullet gets power +500 until end of turn.
+ThePuffinMan activated Pengullet.
+ThePuffinMan's Petallia attacks FluffysFury for 2.
+Played Crystal Breath for 2 Souls.
+Petallia hit FluffysFury for 0. Damage Check: 0 cards milled, no Lucky. FluffysFury 6 to 6 life.
+TURN 12
+THEPUFFINMAN
+Deployed Jormuntide Ignis to slot 1 for 8 Souls.
+Deployed Ribbuny to slot 2 for 2 Souls.
+Ribbuny gets power +200 until end of turn.
+TURN 13
+FLUFFYSFURY
+Ribbuny attacked them for 1. Damage Check: 1 card milled, no Lucky. They 9 to 8 life.
+✦
+Jormuntide Ignis attacked them for 4; their Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+TURN 14
+THEPUFFINMAN
+ThePuffinMan deployed Rushoar.
+ThePuffinMan's Rushoar attacks FluffysFury's Jormuntide Ignis.
+Rushoar (200) attacked Jormuntide Ignis (1700).
+Rushoar destroyed, 1700 damage vs 200 Power.
+ThePuffinMan deployed Pengullet.
+ThePuffinMan activated Pengullet Rocket Launcher.
+ThePuffinMan's Pengullet gets power +500 until end of turn.
+ThePuffinMan activated Pengullet Rocket Launcher.
+ThePuffinMan's Pengullet gets power +500 until end of turn.
+Got 1 .
+ThePuffinMan activated Pengullet.
+ThePuffinMan deployed Elphidran.
+ThePuffinMan's Elphidran attacks FluffysFury for 2.
+FluffysFury interrupted with Foxparks, discarded Arsox. The attack was nullified.
+TURN 15
+THEPUFFINMAN
+Deployed Suzaku Aqua to slot 1 for 7 Souls.
+Suzaku Aqua gets power +200 until end of turn.
+TURN 16
+FLUFFYSFURY
+Suzaku Aqua attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 8 to 5 life.
+Rested 3 Souls, drew 1 card.
+TURN 17
+THEPUFFINMAN
+ThePuffinMan deployed Lyleen.
+ThePuffinMan activated Lyleen.
+ThePuffinMan revealed Pengullet and deployed it.
+ThePuffinMan looked at 5 cards and deployed Pengullet.
+ThePuffinMan activated Pengullet Rocket Launcher.
+ThePuffinMan's Pengullet gets power +500 until end of turn.
+ThePuffinMan activated Pengullet Rocket Launcher.
+ThePuffinMan's Pengullet gets power +500 until end of turn.
+ThePuffinMan activated Pengullet.
+ThePuffinMan's Lyleen attacks FluffysFury for 3.
+Lyleen hit FluffysFury for 3. Damage Check: 3 cards milled, no Lucky. FluffysFury 6 to 3 life.
+ThePuffinMan's Elphidran attacks FluffysFury for 2.
+✦
+Elphidran attacked FluffysFury for 2; FluffysFury's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+ThePuffinMan's Petallia attacks FluffysFury for 2.
+Petallia hit FluffysFury for 2. Damage Check: 2 cards milled, no Lucky. FluffysFury 3 to 1 life.
+TURN 18
+THEPUFFINMAN
+Deployed Pump-Action Shotgun to slot 1 for 7 Souls.
+Dealt 1200 to every ThePuffinMan Pal.
+Deployed Kelpsea Ignis to slot 2 for 3 Souls.
+Kelpsea Ignis gets power +200 until end of turn.
+Kelpsea Ignis gets power +200 until end of turn.
+ThePuffinMan deployed Petallia.
+ThePuffinMan's Petallia attacks FluffysFury for 2.
+FluffysFury blocked with Kelpsea Ignis.
+Petallia (700) attacked Kelpsea Ignis (500).
+Petallia
+Kelpsea Ignis destroyed, 700 damage vs 500 Power.
+ThePuffinMan deployed Elphidran Aqua.
+ThePuffinMan's Elphidran Aqua attacks FluffysFury for 2.
+✦
+Elphidran Aqua attacked FluffysFury for 2; FluffysFury's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 19
+THEPUFFINMAN
+Deployed Single-Shot Rifle to slot 2 for 4 Souls.
+Deployed Kelpsea Ignis to slot 4 for 3 Souls.
+Kelpsea Ignis gets power +200 until end of turn.
+Kelpsea Ignis gets power +200 until end of turn.
+Kelpsea Ignis gets power +200 until end of turn.
+TURN 20
+FLUFFYSFURY
+Kelpsea Ignis (500+600 = 1100) attacked Petallia (700).
+Kelpsea Ignis
+Petallia destroyed, 1100 damage vs 700 Power.
+TURN 21
+THEPUFFINMAN
+ThePuffinMan deployed Relaxaurus.
+Kelpsea Ignis was Rested.
+Kelpsea Ignis won't stand while the source stays in play.
+ThePuffinMan's Relaxaurus attacks FluffysFury for 3.
+FluffysFury interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+ThePuffinMan deployed Pengullet.
+ThePuffinMan's Pengullet attacks FluffysFury for 1.
+Pengullet hit FluffysFury for 1. Damage Check: 1 card milled, no Lucky. FluffysFury 1 to 0 life.
+
+THEPUFFINMAN WINS
+FluffysFury's life hit zero.
+FINAL LIFE: ThePuffinMan (WINNER) 6, FluffysFury 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+21-turn game. ThePuffinMan's Rushoar/Elphidran chipped FluffysFury early (10->9->8->6). ThePuffinMan's Elphidran/Chillet destroyed FluffysFury's Weapon Workbench (turn 5), and a bare-form Cryolinx interrupt nullified ThePuffinMan's Suzaku Aqua attack (turn 7). ThePuffinMan built a Pengullet Rocket Launcher buff engine, destroying FluffysFury's Jormuntide Ignis via Rushoar sacrifice-block (turn 14) despite a Foxparks interrupt (discard) shortly after. ThePuffinMan's Lyleen/Elphidran/Petallia ground FluffysFury down turn 17 (6->3->1), traded Petallia for FluffysFury's Kelpsea Ignis (turns 18/20), then closed it out despite a Reindrix interrupt (paid Soul) on turn 21 with a final Pengullet hit for 1 (1 to 0).
+
+

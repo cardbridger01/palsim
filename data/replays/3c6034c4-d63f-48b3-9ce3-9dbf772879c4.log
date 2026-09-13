@@ -1,0 +1,226 @@
+----- TIER 1 MATCH 7/34 (recordId 3c6034c4-d63f-48b3-9ce3-9dbf772879c4) -----
+
+=====================================================================
+MATCH: AugMan vs Torrens23
+recordId: 3c6034c4-d63f-48b3-9ce3-9dbf772879c4
+RESULT: AUGMAN WINS - Torrens23 ran out of cards (deck-out). Final life: AugMan 2, Torrens23 3.
+NOTE: Deck-out loss, not a life-total knockout — the only deck-out game in Tier 1. The winner (AugMan) finished on LESS life than the loser (2 vs 3) at the moment the game ended: the deck running out, not the life total, was the operative clock. Full 35-turn log preserved below.
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 1:  Reindrix interrupts Chillet's attack
+  Turn 11: Pyrin Noct interrupts Relaxaurus's attack
+  Turn 19: Reindrix interrupts Jormuntide Ignis's attack
+  Turn 32: Reindrix interrupts Jormuntide Ignis's attack
+Cost is confirmed not shown anywhere in the client for these (see c0e068aa's NOTEs for the
+DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+AUGMAN
+Spent 3 .
+Next Gear costs 1 less this turn.
+Next Gear costs 2 less this turn.
+Next Gear costs 3 less this turn.
+Deployed Pump-Action Shotgun to slot 4 for 4 Souls.
+Dealt 1200 to every Torrens23 Pal.
+Discarded Single-Shot Rifle.
+Reindrix
+Chillet's attack was interrupted.
+TURN 2
+TORRENS23
+Torrens23 played Zoe's Strategy.
+TURN 3
+TORRENS23
+Torrens23 returned Chillet from their graveyard to hand.
+Discarded Elphidran Aqua.
+TURN 4
+TORRENS23
+Torrens23 played Strike from the Darkness.
+TURN 5
+TORRENS23
+Chillet was destroyed.
+TURN 6
+TORRENS23
+Deployed Relaxaurus to slot 3 for 7 Souls.
+No valid target.
+TURN 7
+AUGMAN
+Relaxaurus attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 10 to 7 life.
+TURN 8
+TORRENS23
+Torrens23 played Strike from the Darkness.
+TURN 9
+TORRENS23
+Relaxaurus was destroyed.
+TURN 10
+TORRENS23
+Torrens23 deployed Chillet.
+Torrens23 revealed Strike from the Darkness and added it to their hand.
+Torrens23's Chillet attacks AugMan for 2.
+✦
+Chillet attacked AugMan for 2; AugMan's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Deployed Relaxaurus to slot 3 for 7 Souls.
+TURN 11
+AUGMAN
+Pyrin Noct
+Relaxaurus's attack was interrupted.
+TURN 12
+TORRENS23
+Torrens23 played Strike from the Darkness.
+TURN 13
+TORRENS23
+Relaxaurus was destroyed.
+TURN 14
+TORRENS23
+Torrens23 deployed Elphidran Aqua.
+Torrens23's Elphidran Aqua attacks AugMan for 2.
+Elphidran Aqua hit AugMan for 2. Damage Check: 2 cards milled, no Lucky. AugMan 4 to 2 life.
+Deployed Chillet to slot 3 for 5 Souls.
+Revealed Jormuntide Ignis.
+Deployed Jormuntide Ignis.
+Assigned Chillet.
+Got 3 .
+Drew 1.
+Spent 3 .
+Next Gear costs 1 less this turn.
+Next Gear costs 2 less this turn.
+Next Gear costs 3 less this turn.
+Deployed Pump-Action Shotgun to slot 6 for 4 Souls.
+Dealt 1200 to every Torrens23 Pal.
+TURN 15
+AUGMAN
+✦
+Jormuntide Ignis attacked them for 4; their Damage Check revealed a Lucky Pal, cancelled, no damage. (4 cards milled)
+Discarded Aurora Guide, Single-Shot Rifle to pay a cost.
+Stood this card.
+TURN 16
+TORRENS23
+Torrens23 played Victor's Strategy.
+Torrens23 looked at 5 cards and took 1 into their hand.
+Torrens23 deployed Relaxaurus.
+TURN 17
+TORRENS23
+Chillet was Rested.
+Chillet won't stand while the source stays in play.
+TURN 18
+TORRENS23
+Deployed Foxparks to slot 7 for 4 Souls.
+Deployed Foxparks' Harness to slot 8 for 3 Souls.
+Rested 3 Souls, drew 1 card.
+Foxparks gets Power +200 until end of turn.
+Foxparks gets Power +200 until end of turn.
+TURN 19
+AUGMAN
+Foxparks attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 7 to 5 life.
+Reindrix
+Jormuntide Ignis's attack was interrupted.
+Discarded Aurora Guide, Foxparks' Harness to pay a cost.
+Stood this card.
+TURN 20
+TORRENS23
+Torrens23 played Aurora Guide.
+Torrens23 deployed Jormuntide.
+TURN 21
+TORRENS23
+Foxparks was Rested.
+Foxparks won't stand during its next Stand Phase.
+TURN 22
+TORRENS23
+Assigned Chillet.
+Got 3 .
+Drew 1.
+Spent 3 .
+Next Gear costs 1 less this turn.
+Next Gear costs 2 less this turn.
+Next Gear costs 3 less this turn.
+Deployed Pump-Action Shotgun to slot 9 for 4 Souls.
+Dealt 1200 to every Torrens23 Pal.
+Deployed Single-Shot Rifle to slot 10 for 4 Souls.
+TURN 23
+TORRENS23
+Torrens23 played Aurora Guide.
+Torrens23 deployed Jormuntide.
+TURN 24
+TORRENS23
+Foxparks was Rested.
+Foxparks won't stand during its next Stand Phase.
+TURN 25
+TORRENS23
+Deployed Grappling Gun to slot 11 for 5 Souls.
+Rested 3 Souls, drew 1 card.
+Jormuntide Ignis gets Power +200 until end of turn.
+Jormuntide Ignis gains vigilance until end of turn.
+TURN 26
+AUGMAN
+✦
+Jormuntide Ignis attacked them for 4; their Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+TURN 27
+TORRENS23
+Torrens23 played Zoe's Strategy.
+TURN 28
+TORRENS23
+Torrens23 returned Chillet from their graveyard to hand.
+Discarded Foxparks.
+TURN 29
+TORRENS23
+Torrens23 played Aurora Guide.
+Torrens23 deployed Chillet.
+Torrens23 deployed Elphidran Aqua.
+Torrens23's Elphidran Aqua attacks AugMan for 2.
+AugMan blocked with Jormuntide Ignis.
+Elphidran Aqua (900) attacked Jormuntide Ignis (1700).
+Elphidran Aqua destroyed, 1700 damage vs 900 Power.
+Torrens23's Chillet attacks AugMan for 2.
+AugMan blocked with Chillet.
+Chillet (900) attacked Chillet (900).
+Chillet destroyed, 900 damage vs 900 Power.
+Chillet destroyed, 900 damage vs 900 Power.
+Torrens23's Jormuntide attacks AugMan's Jormuntide Ignis.
+TURN 30
+TORRENS23
+AugMan interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 31
+TORRENS23
+Foxparks gets Power +200 until end of turn.
+Foxparks gets Power +200 until end of turn.
+TURN 32
+AUGMAN
+Foxparks attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 5 to 3 life.
+Reindrix
+Jormuntide Ignis's attack was interrupted.
+Rested 3 Souls, drew 1 card.
+Cancelled. The cost was refunded.
+Rested 3 Souls to pay a cost (4 standing).
+Stood this card.
+✦
+Jormuntide Ignis attacked them for 4; their Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+Deployed Foxparks to slot 3 for 2 Souls.
+Jormuntide Ignis gets Power +200 until end of turn.
+Jormuntide Ignis gains vigilance until end of turn.
+power +300 until end of turn.
+Foxparks (200+300 = 500) attacked Jormuntide (1600).
+Foxparks
+Jormuntide destroyed, 1900 damage vs 1600 Power.
+Foxparks destroyed, 1600 damage vs 500 Power.
+TURN 33
+TORRENS23
+Torrens23 played Victor's Strategy.
+Torrens23 looked at 4 cards and took 1 into their hand.
+Torrens23 played Zoe's Strategy.
+TURN 34
+TORRENS23
+Torrens23 returned Relaxaurus from their graveyard to hand.
+Discarded Primitive Furnace.
+TURN 35
+TORRENS23
+Torrens23 played Pal Sphere.
+
+AUGMAN WINS
+Torrens23 ran out of cards.
+FINAL LIFE: AugMan (WINNER) 2, Torrens23 3.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+A long 35-turn grindy game. Turn 1: AugMan spends souls for gear-cost reduction, deploys Pump-Action Shotgun (4 souls, deals 1200 to own Pals), discards Single-Shot Rifle; Chillet's attack interrupted by Reindrix. Turns 2-13: Repeated cycle -- Torrens23 plays Zoe's Strategy/Strike from the Darkness to recur and sacrifice Chillet/Relaxaurus, deploying and losing Relaxaurus twice (destroyed each time as Strike from the Darkness cost), Chillet's attack cancelled by Lucky Pal at one point, Relaxaurus's attack interrupted by Pyrin Noct. Torrens23's Relaxaurus attacks AugMan for 3 (10->7 life) on turn 7. Turn 14: Torrens23 deploys Elphidran Aqua, hits AugMan for 2 (4->2 life - AugMan had been worn down over many turns); deploys Chillet (5 souls), reveals/deploys Jormuntide Ignis, more gear-cost-reduction plays, deploys another Pump-Action Shotgun (self-damage 1200). Turn 15: AugMan's Jormuntide Ignis attack cancelled by Lucky Pal; AugMan discards cards to pay a cost and stands a card. Turns 16-28: Extended midgame -- Torrens23 plays Victor's Strategy (tutor), deploys Relaxaurus, Foxparks + Foxparks' Harness (buffed twice), rests souls; AugMan's Foxparks attacks Torrens23 for 2 (7->5 life); various Jormuntide Ignis attacks cancelled by Lucky Pal or interrupted by Reindrix; Torrens23 deploys Jormuntide (regular) twice via Aurora Guide plays, more gear-reduction Pump-Action Shotgun/Single-Shot Rifle deploys with self-damage; Torrens23 plays Zoe's Strategy again returning Chillet, discards Foxparks. Turn 29: Torrens23 plays Aurora Guide, deploys Chillet and Elphidran Aqua; Elphidran Aqua (900) blocked and destroyed by AugMan's Jormuntide Ignis (1700); Chillet (900) trades and mutually destroys with AugMan's blocking Chillet (900); Torrens23's Jormuntide attacks AugMan's Jormuntide Ignis. Turn 30: nullified by Reindrix interrupt (1 soul). Turn 31: Foxparks buffed +200 twice. Turn 32: AugMan's Foxparks attacks Torrens23 for 2 (5->3 life); Jormuntide Ignis attack interrupted by Reindrix, rests/stands souls; deploys another Foxparks, buffs Jormuntide Ignis; Foxparks (500 buffed) and Torrens23's Jormuntide (1600) mutually destroy each other (1900 dmg vs 1600 power, 1600 dmg vs 500 power). Turn 33: Torrens23 plays Victor's Strategy (tutor) then Zoe's Strategy. Turn 34: Torrens23 returns Relaxaurus from graveyard, discards Primitive Furnace. Turn 35: Torrens23 plays Pal Sphere -- and runs out of cards in deck, ending the game by deck-out.
+
+

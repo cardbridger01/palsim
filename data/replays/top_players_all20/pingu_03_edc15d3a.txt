@@ -1,0 +1,173 @@
+=====================================================================
+MATCH: Pingu vs Chylith  [Pingu's match #3 of 10 pulled — same opponent as match 1]
+recordId: edc15d3a-09a0-4445-9e16-5a32090bfc1f
+RESULT: PINGU WINS - "Chylith's life hit zero." Final life: Pingu (WINNER) 8, Chylith 0.
+NOTE: Third straight fully clean game for Pingu (with matches 1 and 2) — both life totals are
+completely accounted for by named damage lines. Pingu takes exactly one hit all game (10->8,
+turn 4) and Chylith drops in three clean chunks late (8->5->2->0, all on turn 18: Relaxaurus,
+Jormuntide, Pengullet in sequence) after sitting at 10->8 since turn 12. No unexplained gap.
+NOTE: Deck labeled "BLUE/PURPLE DRAGON CONTROL" on Pingu's HUD, same as matches 1-2.
+NOTE: This is Pingu's second game against Chylith in this 10-game pull (see match 1) — worth
+noting for anyone doing head-to-head analysis later; Pingu is 2-0 vs Chylith across this batch
+so far.
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 6:  Pyrin Noct interrupts Elphidran Aqua's attack
+  Turn 9:  Reindrix interrupts Jormuntide's attack (1st of 3 occurrences)
+  Turn 12: Reindrix interrupts Jormuntide's attack (2nd occurrence)
+  Turn 15: Reindrix interrupts Jormuntide's attack (3rd occurrence)
+5 additional FULL-form interrupts occurred (Turn 7 Reindrix; Turn 10 Cryolinx; Turn 13 x2,
+Cryolinx and Pyrin Noct; Turn 16 Pyrin Noct) — not counted in the bare-form total, included in
+the verbatim body only.
+NOTE: Turns 1-2 again show no acting-player header (same recurring pattern seen throughout the
+Ze batch) — inferred as Pingu's turns from context (starting hand matches Pingu's later cards)
+and labeled PINGU below.
+=====================================================================
+TURN 1
+PINGU
+Turn opened — Souls 1/1 · Hand: Elphidran, Elphidran Aqua, Pal Sphere, Pyrin Noct, Reindrix
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+TURN 2
+PINGU
+Turn opened — Souls 3/3 · Hand: Elphidran, Elphidran Aqua, Pal Sphere, Pyrin Noct, Reindrix, Relaxaurus
+Rested 3 Souls, drew 1 card.
+TURN 3
+CHYLITH
+Chylith played Pal Sphere.
+TURN 4
+CHYLITH
+Turn opened — Souls 5/5 · Hand: Elphidran, Elphidran Aqua, Jormuntide, Pal Sphere, Pengullet, Pyrin Noct, Reindrix, Relaxaurus
+Played Pal Sphere for 4 Souls.
+Drew 3.
+Chylith deployed Elphidran.
+Chylith's Elphidran attacks Pingu for 2.
+Elphidran hit Pingu for 2. Damage Check: 2 cards milled, no Lucky. Pingu 10 to 8 life.
+TURN 5
+CHYLITH
+Turn opened — Souls 7/7 · Hand: Aurora Guide, Elphidran, Elphidran Aqua, Jormuntide, Pengullet, Pengullet, Pyrin Noct, Reindrix, Reindrix, Relaxaurus, Zoe's Strategy
+Deployed Elphidran Aqua to slot 1 for 6 Souls.
+Drew 2 cards.
+Put Elphidran Aqua on top of the deck.
+TURN 6
+PINGU
+Pyrin Noct
+Elphidran Aqua's attack was interrupted.
+Chylith revealed Elphidran (Dragon).
+TURN 7
+CHYLITH
+Chylith's Elphidran attacks Pingu's Elphidran Aqua.
+Pingu interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+Chylith deployed Astegon.
+Elphidran Aqua gets power -1000 until end of turn.
+Chylith's Astegon attacks Pingu for 3.
+✦
+Astegon attacked Pingu for 3; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 8
+CHYLITH
+Turn opened — Souls 9/9 · Hand: Aurora Guide, Chillet, Cryolinx, Elphidran, Jormuntide, Pengullet, Pengullet, Pyrin Noct, Reindrix, Relaxaurus, Zoe's Strategy
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide on top of the deck.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Jormuntide.
+Deployed Jormuntide.
+Drew 1.
+TURN 9
+PINGU
+Reindrix
+Jormuntide's attack was interrupted.
+Chillet (900) attacked Elphidran (600).
+Chillet
+Elphidran destroyed, 900 damage vs 600 Power.
+TURN 10
+CHYLITH
+Chylith's Astegon attacks Pingu's Chillet.
+Pingu interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+Chylith deployed Pengullet Rocket Launcher.
+TURN 11
+CHYLITH
+Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Elphidran, Pengullet, Pengullet, Pyrin Noct, Reindrix, Relaxaurus, Strike from the Darkness, Zoe's Strategy
+TURN 12
+PINGU
+Reindrix
+Jormuntide's attack was interrupted.
+Played Strike from the Darkness for 4 Souls.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+Deployed Pengullet to slot 3 for 4 Souls.
+✦
+Pengullet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 13
+CHYLITH
+Chylith played Aurora Guide.
+Chylith deployed Chillet.
+Chylith deployed Jormuntide.
+Chillet was Rested.
+Chillet won't stand during its next Stand Phase.
+Chylith activated Pengullet Rocket Launcher.
+Chylith's Jormuntide gets power +200 until end of turn.
+Chylith's Jormuntide attacks Pingu's Jormuntide.
+Pingu interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+Chylith's Chillet attacks Pingu's Pengullet.
+Pingu interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+TURN 14
+CHYLITH
+Turn opened — Souls 10/10 · Hand: Chillet, Elphidran, Pengullet, Pyrin Noct, Reindrix, Relaxaurus, Zoe's Strategy
+Deployed Relaxaurus to slot 4 for 7 Souls.
+TURN 15
+PINGU
+✦
+Relaxaurus attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+✦
+Pengullet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Played Zoe's Strategy for 3 Souls.
+Drew 1.
+Butchered Pengullet.
+Reindrix
+Jormuntide's attack was interrupted.
+TURN 16
+CHYLITH
+Chylith deployed Pengullet.
+Chylith activated Pengullet Rocket Launcher.
+Chylith's Pengullet gets power +500 until end of turn.
+Chylith activated Pengullet.
+Chylith deployed Pengullet.
+Chylith's Pengullet attacks Pingu's Jormuntide.
+Pingu interrupted with Pyrin Noct, discarded Elphidran. The attack was nullified.
+TURN 17
+CHYLITH
+Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Elphidran, Pengullet, Reindrix
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Blazehowl Noct, added to hand.
+TURN 18
+PINGU
+Chillet (900) attacked Pengullet (600).
+Chillet
+Pengullet destroyed, 900 damage vs 600 Power.
+Relaxaurus attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 8 to 5 life.
+Jormuntide attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 5 to 2 life.
+Deployed Pengullet to slot 3 for 4 Souls.
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 2 to 0 life.
+
+PINGU WINS
+Chylith's life hit zero.
+FINAL LIFE: Pingu (WINNER) 8, Chylith 0.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+Pingu absorbed a single early hit (10->8 on turn 4) and then locked the game down almost
+entirely through interrupts — Reindrix alone stopped three separate Jormuntide attacks across
+turns 9, 12, and 15, while Cryolinx and Pyrin Noct each fired twice more to protect key
+creatures. Chillet did the early work clearing Chylith's Elphidran (turn 9), then the offense
+sat mostly stalled at 8 life for Chylith from turn 12 until a sudden four-attack sequence on turn
+18 (Chillet clearing a blocker, then Relaxaurus, Jormuntide, and a fresh Pengullet all landing in
+succession) closed the game out in one turn from 8 straight to 0. A methodical, interrupt-heavy
+win rather than a race — consistent with the "DRAGON CONTROL" archetype label on Pingu's deck.
+
+CLARIFICATION FLAGS for user review:
+- Three fully clean games in a row now for Pingu (matches 1-3) — increasingly looks like the
+  "10 to 6"-style unexplained gap seen repeatedly in Ze's games may be specific to certain
+  matches/conditions rather than a universal site bug; worth tracking whether any Pingu game in
+  this batch eventually shows the same pattern.
+- Same open scope note as matches 1-2: Pingu's "BLUE/PURPLE DRAGON CONTROL" archetype hasn't been
+  cross-referenced against a saved decklist (out of scope for this pass).

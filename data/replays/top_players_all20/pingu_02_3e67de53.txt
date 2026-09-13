@@ -1,0 +1,195 @@
+=====================================================================
+MATCH: Pingu vs redpurple  [Pingu's match #2 of 10 pulled]
+recordId: 3e67de53-ec3e-4fc8-a18d-a5a9eab427f8
+RESULT: PINGU WINS - "redpurple's life hit zero." Final life: Pingu (WINNER) 7, redpurple 0.
+NOTE: Both life totals are fully accounted for by named damage lines — Pingu drops 10->9->8->7
+via three single-point Foxparks hits (turns 1, 3, 15); redpurple drops 10->8->5->3->0 via four
+named hits (turns 11 x2, 14, 17) — NO unexplained gap, same as Pingu's match 1. Two for two
+clean games to open the Pingu dataset.
+NOTE: Deck labeled "BLUE/PURPLE DRAGON CONTROL" on Pingu's HUD, same as match 1.
+NOTE: 2 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 5: Pyrin Noct interrupts Jormuntide's attack
+  Turn 8: Pyrin Noct interrupts Relaxaurus's attack
+4 additional FULL-form interrupts occurred (Turn 6 "Pingu interrupted with Reindrix, discarded
+Pal Sphere"; Turn 9 "Pingu interrupted with Reindrix, paid 1 Soul"; Turn 12 x2, "Pingu
+interrupted with Pyrin Noct, paid 1 Soul" and "Pingu interrupted with Reindrix, paid 1 Soul") —
+not counted in the bare-form total, included in the verbatim body only.
+NOTE: redpurple is the same opponent name seen in two of Ze's games (ze_02, ze_08's context) —
+not confirmed to be the literal same account without a profile lookup, but worth flagging as a
+recurring name across both Ze's and Pingu's recent opponent pools.
+=====================================================================
+TURN 1
+REDPURPLE
+Turn opened — Souls 1/1 · Hand: Chillet, Pengullet, Pyrin Noct, Strike from the Darkness, Strike from the Darkness
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+redpurple deployed Foxparks.
+redpurple's Foxparks attacks Pingu for 1.
+Foxparks hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 10 to 9 life.
+TURN 2
+REDPURPLE
+Turn opened — Souls 3/3 · Hand: Aurora Guide, Chillet, Pal Sphere, Pyrin Noct, Reindrix, Relaxaurus
+Rested 3 Souls, drew 1 card.
+redpurple deployed Foxparks' Harness.
+TURN 3
+REDPURPLE
+Turn opened — Souls 5/5 · Hand: Aurora Guide, Chillet, Jormuntide, Pal Sphere, Pal Sphere, Pyrin Noct, Reindrix, Relaxaurus
+Played Pal Sphere for 4 Souls.
+Drew 3.
+redpurple's Foxparks attacks Pingu for 1.
+Foxparks hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 9 to 8 life.
+TURN 4
+REDPURPLE
+Turn opened — Souls 7/7 · Hand: Aurora Guide, Aurora Guide, Chillet, Jormuntide, Pal Sphere, Pyrin Noct, Reindrix, Reindrix, Reindrix, Relaxaurus, Strike from the Darkness
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide on top of the deck.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Jormuntide.
+Deployed Jormuntide.
+Drew 1.
+TURN 5
+PINGU
+Pyrin Noct
+Jormuntide's attack was interrupted.
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 6
+REDPURPLE
+redpurple deployed Foxparks.
+redpurple activated Foxparks' Harness.
+redpurple deployed Single-Shot Rifle.
+Jormuntide took 1500 damage.
+redpurple activated Single-Shot Rifle.
+redpurple's Foxparks gets power +200 until end of turn.
+Jormuntide took 700 damage and was destroyed.
+redpurple's Foxparks attacks Pingu's Chillet.
+Pingu interrupted with Reindrix, discarded Pal Sphere. The attack was nullified.
+TURN 7
+REDPURPLE
+Turn opened — Souls 9/9 · Hand: Aurora Guide, Chillet, Elphidran, Elphidran, Pyrin Noct, Reindrix, Reindrix, Relaxaurus, Strike from the Darkness
+TURN 8
+PINGU
+Chillet (900) attacked Foxparks (200).
+Chillet
+Foxparks destroyed, 900 damage vs 200 Power.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Relaxaurus on top of the deck.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Relaxaurus.
+Deployed Relaxaurus.
+Pyrin Noct
+Relaxaurus's attack was interrupted.
+Chillet (900) attacked Foxparks (200).
+Chillet
+Foxparks destroyed, 900 damage vs 200 Power.
+TURN 9
+REDPURPLE
+redpurple deployed Menasting.
+redpurple activated Single-Shot Rifle.
+redpurple's Menasting gets power +200 until end of turn.
+redpurple activated Foxparks' Harness.
+redpurple's Menasting attacks Pingu's Chillet.
+Pingu interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+redpurple deployed Menasting.
+TURN 10
+REDPURPLE
+Turn opened — Souls 10/10 · Hand: Elphidran, Elphidran, Pengullet, Pyrin Noct, Reindrix, Strike from the Darkness, Zoe's Strategy
+TURN 11
+PINGU
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Played Strike from the Darkness for 4 Souls.
+redpurple returned Reptyro from their graveyard to hand.
+Relaxaurus attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 8 to 5 life.
+Deployed Elphidran to slot 4 for 4 Souls.
+Revealed Elphidran (Dragon). Power +500 until end of turn.
+Elphidran (600+500 = 1100) attacked Menasting (700).
+Elphidran was dragged down by Menasting's Retaliate.
+Elphidran
+Menasting destroyed, 1100 damage vs 700 Power.
+Elphidran destroyed, 700 damage vs 1100 Power.
+redpurple returned Foxparks from their graveyard to hand.
+TURN 12
+REDPURPLE
+redpurple deployed Reptyro.
+redpurple activated Reptyro.
+redpurple revealed Foxparks' Harness and deployed it.
+redpurple looked at 5 cards and deployed Foxparks' Harness.
+redpurple deployed Foxparks.
+redpurple activated Foxparks' Harness.
+redpurple activated Foxparks' Harness.
+redpurple activated Single-Shot Rifle.
+redpurple's Foxparks gets power +200 until end of turn.
+Relaxaurus took 700 damage.
+Relaxaurus took 700 damage and was destroyed.
+redpurple's Foxparks attacks Pingu's Chillet.
+Pingu interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+redpurple's Reptyro attacks Pingu's Chillet.
+Pingu interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 13
+REDPURPLE
+Turn opened — Souls 10/10 · Hand: Elphidran, Pengullet, Zoe's Strategy, Zoe's Strategy
+TURN 14
+PINGU
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 5 to 3 life.
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Deployed Pengullet to slot 3 for 4 Souls.
+✦
+Pengullet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Played Zoe's Strategy for 3 Souls.
+Drew 1.
+Butchered Pengullet.
+Played Zoe's Strategy for 3 Souls.
+Returned Jormuntide from graveyard to hand.
+redpurple must discard 1.
+redpurple discarded Foxparks.
+TURN 15
+REDPURPLE
+redpurple played Medical Supplies.
+redpurple activated Foxparks' Harness.
+redpurple activated Foxparks' Harness.
+Chillet took 700 damage.
+Chillet took 700 damage and was destroyed.
+Chillet took 700 damage.
+Chillet took 700 damage and was destroyed.
+redpurple's Foxparks attacks Pingu for 1.
+Foxparks hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 8 to 7 life.
+redpurple deployed Leezpunk.
+TURN 16
+REDPURPLE
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Elphidran, Elphidran Aqua, Jormuntide
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Deployed Relaxaurus to slot 1 for 7 Souls.
+TURN 17
+PINGU
+Relaxaurus attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 3 to 0 life.
+
+PINGU WINS
+redpurple's life hit zero.
+FINAL LIFE: Pingu (WINNER) 7, redpurple 0.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+A relatively fast 17-turn win driven almost entirely by Pingu's Chillet, which killed two
+separate Foxparks (turn 8, both from the "explode"-less base body simply outmuscling them),
+chipped redpurple's life down repeatedly, and survived being destroyed twice (recurred once via
+Zoe's Strategy) before a returned Relaxaurus and a second Relaxaurus closed the game out with two
+big 3-damage swings. redpurple leaned on a Foxparks' Harness / Single-Shot Rifle removal package
+to pick off Pingu's Jormuntide and both Relaxaurus copies, and forced three of Pingu's own
+interrupts (Reindrix x2, Pyrin Noct) to protect Chillet along the way, but never assembled enough
+board presence to pressure Pingu's own life beyond 3 chip hits. Every life change on both sides
+is cleanly traceable — no gaps, matching match 1.
+
+CLARIFICATION FLAGS for user review:
+- Two clean, fully-accounted games in a row for Pingu (vs. Ze's mix of clean and gapped games) —
+  worth watching whether this holds across the rest of Pingu's 10-game batch, since it could
+  suggest the "unexplained gap" pattern found in several Ze games is not universal to the site.
+- Same open scope note as match 1: Pingu's "BLUE/PURPLE DRAGON CONTROL" archetype hasn't been
+  cross-referenced against a saved decklist (out of scope for this pass).

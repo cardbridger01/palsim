@@ -1,0 +1,237 @@
+=====================================================================
+MATCH: Pingu vs redpurple  [Pingu's match #8 of 10 pulled]
+recordId: b7844dec-323c-4b53-a2ce-5ead81182a36
+RESULT: PINGU WINS - "redpurple surrendered." Final life: Pingu (WINNER) 7, redpurple 1.
+NOTE: EXTRACTED DIRECTLY FROM THE RAW EVENT LOG (the log panel's "Copy" button), not from the
+curated/scrubbed LOG panel view, per the methodology established while fixing pingu_06, pingu_07,
+ze_01, ze_03 and ze_08 in this batch: the curated view both evicts early turns once scrubbed to
+the end of a long game and splits each true game turn into multiple displayed "TURN" boxes (this
+game's 13 true turns were spread across at least 28 displayed curated boxes). All turn numbers
+below are TRUE, verified game-turn numbers taken directly from the raw log's [T<N> ...] tags. The
+raw log for this game was already fully in chronological order with no duplicate/out-of-order
+lines (unlike some longer games in this batch), so no deduplication pass was needed.
+NOTE: LIFE ACCOUNTING — Pingu: 10 -> 9 (true turn 1, Foxparks hit) -> 8 (true turn 5, Foxparks
+hit) -> 7 (true turn 6, Foxparks hit), unchanged for the rest of the game (every later attack
+against Pingu is interrupted or cancelled by a Lucky Pal reveal), matching the final life of 7
+exactly. redpurple: 10 -> 8 (true turn 3, Pengullet hit) -> 6 (true turn 5, Chillet hit) -> 4 (true
+turn 5, Pengullet hit, same turn) -> 1 (true turn 8, Jormuntide hit), unchanged for the rest of the
+game, matching the final life of 1 exactly (redpurple surrendered at 1 life rather than being hit
+to 0). No damage is unaccounted for on either side.
+NOTE: TURN-OWNERSHIP CAVEAT — as with pingu_07, the raw log's [main] tag always reads "Main Phase,
+Pingu's move" regardless of who is actually acting, so it is fixed client-side UI text rather than
+a turn-ownership indicator, and it is Pingu's own resource/turn cycle (Stand/Draw/Soul/Main/End)
+that is narrated on every true turn, with redpurple's actions interleaved as reactive "waiting"-
+tagged entries. The single PINGU/OPPONENT header on each turn below is a narrative judgment call
+based on which side's play defines that turn (deploys, attacks, kills), not a value read directly
+off the raw log's tags.
+NOTE: Bare-form interrupts (card name on its own line, no player/cost — in every case here,
+redpurple's own copy of a card that also happens to appear in Pingu's deck; cards are evidently not
+deck-exclusive in this game) cross-referenced against the curated log by content-matching:
+  True Turn 5: Foxparks interrupts Jormuntide's attack
+  True Turn 6: Foxparks interrupts Jormuntide's (a second, freshly-deployed Jormuntide's) attack
+  True Turn 9: Blazehowl interrupts Pengullet's attack; Foxparks interrupts Reindrix's attack
+  True Turn 11: Pyrin Noct interrupts Chillet's (second) attack
+  True Turn 12: Pyrin Noct interrupts Chillet's attack and, separately, Relaxaurus's attack
+5 FULL-form interrupts occurred (Pingu's own): True Turn 4 "Pingu interrupted with Reindrix,
+discarded Elphidran"; True Turn 5 "Pingu interrupted with Cryolinx, paid 1 Soul" (twice, against
+Suzaku and then Shadowbeak); True Turn 6 "Pingu interrupted with Cryolinx, paid 1 Soul"; True Turn
+11 "Pingu interrupted with Pyrin Noct, discarded Pengullet Rocket Launcher" — included verbatim in
+the body below, not counted in the bare-form total.
+NOTE: Deck labeled "BLUE/PURPLE DRAGON CONTROL" on Pingu's HUD, same as matches 1-7.
+=====================================================================
+TURN 1
+PINGU
+Turn opened — Souls 1/1 · Hand: Jormuntide, Pengullet, Reindrix, Zoe's Strategy, Zoe's Strategy
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+redpurple deployed Foxparks.
+redpurple's Foxparks attacks Pingu for 1.
+Foxparks hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 10 to 9 life.
+TURN 2
+PINGU
+Turn opened — Souls 3/3 · Hand: Aurora Guide, Elphidran, Jormuntide, Jormuntide, Pengullet, Strike from the Darkness
+Rested 3 Souls, drew 1 card.
+TURN 3
+PINGU
+Turn opened — Souls 5/5 · Hand: Aurora Guide, Elphidran, Jormuntide, Jormuntide, Pengullet, Pengullet, Strike from the Darkness, Strike from the Darkness
+Deployed Pengullet to slot 1 for 4 Souls.
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+redpurple played Zoe's Strategy.
+redpurple returned Leezpunk from their graveyard to hand.
+Discarded Strike from the Darkness.
+TURN 4
+PINGU
+Turn opened — Souls 7/7 · Hand: Aurora Guide, Elphidran, Jormuntide, Jormuntide, Pengullet, Reindrix, Strike from the Darkness
+Pengullet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Deployed Pengullet to slot 2 for 4 Souls.
+Pengullet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Rested 3 Souls, drew 1 card.
+redpurple deployed Suzaku.
+Drew 1.
+Pengullet took 900 damage and was destroyed.
+redpurple's Suzaku attacks Pingu's Pengullet.
+Pingu interrupted with Reindrix, discarded Elphidran. The attack was nullified.
+TURN 5
+PINGU
+Turn opened — Souls 9/9 · Hand: Aurora Guide, Chillet, Cryolinx, Jormuntide, Jormuntide, Pyrin Noct, Strike from the Darkness
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide on top of the deck.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Jormuntide.
+Deployed Jormuntide.
+Drew 1.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+Foxparks
+Jormuntide's attack was interrupted.
+redpurple's Suzaku attacks Pingu's Chillet.
+Pingu interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+redpurple deployed Shadowbeak.
+redpurple's Shadowbeak attacks Pingu's Pengullet.
+Pingu interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+redpurple deployed Foxparks.
+redpurple's Foxparks attacks Pingu for 1.
+Foxparks hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 9 to 8 life.
+Pingu's redpurple's Shadowbeak butchered one of their Pals, put 1 of Pingu's Pals into the graveyard.
+Pingu's redpurple's Shadowbeak butchered one of their Pals, put 1 of Pingu's Pals into the graveyard.
+Drew 1.
+redpurple's Shadowbeak: Pingu's Pengullet was put into the graveyard.
+redpurple's Shadowbeak: Pingu's Chillet was put into the graveyard.
+TURN 6
+PINGU
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Cryolinx, Elphidran Aqua, Jormuntide, Pyrin Noct, Strike from the Darkness
+Foxparks
+Jormuntide's attack was interrupted.
+Deployed Jormuntide to slot 1 for 8 Souls.
+Drew 1.
+Jormuntide (1600) attacked Shadowbeak (1300).
+Shadowbeak destroyed, 1600 damage vs 1300 Power.
+redpurple deployed Shadowbeak.
+redpurple's Shadowbeak attacks Pingu for 3.
+Pingu interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+redpurple deployed Foxparks.
+redpurple's Foxparks attacks Pingu for 1.
+Foxparks hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 8 to 7 life.
+Pingu's redpurple's Shadowbeak butchered one of their Pals, put 1 of Pingu's Pals into the graveyard.
+Pingu's redpurple's Shadowbeak butchered one of their Pals, put 1 of Pingu's Pals into the graveyard.
+redpurple's Shadowbeak: Pingu's Jormuntide was put into the graveyard.
+redpurple's Shadowbeak: Pingu's Jormuntide was put into the graveyard.
+TURN 7
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Elphidran Aqua, Pyrin Noct, Pyrin Noct, Reindrix, Strike from the Darkness
+Played Strike from the Darkness for 4 Souls.
+Deployed Elphidran Aqua to slot 1 for 6 Souls.
+Drew 2 cards.
+Put Reindrix on top of the deck.
+Elphidran Aqua attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+redpurple deployed Single-Shot Rifle.
+Elphidran Aqua took 1500 damage and was destroyed.
+redpurple deployed Leezpunk.
+TURN 8
+PINGU
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Jormuntide, Pyrin Noct, Pyrin Noct, Reindrix, Reindrix
+Deployed Jormuntide to slot 1 for 8 Souls.
+Drew 1.
+Jormuntide attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 4 to 1 life.
+redpurple played Strike from the Darkness.
+Jormuntide was destroyed.
+TURN 9
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Pengullet, Pengullet Rocket Launcher, Pyrin Noct, Pyrin Noct, Reindrix, Reindrix
+Deployed Pengullet to slot 1 for 4 Souls.
+Blazehowl
+Pengullet's attack was interrupted.
+Deployed Reindrix to slot 2 for 5 Souls.
+Foxparks
+Reindrix's attack was interrupted.
+redpurple played Zoe's Strategy.
+redpurple returned Suzaku from their graveyard to hand.
+Discarded Aurora Guide.
+redpurple deployed Suzaku.
+Reindrix took 900 damage and was destroyed.
+TURN 10
+PINGU
+Turn opened — Souls 10/10 · Hand: Pal Sphere, Pengullet Rocket Launcher, Pyrin Noct, Pyrin Noct, Reindrix
+Played Pal Sphere for 4 Souls.
+Drew 3.
+Played Zoe's Strategy for 3 Souls.
+Returned Chillet from graveyard to hand.
+redpurple must discard 1.
+redpurple discarded Zoe's Strategy.
+Rested 3 Souls, drew 1 card.
+redpurple played Zoe's Strategy.
+redpurple returned Menasting from their graveyard to hand.
+Discarded Reindrix.
+TURN 11
+PINGU
+Turn opened — Souls 10/10 · Hand: Chillet, Chillet, Chillet, Pengullet Rocket Launcher, Pengullet Rocket Launcher, Pyrin Noct, Pyrin Noct, Relaxaurus
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Zoe's Strategy, added to hand.
+Deployed Chillet to slot 3 for 5 Souls.
+Revealed Reindrix, added to hand.
+They blocked with Suzaku.
+Drew 1.
+Pengullet (600) attacked Suzaku (1200).
+Pengullet destroyed, 1200 damage vs 600 Power.
+They blocked with Leezpunk.
+Chillet (900) attacked Leezpunk (200).
+Leezpunk destroyed, 900 damage vs 200 Power.
+Discarded Reindrix.
+Pyrin Noct
+Chillet's attack was interrupted.
+redpurple's Suzaku attacks Pingu's Chillet.
+Pingu interrupted with Pyrin Noct, discarded Pengullet Rocket Launcher. The attack was nullified.
+redpurple deployed Menasting.
+TURN 12
+PINGU
+Turn opened — Souls 10/10 · Hand: Chillet, Chillet, Pengullet, Pengullet Rocket Launcher, Pyrin Noct, Relaxaurus, Zoe's Strategy
+Deployed Relaxaurus to slot 1 for 7 Souls.
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Pyrin Noct
+Chillet's attack was interrupted.
+Pyrin Noct
+Relaxaurus's attack was interrupted.
+Played Zoe's Strategy for 3 Souls.
+Returned Reindrix from graveyard to hand.
+redpurple discarded 1: Single-Shot Rifle.
+redpurple deployed Leezpunk.
+TURN 13
+PINGU
+Turn opened — Souls 10/10 · Hand: Chillet, Chillet, Pengullet, Pengullet Rocket Launcher, Pengullet Rocket Launcher, Pyrin Noct, Reindrix
+Deployed Chillet to slot 4 for 5 Souls.
+Revealed Blazehowl Noct, added to hand.
+They blocked with Suzaku.
+Chillet (900) attacked Suzaku (1200).
+Chillet destroyed, 1200 damage vs 900 Power.
+
+PINGU WINS
+redpurple surrendered.
+FINAL LIFE: Pingu (WINNER) 7, redpurple 1.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+A 13-true-turn game, extracted directly from the raw event log rather than the curated view (which
+split it into at least 28 displayed boxes). Pingu opened aggressively with Pengullet, taking
+redpurple from 10 to 4 life across true turns 3-5 while trading Pals back and forth with redpurple's
+Suzaku/Shadowbeak/Foxparks package (redpurple's Shadowbeak repeatedly "butchered" a Pingu Pal on
+resolution, costing Pingu a Pengullet, two Chillets, and two Jormuntides over the game). A true
+turn 8 Jormuntide swing put redpurple to 1 life, and although redpurple stabilized the board for
+several turns with Suzaku/Leezpunk/Menasting and repeated Pyrin Noct/Foxparks/Blazehowl interrupts,
+they were never able to find a fifth point of damage against Pingu (who sat at 7 life from true
+turn 6 onward, protected by Lucky Pal reveals and full-form interrupts) and surrendered from a
+precarious 1-life, thinning-resources position rather than play it out. Final score 7-1 to Pingu.
+No damage is unaccounted for on either side.
+
+CLARIFICATION FLAGS for user review:
+- This file was extracted directly via the raw-log method (no curated-log scrub-to-end pass was
+  used, and no retraction is needed) — it is a fresh pull, not a fix of a previously-flawed file.
+- The single PINGU/OPPONENT header on each turn is a narrative judgment call — see the
+  TURN-OWNERSHIP CAVEAT note above.
+- Bare-form interrupt cards (Foxparks, Blazehowl, Pyrin Noct) attributed above all belong to
+  redpurple, not Pingu, despite sharing names with cards in Pingu's own deck — cards are evidently
+  not deck-exclusive in this game, consistent with similar overlaps already noted in other files in
+  this batch (e.g. 兔绣袖 also running Cryolinx/Pyrin Noct in ze_01/ze_03/ze_08/pingu_06).
+- Same open scope note as matches 1-7: Pingu's "BLUE/PURPLE DRAGON CONTROL" archetype hasn't been
+  cross-referenced against a saved decklist (out of scope for this pass).

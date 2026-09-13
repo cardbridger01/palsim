@@ -1,0 +1,202 @@
+----- TIER 1 MATCH 13/34 (recordId 5a1f0bba-e96b-4a7d-b8d7-7c1218c1fa22) -----
+
+=====================================================================
+MATCH: Bandit vs tinnnierpenguin
+recordId: 5a1f0bba-e96b-4a7d-b8d7-7c1218c1fa22
+RESULT: TINNNIERPENGUIN WINS - Bandit surrendered. Final life: tinnnierpenguin (WINNER) 8, Bandit 2.
+NOTE: tinnnierpenguin's deck titled "CHILLET V4.5" in HUD.
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 5:  Cryolinx interrupts Pengullet's attack
+  Turn 9:  Pyrin Noct interrupts Relaxaurus's attack
+  Turn 17: Pyrin Noct interrupts Relaxaurus's attack
+  Turn 28: Cryolinx interrupts Jormuntide Ignis's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+TURN 2
+Deployed Pengullet to slot 1 for 4 Souls.
+TURN 3
+TINNNIERPENGUIN
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+TURN 4
+BANDIT
+Bandit played Victor's Strategy.
+Bandit looked at 5 cards and took 1 into their hand.
+Deployed Primitive Furnace to slot 2 for 2 Souls.
+TURN 5
+TINNNIERPENGUIN
+Cryolinx
+Pengullet's attack was interrupted.
+Rested 3 Souls, drew 1 card.
+TURN 6
+BANDIT
+Bandit deployed Elphidran Aqua.
+Bandit's Elphidran Aqua attacks tinnnierpenguin for 2.
+TURN 7
+BANDIT
+tinnnierpenguin interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 8
+BANDIT
+Deployed Relaxaurus to slot 3 for 7 Souls.
+TURN 9
+TINNNIERPENGUIN
+Pyrin Noct
+Relaxaurus's attack was interrupted.
+TURN 10
+BANDIT
+Bandit deployed Chillet.
+Bandit revealed Pengullet and added it to their hand.
+Bandit's Chillet attacks tinnnierpenguin for 2.
+tinnnierpenguin blocked with Pengullet.
+TURN 11
+BANDIT
+Drew 1.
+TURN 12
+BANDIT
+Chillet (900) attacked Pengullet (600).
+Chillet
+Pengullet destroyed, 900 damage vs 600 Power.
+Bandit deployed Pengullet Rocket Launcher.
+Deployed Fuack to slot 1 for 2 Souls.
+Deployed Fuack to slot 4 for 2 Souls.
+TURN 13
+TINNNIERPENGUIN
+Fuack attacked them for 1. Damage Check: 1 card milled, no Lucky. They 8 to 7 life.
+Assigned Fuack.
+Got 3 .
+Drew 1.
+Deployed Cryolinx to slot 5 for 6 Souls.
+Cryolinx attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 7 to 5 life.
+TURN 14
+BANDIT
+Bandit deployed Pengullet.
+Bandit activated Pengullet Rocket Launcher.
+Bandit's Pengullet gets power +500 until end of turn.
+Bandit activated Pengullet.
+Bandit's Chillet attacks tinnnierpenguin's Primitive Furnace.
+Chillet (900) struck Primitive Furnace (800).
+Chillet
+Primitive Furnace destroyed, 900 damage vs 800 Power.
+Bandit deployed Elphidran Aqua.
+Bandit's Elphidran Aqua attacks tinnnierpenguin for 2.
+TURN 15
+BANDIT
+tinnnierpenguin interrupted with Foxparks, discarded Aurora Guide. The attack was nullified.
+TURN 16
+BANDIT
+Rested 3 Souls, drew 1 card.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Foxparks, added to hand.
+TURN 17
+TINNNIERPENGUIN
+Pyrin Noct
+Relaxaurus's attack was interrupted.
+TURN 18
+BANDIT
+Bandit's Chillet attacks tinnnierpenguin for 2.
+TURN 19
+BANDIT
+tinnnierpenguin interrupted with Foxparks, paid 1 Soul. The attack was nullified.
+TURN 20
+BANDIT
+Bandit deployed Relaxaurus.
+TURN 21
+BANDIT
+Chillet was Rested.
+Chillet won't stand while the source stays in play.
+TURN 22
+BANDIT
+Bandit's Relaxaurus attacks tinnnierpenguin for 3.
+✦
+Relaxaurus attacked tinnnierpenguin for 3; tinnnierpenguin's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Bandit's Elphidran Aqua attacks tinnnierpenguin for 2.
+Elphidran Aqua hit tinnnierpenguin for 2. Damage Check: 2 cards milled, no Lucky. tinnnierpenguin 10 to 8 life.
+Deployed Pump-Action Shotgun to slot 2 for 7 Souls.
+Dealt 1200 to every Bandit Pal.
+Rested 3 Souls, drew 1 card.
+TURN 23
+BANDIT
+Bandit played Zoe's Strategy.
+TURN 24
+BANDIT
+Bandit returned Chillet from their graveyard to hand.
+Discarded Aurora Guide.
+TURN 25
+BANDIT
+Bandit played Aurora Guide.
+Bandit deployed Chillet.
+Bandit deployed Jormuntide.
+TURN 26
+BANDIT
+Relaxaurus was Rested.
+Relaxaurus won't stand during its next Stand Phase.
+TURN 27
+BANDIT
+Bandit's Jormuntide attacks tinnnierpenguin for 3.
+✦
+Jormuntide attacked tinnnierpenguin for 3; tinnnierpenguin's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Bandit activated Pengullet Rocket Launcher.
+Bandit's Chillet gets power +200 until end of turn.
+Bandit's Chillet attacks tinnnierpenguin's Chillet.
+Chillet (900+200 = 1100) attacked Chillet (900).
+Chillet destroyed, 1100 damage vs 900 Power.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide Ignis on top of the deck.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Jormuntide Ignis.
+Deployed Jormuntide Ignis.
+TURN 28
+TINNNIERPENGUIN
+Cryolinx
+Jormuntide Ignis's attack was interrupted.
+Chillet gets power +200 until end of turn.
+Chillet (900+200 = 1100) attacked Chillet (900).
+Chillet destroyed, 1100 damage vs 900 Power.
+Rested 3 Souls to pay a cost (0 standing).
+Stood this card.
+Jormuntide Ignis (1700) attacked Jormuntide (1600).
+Jormuntide Ignis
+Jormuntide destroyed, 1700 damage vs 1600 Power.
+TURN 29
+BANDIT
+Bandit played Victor's Strategy.
+Bandit looked at 5 cards and took 1 into their hand.
+Bandit deployed Pengullet.
+Bandit deployed Hanging Trap.
+Bandit activated Hanging Trap.
+TURN 30
+BANDIT
+Jormuntide Ignis was exiled.
+TURN 31
+BANDIT
+Deployed Reptyro to slot 4 for 8 Souls.
+Got 3 .
+Spent 3 (3 left).
+Looked at top 5: deployed Pump-Action Shotgun.
+Dealt 1200 to every Bandit Pal.
+Jormuntide Ignis returned from exile to the base (rested).
+TURN 32
+TINNNIERPENGUIN
+Chillet (900) struck Hanging Trap (900).
+Chillet
+Hanging Trap destroyed, 900 damage vs 900 Power.
+Relaxaurus attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 5 to 2 life.
+TURN 33
+BANDIT
+Bandit deployed Elphidran Aqua.
+Deployed Jormuntide Ignis to slot 7 for 8 Souls.
+
+TINNNIERPENGUIN WINS
+Bandit surrendered.
+FINAL LIFE: tinnnierpenguin (WINNER) 8, Bandit 2.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+33-turn game. Bandit built a wide Pengullet/Elphidran Aqua/Relaxaurus/Chillet/Jormuntide board with Pengullet Rocket Launcher buffs, but several attacks were nullified by tinnnierpenguin's Cryolinx/Pyrin Noct/Reindrix/Foxparks interrupts. Bandit's own Pump-Action Shotgun self-damage (1200 to own Pals, turn 22) and Hanging Trap exile play (turns 29-31) added tempo swings. Multiple Chillet-vs-Chillet trades occurred (turns 27-28) along with a Jormuntide Ignis (1700) destroying Bandit's own Jormuntide (1600, turn 28). tinnnierpenguin's Relaxaurus/Cryolinx/Fuack chipped Bandit down (10->8->7->5->2), and Bandit surrendered at 2 life vs tinnnierpenguin's 8.
+
+

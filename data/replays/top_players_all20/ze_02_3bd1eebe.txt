@@ -1,0 +1,130 @@
+=====================================================================
+MATCH: Ze (in-game name "bel") vs redpurple  [Ze's match #2 of 10 pulled]
+recordId: 3bd1eebe-d81e-4f58-897a-eaff52c6dac7
+RESULT: BEL WINS - redpurple surrendered. Final life: bel (WINNER) 7, redpurple 6.
+NOTE: Second surrender/concede win in this batch (see ze_01_fe1eee24.txt for the first). Unlike
+match 1, redpurple's life (6) is close to bel's (7) at the moment of concession, and both life
+totals are fully accounted for by named damage lines below (no unexplained gap this game).
+NOTE: Deck labeled "BLUE/PURPLE DECK" on bel's HUD, same generic label as match 1 (no
+date/copy suffix) — not yet cross-referenced against a saved Ze decklist (out of scope for this
+batch).
+NOTE: Turn 1 opens with an explicit "Mulliganed. Redrew 5." line for redpurple — the first
+mulligan explicitly called out in the log text seen in this project (prior games may have had
+mulligans that simply weren't narrated, or this is a redpurple-side UI text quirk).
+NOTE: 2 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 4:  "Blazehowl" interrupts Astegon's attack (rendered as "Blazehowl" not "Blazehowl
+           Noct" in this instance — transcribed verbatim; likely the same card as the
+           full-form "Blazehowl Noct" interrupt seen on Turn 11, possibly a truncated render)
+  Turn 13: Pyrin Noct interrupts Jormuntide's attack
+Turn 11 also has one FULL-form interrupt ("bel interrupted with Blazehowl Noct, paid 1 Soul")
+— included here only for contrast, not counted among the bare-form total above.
+=====================================================================
+TURN 1
+REDPURPLE
+Turn opened — Souls 1/1 · Hand: Aurora Guide, Blazehowl Noct, Cryolinx, Jormuntide, Zoe's Strategy
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+redpurple deployed Foxparks.
+redpurple's Foxparks attacks bel for 1.
+Foxparks hit bel for 1. Damage Check: 1 card milled, no Lucky. bel 10 to 9 life.
+TURN 2
+REDPURPLE
+Turn opened — Souls 3/3 · Hand: Blazehowl Noct, Chillet, Elphidran Aqua, Jormuntide, Relaxaurus, Zoe's Strategy
+Rested 3 Souls, drew 1 card.
+redpurple's Foxparks attacks bel for 1.
+Foxparks hit bel for 1. Damage Check: 1 card milled, no Lucky. bel 9 to 8 life.
+redpurple deployed Leezpunk.
+redpurple's Leezpunk attacks bel for 1.
+Leezpunk hit bel for 1. Damage Check: 1 card milled, no Lucky. bel 8 to 7 life.
+TURN 3
+REDPURPLE
+Turn opened — Souls 5/5 · Hand: Blazehowl Noct, Chillet, Elphidran Aqua, Elphidran Aqua, Jormuntide, Reindrix, Relaxaurus, Zoe's Strategy
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Astegon.
+Deployed Astegon.
+Declined the optional effect.
+All Pals with Power 300 or less destroyed.
+Discarded Elphidran Aqua.
+TURN 4
+BEL
+Blazehowl
+Astegon's attack was interrupted.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+TURN 5
+REDPURPLE
+redpurple deployed Single-Shot Rifle.
+Astegon took 1500 damage and was destroyed.
+TURN 6
+REDPURPLE
+Turn opened — Souls 7/7 · Hand: Aurora Guide, Blazehowl Noct, Elphidran Aqua, Jormuntide, Reindrix, Relaxaurus, Zoe's Strategy
+TURN 7
+BEL
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Deployed Elphidran Aqua to slot 2 for 6 Souls.
+Drew 2 cards.
+Put Relaxaurus on top of the deck.
+Elphidran Aqua attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+TURN 8
+REDPURPLE
+redpurple deployed Reptyro.
+redpurple activated Reptyro.
+TURN 9
+REDPURPLE
+Turn opened — Souls 9/9 · Hand: Aurora Guide, Blazehowl Noct, Jormuntide, Jormuntide, Reindrix, Reindrix, Relaxaurus, Zoe's Strategy
+Deployed Jormuntide to slot 3 for 8 Souls.
+Drew 1.
+No valid target.
+TURN 10
+BEL
+✦
+Jormuntide attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+TURN 11
+REDPURPLE
+redpurple deployed Pump-Action Shotgun.
+redpurple activated Pump-Action Shotgun.
+redpurple's Reptyro gets power +200 until end of turn.
+redpurple's Reptyro attacks bel's Jormuntide.
+bel interrupted with Blazehowl Noct, paid 1 Soul. The attack was nullified.
+TURN 12
+REDPURPLE
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Jormuntide, Reindrix, Reindrix, Reindrix, Relaxaurus, Zoe's Strategy
+TURN 13
+BEL
+Pyrin Noct
+Jormuntide's attack was interrupted.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide on top of the deck.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Jormuntide.
+Deployed Jormuntide.
+Drew 1.
+No valid target.
+
+BEL WINS
+redpurple surrendered.
+FINAL LIFE: bel (WINNER) 7, redpurple 6.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+A 13-turn game where redpurple opened aggressively with two small early attackers (Foxparks,
+Leezpunk) that chipped bel down from 10 to 7 life in the first two turns, then pivoted into a
+value/control shell (Astegon board wipe on turn 3, Reptyro + weapon package from turn 8 on).
+bel answered with steady Chillet/Elphidran Aqua attacks (each interrupted or landing for 2),
+grinding redpurple from 10 down to 6 while never taking further damage after turn 2 — helped by
+two separate Lucky Pal cancels on turns 7 and 10 that denied redpurple's counter-pressure. Unlike
+match 1, both final life totals are fully explained by the log's own damage lines, and redpurple
+conceded from a materially worse board/tempo position (bel had two live threats plus a
+newly-deployed second Jormuntide) rather than from a near-lethal life total.
+
+CLARIFICATION FLAGS for user review:
+- The Turn 4 bare-form interrupt reads just "Blazehowl" rather than "Blazehowl Noct" (the full
+  name used elsewhere, including the Turn 11 full-form interrupt with the same card). Likely a
+  UI truncation/render quirk rather than two different cards, but transcribed verbatim per the
+  standing rule against "fixing" apparent log text.
+- Same open question as match 1: whether Ze's "BLUE/PURPLE DECK" here is the same list Ze used
+  in other Ranked games in this batch — would need Ze's own Decks page pulled to confirm (out of
+  scope for this pass).

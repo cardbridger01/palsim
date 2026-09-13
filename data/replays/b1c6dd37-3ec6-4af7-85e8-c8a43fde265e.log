@@ -1,0 +1,202 @@
+----- TIER 1 MATCH 27/34 (recordId b1c6dd37-3ec6-4af7-85e8-c8a43fde265e) -----
+
+=====================================================================
+MATCH: FahmiG vs Scale
+recordId: b1c6dd37-3ec6-4af7-85e8-c8a43fde265e
+RESULT: SCALE WINS - FahmiG surrendered. Final life: Scale (WINNER) 7, FahmiG 1.
+NOTE: Scale's deck titled "A" in HUD.
+NOTE: 2 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 6:  Reindrix interrupts Elphidran Aqua's attack
+  Turn 20: Cryolinx interrupts Foxparks's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+FAHMIG
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+FahmiG deployed Fuack.
+FahmiG's Fuack attacks Scale for 1.
+Fuack hit Scale for 1. Damage Check: 1 card milled, no Lucky. Scale 10 to 9 life.
+TURN 2
+FAHMIG
+Deployed Foxparks' Harness to slot 1 for 3 Souls.
+FahmiG's Fuack attacks Scale for 1.
+✦
+Fuack attacked Scale for 1; Scale's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 3
+FAHMIG
+Deployed Pengullet to slot 2 for 4 Souls.
+TURN 4
+SCALE
+Pengullet (600) attacked Fuack (200+300 = 500).
+Pengullet
+Fuack destroyed, 600 damage vs 500 Power.
+TURN 5
+FAHMIG
+FahmiG deployed Elphidran Aqua.
+FahmiG's Elphidran Aqua attacks Scale's Pengullet.
+Scale interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 6
+SCALE
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+Deployed Elphidran Aqua to slot 3 for 6 Souls.
+Drew 2 cards.
+Put Aurora Guide on top of the deck.
+Elphidran Aqua gets Power +200 until end of turn.
+Reindrix
+Elphidran Aqua's attack was interrupted.
+TURN 7
+FAHMIG
+FahmiG's Elphidran Aqua attacks Scale's Pengullet.
+Drew 1.
+Elphidran Aqua (900) attacked Pengullet (600).
+Elphidran Aqua
+Pengullet destroyed, 900 damage vs 600 Power.
+FahmiG played Aurora Guide.
+FahmiG deployed Chillet.
+FahmiG deployed Elphidran Aqua.
+FahmiG's Chillet attacks Scale's Elphidran Aqua.
+Chillet (900) attacked Elphidran Aqua (900).
+Chillet
+Elphidran Aqua destroyed, 900 damage vs 900 Power.
+Chillet destroyed, 900 damage vs 900 Power.
+FahmiG's Elphidran Aqua attacks Scale for 2.
+Scale interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 8
+FAHMIG
+Deployed Single-Shot Rifle to slot 2 for 4 Souls.
+Deployed Pengullet to slot 3 for 4 Souls.
+Pengullet gets power +200 until end of turn.
+Pengullet gets Power +200 until end of turn.
+TURN 9
+SCALE
+Pengullet (600+400 = 1000) attacked Elphidran Aqua (900).
+Pengullet
+Elphidran Aqua destroyed, 1000 damage vs 900 Power.
+TURN 10
+FAHMIG
+FahmiG deployed Chillet.
+FahmiG revealed Zoe's Strategy and added it to their hand.
+FahmiG played Zoe's Strategy.
+FahmiG returned Chillet from their graveyard to hand.
+Discarded Elphidran.
+FahmiG's Chillet attacks Scale's Pengullet.
+Drew 1.
+Chillet (900) attacked Pengullet (600).
+Chillet
+Pengullet destroyed, 900 damage vs 600 Power.
+FahmiG deployed Fuack.
+FahmiG's Fuack attacks Scale for 1.
+Fuack hit Scale for 1. Damage Check: 1 card milled, no Lucky. Scale 9 to 8 life.
+TURN 11
+FAHMIG
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Elphidran Aqua on top of the deck.
+Deployed Chillet to slot 3 for 5 Souls.
+Revealed Elphidran Aqua.
+Deployed Elphidran Aqua.
+Drew 2 cards.
+Put Pump-Action Shotgun on top of the deck.
+Chillet gets power +200 until end of turn.
+TURN 12
+SCALE
+Chillet (900+200 = 1100) attacked Chillet (900).
+Chillet destroyed, 1100 damage vs 900 Power.
+Elphidran Aqua (900) attacked Fuack (200+300 = 500).
+Elphidran Aqua
+Fuack destroyed, 900 damage vs 500 Power.
+Rested 3 Souls, drew 1 card.
+TURN 13
+FAHMIG
+FahmiG played Victor's Strategy.
+FahmiG looked at 5 cards and took 1 into their hand.
+FahmiG played Aurora Guide.
+FahmiG deployed Chillet.
+FahmiG deployed Relaxaurus.
+Chillet was Rested.
+Chillet won't stand while the source stays in play.
+FahmiG's Relaxaurus attacks Scale's Elphidran Aqua.
+Relaxaurus (1200) attacked Elphidran Aqua (900).
+Relaxaurus
+Elphidran Aqua destroyed, 1200 damage vs 900 Power.
+FahmiG's Chillet attacks Scale for 2.
+✦
+Chillet attacked Scale for 2; Scale's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 14
+FAHMIG
+Deployed Elphidran to slot 4 for 4 Souls.
+Elphidran gets power +200 until end of turn.
+Revealed Elphidran (Dragon). Power +500 until end of turn.
+TURN 15
+SCALE
+Elphidran (600+700 = 1300) attacked Relaxaurus (1200).
+Elphidran
+Relaxaurus destroyed, 1300 damage vs 1200 Power.
+Rested 3 Souls, drew 1 card.
+TURN 16
+FAHMIG
+FahmiG played Zoe's Strategy.
+FahmiG returned Chillet from their graveyard to hand.
+Discarded Pump-Action Shotgun.
+FahmiG deployed Chillet.
+FahmiG revealed Cryolinx and added it to their hand.
+FahmiG's Chillet attacks Scale's Elphidran.
+Chillet (900) attacked Elphidran (600).
+Chillet
+Elphidran destroyed, 900 damage vs 600 Power.
+FahmiG's Chillet attacks Scale's Chillet.
+Scale interrupted with Foxparks, paid 1 Soul. The attack was nullified.
+TURN 17
+FAHMIG
+Deployed Reptyro to slot 4 for 8 Souls.
+Got 3 .
+Spent 3 (0 left).
+Looked at top 5: deployed Pump-Action Shotgun.
+Dealt 1200 to every FahmiG Pal.
+TURN 18
+SCALE
+Reptyro attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 8 to 5 life.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 5 to 3 life.
+TURN 19
+FAHMIG
+FahmiG played Strike from the Darkness.
+Reptyro was destroyed.
+FahmiG deployed Celaray.
+FahmiG's Celaray attacks Scale for 1.
+Celaray hit Scale for 1. Damage Check: 1 card milled, no Lucky. Scale 8 to 7 life.
+TURN 20
+SCALE
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Deployed Chillet to slot 4 for 5 Souls.
+Revealed Foxparks, added to hand.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 3 to 1 life.
+Deployed Foxparks to slot 6 for 2 Souls.
+Foxparks gets Power +200 until end of turn.
+power +300 until end of turn.
+Cryolinx
+Foxparks's attack was interrupted.
+Deployed Foxparks to slot 7 for 2 Souls.
+power +300 until end of turn.
+✦
+Foxparks attacked them for 1; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 21
+FAHMIG
+FahmiG played Aurora Guide.
+FahmiG played Victor's Strategy.
+FahmiG looked at 5 cards and took 1 into their hand.
+FahmiG deployed Chillet.
+FahmiG revealed Cryolinx and added it to their hand.
+
+SCALE WINS
+FahmiG surrendered.
+FINAL LIFE: Scale (WINNER) 7, FahmiG 1.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Back-and-forth trades of Chillet/Elphidran Aqua/Pengullet/Fuack for most of the game (roughly even material trades turns 1-16). FahmiG built Reptyro (8 Souls) but it self-damaged own board via Pump-Action Shotgun (1200 to own Pals) then got destroyed by Scale's counter-attacks. Turns 17-18: Scale's Reptyro-equivalent and Chillet hit FahmiG for 3+2 (8 to 5 to 3). Turn 19 FahmiG played Strike from the Darkness (destroying own Reptyro?), deployed Celaray, chipped Scale for 1 (8 to 7). Turn 20 Scale's Chillet hit FahmiG twice more (3 to 1, one cancelled by Lucky Pal), deployed 2x Foxparks (one interrupted by Cryolinx). Turn 21 FahmiG played Aurora Guide/Victor's Strategy, deployed Chillet, then surrendered at 1 life vs Scale's 7.
+
+

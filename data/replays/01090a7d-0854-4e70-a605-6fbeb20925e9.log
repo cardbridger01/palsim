@@ -1,0 +1,27 @@
+----- TIER 2 MATCH 1/10 done (worklist row 1, recordId 01090a7d-0854-4e70-a605-6fbeb20925e9, Sonken vs Skkias) -----
+
+=====================================================================
+MATCH: "Opponent" (Skkias, anonymized/not resolved by site) vs Sonken
+recordId: 01090a7d-0854-4e70-a605-6fbeb20925e9
+RESULT: OPPONENT WINS - Sonken ran out of time (timeout, not a gameplay knockout). Final life: Opponent (WINNER) 10, Sonken 10 (tied life, decided by timeout).
+NOTE: Legitimately empty per BACKFILLINSTRUCTIONS.md - confirmed by direct live re-check of the
+replay (browser, not just the prior text extraction): only 1 turn recorded, ends immediately
+after mulligan with a timeout banner ("Sonken ran out of time"), 10-10 life. Sonken's deck
+labeled "RED GREEN TRYOUT" in HUD - the bracket/roster data lists Sonken as Green/Purple and
+Skkias as Blue/Purple, so this in-client deck label is a discrepancy worth a cross-check
+(possible deck swap between recorded matches), flagged here rather than silently reconciled.
+=====================================================================
+TURN 1
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+
+OPPONENT WINS
+Sonken ran out of time.
+FINAL LIFE: Opponent (WINNER) 10, Sonken 10.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Turn 1: Shuffled 50, drew 5, placed 2 souls, main phase. Mulliganed, redrew 5. Game ended immediately after by Sonken running out of time.
+
+

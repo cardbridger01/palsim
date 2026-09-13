@@ -1,0 +1,225 @@
+----- TIER 1 MATCH 9/34 (recordId 3cd1b044-1b01-43e8-9281-7da28c4d1596) -----
+
+=====================================================================
+MATCH: areadmitch vs Sir Chappie
+recordId: 3cd1b044-1b01-43e8-9281-7da28c4d1596
+RESULT: AREADMITCH WINS - Sir Chappie's life hit zero. Final life: areadmitch (WINNER) 7, Sir Chappie 0.
+NOTE: Sir Chappie's deck labeled "BLUE/PURPLE DRAGONS" in HUD.
+NOTE: This match's entry in ALL_TIER1_LOGS.txt already contained a turn-by-turn log rather
+than a prose summary, but its bare-form interrupt lines had been reformatted/normalized
+(e.g. "Reindrix - Chillet's attack was interrupted." on one line, or "Elphidran Aqua's attack
+was interrupted (Foxparks)." with the card name in parens) rather than preserved as the site's
+actual two-line verbatim rendering. Re-extracted live from the replay to restore the true
+verbatim bare form below.
+NOTE: 3 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 2:  Reindrix interrupts Chillet's attack
+  Turn 14: Foxparks interrupts Elphidran Aqua's attack
+  Turn 24: Foxparks interrupts Relaxaurus's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+AREADMITCH
+Foxparks hit Sir Chappie for 1. Damage Check: 1 card milled, no Lucky. Sir Chappie 10 to 9 life.
+areadmitch's Chillet attacks Sir Chappie for 2.
+✦
+Chillet attacked Sir Chappie for 2; Sir Chappie's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+areadmitch activated Primitive Furnace.
+areadmitch deployed Pengullet Rocket Launcher.
+Rested 3 Souls, drew 1 card.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Elphidran Aqua.
+Deployed Elphidran Aqua.
+Drew 2 cards.
+Put Elphidran on top of the deck.
+TURN 2
+SIR CHAPPIE
+Elphidran Aqua (900) struck Primitive Furnace (800).
+Elphidran Aqua
+Primitive Furnace destroyed, 900 damage vs 800 Power.
+Reindrix
+Chillet's attack was interrupted.
+TURN 3
+AREADMITCH
+areadmitch deployed Foxparks' Harness.
+areadmitch activated Foxparks' Harness.
+areadmitch activated Foxparks' Harness.
+areadmitch activated Pengullet Rocket Launcher.
+areadmitch's Foxparks gets power +200 until end of turn.
+TURN 4
+AREADMITCH
+Elphidran Aqua took 700 damage.
+Elphidran Aqua took 700 damage and was destroyed.
+TURN 5
+AREADMITCH
+areadmitch's Foxparks attacks Sir Chappie's Chillet.
+TURN 6
+AREADMITCH
+Sir Chappie interrupted with Blazehowl Noct, paid 1 Soul. The attack was nullified.
+TURN 7
+AREADMITCH
+areadmitch deployed Single-Shot Rifle.
+TURN 8
+AREADMITCH
+Chillet took 1500 damage and was destroyed.
+TURN 9
+AREADMITCH
+areadmitch's Chillet attacks Sir Chappie for 2.
+Chillet hit Sir Chappie for 2. Damage Check: 2 cards milled, no Lucky. Sir Chappie 9 to 7 life.
+Deployed Astegon to slot 1 for 8 Souls.
+All Pals with Power 300 or less destroyed.
+TURN 10
+SIR CHAPPIE
+Astegon attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 10 to 7 life.
+TURN 11
+AREADMITCH
+areadmitch deployed Foxparks.
+areadmitch activated Foxparks' Harness.
+areadmitch activated Foxparks' Harness.
+TURN 12
+AREADMITCH
+Astegon took 700 damage.
+Astegon took 700 damage and was destroyed.
+TURN 13
+AREADMITCH
+areadmitch's Foxparks attacks Sir Chappie for 1.
+Foxparks hit Sir Chappie for 1. Damage Check: 1 card milled, no Lucky. Sir Chappie 7 to 6 life.
+areadmitch deployed Antique Mirror.
+areadmitch played Victor's Strategy.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Elphidran Aqua.
+Deployed Elphidran Aqua.
+Drew 2 cards.
+Put Relaxaurus on top of the deck.
+TURN 14
+SIR CHAPPIE
+Chillet (900) attacked Foxparks (200).
+Chillet
+Foxparks destroyed, 900 damage vs 200 Power.
+Foxparks
+Elphidran Aqua's attack was interrupted.
+Rested 3 Souls, drew 1 card.
+TURN 15
+AREADMITCH
+areadmitch deployed Chillet.
+areadmitch deployed Relaxaurus.
+TURN 16
+AREADMITCH
+Chillet was Rested.
+Chillet won't stand while the source stays in play.
+TURN 17
+AREADMITCH
+areadmitch's Relaxaurus attacks Sir Chappie for 3.
+TURN 18
+AREADMITCH
+Sir Chappie interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 19
+AREADMITCH
+areadmitch deployed Primitive Furnace.
+areadmitch activated Primitive Furnace.
+areadmitch deployed Foxparks.
+areadmitch activated Foxparks' Harness.
+areadmitch activated Foxparks' Harness.
+areadmitch activated Single-Shot Rifle.
+areadmitch's Foxparks gets power +200 until end of turn.
+areadmitch activated Pengullet Rocket Launcher.
+areadmitch's Foxparks gets power +200 until end of turn.
+TURN 20
+AREADMITCH
+Elphidran Aqua took 700 damage.
+Elphidran Aqua took 700 damage and was destroyed.
+TURN 21
+AREADMITCH
+areadmitch's Foxparks attacks Sir Chappie's Chillet.
+TURN 22
+AREADMITCH
+Sir Chappie interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+TURN 23
+AREADMITCH
+Deployed Relaxaurus to slot 2 for 7 Souls.
+TURN 24
+SIR CHAPPIE
+Foxparks
+Relaxaurus's attack was interrupted.
+Played Zoe's Strategy for 3 Souls.
+Butchered Chillet.
+TURN 25
+AREADMITCH
+areadmitch's Chillet attacks Sir Chappie for 2.
+✦
+Chillet attacked Sir Chappie for 2; Sir Chappie's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+areadmitch played Victor's Strategy.
+areadmitch deployed Foxparks.
+areadmitch activated Foxparks' Harness.
+areadmitch activated Foxparks' Harness.
+TURN 26
+AREADMITCH
+Relaxaurus took 700 damage.
+Relaxaurus took 700 damage and was destroyed.
+TURN 27
+AREADMITCH
+areadmitch's Foxparks attacks Sir Chappie for 1.
+Foxparks hit Sir Chappie for 1. Damage Check: 1 card milled, no Lucky. Sir Chappie 6 to 5 life.
+areadmitch deployed Chillet.
+areadmitch revealed Primitive Furnace and added it to their hand.
+areadmitch's Chillet attacks Sir Chappie for 2.
+Chillet hit Sir Chappie for 2. Damage Check: 2 cards milled, no Lucky. Sir Chappie 5 to 3 life.
+Deployed Relaxaurus to slot 1 for 7 Souls.
+TURN 28
+AREADMITCH
+areadmitch activated Foxparks' Harness.
+areadmitch activated Foxparks' Harness.
+areadmitch's Chillet attacks Sir Chappie for 2.
+Chillet hit Sir Chappie for 2. Damage Check: 2 cards milled, no Lucky. Sir Chappie 3 to 1 life.
+areadmitch activated Pengullet Rocket Launcher.
+areadmitch's Chillet gets power +200 until end of turn.
+areadmitch activated Single-Shot Rifle.
+areadmitch's Chillet gets power +200 until end of turn.
+areadmitch's Chillet attacks Sir Chappie for 2.
+TURN 29
+AREADMITCH
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide on top of the deck.
+TURN 30
+AREADMITCH
+✦
+Chillet attacked Sir Chappie for 2; Sir Chappie's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+areadmitch deployed Pengullet.
+areadmitch activated Primitive Furnace.
+areadmitch activated Primitive Furnace.
+areadmitch deployed Grappling Gun.
+areadmitch activated Grappling Gun.
+Played Zoe's Strategy for 3 Souls.
+Returned Chillet from graveyard to hand.
+areadmitch must discard 1.
+areadmitch discarded Pengullet.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Relaxaurus on top of the deck.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Relaxaurus.
+Deployed Relaxaurus.
+TURN 31
+SIR CHAPPIE
+✦
+Relaxaurus attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 32
+AREADMITCH
+areadmitch activated Primitive Furnace.
+areadmitch deployed Pump-Action Shotgun.
+areadmitch deployed Pengullet.
+areadmitch's Chillet attacks Sir Chappie for 2.
+Chillet hit Sir Chappie for 2. Damage Check: 2 cards milled, no Lucky. Sir Chappie 1 to 0 life.
+
+AREADMITCH WINS
+Sir Chappie's life hit zero.
+FINAL LIFE: areadmitch (WINNER) 7, Sir Chappie 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+areadmitch built a Foxparks' Harness/Pengullet Rocket Launcher/Single-Shot Rifle/Primitive Furnace ping engine to repeatedly destroy their own overcosted Elphidran Aqua/Relaxaurus/Astegon (self-damage resets, turns 4/12/20/26) while chip-attacking Sir Chappie with small beaters (Foxparks, Chillet). Sir Chappie's Blazehowl Noct/Reindrix/Pyrin Noct/Foxparks interrupted several of areadmitch's attacks. areadmitch ground Sir Chappie down steadily (10->9->7->6->5->3->1->0) via repeated Chillet/Foxparks chip damage across 32 turns, closing with Chillet hitting for the final 2 (1 to 0 life).
+
+

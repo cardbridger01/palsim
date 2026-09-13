@@ -1,0 +1,97 @@
+----- TIER 1 MATCH 8/34 (recordId 3c71f86b-ff85-4305-a4b9-77a9e2f193ee) -----
+
+=====================================================================
+MATCH: Bandit vs Cayde
+recordId: 3c71f86b-ff85-4305-a4b9-77a9e2f193ee
+RESULT: BANDIT WINS - Cayde's life hit zero. Final life: Bandit (WINNER) 8, Cayde 0.
+NOTE: Cayde's deck labeled "DRAGON CULTIVATION TEST" in HUD.
+NOTE: 1 bare-form interrupt (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 11: Pyrin Noct interrupts Jormuntide Ignis's attack
+Cost is confirmed not shown anywhere in the client for this (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+TURN 2
+Deployed Elphidran to slot 1 for 4 Souls.
+Chose not to reveal a Dragon.
+TURN 3
+CAYDE
+Elphidran attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+TURN 4
+BANDIT
+Bandit deployed Chillet.
+Bandit deployed Chillet.
+Bandit revealed Pengullet and added it to their hand.
+Bandit's Chillet attacks Cayde for 2.
+Chillet hit Cayde for 2. Damage Check: 2 cards milled, no Lucky. Cayde 10 to 8 life.
+Bandit's Chillet attacks Cayde's Elphidran.
+TURN 5
+BANDIT
+Cayde interrupted with Cryolinx, discarded Relaxaurus. The attack was nullified.
+TURN 6
+BANDIT
+Played Victor's Strategy for 3 Souls.
+Looked at top 5: took Victor's Strategy to hand.
+Played Victor's Strategy for 3 Souls.
+Looked at top 5: took Chillet to hand.
+Revealed Elphidran Aqua (Dragon). Power +500 until end of turn.
+TURN 7
+CAYDE
+Elphidran (600+500 = 1100) attacked Chillet (900).
+Elphidran
+Chillet destroyed, 1100 damage vs 900 Power.
+TURN 8
+BANDIT
+Bandit's Chillet attacks Cayde for 2.
+✦
+Chillet attacked Cayde for 2; Cayde's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Bandit played Aurora Guide.
+Bandit deployed Chillet.
+Bandit deployed Jormuntide.
+TURN 9
+BANDIT
+Elphidran was Rested.
+Elphidran won't stand during its next Stand Phase.
+TURN 10
+BANDIT
+Bandit's Chillet attacks Cayde for 2.
+Chillet hit Cayde for 2. Damage Check: 2 cards milled, no Lucky. Cayde 8 to 6 life.
+Bandit's Jormuntide attacks Cayde for 3.
+Jormuntide hit Cayde for 3. Damage Check: 3 cards milled, no Lucky. Cayde 6 to 3 life.
+Deployed Jormuntide Ignis to slot 2 for 8 Souls.
+TURN 11
+CAYDE
+Pyrin Noct
+Jormuntide Ignis's attack was interrupted.
+Discarded Victor's Strategy, Elphidran Aqua to pay a cost.
+Stood this card.
+Jormuntide Ignis (1700) attacked Jormuntide (1600).
+Jormuntide Ignis
+Jormuntide destroyed, 1700 damage vs 1600 Power.
+TURN 12
+BANDIT
+Bandit's Chillet attacks Cayde for 2.
+Chillet hit Cayde for 2. Damage Check: 2 cards milled, no Lucky. Cayde 3 to 1 life.
+Bandit's Chillet attacks Cayde for 2.
+TURN 13
+BANDIT
+Cayde interrupted with Foxparks, discarded Chillet. The attack was nullified.
+TURN 14
+BANDIT
+Bandit deployed Pengullet.
+Bandit's Pengullet attacks Cayde for 1.
+Pengullet hit Cayde for 1. Damage Check: 1 card milled, no Lucky. Cayde 1 to 0 life.
+
+BANDIT WINS
+Cayde's life hit zero.
+FINAL LIFE: Bandit (WINNER) 8, Cayde 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Turn 1: Bandit mulligans/redraws. Turn 2: Bandit deploys Elphidran (4 souls), chooses not to reveal a Dragon. Turn 3: Cayde's Elphidran attacks Bandit for 2 (10->8 life). Turn 4: Bandit deploys two Chillets, reveals Pengullet; one Chillet hits Cayde for 2 (10->8 life); other Chillet attacks Cayde's Elphidran. Turn 5: nullified by Cayde's Cryolinx interrupt (discards Relaxaurus). Turn 6: Bandit plays Victor's Strategy twice (3 souls each, tutoring Victor's Strategy then Chillet), reveals Elphidran Aqua (Dragon) for +500 power. Turn 7: Cayde's Elphidran (1100 buffed) destroys Bandit's Chillet (900). Turn 8: Bandit's Chillet attack cancelled by Lucky Pal; Bandit plays Aurora Guide, deploys Chillet and Jormuntide. Turn 9: Bandit's Elphidran rested. Turn 10: Bandit's Chillet hits Cayde for 2 (8->6 life); Jormuntide hits for 3 (6->3 life); deploys Jormuntide Ignis (8 souls). Turn 11: Cayde's Pyrin Noct interrupts Jormuntide Ignis's attack, discards Victor's Strategy and Elphidran Aqua to pay a cost and stand a card; Cayde's Jormuntide Ignis (1700) destroys Bandit's Jormuntide (1600). Turn 12: Bandit's Chillet hits Cayde for 2 (3->1 life); another Chillet attacks. Turn 13: nullified by Cayde's Foxparks interrupt (discards Chillet). Turn 14: Bandit deploys Pengullet, which hits Cayde for 1, life hits 1->0.
+
+

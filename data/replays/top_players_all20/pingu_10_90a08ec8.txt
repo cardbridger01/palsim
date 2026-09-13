@@ -1,0 +1,274 @@
+=====================================================================
+MATCH: Pingu vs piyopiyoko  [Pingu's match #10 of 10 pulled]
+recordId: 90a08ec8-23a2-4365-95d0-0f954b9e0b60
+RESULT: piyopiyoko WINS - "Pingu surrendered." Final life: piyopiyoko (WINNER) 6, Pingu 1.
+NOTE: EXTRACTED DIRECTLY FROM THE RAW EVENT LOG (the log panel's "Copy" button), per the
+methodology established while fixing pingu_06, pingu_07, ze_01, ze_03 and ze_08, and used for
+pingu_08/pingu_09 in this batch. All turn numbers below are TRUE, verified game-turn numbers taken
+from the raw log's [T<N> ...] tags. The raw pull (19,612 characters) covered the entire game, true
+turn 1 through true turn 12, ending exactly at the point of surrender; this was cross-checked
+against the curated log (captured first, per standard practice), whose own last visible content
+matches this same ending point. The raw log for this game had the usual animation-queue duplicate/
+out-of-order lines seen in longer pulls; the Python dedup-by-(turn,text) pass used for ze_03/ze_08
+was applied here too.
+NOTE: DECK LABEL — Pingu's HUD shows "RED/BLUE DRAGON" for this match, NOT "BLUE/PURPLE DRAGON
+CONTROL" as in matches 1-9. This is a genuinely different deck (Primitive Furnace, Pump-Action
+Shotgun, Single-Shot Rifle, Medieval Medicine Workbench, and a "Material"/Gear-cost-reduction
+subsystem not seen in any other file in this batch — none of that appears in matches 1-9), not a
+transcription artifact. Flagged for the user's own records since it changes the archetype count for
+Pingu's 10 pulled matches from "10/10 Blue/Purple Dragon Control" to "9/10 Blue/Purple Dragon
+Control, 1/10 Red/Blue Dragon."
+NOTE: LIFE ACCOUNTING — Pingu: 10 -> 9 (true turn 6, Foxparks hit) -> 8 (true turn 10, Leezpunk
+hit) -> 7 (true turn 10, Leezpunk hit again, same turn) -> 5 (true turn 11, Menasting hit) -> 4
+(true turn 12, Foxparks hit) -> 1 (true turn 12, Reptyro hit, same turn), matching the final life
+of 1 exactly. piyopiyoko: unchanged at 10 for the entire game except a single true-turn-11 hit —
+"They 10 to 6 life" (Jormuntide Ignis, 4 damage) — matching their final life of 6 exactly. That one
+hit was the only damage Pingu landed all game. No damage is unaccounted for on either side.
+NOTE: TURN-OWNERSHIP CAVEAT — as with pingu_07/08/09, the raw log's [main] tag always reads "Main
+Phase, Pingu's move" regardless of who is actually acting, so the single PINGU/OPPONENT header on
+each turn below is a narrative judgment call based on which side's play defines that turn, not a
+value read directly off the raw log's tags.
+NOTE: No bare-form interrupts (card name on its own line with no player/cost) were found in this
+game's curated log — every interrupt in this file is a full-form "Pingu interrupted with X, [cost].
+The attack was nullified" line, transcribed verbatim in the body: True Turn 2 "Pingu interrupted
+with Reindrix, discarded Aurora Guide"; True Turn 3 "Pingu interrupted with Cryolinx, paid 1 Soul";
+True Turn 5 "Pingu interrupted with Reindrix, paid 1 Soul"; True Turn 8 "Pingu interrupted with
+Cryolinx, paid 1 Soul"; True Turn 9 "Pingu interrupted with Cryolinx, paid 1 Soul".
+=====================================================================
+TURN 1
+PINGU
+Turn opened — Souls 2/2 · Hand: Cryolinx, Elphidran, Primitive Furnace, Reindrix, Relaxaurus
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Deployed Primitive Furnace to slot 1 for 2 Souls.
+TURN 2
+PINGU
+Turn opened — Souls 4/4 · Hand: Cryolinx, Elphidran, Foxparks, Reindrix, Relaxaurus
+piyopiyoko deployed Foxparks' Harness.
+Deployed Elphidran to slot 2 for 4 Souls.
+Assigned Elphidran.
+Got 3 Material.
+Drew 1.
+Elphidran took 700 damage and was destroyed.
+Pingu interrupted with Reindrix, discarded Aurora Guide. The attack was nullified.
+TURN 3
+OPPONENT
+Turn opened — Souls 6/6 · Hand: Aurora Guide, Cryolinx, Foxparks, Relaxaurus
+piyopiyoko deployed Foxparks (A Toasty Hug).
+piyopiyoko activated Foxparks' Harness.
+piyopiyoko's Foxparks attacks Pingu's Primitive Furnace.
+Foxparks (200+500 = 700) struck Primitive Furnace (800).
+piyopiyoko deployed Leezpunk.
+piyopiyoko's Leezpunk attacks Pingu's Primitive Furnace.
+Deployed Foxparks (A Toasty Hug) to slot 2 for 4 Souls.
+Assigned Foxparks.
+Got 3 Material.
+Drew 1.
+Spent 3 Material.
+Next Gear costs 1 less this turn.
+Next Gear costs 2 less this turn.
+Next Gear costs 3 less this turn.
+Deployed Single-Shot Rifle to slot 3 for 1 Souls.
+Foxparks (A Toasty Hug) took 700 damage and was destroyed.
+Pingu interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 4
+PINGU
+Turn opened — Souls 8/8 · Hand: Aurora Guide, Chillet, Relaxaurus
+piyopiyoko deployed Foxparks (Light of Courage).
+piyopiyoko activated Foxparks' Harness.
+piyopiyoko's Foxparks attacks Pingu's Primitive Furnace.
+piyopiyoko deployed Medieval Medicine Workbench.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide Ignis on top of the deck.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Jormuntide Ignis.
+Deployed Jormuntide Ignis.
+Jormuntide Ignis's attack was interrupted.
+Assigned Chillet.
+Got 3 Material.
+Drew 1.
+Discarded Foxparks (A Toasty Hug), Relaxaurus to pay a cost.
+Stood this card.
+They blocked with Leezpunk.
+Jormuntide Ignis (1700) attacked Leezpunk (200).
+Leezpunk destroyed, 1700 damage vs 200 Power.
+Jormuntide Ignis took 900 damage.
+Jormuntide Ignis took 900 damage and was destroyed.
+TURN 5
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Pal Sphere
+piyopiyoko deployed Suzaku.
+piyopiyoko activated Foxparks' Harness.
+piyopiyoko's Foxparks attacks Pingu for 1.
+Foxparks attacked Pingu for 1; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+piyopiyoko's Suzaku attacks Pingu's Chillet.
+Suzaku (1200) attacked Chillet (900).
+Chillet destroyed, 1200 damage vs 900 Power.
+Played Pal Sphere for 4 Souls.
+Drew 3.
+Deployed Foxparks (A Toasty Hug) to slot 2 for 4 Souls.
+Assigned Foxparks.
+Got 3 Material.
+Drew 1.
+Foxparks (A Toasty Hug) took 900 damage and was destroyed.
+Pingu interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+piyopiyoko revealed Foxparks' Harness and deployed it.
+TURN 6
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Elphidran Aqua, Jormuntide Ignis, Primitive Furnace
+piyopiyoko activated Foxparks' Harness.
+piyopiyoko's Foxparks attacks Pingu for 1.
+Foxparks hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 10 to 9 life.
+piyopiyoko's Suzaku attacks Pingu's Primitive Furnace.
+piyopiyoko deployed Reptyro.
+piyopiyoko activated Reptyro.
+piyopiyoko looked at 5 cards and deployed Foxparks' Harness.
+piyopiyoko's Reptyro attacks Pingu's Primitive Furnace.
+Reptyro (1500) struck Primitive Furnace (800).
+Primitive Furnace destroyed, 1500 damage vs 800 Power.
+Deployed Elphidran Aqua to slot 1 for 6 Souls.
+Drew 2 cards.
+Put Primitive Furnace on top of the deck.
+Played Pal Sphere for 4 Souls.
+Drew 3.
+Elphidran Aqua gets power +200 until end of turn.
+Elphidran Aqua (900+200 = 1100) attacked Foxparks (200).
+Foxparks destroyed, 1100 damage vs 200 Power.
+TURN 7
+PINGU
+Turn opened — Souls 10/10 · Hand: Cryolinx, Jormuntide Ignis, Pengullet, Primitive Furnace, Pump-Action Shotgun, Reptyro
+piyopiyoko's Suzaku attacks Pingu's Elphidran Aqua.
+Suzaku (1200) attacked Elphidran Aqua (900).
+Elphidran Aqua destroyed, 1200 damage vs 900 Power.
+piyopiyoko deployed Leezpunk.
+piyopiyoko activated Medieval Medicine Workbench.
+Deployed Reptyro to slot 1 for 8 Souls.
+Got 3 Material.
+Spent 3 Material (9 left).
+Looked at top 5: deployed Pump-Action Shotgun.
+Dealt 1200 to every piyopiyoko Pal.
+Discarded Pengullet.
+Discarded Jormuntide Ignis.
+Reptyro gets power +200 until end of turn.
+They blocked with Reptyro.
+Reptyro (1500+200 = 1700) attacked Reptyro (1500).
+Reptyro destroyed, 2900 damage vs 1500 Power.
+Deployed Primitive Furnace to slot 4 for 2 Souls.
+Reptyro took 1500 damage and was destroyed.
+TURN 8
+PINGU
+Turn opened — Souls 10/10 · Hand: Cryolinx, Elphidran Aqua, Pump-Action Shotgun
+piyopiyoko deployed Single-Shot Rifle.
+piyopiyoko deployed Leezpunk.
+piyopiyoko activated Medieval Medicine Workbench.
+Deployed Elphidran Aqua to slot 1 for 6 Souls.
+Drew 2 cards.
+Put Cryolinx on top of the deck.
+Elphidran Aqua gets power +200 until end of turn.
+Elphidran Aqua (900+400 = 1300) struck Medieval Medicine Workbench (1300).
+Medieval Medicine Workbench destroyed, 1300 damage vs 1300 Power.
+Rested 3 Souls, drew 1 card.
+Pingu interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 9
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Pump-Action Shotgun, Pump-Action Shotgun, Reptyro, Single-Shot Rifle
+piyopiyoko deployed Reptyro.
+piyopiyoko activated Reptyro.
+piyopiyoko activated Foxparks' Harness.
+piyopiyoko activated Single-Shot Rifle.
+piyopiyoko's Leezpunk gets power +200 until end of turn.
+piyopiyoko's Leezpunk attacks Pingu's Primitive Furnace.
+piyopiyoko's Reptyro attacks Pingu's Primitive Furnace.
+Reptyro (1500) struck Primitive Furnace (800).
+Primitive Furnace destroyed, 1500 damage vs 800 Power.
+Rested 3 Souls, drew 1 card.
+Deployed Single-Shot Rifle to slot 4 for 4 Souls.
+Elphidran Aqua gets power +200 until end of turn.
+Elphidran Aqua attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Elphidran Aqua took 900 damage and was destroyed.
+Pingu interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 10
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Chillet, Pump-Action Shotgun, Pump-Action Shotgun, Reptyro
+piyopiyoko deployed Suzaku.
+piyopiyoko's Suzaku attacks Pingu for 3.
+piyopiyoko's Leezpunk attacks Pingu for 1.
+Leezpunk hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 9 to 8 life.
+piyopiyoko's Leezpunk attacks Pingu for 1.
+Leezpunk hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 8 to 7 life.
+Rested 3 Souls, drew 1 card.
+Deployed Pump-Action Shotgun to slot 1 for 7 Souls.
+Dealt 1200 to every piyopiyoko Pal.
+Discarded Reptyro.
+Discarded Elphidran Aqua.
+piyopiyoko returned Menasting from their graveyard to hand.
+Discarded Pump-Action Shotgun.
+TURN 11
+PINGU
+Turn opened — Souls 10/10 · Hand: Chillet, Elphidran
+piyopiyoko played Zoe's Strategy.
+piyopiyoko deployed Menasting.
+piyopiyoko's Menasting attacks Pingu for 2.
+Menasting hit Pingu for 2. Damage Check: 2 cards milled, no Lucky. Pingu 7 to 5 life.
+Deployed Chillet to slot 5 for 5 Souls.
+Revealed Jormuntide Ignis.
+Deployed Jormuntide Ignis.
+Jormuntide Ignis attacked them for 4; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Rested 3 Souls to pay a cost (2 standing).
+Stood this card.
+Jormuntide Ignis attacked them for 4. Damage Check: 4 cards milled, no Lucky. They 10 to 6 life.
+Chillet (900) attacked Menasting (700).
+Chillet was dragged down by Menasting's Retaliate.
+Menasting destroyed, 900 damage vs 700 Power.
+Chillet destroyed, 700 damage vs 900 Power.
+piyopiyoko returned Foxparks from their graveyard to hand.
+piyopiyoko revealed Single-Shot Rifle and deployed it.
+Jormuntide Ignis took 1500 damage.
+Jormuntide Ignis took 700 damage and was destroyed.
+TURN 12
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Elphidran, Primitive Furnace
+piyopiyoko deployed Reptyro.
+piyopiyoko activated Reptyro.
+piyopiyoko looked at 5 cards and deployed Single-Shot Rifle.
+piyopiyoko deployed Foxparks.
+piyopiyoko activated Foxparks' Harness.
+piyopiyoko's Foxparks attacks Pingu for 1.
+Foxparks hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 5 to 4 life.
+piyopiyoko's Reptyro attacks Pingu for 3.
+Reptyro hit Pingu for 3. Damage Check: 3 cards milled, no Lucky. Pingu 4 to 1 life.
+Deployed Primitive Furnace to slot 5 for 2 Souls.
+Deployed Elphidran to slot 6 for 4 Souls.
+Assigned Elphidran.
+Got 3 Material.
+Drew 1.
+Rested 3 Souls, drew 1 card.
+
+piyopiyoko WINS
+Pingu surrendered.
+FINAL LIFE: piyopiyoko (WINNER) 6, Pingu 1.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+A 12-true-turn loss, extracted directly from the raw event log. Unlike matches 1-9, Pingu is on a
+different archetype here ("RED/BLUE DRAGON" with a Gear/Material subsystem — Primitive Furnace,
+Pump-Action Shotgun, Single-Shot Rifle, Medieval Medicine Workbench). The early game was a
+resource-and-removal battle: piyopiyoko's aggressive Foxparks/Leezpunk/Suzaku/Reptyro package
+repeatedly picked off Pingu's Gears and Pals (Elphidran, Foxparks x2, Chillet, Elphidran Aqua x2,
+Primitive Furnace x2) while Pingu's own removal (an AOE-damage Gear used twice) and one Jormuntide
+Ignis attack on true turn 11 were the only offense that got through, bringing piyopiyoko from 10 to
+6 life — the sole damage Pingu dealt all game. From true turn 6 onward Pingu was chipped down
+steadily (Foxparks, a double Leezpunk hit, Menasting, then a lethal-range Foxparks+Reptyro double
+hit on true turn 12 dropping Pingu to 1) and surrendered rather than continue. No damage is
+unaccounted for on either side.
+
+CLARIFICATION FLAGS for user review:
+- This file was extracted directly via the raw-log method — it is a fresh pull, not a fix of a
+  previously-flawed file, and required no retraction.
+- The single PINGU/OPPONENT header on each turn is a narrative judgment call — see the
+  TURN-OWNERSHIP CAVEAT note above.
+- Pingu's deck for this one match is "RED/BLUE DRAGON," not "BLUE/PURPLE DRAGON CONTROL" — see the
+  DECK LABEL note above. Worth double-checking with the user whether this was an intentional
+  deck swap or a different Pingu-named account, since it's the only outlier across all 20 files
+  pulled in this project.

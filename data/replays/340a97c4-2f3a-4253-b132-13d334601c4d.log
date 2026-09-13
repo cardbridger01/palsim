@@ -1,0 +1,146 @@
+----- TIER 1 MATCH 5/34 (recordId 340a97c4-2f3a-4253-b132-13d334601c4d) -----
+
+=====================================================================
+MATCH: Lestoli vs xNIGHTn
+recordId: 340a97c4-2f3a-4253-b132-13d334601c4d
+RESULT: LESTOLI WINS - xNIGHTn's life hit zero. Final life: Lestoli 2, xNIGHTn 0.
+NOTE: 2 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 7:  Foxparks interrupts Chillet's attack
+  Turn 16: Cryolinx interrupts Chillet's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+TURN 2
+Rested 3 Souls, drew 1 card.
+TURN 3
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Aurora Guide, added to hand.
+TURN 4
+XNIGHTN
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+TURN 5
+LESTOLI
+Lestoli deployed Chillet.
+Lestoli revealed Axel's Strategy and added it to their hand.
+Lestoli's Chillet attacks xNIGHTn for 2.
+xNIGHTn interrupted with Reindrix, discarded Aurora Guide. The attack was nullified.
+TURN 6
+LESTOLI
+Played Pal Sphere for 4 Souls.
+Drew 3.
+TURN 7
+XNIGHTN
+Foxparks
+Chillet's attack was interrupted.
+TURN 8
+LESTOLI
+Lestoli's Chillet attacks xNIGHTn for 2.
+xNIGHTn interrupted with Blazehowl Noct, paid 1 Soul. The attack was nullified.
+Lestoli deployed Relaxaurus.
+Chillet was Rested.
+Chillet won't stand while the source stays in play.
+Lestoli's Relaxaurus attacks xNIGHTn for 3.
+xNIGHTn interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 9
+LESTOLI
+Played Strike from the Darkness for 4 Souls.
+Deployed Elphidran to slot 2 for 4 Souls.
+Chose not to reveal a Dragon.
+TURN 10
+XNIGHTN
+Elphidran attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+TURN 11
+LESTOLI
+Lestoli's Chillet attacks xNIGHTn for 2.
+Chillet hit xNIGHTn for 2. Damage Check: 2 cards milled, no Lucky. xNIGHTn 10 to 8 life.
+Lestoli deployed Pump-Action Shotgun.
+TURN 12
+LESTOLI
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Elphidran on top of the deck.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Elphidran.
+Deployed Elphidran.
+No Dragon Pal to reveal.
+TURN 13
+XNIGHTN
+Elphidran attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 4 to 2 life.
+TURN 14
+LESTOLI
+Lestoli's Chillet attacks xNIGHTn's Elphidran.
+xNIGHTn interrupted with Blazehowl Noct, paid 1 Soul. The attack was nullified.
+Lestoli deployed Elphidran Aqua.
+Lestoli's Elphidran Aqua attacks xNIGHTn's Elphidran.
+Elphidran Aqua (900) attacked Elphidran (600).
+Elphidran destroyed, 900 damage vs 600 Power.
+Lestoli deployed Single-Shot Rifle.
+Chillet took 1500 damage and was destroyed.
+TURN 15
+LESTOLI
+Played Black Marketeer for 5 Souls.
+Returned Chillet from graveyard to hand.
+Returned Chillet from graveyard to hand.
+It becomes night.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Elphidran.
+Deployed Elphidran.
+Chose not to reveal a Dragon.
+TURN 16
+XNIGHTN
+Elphidran attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Cryolinx
+Chillet's attack was interrupted.
+TURN 17
+LESTOLI
+Lestoli's Elphidran Aqua attacks xNIGHTn's Elphidran.
+Elphidran Aqua (900) attacked Elphidran (600).
+Elphidran destroyed, 900 damage vs 600 Power.
+Lestoli activated Pump-Action Shotgun.
+Lestoli's Chillet gets power +200 until end of turn.
+Lestoli's Chillet attacks xNIGHTn's Chillet.
+Chillet (900+200=1100) attacked Chillet (900).
+Chillet destroyed, 1100 damage vs 900 Power.
+Lestoli deployed Elphidran Aqua.
+Lestoli's Elphidran Aqua attacks xNIGHTn for 2.
+Elphidran Aqua hit xNIGHTn for 2. Damage Check: 2 cards milled, no Lucky. xNIGHTn 8 to 6 life.
+Lestoli deployed Elphidran.
+Lestoli's Elphidran attacks xNIGHTn for 2.
+Elphidran hit xNIGHTn for 2. Damage Check: 2 cards milled, no Lucky. xNIGHTn 6 to 4 life.
+TURN 18
+LESTOLI
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Victor's Strategy, added to hand.
+Deployed Elphidran to slot 2 for 4 Souls.
+No Dragon Pal to reveal.
+TURN 19
+XNIGHTN
+Elphidran attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 20
+LESTOLI
+Lestoli deployed Single-Shot Rifle.
+Chillet took 1500 damage and was destroyed.
+Lestoli's Chillet attacks xNIGHTn for 2.
+Chillet attacked xNIGHTn for 2; xNIGHTn's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Lestoli's Elphidran Aqua attacks xNIGHTn for 2.
+Elphidran Aqua hit xNIGHTn for 2. Damage Check: 2 cards milled, no Lucky. xNIGHTn 4 to 2 life.
+Lestoli's Elphidran Aqua attacks xNIGHTn for 2.
+Elphidran Aqua attacked xNIGHTn for 2; xNIGHTn's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Lestoli's Elphidran attacks xNIGHTn for 2.
+Elphidran hit xNIGHTn for 2. Damage Check: 2 cards milled, no Lucky. xNIGHTn 2 to 0 life.
+
+LESTOLI WINS
+xNIGHTn's life hit zero.
+FINAL LIFE: Lestoli (WINNER) 2, xNIGHTn 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Turn 1: Lestoli shuffles/mulligans/redraws. Turn 2: Lestoli rests 3 souls, draws 1. Turn 3: Lestoli deploys Chillet (5 souls); reveals Aurora Guide to hand. Turn 4: xNIGHTn's Chillet attacks Lestoli for 2 (10->8 life). Turn 5: Lestoli deploys another Chillet, reveals Axel's Strategy; Chillet's attack on xNIGHTn nullified by Reindrix interrupt (discard Aurora Guide). Turn 6: Lestoli plays Pal Sphere (4 souls), draws 3. Turn 7: xNIGHTn's Foxparks interrupts Chillet's attack. Turn 8: Lestoli's Chillet attack nullified by Blazehowl Noct interrupt (1 soul); Lestoli deploys Relaxaurus, Chillet rested (won't stand while source in play); Relaxaurus's attack on xNIGHTn nullified by Reindrix interrupt (1 soul). Turn 9: Lestoli plays Strike from the Darkness (4 souls), deploys Elphidran (4 souls), no Dragon revealed. Turn 10: xNIGHTn's Elphidran attacks Lestoli for 2 (8->6 life). Turn 11: Lestoli's Chillet hits xNIGHTn for 2 (10->8 life); deploys Pump-Action Shotgun. Turn 12: Lestoli plays Aurora Guide (2 souls), draws, puts Elphidran on top of deck, deploys Chillet (5 souls), reveals/deploys Elphidran (no Dragon to reveal). Turn 13: xNIGHTn's Elphidran attacks for 2 (6->4 life); Chillet attacks for 2 (4->2 life). Turn 14: Lestoli's Chillet attack on xNIGHTn's Elphidran nullified by Blazehowl Noct interrupt (1 soul); Lestoli deploys Elphidran Aqua (900) which destroys xNIGHTn's Elphidran (600); Lestoli deploys Single-Shot Rifle (Chillet takes 1500 dmg, destroyed). Turn 15: Lestoli plays Black Marketeer (5 souls) returning two Chillets from graveyard; becomes night; deploys Chillet (5 souls), reveals/deploys Elphidran (no Dragon). Turn 16: xNIGHTn's Elphidran attack cancelled by Lucky Pal; xNIGHTn's Cryolinx interrupts Chillet's attack. Turn 17: Lestoli's Elphidran Aqua (900) destroys xNIGHTn's Elphidran (600) again; Lestoli activates Pump-Action Shotgun buffing Chillet +200, which (1100) destroys xNIGHTn's Chillet (900); Lestoli deploys another Elphidran Aqua, hits xNIGHTn for 2 (8->6 life); deploys Elphidran, hits for 2 (6->4 life). Turn 18: Lestoli deploys Chillet (5 souls), reveals Victor's Strategy; deploys Elphidran (4 souls, no Dragon). Turn 19: xNIGHTn's Elphidran attack cancelled by Lucky Pal. Turn 20: Lestoli deploys Single-Shot Rifle (Chillet takes 1500 dmg destroyed); Chillet's attack cancelled by Lucky Pal; Elphidran Aqua hits for 2 (4->2 life); another Elphidran Aqua attack cancelled by Lucky Pal; Elphidran hits for 2, xNIGHTn's life hits 2->0.
+
+

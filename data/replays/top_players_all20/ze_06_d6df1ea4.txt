@@ -1,0 +1,184 @@
+=====================================================================
+MATCH: Ze (in-game name "bel") vs amata  [Ze's match #6 of 10 pulled — Ze's ONLY loss in this
+batch of 10]
+recordId: d6df1ea4-b815-4f44-b98f-261dd709bdbd
+RESULT: AMATA WINS - bel surrendered. Final life: amata (WINNER) 10, bel 1.
+NOTE: Fourth surrender/concede win-condition game in this batch (see matches 1, 2, 4) but the
+FIRST where it goes against bel/Ze rather than for them — bel conceded at 1 life after amata's
+board (Reptyro, an active Elphidran Aqua, multiple hand resources) had become unanswerable,
+rather than playing out to an actual life-zero finish.
+NOTE: Both life totals are fully accounted for by named damage lines this game (amata stays at
+10 the entire game — bel never landed a hit on amata's life; bel drops 10->8->6->4->1 via four
+named hits) — no unexplained gap.
+NOTE: Deck labeled "BLUE/PURPLE DECK" on bel's HUD, same generic label as matches 1-5.
+NOTE: Only 1 bare-form interrupt (card name on its own line, no player/cost) this game:
+  Turn 14: Cryolinx interrupts Elphidran's attack
+2 additional FULL-form interrupts occurred (Turn 17 Blazehowl Noct, Turn 19 Reindrix) — not
+counted in the bare-form total, included in the verbatim body only.
+NOTE: Turn 5's declared attack ("amata's Pengullet attacks bel's Pengullet") has no resolution
+line under Turn 5 or Turn 6 — the actual trade resolution ("Pengullet (600) attacked Pengullet
+(600)... destroyed... destroyed...") appears under the Turn 7 header instead, a wider gap than
+the single-turn mismatch seen in prior games (ze_03's Turn 19/20 case) but the same underlying
+quirk. Transcribed verbatim.
+NOTE: Turns 1-2 again show no acting-player header (same as matches 4-5) — inferred as bel's
+turns from context (mulligan, then a Pengullet deploy matching bel's hand) and labeled BEL below.
+=====================================================================
+TURN 1
+BEL
+Turn opened — Souls 2/2 · Hand: Aurora Guide, Blazehowl Noct, Blazehowl Noct, Cryolinx, Relaxaurus
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+TURN 2
+BEL
+Turn opened — Souls 4/4 · Hand: Aurora Guide, Cryolinx, Cryolinx, Elphidran, Pengullet, Zoe's Strategy
+Deployed Pengullet to slot 1 for 4 Souls.
+TURN 3
+BEL
+✦
+Pengullet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 4
+BEL
+Turn opened — Souls 6/6 · Hand: Aurora Guide, Cryolinx, Cryolinx, Elphidran, Pengullet Rocket Launcher, Reindrix, Zoe's Strategy
+TURN 5
+AMATA
+amata deployed Pengullet.
+amata's Pengullet attacks bel's Pengullet.
+TURN 6
+AMATA
+Turn opened — Souls 4/4 · Hand: Aurora Guide, Cryolinx, Cryolinx, Elphidran, Pengullet, Zoe's Strategy
+Drew 1.
+TURN 7
+AMATA
+Turn opened — Souls 6/6 · Hand: Aurora Guide, Cryolinx, Cryolinx, Elphidran, Pengullet Rocket Launcher, Reindrix, Zoe's Strategy
+Pengullet (600) attacked Pengullet (600).
+Pengullet destroyed, 600 damage vs 600 Power.
+Pengullet destroyed, 600 damage vs 600 Power.
+Rested 3 Souls, drew 1 card.
+Played Zoe's Strategy for 3 Souls.
+Returned Pengullet from graveyard to hand.
+amata must discard 1.
+amata discarded Reptyro.
+TURN 8
+AMATA
+Turn opened — Souls 8/8 · Hand: Aurora Guide, Cryolinx, Cryolinx, Elphidran, Elphidran Aqua, Pengullet, Pengullet Rocket Launcher, Reindrix, Strike from the Darkness
+amata deployed Chillet.
+amata deployed Relaxaurus.
+amata's Chillet attacks bel for 2.
+Chillet hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 10 to 8 life.
+amata's Relaxaurus attacks bel for 3.
+✦
+Relaxaurus attacked bel for 3; bel's Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+Played Strike from the Darkness for 4 Souls.
+Deployed Pengullet to slot 1 for 4 Souls.
+TURN 9
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Cryolinx, Cryolinx, Elphidran, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix
+amata's Chillet attacks bel for 2.
+Chillet hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 8 to 6 life.
+amata deployed Reptyro.
+amata activated Reptyro.
+TURN 10
+AMATA
+Turn opened — Souls 8/8 · Hand: Aurora Guide, Cryolinx, Cryolinx, Elphidran, Elphidran Aqua, Pengullet, Pengullet Rocket Launcher, Reindrix, Strike from the Darkness
+amata revealed Single-Shot Rifle and deployed it.
+TURN 11
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Cryolinx, Cryolinx, Elphidran, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix
+amata looked at 5 cards and deployed Single-Shot Rifle.
+TURN 12
+AMATA
+Turn opened — Souls 8/8 · Hand: Aurora Guide, Cryolinx, Cryolinx, Elphidran, Elphidran Aqua, Pengullet, Pengullet Rocket Launcher, Reindrix, Strike from the Darkness
+Drew 1.
+Pengullet took 1500 damage and was destroyed.
+TURN 13
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Cryolinx, Cryolinx, Elphidran, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix
+amata's Reptyro attacks bel for 3.
+✦
+Reptyro attacked bel for 3; bel's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Blazehowl Noct, added to hand.
+Deployed Elphidran to slot 2 for 4 Souls.
+Revealed Elphidran Aqua (Dragon). Power +500 until end of turn.
+TURN 14
+BEL
+Cryolinx
+Elphidran's attack was interrupted.
+Chillet (900) attacked Chillet (900).
+Chillet destroyed, 900 damage vs 900 Power.
+Chillet destroyed, 900 damage vs 900 Power.
+TURN 15
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Cryolinx, Cryolinx, Elphidran, Elphidran Aqua, Reindrix
+TURN 16
+AMATA
+amata's Reptyro attacks bel for 3.
+TURN 17
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Cryolinx, Cryolinx, Elphidran, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix
+bel interrupted with Blazehowl Noct, paid 1 Soul. The attack was nullified.
+TURN 18
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Cryolinx, Cryolinx, Elphidran, Elphidran Aqua, Reindrix
+amata deployed Elphidran Aqua.
+amata's Elphidran Aqua attacks bel's Elphidran.
+TURN 19
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Cryolinx, Cryolinx, Elphidran, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix
+bel interrupted with Reindrix, discarded Pengullet Rocket Launcher. The attack was nullified.
+TURN 20
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Cryolinx, Cryolinx, Elphidran, Elphidran Aqua, Reindrix
+amata deployed Pengullet.
+amata activated Single-Shot Rifle.
+amata's Pengullet gets power +200 until end of turn.
+amata's Pengullet attacks bel's Elphidran.
+Pengullet (600+200 = 800) attacked Elphidran (600).
+Pengullet
+Elphidran destroyed, 800 damage vs 600 Power.
+Deployed Elphidran Aqua to slot 1 for 6 Souls.
+Drew 2 cards.
+Put Elphidran on top of the deck.
+Deployed Pengullet Rocket Launcher to slot 2 for 4 Souls.
+Elphidran Aqua gets power +200 until end of turn.
+TURN 21
+BEL
+Elphidran Aqua (900+200 = 1100) attacked Elphidran Aqua (900).
+Elphidran Aqua destroyed, 1100 damage vs 900 Power.
+TURN 22
+AMATA
+amata's Pengullet attacks bel for 2.
+Pengullet hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 6 to 4 life.
+amata's Reptyro attacks bel for 3.
+Reptyro hit bel for 3. Damage Check: 3 cards milled, no Lucky. bel 4 to 1 life.
+amata deployed Single-Shot Rifle.
+TURN 23
+AMATA
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Cryolinx, Cryolinx, Elphidran, Elphidran Aqua, Reindrix
+Elphidran Aqua took 1500 damage and was destroyed.
+
+AMATA WINS
+bel surrendered.
+FINAL LIFE: amata (WINNER) 10, bel 1.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+Ze's only loss in this 10-game batch, and it's a clean one: amata's Chillet/Relaxaurus/Reptyro
+package chipped bel from 10 down to 1 life across turns 8-22 while bel's own Pals rarely landed
+a hit (amata's life never moves off 10 the entire game) — bel spent most of the midgame trading
+evenly (Chillet-for-Chillet turn 14, Elphidran Aqua-for-Elphidran Aqua turn 21) or interrupting
+incoming attacks (Blazehowl Noct, Reindrix) rather than building pressure of its own. By turn 22,
+back-to-back unanswered hits from Pengullet and Reptyro dropped bel to 1 life against a board
+amata was actively rebuilding (a fresh Elphidran Aqua and Pengullet Rocket Launcher just
+deployed), and bel conceded the following turn rather than continue. Notably this loss looks
+like a genuine tempo/board loss rather than a variance-driven one — amata simply built and held a
+bigger board for most of the game.
+
+CLARIFICATION FLAGS for user review:
+- Worth comparing this loss's structure (slow start, uneven trades, then a two-hit finishing
+  sequence) against Edify's own Ranked losses once both datasets are cross-analyzed — the
+  pattern of "trade evenly, then lose to an unanswered 2-3 hit combo" recurs in several of
+  Edify's personal losses too.
+- Same open scope note as matches 1-5: Ze's "BLUE/PURPLE DECK" hasn't been cross-referenced
+  against a saved decklist from Ze's own Decks page (out of scope for this pass).

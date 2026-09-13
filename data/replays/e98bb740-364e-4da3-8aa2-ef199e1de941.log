@@ -1,0 +1,133 @@
+----- TIER 1 MATCH 33/34 (recordId e98bb740-364e-4da3-8aa2-ef199e1de941) -----
+
+=====================================================================
+MATCH: Tibia Cano vs Interrupt Addict
+recordId: e98bb740-364e-4da3-8aa2-ef199e1de941
+RESULT: TIBIA CANO WINS - Interrupt Addict's life hit zero. Final life: Tibia Cano (WINNER) 10, Interrupt Addict 0.
+NOTE: Interrupt Addict's deck labeled "DRAGUNS" in HUD.
+NOTE: 2 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 6:  Reindrix interrupts Relaxaurus's attack
+  Turn 12: Blazehowl Noct interrupts Jormuntide's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+TURN 2
+Deployed Primitive Furnace to slot 1 for 2 Souls.
+TURN 3
+TIBIA CANO
+Tibia Cano deployed Elphidran.
+Tibia Cano revealed Azurobe (Dragon).
+Tibia Cano's Elphidran attacks Interrupt Addict's Primitive Furnace.
+Interrupt Addict interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 4
+TIBIA CANO
+Played Pal Sphere for 4 Souls.
+Drew 3.
+Tibia Cano deployed Chillet.
+Tibia Cano revealed Reindrix and added it to their hand.
+Tibia Cano's Chillet attacks Interrupt Addict's Primitive Furnace.
+Interrupt Addict interrupted with Blazehowl, paid 1 Soul. The attack was nullified.
+Tibia Cano revealed Azurobe (Dragon).
+Tibia Cano's Elphidran attacks Interrupt Addict's Primitive Furnace.
+Elphidran (600+500 = 1100) struck Primitive Furnace (800).
+Elphidran
+Primitive Furnace destroyed, 1100 damage vs 800 Power.
+TURN 5
+TIBIA CANO
+Deployed Relaxaurus to slot 1 for 7 Souls.
+TURN 6
+INTERRUPT ADDICT
+Reindrix
+Relaxaurus's attack was interrupted.
+TURN 7
+TIBIA CANO
+Tibia Cano played Strike from the Darkness.
+Relaxaurus was destroyed.
+Tibia Cano deployed Fuack.
+Tibia Cano's Chillet attacks Interrupt Addict for 2.
+Chillet hit Interrupt Addict for 2. Damage Check: 2 cards milled, no Lucky. Interrupt Addict 10 to 8 life.
+TURN 8
+TIBIA CANO
+Deployed Primitive Furnace to slot 1 for 2 Souls.
+Deployed Relaxaurus to slot 2 for 7 Souls.
+Assigned Relaxaurus.
+Got 3 .
+Drew 1.
+Tibia Cano's Fuack attacks Interrupt Addict for 1.
+Fuack hit Interrupt Addict for 1. Damage Check: 1 card milled, no Lucky. Interrupt Addict 8 to 7 life.
+Tibia Cano played Zoe's Strategy.
+Relaxaurus was destroyed.
+Tibia Cano deployed Chillet.
+Tibia Cano deployed Jormuntide.
+Tibia Cano's Chillet attacks Interrupt Addict's Primitive Furnace.
+Chillet (900) struck Primitive Furnace (800).
+Chillet
+Primitive Furnace destroyed, 900 damage vs 800 Power.
+Tibia Cano's Jormuntide attacks Interrupt Addict for 3.
+Jormuntide hit Interrupt Addict for 3. Damage Check: 3 cards milled, no Lucky. Interrupt Addict 7 to 4 life.
+Tibia Cano's Chillet attacks Interrupt Addict for 2.
+Chillet hit Interrupt Addict for 2. Damage Check: 2 cards milled, no Lucky. Interrupt Addict 4 to 2 life.
+TURN 9
+TIBIA CANO
+Deployed Pump-Action Shotgun to slot 1 for 7 Souls.
+Dealt 1200 to every Tibia Cano Pal.
+Tibia Cano's Jormuntide attacks Interrupt Addict for 3.
+Interrupt Addict interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+Tibia Cano deployed Chillet.
+Tibia Cano revealed Aurora Guide and added it to their hand.
+Tibia Cano's Chillet attacks Interrupt Addict for 2.
+Interrupt Addict interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+Tibia Cano played Victor's Strategy.
+Tibia Cano looked at 5 cards and took 1 into their hand.
+TURN 10
+TIBIA CANO
+Deployed Primitive Furnace to slot 2 for 2 Souls.
+Deployed Chillet to slot 3 for 5 Souls.
+Revealed Reindrix, added to hand.
+Assigned Chillet.
+Got 3 .
+Drew 1.
+Spent 3 .
+Next Gear costs 1 less this turn.
+Next Gear costs 2 less this turn.
+Next Gear costs 3 less this turn.
+Deployed Single-Shot Rifle to slot 4 for 1 Souls.
+Tibia Cano's Jormuntide attacks Interrupt Addict for 3.
+Interrupt Addict interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+Tibia Cano deployed Azurobe.
+Chillet was Rested.
+Tibia Cano's Azurobe attacks Interrupt Addict for 2.
+Interrupt Addict interrupted with Foxparks, paid 1 Soul. The attack was nullified.
+Tibia Cano played Strike from the Darkness.
+Chillet was destroyed.
+TURN 11
+TIBIA CANO
+Deployed Jormuntide to slot 3 for 8 Souls.
+Drew 1.
+Jormuntide gets power +200 until end of turn.
+TURN 12
+INTERRUPT ADDICT
+Blazehowl Noct
+Jormuntide's attack was interrupted.
+TURN 13
+TIBIA CANO
+Tibia Cano's Jormuntide attacks Interrupt Addict for 3.
+✦
+Jormuntide attacked Interrupt Addict for 3; Interrupt Addict's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Tibia Cano deployed Jormuntide.
+Tibia Cano's Jormuntide attacks Interrupt Addict for 3.
+Jormuntide hit Interrupt Addict for 3. Damage Check: 3 cards milled, no Lucky. Interrupt Addict 2 to 0 life.
+
+TIBIA CANO WINS
+Interrupt Addict's life hit zero.
+FINAL LIFE: Tibia Cano (WINNER) 10, Interrupt Addict 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Turn 1: Interrupt Addict shuffles/draws. Turn 2: Interrupt Addict deploys Primitive Furnace (2 souls). Turn 3: Tibia Cano deploys Elphidran, reveals Azurobe (Dragon); Elphidran's attack on Primitive Furnace nullified by Cryolinx interrupt (1 soul). Turn 4: Tibia Cano plays Pal Sphere (4 souls), draws 3, deploys Chillet, reveals Reindrix; Chillet's attack on Primitive Furnace nullified by Blazehowl interrupt (1 soul); Elphidran (600+500=1100, Dragon-buffed) destroys Primitive Furnace (800). Turn 5: Tibia Cano deploys Relaxaurus (7 souls). Turn 6: Relaxaurus's attack interrupted by Reindrix. Turn 7: Tibia Cano plays Strike from the Darkness (Relaxaurus destroyed as cost), deploys Fuack; Chillet hits Interrupt Addict for 2 (10->8 life). Turn 8: Tibia Cano deploys Primitive Furnace (2 souls) and Relaxaurus (7 souls, assigned for souls), draws 1; Fuack hits for 1 (8->7 life); plays Zoe's Strategy (Relaxaurus destroyed as cost), deploys Chillet and Jormuntide; Chillet (900) destroys Primitive Furnace (800); Jormuntide hits for 3 (7->4 life); Chillet hits for 2 (4->2 life). Turn 9: Tibia Cano deploys Pump-Action Shotgun (7 souls, 1200 dmg to own Pals); Jormuntide's attack nullified by Cryolinx interrupt; deploys Chillet, reveals Aurora Guide; Chillet's attack nullified by Reindrix interrupt; plays Victor's Strategy (tutors 1 of 5). Turn 10: Tibia Cano deploys Primitive Furnace (2 souls) and Chillet (5 souls, reveals Reindrix), soul-cost reduction combo, deploys Single-Shot Rifle (1 soul); Jormuntide's attack nullified by Reindrix interrupt; deploys Azurobe; Azurobe's attack nullified by Foxparks interrupt; plays Strike from the Darkness (Chillet destroyed as cost). Turn 11: Tibia Cano deploys Jormuntide (8 souls), draws 1, buffs Jormuntide +200 power. Turn 12: Jormuntide's attack interrupted by Blazehowl Noct. Turn 13: Jormuntide's attack cancelled by Interrupt Addict's Lucky Pal; Tibia Cano deploys another Jormuntide, which hits Interrupt Addict for 3, life hits 2->0.
+
+

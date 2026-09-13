@@ -1,0 +1,232 @@
+----- TIER 1 MATCH 21/34 (recordId 8780ff0a-2377-45ef-b726-e7b67c11458f) -----
+
+=====================================================================
+MATCH: xNIGHTn vs Zutilt10
+recordId: 8780ff0a-2377-45ef-b726-e7b67c11458f
+RESULT: XNIGHTN WINS - Zutilt10's life hit zero. Final life: xNIGHTn (WINNER) 6, Zutilt10 0.
+NOTE: Zutilt10's deck titled "COPY OF SUZAKU GUN CONTROL" in HUD (2nd Zutilt10 match; also
+lost match #10 vs XMG with the same deck).
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 1:  Cryolinx interrupts Lamball's attack
+  Turn 15: Blazehowl Noct interrupts Suzaku's attack
+  Turn 24: Blazehowl Noct interrupts Univolt's attack
+  Turn 32: Cryolinx interrupts Suzaku's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+ZUTILT10
+Lamball gets power +200 until end of turn.
+Cryolinx
+Lamball's attack was interrupted.
+Rested 3 Souls, drew 1 card.
+TURN 2
+XNIGHTN
+xNIGHTn deployed Relaxaurus.
+TURN 3
+XNIGHTN
+Lamball was Rested.
+Lamball won't stand while the source stays in play.
+TURN 4
+XNIGHTN
+xNIGHTn's Relaxaurus attacks Zutilt10 for 3.
+TURN 5
+XNIGHTN
+Zutilt10 interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 6
+XNIGHTN
+xNIGHTn's Chillet attacks Zutilt10 for 2.
+TURN 7
+XNIGHTN
+Zutilt10 interrupted with Reindrix, discarded Mounted Machine Gun. The attack was nullified.
+TURN 8
+XNIGHTN
+Deployed Kitsun to slot 3 for 5 Souls.
+TURN 9
+ZUTILT10
+✦
+Kitsun attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Deployed Lamball to slot 4 for 2 Souls.
+TURN 10
+XNIGHTN
+xNIGHTn played Zoe's Strategy.
+TURN 11
+XNIGHTN
+xNIGHTn returned Astegon from their graveyard to hand.
+Discarded Grappling Gun.
+TURN 12
+XNIGHTN
+xNIGHTn deployed Elphidran.
+xNIGHTn's Elphidran attacks Zutilt10's Kitsun.
+Zutilt10 blocked with Lamball.
+Elphidran (600) attacked Lamball (200).
+Elphidran
+Lamball destroyed, 600 damage vs 200 Power.
+xNIGHTn's Chillet attacks Zutilt10's Kitsun.
+TURN 13
+XNIGHTN
+Zutilt10 interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 14
+XNIGHTN
+Deployed Suzaku to slot 4 for 7 Souls.
+Kitsun gets power +200 until end of turn.
+TURN 15
+ZUTILT10
+Kitsun (400+200 = 600) attacked Elphidran (600).
+Kitsun
+Elphidran destroyed, 600 damage vs 600 Power.
+Kitsun destroyed, 600 damage vs 600 Power.
+Blazehowl Noct
+Suzaku's attack was interrupted.
+Rested 3 Souls, drew 1 card.
+TURN 16
+XNIGHTN
+xNIGHTn deployed Astegon.
+TURN 17
+XNIGHTN
+Suzaku gets power -1000 until end of turn.
+TURN 18
+XNIGHTN
+xNIGHTn's Astegon attacks Zutilt10 for 3.
+✦
+Astegon attacked Zutilt10 for 3; Zutilt10's Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+Deployed Single-Shot Rifle to slot 1 for 4 Souls.
+Deployed Univolt to slot 3 for 4 Souls.
+power +300 until end of turn.
+TURN 19
+ZUTILT10
+Univolt attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+TURN 20
+XNIGHTN
+xNIGHTn played Aurora Guide.
+xNIGHTn deployed Lyleen Noct.
+xNIGHTn activated Lyleen Noct.
+xNIGHTn discarded Black Marketeer to pay a cost.
+xNIGHTn deployed Elphidran.
+xNIGHTn's Elphidran attacks Zutilt10 for 2.
+✦
+Elphidran attacked Zutilt10 for 2; Zutilt10's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Rested 3 Souls, drew 1 card.
+Deployed Primitive Furnace to slot 4 for 2 Souls.
+Assigned Univolt.
+Got 3 .
+Drew 1.
+Spent 3 .
+Next Gear costs 1 less this turn.
+Next Gear costs 2 less this turn.
+Next Gear costs 3 less this turn.
+Deployed Pump-Action Shotgun to slot 5 for 4 Souls.
+Dealt 1200 to every xNIGHTn Pal.
+TURN 21
+XNIGHTN
+xNIGHTn played Pal Sphere.
+xNIGHTn deployed Chillet.
+xNIGHTn revealed Lyleen Noct and added it to their hand.
+xNIGHTn activated Lyleen Noct.
+xNIGHTn discarded Lyleen Noct to pay a cost.
+xNIGHTn deployed Elphidran Aqua.
+xNIGHTn's Elphidran Aqua attacks Zutilt10's Primitive Furnace.
+Elphidran Aqua (900) struck Primitive Furnace (800).
+Elphidran Aqua
+Primitive Furnace destroyed, 900 damage vs 800 Power.
+xNIGHTn's Chillet attacks Zutilt10's Univolt.
+TURN 22
+XNIGHTN
+Zutilt10 interrupted with Foxparks, paid 1 Soul. The attack was nullified.
+TURN 23
+XNIGHTN
+Rested 3 Souls, drew 1 card.
+Deployed Pump-Action Shotgun to slot 4 for 7 Souls.
+Dealt 1200 to every xNIGHTn Pal.
+Univolt gets power +200 until end of turn.
+Univolt gets power +200 until end of turn.
+Univolt gets power +200 until end of turn.
+Univolt gets power +200 until end of turn.
+power +300 until end of turn.
+TURN 24
+ZUTILT10
+Blazehowl Noct
+Univolt's attack was interrupted.
+TURN 25
+XNIGHTN
+xNIGHTn deployed Astegon.
+TURN 26
+XNIGHTN
+Univolt gets power -1000 until end of turn.
+TURN 27
+XNIGHTN
+xNIGHTn's Astegon attacks Zutilt10 for 3.
+Astegon hit Zutilt10 for 3. Damage Check: 3 cards milled, no Lucky. Zutilt10 8 to 5 life.
+Rested 3 Souls, drew 1 card.
+Deployed Mounted Machine Gun to slot 3 for 4 Souls.
+TURN 28
+XNIGHTN
+xNIGHTn played Victor's Strategy.
+xNIGHTn looked at 5 cards and took 1 into their hand.
+xNIGHTn's Astegon attacks Zutilt10's Mounted Machine Gun.
+TURN 29
+XNIGHTN
+Zutilt10 interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 30
+XNIGHTN
+xNIGHTn's Lyleen Noct attacks Zutilt10's Mounted Machine Gun.
+Lyleen Noct (1700) struck Mounted Machine Gun (1000).
+Lyleen Noct
+Mounted Machine Gun destroyed, 1700 damage vs 1000 Power.
+xNIGHTn deployed Elphidran Aqua.
+Deployed Primitive Furnace to slot 3 for 2 Souls.
+Deployed Lamball to slot 6 for 2 Souls.
+Assigned Lamball.
+Got 3 .
+Drew 1.
+Rested 3 Souls, drew 1 card.
+TURN 31
+XNIGHTN
+xNIGHTn's Elphidran Aqua attacks Zutilt10's Primitive Furnace.
+Elphidran Aqua (900) struck Primitive Furnace (800).
+Elphidran Aqua
+Primitive Furnace destroyed, 900 damage vs 800 Power.
+xNIGHTn played Victor's Strategy.
+xNIGHTn looked at 5 cards and took 1 into their hand.
+xNIGHTn played Pal Sphere.
+xNIGHTn's Astegon attacks Zutilt10 for 3.
+✦
+Astegon attacked Zutilt10 for 3; Zutilt10's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+xNIGHTn's Lyleen Noct attacks Zutilt10 for 3.
+✦
+Lyleen Noct attacked Zutilt10 for 3; Zutilt10's Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+Deployed Suzaku to slot 3 for 7 Souls.
+Suzaku gets power +200 until end of turn.
+Suzaku gets power +200 until end of turn.
+Suzaku gets power +200 until end of turn.
+Suzaku gets power +200 until end of turn.
+TURN 32
+ZUTILT10
+Cryolinx
+Suzaku's attack was interrupted.
+TURN 33
+XNIGHTN
+xNIGHTn played Strike from the Darkness.
+TURN 34
+XNIGHTN
+Suzaku was destroyed.
+TURN 35
+XNIGHTN
+xNIGHTn deployed Chillet.
+xNIGHTn revealed Strike from the Darkness and added it to their hand.
+xNIGHTn's Astegon attacks Zutilt10 for 3.
+Astegon hit Zutilt10 for 3. Damage Check: 3 cards milled, no Lucky. Zutilt10 5 to 2 life.
+xNIGHTn's Chillet attacks Zutilt10 for 2.
+Chillet hit Zutilt10 for 2. Damage Check: 2 cards milled, no Lucky. Zutilt10 2 to 0 life.
+
+XNIGHTN WINS
+Zutilt10's life hit zero.
+FINAL LIFE: xNIGHTn (WINNER) 6, Zutilt10 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Long grindy 35-turn game. Key events: xNIGHTn's Relaxaurus/Chillet attacks repeatedly interrupted by Zutilt10's Cryolinx/Reindrix. xNIGHTn's Elphidran traded with Zutilt10's Lamball (turn 12), then Elphidran/Kitsun mutually destroyed each other (turn 15). xNIGHTn built up Astegon (multiple copies over the game via Pump-Action Shotgun self-damage resets), Lyleen Noct, Suzaku, and Univolt-hate (power -1000 debuffs on Zutilt10's Univolt). Zutilt10's Univolt hit xNIGHTn for 2 (turn 19, 8 to 6). xNIGHTn ground down Zutilt10 via Astegon direct attacks (turns 18/27/31/35: 3 dmg each) and Lyleen Noct/Chillet, destroying Zutilt10's Primitive Furnace x2, Mounted Machine Gun, and own Suzaku got destroyed by Strike from the Darkness setup. Finished with Astegon hit for 3 (5 to 2) then Chillet hit for 2 (2 to 0).
+
+

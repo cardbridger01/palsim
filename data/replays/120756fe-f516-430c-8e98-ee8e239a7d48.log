@@ -1,0 +1,25 @@
+----- TIER 1 MATCH 1/34 (recordId 120756fe-f516-430c-8e98-ee8e239a7d48) -----
+
+=====================================================================
+MATCH: "Opponent" vs "Player" (Tregotem vs Campo — both anonymized/not resolved by site)
+recordId: 120756fe-f516-430c-8e98-ee8e239a7d48
+RESULT: OPPONENT WINS - Player ran out of time (timeout, not a gameplay knockout). Final life: Opponent (WINNER) 10, Player 10 (tied life, decided by timeout).
+NOTE: Legitimately empty per BACKFILLINSTRUCTIONS.md - confirmed by direct re-check of the live
+replay (browser, not just the prior text extraction): only 1 turn recorded, ends immediately
+after mulligan with a timeout banner ("Player ran out of time"), 10-10 life. "Player"'s deck
+labeled "BRUPLE DRAGON CONTROL V2" in HUD.
+=====================================================================
+TURN 1
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+
+OPPONENT WINS
+Player ran out of time.
+FINAL LIFE: Opponent (WINNER) 10, Player 10.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Turn 1: Shuffled 50, drew 5, placed 2 souls, main phase. Mulliganed, redrew 5. Game ended immediately after by Player running out of time.
+
+

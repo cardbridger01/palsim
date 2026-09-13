@@ -1,0 +1,218 @@
+----- TIER 1 MATCH 12/34 (recordId 50bcf260-763b-4cb1-96bd-382d5d20c042) -----
+
+=====================================================================
+MATCH: Zikale vs Tuk0Shade
+recordId: 50bcf260-763b-4cb1-96bd-382d5d20c042
+RESULT: ZIKALE WINS - Tuk0Shade surrendered. Final life: Zikale (WINNER) 5, Tuk0Shade 2.
+NOTE: Tuk0Shade's deck titled "PURPLE/BLUE DECK (AUG 15)" in HUD.
+NOTE: 3 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 1:  Reindrix interrupts Relaxaurus's attack
+  Turn 11: Reindrix interrupts Astegon's attack
+  Turn 23: Foxparks interrupts Elphidran Aqua's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+TUK0SHADE
+Relaxaurus gets Power +200 until end of turn.
+Relaxaurus gains vigilance until end of turn.
+Reindrix
+Relaxaurus's attack was interrupted.
+TURN 2
+ZIKALE
+Zikale activated Primitive Furnace.
+Zikale deployed Single-Shot Rifle.
+TURN 3
+ZIKALE
+Relaxaurus took 1500 damage and was destroyed.
+TURN 4
+ZIKALE
+Zikale deployed Univolt.
+Zikale activated Primitive Furnace.
+Deployed Astegon to slot 1 for 8 Souls.
+Astegon gets Power +200 until end of turn.
+Astegon gains vigilance until end of turn.
+All Pals with Power 300 or less destroyed.
+TURN 5
+TUK0SHADE
+Astegon (1200+200 = 1400) struck Primitive Furnace (800).
+Astegon
+Primitive Furnace destroyed, 1400 damage vs 800 Power.
+TURN 6
+ZIKALE
+Zikale deployed Single-Shot Rifle.
+TURN 7
+ZIKALE
+Astegon took 1500 damage and was destroyed.
+TURN 8
+ZIKALE
+Zikale's Pengullet attacks Tuk0Shade for 2.
+✦
+Pengullet attacked Tuk0Shade for 2; Tuk0Shade's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Zikale deployed Univolt.
+Zikale's Univolt attacks Tuk0Shade for 2.
+TURN 9
+ZIKALE
+Tuk0Shade interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 10
+ZIKALE
+Played Zoe's Strategy for 3 Souls.
+Returned Chillet from graveyard to hand.
+Zikale must discard 1.
+Zikale discarded Makeshift Handgun.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Astegon.
+Deployed Astegon.
+All Pals with Power 300 or less destroyed.
+TURN 11
+TUK0SHADE
+Reindrix
+Astegon's attack was interrupted.
+Astegon gets Power +200 until end of turn.
+Astegon gains vigilance until end of turn.
+Chillet (900) attacked Pengullet (600).
+Chillet
+Pengullet destroyed, 900 damage vs 600 Power.
+TURN 12
+ZIKALE
+Zikale deployed Chillet.
+Zikale deployed Elphidran Aqua.
+Zikale activated Single-Shot Rifle.
+Zikale's Elphidran Aqua gets power +200 until end of turn.
+Zikale activated Single-Shot Rifle.
+Zikale's Elphidran Aqua gets power +200 until end of turn.
+Zikale's Elphidran Aqua attacks Tuk0Shade for 2.
+✦
+Elphidran Aqua attacked Tuk0Shade for 2; Tuk0Shade's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Played Dark Cannon for 3 Souls.
+All Pals with Power 300 or less destroyed.
+TURN 13
+TUK0SHADE
+Astegon attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 10 to 7 life.
+Chillet gets Power +200 until end of turn.
+Chillet gains vigilance until end of turn.
+Chillet (900+200 = 1100) attacked Elphidran Aqua (900).
+Chillet
+Elphidran Aqua destroyed, 1100 damage vs 900 Power.
+Deployed Leezpunk to slot 4 for 3 Souls.
+Rested 3 Souls, drew 1 card.
+Zikale must discard 1.
+TURN 14
+ZIKALE
+Zikale deployed Pump-Action Shotgun.
+TURN 15
+ZIKALE
+Zikale discarded Elphidran Aqua.
+TURN 16
+ZIKALE
+Rested 3 Souls, drew 1 card.
+Deployed Cryolinx to slot 1 for 6 Souls.
+Cryolinx gets Power +200 until end of turn.
+Cryolinx gains vigilance until end of turn.
+TURN 17
+TUK0SHADE
+Cryolinx attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 7 to 5 life.
+TURN 18
+ZIKALE
+Zikale played Aurora Guide.
+Zikale deployed Chillet.
+Zikale deployed Jormuntide Ignis.
+Zikale activated Pump-Action Shotgun.
+Zikale's Chillet gets power +200 until end of turn.
+Zikale's Chillet attacks Tuk0Shade for 2.
+TURN 19
+ZIKALE
+Tuk0Shade interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+TURN 20
+ZIKALE
+Zikale's Jormuntide Ignis attacks Tuk0Shade for 4.
+Jormuntide Ignis hit Tuk0Shade for 4. Damage Check: 4 cards milled, no Lucky. Tuk0Shade 10 to 6 life.
+Zikale activated Jormuntide Ignis.
+Zikale discarded Foxparks, Pump-Action Shotgun to pay a cost.
+Zikale's Jormuntide Ignis attacks Tuk0Shade for 4.
+TURN 21
+ZIKALE
+Tuk0Shade interrupted with Pyrin Noct, discarded Pengullet. The attack was nullified.
+TURN 22
+ZIKALE
+Zikale deployed Foxparks.
+Zikale activated Single-Shot Rifle.
+Zikale's Foxparks gets power +200 until end of turn.
+Zikale activated Single-Shot Rifle.
+Zikale's Foxparks gets power +200 until end of turn.
+Zikale's Foxparks attacks Tuk0Shade for 1.
+Tuk0Shade blocked with Cryolinx.
+Foxparks (200+700 = 900) attacked Cryolinx (900).
+Foxparks
+Cryolinx destroyed, 900 damage vs 900 Power.
+Foxparks destroyed, 900 damage vs 900 Power.
+Played Strike from the Darkness for 4 Souls.
+Deployed Elphidran Aqua to slot 1 for 6 Souls.
+Drew 2 cards.
+Put Dark Cannon on top of the deck.
+Elphidran Aqua gets Power +200 until end of turn.
+Elphidran Aqua gains vigilance until end of turn.
+TURN 23
+TUK0SHADE
+Foxparks
+Elphidran Aqua's attack was interrupted.
+TURN 24
+ZIKALE
+Zikale deployed Jormuntide.
+TURN 25
+ZIKALE
+Elphidran Aqua was Rested.
+Elphidran Aqua won't stand during its next Stand Phase.
+TURN 26
+ZIKALE
+Zikale's Chillet attacks Tuk0Shade for 2.
+Chillet hit Tuk0Shade for 2. Damage Check: 2 cards milled, no Lucky. Tuk0Shade 6 to 4 life.
+Zikale's Jormuntide attacks Tuk0Shade for 3.
+TURN 27
+ZIKALE
+Tuk0Shade interrupted with Pyrin Noct, discarded Medieval Medicine Workbench. The attack was nullified.
+TURN 28
+ZIKALE
+Deployed Maraith to slot 3 for 6 Souls.
+TURN 29
+TUK0SHADE
+Maraith (900) attacked Chillet (900-200 = 700).
+Maraith
+Chillet destroyed, 900 damage vs 700 Power.
+Played Zoe's Strategy for 3 Souls.
+Butchered Elphidran Aqua.
+Maraith gets Power +200 until end of turn.
+Maraith gains vigilance until end of turn.
+TURN 30
+ZIKALE
+Zikale deployed Chillet.
+Zikale deployed Elphidran Aqua.
+Zikale activated Single-Shot Rifle.
+Zikale's Chillet gets power +200 until end of turn.
+Zikale's Chillet attacks Tuk0Shade for 2.
+Chillet hit Tuk0Shade for 2. Damage Check: 2 cards milled, no Lucky. Tuk0Shade 4 to 2 life.
+Zikale activated Pump-Action Shotgun.
+Zikale's Elphidran Aqua gets power +200 until end of turn.
+Zikale's Elphidran Aqua attacks Tuk0Shade for 2.
+Tuk0Shade blocked with Maraith.
+Elphidran Aqua (900) attacked Maraith (900).
+Elphidran Aqua
+Maraith destroyed, 900 damage vs 900 Power.
+Elphidran Aqua destroyed, 900 damage vs 900 Power.
+Zikale deployed Elphidran.
+Zikale's Elphidran attacks Tuk0Shade for 2.
+✦
+Elphidran attacked Tuk0Shade for 2; Tuk0Shade's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Rested 3 Souls, drew 1 card.
+
+ZIKALE WINS
+Tuk0Shade surrendered.
+FINAL LIFE: Zikale (WINNER) 5, Tuk0Shade 2.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+30-turn game. Zikale ran a Primitive Furnace/Single-Shot Rifle ping engine to destroy own overcosted Astegon copies (turns 3, 7) while chip-attacking with Pengullet/Univolt/Chillet/Elphidran Aqua/Elphidran. Tuk0Shade's Reindrix/Foxparks interrupted several Zikale attacks (turns 1, 11, 23 bare-form); Zikale's own attacks were nullified by Tuk0Shade's Cryolinx and repeated Pyrin Noct interrupts (turns 9, 19, 21, 27). Several combat trades occurred: Tuk0Shade's Chillet destroyed Zikale's Elphidran Aqua (turn 13) and Pengullet (turn 11); Zikale's Foxparks traded with Tuk0Shade's Cryolinx (turn 22); Zikale's Elphidran Aqua traded with Tuk0Shade's Maraith (turn 30). Zikale ground Tuk0Shade down via Jormuntide Ignis/Chillet/Elphidran chip damage (10->6->4->2), and Tuk0Shade surrendered at 2 life vs Zikale's 5.
+
+

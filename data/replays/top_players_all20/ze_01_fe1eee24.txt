@@ -1,0 +1,281 @@
+=====================================================================
+MATCH: Ze (in-game name "bel") vs 兔绣袖  [Ze's match #1 of 10 pulled, most recent]
+recordId: fe1eee24-9bd8-47d4-9b70-4df67bb6038f
+RESULT: BEL WINS - 兔绣袖 surrendered. Final life: bel (WINNER) 2, 兔绣袖 10.
+NOTE: *** FULLY RECONSTRUCTED FROM THE RAW TAGGED EVENT LOG *** — like pingu_06, this file was
+rebuilt from the replay viewer's "Copy" export (tags every event "[T<N> <phase>]", independent of
+the buggy rendered/curated log used for the original pull). The raw export is capped at roughly
+15-16k characters and stops recording once that cap is hit — for this game the cap lands exactly
+at the end of true Turn 14's main phase, which turns out to BE the true end of the game: 兔绣袖
+surrendered immediately after bel's Turn 14 main phase, before 兔绣袖 got a Turn 14 response
+(confirmed against the rendered log's last visible box, which matches the tail of raw Turn 14 main
+verbatim and is immediately followed by "SHOW RESULT"). So this reconstruction is complete, not a
+partial recovery — the true game is 14 turns, not the "19" originally recorded (the rendered log
+splits/merges each true turn's Main-Phase-then-response into an inconsistent number of boxes; see
+pingu_06's header NOTE for the full explanation of why). Every life total, interrupt, and action
+below is the authoritative tagged sequence.
+NOTE: A genuinely new win-condition type not seen anywhere else in this project (44
+championship + 12 personal games) — an explicit surrender/concede, distinct from "life hit
+zero" or "ran out of cards." 兔绣袖 conceded at full 10 life while bel was down to 2 — likely
+because bel's board (Chillet, Jormuntide, Relaxaurus, Elphidran Aqua all up) was about to run
+away with it after three Lucky-Pal-cancelled attacks on the final turn denied 8 more damage that
+would otherwise have gone through.
+NOTE: Ze's leaderboard/profile name is "ze"; the in-game HUD and log show the account's display
+name "bel" throughout. Deck labeled "BLUE/PURPLE DECK" (no date/copy suffix, unlike Edify's
+decks) — not yet cross-referenced against a saved decklist since Ze's Decks page hasn't been
+pulled (out of scope for this batch; flagging in case a deck comparison is wanted later).
+NOTE: bel's life progression across the 14-turn game is fully logged and clean, all five hits
+landing during 兔绣袖's response phase: 10 -> 8 (Turn 4, Chillet) -> 6 (Turn 6, Elphidran) -> 4
+(Turn 8, Chillet) -> 2 (Turn 11, Pengullet), then no further damage through Turn 14 — matching the
+final life of 2 exactly.
+NOTE: 6 bare-form interrupts (attacking Pal's attack "was interrupted" with no player/cost shown,
+attacker cross-checked against the curated view's card-name annotations) preserved verbatim below:
+  Turn 5:  bel's Jormuntide's attack was interrupted (interrupting card not recoverable from
+           available logs — occurred before the curated view's own coverage window)
+  Turn 8:  bel's Relaxaurus's attack was interrupted, by 兔绣袖's Cryolinx
+  Turn 9:  bel's Chillet's attack was interrupted, by 兔绣袖's Pyrin Noct
+  Turn 10: bel's Chillet's attack was interrupted, by 兔绣袖's Reindrix
+  Turn 10: bel's Relaxaurus's attack was interrupted, by 兔绣袖's Blazehowl Noct
+  Turn 12: bel's Relaxaurus's attack was interrupted, by 兔绣袖's Reindrix
+  Turn 12: bel's Jormuntide's attack was interrupted, by 兔绣袖's Reindrix (same card name twice,
+           consistent with a deck running multiple Reindrix copies)
+  Turn 13: bel's Relaxaurus's attack was interrupted, by 兔绣袖's Cryolinx
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+NOTE: Each turn below covers one full round: bel's Stand/Draw/Soul/Main/End phase actions,
+followed by 兔绣袖's reactive response within that same turn — the real turn structure of the raw
+log, not the split/merged "TURN N" boxes of the original pull.
+=====================================================================
+TURN 1
+BEL
+Turn opened — Souls 1/1 · Hand: Blazehowl Noct – Darkflame Defender, Cryolinx – Arctic Ordeal, Elphidran Aqua – Gentle Ripples, Zoe's Strategy, Zoe's Strategy
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+TURN 2
+BEL
+Turn opened — Souls 3/3 · Hand: Aurora Guide, Blazehowl Noct – Darkflame Defender, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner, Relaxaurus – Hungry Gunner, Zoe's Strategy
+Rested 3 Souls, drew 1 card.
+(no 兔绣袖 response logged this turn)
+TURN 3
+BEL
+Turn opened — Souls 5/5 · Hand: Aurora Guide, Blazehowl Noct – Darkflame Defender, Jormuntide – Surging Sea Serpent, Pengullet Rocket Launcher, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner, Relaxaurus – Hungry Gunner, Zoe's Strategy
+Deployed Pengullet Rocket Launcher to slot 1 for 4 Souls.
+(no 兔绣袖 response logged this turn)
+TURN 4
+BEL
+Turn opened — Souls 7/7 · Hand: Aurora Guide, Blazehowl Noct – Darkflame Defender, Elphidran – Gentle Radiance, Jormuntide – Surging Sea Serpent, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner, Relaxaurus – Hungry Gunner, Zoe's Strategy
+Rested 3 Souls, drew 1 card.
+Deployed Elphidran – Gentle Radiance to slot 2 for 4 Souls.
+兔绣袖 (response)
+兔绣袖 played Aurora Guide.
+兔绣袖 deployed Chillet – Dragon Whisperer.
+兔绣袖 deployed Astegon – Aegis Wyvern of Death.
+Elphidran – Gentle Radiance gets power -1000 until end of turn.
+兔绣袖's Astegon – Aegis Wyvern of Death attacks bel for 3.
+Astegon – Aegis Wyvern of Death attacked bel for 3; bel's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+兔绣袖's Chillet – Dragon Whisperer attacks bel for 2.
+Chillet – Dragon Whisperer hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 10 to 8 life.
+TURN 5
+BEL
+Turn opened — Souls 9/9 · Hand: Aurora Guide, Blazehowl Noct – Darkflame Defender, Blazehowl Noct – Darkflame Defender, Jormuntide – Surging Sea Serpent, Pengullet Rocket Launcher, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner, Relaxaurus – Hungry Gunner, Zoe's Strategy
+Deployed Jormuntide – Surging Sea Serpent to slot 2 for 8 Souls.
+Drew 1.
+Jormuntide – Surging Sea Serpent's attack was interrupted.
+兔绣袖 (response)
+兔绣袖 played Strike from the Darkness.
+Jormuntide – Surging Sea Serpent was destroyed.
+兔绣袖's Astegon – Aegis Wyvern of Death attacks bel for 3.
+bel interrupted with Blazehowl Noct – Darkflame Defender, paid 1 Soul. The attack was nullified.
+TURN 6
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Aurora Guide, Blazehowl Noct – Darkflame Defender, Pengullet – Yearning for the Sky, Pengullet Rocket Launcher, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner, Relaxaurus – Hungry Gunner, Zoe's Strategy
+Deployed Pengullet Rocket Launcher to slot 2 for 4 Souls.
+Deployed Pengullet – Yearning for the Sky to slot 3 for 4 Souls.
+Pengullet – Yearning for the Sky gets power +500 and the explode skill until end of turn.
+Pengullet – Yearning for the Sky gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1600 to every 兔绣袖 Pal, then sacrificed this card.
+兔绣袖 (response)
+兔绣袖 played Zoe's Strategy.
+兔绣袖 returned Chillet – Dragon Whisperer from their graveyard to hand.
+Discarded Relaxaurus – Hungry Gunner.
+兔绣袖 deployed Chillet – Dragon Whisperer.
+兔绣袖 deployed Elphidran – Gentle Radiance.
+兔绣袖's Elphidran – Gentle Radiance attacks bel for 2.
+Elphidran – Gentle Radiance hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 8 to 6 life.
+兔绣袖's Chillet – Dragon Whisperer attacks bel for 2.
+bel interrupted with Blazehowl Noct – Darkflame Defender, paid 1 Soul. The attack was nullified.
+TURN 7
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Aurora Guide, Pengullet – Yearning for the Sky, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner, Zoe's Strategy, Zoe's Strategy
+Deployed Pengullet – Yearning for the Sky to slot 3 for 4 Souls.
+Pengullet – Yearning for the Sky gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1100 to every 兔绣袖 Pal, then sacrificed this card.
+Played Zoe's Strategy for 3 Souls.
+Returned Chillet – Dragon Whisperer from graveyard to hand.
+兔绣袖 must discard 1.
+兔绣袖 discarded Strike from the Darkness.
+Rested 3 Souls, drew 1 card.
+兔绣袖 (response)
+兔绣袖 played Pal Sphere.
+兔绣袖 deployed Pengullet – Yearning for the Sky.
+兔绣袖's Pengullet – Yearning for the Sky attacks bel for 2.
+Pengullet – Yearning for the Sky attacked bel for 2; bel's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 8
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Aurora Guide, Chillet – Dragon Whisperer, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner, Strike from the Darkness, Strike from the Darkness, Zoe's Strategy
+Deployed Relaxaurus – Hungry Gunner to slot 3 for 7 Souls.
+Relaxaurus – Hungry Gunner's attack was interrupted, by 兔绣袖's Cryolinx – Arctic Ordeal.
+Rested 3 Souls, drew 1 card.
+兔绣袖 (response)
+兔绣袖 played Strike from the Darkness.
+Relaxaurus – Hungry Gunner was destroyed.
+兔绣袖 deployed Chillet – Dragon Whisperer.
+兔绣袖 deployed Relaxaurus – Hungry Gunner.
+兔绣袖's Chillet – Dragon Whisperer attacks bel for 2.
+Chillet – Dragon Whisperer hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 6 to 4 life.
+兔绣袖's Relaxaurus – Hungry Gunner attacks bel for 3.
+bel interrupted with Reindrix – Icy Gaze, discarded Strike from the Darkness. The attack was nullified.
+TURN 9
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Aurora Guide, Chillet – Dragon Whisperer, Jormuntide – Surging Sea Serpent, Pengullet – Yearning for the Sky, Reindrix – Icy Gaze, Strike from the Darkness, Zoe's Strategy
+Deployed Pengullet – Yearning for the Sky to slot 3 for 4 Souls.
+Pengullet – Yearning for the Sky gets power +500 and the explode skill until end of turn.
+Pengullet – Yearning for the Sky gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1600 to every 兔绣袖 Pal, then sacrificed this card.
+Deployed Chillet – Dragon Whisperer to slot 3 for 5 Souls.
+Revealed Cryolinx – Arctic Ordeal, added to hand.
+Chillet – Dragon Whisperer's attack was interrupted, by 兔绣袖's Pyrin Noct – Steed of Azure Flames.
+兔绣袖 (response)
+兔绣袖 played Zoe's Strategy.
+兔绣袖 returned Chillet – Dragon Whisperer from their graveyard to hand.
+Discarded Relaxaurus – Hungry Gunner.
+兔绣袖 deployed Elphidran – Gentle Radiance.
+兔绣袖 revealed Chillet – Dragon Whisperer (Dragon).
+兔绣袖's Elphidran – Gentle Radiance attacks bel's Chillet – Dragon Whisperer.
+bel interrupted with Cryolinx – Arctic Ordeal, paid 1 Soul. The attack was nullified.
+TURN 10
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Aurora Guide, Jormuntide – Surging Sea Serpent, Reindrix – Icy Gaze, Strike from the Darkness, Zoe's Strategy, Zoe's Strategy
+Chillet – Dragon Whisperer's attack was interrupted, by 兔绣袖's Reindrix – Icy Gaze.
+Played Zoe's Strategy for 3 Souls.
+Returned Relaxaurus – Hungry Gunner from graveyard to hand.
+兔绣袖 must discard 1.
+兔绣袖 discarded Pengullet – Yearning for the Sky.
+Deployed Relaxaurus – Hungry Gunner to slot 4 for 7 Souls.
+Relaxaurus – Hungry Gunner's attack was interrupted, by 兔绣袖's Blazehowl Noct – Darkflame Defender.
+兔绣袖 (response)
+兔绣袖 played Zoe's Strategy.
+兔绣袖 returned Chillet – Dragon Whisperer from their graveyard to hand.
+Discarded Aurora Guide.
+兔绣袖 deployed Chillet – Dragon Whisperer.
+兔绣袖 deployed Jormuntide – Surging Sea Serpent.
+Relaxaurus – Hungry Gunner was Rested.
+Relaxaurus – Hungry Gunner won't stand during its next Stand Phase.
+兔绣袖's Jormuntide – Surging Sea Serpent attacks bel's Relaxaurus – Hungry Gunner.
+bel interrupted with Reindrix – Icy Gaze, discarded Strike from the Darkness. The attack was nullified.
+兔绣袖's Chillet – Dragon Whisperer attacks bel's Chillet – Dragon Whisperer.
+Chillet – Dragon Whisperer (900) attacked Chillet – Dragon Whisperer (900).
+Chillet – Dragon Whisperer destroyed, 900 damage vs 900 Power (both sides).
+TURN 11 (bel's life hits its final value here)
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Jormuntide – Surging Sea Serpent, Reindrix – Icy Gaze, Zoe's Strategy
+Played Zoe's Strategy for 3 Souls.
+Returned Pengullet – Yearning for the Sky from graveyard to hand.
+兔绣袖 must discard 1.
+兔绣袖 discarded Elphidran Aqua – Gentle Ripples.
+Deployed Pengullet – Yearning for the Sky to slot 3 for 4 Souls.
+Pengullet – Yearning for the Sky gets power +500 and the explode skill until end of turn.
+Pengullet – Yearning for the Sky gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1600 to every 兔绣袖 Pal, then sacrificed this card.
+Rested 3 Souls, drew 1 card.
+兔绣袖 (response)
+兔绣袖 deployed Pengullet – Yearning for the Sky.
+兔绣袖's Pengullet – Yearning for the Sky attacks bel for 2.
+Pengullet – Yearning for the Sky hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 4 to 2 life.
+兔绣袖 deployed Pengullet – Yearning for the Sky.
+兔绣袖's Pengullet – Yearning for the Sky attacks bel for 2.
+bel interrupted with Cryolinx – Arctic Ordeal, discarded Elphidran – Gentle Radiance. The attack was nullified.
+TURN 12
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Aurora Guide, Jormuntide – Surging Sea Serpent, Reindrix – Icy Gaze
+Relaxaurus – Hungry Gunner's attack was interrupted, by 兔绣袖's Reindrix – Icy Gaze.
+Deployed Jormuntide – Surging Sea Serpent to slot 3 for 8 Souls.
+Drew 1.
+Jormuntide – Surging Sea Serpent's attack was interrupted, by 兔绣袖's Reindrix – Icy Gaze (a
+second copy).
+兔绣袖 (response)
+兔绣袖's Pengullet – Yearning for the Sky attacks bel for 2.
+bel interrupted with Reindrix – Icy Gaze, paid 1 Soul. The attack was nullified.
+兔绣袖 deployed Chillet – Dragon Whisperer.
+兔绣袖 revealed Pengullet Rocket Launcher and added it to their hand.
+兔绣袖's Chillet – Dragon Whisperer attacks bel for 2.
+Chillet – Dragon Whisperer attacked bel for 2; bel's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 13
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Aurora Guide, Chillet – Dragon Whisperer, Zoe's Strategy
+Played Zoe's Strategy for 3 Souls.
+Returned Jormuntide – Surging Sea Serpent from graveyard to hand.
+兔绣袖 must discard 1.
+兔绣袖 discarded Pyrin Noct – Steed of Azure Flames.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide – Surging Sea Serpent on top of the deck.
+Deployed Chillet – Dragon Whisperer to slot 5 for 5 Souls.
+Revealed Jormuntide – Surging Sea Serpent.
+Deployed Jormuntide – Surging Sea Serpent.
+Drew 1.
+Chillet – Dragon Whisperer (900) attacked Pengullet – Yearning for the Sky (600).
+Pengullet – Yearning for the Sky destroyed, 900 damage vs 600 Power.
+Relaxaurus – Hungry Gunner's attack was interrupted, by 兔绣袖's Cryolinx – Arctic Ordeal.
+Jormuntide – Surging Sea Serpent (1600) attacked Pengullet – Yearning for the Sky (600).
+Pengullet – Yearning for the Sky destroyed, 1600 damage vs 600 Power.
+兔绣袖 (response)
+兔绣袖 deployed Pengullet Rocket Launcher.
+兔绣袖 played Aurora Guide.
+TURN 14 (FINAL TURN — 兔绣袖 surrendered after this turn's main phase, before responding)
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Aurora Guide, Chillet – Dragon Whisperer, Elphidran Aqua – Gentle Ripples
+Chillet – Dragon Whisperer gets power +200 until end of turn.
+Chillet – Dragon Whisperer (900+200 = 1100) attacked Chillet – Dragon Whisperer (900).
+Chillet – Dragon Whisperer destroyed, 1100 damage vs 900 Power.
+Relaxaurus – Hungry Gunner attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Jormuntide – Surging Sea Serpent attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+Deployed Elphidran Aqua – Gentle Ripples to slot 7 for 6 Souls.
+Drew 2 cards.
+Put Pengullet Rocket Launcher on top of the deck.
+Elphidran Aqua – Gentle Ripples attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+
+BEL WINS
+兔绣袖 surrendered.
+FINAL LIFE: bel (WINNER) 2, 兔绣袖 10.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+A grindy, back-and-forth 14-turn game that bel closed out on a surrender rather than a life-total
+knockout. 兔绣袖's aggression was real and well-timed — five clean 2-life pokes (Chillet, Elphidran,
+Chillet, Pengullet) plus one 3-damage swing that would have made it six landed hits, taking bel
+from 10 down to 2 — but bel's own interrupt suite (Blazehowl Noct x2, Reindrix x4 across both
+attack- and defense-side uses, Cryolinx x3, Pyrin Noct as an opposing defender) and repeated
+Pengullet-explode / Zoe's-Strategy recursion kept rebuilding bel's board (three separate Pengullet
+sacrifices dealing 1100-1600 splash damage to clear 兔绣袖's board each time) faster than 兔绣袖
+could punch through. By turn 14, bel had four Pals up (Chillet, Elphidran Aqua, plus board
+presence from Jormuntide/Relaxaurus earlier) absorbing three consecutive Lucky-Pal-cancelled
+attacks in a single turn — 兔绣袖, staring at a board bel was about to run away with, surrendered
+at full 10 life rather than play it out.
+
+CLARIFICATION FLAGS for user review:
+- This file was fully rebuilt from the site's raw tagged event log (14 real turns, complete —
+  the raw log's own character cap happens to land exactly at the true end of the game here)
+  rather than the rendered/curated log used for the original pull. All life totals, interrupts,
+  and turn numbers below are now the authoritative, fully verified sequence.
+- One interrupt (Turn 5, bel's Jormuntide) could not be attributed to a specific 兔绣袖 card — it
+  occurred earlier in the game than the curated log's own surviving window covered, so no
+  cross-check was available. The event itself (attack nullified, no damage) is still fully
+  verified from the raw log; only the "which card did it" detail is unrecovered.
+- Same open scope note as before: bel's "BLUE/PURPLE DECK" hasn't been cross-referenced against a
+  saved decklist from Ze's own Decks page (out of scope for this pass).

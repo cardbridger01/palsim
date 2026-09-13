@@ -1,0 +1,140 @@
+----- TIER 1 MATCH 32/34 (recordId e2bccc77-d071-4720-abda-71c1418789ca) -----
+
+=====================================================================
+MATCH: Slowpoke vs SageIlithyia
+recordId: e2bccc77-d071-4720-abda-71c1418789ca
+RESULT: SLOWPOKE WINS - SageIlithyia's life hit zero. Final life: Slowpoke (WINNER) 9, SageIlithyia 0.
+NOTE: Slowpoke's deck is labeled "BLUE PURPLE CHILLET - DRAGON WHISPERER AND ELPHIDRAN AQUA" in HUD.
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 5:  Cryolinx interrupts Astegon's attack
+  Turn 7:  Reindrix interrupts Astegon's attack
+  Turn 9:  Foxparks interrupts Astegon's attack
+  Turn 12: Foxparks interrupts Chillet's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+SAGEILITHYIA
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+SageIlithyia deployed Foxparks.
+SageIlithyia's Foxparks attacks Slowpoke for 1.
+Foxparks hit Slowpoke for 1. Damage Check: 1 card milled, no Lucky. Slowpoke 10 to 9 life.
+TURN 2
+SAGEILITHYIA
+Deployed Antique Mirror to slot 1 for 1 Souls.
+Drew 1.
+TURN 3
+SAGEILITHYIA
+Played Victor's Strategy for 3 Souls.
+Looked at top 5: took Relaxaurus to hand.
+SageIlithyia deployed Chillet.
+SageIlithyia revealed Cryolinx and added it to their hand.
+SageIlithyia's Chillet attacks Slowpoke for 2.
+Slowpoke interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+SageIlithyia's Foxparks attacks Slowpoke for 1.
+✦
+Foxparks attacked Slowpoke for 1; Slowpoke's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 4
+SAGEILITHYIA
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Astegon on top of the deck.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Astegon.
+Deployed Astegon.
+TURN 5
+SLOWPOKE
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+All Pals with Power 300 or less destroyed.
+Cryolinx
+Astegon's attack was interrupted.
+TURN 6
+SAGEILITHYIA
+SageIlithyia deployed Foxparks' Harness.
+TURN 7
+SLOWPOKE
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+All Pals with Power 300 or less destroyed.
+Reindrix
+Astegon's attack was interrupted.
+Deployed Elphidran Aqua to slot 4 for 6 Souls.
+Drew 2 cards.
+Put Elphidran Aqua on top of the deck.
+✦
+Elphidran Aqua attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 8
+SAGEILITHYIA
+SageIlithyia deployed Chillet.
+SageIlithyia revealed Grappling Gun and added it to their hand.
+SageIlithyia activated Foxparks' Harness.
+SageIlithyia's Chillet attacks Slowpoke's Chillet.
+Played Dark Cannon for 3 Souls.
+TURN 9
+SLOWPOKE
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+✦
+Elphidran Aqua attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+All Pals with Power 300 or less destroyed.
+Foxparks
+Astegon's attack was interrupted.
+Rested 3 Souls, drew 1 card.
+Deployed Pengullet to slot 5 for 4 Souls.
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 4 to 2 life.
+Drew 1.
+TURN 10
+SAGEILITHYIA
+SageIlithyia deployed Pump-Action Shotgun.
+TURN 11
+SAGEILITHYIA
+Played Zoe's Strategy for 3 Souls.
+Returned Chillet from graveyard to hand.
+SageIlithyia must discard 1.
+SageIlithyia discarded Grappling Gun.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Chillet on top of the deck.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Chillet.
+Deployed Chillet.
+Revealed Pyrin Noct, added to hand.
+TURN 12
+SLOWPOKE
+Foxparks
+Chillet's attack was interrupted.
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 13
+SAGEILITHYIA
+SageIlithyia deployed Stone Pit.
+SageIlithyia deployed Foxparks.
+SageIlithyia deployed Flambelle.
+SageIlithyia activated Stone Pit.
+SageIlithyia activated Foxparks' Harness.
+SageIlithyia activated Pump-Action Shotgun.
+SageIlithyia's Foxparks gets power +200 until end of turn.
+Chillet took 700 damage.
+SageIlithyia's Foxparks attacks Slowpoke's Chillet.
+Foxparks (200+700 = 900) attacked Chillet (900).
+Foxparks
+Chillet destroyed, 900 damage vs 900 Power.
+Foxparks destroyed, 900 damage vs 900 Power.
+TURN 14
+SAGEILITHYIA
+Deployed Antique Mirror to slot 2 for 1 Souls.
+Drew 1.
+TURN 15
+SLOWPOKE
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 2 to 0 life.
+
+SLOWPOKE WINS
+SageIlithyia's life hit zero.
+FINAL LIFE: Slowpoke (WINNER) 9, SageIlithyia 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Turn 1: SageIlithyia mulligans/redraws, deploys Foxparks, attacks Slowpoke for 1 (10->9 life). Turn 2: SageIlithyia deploys Antique Mirror (1 soul), draws 1. Turn 3: SageIlithyia plays Victor's Strategy (3 souls, tutors Relaxaurus), deploys Chillet, reveals Cryolinx; Chillet's attack nullified by Slowpoke's Cryolinx interrupt (1 soul); Foxparks attack cancelled by Slowpoke's Lucky Pal. Turn 4: SageIlithyia plays Aurora Guide (2 souls), puts Astegon on top of deck, deploys Chillet (5 souls), reveals/deploys Astegon. Turn 5: Slowpoke's Chillet attacks for 2 (10->8 life); all Pals with Power<=300 destroyed; Astegon's attack interrupted by Cryolinx. Turn 6: SageIlithyia deploys Foxparks' Harness. Turn 7: Slowpoke's Chillet attacks for 2 (8->6 life); Pals<=300 power destroyed; Astegon's attack interrupted by Reindrix; Slowpoke deploys Elphidran Aqua (6 souls), draws 2, puts Elphidran Aqua on top of deck; its attack cancelled by Lucky Pal. Turn 8: SageIlithyia deploys Chillet, reveals Grappling Gun, activates Foxparks' Harness, Chillet attacks Slowpoke's Chillet, plays Dark Cannon (3 souls). Turn 9: Slowpoke's Chillet attacks for 2 (6->4 life); Elphidran Aqua attack cancelled by Lucky Pal; Pals<=300 destroyed; Astegon's attack interrupted by Foxparks; Slowpoke rests 3 souls draws 1, deploys Pengullet (4 souls), attacks for 2 (4->2 life), draws 1. Turn 10: SageIlithyia deploys Pump-Action Shotgun. Turn 11: SageIlithyia plays Zoe's Strategy (3 souls) returning Chillet, discards Grappling Gun; plays Aurora Guide (2 souls), puts Chillet on top, deploys Chillet (5 souls), reveals/deploys another Chillet, reveals Pyrin Noct to hand. Turn 12: Slowpoke's Chillet attack interrupted by Foxparks; another Chillet attack cancelled by Lucky Pal. Turn 13: SageIlithyia deploys Stone Pit, Foxparks, Flambelle; activates Stone Pit, Foxparks' Harness, Pump-Action Shotgun; buffs Foxparks +200 power; Slowpoke's Chillet takes 700 dmg; Foxparks (900) destroys Slowpoke's Chillet (900) in a mutual trade (Foxparks also destroyed). Turn 14: SageIlithyia deploys Antique Mirror (1 soul), draws 1. Turn 15: Slowpoke's Chillet attacks for 2, SageIlithyia's life hits 2->0.
+
+

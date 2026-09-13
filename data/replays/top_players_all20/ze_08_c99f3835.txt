@@ -1,0 +1,287 @@
+=====================================================================
+MATCH: Ze (in-game name "bel") vs 兔绣袖  [Ze's match #8 of 10 pulled]
+recordId: c99f3835-f5a4-4145-a902-eb447ae37b6a
+RESULT: BEL WINS - 兔绣袖 surrendered. Final life: bel (WINNER) 4, 兔绣袖 4.
+NOTE: *** FULLY RECONSTRUCTED FROM THE RAW TAGGED EVENT LOG *** — like pingu_06 and ze_01, this
+file was rebuilt from the replay viewer's "Copy" export. This game's raw export was messier than
+the others (many out-of-order duplicate lines from what looks like animation-queue batching) and
+had to be de-duplicated programmatically, but every line carries an unambiguous "[T<N> <phase>]"
+tag so the cleanup is mechanical, not guesswork. The real story here is bigger than the "missing
+turns" bug: the true game is only 15 turns — the rendered/curated log had inflated it to "41
+turns" (the worst inflation of any file in this batch, close to 3x), because it doesn't just
+split each true turn into main-phase/response boxes, it also splits repeatedly around every
+interrupt and multi-hit exchange. Cross-checked against the curated log's own last 41 boxes: its
+TURN 41 (the final box, ending in the surrender) matches raw Turn 15's main phase verbatim, and
+its TURN 1 matches raw Turn 6 — meaning the curated view only had room to show true turns 6-15 by
+the end, having evicted true turns 1-5 entirely (exactly the bug pingu_07 first caught), while
+inflating those 10 true turns into 41 boxes. This reconstruction uses the raw log throughout, so
+it has all 15 true turns complete with nothing evicted.
+NOTE: Fifth surrender/concede win in this batch (see matches 1, 2, 4, and match 6's loss) — this
+one at a near-even life total (4-4), the closest life-parity surrender seen so far. 兔绣袖
+conceded on their own response to bel's Turn 15 immediately after an Astegon board-wipe attack was
+interrupted and bel's Elphidran Aqua landed the 6-to-4 hit, mirroring the "opponent reads the game
+as lost on tempo, not life" pattern from ze_01.
+NOTE: bel's life progression across the 15-turn game is fully logged and clean: 10 -> 8 (Turn 4,
+Menasting hit) -> 7 (Turn 5, Lamball hit) -> 6 (Turn 5, second Lamball hit, same turn) -> 4 (Turn
+12, Menasting hit), matching the final life of 4 exactly. No further damage landed on bel after
+Turn 12.
+NOTE: Deck labeled "BLUE/PURPLE DECK" on bel's HUD, same generic label as matches 1-7.
+NOTE: 3 bare-form interrupts (attacking Pal's attack "was interrupted" with no player/cost shown,
+attacker cross-checked against the curated view's card-name annotations) preserved verbatim below:
+  Turn 8:  bel's Astegon's attack was interrupted, by 兔绣袖's Foxparks
+  Turn 9:  bel's Jormuntide's attack was interrupted, by 兔绣袖's Foxparks
+  Turn 15: bel's Astegon's attack was interrupted, by "Blazehowl" (truncated name in the curated
+           annotation, same pattern seen elsewhere in this project — likely Blazehowl Noct or
+           Blazehowl proper, not distinguishable from the available text)
+Two more bare "X's attack was interrupted" events (Turn 2's Elphidran, Turn 5's first Astegon)
+could not be attributed to a specific 兔绣袖 card — they occurred earlier than the curated log's
+surviving window covered, so no cross-check was available (same limitation as ze_01's Turn 5).
+2 additional FULL-form interrupts occurred (Turn 1 and Turn 6, both "bel interrupted with
+Cryolinx, paid 1 Soul") — included in the verbatim body only.
+NOTE: Each turn below covers one full round: bel's Stand/Draw/Soul/Main/End phase actions,
+followed by 兔绣袖's reactive response within that same turn (which, per the raw log, is often
+split across the start and the end of the turn's tag — presented here in narrative order).
+=====================================================================
+TURN 1
+BEL
+Turn opened — Souls 1/1 · Hand: Aurora Guide, Aurora Guide, Elphidran Aqua – Gentle Ripples, Pengullet – Yearning for the Sky, Reindrix – Icy Gaze
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+(no 兔绣袖 response logged this turn)
+TURN 2
+BEL
+Turn opened — Souls 4/4 · Hand: Blazehowl Noct – Darkflame Defender, Chillet – Dragon Whisperer, Chillet – Dragon Whisperer, Cryolinx – Arctic Ordeal, Elphidran – Gentle Radiance, Relaxaurus – Hungry Gunner
+Deployed Elphidran – Gentle Radiance to slot 1 for 4 Souls.
+Chose not to reveal a Dragon.
+Elphidran – Gentle Radiance's attack was interrupted.
+兔绣袖 (response)
+兔绣袖 deployed Lamball – My First Pal.
+兔绣袖 deployed Stone Pit.
+兔绣袖 activated Stone Pit.
+TURN 3
+BEL
+Turn opened — Souls 6/6 · Hand: Blazehowl Noct – Darkflame Defender, Chillet – Dragon Whisperer, Chillet – Dragon Whisperer, Cryolinx – Arctic Ordeal, Pengullet – Yearning for the Sky, Relaxaurus – Hungry Gunner
+Deployed Chillet – Dragon Whisperer to slot 1 for 5 Souls.
+Revealed Aurora Guide, added to hand.
+Chillet – Dragon Whisperer (900) struck Stone Pit (600).
+Stone Pit destroyed, 900 damage vs 600 Power.
+兔绣袖 (response)
+兔绣袖 deployed Menasting – Darkness-Dwelling Scorpion.
+兔绣袖's Menasting – Darkness-Dwelling Scorpion attacks bel's Elphidran – Gentle Radiance.
+Menasting – Darkness-Dwelling Scorpion (700) attacked Elphidran – Gentle Radiance (600).
+Elphidran – Gentle Radiance destroyed, 700 damage vs 600 Power.
+兔绣袖 activated Stone Pit.
+Chillet – Dragon Whisperer took 1500 damage and was destroyed.
+TURN 4
+BEL
+Turn opened — Souls 8/8 · Hand: Aurora Guide, Blazehowl Noct – Darkflame Defender, Chillet – Dragon Whisperer, Cryolinx – Arctic Ordeal, Elphidran Aqua – Gentle Ripples, Pengullet – Yearning for the Sky, Relaxaurus – Hungry Gunner
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Elphidran Aqua – Gentle Ripples on top of the deck.
+Deployed Chillet – Dragon Whisperer to slot 1 for 5 Souls.
+Revealed Elphidran Aqua – Gentle Ripples.
+Deployed Elphidran Aqua – Gentle Ripples.
+Drew 2 cards.
+Put Relaxaurus – Hungry Gunner on top of the deck.
+Elphidran Aqua – Gentle Ripples (900) struck Primitive Furnace (800).
+Primitive Furnace destroyed, 900 damage vs 800 Power.
+Chillet – Dragon Whisperer (900) attacked Menasting – Darkness-Dwelling Scorpion (700).
+Chillet – Dragon Whisperer was dragged down by Menasting – Darkness-Dwelling Scorpion's Retaliate.
+Menasting – Darkness-Dwelling Scorpion destroyed, 900 damage vs 700 Power.
+Chillet – Dragon Whisperer destroyed, 700 damage vs 900 Power.
+兔绣袖 returned Foxparks – A Toasty Hug from their graveyard to hand.
+兔绣袖 (response)
+兔绣袖 deployed Primitive Furnace.
+兔绣袖 activated Primitive Furnace.
+兔绣袖's Menasting – Darkness-Dwelling Scorpion attacks bel for 2.
+Menasting – Darkness-Dwelling Scorpion hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 10 to 8 life.
+兔绣袖 deployed Single-Shot Rifle.
+Elphidran Aqua – Gentle Ripples was destroyed.
+TURN 5
+BEL
+Turn opened — Souls 10/10 · Hand: Astegon – Aegis Wyvern of Death, Blazehowl Noct – Darkflame Defender, Cryolinx – Arctic Ordeal, Cryolinx – Arctic Ordeal, Pengullet – Yearning for the Sky, Pengullet – Yearning for the Sky, Zoe's Strategy
+Deployed Astegon – Aegis Wyvern of Death to slot 1 for 8 Souls.
+Declined the optional effect.
+All Pals with Power 300 or less destroyed.
+Astegon – Aegis Wyvern of Death's attack was interrupted.
+兔绣袖 (response)
+兔绣袖's Lamball – My First Pal attacks bel for 1.
+Lamball – My First Pal hit bel for 1. Damage Check: 1 card milled, no Lucky. bel 8 to 7 life.
+兔绣袖 played Strike from the Darkness.
+兔绣袖 deployed Lamball – My First Pal.
+兔绣袖's Lamball – My First Pal attacks bel for 1.
+Lamball – My First Pal hit bel for 1. Damage Check: 1 card milled, no Lucky. bel 7 to 6 life.
+Discarded Cryolinx – Arctic Ordeal.
+Astegon – Aegis Wyvern of Death was destroyed.
+兔绣袖 returned Menasting – Darkness-Dwelling Scorpion from their graveyard to hand.
+Discarded Blazehowl Noct – Darkflame Defender.
+TURN 6
+BEL
+Turn opened — Souls 10/10 · Hand: Cryolinx – Arctic Ordeal, Pengullet – Yearning for the Sky, Pengullet – Yearning for the Sky, Pengullet – Yearning for the Sky, Zoe's Strategy
+Deployed Pengullet – Yearning for the Sky to slot 1 for 4 Souls.
+Pengullet – Yearning for the Sky attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Deployed Pengullet – Yearning for the Sky to slot 2 for 4 Souls.
+兔绣袖 (response)
+兔绣袖 deployed Leezpunk – Treasure Bandit.
+兔绣袖 played Zoe's Strategy.
+bel interrupted with Cryolinx – Arctic Ordeal, paid 1 Soul. The attack was nullified.
+Drew 1.
+TURN 7
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Pengullet – Yearning for the Sky, Strike from the Darkness, Zoe's Strategy
+Rested 3 Souls, drew 1 card.
+Pengullet – Yearning for the Sky attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Played Zoe's Strategy for 3 Souls.
+Returned Astegon – Aegis Wyvern of Death from graveyard to hand.
+兔绣袖 must discard 1.
+兔绣袖 discarded Leezpunk – Treasure Bandit.
+Deployed Pengullet – Yearning for the Sky to slot 2 for 4 Souls.
+Pengullet – Yearning for the Sky attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+兔绣袖 (response)
+兔绣袖 deployed Menasting – Darkness-Dwelling Scorpion.
+兔绣袖's Menasting – Darkness-Dwelling Scorpion attacks bel's Pengullet – Yearning for the Sky.
+兔绣袖 deployed Bushi – Ephemeral Blade.
+兔绣袖's Bushi – Ephemeral Blade attacks bel's Pengullet – Yearning for the Sky.
+Bushi – Ephemeral Blade (800) attacked Pengullet – Yearning for the Sky (600).
+Pengullet – Yearning for the Sky destroyed, 800 damage vs 600 Power.
+Drew 1.
+TURN 8
+BEL
+Turn opened — Souls 10/10 · Hand: Astegon – Aegis Wyvern of Death, Aurora Guide, Blazehowl Noct – Darkflame Defender, Jormuntide – Surging Sea Serpent, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner, Strike from the Darkness
+Deployed Astegon – Aegis Wyvern of Death to slot 1 for 8 Souls.
+All Pals with Power 300 or less destroyed.
+兔绣袖 returned Foxparks – A Toasty Hug from their graveyard to hand.
+Astegon – Aegis Wyvern of Death's attack was interrupted, by 兔绣袖's Foxparks – A Toasty Hug.
+兔绣袖 (response)
+兔绣袖's Menasting – Darkness-Dwelling Scorpion attacks bel's Pengullet – Yearning for the Sky.
+Menasting – Darkness-Dwelling Scorpion (700) attacked Pengullet – Yearning for the Sky (600).
+Pengullet – Yearning for the Sky destroyed, 700 damage vs 600 Power.
+兔绣袖 deployed Bushi – Ephemeral Blade.
+兔绣袖's Bushi – Ephemeral Blade attacks bel's Pengullet – Yearning for the Sky.
+Bushi – Ephemeral Blade (800) attacked Pengullet – Yearning for the Sky (600).
+Pengullet – Yearning for the Sky destroyed, 800 damage vs 600 Power.
+Astegon – Aegis Wyvern of Death took 500 damage.
+Astegon – Aegis Wyvern of Death took 500 damage and was destroyed.
+TURN 9
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Blazehowl Noct – Darkflame Defender, Elphidran Aqua – Gentle Ripples, Jormuntide – Surging Sea Serpent, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner, Strike from the Darkness
+Deployed Jormuntide – Surging Sea Serpent to slot 1 for 8 Souls.
+Drew 1.
+Jormuntide – Surging Sea Serpent's attack was interrupted, by 兔绣袖's Foxparks – A Toasty Hug.
+兔绣袖 (response)
+兔绣袖 deployed Bushi – Ephemeral Blade.
+兔绣袖 deployed Mounted Machine Gun.
+兔绣袖 activated Mounted Machine Gun.
+Jormuntide – Surging Sea Serpent took 500 damage.
+Jormuntide – Surging Sea Serpent took 500 damage.
+Jormuntide – Surging Sea Serpent took 500 damage.
+Jormuntide – Surging Sea Serpent took 500 damage and was destroyed.
+TURN 10
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Blazehowl Noct – Darkflame Defender, Chillet – Dragon Whisperer, Elphidran Aqua – Gentle Ripples, Pengullet Rocket Launcher, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner, Strike from the Darkness
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Relaxaurus – Hungry Gunner on top of the deck.
+Deployed Chillet – Dragon Whisperer to slot 1 for 5 Souls.
+Revealed Relaxaurus – Hungry Gunner.
+Deployed Relaxaurus – Hungry Gunner.
+Chillet – Dragon Whisperer (900) attacked Bushi – Ephemeral Blade (800).
+Bushi – Ephemeral Blade destroyed, 900 damage vs 800 Power.
+Relaxaurus – Hungry Gunner (1200) struck Mounted Machine Gun (1000).
+Mounted Machine Gun destroyed, 1200 damage vs 1000 Power.
+Rested 3 Souls, drew 1 card.
+兔绣袖 (response)
+兔绣袖 deployed Bushi – Ephemeral Blade.
+兔绣袖 activated Mounted Machine Gun.
+TURN 11
+BEL
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct – Darkflame Defender, Elphidran Aqua – Gentle Ripples, Pengullet Rocket Launcher, Pengullet Rocket Launcher, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner, Strike from the Darkness
+Deployed Relaxaurus – Hungry Gunner to slot 1 for 7 Souls.
+Relaxaurus – Hungry Gunner (1200) attacked Bushi – Ephemeral Blade (800).
+Bushi – Ephemeral Blade destroyed, 1200 damage vs 800 Power.
+Rested 3 Souls, drew 1 card.
+兔绣袖 (response)
+兔绣袖 deployed Pump-Action Shotgun.
+兔绣袖 deployed Lamball – My First Pal.
+Relaxaurus – Hungry Gunner took 1500 damage and was destroyed.
+TURN 12
+BEL
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct – Darkflame Defender, Cryolinx – Arctic Ordeal, Elphidran Aqua – Gentle Ripples, Pengullet – Yearning for the Sky, Pengullet Rocket Launcher, Pengullet Rocket Launcher, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Strike from the Darkness
+Deployed Pengullet Rocket Launcher to slot 1 for 4 Souls.
+Deployed Pengullet – Yearning for the Sky to slot 2 for 4 Souls.
+Pengullet – Yearning for the Sky gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1100 to every 兔绣袖 Pal, then sacrificed this card.
+兔绣袖 (response)
+兔绣袖 deployed Menasting – Darkness-Dwelling Scorpion.
+兔绣袖's Menasting – Darkness-Dwelling Scorpion attacks bel for 2.
+Menasting – Darkness-Dwelling Scorpion hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 6 to 4 life.
+兔绣袖 deployed Single-Shot Rifle.
+兔绣袖 returned Lamball – My First Pal from their graveyard to hand.
+TURN 13
+BEL
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct – Darkflame Defender, Cryolinx – Arctic Ordeal, Elphidran Aqua – Gentle Ripples, Pengullet Rocket Launcher, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner, Strike from the Darkness, Zoe's Strategy
+Played Zoe's Strategy for 3 Souls.
+Returned Astegon – Aegis Wyvern of Death from graveyard to hand.
+兔绣袖 discarded 1: Menasting – Darkness-Dwelling Scorpion.
+Deployed Relaxaurus – Hungry Gunner to slot 2 for 7 Souls.
+They blocked with Cattiva – My First Pal.
+Relaxaurus – Hungry Gunner (1200) attacked Cattiva – My First Pal (200).
+Cattiva – My First Pal destroyed, 1200 damage vs 200 Power.
+兔绣袖 (response)
+兔绣袖 deployed Lamball – My First Pal.
+兔绣袖 deployed Primitive Furnace.
+兔绣袖 activated Primitive Furnace.
+兔绣袖 deployed Cattiva – My First Pal.
+Relaxaurus – Hungry Gunner was destroyed.
+TURN 14
+BEL
+Turn opened — Souls 10/10 · Hand: Astegon – Aegis Wyvern of Death, Aurora Guide, Blazehowl Noct – Darkflame Defender, Cryolinx – Arctic Ordeal, Elphidran Aqua – Gentle Ripples, Pengullet Rocket Launcher, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Strike from the Darkness
+Deployed Elphidran Aqua – Gentle Ripples to slot 2 for 6 Souls.
+Drew 2 cards.
+Put Pengullet Rocket Launcher on top of the deck.
+Elphidran Aqua – Gentle Ripples attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+兔绣袖 (response)
+兔绣袖 played Zoe's Strategy.
+bel interrupted with Cryolinx – Arctic Ordeal, paid 1 Soul. The attack was nullified.
+TURN 15 (FINAL TURN — 兔绣袖 surrendered after this turn)
+BEL
+Turn opened — Souls 10/10 · Hand: Astegon – Aegis Wyvern of Death, Aurora Guide, Blazehowl Noct – Darkflame Defender, Chillet – Dragon Whisperer, Pengullet Rocket Launcher, Pengullet Rocket Launcher, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Strike from the Darkness
+Deployed Astegon – Aegis Wyvern of Death to slot 3 for 8 Souls.
+All Pals with Power 300 or less destroyed.
+Astegon – Aegis Wyvern of Death's attack was interrupted, by 兔绣袖's "Blazehowl" (name truncated
+in the source annotation).
+Elphidran Aqua – Gentle Ripples attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+兔绣袖 (response)
+兔绣袖 deployed Blazehowl – Hellflame Defender.
+兔绣袖's Blazehowl – Hellflame Defender attacks bel's Elphidran Aqua – Gentle Ripples.
+
+BEL WINS
+兔绣袖 surrendered.
+FINAL LIFE: bel (WINNER) 4, 兔绣袖 4.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+A grinding 15-turn war of attrition that ended in a near-even surrender rather than a life-total
+knockout. Both sides traded board pieces constantly — bel's Chillet/Elphidran Aqua/Relaxaurus core
+kept getting rebuilt and kept winning trades (Stone Pit, two separate Bushis, a Mounted Machine
+Gun, Cattiva, and more all fell to it), while 兔绣袖 leaned on Menasting's Retaliate and a
+Foxparks/"Blazehowl"-style defender package to repeatedly blank bel's Astegon and Jormuntide
+before they could swing. Life totals barely moved for most of the game: bel dropped from 10 to 6
+in the first five turns (Menasting once, Lamball twice) and then took no further damage for the
+remaining ten turns, while 兔绣袖 only started taking life damage from turn 7 onward (three clean
+2-life Pengullet/Elphidran Aqua pokes, 10->8->6->4). By turn 15, with an Astegon board-wipe
+attempt interrupted and Elphidran Aqua landing the 6-to-4 hit, 兔绣袖 surrendered at even life —
+another instance of an opponent conceding on perceived tempo loss rather than fighting to zero.
+
+CLARIFICATION FLAGS for user review:
+- This file was fully rebuilt from the site's raw tagged event log (15 real turns, complete —
+  cross-checked against the curated log's own final box, which matches raw Turn 15 verbatim)
+  rather than the rendered/curated log used for the original pull, which had inflated this game to
+  "41 turns" — the worst inflation ratio (~2.7x) of any file in this batch. All life totals,
+  interrupts, and turn numbers below are now the authoritative, fully verified sequence.
+- Two early interrupts (Turn 2's Elphidran, Turn 5's first Astegon) could not be attributed to a
+  specific 兔绣袖 card — see the NOTE block above.
+- Same open scope note as other Ze files: bel's "BLUE/PURPLE DECK" hasn't been cross-referenced
+  against a saved decklist (out of scope for this pass).

@@ -1,0 +1,207 @@
+----- TIER 1 MATCH 2/34 (recordId 263a1435-c131-4b84-aed4-919b527987b4) -----
+
+=====================================================================
+MATCH: Trxvor vs ocram6
+recordId: 263a1435-c131-4b84-aed4-919b527987b4
+RESULT: TRXVOR WINS - ocram6's life hit zero. Final life: Trxvor (WINNER) 4, ocram6 0.
+NOTE: This supersedes the earlier partial sample file (sample_full_log_trxvor_vs_ocram6.txt),
+which only captured ~3600 of 11,379 chars and originally mis-stated the winner (later
+corrected). This is the full, complete 23-turn log. Trxvor's deck labeled "PURPLE/BLUE TREVOR
+TOURNEY" in HUD.
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 6:  Bushi interrupts Chillet's attack
+  Turn 14: Blazehowl interrupts Chillet's attack
+  Turn 17: Blazehowl interrupts Astegon's attack
+  Turn 17: Bushi interrupts Relaxaurus's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+OCRAM6
+ocram6 deployed Foxparks' Harness.
+ocram6 activated Foxparks' Harness.
+ocram6's Flambelle attacks Trxvor's Pengullet.
+Trxvor interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 2
+OCRAM6
+Deployed Pengullet to slot 3 for 4 Souls.
+Deployed Single-Shot Sphere Launcher to slot 4 for 3 Souls.
+Drew 1.
+TURN 3
+TRXVOR
+Pengullet (500) attacked Flambelle (400).
+Pengullet
+Flambelle destroyed, 500 damage vs 400 Power.
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 9 to 7 life.
+TURN 4
+OCRAM6
+ocram6 deployed Suzaku.
+Pengullet took 900 damage and was destroyed.
+ocram6's Suzaku attacks Trxvor's Pengullet.
+Suzaku (1200) attacked Pengullet (500).
+Suzaku
+Pengullet destroyed, 1200 damage vs 500 Power.
+TURN 5
+OCRAM6
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Pengullet, added to hand.
+Deployed Pengullet Rocket Launcher to slot 2 for 4 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Pengullet gets power +200 until end of turn.
+Drew 1.
+Dealt 1300 to every ocram6 Pal, then sacrificed this card.
+TURN 6
+TRXVOR
+Bushi
+Chillet's attack was interrupted.
+TURN 7
+OCRAM6
+ocram6 deployed Primitive Furnace.
+ocram6 deployed Flambelle.
+ocram6 activated Primitive Furnace.
+ocram6 activated Primitive Furnace.
+ocram6 deployed Single-Shot Rifle.
+Chillet took 1500 damage and was destroyed.
+ocram6 deployed Foxparks.
+ocram6 activated Single-Shot Rifle.
+ocram6's Foxparks gets power +200 until end of turn.
+ocram6's Foxparks attacks Trxvor for 2.
+✦
+Foxparks attacked Trxvor for 2; Trxvor's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 8
+OCRAM6
+Deployed Pengullet to slot 1 for 3 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Dealt 1000 to every ocram6 Pal, then sacrificed this card.
+Deployed Blazehowl Noct to slot 1 for 6 Souls.
+TURN 9
+TRXVOR
+Blazehowl Noct attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 7 to 5 life.
+TURN 10
+OCRAM6
+ocram6 activated Primitive Furnace.
+ocram6 deployed Single-Shot Rifle.
+Blazehowl Noct took 1500 damage and was destroyed.
+ocram6 deployed Bushi.
+ocram6's Bushi attacks Trxvor for 2.
+Trxvor interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 11
+OCRAM6
+Deployed Lyleen Noct to slot 1 for 8 Souls.
+Discarded Reindrix to pay a cost.
+Deployed Chillet from the graveyard (rested).
+Revealed Pengullet Rocket Launcher, added to hand.
+ocram6 deployed Foxparks.
+ocram6 activated Foxparks' Harness.
+ocram6 activated Single-Shot Rifle.
+ocram6's Foxparks gets power +200 until end of turn.
+ocram6 activated Single-Shot Rifle.
+ocram6's Foxparks gets power +200 until end of turn.
+Lyleen Noct took 700 damage.
+ocram6's Foxparks attacks Trxvor's Chillet.
+Foxparks (400+600 = 1000) attacked Chillet (900).
+Foxparks
+Chillet destroyed, 1000 damage vs 900 Power.
+ocram6 played Axel's Strategy.
+Lyleen Noct took 1500 damage and was destroyed.
+TURN 12
+OCRAM6
+Deployed Relaxaurus to slot 1 for 7 Souls.
+Played Zoe's Strategy for 3 Souls.
+Returned Chillet from graveyard to hand.
+ocram6 must discard 1.
+ocram6 discarded Foxparks.
+ocram6 played Pal Sphere.
+ocram6 deployed Foxparks.
+ocram6 activated Foxparks' Harness.
+ocram6 activated Single-Shot Rifle.
+ocram6's Foxparks gets power +200 until end of turn.
+ocram6 activated Single-Shot Rifle.
+ocram6's Foxparks gets power +200 until end of turn.
+Relaxaurus took 700 damage.
+ocram6's Foxparks attacks Trxvor for 2.
+Foxparks hit Trxvor for 2. Damage Check: 2 cards milled, no Lucky. Trxvor 9 to 7 life.
+TURN 13
+OCRAM6
+Deployed Chillet to slot 3 for 5 Souls.
+Revealed Strike from the Darkness, added to hand.
+Played Strike from the Darkness for 4 Souls.
+TURN 14
+TRXVOR
+Blazehowl
+Chillet's attack was interrupted.
+TURN 15
+OCRAM6
+ocram6 deployed Suzaku.
+Chillet took 900 damage and was destroyed.
+ocram6 activated Single-Shot Rifle.
+ocram6's Suzaku gets power +200 until end of turn.
+ocram6 activated Single-Shot Rifle.
+ocram6's Suzaku gets power +200 until end of turn.
+ocram6's Suzaku attacks Trxvor for 3.
+Suzaku hit Trxvor for 3. Damage Check: 3 cards milled, no Lucky. Trxvor 7 to 4 life.
+TURN 16
+OCRAM6
+Deployed Astegon to slot 3 for 8 Souls.
+All Pals with Power 300 or less destroyed.
+TURN 17
+TRXVOR
+Blazehowl
+Astegon's attack was interrupted.
+Bushi
+Relaxaurus's attack was interrupted.
+TURN 18
+OCRAM6
+ocram6 deployed Flambelle.
+ocram6 activated Primitive Furnace.
+ocram6 deployed Ragnahawk.
+ocram6 activated Single-Shot Rifle.
+ocram6's Ragnahawk gets power +200 until end of turn.
+ocram6 activated Single-Shot Rifle.
+ocram6's Ragnahawk gets power +200 until end of turn.
+ocram6's Ragnahawk attacks Trxvor's Relaxaurus.
+Ragnahawk (1000+900 = 1900) attacked Relaxaurus (1200).
+Ragnahawk
+Relaxaurus destroyed, 1900 damage vs 1200 Power.
+TURN 19
+OCRAM6
+Deployed Pengullet to slot 1 for 4 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1100 to every ocram6 Pal, then sacrificed this card.
+Played Zoe's Strategy for 3 Souls.
+Returned Chillet from graveyard to hand.
+ocram6 discarded 1: Reptyro.
+All Pals with Power 300 or less destroyed.
+TURN 20
+TRXVOR
+✦
+Astegon attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 21
+OCRAM6
+ocram6 deployed Jormuntide Ignis.
+ocram6's Jormuntide Ignis attacks Trxvor for 4.
+✦
+Jormuntide Ignis attacked Trxvor for 4; Trxvor's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 22
+OCRAM6
+Played Strike from the Darkness for 4 Souls.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Zoe's Strategy, added to hand.
+TURN 23
+TRXVOR
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 5 to 3 life.
+All Pals with Power 300 or less destroyed.
+Astegon attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 3 to 0 life.
+
+TRXVOR WINS
+ocram6's life hit zero.
+FINAL LIFE: Trxvor (WINNER) 4, ocram6 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Turn 1: ocram6 deploys Foxparks' Harness, activates it; Flambelle's attack on Trxvor's Pengullet nullified by Cryolinx interrupt (1 soul). Turn 2: ocram6 deploys Pengullet (4 souls) and Single-Shot Sphere Launcher (3 souls), draws 1. Turn 3: Trxvor's Pengullet (500) destroys Flambelle (400); Pengullet attacks for 2 (9->7 life). Turn 4: ocram6 deploys Suzaku; Trxvor's Pengullet takes 900 dmg destroyed; Suzaku (1200) destroys Pengullet (500). Turn 5: ocram6 deploys Chillet (5 souls), reveals Pengullet; deploys Pengullet Rocket Launcher (4 souls), buffs a Pengullet +500/explode +200, deals 1300 to own Pals then sacrifices it. Turn 6: Trxvor's Bushi interrupts Chillet's attack. Turn 7: ocram6 deploys Primitive Furnace, Flambelle, activates Furnace twice, deploys Single-Shot Rifle (Trxvor's Chillet takes 1500 dmg, destroyed), deploys Foxparks, activates rifle (+200 power), Foxparks attack cancelled by Lucky Pal. Turn 8: ocram6 deploys Pengullet (3 souls, +500/explode), deals 1000 to own Pals then sacrifices; deploys Blazehowl Noct (6 souls). Turn 9: Trxvor's Blazehowl Noct attacks for 2 (7->5 life). Turn 10: ocram6 activates Furnace, deploys Single-Shot Rifle (Blazehowl Noct takes 1500, destroyed), deploys Bushi; Bushi's attack on Trxvor nullified by Reindrix interrupt (1 soul). Turn 11: ocram6 deploys Lyleen Noct (8 souls, discards Reindrix as cost), deploys Chillet from graveyard (rested), reveals Pengullet Rocket Launcher; deploys Foxparks, activates Foxparks' Harness and Single-Shot Rifle twice (+200 each); Lyleen Noct takes 700 dmg; Foxparks (1000) destroys Trxvor's Chillet (900); ocram6 plays Axel's Strategy, Lyleen Noct takes 1500 dmg destroyed. Turn 12: ocram6 deploys Relaxaurus (7 souls), plays Zoe's Strategy (3 souls) returning Chillet, discards Foxparks, plays Pal Sphere, deploys Foxparks, activates Harness+Rifle twice (+200 each), Relaxaurus takes 700 dmg; Foxparks hits Trxvor for 2 (9->7 life). Turn 13: ocram6 deploys Chillet (5 souls), reveals Strike from the Darkness, plays it (4 souls). Turn 14: Trxvor's Blazehowl interrupts Chillet's attack. Turn 15: ocram6 deploys Suzaku (Trxvor's Chillet takes 900, destroyed), activates Rifle twice (+200 each), Suzaku hits Trxvor for 3 (7->4 life). Turn 16: ocram6 deploys Astegon (8 souls); all Pals with Power<=300 destroyed. Turn 17: Trxvor's Blazehowl interrupts Astegon's attack; Bushi interrupts Relaxaurus's attack. Turn 18: ocram6 deploys Flambelle, activates Furnace, deploys Ragnahawk, activates Rifle twice (+200 each); Ragnahawk (1900) destroys Trxvor's Relaxaurus (1200). Turn 19: ocram6 deploys Pengullet (4 souls, +500/explode), draws 1, deals 1100 to own Pals then sacrifices; plays Zoe's Strategy (3 souls) returning Chillet, discards Reptyro; all Pals<=300 power destroyed. Turn 20: Trxvor's Astegon attack cancelled by Lucky Pal. Turn 21: ocram6 deploys Jormuntide Ignis, attacks Trxvor for 4, cancelled by Lucky Pal. Turn 22: ocram6 plays Strike from the Darkness (4 souls), deploys Chillet (5 souls), reveals Zoe's Strategy. Turn 23: Trxvor's Chillet attacks for 2, ocram6's life 5->3; all Pals<=300 power destroyed; Astegon attacks for 3, life hits 3->0.
+
+

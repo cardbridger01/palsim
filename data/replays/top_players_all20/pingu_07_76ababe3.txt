@@ -1,0 +1,305 @@
+=====================================================================
+MATCH: Pingu vs poi (shown on-screen as "Opponent")  [Pingu's match #7 of 10 pulled]
+recordId: 76ababe3-2d87-4796-b3ea-1dbd25aea7e5
+RESULT: PINGU WINS - "Opponent's life hit zero." Final life: Pingu (WINNER) 3, Opponent 0.
+NOTE: *** RETRACTION — the original version of this file flagged the item below as "the most
+significant finding in this batch." That claim was WRONG. Do not cite it. See the bug notes that
+follow for what actually happened and how it was caught. ***
+  [RETRACTED] "Pingu's life drops from a starting 10 all the way down to a final 3 (a full
+  7-life deficit) with LITERALLY ZERO explicit 'Pingu X to Y life' damage lines anywhere in this
+  37-turn, 234-step log... this is the largest and cleanest version yet of the recurring
+  'unexplained life gap' pattern... Strongly recommend citing this specific recordId if/when
+  reporting the pattern to the site."
+NOTE: *** SITE BUG #1: the replay's curated LOG panel evicts early turns once scrubbed to the
+end of a long game *** Once a replay is scrubbed all the way to the end, the LOG panel silently
+drops an unknown number of the earliest turns from what it displays and relabels whatever's left
+starting back at "TURN 1." This file's original "TURN 1" line ("Pingu interrupted with Cryolinx,
+paid 1 Soul. The attack was nullified.") is, per the raw event log recovered via the log panel's
+"Copy" button, actually TRUE TURN 7. True turns 1-6 are real, they happened, and they contain the
+damage instances that explain Pingu's full life total — the scrub-to-end view had just stopped
+rendering them and started counting over from 1.
+NOTE: *** SITE BUG #2 (found and fully resolved this pass): the curated LOG panel also SPLITS
+each true game turn into multiple displayed "TURN" boxes *** Independently of the eviction bug
+above, this file's remaining 8 true turns (true turns 7-14) were spread across THIRTY-SEVEN
+displayed "TURN" boxes in the curated view — a ~4.6x inflation, the worst ratio found anywhere in
+this batch so far. Each true turn's main-phase actions, the opponent's reactive/interrupt
+response, and every individual interrupt event each get split into their own separate box by the
+renderer. Confirmed via the raw "Copy" log, whose [T<N> <phase>] tags gave the true, authoritative
+turn boundaries. This entire file (true turns 1-14, the complete game) has now been fully
+reconstructed from that raw log and cross-referenced against the curated view for bare-form
+interrupt-card attribution; every turn number below is a verified TRUE turn number.
+NOTE: *** CORRECTED LIFE ACCOUNTING *** — Pingu's life is fully explained: 10 -> 9 (Leezpunk hit,
+true turn 2) -> 7 (Elphidran hit, true turn 3) -> 5 (Elphidran Aqua hit, true turn 5) -> 3 (Chillet
+hit, true turn 7), matching the final life of 3 exactly. No further "Pingu X to Y life" line
+appears anywhere after true turn 7 — Pingu takes zero further damage for the rest of the 14-turn
+game (every remaining attack against Pingu is either interrupted/nullified or cancelled by a Lucky
+Pal reveal). Zero unexplained gap.
+NOTE: Opponent's life is likewise fully accounted for: 10 -> 7 (true turn 10, Jormuntide hit for
+3) -> 5 (true turn 11, Elphidran Aqua hit for 2) -> 2 (true turn 11, Jormuntide hit for 3, same
+turn as the previous hit) -> 0 (true turn 14, Chillet hit for 2, the winning blow). Four named
+hits, no gap on their side. This part of the original file's conclusion was correct.
+NOTE: The opponent (poi, per match_list.tsv) is displayed on-screen and in-log simply as
+"Opponent" — same anonymization pattern seen for a few opponents in the Ze batch (ze_04, ze_09).
+NOTE: Deck labeled "BLUE/PURPLE DRAGON CONTROL" on Pingu's HUD, same as matches 1-6.
+NOTE: TURN-OWNERSHIP CAVEAT — the raw log's [main]/[waiting] tags turned out NOT to reliably mark
+whose structural turn each true turn belongs to (the "[main] ... Pingu's move" phrase appears on
+every single true turn regardless of who is actually acting, and Pingu's own Soul counter climbs
+every true turn without interruption or reset — both are fixed client-side UI text/display
+artifacts of this being Pingu's own recorded match, not turn-ownership indicators). The single
+PINGU/OPPONENT header on each turn below (for true turns 8-14, which needed fresh attribution) is
+a narrative judgment call based on which side lands the turn's defining attack/kill, matching the
+convention already used for true turns 1-7 (recovered in an earlier pass). The event order and
+content within each turn are verified directly against the raw log; only the single-word header
+per turn involves judgment.
+NOTE: Bare-form interrupts (card name on its own line, no player/cost) cross-referenced against
+the curated log by content-matching (curated turn-number labels are NOT trusted, only their
+content, per Site Bug #2 above):
+  True Turn 9: Reindrix interrupts Jormuntide's attack
+  True Turn 13: Blazehowl Noct interrupts Elphidran's attack
+5 additional FULL-form interrupts occurred: True Turn 7 "Pingu interrupted with Cryolinx, paid 1
+Soul"; True Turn 8 "Pingu interrupted with Pyrin Noct, paid 1 Soul"; True Turn 10 "Pingu
+interrupted with Cryolinx, discarded Pal Sphere"; True Turn 12 "Pingu interrupted with Pyrin Noct,
+paid 1 Soul"; True Turn 13 "Pingu interrupted with Pyrin Noct, paid 1 Soul" — not counted in the
+bare-form total, included in the verbatim body below.
+NOTE: Two attack declarations (True Turn 8's Elphidran Aqua attack, True Turn 9's Relaxaurus
+attack) appear in the raw log with no immediately adjacent damage/cancellation line of their own;
+both turns end with either an interrupt or the attacking Pal being destroyed same-turn, and
+Pingu's life does not change either turn, so both attacks evidently did not connect — transcribed
+exactly as tagged rather than guessing which specific line resolved them.
+=====================================================================
+TURN 1
+PINGU
+Turn opened — Souls 2/2 · Hand: Chillet, Jormuntide, Pengullet, Pengullet Rocket Launcher, Pyrin Noct
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+End Phase, damage cleared.
+TURN 2
+PINGU
+Turn opened — Souls 4/4 · Hand: Chillet, Elphidran Aqua, Jormuntide, Pengullet, Pengullet Rocket Launcher, Pyrin Noct
+Opponent deployed Leezpunk.
+Opponent's Leezpunk attacks Pingu for 1.
+Leezpunk hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 10 to 9 life.
+Rested 3 Souls, drew 1 card.
+TURN 3
+PINGU
+Turn opened — Souls 6/6 · Hand: Chillet, Cryolinx, Elphidran Aqua, Jormuntide, Jormuntide, Pengullet, Pengullet Rocket Launcher, Pyrin Noct
+Opponent deployed Elphidran.
+Opponent's Elphidran attacks Pingu for 2.
+Elphidran hit Pingu for 2. Damage Check: 2 cards milled, no Lucky. Pingu 9 to 7 life.
+Opponent's Leezpunk attacks Pingu for 1.
+Leezpunk attacked Pingu for 1; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Deployed Elphidran Aqua to slot 1 for 6 Souls.
+Drew 2 cards.
+Put Strike from the Darkness on top of the deck.
+Elphidran Aqua's attack was interrupted.
+TURN 4
+OPPONENT
+Turn opened — Souls 8/8 · Hand: Chillet, Cryolinx, Jormuntide, Jormuntide, Pengullet, Pengullet Rocket Launcher, Pengullet Rocket Launcher, Pyrin Noct, Zoe's Strategy
+Opponent's Elphidran attacks Pingu's Elphidran Aqua.
+Elphidran (600+500 = 1100) attacked Elphidran Aqua (900).
+Elphidran Aqua destroyed, 1100 damage vs 900 Power.
+Opponent deployed Elphidran Aqua.
+Opponent's Elphidran Aqua attacks Pingu for 2.
+Elphidran Aqua attacked Pingu for 2; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Deployed Pengullet Rocket Launcher to slot 1 for 4 Souls.
+Deployed Pengullet to slot 2 for 4 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Dealt 1100 to every Opponent Pal, then sacrificed this card.
+Discarded Pyrin Noct.
+TURN 5
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Jormuntide, Jormuntide, Pengullet Rocket Launcher, Reindrix, Zoe's Strategy
+Opponent played Zoe's Strategy.
+Opponent returned Elphidran Aqua from their graveyard to hand.
+Discarded Reindrix.
+Opponent deployed Elphidran Aqua.
+Opponent's Elphidran Aqua attacks Pingu for 2.
+Elphidran Aqua hit Pingu for 2. Damage Check: 2 cards milled, no Lucky. Pingu 7 to 5 life.
+Deployed Jormuntide to slot 2 for 8 Souls.
+Jormuntide attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+TURN 6
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Chillet, Chillet, Cryolinx, Jormuntide, Pal Sphere, Pengullet Rocket Launcher, Zoe's Strategy
+Opponent deployed Shadowbeak.
+Opponent's Shadowbeak attacks Pingu for 3.
+Pingu interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+Pingu's Opponent's Shadowbeak butchered one of their Pals, put 1 of Pingu's Pals into the graveyard.
+Opponent's Shadowbeak: Pingu's Jormuntide was put into the graveyard.
+Deployed Chillet to slot 2 for 5 Souls.
+Deployed Pengullet Rocket Launcher to slot 3 for 4 Souls.
+Chillet's attack was interrupted.
+TURN 7
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Jormuntide, Pal Sphere, Zoe's Strategy, Zoe's Strategy
+Opponent deployed Chillet.
+Opponent's Shadowbeak attacks Pingu for 3.
+Opponent's Chillet attacks Pingu for 2.
+Chillet hit Pingu for 2. Damage Check: 2 cards milled, no Lucky. Pingu 5 to 3 life.
+Opponent played Strike from the Darkness.
+Chillet was destroyed.
+Played Zoe's Strategy for 3 Souls.
+Returned Pengullet from graveyard to hand.
+Opponent discarded Pengullet Rocket Launcher.
+Deployed Pengullet to slot 2 for 4 Souls.
+Dealt 1600 to every Opponent Pal, then sacrificed this card.
+Pingu interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 8
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Chillet, Jormuntide, Pal Sphere, Pengullet, Zoe's Strategy
+Opponent deployed Elphidran Aqua.
+Opponent's Elphidran Aqua attacks Pingu for 2.
+Opponent deployed Pengullet Rocket Launcher.
+Played Pal Sphere for 4 Souls.
+Drew 3.
+Deployed Pengullet to slot 2 for 4 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Pengullet (600+500 = 1100) attacked Elphidran Aqua (900).
+Elphidran Aqua destroyed, 1100 damage vs 900 Power.
+Pengullet was Rested.
+Pengullet won't stand while the source stays in play.
+Pingu interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+TURN 9
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Blazehowl Noct, Chillet, Cryolinx, Jormuntide, Pal Sphere, Zoe's Strategy
+Opponent deployed Relaxaurus.
+Opponent's Relaxaurus attacks Pingu for 3.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide on top of the deck.
+Deployed Chillet to slot 4 for 5 Souls.
+Revealed Jormuntide.
+Deployed Jormuntide.
+Drew 1.
+Reindrix
+Jormuntide's attack was interrupted.
+Chillet gets power +200 until end of turn.
+Chillet (900+400 = 1300) attacked Relaxaurus (1200).
+Relaxaurus destroyed, 1300 damage vs 1200 Power.
+Rested 3 Souls, drew 1 card.
+TURN 10
+PINGU
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Blazehowl Noct, Cryolinx, Elphidran Aqua, Jormuntide, Pal Sphere, Strike from the Darkness, Zoe's Strategy, Zoe's Strategy
+Opponent deployed Pengullet.
+Opponent activated Pengullet Rocket Launcher.
+Opponent's Pengullet gets power +500 until end of turn.
+Opponent activated Pengullet.
+Opponent deployed Pengullet Rocket Launcher.
+Played Zoe's Strategy for 3 Souls.
+Returned Chillet from graveyard to hand.
+Opponent must discard 1.
+Opponent discarded Aurora Guide.
+Jormuntide attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide on top of the deck.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Jormuntide.
+Deployed Jormuntide.
+Drew 1.
+No valid target. [Jormuntide's first attack this turn fizzled — no legal target, not a card interrupt]
+Jormuntide attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 10 to 7 life.
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Chillet was Rested.
+Chillet won't stand while the source stays in play.
+Pingu interrupted with Cryolinx, discarded Pal Sphere. The attack was nullified.
+TURN 11
+PINGU
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Blazehowl Noct, Elphidran, Elphidran, Elphidran Aqua, Strike from the Darkness, Zoe's Strategy
+Opponent deployed Relaxaurus.
+Opponent's Relaxaurus attacks Pingu for 3.
+Jormuntide (1600) attacked Relaxaurus (1200).
+Relaxaurus destroyed, 1600 damage vs 1200 Power.
+Deployed Elphidran Aqua to slot 6 for 6 Souls.
+Drew 2 cards.
+Put Elphidran on top of the deck.
+Elphidran Aqua attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 7 to 5 life.
+Jormuntide attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 5 to 2 life.
+Played Zoe's Strategy for 3 Souls.
+Returned Pyrin Noct from graveyard to hand.
+Opponent must discard 1.
+Opponent discarded Strike from the Darkness.
+Opponent returned Leezpunk from their graveyard to hand.
+Discarded Aurora Guide.
+TURN 12
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Elphidran, Elphidran, Pyrin Noct, Pyrin Noct, Relaxaurus, Strike from the Darkness
+Opponent deployed Pengullet.
+Opponent activated Pengullet Rocket Launcher.
+Opponent's Pengullet gets power +500 until end of turn.
+Opponent activated Pengullet Rocket Launcher.
+Opponent's Pengullet gets power +500 until end of turn.
+Opponent activated Pengullet.
+Opponent played Zoe's Strategy.
+Opponent deployed Leezpunk.
+Deployed Relaxaurus to slot 2 for 7 Souls.
+Relaxaurus attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Pingu interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+Discarded Blazehowl Noct.
+Discarded Elphidran.
+Opponent's Shadowbeak: Pingu's Relaxaurus was put into the graveyard.
+TURN 13
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Elphidran, Elphidran Aqua, Pyrin Noct, Strike from the Darkness
+Opponent deployed Shadowbeak.
+Opponent's Shadowbeak attacks Pingu for 3.
+Played Strike from the Darkness for 4 Souls.
+Deployed Elphidran to slot 2 for 4 Souls.
+Chose not to reveal a Dragon.
+Blazehowl Noct
+Elphidran's attack was interrupted.
+Pingu interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+TURN 14
+PINGU
+Turn opened — Souls 10/10 · Hand: Chillet, Elphidran Aqua
+Opponent deployed Chillet.
+Opponent revealed Zoe's Strategy and added it to their hand.
+Opponent's Chillet attacks Pingu for 2.
+Opponent deployed Pengullet.
+Opponent activated Pengullet Rocket Launcher.
+Opponent's Pengullet gets power +500 until end of turn.
+Opponent activated Pengullet.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Elphidran.
+Deployed Elphidran.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 2 to 0 life.
+
+PINGU WINS
+Opponent's life hit zero.
+FINAL LIFE: Pingu (WINNER) 3, Opponent 0.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+CORRECTED SUMMARY: This is a 14-true-turn game (the curated viewer displayed it as 37 boxes — a
+~4.6x inflation, the worst split ratio found in this batch — on top of evicting the true opening
+turns entirely once scrubbed to the end; see the NOTE blocks above for both bugs and how they were
+resolved). Pingu took four real hits in the true opening turns — Leezpunk, Elphidran, Elphidran
+Aqua, and Chillet — dropping steadily from 10 to 3 life while building up a board (Elphidran Aqua,
+then Jormuntide/Chillet after early trades). From true turn 7 on, Pingu never took another hit: an
+extremely active interrupt suite (Cryolinx x2, Pyrin Noct x4, Reindrix, Blazehowl Noct) shut down
+every attack the opponent declared or landed for the rest of the game, while Pingu's own board
+(Chillet, Jormuntide, Elphidran Aqua) ground the opponent's life from 10 to 0 in four hits across
+true turns 10-14. Final score 3-0 to Pingu. No damage is unaccounted for on either side. (The
+original version of this summary claimed the opposite — that Pingu finished at 3 life with zero
+explanation, "7 life vanished somewhere the transcript never records" — that was wrong; the
+explanation was sitting in the true early turns, which the site's scrub-to-end log view had
+stopped displaying. See the NOTE blocks above for the proof.)
+
+CLARIFICATION FLAGS for user review:
+- RETRACTED: this file is no longer evidence of a "life not logged" bug. It is now evidence of two
+  different, confirmed display bugs in the replay's curated LOG panel: (1) it evicts/renumbers
+  early turns once scrubbed to the end of a long game, and (2) independently of that, it splits
+  each true game turn into multiple displayed "TURN" boxes (main-phase actions, the opponent's
+  response, and each individual interrupt each get their own box), inflating the displayed turn
+  count well beyond the true count. If a bug report goes to the palworldtcg.gg Discord, this file
+  is a strong candidate to cite for bug #2 specifically, since it has this batch's worst inflation
+  ratio (37 displayed boxes for 8 true turns).
+- All turn numbers in this file are now TRUE, verified game-turn numbers, fully reconstructed from
+  the raw "Copy" event log and cross-referenced against the curated log for bare-form interrupt
+  attribution. This is the last of the five originally-flagged files (ze_01, ze_03, ze_08, pingu_06
+  were the other four) to receive this treatment; all five are now complete and consistent.
+- The single PINGU/OPPONENT header on true turns 8-14 is a narrative judgment call (see the
+  TURN-OWNERSHIP CAVEAT note above) rather than a value read directly off the raw log — the event
+  order and content are verified, but exactly which side "owns" a given true turn is not something
+  the raw log's tags cleanly indicate for this file.
+- Same open scope note as matches 1-6: Pingu's "BLUE/PURPLE DRAGON CONTROL" archetype hasn't been
+  cross-referenced against a saved decklist (out of scope for this pass).

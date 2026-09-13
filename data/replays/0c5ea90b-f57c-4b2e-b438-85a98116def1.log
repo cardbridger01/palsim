@@ -1,0 +1,134 @@
+----- TIER 2 MATCH 4/10 done (worklist row 4, recordId 0c5ea90b-f57c-4b2e-b438-85a98116def1, Onion vs Anhedonia) -----
+
+=====================================================================
+MATCH: Anhedonia vs Onion
+recordId: 0c5ea90b-f57c-4b2e-b438-85a98116def1
+RESULT: ANHEDONIA WINS - Onion's life hit zero. Final life: Anhedonia (WINNER) 8, Onion 0.
+NOTE: Onion's deck titled "GP MIDRANGE" in HUD.
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 5:  Foxparks interrupts Maraith's attack
+  Turn 11: Cryolinx interrupts Digtoise's attack
+  Turn 15: Reindrix interrupts Chikipi's attack
+  Turn 15: Foxparks interrupts Digtoise's attack (second bare interrupt this turn)
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+TURN 2
+Deployed Flopie to slot 1 for 3 Souls.
+Got 2 .
+TURN 3
+ONION
+Flopie attacked them for 1. Damage Check: 1 card milled, no Lucky. They 10 to 9 life.
+TURN 4
+ANHEDONIA
+Anhedonia deployed Univolt.
+Anhedonia's Univolt attacks Onion for 2.
+Univolt hit Onion for 2. Damage Check: 2 cards milled, no Lucky. Onion 10 to 8 life.
+Deployed Maraith to slot 2 for 6 Souls.
+TURN 5
+ONION
+Foxparks
+Maraith's attack was interrupted.
+Flopie (400) attacked Univolt (600-200 = 400).
+Flopie
+Univolt destroyed, 400 damage vs 400 Power.
+Flopie destroyed, 400 damage vs 400 Power.
+TURN 6
+ANHEDONIA
+Anhedonia deployed Suzaku.
+TURN 7
+ANHEDONIA
+Maraith took 900 damage and was destroyed.
+TURN 8
+ANHEDONIA
+Anhedonia's Suzaku attacks Onion for 3.
+Suzaku hit Onion for 3. Damage Check: 3 cards milled, no Lucky. Onion 8 to 5 life.
+Played Strike from the Darkness for 4 Souls.
+Deployed Flopie to slot 1 for 3 Souls.
+Got 2 .
+TURN 9
+ONION
+Flopie attacked them for 1. Damage Check: 1 card milled, no Lucky. They 9 to 8 life.
+TURN 10
+ANHEDONIA
+Anhedonia deployed Reindrix.
+Anhedonia deployed Univolt.
+Anhedonia's Reindrix attacks Onion's Flopie.
+Reindrix (600) attacked Flopie (400).
+Reindrix
+Flopie destroyed, 600 damage vs 400 Power.
+Anhedonia's Univolt attacks Onion for 2.
+✦
+Univolt attacked Onion for 2; Onion's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Rested 3 Souls, drew 1 card.
+Deployed Digtoise to slot 1 for 6 Souls.
+Spent 2 (2 left).
+power +500 until end of turn.
+Digtoise gains breakthrough until end of turn.
+TURN 11
+ONION
+Cryolinx
+Digtoise's attack was interrupted.
+TURN 12
+ANHEDONIA
+Anhedonia deployed Jormuntide Ignis.
+Anhedonia's Jormuntide Ignis attacks Onion for 4.
+TURN 13
+ANHEDONIA
+Onion interrupted with Dinossom, paid 1 Soul. The attack was nullified.
+TURN 14
+ANHEDONIA
+Anhedonia's Univolt attacks Onion for 2.
+✦
+Univolt attacked Onion for 2; Onion's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Anhedonia's Reindrix attacks Onion for 2.
+Reindrix hit Onion for 2. Damage Check: 2 cards milled, no Lucky. Onion 5 to 3 life.
+Deployed Flopie to slot 2 for 3 Souls.
+Got 2 .
+Deployed Chikipi to slot 3 for 2 Souls.
+Played Lily's Strategy for 3 Souls.
+All Onion's Pals get power +1000 until end of turn.
+TURN 15
+ONION
+Reindrix
+Chikipi's attack was interrupted.
+Flopie (400+1000 = 1400) attacked Univolt (600).
+Flopie
+Univolt destroyed, 1400 damage vs 600 Power.
+Spent 2 (2 left).
+power +500 until end of turn.
+Digtoise gains breakthrough until end of turn.
+Foxparks
+Digtoise's attack was interrupted.
+TURN 16
+ANHEDONIA
+Anhedonia deployed Reptyro.
+Anhedonia activated Reptyro.
+TURN 17
+ANHEDONIA
+Anhedonia revealed Makeshift Handgun and deployed it.
+TURN 18
+ANHEDONIA
+Anhedonia looked at 5 cards and deployed Makeshift Handgun.
+TURN 19
+ANHEDONIA
+Flopie took 500 damage and was destroyed.
+TURN 20
+ANHEDONIA
+Anhedonia's Reptyro attacks Onion for 3.
+Reptyro hit Onion for 3. Damage Check: 3 cards milled, no Lucky. Onion 3 to 0 life.
+
+ANHEDONIA WINS
+Onion's life hit zero.
+FINAL LIFE: Anhedonia (WINNER) 8, Onion 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+20-turn game. Anhedonia's Univolt drew first blood (turn 4) before a mutual Flopie/Univolt trade on turn 5, bare-form interrupted by Onion's Foxparks against Maraith. Anhedonia's Suzaku chipped Onion (8->5, turn 8) while Onion's Flopie chipped back (10->9->8). Anhedonia's Reindrix/Univolt destroyed Onion's Flopie and pressured Onion (turn 10), then Onion's Cryolinx bare-form interrupted Anhedonia's buffed Digtoise (turn 11) and Onion's Dinossom fully nullified (paid Soul) Anhedonia's Jormuntide Ignis swing (turn 13). Anhedonia's Univolt/Reindrix continued the squeeze (5 to 3, turn 14), and turn 15 saw a flurry of interrupts - Onion's own Lily's Strategy buffed board destroyed Anhedonia's Univolt via Flopie, while Onion's Reindrix and Foxparks bare-form interrupted Anhedonia's Chikipi and Digtoise respectively in the same turn. Anhedonia's Reptyro closed it out turn 20 (3 to 0).
+
+

@@ -1,0 +1,158 @@
+=====================================================================
+MATCH: Ze (in-game name "bel") vs eric is dangers  [Ze's match #5 of 10 pulled]
+recordId: b1bc2437-b9d4-4a7d-94c9-d388beaf8ce2
+RESULT: BEL WINS - "eric is dangers's life hit zero." Final life: bel (WINNER) 10, eric is
+dangers 0.
+NOTE: A clean shutout — bel took ZERO life loss the entire 17-turn game (starts and ends at 10),
+the first fully damage-free win seen for Ze in this batch. eric is dangers's life dropped in
+five clean, fully-accounted 2-life steps (10->8->6->4->2->0) with no unexplained gap — unlike
+matches 1 and 3, both life totals here are completely traceable through the log.
+NOTE: Deck labeled "BLUE/PURPLE DECK" on bel's HUD, same generic label as matches 1-4.
+NOTE: 3 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 11: Pyrin Noct interrupts Jormuntide's attack (bel's own Jormuntide, deployed earlier
+           that same turn — so this is eric is dangers interrupting bel's attack)
+  Turn 14: Cryolinx interrupts Pengullet's attack
+  Turn 14: Reindrix interrupts Elphidran Aqua's attack (2nd bare interrupt same turn)
+2 additional FULL-form interrupts occurred (Turn 6 and Turn 9, both "bel interrupted with
+Blazehowl Noct") — not counted in the bare-form total, included in the verbatim body only.
+NOTE: Turns 1-2 have no acting-player header shown (same pattern as match 4) — both turns are
+clearly bel's based on card ownership (Cryolinx/Jormuntide/Relaxaurus hand, later a "Rested 3
+Souls" line matching bel's other games), inferred and labeled BEL below.
+=====================================================================
+TURN 1
+BEL
+Turn opened — Souls 1/1 · Hand: Blazehowl Noct, Cryolinx, Jormuntide, Relaxaurus, Zoe's Strategy
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+TURN 2
+BEL
+Turn opened — Souls 3/3 · Hand: Astegon, Aurora Guide, Aurora Guide, Blazehowl Noct, Chillet, Pengullet
+Rested 3 Souls, drew 1 card.
+TURN 3
+ERIC IS DANGERS
+eric is dangers deployed Pengullet Rocket Launcher.
+TURN 4
+ERIC IS DANGERS
+Turn opened — Souls 5/5 · Hand: Astegon, Aurora Guide, Aurora Guide, Blazehowl Noct, Blazehowl Noct, Chillet, Pengullet, Relaxaurus
+Deployed Pengullet to slot 1 for 4 Souls.
+TURN 5
+BEL
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+TURN 6
+ERIC IS DANGERS
+eric is dangers deployed Elphidran Aqua.
+eric is dangers's Elphidran Aqua attacks bel's Pengullet.
+bel interrupted with Blazehowl Noct, paid 1 Soul. The attack was nullified.
+TURN 7
+ERIC IS DANGERS
+Turn opened — Souls 7/7 · Hand: Astegon, Aurora Guide, Aurora Guide, Blazehowl Noct, Chillet, Chillet, Relaxaurus
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Astegon on top of the deck.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Astegon.
+Deployed Astegon.
+TURN 8
+BEL
+✦
+Pengullet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+All Pals with Power 300 or less destroyed.
+✦
+Astegon attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+TURN 9
+ERIC IS DANGERS
+eric is dangers deployed Astegon.
+Astegon gets power -1000 until end of turn.
+eric is dangers's Astegon attacks bel's Chillet.
+bel interrupted with Blazehowl Noct, discarded Relaxaurus. The attack was nullified.
+TURN 10
+ERIC IS DANGERS
+Turn opened — Souls 9/9 · Hand: Aurora Guide, Chillet, Elphidran Aqua, Jormuntide
+TURN 11
+BEL
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide on top of the deck.
+Deployed Chillet to slot 3 for 5 Souls.
+Revealed Jormuntide.
+Deployed Jormuntide.
+Drew 1.
+No valid target.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 4 to 2 life.
+Pyrin Noct
+Jormuntide's attack was interrupted.
+TURN 12
+ERIC IS DANGERS
+eric is dangers deployed Elphidran Aqua.
+eric is dangers's Elphidran Aqua attacks bel's Chillet.
+Elphidran Aqua (900) attacked Chillet (900).
+Elphidran Aqua
+Chillet destroyed, 900 damage vs 900 Power.
+Elphidran Aqua destroyed, 900 damage vs 900 Power.
+eric is dangers's Astegon attacks bel's Chillet.
+Astegon (1200) attacked Chillet (900).
+Astegon
+Chillet destroyed, 1200 damage vs 900 Power.
+eric is dangers played Strike from the Darkness.
+Jormuntide was destroyed.
+TURN 13
+ERIC IS DANGERS
+Turn opened — Souls 10/10 · Hand: Elphidran Aqua, Elphidran Aqua, Pengullet, Strike from the Darkness
+TURN 14
+BEL
+Cryolinx
+Pengullet's attack was interrupted.
+Deployed Elphidran Aqua to slot 2 for 6 Souls.
+Drew 2 cards.
+Put Elphidran on top of the deck.
+Reindrix
+Elphidran Aqua's attack was interrupted.
+Played Strike from the Darkness for 4 Souls.
+TURN 15
+ERIC IS DANGERS
+eric is dangers played Aurora Guide.
+eric is dangers deployed Relaxaurus.
+Pengullet was Rested.
+Pengullet won't stand while the source stays in play.
+eric is dangers's Relaxaurus attacks bel's Elphidran Aqua.
+Relaxaurus (1200) attacked Elphidran Aqua (900).
+Relaxaurus
+Elphidran Aqua destroyed, 1200 damage vs 900 Power.
+TURN 16
+ERIC IS DANGERS
+Turn opened — Souls 10/10 · Hand: Elphidran, Elphidran Aqua, Pengullet, Pengullet
+Deployed Elphidran Aqua to slot 2 for 6 Souls.
+Drew 2 cards.
+Put Elphidran on top of the deck.
+TURN 17
+BEL
+Elphidran Aqua attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 2 to 0 life.
+
+BEL WINS
+eric is dangers's life hit zero.
+FINAL LIFE: bel (WINNER) 10, eric is dangers 0.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+A dominant, entirely one-sided 17-turn win: bel opened with a lone early Pengullet chipping away
+2 life per swing while eric is dangers spent several turns building a board (Elphidran Aqua,
+Astegon, Chillet) that never once connected — every attempted attack against bel was either
+interrupted (Blazehowl Noct x2) or simply never resolved. bel steadily traded Pals in even fights
+(three of bel's own creatures died to eric's Elphidran Aqua/Astegon around turn 12) but kept
+recurring pressure through Pengullet, Chillet, and a late Elphidran Aqua, closing the life total
+from 10 down to 0 in five clean, evenly-spaced hits with zero damage taken in return. This is the
+first fully "clean" log in this batch — every point of life change on both sides is directly
+traceable to a named attack line, with no gaps to flag.
+
+CLARIFICATION FLAGS for user review:
+- Turn 11's bare-form "Pyrin Noct" interrupt nullifies bel's OWN Jormuntide attack — worth
+  confirming this reads as eric is dangers using a Pyrin Noct (a card not seen in eric's hand
+  reveals elsewhere in this log) to shut down bel's attack, rather than a misattributed line.
+- Same open scope note as matches 1-4: Ze's "BLUE/PURPLE DECK" hasn't been cross-referenced
+  against a saved decklist from Ze's own Decks page (out of scope for this pass).

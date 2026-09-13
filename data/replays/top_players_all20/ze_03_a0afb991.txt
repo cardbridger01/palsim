@@ -1,0 +1,322 @@
+=====================================================================
+MATCH: Ze (in-game name "bel") vs XMG  [Ze's match #3 of 10 pulled]
+recordId: a0afb991-01a7-4a3b-b6fc-406b89f82395
+RESULT: BEL WINS - "XMG ran out of cards." Final life: bel (WINNER) 4, XMG 0.
+NOTE: *** FULLY RECONSTRUCTED FROM THE RAW TAGGED EVENT LOG *** — like the other four files
+retracted for the turn-eviction bug, this file was rebuilt from the replay viewer's "Copy" export
+(tags every event "[T<N> <phase>]"). This is the longest game in the whole 20-game pull, and the
+raw export happened to have enough buffer headroom to capture the complete game in one pull this
+time — all the way from true Turn 1 to the exact final action ("They 2 to 0 life"). The true game
+is 17 turns, not the "34" originally recorded — the rendered/curated log splits and re-splits each
+true turn (main-phase actions, the opponent's reactive response, and again around every interrupt)
+into an inflated number of boxes; see pingu_06's header NOTE for the fuller explanation. Every life
+total, interrupt, and action below is the authoritative tagged sequence, not a partial recovery.
+NOTE: This is still the longest game in the batch by true turn count (17 turns) and the only
+deck-out win seen in this Ze/Pingu pull. The stated win reason is the deck-out ("ran out of
+cards"), NOT a life-based reason, even though XMG's own life total also lands at exactly 0 on the
+same final action (Turn 17's Pengullet attack, "They 2 to 0 life") — both conditions appear to
+land simultaneously; the UI reports only the deck-out reason. Flagging the overlap rather than
+guessing at resolution order.
+NOTE: XMG's life progression across the 17-turn game is fully logged and clean: 10 -> 8 (Turn 3,
+Elphidran Aqua hit) -> 6 (Turn 5, Elphidran Aqua hit) -> 4 (Turn 9, Chillet hit) -> 2 (Turn 16,
+Pengullet hit) -> 0 (Turn 17, Pengullet hit). bel took three hits the other way: 10 -> 8 (Turn 12,
+Chillet) -> 6 (Turn 13, Chillet) -> 4 (Turn 14, Chillet), finishing at 4 exactly as the WINS screen
+shows.
+NOTE: The raw log has one genuine cross-turn artifact worth flagging (not an extraction error —
+transcribed exactly as tagged): Turn 15's "XMG's Astegon attacks bel for 3" has no resolution line
+under Turn 15 itself; the nullifying interrupt ("bel interrupted with Cryolinx, paid 1 Soul. The
+attack was nullified.") is tagged under Turn 14 instead, appearing after that turn's other trailing
+events. Presented below exactly where the raw log tags it.
+NOTE: Deck labeled "BLUE/PURPLE DECK" on bel's HUD, same generic label as matches 1-2.
+NOTE: 3 bare-form interrupts (attacking Pal's attack "was interrupted" with no player/cost shown,
+attacker cross-checked against the curated view's card-name annotations) preserved verbatim below:
+  Turn 10: bel's Relaxaurus's attack was interrupted, by XMG's Cryolinx
+  Turn 13: bel's Elphidran Aqua's attack was interrupted, by XMG's Cryolinx (1st of 2 this turn)
+  Turn 13: bel's Pengullet's attack was interrupted, by XMG's Reindrix (2nd of 2 this turn)
+Five more bare "X's attack was interrupted" events (Turn 3 Elphidran, Turn 5 Elphidran Aqua, Turn
+7 Pengullet, Turn 9 Chillet) could not be attributed to a specific XMG card — no curated
+cross-check was available for them. Two further "attack was interrupted" events (Turn 6 and Turn 8,
+both Jormuntide) are immediately preceded in the raw log by "No valid target" — these read as the
+attack fizzling for lack of a legal target rather than a defender interrupt, and are transcribed
+as such rather than implied to be a card interrupt.
+3 additional FULL-form interrupts occurred (Turn 8 Blazehowl Noct, Turn 9 x2 Cryolinx and
+Blazehowl Noct, Turn 14 Cryolinx) — included in the verbatim body only.
+NOTE: Each turn below covers one full round: bel's Stand/Draw/Soul/Main/End phase actions,
+followed by XMG's reactive response within that same turn (per the raw log, often split across
+the start and the end of the turn's own tag — presented here in narrative order).
+=====================================================================
+TURN 1
+BEL
+Turn opened — Souls 1/1 · Hand: Aurora Guide, Aurora Guide, Pengullet – Yearning for the Sky, Pengullet – Yearning for the Sky, Pengullet Rocket Launcher
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+(no XMG response logged this turn — opening turn)
+TURN 2
+BEL
+Turn opened — Souls 4/4 · Hand: Blazehowl Noct – Darkflame Defender, Cryolinx – Arctic Ordeal, Elphidran – Gentle Radiance, Elphidran Aqua – Gentle Ripples, Jormuntide – Surging Sea Serpent, Reindrix – Icy Gaze
+Deployed Elphidran – Gentle Radiance to slot 1 for 4 Souls.
+(no XMG response logged this turn)
+TURN 3
+BEL
+Turn opened — Souls 6/6 · Hand: Blazehowl Noct – Darkflame Defender, Blazehowl Noct – Darkflame Defender, Cryolinx – Arctic Ordeal, Elphidran Aqua – Gentle Ripples, Jormuntide – Surging Sea Serpent, Reindrix – Icy Gaze
+Chose not to reveal a Dragon.
+Elphidran – Gentle Radiance's attack was interrupted.
+Deployed Elphidran Aqua – Gentle Ripples to slot 2 for 6 Souls.
+Drew 2 cards.
+Put Reindrix – Icy Gaze on top of the deck.
+Elphidran Aqua – Gentle Ripples attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+XMG (response)
+XMG deployed Pengullet Rocket Launcher.
+Elphidran Aqua – Gentle Ripples was Rested.
+Elphidran Aqua – Gentle Ripples won't stand while the source stays in play.
+TURN 4
+BEL
+Turn opened — Souls 8/8 · Hand: Blazehowl Noct – Darkflame Defender, Blazehowl Noct – Darkflame Defender, Cryolinx – Arctic Ordeal, Jormuntide – Surging Sea Serpent, Jormuntide – Surging Sea Serpent, Reindrix – Icy Gaze, Reindrix – Icy Gaze
+Deployed Jormuntide – Surging Sea Serpent to slot 1 for 8 Souls.
+Drew 1.
+Jormuntide – Surging Sea Serpent (1600) attacked Relaxaurus – Hungry Gunner (1200).
+Relaxaurus – Hungry Gunner destroyed, 1600 damage vs 1200 Power.
+XMG (response)
+XMG deployed Relaxaurus – Hungry Gunner.
+XMG's Relaxaurus – Hungry Gunner attacks bel's Elphidran – Gentle Radiance.
+Relaxaurus – Hungry Gunner (1200) attacked Elphidran – Gentle Radiance (600).
+Elphidran – Gentle Radiance destroyed, 1200 damage vs 600 Power.
+Jormuntide – Surging Sea Serpent was destroyed.
+TURN 5
+BEL
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct – Darkflame Defender, Blazehowl Noct – Darkflame Defender, Cryolinx – Arctic Ordeal, Elphidran Aqua – Gentle Ripples, Jormuntide – Surging Sea Serpent, Jormuntide – Surging Sea Serpent, Reindrix – Icy Gaze, Reindrix – Icy Gaze
+Elphidran Aqua – Gentle Ripples's attack was interrupted.
+Deployed Elphidran Aqua – Gentle Ripples to slot 1 for 6 Souls.
+Drew 2 cards.
+Put Relaxaurus – Hungry Gunner on top of the deck.
+Elphidran Aqua – Gentle Ripples attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+Rested 3 Souls, drew 1 card.
+XMG (response)
+XMG played Strike from the Darkness.
+XMG played Pal Sphere.
+TURN 6
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Blazehowl Noct – Darkflame Defender, Blazehowl Noct – Darkflame Defender, Blazehowl Noct – Darkflame Defender, Cryolinx – Arctic Ordeal, Jormuntide – Surging Sea Serpent, Jormuntide – Surging Sea Serpent, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner
+Deployed Jormuntide – Surging Sea Serpent to slot 1 for 8 Souls.
+Drew 1.
+No valid target — Jormuntide – Surging Sea Serpent's attack fizzled (nothing to hit).
+XMG (response)
+XMG deployed Pengullet – Yearning for the Sky.
+XMG activated Pengullet Rocket Launcher.
+XMG's Pengullet – Yearning for the Sky gets power +500 until end of turn.
+XMG activated Pengullet – Yearning for the Sky.
+XMG deployed Pengullet Rocket Launcher.
+XMG returned Pengullet – Yearning for the Sky from their graveyard to hand.
+Discarded Relaxaurus – Hungry Gunner.
+TURN 7
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Blazehowl Noct – Darkflame Defender, Blazehowl Noct – Darkflame Defender, Blazehowl Noct – Darkflame Defender, Cryolinx – Arctic Ordeal, Jormuntide – Surging Sea Serpent, Pengullet – Yearning for the Sky, Pengullet Rocket Launcher, Reindrix – Icy Gaze, Reindrix – Icy Gaze
+Deployed Pengullet – Yearning for the Sky to slot 1 for 4 Souls.
+Pengullet – Yearning for the Sky's attack was interrupted.
+Deployed Pengullet Rocket Launcher to slot 2 for 4 Souls.
+XMG (response)
+XMG played Zoe's Strategy.
+XMG deployed Pengullet – Yearning for the Sky.
+XMG activated Pengullet Rocket Launcher.
+XMG's Pengullet – Yearning for the Sky gets power +500 until end of turn.
+XMG activated Pengullet – Yearning for the Sky.
+Pengullet – Yearning for the Sky gets power -1000 until end of turn.
+Drew 1.
+TURN 8
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Blazehowl Noct – Darkflame Defender, Blazehowl Noct – Darkflame Defender, Cryolinx – Arctic Ordeal, Jormuntide – Surging Sea Serpent, Pengullet Rocket Launcher, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Zoe's Strategy
+Deployed Jormuntide – Surging Sea Serpent to slot 1 for 8 Souls.
+Drew 1.
+No valid target — Jormuntide – Surging Sea Serpent's attack fizzled (nothing to hit).
+XMG (response)
+XMG deployed Astegon – Aegis Wyvern of Death.
+XMG's Astegon – Aegis Wyvern of Death attacks bel for 3.
+bel interrupted with Blazehowl Noct – Darkflame Defender, paid 1 Soul. The attack was nullified.
+XMG returned Pengullet – Yearning for the Sky from their graveyard to hand.
+Discarded Aurora Guide.
+TURN 9
+BEL
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct – Darkflame Defender, Blazehowl Noct – Darkflame Defender, Cryolinx – Arctic Ordeal, Pengullet Rocket Launcher, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Zoe's Strategy, Zoe's Strategy
+Rested 3 Souls, drew 1 card.
+Deployed Chillet – Dragon Whisperer to slot 1 for 5 Souls.
+Revealed Chillet – Dragon Whisperer.
+Deployed Chillet – Dragon Whisperer.
+Revealed Reindrix – Icy Gaze, added to hand.
+Chillet – Dragon Whisperer attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+Chillet – Dragon Whisperer's attack was interrupted.
+XMG (response)
+XMG played Zoe's Strategy.
+XMG deployed Pengullet – Yearning for the Sky.
+XMG activated Pengullet Rocket Launcher.
+XMG's Pengullet – Yearning for the Sky gets power +500 until end of turn.
+XMG activated Pengullet – Yearning for the Sky.
+XMG's Astegon – Aegis Wyvern of Death attacks bel for 3.
+bel interrupted with Cryolinx – Arctic Ordeal, paid 1 Soul. The attack was nullified.
+bel interrupted with Blazehowl Noct – Darkflame Defender, paid 1 Soul. The attack was nullified.
+TURN 10
+BEL
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct – Darkflame Defender, Pengullet Rocket Launcher, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner, Zoe's Strategy, Zoe's Strategy
+Deployed Relaxaurus – Hungry Gunner to slot 1 for 7 Souls.
+Relaxaurus – Hungry Gunner gets power +200 until end of turn.
+Relaxaurus – Hungry Gunner's attack was interrupted, by XMG's Cryolinx – Arctic Ordeal.
+Played Zoe's Strategy for 3 Souls.
+Returned Pengullet – Yearning for the Sky from graveyard to hand.
+XMG must discard 1.
+XMG discarded Relaxaurus – Hungry Gunner.
+XMG (response)
+XMG's Astegon – Aegis Wyvern of Death attacks bel's Chillet – Dragon Whisperer.
+XMG deployed Elphidran Aqua – Gentle Ripples.
+XMG activated Pengullet Rocket Launcher.
+XMG's Elphidran Aqua – Gentle Ripples gets power +200 until end of turn.
+XMG's Elphidran Aqua – Gentle Ripples attacks bel for 2.
+XMG deployed Pengullet – Yearning for the Sky.
+XMG's Pengullet – Yearning for the Sky gets power +500 until end of turn.
+XMG activated Pengullet – Yearning for the Sky.
+TURN 11
+BEL
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct – Darkflame Defender, Elphidran Aqua – Gentle Ripples, Pengullet – Yearning for the Sky, Pengullet Rocket Launcher, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Zoe's Strategy
+Deployed Pengullet Rocket Launcher to slot 1 for 4 Souls.
+Deployed Pengullet – Yearning for the Sky to slot 3 for 4 Souls.
+Pengullet – Yearning for the Sky gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1600 to every XMG Pal, then sacrificed this card.
+XMG (response)
+XMG activated Pengullet Rocket Launcher.
+XMG's Astegon – Aegis Wyvern of Death gets power +200 until end of turn.
+XMG's Astegon – Aegis Wyvern of Death attacks bel's Relaxaurus – Hungry Gunner.
+Astegon – Aegis Wyvern of Death (1200+200 = 1400) attacked Relaxaurus – Hungry Gunner (1200).
+Relaxaurus – Hungry Gunner destroyed, 1400 damage vs 1200 Power.
+XMG deployed Jormuntide – Surging Sea Serpent.
+XMG's Jormuntide – Surging Sea Serpent attacks bel for 3.
+Jormuntide – Surging Sea Serpent attacked bel for 3; bel's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+bel interrupted with Blazehowl Noct – Darkflame Defender, paid 1 Soul. The attack was nullified.
+TURN 12
+BEL
+Turn opened — Souls 10/10 · Hand: Elphidran Aqua – Gentle Ripples, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Zoe's Strategy, Zoe's Strategy
+Played Zoe's Strategy for 3 Souls.
+Returned Pengullet – Yearning for the Sky from graveyard to hand.
+XMG must discard 1.
+XMG discarded Pengullet Rocket Launcher.
+Deployed Pengullet – Yearning for the Sky to slot 3 for 4 Souls.
+Pengullet – Yearning for the Sky gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1600 to every XMG Pal, then sacrificed this card.
+XMG discarded Aurora Guide.
+XMG (response)
+XMG deployed Chillet – Dragon Whisperer.
+XMG deployed Astegon – Aegis Wyvern of Death.
+XMG's Chillet – Dragon Whisperer attacks bel for 2.
+Chillet – Dragon Whisperer hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 10 to 8 life.
+XMG's Astegon – Aegis Wyvern of Death attacks bel for 3.
+XMG returned Chillet – Dragon Whisperer from their graveyard to hand.
+Discarded Elphidran – Gentle Radiance.
+TURN 13
+BEL
+Turn opened — Souls 10/10 · Hand: Cryolinx – Arctic Ordeal, Elphidran Aqua – Gentle Ripples, Pengullet – Yearning for the Sky, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Reindrix – Icy Gaze
+Deployed Elphidran Aqua – Gentle Ripples to slot 3 for 6 Souls.
+Drew 2 cards.
+Put Elphidran – Gentle Radiance on top of the deck.
+Elphidran Aqua – Gentle Ripples gets power +200 until end of turn.
+Elphidran Aqua – Gentle Ripples's attack was interrupted, by XMG's Cryolinx – Arctic Ordeal.
+Deployed Pengullet – Yearning for the Sky to slot 4 for 4 Souls.
+Pengullet – Yearning for the Sky gets power +500 and the explode skill until end of turn.
+Pengullet – Yearning for the Sky's attack was interrupted, by XMG's Reindrix – Icy Gaze.
+Drew 1.
+XMG (response)
+XMG played Zoe's Strategy.
+XMG deployed Chillet – Dragon Whisperer.
+XMG revealed Pengullet – Yearning for the Sky and added it to their hand.
+XMG's Chillet – Dragon Whisperer attacks bel for 2.
+Chillet – Dragon Whisperer hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 8 to 6 life.
+TURN 14
+BEL
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct – Darkflame Defender, Cryolinx – Arctic Ordeal, Elphidran Aqua – Gentle Ripples, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Relaxaurus – Hungry Gunner
+Deployed Relaxaurus – Hungry Gunner to slot 3 for 7 Souls.
+Relaxaurus – Hungry Gunner (1200) attacked Chillet – Dragon Whisperer (900).
+Chillet – Dragon Whisperer destroyed, 1200 damage vs 900 Power.
+Relaxaurus – Hungry Gunner gets power -1000 until end of turn.
+bel interrupted with Cryolinx – Arctic Ordeal, paid 1 Soul. The attack was nullified. [resolves an
+attack tagged under the next turn — see NOTE above]
+XMG (response)
+XMG's Chillet – Dragon Whisperer attacks bel for 2.
+Chillet – Dragon Whisperer hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 6 to 4 life.
+XMG deployed Elphidran – Gentle Radiance.
+XMG's Elphidran – Gentle Radiance attacks bel for 2.
+Elphidran – Gentle Radiance attacked bel for 2; bel's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+XMG deployed Pengullet – Yearning for the Sky.
+XMG activated Pengullet Rocket Launcher.
+XMG's Pengullet – Yearning for the Sky gets power +500 until end of turn.
+XMG activated Pengullet – Yearning for the Sky.
+TURN 15
+BEL
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct – Darkflame Defender, Elphidran Aqua – Gentle Ripples, Pengullet – Yearning for the Sky, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Reindrix – Icy Gaze
+Deployed Elphidran Aqua – Gentle Ripples to slot 3 for 6 Souls.
+Drew 2 cards.
+Put Aurora Guide on top of the deck.
+Elphidran Aqua – Gentle Ripples attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Deployed Pengullet – Yearning for the Sky to slot 4 for 4 Souls.
+Pengullet – Yearning for the Sky gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1600 to every XMG Pal, then sacrificed this card.
+XMG (response)
+XMG deployed Astegon – Aegis Wyvern of Death.
+XMG's Astegon – Aegis Wyvern of Death attacks bel for 3. [nullified — see the interrupt tagged
+under Turn 14 above]
+Elphidran Aqua – Gentle Ripples was destroyed.
+TURN 16
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Aurora Guide, Blazehowl Noct – Darkflame Defender, Pengullet – Yearning for the Sky, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Reindrix – Icy Gaze
+Deployed Pengullet – Yearning for the Sky to slot 3 for 4 Souls.
+Pengullet – Yearning for the Sky attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 4 to 2 life.
+Deployed Reindrix – Icy Gaze to slot 4 for 5 Souls.
+Reindrix – Icy Gaze attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+XMG (response)
+XMG played Aurora Guide.
+XMG played Strike from the Darkness.
+bel interrupted with Blazehowl Noct – Darkflame Defender, paid 1 Soul. The attack was nullified.
+Drew 1.
+TURN 17 (FINAL TURN)
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Aurora Guide, Chillet – Dragon Whisperer, Pengullet – Yearning for the Sky, Reindrix – Icy Gaze, Reindrix – Icy Gaze, Reindrix – Icy Gaze
+Deployed Pengullet – Yearning for the Sky to slot 3 for 4 Souls.
+Pengullet – Yearning for the Sky attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 2 to 0 life.
+XMG (response)
+XMG deployed Chillet – Dragon Whisperer.
+XMG revealed Strike from the Darkness and added it to their hand.
+XMG's Chillet – Dragon Whisperer attacks bel for 2.
+XMG deployed Pengullet – Yearning for the Sky.
+XMG activated Pengullet Rocket Launcher.
+XMG's Pengullet – Yearning for the Sky gets power +500 until end of turn.
+XMG activated Pengullet – Yearning for the Sky.
+
+BEL WINS
+XMG ran out of cards.
+FINAL LIFE: bel (WINNER) 4, XMG 0.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+The longest and grindiest game in the whole 20-game pull, decided by deck-out rather than a clean
+knockout. Both players ground through 17 full turns of trades and Zoe's Strategy recursion, but
+the decisive edge was tempo: bel's repeated Pengullet-explode plays (three separate 1600-damage
+board wipes) kept resetting XMG's board while bel's Elphidran/Elphidran Aqua/Chillet core chipped
+away at life in clean 2-life increments (10->8->6->4->2->0 across turns 3, 5, 9, 16, and 17). XMG
+hit back three times through turns 12-14 (Chillet, Chillet, Chillet again) taking bel from 10 down
+to 4, but a dense defensive package (Blazehowl Noct and Cryolinx doing double duty as both
+attack-side and defense-side interrupts) kept that from going further. XMG's deck ran out at the
+same moment their life did — the UI credits the deck-out as the official win condition, but
+either reading tells the same story: XMG simply ran out of resources to keep pace.
+
+CLARIFICATION FLAGS for user review:
+- This file was fully rebuilt from the site's raw tagged event log (17 real turns, complete — the
+  raw export happened to fit the entire game in one pull for this file) rather than the
+  rendered/curated log used for the original pull, which had inflated this game to "34 turns" —
+  worse than 2x. All life totals, interrupts, and turn numbers below are now the authoritative,
+  fully verified sequence.
+- Several early/mid-game interrupts (Turns 3, 5, 7, 9) could not be attributed to a specific XMG
+  card — see the NOTE block above. Two more (Turns 6 and 8) were "No valid target" fizzles, not
+  card interrupts, and are labeled as such.
+- The Turn 14/15 cross-turn tagging artifact (interrupt resolution tagged one turn earlier than
+  the attack it resolves) is a genuine site quirk, not a transcription error — see the NOTE above.
+- Same open scope note as other Ze files: bel's "BLUE/PURPLE DECK" hasn't been cross-referenced
+  against a saved decklist (out of scope for this pass).

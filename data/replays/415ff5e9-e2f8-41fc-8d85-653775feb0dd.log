@@ -1,0 +1,236 @@
+----- TIER 1 MATCH 10/34 (recordId 415ff5e9-e2f8-41fc-8d85-653775feb0dd) -----
+
+=====================================================================
+MATCH: XMG vs Zutilt10
+recordId: 415ff5e9-e2f8-41fc-8d85-653775feb0dd
+RESULT: XMG WINS - Zutilt10's life hit zero. Final life: XMG (WINNER) 7, Zutilt10 0.
+NOTE: Zutilt10's deck titled "COPY OF SUZAKU GUN CONTROL" in HUD (netdecked copy).
+NOTE: This match's entry in ALL_TIER1_LOGS.txt already contained a turn-by-turn log rather
+than a prose summary, but its bare-form interrupt lines had been reformatted/normalized
+rather than preserved as the site's actual two-line verbatim rendering. Re-extracted live
+from the replay to restore the true verbatim bare form below.
+NOTE: 3 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 4:  Reindrix interrupts Suzaku's attack
+  Turn 25: Cryolinx interrupts Suzaku's attack
+  Turn 31: Reindrix interrupts Bushi's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+XMG
+Elphidran Aqua (900) attacked Lamball (200).
+Elphidran Aqua
+Lamball destroyed, 900 damage vs 200 Power.
+XMG deployed Pengullet.
+XMG activated Single-Shot Sphere Launcher.
+XMG's Pengullet gets power +200 until end of turn.
+XMG's Pengullet attacks Zutilt10's Univolt.
+Pengullet (500+200 = 700) attacked Univolt (600).
+Pengullet
+Univolt destroyed, 700 damage vs 600 Power.
+Deployed Reptyro to slot 1 for 8 Souls.
+Got 3 .
+Spent 3 (6 left).
+took nothing
+TURN 2
+ZUTILT10
+Reptyro (1500) attacked Elphidran Aqua (900).
+Reptyro
+Elphidran Aqua destroyed, 1500 damage vs 900 Power.
+TURN 3
+XMG
+XMG deployed Lyleen Noct.
+XMG's Lyleen Noct attacks Zutilt10's Reptyro.
+Lyleen Noct (1700) attacked Reptyro (1500).
+Lyleen Noct
+Reptyro destroyed, 1700 damage vs 1500 Power.
+XMG's Pengullet attacks Zutilt10 for 1.
+Pengullet hit Zutilt10 for 1. Damage Check: 1 card milled, no Lucky. Zutilt10 10 to 9 life.
+Deployed Suzaku to slot 1 for 7 Souls.
+TURN 4
+ZUTILT10
+Reindrix
+Suzaku's attack was interrupted.
+TURN 5
+XMG
+XMG played Strike from the Darkness.
+TURN 6
+XMG
+Suzaku was destroyed.
+TURN 7
+XMG
+XMG's Lyleen Noct attacks Zutilt10 for 3.
+TURN 8
+XMG
+Zutilt10 interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 9
+XMG
+XMG deployed Grappling Gun.
+XMG activated Grappling Gun.
+Deployed Kitsun to slot 1 for 5 Souls.
+Deployed Single-Shot Rifle to slot 2 for 4 Souls.
+TURN 10
+ZUTILT10
+Kitsun attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 9 to 7 life.
+TURN 11
+XMG
+XMG deployed Elphidran Aqua.
+XMG played Zoe's Strategy.
+TURN 12
+XMG
+XMG returned Lyleen Noct from their graveyard to hand.
+Discarded Grappling Gun.
+TURN 13
+XMG
+XMG's Elphidran Aqua attacks Zutilt10's Kitsun.
+Elphidran Aqua (900) attacked Kitsun (400).
+Elphidran Aqua
+Kitsun destroyed, 900 damage vs 400 Power.
+XMG activated Grappling Gun.
+Deployed Reptyro Cryst to slot 1 for 8 Souls.
+Drew 1.
+Reptyro Cryst gets power +200 until end of turn.
+TURN 14
+ZUTILT10
+They blocked with Elphidran Aqua.
+Reptyro Cryst (1200+200 = 1400) attacked Elphidran Aqua (900).
+Reptyro Cryst
+Elphidran Aqua destroyed, 1400 damage vs 900 Power.
+TURN 15
+XMG
+XMG deployed Lyleen Noct.
+XMG's Lyleen Noct attacks Zutilt10's Reptyro Cryst.
+TURN 16
+XMG
+Zutilt10 interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 17
+XMG
+XMG activated Grappling Gun.
+Rested 3 Souls, drew 1 card.
+Deployed Single-Shot Rifle to slot 3 for 4 Souls.
+Reptyro Cryst gets power +200 until end of turn.
+Reptyro Cryst gets power +200 until end of turn.
+TURN 18
+ZUTILT10
+They blocked with Lyleen Noct.
+Reptyro Cryst (1200+400 = 1600) attacked Lyleen Noct (1700).
+Reptyro Cryst
+Lyleen Noct destroyed, 3100 damage vs 1700 Power.
+Reptyro Cryst destroyed, 1700 damage vs 1600 Power.
+TURN 19
+XMG
+XMG deployed Elphidran Aqua.
+XMG deployed Single-Shot Sphere Launcher.
+XMG's Elphidran Aqua attacks Zutilt10 for 2.
+TURN 20
+XMG
+Zutilt10 interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 21
+XMG
+XMG activated Grappling Gun.
+Played Pal Sphere for 4 Souls.
+Drew 3.
+Played Pal Sphere for 4 Souls.
+Drew 3.
+TURN 22
+XMG
+XMG deployed Pengullet Rocket Launcher.
+XMG's Elphidran Aqua attacks Zutilt10 for 2.
+TURN 23
+XMG
+Zutilt10 interrupted with Foxparks, paid 1 Soul. The attack was nullified.
+TURN 24
+XMG
+XMG activated Grappling Gun.
+Deployed Suzaku to slot 1 for 7 Souls.
+TURN 25
+ZUTILT10
+Cryolinx
+Suzaku's attack was interrupted.
+TURN 26
+XMG
+XMG deployed Astegon.
+TURN 27
+XMG
+Suzaku gets power -1000 until end of turn.
+TURN 28
+XMG
+XMG's Astegon attacks Zutilt10 for 3.
+TURN 29
+XMG
+Zutilt10 interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 30
+XMG
+XMG activated Grappling Gun.
+Deployed Bushi to slot 1 for 5 Souls.
+Bushi gets power +200 until end of turn.
+Bushi gets power +200 until end of turn.
+TURN 31
+ZUTILT10
+Reindrix
+Bushi's attack was interrupted.
+Bushi returned to hand.
+Deployed Lamball to slot 1 for 2 Souls.
+TURN 32
+XMG
+XMG's Astegon attacks Zutilt10 for 3.
+TURN 33
+XMG
+Zutilt10 interrupted with Bushi, paid 1 Soul. The attack was nullified.
+TURN 34
+XMG
+XMG deployed Pengullet.
+XMG's Pengullet attacks Zutilt10 for 2.
+Pengullet hit Zutilt10 for 2. Damage Check: 2 cards milled, no Lucky. Zutilt10 9 to 7 life.
+XMG activated Grappling Gun.
+Rested 3 Souls, drew 1 card.
+Deployed Makeshift Handgun to slot 1 for 2 Souls.
+Deployed Makeshift Handgun to slot 4 for 2 Souls.
+TURN 35
+XMG
+XMG's Astegon attacks Zutilt10 for 3.
+Astegon hit Zutilt10 for 3. Damage Check: 3 cards milled, no Lucky. Zutilt10 7 to 4 life.
+XMG deployed Pengullet.
+XMG's Pengullet attacks Zutilt10 for 2.
+Pengullet hit Zutilt10 for 2. Damage Check: 2 cards milled, no Lucky. Zutilt10 4 to 2 life.
+XMG activated Grappling Gun.
+Deployed Lamball to slot 5 for 2 Souls.
+Deployed Primitive Furnace to slot 6 for 2 Souls.
+Assigned Lamball.
+Got 3 .
+Drew 1.
+Spent 6 .
+Next Gear costs 1 less this turn.
+Next Gear costs 2 less this turn.
+Next Gear costs 3 less this turn.
+Next Gear costs 4 less this turn.
+Next Gear costs 5 less this turn.
+Next Gear costs 6 less this turn.
+Deployed Pump-Action Shotgun to slot 7 for 1 Souls.
+Dealt 1200 to every XMG Pal.
+Rested 3 Souls, drew 1 card.
+TURN 36
+XMG
+XMG deployed Chillet.
+XMG revealed Pengullet Rocket Launcher and added it to their hand.
+XMG's Chillet attacks Zutilt10 for 2.
+TURN 37
+XMG
+Zutilt10 interrupted with Bushi, paid 1 Soul. The attack was nullified.
+TURN 38
+XMG
+XMG deployed Pengullet.
+XMG's Pengullet attacks Zutilt10 for 2.
+Pengullet hit Zutilt10 for 2. Damage Check: 2 cards milled, no Lucky. Zutilt10 2 to 0 life.
+
+XMG WINS
+Zutilt10's life hit zero.
+FINAL LIFE: XMG (WINNER) 7, Zutilt10 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+38-turn game. XMG's Elphidran Aqua/Pengullet destroyed Zutilt10's Lamball/Univolt early (turn 1). Zutilt10's Reptyro (1500) destroyed XMG's Elphidran Aqua (turn 2), but XMG's Lyleen Noct (1700) destroyed Reptyro right back (turn 3); Pengullet chipped Zutilt10 for 1 (10->9 life). Several XMG attacks (Suzaku, Lyleen Noct, Astegon, Bushi, Chillet) were nullified across the game by Zutilt10's deep interrupt suite (Reindrix x3, Cryolinx x3, Foxparks, Bushi x2). Reptyro Cryst destroyed two of XMG's blockers via combat (Elphidran Aqua turn 14, Lyleen Noct turn 18, mutually trading itself the second time). XMG built a Grappling Gun soul-engine and eventually ground Zutilt10 down via Pengullet/Astegon/Chillet chip damage (9->7->4->2->0), closing with a Pengullet hit for the final 2.
+
+

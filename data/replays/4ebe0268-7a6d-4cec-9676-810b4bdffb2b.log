@@ -1,0 +1,88 @@
+----- TIER 1 MATCH 11/34 (recordId 4ebe0268-7a6d-4cec-9676-810b4bdffb2b) -----
+
+=====================================================================
+MATCH: Charcola vs Final Serenity
+recordId: 4ebe0268-7a6d-4cec-9676-810b4bdffb2b
+RESULT: FINAL SERENITY WINS - Charcola's life hit zero. Final life: Final Serenity (WINNER) 8, Charcola 0.
+NOTE: Final Serenity's deck titled "BLUE/PURPLE DRAGON CONTROL" in HUD.
+NOTE: Zero bare-form interrupts in this game - both interrupts (Turn 6 Pyrin Noct, Turn 9
+Cryolinx) are full-form ("Final Serenity interrupted with <card>, paid 1 Soul. The attack
+was nullified.").
+=====================================================================
+TURN 1
+CHARCOLA
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Deployed Antique Mirror to slot 1 for 1 Souls.
+Drew 1.
+Charcola played The Adventure Begins.
+Deployed Pengullet to slot 2 for 4 Souls.
+TURN 2
+FINAL SERENITY
+✦
+Pengullet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 3
+CHARCOLA
+Charcola deployed Pengullet.
+Charcola's Pengullet attacks Final Serenity for 2.
+Pengullet hit Final Serenity for 2. Damage Check: 2 cards milled, no Lucky. Final Serenity 10 to 8 life.
+TURN 4
+FINAL SERENITY
+✦
+Pengullet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Deployed Chillet to slot 3 for 5 Souls.
+Revealed Aurora Guide, added to hand.
+Chillet (900) attacked Pengullet (600).
+Chillet
+Pengullet destroyed, 900 damage vs 600 Power.
+TURN 5
+CHARCOLA
+Charcola deployed Suzaku Aqua.
+Charcola's Suzaku Aqua attacks Final Serenity's Chillet.
+TURN 6
+CHARCOLA
+Final Serenity interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+TURN 7
+FINAL SERENITY
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+Played Zoe's Strategy for 3 Souls.
+Drew 1.
+Butchered Pengullet.
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Deployed Elphidran to slot 2 for 4 Souls.
+Chose not to reveal a Dragon.
+Elphidran attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+TURN 8
+CHARCOLA
+Charcola played Victor's Strategy.
+Charcola looked at 5 cards and took 1 into their hand.
+Charcola deployed Elphidran Aqua.
+Charcola's Elphidran Aqua attacks Final Serenity's Elphidran.
+TURN 9
+CHARCOLA
+Final Serenity interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 10
+FINAL SERENITY
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Chose not to reveal a Dragon.
+Elphidran attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Relaxaurus on top of the deck.
+Deployed Chillet to slot 4 for 5 Souls.
+Revealed Relaxaurus.
+Deployed Relaxaurus.
+Relaxaurus attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 4 to 1 life.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 1 to 0 life.
+
+FINAL SERENITY WINS
+Charcola's life hit zero.
+FINAL LIFE: Final Serenity (WINNER) 8, Charcola 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Short 10-turn game. Charcola deployed Antique Mirror and Pengullet early (turn 1); Pengullet chipped Final Serenity for 2 (10->8 life, turn 3) but several of Final Serenity's own Pengullet attacks were cancelled by Charcola's Lucky Pal. Final Serenity's Chillet destroyed Charcola's Pengullet (turn 4). Charcola's Suzaku Aqua and Elphidran Aqua attacks were both nullified by Final Serenity's Pyrin Noct and Cryolinx interrupts (turns 6, 9). Final Serenity then ground Charcola down via Pengullet/Chillet/Elphidran chip damage across turns 7-10 (10->8->6->4->1->0), closing with Chillet's final hit for 2.
+
+

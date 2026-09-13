@@ -1,0 +1,245 @@
+----- TIER 1 MATCH 16/34 (recordId 66070b13-c5f5-49f0-b019-9b9d680630bf) -----
+
+=====================================================================
+MATCH: Jsn (styled "𝙅𝙨𝙣") vs Carbon
+recordId: 66070b13-c5f5-49f0-b019-9b9d680630bf
+RESULT: JSN WINS - Carbon surrendered. Final life: Jsn (WINNER) 8, Carbon 5.
+NOTE: Carbon's deck titled "BLUE/PURPLE DECK (AUG 19)" in HUD.
+NOTE: 6 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 6:  Cryolinx interrupts Lyleen Noct's attack
+  Turn 10: Cryolinx interrupts Relaxaurus's attack
+  Turn 18: Cryolinx interrupts Astegon's attack
+  Turn 22: Reindrix interrupts Elphidran Aqua's attack
+  Turn 28: Foxparks interrupts Chillet's attack
+  Turn 36: Bushi interrupts Lyleen Noct's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+𝙅𝙨𝙣
+𝙅𝙨𝙣 deployed Suzaku.
+TURN 2
+𝙅𝙨𝙣
+Chillet took 900 damage and was destroyed.
+TURN 3
+𝙅𝙨𝙣
+𝙅𝙨𝙣 activated Pump-Action Shotgun.
+𝙅𝙨𝙣's Suzaku gets power +200 until end of turn.
+𝙅𝙨𝙣 activated Pump-Action Shotgun.
+𝙅𝙨𝙣's Suzaku gets power +200 until end of turn.
+𝙅𝙨𝙣 activated Single-Shot Rifle.
+𝙅𝙨𝙣's Suzaku gets power +200 until end of turn.
+𝙅𝙨𝙣's Suzaku attacks Carbon's Lyleen Noct.
+TURN 4
+𝙅𝙨𝙣
+Carbon interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 5
+𝙅𝙨𝙣
+𝙅𝙨𝙣 deployed Stone Pit.
+Played Strike from the Darkness for 4 Souls.
+Played Victor's Strategy for 3 Souls.
+Looked at top 5: took Astegon to hand.
+TURN 6
+CARBON
+Cryolinx
+Lyleen Noct's attack was interrupted.
+TURN 7
+𝙅𝙨𝙣
+𝙅𝙨𝙣 deployed Mounted Machine Gun.
+𝙅𝙨𝙣 deployed Flambelle.
+𝙅𝙨𝙣 activated Mounted Machine Gun.
+TURN 8
+𝙅𝙨𝙣
+Lyleen Noct took 500 damage.
+Lyleen Noct took 500 damage.
+Lyleen Noct took 500 damage.
+Lyleen Noct took 500 damage and was destroyed.
+TURN 9
+𝙅𝙨𝙣
+Deployed Relaxaurus to slot 1 for 7 Souls.
+TURN 10
+CARBON
+Cryolinx
+Relaxaurus's attack was interrupted.
+TURN 11
+𝙅𝙨𝙣
+𝙅𝙨𝙣 deployed Lamball.
+𝙅𝙨𝙣 activated Stone Pit.
+𝙅𝙨𝙣 deployed Reindrix.
+𝙅𝙨𝙣 activated Mounted Machine Gun.
+TURN 12
+𝙅𝙨𝙣
+Relaxaurus took 500 damage.
+Relaxaurus took 500 damage.
+Relaxaurus took 500 damage and was destroyed.
+TURN 13
+𝙅𝙨𝙣
+Played Dark Cannon for 3 Souls.
+Deployed Elphidran Aqua to slot 1 for 6 Souls.
+Drew 2 cards.
+Put Elphidran Aqua on top of the deck.
+TURN 14
+CARBON
+Elphidran Aqua (900) struck Stone Pit (600).
+Elphidran Aqua
+Stone Pit destroyed, 900 damage vs 600 Power.
+TURN 15
+𝙅𝙨𝙣
+𝙅𝙨𝙣 deployed Flambelle.
+𝙅𝙨𝙣 activated Mounted Machine Gun.
+TURN 16
+𝙅𝙨𝙣
+Elphidran Aqua took 500 damage.
+Elphidran Aqua took 500 damage and was destroyed.
+TURN 17
+𝙅𝙨𝙣
+𝙅𝙨𝙣's Flambelle attacks Carbon for 1.
+Flambelle hit Carbon for 1. Damage Check: 1 card milled, no Lucky. Carbon 10 to 9 life.
+𝙅𝙨𝙣's Lamball attacks Carbon for 1.
+Lamball hit Carbon for 1. Damage Check: 1 card milled, no Lucky. Carbon 9 to 8 life.
+Deployed Astegon to slot 1 for 8 Souls.
+All Pals with Power 300 or less destroyed.
+TURN 18
+CARBON
+Cryolinx
+Astegon's attack was interrupted.
+TURN 19
+𝙅𝙨𝙣
+𝙅𝙨𝙣 deployed Stone Pit.
+𝙅𝙨𝙣 activated Stone Pit.
+𝙅𝙨𝙣 deployed Lamball.
+𝙅𝙨𝙣 activated Mounted Machine Gun.
+TURN 20
+𝙅𝙨𝙣
+Astegon took 500 damage.
+Astegon took 500 damage.
+Astegon took 500 damage and was destroyed.
+TURN 21
+𝙅𝙨𝙣
+Deployed Elphidran Aqua to slot 1 for 6 Souls.
+Drew 2 cards.
+Put Cryolinx on top of the deck.
+Played Victor's Strategy for 3 Souls.
+Looked at top 5: took Zoe's Strategy to hand.
+TURN 22
+CARBON
+Reindrix
+Elphidran Aqua's attack was interrupted.
+TURN 23
+𝙅𝙨𝙣
+𝙅𝙨𝙣 activated Stone Pit.
+𝙅𝙨𝙣 deployed Suzaku.
+TURN 24
+𝙅𝙨𝙣
+Elphidran Aqua took 900 damage and was destroyed.
+TURN 25
+𝙅𝙨𝙣
+𝙅𝙨𝙣's Lamball attacks Carbon for 1.
+Lamball hit Carbon for 1. Damage Check: 1 card milled, no Lucky. Carbon 8 to 7 life.
+𝙅𝙨𝙣's Suzaku attacks Carbon for 3.
+TURN 26
+𝙅𝙨𝙣
+Carbon interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 27
+𝙅𝙨𝙣
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Victor's Strategy, added to hand.
+TURN 28
+CARBON
+Foxparks
+Chillet's attack was interrupted.
+Played Zoe's Strategy for 3 Souls.
+Butchered Chillet.
+TURN 29
+𝙅𝙨𝙣
+𝙅𝙨𝙣 activated Stone Pit.
+𝙅𝙨𝙣 deployed Jormuntide Ignis.
+𝙅𝙨𝙣's Flambelle attacks Carbon for 1.
+Flambelle hit Carbon for 1. Damage Check: 1 card milled, no Lucky. Carbon 7 to 6 life.
+𝙅𝙨𝙣's Jormuntide Ignis attacks Carbon for 4.
+TURN 30
+𝙅𝙨𝙣
+Carbon interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 31
+𝙅𝙨𝙣
+Deployed Astegon to slot 1 for 8 Souls.
+All Pals with Power 300 or less destroyed.
+TURN 32
+CARBON
+Astegon (1200) attacked Jormuntide Ignis (1700-1000 = 700).
+Astegon
+Jormuntide Ignis destroyed, 1200 damage vs 700 Power.
+TURN 33
+𝙅𝙨𝙣
+𝙅𝙨𝙣 activated Stone Pit.
+𝙅𝙨𝙣 deployed Flambelle.
+𝙅𝙨𝙣 activated Mounted Machine Gun.
+TURN 34
+𝙅𝙨𝙣
+Astegon took 500 damage.
+Astegon took 500 damage.
+Astegon took 500 damage and was destroyed.
+TURN 35
+𝙅𝙨𝙣
+𝙅𝙨𝙣 deployed Primitive Furnace.
+𝙅𝙨𝙣 deployed Lamball.
+𝙅𝙨𝙣 activated Primitive Furnace.
+𝙅𝙨𝙣 activated Primitive Furnace.
+𝙅𝙨𝙣 deployed Grappling Gun.
+𝙅𝙨𝙣 activated Grappling Gun.
+Deployed Lyleen Noct to slot 1 for 8 Souls.
+TURN 36
+CARBON
+Bushi
+Lyleen Noct's attack was interrupted.
+TURN 37
+𝙅𝙨𝙣
+𝙅𝙨𝙣 activated Stone Pit.
+𝙅𝙨𝙣 deployed Suzaku.
+TURN 38
+𝙅𝙨𝙣
+Lyleen Noct took 900 damage.
+TURN 39
+𝙅𝙨𝙣
+𝙅𝙨𝙣 activated Mounted Machine Gun.
+TURN 40
+𝙅𝙨𝙣
+Lyleen Noct took 700 damage.
+Lyleen Noct took 700 damage and was destroyed.
+TURN 41
+𝙅𝙨𝙣
+𝙅𝙨𝙣's Lamball attacks Carbon for 1.
+Lamball hit Carbon for 1. Damage Check: 1 card milled, no Lucky. Carbon 6 to 5 life.
+𝙅𝙨𝙣's Suzaku attacks Carbon for 3.
+TURN 42
+𝙅𝙨𝙣
+Carbon interrupted with Blazehowl Noct, paid 1 Soul. The attack was nullified.
+TURN 43
+𝙅𝙨𝙣
+𝙅𝙨𝙣 deployed Flambelle.
+𝙅𝙨𝙣 activated Grappling Gun.
+𝙅𝙨𝙣 activated Primitive Furnace.
+Deployed Pengullet to slot 1 for 4 Souls.
+Deployed Pengullet Rocket Launcher to slot 2 for 4 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1100 to every 𝙅𝙨𝙣 Pal, then sacrificed this card.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Aurora Guide on top of the deck.
+TURN 44
+𝙅𝙨𝙣
+𝙅𝙨𝙣 deployed Reptyro Cryst.
+𝙅𝙨𝙣's Suzaku attacks Carbon for 3.
+
+𝙅𝙨𝙣 WINS
+Carbon surrendered.
+FINAL LIFE: 𝙅𝙨𝙣 (WINNER) 8, Carbon 5.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Long grindy game (44 turns). Jsn built a Grappling Gun / Stone Pit / Mounted Machine Gun / Primitive Furnace engine that repeatedly pinged down Carbon's big threats (Lyleen Noct destroyed twice via 500-dmg pings, Relaxaurus destroyed via pings, Astegon destroyed twice via pings, Elphidran Aqua destroyed via pings) while chip-attacking with Suzaku/Lamball/Flambelle/Jormuntide Ignis for repeated 1-4 damage hits (Carbon 10->9->8->7->6->5). Several of Jsn's own attacks were interrupted by Carbon's Reindrix/Cryolinx/Blazehowl Noct/Bushi/Foxparks. Carbon's Astegon and Zoe's Strategy/Foxparks combo destroyed some of Jsn's threats (Jormuntide Ignis, Chillet via butcher). Late game Jsn played Pengullet Rocket Launcher explode effect dealing 1100 to own board (self-wipe/reset play), then deployed Reptyro Cryst and attacked again with Suzaku for 3 before Carbon surrendered at 5 life.
+
+

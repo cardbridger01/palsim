@@ -1,0 +1,209 @@
+=====================================================================
+MATCH: Ze (in-game name "bel") vs みつ  [Ze's match #10 of 10 pulled — LAST match in this batch]
+recordId: 8f1e7689-2a2d-4540-a838-dfd645cf2a60
+RESULT: BEL WINS - "みつ's life hit zero." Final life: bel (WINNER) 8, みつ 0.
+NOTE: A clean life-hit-zero win (not a surrender) to close out the Ze batch — the 3rd non-
+surrender win out of 10 (see also ze_03's deck-out and ze_05's life-hit-zero). Both life totals
+are fully accounted for by named damage lines: bel takes exactly one hit (10->8, turn 4) and
+never again; みつ drops in five clean 2-life steps (10->8->6->4->2->0, turns 8, 15, 24 x2, 31) —
+NO unexplained gap, the third fully "clean" game in this 10-game batch (with ze_05 and ze_09).
+NOTE: Deck labeled "BLUE/PURPLE DECK" on bel's HUD, same generic label as all 9 prior matches.
+NOTE: 5 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 5:  Pyrin Noct interrupts Elphidran Aqua's attack
+  Turn 8:  Blazehowl Noct interrupts Elphidran Aqua's attack (full name, not truncated)
+  Turn 15: Cryolinx interrupts Elphidran Aqua's attack
+  Turn 24: Pyrin Noct interrupts Jormuntide's attack
+  Turn 31: Reindrix interrupts Chillet's attack
+3 additional FULL-form interrupts occurred (Turn 13 and Turn 20, both "bel interrupted with
+Blazehowl Noct, discarded Elphidran"; Turn 29 "bel interrupted with Cryolinx, discarded
+Pengullet Rocket Launcher") — not counted in the bare-form total, included in the verbatim body
+only.
+NOTE: Turns 1-3 again show no acting-player header (same recurring pattern as matches 4, 5, 6,
+8, 9) — inferred as bel's turns from context and labeled BEL below.
+=====================================================================
+TURN 1
+BEL
+Turn opened — Souls 2/2 · Hand: Aurora Guide, Blazehowl Noct, Cryolinx, Pengullet, Zoe's Strategy
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+TURN 2
+BEL
+Turn opened — Souls 4/4 · Hand: Blazehowl Noct, Blazehowl Noct, Chillet, Jormuntide, Relaxaurus, Zoe's Strategy
+Rested 3 Souls, drew 1 card.
+TURN 3
+BEL
+Turn opened — Souls 6/6 · Hand: Blazehowl Noct, Blazehowl Noct, Chillet, Elphidran, Elphidran, Jormuntide, Relaxaurus, Zoe's Strategy
+TURN 4
+みつ
+みつ deployed Pengullet.
+みつ's Pengullet attacks bel for 2.
+Pengullet hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 10 to 8 life.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Elphidran Aqua.
+Deployed Elphidran Aqua.
+Drew 2 cards.
+Put Elphidran on top of the deck.
+TURN 5
+BEL
+Pyrin Noct
+Elphidran Aqua's attack was interrupted.
+Chillet (900) attacked Pengullet (600).
+Chillet
+Pengullet destroyed, 900 damage vs 600 Power.
+TURN 6
+BEL
+Turn opened — Souls 8/8 · Hand: Blazehowl Noct, Blazehowl Noct, Elphidran, Elphidran, Elphidran Aqua, Jormuntide, Reindrix, Relaxaurus, Zoe's Strategy
+TURN 7
+みつ
+みつ played Aurora Guide.
+みつ played Pal Sphere.
+TURN 8
+BEL
+Blazehowl Noct
+Elphidran Aqua's attack was interrupted.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+Deployed Jormuntide to slot 3 for 8 Souls.
+Drew 1.
+No valid target.
+✦
+Jormuntide attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 9
+BEL
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Chillet, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Relaxaurus, Zoe's Strategy
+TURN 10
+みつ
+みつ deployed Chillet.
+みつ deployed Elphidran Aqua.
+みつ played Zoe's Strategy.
+TURN 11
+みつ
+Turn opened — Souls 8/8 · Hand: Blazehowl Noct, Blazehowl Noct, Elphidran, Elphidran, Elphidran Aqua, Jormuntide, Reindrix, Relaxaurus, Zoe's Strategy
+Jormuntide was destroyed.
+TURN 12
+みつ
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Chillet, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Relaxaurus, Zoe's Strategy
+みつ's Elphidran Aqua attacks bel's Elphidran Aqua.
+TURN 13
+みつ
+Turn opened — Souls 8/8 · Hand: Blazehowl Noct, Blazehowl Noct, Elphidran, Elphidran, Elphidran Aqua, Jormuntide, Reindrix, Relaxaurus, Zoe's Strategy
+bel interrupted with Blazehowl Noct, discarded Elphidran. The attack was nullified.
+TURN 14
+みつ
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Chillet, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Relaxaurus, Zoe's Strategy
+TURN 15
+BEL
+Cryolinx
+Elphidran Aqua's attack was interrupted.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+Deployed Relaxaurus to slot 3 for 7 Souls.
+✦
+Relaxaurus attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+Rested 3 Souls, drew 1 card.
+TURN 16
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Zoe's Strategy
+TURN 17
+みつ
+みつ deployed Chillet.
+みつ deployed Elphidran.
+TURN 18
+みつ
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Chillet, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Relaxaurus, Zoe's Strategy
+みつ revealed Elphidran Aqua (Dragon).
+TURN 19
+みつ
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Zoe's Strategy
+みつ's Elphidran attacks bel's Elphidran Aqua.
+TURN 20
+みつ
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Chillet, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Relaxaurus, Zoe's Strategy
+bel interrupted with Blazehowl Noct, discarded Elphidran. The attack was nullified.
+TURN 21
+みつ
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Zoe's Strategy
+みつ's Chillet attacks bel's Elphidran Aqua.
+Chillet (900) attacked Elphidran Aqua (900).
+Chillet
+Elphidran Aqua destroyed, 900 damage vs 900 Power.
+Chillet destroyed, 900 damage vs 900 Power.
+みつ played Zoe's Strategy.
+TURN 22
+みつ
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Chillet, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Relaxaurus, Zoe's Strategy
+Relaxaurus was destroyed.
+TURN 23
+みつ
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Zoe's Strategy
+みつ deployed Antique Mirror.
+Played Zoe's Strategy for 3 Souls.
+Returned Jormuntide from graveyard to hand.
+みつ must discard 1.
+みつ discarded Relaxaurus.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide on top of the deck.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Jormuntide.
+Deployed Jormuntide.
+Drew 1.
+TURN 24
+BEL
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 4 to 2 life.
+Pyrin Noct
+Jormuntide's attack was interrupted.
+TURN 25
+BEL
+Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Elphidran, Elphidran Aqua, Reindrix
+TURN 26
+みつ
+みつ deployed Jormuntide.
+TURN 27
+みつ
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Zoe's Strategy
+Chillet was Rested.
+Chillet won't stand during its next Stand Phase.
+TURN 28
+みつ
+Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Elphidran, Elphidran Aqua, Reindrix
+みつ's Jormuntide attacks bel's Jormuntide.
+TURN 29
+みつ
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Elphidran, Elphidran Aqua, Pengullet Rocket Launcher, Reindrix, Zoe's Strategy
+bel interrupted with Cryolinx, discarded Pengullet Rocket Launcher. The attack was nullified.
+TURN 30
+みつ
+Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Elphidran, Elphidran Aqua, Reindrix
+TURN 31
+BEL
+Reindrix
+Chillet's attack was interrupted.
+Deployed Elphidran Aqua to slot 4 for 6 Souls.
+Drew 2 cards.
+Put Aurora Guide on top of the deck.
+Elphidran Aqua attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 2 to 0 life.
+
+BEL WINS
+みつ's life hit zero.
+FINAL LIFE: bel (WINNER) 8, みつ 0.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+A controlled, front-loaded win: bel took a single early Pengullet hit (10->8) then never lost
+life again across the remaining 27 turns, thanks to a steady stream of interrupts (Pyrin Noct
+x2, Blazehowl Noct x2, Cryolinx x2, Reindrix) that stopped every subsequent みつ attack from
+landing. Meanwhile bel's Chillet chipped みつ down in five clean 2-life increments (three
+different Chillets across the game, plus a closing Elphidran Aqua hit) while also winning every
+board fight it was in (multiple Elphidran Aqua and Elphidran trades went bel's way). This is the
+third fully "clean" game in the Ze batch with no unexplained life gaps on either side, and closes
+out the 10-game set on a clear life-hit-zero finish rather than another surrender.
+
+CLARIFICATION FLAGS for user review:
+- Batch-level flag (final tally): across Ze's 10 games, wins broke down as 6 surrenders (ze_01,
+  02, 04, 08, 09, plus the opponent's surrender being the loss in ze_06), 1 deck-out (ze_03), and
+  2 life-hit-zero (ze_05, ze_10) — a striking concentration of surrender-type finishes worth
+  calling out explicitly in the batch summary.
+- Same open scope note as matches 1-9: Ze's "BLUE/PURPLE DECK" hasn't been cross-referenced
+  against a saved decklist from Ze's own Decks page (out of scope for this pass).

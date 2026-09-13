@@ -1,0 +1,164 @@
+----- TIER 1 MATCH 34/34 (recordId f7bb5351-10e6-4419-924e-2ecb7fab0dbb) -----
+
+=====================================================================
+MATCH: Sivgard vs Beicon
+recordId: f7bb5351-10e6-4419-924e-2ecb7fab0dbb
+RESULT: SIVGARD WINS - Beicon's life hit zero. Final life: Sivgard (WINNER) 9, Beicon 0.
+NOTE: Sivgard's deck labeled "BR DRAGONS" in HUD.
+NOTE: 1 bare-form interrupt (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 21: Cryolinx interrupts Elphidran Aqua's attack
+Cost is confirmed not shown anywhere in the client for this (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+NOTE: TURN headers in this game's log name the player whose actions follow, but on several
+turns the acting player's cards are attributed to "them"/"they" instead - treat the header
+name as unreliable for determining which side's card triggered the interrupt.
+=====================================================================
+TURN 1
+BEICON
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Beicon deployed Pengullet.
+Beicon's Pengullet attacks Sivgard for 1.
+TURN 2
+BEICON
+Sivgard interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 3
+BEICON
+Deployed Single-Shot Rifle to slot 1 for 4 Souls.
+TURN 4
+BEICON
+Beicon deployed Pengullet.
+Beicon's Pengullet attacks Sivgard for 1.
+Pengullet hit Sivgard for 1. Damage Check: 1 card milled, no Lucky. Sivgard 10 to 9 life.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Jormuntide Ignis.
+Deployed Jormuntide Ignis.
+TURN 5
+SIVGARD
+Jormuntide Ignis attacked them for 4. Damage Check: 4 cards milled, no Lucky. They 10 to 6 life.
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Discarded Jormuntide Ignis, Pengullet to pay a cost.
+Stood this card.
+✦
+Jormuntide Ignis attacked them for 4; their Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+TURN 6
+BEICON
+Beicon played Strike from the Darkness.
+TURN 7
+BEICON
+Jormuntide Ignis was destroyed.
+TURN 8
+BEICON
+Beicon deployed Antique Wooden Chair.
+Beicon's Pengullet gets power +1000 until end of turn.
+Beicon's Pengullet attacks Sivgard's Chillet.
+TURN 9
+BEICON
+Sivgard interrupted with Foxparks, paid 1 Soul. The attack was nullified.
+TURN 10
+BEICON
+Played Victor's Strategy for 3 Souls.
+Looked at top 5: took Elphidran Aqua to hand.
+Deployed Single-Shot Rifle to slot 3 for 4 Souls.
+TURN 11
+SIVGARD
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 12
+BEICON
+Beicon played Victor's Strategy.
+Beicon looked at 5 cards and took 1 into their hand.
+Beicon deployed Elphidran Aqua.
+Deployed Elphidran Aqua to slot 4 for 6 Souls.
+Drew 2 cards.
+Put Elphidran Aqua on top of the deck.
+Chillet gets power +200 until end of turn.
+TURN 13
+SIVGARD
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+Elphidran Aqua gets power +200 until end of turn.
+✦
+Elphidran Aqua attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 14
+BEICON
+Beicon played Zoe's Strategy.
+TURN 15
+BEICON
+Beicon returned Pengullet from their graveyard to hand.
+Discarded Aurora Guide.
+TURN 16
+BEICON
+Beicon deployed Pengullet.
+Beicon deployed Pengullet Rocket Launcher.
+Beicon activated Pengullet Rocket Launcher.
+Beicon's Pengullet gets power +500 until end of turn.
+Beicon activated Pengullet.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Cryolinx, added to hand.
+Rested 3 Souls, drew 1 card.
+Chillet gets power +200 until end of turn.
+TURN 17
+SIVGARD
+They blocked with Elphidran Aqua.
+Chillet (900+200 = 1100) attacked Elphidran Aqua (900).
+Chillet
+Elphidran Aqua destroyed, 1100 damage vs 900 Power.
+TURN 18
+BEICON
+Beicon deployed Pengullet.
+Beicon activated Pengullet Rocket Launcher.
+Beicon's Pengullet gets power +500 until end of turn.
+Beicon's Pengullet attacks Sivgard's Chillet.
+TURN 19
+BEICON
+Sivgard interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 20
+BEICON
+Beicon deployed Elphidran Aqua.
+Deployed Elphidran Aqua to slot 4 for 6 Souls.
+Drew 2 cards.
+Put Pengullet Rocket Launcher on top of the deck.
+Chillet gets power +200 until end of turn.
+TURN 21
+SIVGARD
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 4 to 2 life.
+Elphidran Aqua gets power +200 until end of turn.
+Cryolinx
+Elphidran Aqua's attack was interrupted.
+Rested 3 Souls, drew 1 card.
+TURN 22
+BEICON
+Beicon activated Pengullet Rocket Launcher.
+Beicon's Pengullet gets power +500 until end of turn.
+Beicon activated Pengullet.
+Beicon deployed Grappling Gun.
+Beicon played Black Marketeer.
+TURN 23
+BEICON
+Beicon returned Menasting from their graveyard to hand.
+Beicon returned Jormuntide from their graveyard to hand.
+TURN 24
+BEICON
+Beicon's Elphidran Aqua attacks Sivgard for 2.
+TURN 25
+BEICON
+Sivgard interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 26
+BEICON
+Beicon activated Grappling Gun.
+Deployed Relaxaurus to slot 2 for 7 Souls.
+TURN 27
+SIVGARD
+Relaxaurus attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 2 to 0 life.
+
+SIVGARD WINS
+Beicon's life hit zero.
+FINAL LIFE: Sivgard (WINNER) 9, Beicon 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+Turn 1: Beicon deploys Pengullet, attacks Sivgard for 1. Turn 2: attack nullified by Sivgard's Reindrix interrupt (1 soul). Turn 3: Beicon deploys Single-Shot Rifle (4 souls). Turn 4: Beicon deploys another Pengullet, hits Sivgard for 1 (10->9 life); deploys Chillet (5 souls), reveals/deploys Jormuntide Ignis. Turn 5: Sivgard's Jormuntide Ignis attacks Beicon for 4 (10->6 life); Chillet's attack cancelled by Lucky Pal; Sivgard discards Jormuntide Ignis and Pengullet to pay a cost; another Jormuntide Ignis attack cancelled by Lucky Pal. Turn 6: Beicon plays Strike from the Darkness. Turn 7: Sivgard's Jormuntide Ignis destroyed. Turn 8: Beicon deploys Antique Wooden Chair, buffs Pengullet +1000 power, Pengullet attacks Sivgard's Chillet. Turn 9: attack nullified by Sivgard's Foxparks interrupt. Turn 10: Beicon plays Victor's Strategy (3 souls, tutors Elphidran Aqua), deploys Single-Shot Rifle (4 souls). Turn 11: Sivgard's Chillet attack cancelled by Lucky Pal. Turn 12: Beicon plays Victor's Strategy again (tutors 1 of 5), deploys Elphidran Aqua (6 souls), draws 2, puts another Elphidran Aqua on top of deck; buffs Chillet +200. Turn 13: Sivgard's Chillet attacks for 2 (6->4 life); Elphidran Aqua buffed +200, its attack cancelled by Lucky Pal. Turn 14: Beicon plays Zoe's Strategy. Turn 15: Beicon returns Pengullet from graveyard, discards Aurora Guide. Turn 16: Beicon deploys Pengullet and Pengullet Rocket Launcher, activates it (+500 power), activates Pengullet, deploys Chillet (5 souls), reveals Cryolinx, rests 3 souls draws 1, buffs Chillet +200. Turn 17: Sivgard blocks with Elphidran Aqua; Beicon's Chillet (1100) destroys it (900). Turn 18: Beicon deploys Pengullet, activates Rocket Launcher (+500), Pengullet attacks Sivgard's Chillet. Turn 19: nullified by Sivgard's Cryolinx interrupt. Turn 20: Beicon deploys Elphidran Aqua (6 souls), draws 2, puts Pengullet Rocket Launcher on top; buffs Chillet +200. Turn 21: Sivgard's Chillet attacks for 2 (4->2 life); Elphidran Aqua buffed +200 but its attack interrupted by Cryolinx; Sivgard rests 3 souls draws 1. Turn 22: Beicon activates Rocket Launcher (+500) and Pengullet, deploys Grappling Gun, plays Black Marketeer. Turn 23: Beicon returns Menasting and Jormuntide from graveyard to hand. Turn 24: Beicon's Elphidran Aqua attacks Sivgard for 2. Turn 25: nullified by Sivgard's Cryolinx interrupt. Turn 26: Beicon activates Grappling Gun, deploys Relaxaurus (7 souls). Turn 27: Sivgard's Relaxaurus attacks Beicon for 3, life hits 2->0.
+
+

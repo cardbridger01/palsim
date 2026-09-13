@@ -1,0 +1,117 @@
+----- TIER 1 MATCH 20/34 (recordId 84c26cc1-65e8-4051-9383-bfa5a26ffef9) -----
+
+=====================================================================
+MATCH: JeeseJames vs Carbon
+recordId: 84c26cc1-65e8-4051-9383-bfa5a26ffef9
+RESULT: CARBON WINS - JeeseJames's life hit zero. Final life: Carbon (WINNER) 10, JeeseJames 0.
+NOTE: Carbon's deck titled "BLUE/PURPLE DECK (AUG 19)" in HUD (same Carbon deck that lost the
+Jsn match - see backfill_66070b13.txt).
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 6:  Blazehowl interrupts Elphidran Aqua's attack
+  Turn 9:  Blazehowl interrupts Chillet's attack
+  Turn 15: Bushi interrupts Lyleen Noct's attack
+  Turn 15: Bushi interrupts Lyleen Noct's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+TURN 2
+Rested 3 Souls, drew 1 card.
+TURN 3
+JEESEJAMES
+JeeseJames deployed Pengullet.
+TURN 4
+JEESEJAMES
+Played Dark Cannon for 3 Souls.
+JeeseJames deployed Bushi.
+JeeseJames's Bushi attacks Carbon for 2.
+✦
+Bushi attacked Carbon for 2; Carbon's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 5
+JEESEJAMES
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Elphidran Aqua.
+Deployed Elphidran Aqua.
+Drew 2 cards.
+Put Lyleen Noct on top of the deck.
+TURN 6
+CARBON
+Blazehowl
+Elphidran Aqua's attack was interrupted.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+TURN 7
+JEESEJAMES
+JeeseJames deployed Single-Shot Rifle.
+Elphidran Aqua took 1500 damage and was destroyed.
+JeeseJames deployed Cattiva.
+TURN 8
+JEESEJAMES
+Played Dark Cannon for 3 Souls.
+Deployed Pengullet to slot 2 for 4 Souls.
+TURN 9
+CARBON
+Blazehowl
+Chillet's attack was interrupted.
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+TURN 10
+JEESEJAMES
+JeeseJames played Victor's Strategy.
+JeeseJames looked at 5 cards and took 1 into their hand.
+Drew 1.
+JeeseJames deployed Pump-Action Shotgun.
+TURN 11
+JEESEJAMES
+Deployed Lyleen Noct to slot 1 for 8 Souls.
+TURN 12
+CARBON
+Lyleen Noct attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 6 to 3 life.
+TURN 13
+JEESEJAMES
+JeeseJames played Victor's Strategy.
+JeeseJames looked at 5 cards and took 1 into their hand.
+JeeseJames deployed Bushi.
+JeeseJames activated Pump-Action Shotgun.
+JeeseJames's Bushi gets power +200 until end of turn.
+JeeseJames activated Single-Shot Rifle.
+JeeseJames's Bushi gets power +200 until end of turn.
+JeeseJames's Bushi attacks Carbon for 2.
+Carbon interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 14
+JEESEJAMES
+Deployed Lyleen Noct to slot 2 for 8 Souls.
+TURN 15
+CARBON
+Bushi
+Lyleen Noct's attack was interrupted.
+Bushi
+Lyleen Noct's attack was interrupted.
+TURN 16
+JEESEJAMES
+JeeseJames played Pal Sphere.
+JeeseJames deployed Fuack.
+JeeseJames deployed Pengullet Rocket Launcher.
+TURN 17
+JEESEJAMES
+Deployed Astegon to slot 3 for 8 Souls.
+TURN 18
+CARBON
+They blocked with Fuack.
+Lyleen Noct (1700) attacked Fuack (200-1000 = -800).
+Lyleen Noct
+Fuack destroyed, 1700 damage vs -800 Power.
+All Pals with Power 300 or less destroyed.
+Astegon attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 3 to 0 life.
+
+CARBON WINS
+JeeseJames's life hit zero.
+FINAL LIFE: Carbon (WINNER) 10, JeeseJames 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+18-turn game. JeeseJames deployed a wide board (Bushi, Chillet, Elphidran Aqua, Lyleen Noct x2, Astegon) but both Lyleen Noct attacks on turn 15 were bare-form interrupted by Carbon's Bushi, and earlier Elphidran Aqua/Chillet attacks were bare-form interrupted by Carbon's Blazehowl (turns 6, 9); a Bushi attack was nullified full-form by Carbon's Reindrix (turn 13). JeeseJames's own Single-Shot Rifle destroyed Carbon's Elphidran Aqua (turn 7). Carbon's Chillet/Pengullet/Lyleen Noct chipped JeeseJames down steadily (10->8->6->3), and Carbon's Lyleen Noct destroyed JeeseJames's Fuack in a block before Astegon's attack finished JeeseJames (3 to 0, turn 18).
+
+

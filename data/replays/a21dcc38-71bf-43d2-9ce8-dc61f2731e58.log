@@ -1,0 +1,168 @@
+----- TIER 1 MATCH 23/34 (recordId a21dcc38-71bf-43d2-9ce8-dc61f2731e58) -----
+
+=====================================================================
+MATCH: Zutilt10 vs DeftCHIMP
+recordId: a21dcc38-71bf-43d2-9ce8-dc61f2731e58
+RESULT: ZUTILT10 WINS - DeftCHIMP's life hit zero. Final life: Zutilt10 (WINNER) 5, DeftCHIMP 0.
+NOTE: DeftCHIMP's deck titled "COPY OF PENGULLET BUTCHER" in HUD. This Zutilt10 win uses a
+different board plan (Primitive Furnace/Single-Shot Rifle self-ping engine) than the "Copy of
+Suzaku Gun Control" deck Zutilt10 lost with elsewhere in the bracket.
+NOTE: 5 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 7:  Reindrix interrupts Maraith's attack
+  Turn 13: Foxparks interrupts Shadowbeak's attack
+  Turn 16: Cryolinx interrupts Lyleen Noct's attack
+  Turn 19: Cryolinx interrupts Shadowbeak's attack
+  Turn 22: Reindrix interrupts Katress's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+ZUTILT10
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Zutilt10 deployed Primitive Furnace.
+TURN 2
+ZUTILT10
+Deployed Shoddy Bed to slot 1 for 2 Souls.
+TURN 3
+ZUTILT10
+Deployed Leezpunk to slot 2 for 3 Souls.
+TURN 4
+DEFTCHIMP
+Leezpunk attacked them for 1. Damage Check: 1 card milled, no Lucky. They 10 to 9 life.
+TURN 5
+ZUTILT10
+Zutilt10 deployed Univolt.
+Zutilt10's Univolt attacks DeftCHIMP's Shoddy Bed.
+Univolt (600+300 = 900) struck Shoddy Bed (700).
+Univolt
+Shoddy Bed destroyed, 900 damage vs 700 Power.
+TURN 6
+ZUTILT10
+Deployed Maraith to slot 1 for 6 Souls.
+TURN 7
+DEFTCHIMP
+Reindrix
+Maraith's attack was interrupted.
+Leezpunk attacked them for 1. Damage Check: 1 card milled, no Lucky. They 9 to 8 life.
+TURN 8
+ZUTILT10
+Zutilt10 deployed Jormuntide Ignis.
+Zutilt10's Jormuntide Ignis attacks DeftCHIMP's Maraith.
+DeftCHIMP interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+Zutilt10 activated Primitive Furnace.
+TURN 9
+ZUTILT10
+Played Strike from the Darkness for 4 Souls.
+Played Strike from the Darkness for 4 Souls.
+TURN 10
+DEFTCHIMP
+Maraith attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+Leezpunk attacked them for 1. Damage Check: 1 card milled, no Lucky. They 6 to 5 life.
+TURN 11
+ZUTILT10
+Zutilt10 activated Primitive Furnace.
+Zutilt10 must discard 1.
+Zutilt10 deployed Pump-Action Shotgun.
+Zutilt10 discarded Primitive Furnace.
+TURN 12
+ZUTILT10
+Deployed Shadowbeak to slot 1 for 8 Souls.
+TURN 13
+DEFTCHIMP
+Foxparks
+Shadowbeak's attack was interrupted.
+TURN 14
+ZUTILT10
+Zutilt10 deployed Lamball.
+Zutilt10 activated Primitive Furnace.
+Zutilt10 activated Primitive Furnace.
+Zutilt10 deployed Single-Shot Rifle.
+Shadowbeak took 1500 damage and was destroyed.
+Zutilt10 deployed Kitsun.
+Zutilt10's Kitsun attacks DeftCHIMP for 2.
+Kitsun hit DeftCHIMP for 2. Damage Check: 2 cards milled, no Lucky. DeftCHIMP 10 to 8 life.
+TURN 15
+ZUTILT10
+Deployed Lyleen Noct to slot 1 for 8 Souls.
+TURN 16
+DEFTCHIMP
+Cryolinx
+Lyleen Noct's attack was interrupted.
+TURN 17
+ZUTILT10
+Zutilt10 activated Primitive Furnace.
+Zutilt10 deployed Kitsun.
+Lyleen Noct took 1200 damage.
+Zutilt10 activated Pump-Action Shotgun.
+Zutilt10's Kitsun gets power +200 until end of turn.
+Zutilt10's Kitsun attacks DeftCHIMP's Lyleen Noct.
+Kitsun (400+200 = 600) attacked Lyleen Noct (1700).
+Kitsun
+Lyleen Noct destroyed, 1800 damage vs 1700 Power.
+Kitsun destroyed, 1700 damage vs 600 Power.
+Zutilt10's Kitsun attacks DeftCHIMP for 2.
+✦
+Kitsun attacked DeftCHIMP for 2; DeftCHIMP's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 18
+ZUTILT10
+Deployed Shadowbeak to slot 1 for 8 Souls.
+TURN 19
+DEFTCHIMP
+Cryolinx
+Shadowbeak's attack was interrupted.
+TURN 20
+ZUTILT10
+Zutilt10 activated Primitive Furnace.
+Zutilt10 activated Primitive Furnace.
+Zutilt10 deployed Single-Shot Rifle.
+Shadowbeak took 1500 damage and was destroyed.
+Zutilt10 deployed Reptyro Cryst.
+Zutilt10's Kitsun attacks DeftCHIMP for 2.
+Kitsun hit DeftCHIMP for 2. Damage Check: 2 cards milled, no Lucky. DeftCHIMP 8 to 6 life.
+Zutilt10's Reptyro Cryst attacks DeftCHIMP for 3.
+✦
+Reptyro Cryst attacked DeftCHIMP for 3; DeftCHIMP's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 21
+ZUTILT10
+Played Strike from the Darkness for 4 Souls.
+Deployed Katress to slot 1 for 6 Souls.
+TURN 22
+DEFTCHIMP
+Reindrix
+Katress's attack was interrupted.
+TURN 23
+ZUTILT10
+Zutilt10 activated Primitive Furnace.
+Zutilt10 activated Pump-Action Shotgun.
+Zutilt10's Kitsun gets power +200 until end of turn.
+Zutilt10 activated Single-Shot Rifle.
+Zutilt10's Kitsun gets power +200 until end of turn.
+Zutilt10 deployed Suzaku.
+Katress took 900 damage and was destroyed.
+Zutilt10's Suzaku attacks DeftCHIMP for 3.
+Suzaku hit DeftCHIMP for 3. Damage Check: 3 cards milled, no Lucky. DeftCHIMP 6 to 3 life.
+Zutilt10's Kitsun attacks DeftCHIMP for 2.
+Kitsun hit DeftCHIMP for 2. Damage Check: 2 cards milled, no Lucky. DeftCHIMP 3 to 1 life.
+TURN 24
+ZUTILT10
+Deployed Leezpunk to slot 1 for 3 Souls.
+Played Zoe's Strategy for 3 Souls.
+Zutilt10 must discard 1.
+Butchered Leezpunk.
+Zutilt10 discarded Lamball.
+Rested 3 Souls, drew 1 card.
+Zutilt10 deployed Jormuntide Ignis.
+Zutilt10's Kitsun attacks DeftCHIMP for 2.
+Kitsun hit DeftCHIMP for 2. Damage Check: 2 cards milled, no Lucky. DeftCHIMP 1 to 0 life.
+
+ZUTILT10 WINS
+DeftCHIMP's life hit zero.
+FINAL LIFE: Zutilt10 (WINNER) 5, DeftCHIMP 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+24-turn game. Zutilt10 ran a Primitive Furnace/Single-Shot Rifle self-ping engine, repeatedly sacrificing overcosted threats (Shadowbeak destroyed twice via self-inflicted 1500 damage, turns 14 and 20) to fuel deployments. DeftCHIMP's Leezpunk/Maraith chipped Zutilt10 early (10->9->8->6->5) while several DeftCHIMP interrupts (Reindrix, Foxparks, Cryolinx) bare-form-nullified Zutilt10's attacks (turns 7, 13, 16, 19, 22) and one full-form (turn 8). Zutilt10's Univolt destroyed DeftCHIMP's Shoddy Bed early (turn 5); a mutual Kitsun/Lyleen Noct trade occurred turn 17. Zutilt10's Kitsun (buffed via Pump-Action Shotgun/Single-Shot Rifle) became the primary closer, chipping DeftCHIMP down turn by turn (10->8->6->3->1->0) alongside a Suzaku hit for 3, finishing on turn 24.
+
+

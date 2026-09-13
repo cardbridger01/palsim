@@ -1,0 +1,227 @@
+=====================================================================
+MATCH: Pingu vs Chylith  [Pingu's match #1 of 10 pulled, most recent]
+recordId: ca8ae191-e71e-4e94-9f86-e0dd0f8a6952
+RESULT: PINGU WINS - "Chylith's life hit zero." Final life: Pingu (WINNER) 4, Chylith 0.
+NOTE: UNLIKE Ze (whose account name "ze" shows in-game as "bel"), Pingu's account name and
+in-game/log display name are THE SAME — "Pingu" throughout, no alias. Worth noting as a contrast
+with the Ze batch, where the name substitution needed explicit tracking.
+NOTE: Pingu's deck HUD reads "BLUE/PURPLE DRAGON CONTROL" — a named archetype label, unlike Ze's
+generic "BLUE/PURPLE DECK" seen across all 10 of Ze's games. Not yet cross-referenced against a
+saved Pingu decklist (out of scope for this pass, same as Ze).
+NOTE: Both life totals are fully accounted for by named damage lines — Pingu drops 10->8->6->4
+via three named Chillet hits (turns 1, 4, 17); Chylith drops 10->8->6->4->2->0 via five named
+hits (turns 3, 16, 19, 22 x2) — NO unexplained gap. A clean game to open the Pingu dataset.
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 3:  Pyrin Noct interrupts Relaxaurus's attack
+  Turn 7:  Cryolinx interrupts Elphidran's attack (1st of 2 occurrences)
+  Turn 10: Cryolinx interrupts Elphidran's attack (2nd occurrence, same card/target type)
+  Turn 19: Reindrix interrupts Chillet's attack
+2 additional FULL-form interrupts occurred (Turn 5 "Pingu interrupted with Cryolinx, paid 1
+Soul"; Turn 20 "Pingu interrupted with Pyrin Noct, paid 1 Soul") — not counted in the bare-form
+total, included in the verbatim body only.
+=====================================================================
+TURN 1
+CHYLITH
+Turn opened — Souls 5/5 · Hand: Aurora Guide, Elphidran, Elphidran, Pengullet, Pengullet Rocket Launcher, Relaxaurus, Strike from the Darkness, Strike from the Darkness
+Deployed Pengullet Rocket Launcher to slot 1 for 4 Souls.
+Chylith deployed Chillet.
+Chylith revealed Pyrin Noct and added it to their hand.
+Chylith's Chillet attacks Pingu for 2.
+Chillet hit Pingu for 2. Damage Check: 2 cards milled, no Lucky. Pingu 10 to 8 life.
+TURN 2
+CHYLITH
+Turn opened — Souls 7/7 · Hand: Aurora Guide, Chillet, Elphidran, Elphidran, Pengullet, Relaxaurus, Strike from the Darkness, Strike from the Darkness
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Relaxaurus on top of the deck.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Relaxaurus.
+Deployed Relaxaurus.
+TURN 3
+PINGU
+Pyrin Noct
+Relaxaurus's attack was interrupted.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+TURN 4
+CHYLITH
+Chylith played Aurora Guide.
+Chylith deployed Chillet.
+Chylith deployed Astegon.
+Relaxaurus gets power -1000 until end of turn.
+Chylith's Astegon attacks Pingu's Chillet.
+Astegon (1200) attacked Chillet (900).
+Astegon
+Chillet destroyed, 1200 damage vs 900 Power.
+Chylith's Chillet attacks Pingu for 2.
+Chillet hit Pingu for 2. Damage Check: 2 cards milled, no Lucky. Pingu 8 to 6 life.
+TURN 5
+CHYLITH
+Turn opened — Souls 9/9 · Hand: Elphidran, Elphidran, Jormuntide, Pengullet, Strike from the Darkness, Strike from the Darkness, Zoe's Strategy
+Deployed Pengullet to slot 2 for 4 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1100 to every Chylith Pal, then sacrificed this card.
+Played Strike from the Darkness for 4 Souls.
+Chylith deployed Lyleen Noct.
+Chylith played Aurora Guide.
+Chylith activated Lyleen Noct.
+Chylith discarded Pengullet to pay a cost.
+Chylith deployed Relaxaurus.
+Chylith's Relaxaurus attacks Pingu for 3.
+Pingu interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 6
+CHYLITH
+Turn opened — Souls 10/10 · Hand: Elphidran, Elphidran, Jormuntide, Pengullet, Strike from the Darkness, Zoe's Strategy
+Played Strike from the Darkness for 4 Souls.
+Deployed Elphidran to slot 2 for 4 Souls.
+Elphidran gets power +200 until end of turn.
+Revealed Elphidran (Dragon). Power +500 until end of turn.
+TURN 7
+PINGU
+Cryolinx
+Elphidran's attack was interrupted.
+TURN 8
+CHYLITH
+Chylith's Chillet attacks Pingu's Elphidran.
+Chillet (900) attacked Elphidran (600).
+Chillet
+Elphidran destroyed, 900 damage vs 600 Power.
+Chylith's Relaxaurus attacks Pingu for 3.
+✦
+Relaxaurus attacked Pingu for 3; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Chylith deployed Chillet.
+Chylith revealed Lyleen Noct and added it to their hand.
+Chylith's Chillet attacks Pingu for 2.
+✦
+Chillet attacked Pingu for 2; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 9
+CHYLITH
+Turn opened — Souls 10/10 · Hand: Elphidran, Jormuntide, Pengullet, Zoe's Strategy, Zoe's Strategy
+Deployed Elphidran to slot 2 for 4 Souls.
+Chose not to reveal a Dragon.
+TURN 10
+PINGU
+Cryolinx
+Elphidran's attack was interrupted.
+Deployed Pengullet to slot 3 for 4 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Drew 1.
+Dealt 1100 to every Chylith Pal, then sacrificed this card.
+TURN 11
+CHYLITH
+Chylith's Relaxaurus attacks Pingu for 3.
+✦
+Relaxaurus attacked Pingu for 3; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)
+Chylith played Zoe's Strategy.
+Chylith returned Chillet from their graveyard to hand.
+Discarded Zoe's Strategy.
+Chylith deployed Chillet.
+Chylith revealed Pengullet Rocket Launcher and added it to their hand.
+Chylith's Chillet attacks Pingu's Elphidran.
+Chillet (900) attacked Elphidran (600).
+Chillet
+Elphidran destroyed, 900 damage vs 600 Power.
+TURN 12
+CHYLITH
+Turn opened — Souls 10/10 · Hand: Cryolinx, Jormuntide, Zoe's Strategy, Zoe's Strategy
+Deployed Jormuntide to slot 2 for 8 Souls.
+Drew 1.
+TURN 13
+PINGU
+Jormuntide (1600) attacked Chillet (900).
+Jormuntide
+Chillet destroyed, 1600 damage vs 900 Power.
+TURN 14
+CHYLITH
+Chylith played Aurora Guide.
+Chylith played Pal Sphere.
+TURN 15
+CHYLITH
+Turn opened — Souls 10/10 · Hand: Cryolinx, Reindrix, Reindrix, Zoe's Strategy, Zoe's Strategy
+TURN 16
+PINGU
+Jormuntide (1600) attacked Relaxaurus (1200).
+Jormuntide
+Relaxaurus destroyed, 1600 damage vs 1200 Power.
+Played Zoe's Strategy for 3 Souls.
+Returned Chillet from graveyard to hand.
+Chylith must discard 1.
+Chylith discarded Pengullet Rocket Launcher.
+Deployed Chillet to slot 3 for 5 Souls.
+Revealed Strike from the Darkness, added to hand.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+TURN 17
+CHYLITH
+Chylith deployed Chillet.
+Chylith revealed Reindrix and added it to their hand.
+Chylith's Chillet attacks Pingu for 2.
+Chillet hit Pingu for 2. Damage Check: 2 cards milled, no Lucky. Pingu 6 to 4 life.
+Chylith played Zoe's Strategy.
+Jormuntide was destroyed.
+TURN 18
+CHYLITH
+Turn opened — Souls 10/10 · Hand: Cryolinx, Pyrin Noct, Reindrix, Reindrix, Strike from the Darkness, Zoe's Strategy
+TURN 19
+PINGU
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+Played Zoe's Strategy for 3 Souls.
+Returned Chillet from graveyard to hand.
+Chylith must discard 1.
+Chylith discarded Pengullet Rocket Launcher.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Relaxaurus.
+Deployed Relaxaurus.
+No valid target.
+✦
+Relaxaurus attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Reindrix
+Chillet's attack was interrupted.
+TURN 20
+CHYLITH
+Chylith deployed Relaxaurus.
+Chillet was Rested.
+Chillet won't stand while the source stays in play.
+Chylith's Relaxaurus attacks Pingu's Chillet.
+Pingu interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+Chylith played Zoe's Strategy.
+Relaxaurus was destroyed.
+TURN 21
+CHYLITH
+Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Reindrix, Reindrix, Strike from the Darkness
+TURN 22
+PINGU
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Deployed Chillet to slot 4 for 5 Souls.
+Revealed Pyrin Noct, added to hand.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 4 to 2 life.
+Deployed Reindrix to slot 5 for 5 Souls.
+Reindrix attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 2 to 0 life.
+
+PINGU WINS
+Chylith's life hit zero.
+FINAL LIFE: Pingu (WINNER) 4, Chylith 0.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+A 22-turn grind that opened badly for Pingu (Chylith's early Chillet chip damage and an
+Astegon-for-Chillet trade dropped Pingu to 6 life by turn 4) but flipped once Pingu landed a
+1600-power Jormuntide on turn 12 — it single-handedly cleared Chylith's Chillet (turn 13) and
+Relaxaurus (turn 16) before dying to Chylith's own removal. From there Pingu's recurring Chillet
+(returned via Zoe's Strategy twice) carried the rest of the offense, closing Chylith out with a
+five-hit sequence across turns 16-22 including a final Chillet+Reindrix double-attack. Every
+life-total change on both sides is directly traceable — a clean game overall, and a useful
+baseline read on what Pingu's "BLUE/PURPLE DRAGON CONTROL" archetype looks like in practice
+(heavy on Chillet recursion via Zoe's Strategy, a single high-power Jormuntide finisher, and
+Cryolinx/Pyrin Noct/Reindrix as the interrupt suite).
+
+CLARIFICATION FLAGS for user review:
+- Pingu's deck name ("BLUE/PURPLE DRAGON CONTROL") differs in labeling style from Ze's generic
+  "BLUE/PURPLE DECK" — worth checking whether this is a saved/named list on Pingu's own Decks
+  page for a fuller card-level breakdown, similar to what was done for Edify's personal decks.
+- No account/display-name alias issue here (Pingu = Pingu throughout) — worth calling out as a
+  contrast with Ze/bel when the two datasets are compared in the final summary.

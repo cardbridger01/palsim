@@ -1,0 +1,206 @@
+=====================================================================
+MATCH: Ze (in-game name "bel") vs 兔绣袖 (shown on-screen as "Opponent")  [Ze's match #9 of 10]
+recordId: a98cde80-2819-498e-821d-b6c2fdf4fa11
+RESULT: BEL WINS - Opponent surrendered. Final life: bel (WINNER) 7, Opponent 2.
+NOTE: Sixth surrender/concede win in this batch (matches 1, 2, 4, 8, plus match 6's loss).
+Opponent conceded right after deploying a Stone Pit on turn 28, one turn after bel's Astegon
+dropped them from 5 to 2 life — another "concede once the board/tempo picture looks lost" case,
+consistent with the pattern across this whole Ze batch.
+NOTE: Both life totals are fully accounted for by named damage lines this game — bel's first hit
+starts exactly from 10 (10->9->7 via Lamball then Menasting on turn 26) and Opponent's damage is
+fully traceable (10->8->5->2 via Pengullet, Jormuntide, Astegon) — NO unexplained gap this game,
+unlike matches 1, 3, and 8. This is the second fully "clean" game in the batch (see also ze_05).
+NOTE: Same anonymization as ze_04 — opponent shown on-screen/in-log as "Opponent" rather than
+"兔绣袖" (which is what match_list.tsv shows from Ze's profile page); this is the same 兔绣袖
+account bel also played in ze_01 and ze_08, so the anonymization appears account/session-based
+on the opponent's side rather than tied to a specific player.
+NOTE: Deck labeled "BLUE/PURPLE DECK" on bel's HUD, same generic label as matches 1-8.
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check — notably ZERO full-form interrupts this game (every interrupt
+was bare-form):
+  Turn 7:  Blazehowl Noct interrupts Pengullet's attack (1st of 2 this turn, full name used)
+  Turn 7:  Pyrin Noct interrupts Jormuntide's attack (2nd of 2 this turn)
+  Turn 14: Foxparks interrupts Astegon's attack
+  Turn 27: Pyrin Noct interrupts Chillet's attack
+NOTE: Turns 1-3 again show no acting-player header (same recurring pattern as matches 4-6, 8) —
+inferred as bel's turns from context (mulligan, hand contents matching bel's deck) and labeled
+BEL below.
+=====================================================================
+TURN 1
+BEL
+Turn opened — Souls 2/2 · Hand: Astegon, Blazehowl Noct, Pengullet, Pengullet, Pengullet Rocket Launcher
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+TURN 2
+BEL
+Turn opened — Souls 4/4 · Hand: Astegon, Blazehowl Noct, Blazehowl Noct, Jormuntide, Pengullet, Relaxaurus
+Rested 3 Souls, drew 1 card.
+TURN 3
+BEL
+Turn opened — Souls 6/6 · Hand: Astegon, Blazehowl Noct, Blazehowl Noct, Jormuntide, Jormuntide, Pengullet, Relaxaurus, Relaxaurus
+Deployed Pengullet to slot 1 for 4 Souls.
+TURN 4
+BEL
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+TURN 5
+BEL
+Turn opened — Souls 8/8 · Hand: Astegon, Blazehowl Noct, Blazehowl Noct, Jormuntide, Jormuntide, Pengullet Rocket Launcher, Relaxaurus, Relaxaurus
+TURN 6
+OPPONENT
+Opponent deployed Leezpunk.
+Opponent deployed Stone Pit.
+Opponent activated Stone Pit.
+Opponent deployed Cattiva.
+Deployed Jormuntide to slot 2 for 8 Souls.
+Drew 1.
+TURN 7
+BEL
+Blazehowl Noct
+Pengullet's attack was interrupted.
+Pyrin Noct
+Jormuntide's attack was interrupted.
+TURN 8
+BEL
+Turn opened — Souls 10/10 · Hand: Astegon, Blazehowl Noct, Blazehowl Noct, Cryolinx, Jormuntide, Pengullet Rocket Launcher, Strike from the Darkness, Zoe's Strategy
+TURN 9
+OPPONENT
+Opponent activated Stone Pit.
+Opponent deployed Shadowbeak.
+Opponent's Shadowbeak attacks bel's Pengullet.
+TURN 10
+OPPONENT
+Turn opened — Souls 8/8 · Hand: Astegon, Blazehowl Noct, Blazehowl Noct, Jormuntide, Jormuntide, Pengullet Rocket Launcher, Relaxaurus, Relaxaurus
+Drew 1.
+TURN 11
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Astegon, Blazehowl Noct, Blazehowl Noct, Cryolinx, Jormuntide, Pengullet Rocket Launcher, Strike from the Darkness, Zoe's Strategy
+Shadowbeak (1300) attacked Pengullet (600).
+Shadowbeak
+Pengullet destroyed, 1300 damage vs 600 Power.
+TURN 12
+OPPONENT
+Turn opened — Souls 8/8 · Hand: Astegon, Blazehowl Noct, Blazehowl Noct, Jormuntide, Jormuntide, Pengullet Rocket Launcher, Relaxaurus, Relaxaurus
+Discarded Relaxaurus.
+Discarded Relaxaurus.
+Opponent's Shadowbeak: bel's Jormuntide was put into the graveyard.
+TURN 13
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Astegon, Blazehowl Noct, Blazehowl Noct, Cryolinx, Jormuntide, Pengullet Rocket Launcher, Strike from the Darkness, Zoe's Strategy
+Deployed Astegon to slot 1 for 8 Souls.
+All Pals with Power 300 or less destroyed.
+TURN 14
+BEL
+Foxparks
+Astegon's attack was interrupted.
+TURN 15
+BEL
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Blazehowl Noct, Cryolinx, Cryolinx, Jormuntide, Pengullet Rocket Launcher, Strike from the Darkness, Zoe's Strategy
+TURN 16
+OPPONENT
+Opponent deployed Lamball.
+Opponent activated Stone Pit.
+Opponent deployed Menasting.
+Deployed Jormuntide to slot 2 for 8 Souls.
+Drew 1.
+All Pals with Power 300 or less destroyed.
+TURN 17
+BEL
+Astegon (1200) struck Stone Pit (600).
+Astegon
+Stone Pit destroyed, 1200 damage vs 600 Power.
+Jormuntide attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 8 to 5 life.
+TURN 18
+BEL
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Blazehowl Noct, Chillet, Cryolinx, Cryolinx, Elphidran Aqua, Pengullet Rocket Launcher, Strike from the Darkness, Zoe's Strategy
+TURN 19
+OPPONENT
+Opponent deployed Lamball.
+Opponent deployed Mounted Machine Gun.
+Opponent activated Mounted Machine Gun.
+TURN 20
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Blazehowl Noct, Cryolinx, Cryolinx, Jormuntide, Pengullet Rocket Launcher, Strike from the Darkness, Zoe's Strategy
+Jormuntide took 500 damage.
+Jormuntide took 500 damage.
+Jormuntide took 500 damage.
+Jormuntide took 500 damage and was destroyed.
+Astegon took 500 damage.
+Astegon took 500 damage.
+Astegon took 500 damage and was destroyed.
+TURN 21
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Blazehowl Noct, Chillet, Cryolinx, Cryolinx, Elphidran Aqua, Pengullet Rocket Launcher, Strike from the Darkness, Zoe's Strategy
+Opponent deployed Cattiva.
+Deployed Elphidran Aqua to slot 1 for 6 Souls.
+Drew 2 cards.
+Put Elphidran on top of the deck.
+Deployed Pengullet Rocket Launcher to slot 2 for 4 Souls.
+Elphidran Aqua gets power +200 until end of turn.
+TURN 22
+BEL
+They blocked with Cattiva.
+Elphidran Aqua (900+200 = 1100) attacked Cattiva (200).
+Elphidran Aqua
+Cattiva destroyed, 1100 damage vs 200 Power.
+TURN 23
+BEL
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Blazehowl Noct, Blazehowl Noct, Chillet, Cryolinx, Cryolinx, Elphidran Aqua, Strike from the Darkness, Zoe's Strategy
+TURN 24
+OPPONENT
+Opponent deployed Menasting.
+Opponent deployed Single-Shot Rifle.
+TURN 25
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Blazehowl Noct, Blazehowl Noct, Chillet, Cryolinx, Cryolinx, Elphidran Aqua, Pengullet Rocket Launcher, Strike from the Darkness, Zoe's Strategy
+Elphidran Aqua took 1500 damage and was destroyed.
+TURN 26
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Blazehowl Noct, Blazehowl Noct, Chillet, Cryolinx, Cryolinx, Elphidran Aqua, Strike from the Darkness, Zoe's Strategy
+Opponent's Lamball attacks bel for 1.
+Lamball hit bel for 1. Damage Check: 1 card milled, no Lucky. bel 10 to 9 life.
+Opponent's Menasting attacks bel for 2.
+Menasting hit bel for 2. Damage Check: 2 cards milled, no Lucky. bel 9 to 7 life.
+Played Zoe's Strategy for 3 Souls.
+Returned Astegon from graveyard to hand.
+Opponent must discard 1.
+Opponent discarded Pump-Action Shotgun.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Astegon on top of the deck.
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Astegon.
+Deployed Astegon.
+All Pals with Power 300 or less destroyed.
+Opponent returned Pyrin Noct from their graveyard to hand.
+TURN 27
+BEL
+Astegon attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 5 to 2 life.
+Pyrin Noct
+Chillet's attack was interrupted.
+TURN 28
+OPPONENT
+Opponent deployed Stone Pit.
+Opponent activated Stone Pit.
+
+BEL WINS
+Opponent surrendered.
+FINAL LIFE: bel (WINNER) 7, Opponent 2.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+A steady, mostly favorable 28-turn game for bel: an early Pengullet poke (10->8) gave bel first
+blood, and although 兔绣袖 answered with a Shadowbeak that both destroyed bel's Pengullet and
+mill-forced bel's Jormuntide to the graveyard, bel's follow-up Astegon and second Jormuntide kept
+applying pressure (8->5 on turn 17), surviving 兔绣袖's own Mounted Machine Gun sniping (four
+500-damage ticks that took out both bel's Jormuntide and Astegon on turn 20) by simply rebuilding
+with Elphidran Aqua and later Chillet+Astegon again. bel only took damage once, in a two-hit burst
+on turn 26 (Lamball then Menasting, 10->7), and closed it out with a returned Astegon attack the
+very next turn (5->2) — 兔绣袖 conceded one turn later. Unlike several other games in this batch,
+every life change here is cleanly traceable with no gaps on either side.
+
+CLARIFICATION FLAGS for user review:
+- This is the second Ze game (with ze_05) showing NO unexplained life gap at all — worth noting
+  when summarizing the batch that the "10 to 6"-style gap is common but not universal.
+- Same open scope note as matches 1-8: Ze's "BLUE/PURPLE DECK" hasn't been cross-referenced
+  against a saved decklist from Ze's own Decks page (out of scope for this pass).

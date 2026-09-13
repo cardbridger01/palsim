@@ -1,0 +1,230 @@
+----- TIER 2 MATCH 3/10 done (worklist row 3, recordId 06a8a675-8a59-40a5-be7c-24215acbf5a2, ChaseHon vs Faraway) -----
+
+=====================================================================
+MATCH: ChaseHon vs Faraway
+recordId: 06a8a675-8a59-40a5-be7c-24215acbf5a2
+RESULT: CHASEHON WINS - Faraway's life hit zero. Final life: ChaseHon (WINNER) 2, Faraway 0.
+NOTE: ChaseHon's deck titled "GREEN PENGUINS" in HUD.
+NOTE: Extraction methodology note - during live capture, an intermediate mid-scrub read of this
+game's LOG panel (taken before the game finished playing out) showed the SAME turns renumbered
+higher (e.g. this game's real Turn 1 briefly rendered as "Turn 14"). Only the log captured after
+the game fully completed (WINS modal shown) had turn numbers matching the site's own final
+turn count and this match's independently-extracted prose summary from a prior session - that
+completed-state capture is what is transcribed below. Recommend treating only post-completion
+captures as authoritative for turn numbering on any long game going forward.
+NOTE: 2 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 1:  Foxparks interrupts Elphidran Aqua's attack
+  Turn 11: Foxparks interrupts Digtoise's attack
+  Turn 17: Foxparks interrupts Digtoise's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+NOTE: Turn headers in this game do not always match the acting player (e.g. Turn 22 is headed
+CHASEHON but its content - deploying Penking/Pengullet and self-damaging "every Faraway Pal" -
+is clearly Faraway's own turn). Preserved verbatim as shown; do not trust the header field alone
+for per-player attribution in this game.
+=====================================================================
+TURN 1
+CHASEHON
+Looked at top 5: deployed Elphidran Aqua.
+Drew 2 cards.
+Put Lyleen on top of the deck.
+Played Lily's Strategy for 3 Souls.
+All ChaseHon's Pals get power +1000 until end of turn.
+Foxparks
+Elphidran Aqua's attack was interrupted.
+Cryolinx (900+1000 = 1900) attacked Jormuntide (1600).
+Cryolinx
+Jormuntide destroyed, 1900 damage vs 1600 Power.
+Lyleen (900+1000 = 1900) attacked Elphidran (600).
+Lyleen
+Elphidran destroyed, 1900 damage vs 600 Power.
+TURN 2
+FARAWAY
+Faraway deployed Pump-Action Shotgun.
+Faraway's Pengullet attacks ChaseHon for 2.
+✦
+Pengullet attacked ChaseHon for 2; ChaseHon's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Deployed Lyleen to slot 2 for 7 Souls.
+Got 3 .
+Spent 3 (0 left).
+Looked at top 5: deployed Reindrix.
+Deployed Rushoar to slot 4 for 2 Souls.
+Assigned Rushoar.
+Got 3 .
+Drew 1.
+Faraway played Aurora Guide.
+TURN 3
+CHASEHON
+✦
+Lyleen attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+✦
+Reindrix attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 4
+FARAWAY
+Faraway's Pengullet attacks ChaseHon for 2.
+Pengullet hit ChaseHon for 2. Damage Check: 2 cards milled, no Lucky. ChaseHon 6 to 4 life.
+Faraway played Victor's Strategy.
+Faraway looked at 5 cards and took 1 into their hand.
+Faraway deployed Relaxaurus.
+TURN 5
+FARAWAY
+Reindrix was Rested.
+Reindrix won't stand while the source stays in play.
+TURN 6
+FARAWAY
+Faraway's Relaxaurus attacks ChaseHon for 3.
+TURN 7
+FARAWAY
+ChaseHon interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 8
+FARAWAY
+Spent 3 (0 left).
+Looked at top 5: deployed Digtoise.
+Assigned Rushoar.
+Got 3 .
+Drew 1.
+Deployed Pengullet Rocket Launcher to slot 6 for 4 Souls.
+Deployed Pengullet Rocket Launcher to slot 7 for 4 Souls.
+Spent 2 (1 left).
+power +500 until end of turn.
+Digtoise gains breakthrough until end of turn.
+TURN 9
+CHASEHON
+Digtoise (900+1500 = 2400) attacked Relaxaurus (1200).
+Digtoise
+Relaxaurus destroyed, 2400 damage vs 1200 Power.
+Digtoise breaks through for 3, pending their Damage Check.
+✦
+Digtoise's Breakthrough attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Lyleen gets power +200 until end of turn.
+Lyleen gets power +200 until end of turn.
+Lyleen (900+400 = 1300) attacked Pengullet (600).
+Lyleen
+Pengullet destroyed, 1300 damage vs 600 Power.
+TURN 10
+FARAWAY
+Faraway deployed Elphidran.
+Faraway's Elphidran attacks ChaseHon for 2.
+✦
+Elphidran attacked ChaseHon for 2; ChaseHon's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Faraway deployed Pengullet.
+Faraway's Pengullet attacks ChaseHon for 2.
+Pengullet hit ChaseHon for 2. Damage Check: 2 cards milled, no Lucky. ChaseHon 4 to 2 life.
+Rested 3 Souls, drew 1 card.
+Assigned Rushoar.
+Got 3 .
+Drew 1.
+Deployed Berry Plantation to slot 8 for 1 Souls.
+Assigned Reindrix.
+Got 3 .
+Drew 1.
+Spent 2 (5 left).
+power +500 until end of turn.
+Digtoise gains breakthrough until end of turn.
+TURN 11
+CHASEHON
+Foxparks
+Digtoise's attack was interrupted.
+Spent 3 (2 left).
+Looked at top 5: deployed Pengullet.
+Pengullet gets power +500 and the explode skill until end of turn.
+Pengullet (600+500 = 1100) attacked Elphidran (600).
+Pengullet
+Elphidran destroyed, 1100 damage vs 600 Power.
+TURN 12
+FARAWAY
+Faraway deployed Pengullet Rocket Launcher.
+Faraway activated Pengullet Rocket Launcher.
+Faraway's Pengullet gets power +500 until end of turn.
+TURN 13
+FARAWAY
+Drew 1.
+TURN 14
+FARAWAY
+Faraway activated Pengullet.
+Faraway deployed Pengullet.
+Faraway activated Pump-Action Shotgun.
+Faraway's Pengullet gets power +200 until end of turn.
+Faraway's Pengullet attacks ChaseHon's Digtoise.
+TURN 15
+FARAWAY
+ChaseHon interrupted with Dinossom, paid 1 Soul. The attack was nullified.
+TURN 16
+FARAWAY
+Deployed Elphidran Aqua to slot 2 for 6 Souls.
+Drew 2 cards.
+Put Penking on top of the deck.
+Played Lily's Strategy for 3 Souls.
+Spent 2 (0 left).
+power +500 until end of turn.
+Digtoise gains breakthrough until end of turn.
+TURN 17
+CHASEHON
+Foxparks
+Digtoise's attack was interrupted.
+Elphidran Aqua (900) attacked Pengullet (600).
+Elphidran Aqua
+Pengullet destroyed, 900 damage vs 600 Power.
+TURN 18
+FARAWAY
+Faraway deployed Jormuntide.
+TURN 19
+FARAWAY
+Digtoise was Rested.
+Digtoise won't stand during its next Stand Phase.
+TURN 20
+FARAWAY
+Faraway's Jormuntide attacks ChaseHon for 3.
+TURN 21
+FARAWAY
+ChaseHon interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+TURN 22
+CHASEHON
+Deployed Penking to slot 3 for 5 Souls.
+Deployed Pengullet to slot 4 for 3 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Pengullet gets power +500 and the explode skill until end of turn.
+Dealt 2200 to every Faraway Pal, then sacrificed this card.
+TURN 23
+FARAWAY
+✦
+Elphidran Aqua attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+Penking attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 7 to 5 life.
+TURN 24
+FARAWAY
+Faraway deployed Elphidran Aqua.
+Faraway's Elphidran Aqua attacks ChaseHon for 2.
+TURN 25
+FARAWAY
+ChaseHon interrupted with Dinossom, paid 1 Soul. The attack was nullified.
+TURN 26
+FARAWAY
+Faraway deployed Elphidran.
+Faraway activated Pump-Action Shotgun.
+Faraway's Elphidran gets power +200 until end of turn.
+Faraway's Elphidran attacks ChaseHon for 2.
+TURN 27
+FARAWAY
+ChaseHon interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 28
+FARAWAY
+Rested 3 Souls, drew 1 card.
+Deployed Pengullet to slot 4 for 3 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Dealt 1700 to every Faraway Pal, then sacrificed this card.
+TURN 29
+CHASEHON
+Elphidran Aqua attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 5 to 3 life.
+Digtoise attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 3 to 0 life.
+
+CHASEHON WINS
+Faraway's life hit zero.
+FINAL LIFE: ChaseHon (WINNER) 2, Faraway 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+29-turn game. ChaseHon opened devastatingly: Lily's Strategy buffed the whole board +1000, and Cryolinx/Lyleen destroyed Faraway's Jormuntide and Elphidran in one turn despite a bare-form Foxparks interrupt (turn 1). Faraway's Pengullet/Lyleen/Reindrix chipped ChaseHon down early (10->6->4->2, several Lucky Pal cancels) while ChaseHon's Digtoise (buffed via Faraway's own Pump-Action Shotgun-adjacent tech and repeated turn buffs) traded through Faraway's Relaxaurus and Pengullet across turns 9-17, twice interrupted bare-form by Foxparks (turns 11, 17). ChaseHon's Elphidran/Pengullet explode-sacrifice plays wiped Faraway's board for 2200 and 1700 self-damage (turns 22, 28) while several of Faraway's attacks were nullified by ChaseHon's Dinossom/Reindrix/Cryolinx interrupts (turns 15, 21, 25, 27). ChaseHon's Elphidran Aqua and Digtoise closed it out turn 29 (5 to 3 to 0).
+
+

@@ -1,0 +1,240 @@
+=====================================================================
+MATCH: Pingu vs 兔绣袖  [Pingu's match #9 of 10 pulled]
+recordId: 32f88257-e6c2-4cd8-afd1-2512debc1a7f
+RESULT: 兔绣袖 WINS - "Pingu surrendered." Final life: 兔绣袖 (WINNER) 10, Pingu 1.
+NOTE: EXTRACTED DIRECTLY FROM THE RAW EVENT LOG (the log panel's "Copy" button), per the
+methodology established while fixing pingu_06, pingu_07, ze_01, ze_03 and ze_08 and used for
+pingu_08 in this batch. All turn numbers below are TRUE, verified game-turn numbers taken from the
+raw log's [T<N> ...] tags. The raw log pull for this game (13,254 characters) ended exactly at true
+turn 12's last action ("Elphidran Aqua's attack was interrupted") with no further [T13+] content —
+this was cross-checked against the curated log (captured before the raw pull, per standard
+practice) and the curated view's own last visible content matches this same true-turn-12 ending
+point verbatim (down to the same two Pyrin Noct interrupts), confirming this is the genuine end of
+the game and not a raw-log character-cap truncation. Pingu surrendered immediately after, at 1
+life, rather than the raw log cutting off mid-game.
+NOTE: LIFE ACCOUNTING — Pingu: 10 -> 7 (true turn 4, Jormuntide hit) -> 4 (true turn 9, Astegon
+hit) -> 1 (true turn 11, Jormuntide hit), matching the final life of 1 exactly; every other attack
+against Pingu across the whole game was interrupted or cancelled by a Lucky Pal reveal. 兔绣袖 took
+zero damage the entire game — no "They X to Y life" line appears anywhere in the raw log — matching
+their final life of 10 exactly (the sole win-condition NOTE in this file: Pingu never got a single
+attack through). No damage is unaccounted for on either side.
+NOTE: TURN-OWNERSHIP CAVEAT — as with pingu_07 and pingu_08, the raw log's [main] tag always reads
+"Main Phase, Pingu's move" regardless of who is actually acting; it is Pingu's own resource/turn
+cycle that is narrated on every true turn, with 兔绣袖's actions interleaved as reactive
+"waiting"-tagged entries. The single PINGU/OPPONENT header on each turn below is a narrative
+judgment call based on which side's play defines that turn, not a value read directly off the raw
+log's tags. Unlike in pingu_08, this game is heavily opponent-dominated (兔绣袖 does virtually all
+the attacking and destroying from true turn 4 onward), so most turns below are headed OPPONENT.
+NOTE: Bare-form interrupts (card name on its own line, no player/cost) cross-referenced against the
+curated log by content-matching (curated turn-number labels are NOT trusted — this game's curated
+numbering also turned out to be shifted/evicted relative to true turns, same as every other file in
+this batch, confirmed by content-matching rather than assumed):
+  True Turn 5: Pyrin Noct interrupts Elphidran's attack
+  True Turn 6: Blazehowl Noct interrupts Relaxaurus's (first copy's) attack
+  True Turn 7: Reindrix interrupts Relaxaurus's (second copy's) attack
+  True Turn 11: Cryolinx interrupts Jormuntide's attack
+  True Turn 12: Pyrin Noct interrupts Jormuntide's attack and, separately, Elphidran Aqua's attack
+NOTE: 5+ FULL-form interrupts occurred (Pingu's own): True Turn 5 "Pingu interrupted with Blazehowl
+Noct, paid 1 Soul"; True Turn 5 "Pingu interrupted with Cryolinx, discarded Pengullet"; True Turn 6
+"Pingu interrupted with Reindrix, paid 1 Soul"; True Turn 7 "Pingu interrupted with Pyrin Noct,
+paid 1 Soul"; True Turn 7 "Pingu interrupted with Cryolinx, paid 1 Soul"; True Turn 8 "Pingu
+interrupted with Pyrin Noct, paid 1 Soul"; True Turn 9 "Pingu interrupted with Reindrix, paid 1
+Soul"; True Turn 10 "Pingu interrupted with Reindrix, paid 1 Soul"; True Turn 10 "Pingu interrupted
+with Pyrin Noct, discarded Pengullet"; True Turn 11 "Pingu interrupted with Cryolinx, discarded Pal
+Sphere" — included verbatim in the body below, not counted in the bare-form total.
+NOTE: Deck labeled "BLUE/PURPLE DRAGON CONTROL" on Pingu's HUD, same as matches 1-8.
+=====================================================================
+TURN 1
+PINGU
+Turn opened — Souls 1/1 · Hand: Cryolinx, Pal Sphere, Pyrin Noct, Relaxaurus, Strike from the Darkness
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+兔绣袖 played Aurora Guide.
+TURN 2
+PINGU
+Turn opened — Souls 3/3 · Hand: Cryolinx, Pal Sphere, Pyrin Noct, Relaxaurus, Strike from the Darkness, Zoe's Strategy
+Rested 3 Souls, drew 1 card.
+兔绣袖 played Pal Sphere.
+TURN 3
+PINGU
+Turn opened — Souls 5/5 · Hand: Cryolinx, Pal Sphere, Pengullet Rocket Launcher, Pyrin Noct, Relaxaurus, Relaxaurus, Strike from the Darkness, Zoe's Strategy
+Played Pal Sphere for 4 Souls.
+Drew 3.
+TURN 4
+OPPONENT
+Turn opened — Souls 7/7 · Hand: Cryolinx, Cryolinx, Elphidran, Pengullet, Pengullet Rocket Launcher, Pyrin Noct, Relaxaurus, Relaxaurus, Strike from the Darkness, Zoe's Strategy, Zoe's Strategy
+Rested 3 Souls, drew 1 card.
+Deployed Pengullet Rocket Launcher to slot 1 for 4 Souls.
+兔绣袖 played Aurora Guide.
+兔绣袖 deployed Chillet.
+兔绣袖 deployed Jormuntide.
+兔绣袖's Jormuntide attacks Pingu for 3.
+Jormuntide hit Pingu for 3. Damage Check: 3 cards milled, no Lucky. Pingu 10 to 7 life.
+兔绣袖's Chillet attacks Pingu for 2.
+Chillet attacked Pingu for 2; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 5
+OPPONENT
+Turn opened — Souls 9/9 · Hand: Blazehowl Noct, Cryolinx, Cryolinx, Elphidran, Pengullet, Pengullet, Pyrin Noct, Relaxaurus, Relaxaurus, Strike from the Darkness, Zoe's Strategy, Zoe's Strategy
+Played Strike from the Darkness for 4 Souls.
+Deployed Elphidran to slot 2 for 4 Souls.
+Revealed Relaxaurus (Dragon). Power +500 until end of turn.
+Pyrin Noct
+Elphidran's attack was interrupted.
+兔绣袖's Chillet attacks Pingu's Elphidran.
+Pingu interrupted with Blazehowl Noct, paid 1 Soul. The attack was nullified.
+兔绣袖 played Aurora Guide.
+兔绣袖 deployed Astegon.
+Elphidran gets power -1000 until end of turn.
+兔绣袖's Astegon attacks Pingu for 3.
+Pingu interrupted with Cryolinx, discarded Pengullet. The attack was nullified.
+TURN 6
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Cryolinx, Pengullet, Pyrin Noct, Reindrix, Relaxaurus, Relaxaurus, Zoe's Strategy, Zoe's Strategy
+Deployed Relaxaurus to slot 2 for 7 Souls.
+Relaxaurus gets power +200 until end of turn.
+Blazehowl Noct
+Relaxaurus's attack was interrupted.
+兔绣袖 played Zoe's Strategy.
+兔绣袖 returned Jormuntide from their graveyard to hand.
+Discarded Zoe's Strategy.
+兔绣袖's Astegon attacks Pingu for 3.
+Pingu interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+兔绣袖 played Strike from the Darkness.
+Relaxaurus was destroyed.
+TURN 7
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Cryolinx, Elphidran Aqua, Pengullet, Pyrin Noct, Relaxaurus, Zoe's Strategy
+Deployed Relaxaurus to slot 2 for 7 Souls.
+Relaxaurus gets power +200 until end of turn.
+Reindrix
+Relaxaurus's attack was interrupted.
+兔绣袖 deployed Jormuntide.
+Relaxaurus was Rested.
+Relaxaurus won't stand during its next Stand Phase.
+兔绣袖's Jormuntide attacks Pingu's Relaxaurus.
+Pingu interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+兔绣袖's Astegon attacks Pingu for 3.
+Pingu interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+TURN 8
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Elphidran, Elphidran Aqua, Pengullet, Zoe's Strategy
+Played Zoe's Strategy for 3 Souls.
+Returned Chillet from graveyard to hand.
+兔绣袖 must discard 1.
+兔绣袖 discarded Elphidran Aqua.
+Deployed Chillet to slot 3 for 5 Souls.
+Revealed Pyrin Noct, added to hand.
+Chillet's attack was interrupted.
+兔绣袖's Astegon attacks Pingu's Chillet.
+Astegon (1200) attacked Chillet (900).
+Chillet destroyed, 1200 damage vs 900 Power.
+兔绣袖's Jormuntide attacks Pingu's Relaxaurus.
+Pingu interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified.
+兔绣袖 played Zoe's Strategy.
+Relaxaurus was destroyed.
+兔绣袖 played Zoe's Strategy.
+兔绣袖 returned Chillet from their graveyard to hand.
+Discarded Elphidran.
+TURN 9
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Elphidran Aqua, Pengullet
+Deployed Elphidran Aqua to slot 2 for 6 Souls.
+Drew 2 cards.
+Put Aurora Guide on top of the deck.
+Rested 3 Souls, drew 1 card.
+兔绣袖 deployed Astegon.
+Elphidran Aqua gets power -1000 until end of turn.
+兔绣袖's Astegon attacks Pingu for 3.
+Pingu interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+兔绣袖's Jormuntide attacks Pingu for 3.
+Jormuntide attacked Pingu for 3; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+兔绣袖's Astegon attacks Pingu for 3.
+Astegon hit Pingu for 3. Damage Check: 3 cards milled, no Lucky. Pingu 7 to 4 life.
+TURN 10
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Pengullet, Pyrin Noct, Reindrix
+Rested 3 Souls, drew 1 card.
+Deployed Elphidran Aqua to slot 2 for 6 Souls.
+Drew 2 cards.
+Put Pengullet on top of the deck.
+兔绣袖 deployed Elphidran.
+兔绣袖 played Strike from the Darkness.
+Elphidran Aqua was destroyed.
+兔绣袖's Elphidran attacks Pingu for 2.
+Elphidran attacked Pingu for 2; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+兔绣袖's Astegon attacks Pingu for 3.
+Pingu interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+兔绣袖's Astegon attacks Pingu for 3.
+Pingu interrupted with Pyrin Noct, discarded Pengullet. The attack was nullified.
+兔绣袖's Jormuntide attacks Pingu for 3.
+Jormuntide attacked Pingu for 3; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 11
+OPPONENT
+Turn opened — Souls 10/10 · Hand: Aurora Guide, Chillet, Cryolinx
+Rested 3 Souls, drew 1 card.
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Put Jormuntide on top of the deck.
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Jormuntide.
+Deployed Jormuntide.
+Drew 1.
+Jormuntide gets power +200 until end of turn.
+Cryolinx
+Jormuntide's attack was interrupted.
+兔绣袖 played Pal Sphere.
+兔绣袖's Astegon attacks Pingu for 3.
+Pingu blocked with Chillet.
+Astegon (1200) attacked Chillet (900).
+Chillet destroyed, 1200 damage vs 900 Power.
+兔绣袖's Astegon attacks Pingu for 3.
+Astegon attacked Pingu for 3; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+兔绣袖's Jormuntide attacks Pingu for 3.
+Jormuntide hit Pingu for 3. Damage Check: 3 cards milled, no Lucky. Pingu 4 to 1 life.
+兔绣袖 deployed Chillet.
+兔绣袖 revealed Pyrin Noct and added it to their hand.
+兔绣袖's Chillet attacks Pingu for 2.
+Pingu interrupted with Cryolinx, discarded Pal Sphere. The attack was nullified.
+TURN 12
+PINGU
+Turn opened — Souls 10/10 · Hand: Elphidran, Elphidran Aqua
+Deployed Elphidran Aqua to slot 2 for 6 Souls.
+Drew 2 cards.
+Put Elphidran on top of the deck.
+Deployed Pengullet Rocket Launcher to slot 4 for 4 Souls.
+Jormuntide gets power +200 until end of turn.
+Pyrin Noct
+Jormuntide's attack was interrupted.
+Elphidran Aqua gets power +200 until end of turn.
+Pyrin Noct
+Elphidran Aqua's attack was interrupted.
+
+兔绣袖 WINS
+Pingu surrendered.
+FINAL LIFE: 兔绣袖 (WINNER) 10, Pingu 1.
+
+----------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+----------------------------------------------------------------------
+A 12-true-turn loss, extracted directly from the raw event log (no curated-view scrub-to-end pass
+needed for the reconstruction, though the curated view was cross-checked to confirm the game's true
+ending point). This is a lopsided defensive struggle: 兔绣袖 built an aggressive Dragon/Fire board
+(Jormuntide, Chillet, Astegon, Elphidran/Elphidran Aqua rotating through Strike from the Darkness
+removal and Zoe's Strategy recursion) and attacked Pingu turn after turn from true turn 4 onward,
+while Pingu never landed a single point of damage the entire game — every one of Pingu's own
+deployed Pals (two Relaxaurus, two Chillet, an Elphidran, an Elphidran Aqua, a Jormuntide) was
+either destroyed on defense or had its own attack interrupted before connecting. Pingu's interrupt
+suite (Cryolinx, Pyrin Noct, Reindrix, Blazehowl Noct — the same toolkit seen surviving other close
+games in this batch) bought a lot of time, nullifying roughly a dozen attacks across the game, but
+three hits still got through (true turns 4, 9, and 11) to bring Pingu from 10 to 1 life. Facing a
+board of Astegon, Jormuntide and two Chillets at 1 life with a thin hand, Pingu surrendered on true
+turn 12 rather than play it out. No damage is unaccounted for on either side — 兔绣袖 finishes at a
+full, untouched 10 life.
+
+CLARIFICATION FLAGS for user review:
+- This file was extracted directly via the raw-log method — it is a fresh pull, not a fix of a
+  previously-flawed file, and required no retraction.
+- The single PINGU/OPPONENT header on each turn is a narrative judgment call — see the
+  TURN-OWNERSHIP CAVEAT note above. This game skews heavily OPPONENT since 兔绣袖 does almost all of
+  the attacking and destroying from true turn 4 on.
+- Same open scope note as matches 1-8: Pingu's "BLUE/PURPLE DRAGON CONTROL" archetype hasn't been
+  cross-referenced against a saved decklist (out of scope for this pass).

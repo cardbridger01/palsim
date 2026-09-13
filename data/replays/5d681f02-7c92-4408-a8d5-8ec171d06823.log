@@ -1,0 +1,166 @@
+----- TIER 1 MATCH 14/34 (recordId 5d681f02-7c92-4408-a8d5-8ec171d06823) -----
+
+=====================================================================
+MATCH: sliceofNai vs xNIGHTn
+recordId: 5d681f02-7c92-4408-a8d5-8ec171d06823
+RESULT: XNIGHTN WINS - sliceofNai's life hit zero. Final life: xNIGHTn (WINNER) 6, sliceofNai 0.
+NOTE: xNIGHTn's deck titled "DRAGON REVIVAL" in HUD.
+NOTE: 4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check, listed here with turn + card + what they nullified:
+  Turn 7:  Reindrix interrupts Elphidran Aqua's attack
+  Turn 13: Foxparks interrupts Astegon's attack
+  Turn 16: Cryolinx interrupts Astegon's attack
+  Turn 16: Cryolinx interrupts Elphidran Aqua's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+SLICEOFNAI
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+sliceofNai deployed Lamball.
+sliceofNai's Lamball attacks xNIGHTn for 1.
+Lamball hit xNIGHTn for 1. Damage Check: 1 card milled, no Lucky. xNIGHTn 10 to 9 life.
+TURN 2
+SLICEOFNAI
+Rested 3 Souls, drew 1 card.
+sliceofNai deployed Lamball.
+sliceofNai's Lamball attacks xNIGHTn for 1.
+Lamball hit xNIGHTn for 1. Damage Check: 1 card milled, no Lucky. xNIGHTn 9 to 8 life.
+sliceofNai's Lamball attacks xNIGHTn for 1.
+Lamball hit xNIGHTn for 1. Damage Check: 1 card milled, no Lucky. xNIGHTn 8 to 7 life.
+TURN 3
+SLICEOFNAI
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Lyleen Noct, added to hand.
+TURN 4
+XNIGHTN
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 5
+SLICEOFNAI
+sliceofNai deployed Makeshift Handgun.
+Chillet took 500 damage.
+sliceofNai activated Makeshift Handgun.
+sliceofNai's Lamball gets power +200 until end of turn.
+sliceofNai's Lamball attacks xNIGHTn's Chillet.
+xNIGHTn interrupted with Reindrix, discarded Lyleen Noct. The attack was nullified.
+sliceofNai's Lamball attacks xNIGHTn for 1.
+Lamball hit xNIGHTn for 1. Damage Check: 1 card milled, no Lucky. xNIGHTn 7 to 6 life.
+TURN 6
+SLICEOFNAI
+Deployed Chillet to slot 2 for 5 Souls.
+Revealed Black Marketeer, added to hand.
+sliceofNai deployed Foxparks.
+sliceofNai's Lamball attacks xNIGHTn for 1.
+xNIGHTn blocked with Chillet.
+Lamball (200) attacked Chillet (900).
+Lamball destroyed, 900 damage vs 200 Power.
+sliceofNai's Lamball attacks xNIGHTn for 1.
+xNIGHTn blocked with Chillet.
+Lamball (200) attacked Chillet (900).
+Lamball destroyed, 900 damage vs 200 Power.
+sliceofNai's Foxparks attacks xNIGHTn for 2.
+✦
+Foxparks attacked xNIGHTn for 2; xNIGHTn's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 7
+XNIGHTN
+Chillet (900) attacked Foxparks (400).
+Chillet
+Foxparks destroyed, 900 damage vs 400 Power.
+Deployed Elphidran Aqua to slot 3 for 6 Souls.
+Drew 2 cards.
+Put Jormuntide on top of the deck.
+Reindrix
+Elphidran Aqua's attack was interrupted.
+TURN 8
+SLICEOFNAI
+sliceofNai deployed Single-Shot Rifle.
+Chillet took 1500 damage and was destroyed.
+TURN 9
+SLICEOFNAI
+Played Black Marketeer for 5 Souls.
+Returned Chillet from graveyard to hand.
+Returned Astegon from graveyard to hand.
+It becomes night. 🌙
+Deployed Chillet to slot 1 for 5 Souls.
+Revealed Relaxaurus.
+Deployed Relaxaurus.
+No valid target.
+TURN 10
+XNIGHTN
+✦
+Relaxaurus attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+✦
+Elphidran Aqua attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+✦
+Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 11
+SLICEOFNAI
+sliceofNai deployed Kitsun.
+Relaxaurus took 1200 damage and was destroyed.
+sliceofNai deployed Univolt.
+sliceofNai activated Makeshift Handgun.
+sliceofNai's Univolt gets power +200 until end of turn.
+sliceofNai activated Single-Shot Rifle.
+sliceofNai's Univolt gets power +200 until end of turn.
+sliceofNai's Univolt attacks xNIGHTn's Elphidran Aqua.
+Univolt (600+700 = 1300) attacked Elphidran Aqua (900).
+Univolt
+Elphidran Aqua destroyed, 1300 damage vs 900 Power.
+TURN 12
+SLICEOFNAI
+Deployed Astegon to slot 3 for 8 Souls.
+All Pals with Power 300 or less destroyed.
+TURN 13
+XNIGHTN
+Foxparks
+Astegon's attack was interrupted.
+Chillet (900) attacked Univolt (600).
+Chillet
+Univolt destroyed, 900 damage vs 600 Power.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+TURN 14
+SLICEOFNAI
+sliceofNai deployed Grappling Gun.
+TURN 15
+SLICEOFNAI
+Deployed Elphidran Aqua to slot 4 for 6 Souls.
+Drew 2 cards.
+Put Jormuntide on top of the deck.
+TURN 16
+XNIGHTN
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+All Pals with Power 300 or less destroyed.
+Cryolinx
+Astegon's attack was interrupted.
+Cryolinx
+Elphidran Aqua's attack was interrupted.
+TURN 17
+SLICEOFNAI
+sliceofNai played Pal Sphere.
+sliceofNai deployed Lamball.
+TURN 18
+SLICEOFNAI
+Played Pal Sphere for 4 Souls.
+Drew 3.
+TURN 19
+XNIGHTN
+They blocked with Lamball.
+Chillet (900) attacked Lamball (200).
+Chillet
+Lamball destroyed, 900 damage vs 200 Power.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 4 to 2 life.
+Elphidran Aqua attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 2 to 0 life.
+
+XNIGHTN WINS
+sliceofNai's life hit zero.
+FINAL LIFE: xNIGHTn (WINNER) 6, sliceofNai 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+19-turn game. sliceofNai's Lamball chip-attacked xNIGHTn early (10->9->8->7->6, turns 1-5), and xNIGHTn's Chillet destroyed two Lamballs in blocks (turn 6). xNIGHTn's Chillet destroyed sliceofNai's Foxparks (turn 7); sliceofNai's Single-Shot Rifle then destroyed xNIGHTn's Chillet (turn 8). sliceofNai deployed Relaxaurus/Chillet after a Black Marketeer graveyard-recursion play (turn 9), but three of sliceofNai's attacks were cancelled by xNIGHTn's Lucky Pal in one turn (turn 10). sliceofNai's Univolt destroyed xNIGHTn's Elphidran Aqua (turn 11), but xNIGHTn's Chillet destroyed Univolt right back and started chipping sliceofNai (turn 13). Astegon and Elphidran Aqua attacks were nullified by xNIGHTn's Foxparks/Cryolinx interrupts (turns 13, 16). xNIGHTn ground sliceofNai down via repeated Chillet hits (10->8->6->4) and finished with Chillet destroying a blocking Lamball then Elphidran Aqua hitting for the final 2 (2 to 0, turn 19).
+
+

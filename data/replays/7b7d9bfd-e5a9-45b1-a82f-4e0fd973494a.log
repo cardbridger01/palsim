@@ -1,0 +1,172 @@
+----- TIER 1 MATCH 19/34 (recordId 7b7d9bfd-e5a9-45b1-a82f-4e0fd973494a) -----
+
+=====================================================================
+MATCH: Beicon vs LavenousCAM
+recordId: 7b7d9bfd-e5a9-45b1-a82f-4e0fd973494a
+RESULT: BEICON WINS - LavenousCAM's life hit zero. Final life: Beicon (WINNER) 7, LavenousCAM 0.
+NOTE: LavenousCAM's deck titled "PURE FUEL" in HUD.
+NOTE: 1 bare-form interrupt (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 19: Cryolinx interrupts Jormuntide Ignis's attack
+Cost is confirmed not shown anywhere in the client for this (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+LAVENOUSCAM
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Deployed Foxparks to slot 1 for 2 Souls.
+power +300 until end of turn.
+Foxparks attacked them for 1. Damage Check: 1 card milled, no Lucky. They 10 to 9 life.
+TURN 2
+LAVENOUSCAM
+Deployed Stone Pit to slot 2 for 1 Souls.
+Deployed Rooby to slot 3 for 2 Souls.
+Assigned Rooby — its On Assign ability triggers.
+Foxparks gets power +400 until end of turn.
+Got 3 .
+Drew 1.
+power +300 until end of turn.
+✦
+Foxparks attacked them for 1; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+TURN 3
+BEICON
+Beicon deployed Menasting.
+Beicon's Menasting attacks LavenousCAM's Stone Pit.
+Menasting (700) struck Stone Pit (600).
+Menasting
+Stone Pit destroyed, 700 damage vs 600 Power.
+Deployed Mounted Machine Gun to slot 2 for 4 Souls.
+Assigned Rooby — its On Assign ability triggers.
+Foxparks gets power +400 until end of turn.
+Spent 2 .
+power +300 until end of turn.
+TURN 4
+LAVENOUSCAM
+✦
+Foxparks attacked them for 1; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Deployed Foxparks to slot 4 for 2 Souls.
+power +300 until end of turn.
+Foxparks attacked them for 1. Damage Check: 1 card milled, no Lucky. They 9 to 8 life.
+TURN 5
+BEICON
+Beicon played Aurora Guide.
+Beicon deployed Chillet.
+Beicon deployed Jormuntide.
+TURN 6
+BEICON
+Foxparks was Rested.
+Foxparks won't stand during its next Stand Phase.
+TURN 7
+BEICON
+Beicon's Jormuntide attacks LavenousCAM's Mounted Machine Gun.
+Jormuntide (1600) struck Mounted Machine Gun (1000).
+Jormuntide
+Mounted Machine Gun destroyed, 1600 damage vs 1000 Power.
+Beicon's Chillet attacks LavenousCAM's Foxparks.
+Chillet (900) attacked Foxparks (200).
+Chillet
+Foxparks destroyed, 900 damage vs 200 Power.
+Rested 3 Souls, drew 1 card.
+Played Pal Sphere for 4 Souls.
+Drew 3.
+TURN 8
+LAVENOUSCAM
+Rooby attacked them for 1. Damage Check: 1 card milled, no Lucky. They 8 to 7 life.
+TURN 9
+BEICON
+Beicon deployed Grappling Gun.
+Beicon deployed Pengullet Rocket Launcher.
+Beicon's Jormuntide attacks LavenousCAM's Rooby.
+Jormuntide (1600) attacked Rooby (200).
+Jormuntide
+Rooby destroyed, 1600 damage vs 200 Power.
+Beicon's Chillet attacks LavenousCAM's Foxparks.
+Chillet (900) attacked Foxparks (200).
+Chillet
+Foxparks destroyed, 900 damage vs 200 Power.
+Beicon activated Grappling Gun.
+Deployed Suzaku to slot 1 for 7 Souls.
+Rested 3 Souls, drew 1 card.
+TURN 10
+BEICON
+Beicon deployed Jormuntide.
+TURN 11
+BEICON
+Suzaku was Rested.
+Suzaku won't stand during its next Stand Phase.
+TURN 12
+BEICON
+Beicon's Jormuntide attacks LavenousCAM's Suzaku.
+Jormuntide (1600) attacked Suzaku (1200).
+Jormuntide
+Suzaku destroyed, 1600 damage vs 1200 Power.
+Beicon's Jormuntide attacks LavenousCAM for 3.
+Jormuntide hit LavenousCAM for 3. Damage Check: 3 cards milled, no Lucky. LavenousCAM 10 to 7 life.
+Beicon activated Grappling Gun.
+Deployed Flambelle to slot 1 for 3 Souls.
+Got 2 .
+Rested 3 Souls, drew 1 card.
+Deployed Foxparks to slot 2 for 2 Souls.
+TURN 13
+BEICON
+Beicon deployed Pengullet.
+Beicon activated Pengullet Rocket Launcher.
+Beicon's Pengullet gets power +500 until end of turn.
+Beicon activated Pengullet.
+Beicon's Jormuntide attacks LavenousCAM for 3.
+TURN 14
+BEICON
+LavenousCAM interrupted with Bushi, paid 1 Soul. The attack was nullified.
+TURN 15
+BEICON
+Beicon's Jormuntide attacks LavenousCAM for 3.
+Jormuntide hit LavenousCAM for 3. Damage Check: 3 cards milled, no Lucky. LavenousCAM 7 to 4 life.
+Beicon activated Grappling Gun.
+Rested 3 Souls, drew 1 card.
+Deployed Foxparks to slot 1 for 2 Souls.
+Deployed Mounted Machine Gun to slot 2 for 4 Souls.
+TURN 16
+BEICON
+Beicon deployed Pengullet.
+Beicon activated Pengullet Rocket Launcher.
+Beicon's Pengullet gets power +500 until end of turn.
+Beicon activated Pengullet.
+Beicon's Jormuntide attacks LavenousCAM for 3.
+TURN 17
+BEICON
+LavenousCAM interrupted with Foxparks, paid 1 Soul. The attack was nullified.
+TURN 18
+BEICON
+Beicon's Jormuntide attacks LavenousCAM for 3.
+✦
+Jormuntide attacked LavenousCAM for 3; LavenousCAM's Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Beicon activated Grappling Gun.
+Beicon deployed Antique Dresser.
+Deployed Jormuntide Ignis to slot 1 for 8 Souls.
+TURN 19
+LAVENOUSCAM
+Cryolinx
+Jormuntide Ignis's attack was interrupted.
+Discarded Ragnahawk, Axel's Strategy to pay a cost.
+Stood this card.
+Deployed Primitive Furnace to slot 3 for 2 Souls.
+Assigned Jormuntide Ignis.
+Got 3 .
+Drew 1.
+TURN 20
+BEICON
+Beicon's Jormuntide attacks LavenousCAM for 3.
+Jormuntide hit LavenousCAM for 3. Damage Check: 3 cards milled, no Lucky. LavenousCAM 4 to 1 life.
+Beicon's Jormuntide attacks LavenousCAM for 3.
+Jormuntide hit LavenousCAM for 3. Damage Check: 3 cards milled, no Lucky. LavenousCAM 1 to 0 life.
+
+BEICON WINS
+LavenousCAM's life hit zero.
+FINAL LIFE: Beicon (WINNER) 7, LavenousCAM 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+20-turn game. LavenousCAM's Foxparks/Rooby chip-attacked Beicon early (10->9->8->7, several Lucky Pal cancels), but Beicon's Jormuntide (1600) destroyed LavenousCAM's Mounted Machine Gun, Rooby, and Suzaku across turns 7-12 via combat. Beicon built a Grappling Gun/Pengullet Rocket Launcher soul engine and ground LavenousCAM down with repeated Jormuntide direct attacks (3 dmg each turn), two of which were nullified by LavenousCAM's Bushi/Foxparks interrupts (turns 14, 17) and one cancelled by Lucky Pal (turn 18). LavenousCAM's Jormuntide Ignis attack was bare-form interrupted by Beicon's Cryolinx (turn 19). Beicon closed with two more Jormuntide hits for 3 each (4 to 1 to 0, turn 20).
+
+

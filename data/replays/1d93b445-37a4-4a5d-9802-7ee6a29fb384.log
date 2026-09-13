@@ -1,0 +1,206 @@
+----- TIER 2 MATCH 10/10 done (worklist row 10, recordId 1d93b445-37a4-4a5d-9802-7ee6a29fb384, Faraway vs thegrumpygamerdad) -----
+
+=====================================================================
+MATCH: thegrumpygamerdad vs Faraway
+recordId: 1d93b445-37a4-4a5d-9802-7ee6a29fb384
+RESULT: FARAWAY WINS - thegrumpygamerdad's life hit zero. Final life: Faraway (WINNER) 7, thegrumpygamerdad 0.
+NOTE: Faraway's deck titled "BLUE RED CHILLET" in HUD.
+NOTE: 5 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim
+below for decklist cross-check:
+  Turn 6:  Reindrix interrupts Pengullet's attack
+  Turn 8:  Foxparks interrupts Elphidran's attack
+  Turn 18: Foxparks interrupts Elphidran Aqua's attack
+  Turn 21: Cryolinx interrupts Jormuntide's attack
+  Turn 24: Reindrix interrupts Chillet's attack
+Cost is confirmed not shown anywhere in the client for these (see backfill_c0e068aa.txt's
+NOTEs for the DOM/overlay investigation) - not an extraction gap, a genuine site limit.
+=====================================================================
+TURN 1
+THEGRUMPYGAMERDAD
+Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase.
+Mulliganed. Redrew 5.
+thegrumpygamerdad deployed Primitive Furnace.
+TURN 2
+THEGRUMPYGAMERDAD
+Rested 3 Souls, drew 1 card.
+thegrumpygamerdad deployed Univolt.
+thegrumpygamerdad activated Primitive Furnace.
+TURN 3
+THEGRUMPYGAMERDAD
+Deployed Pengullet to slot 1 for 4 Souls.
+TURN 4
+FARAWAY
+✦
+Pengullet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 5
+THEGRUMPYGAMERDAD
+thegrumpygamerdad deployed Univolt.
+thegrumpygamerdad's Univolt attacks Faraway's Pengullet.
+Faraway interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+thegrumpygamerdad activated Primitive Furnace.
+TURN 6
+FARAWAY
+Reindrix
+Pengullet's attack was interrupted.
+Deployed Pump-Action Shotgun to slot 2 for 7 Souls.
+Dealt 1200 to every thegrumpygamerdad Pal.
+TURN 7
+THEGRUMPYGAMERDAD
+thegrumpygamerdad deployed Univolt.
+thegrumpygamerdad's Univolt attacks Faraway for 2.
+✦
+Univolt attacked Faraway for 2; Faraway's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 8
+FARAWAY
+Pengullet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life.
+Deployed Grappling Gun to slot 3 for 5 Souls.
+Deployed Elphidran to slot 4 for 4 Souls.
+Elphidran gets power +200 until end of turn.
+Chose not to reveal a Dragon.
+Foxparks
+Elphidran's attack was interrupted.
+Pengullet gets Power +200 until end of turn.
+Pengullet gains vigilance until end of turn.
+TURN 9
+THEGRUMPYGAMERDAD
+thegrumpygamerdad activated Primitive Furnace.
+Drew 1.
+thegrumpygamerdad deployed Pump-Action Shotgun.
+thegrumpygamerdad deployed Reptyro.
+thegrumpygamerdad's Reptyro attacks Faraway for 3.
+✦
+Reptyro attacked Faraway for 3; Faraway's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+thegrumpygamerdad activated Primitive Furnace.
+TURN 10
+THEGRUMPYGAMERDAD
+Deployed Elphidran Aqua to slot 1 for 6 Souls.
+Drew 2 cards.
+Put Aurora Guide on top of the deck.
+TURN 11
+FARAWAY
+✦
+Elphidran Aqua attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)
+Elphidran Aqua gets Power +200 until end of turn.
+Elphidran Aqua gains vigilance until end of turn.
+Played Axel's Strategy for 4 Souls.
+TURN 12
+THEGRUMPYGAMERDAD
+thegrumpygamerdad deployed Suzaku.
+Elphidran Aqua took 900 damage and was destroyed.
+thegrumpygamerdad's Suzaku attacks Faraway for 3.
+✦
+Suzaku attacked Faraway for 3; Faraway's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+thegrumpygamerdad activated Primitive Furnace.
+thegrumpygamerdad activated Primitive Furnace.
+thegrumpygamerdad deployed Grappling Gun.
+thegrumpygamerdad activated Grappling Gun.
+TURN 13
+THEGRUMPYGAMERDAD
+Rested 3 Souls, drew 1 card.
+Deployed Pengullet Rocket Launcher to slot 1 for 4 Souls.
+thegrumpygamerdad deployed Reptyro.
+thegrumpygamerdad's Reptyro attacks Faraway for 3.
+Faraway interrupted with Cryolinx, paid 1 Soul. The attack was nullified.
+thegrumpygamerdad's Suzaku attacks Faraway for 3.
+Faraway interrupted with Foxparks, paid 1 Soul. The attack was nullified.
+thegrumpygamerdad activated Primitive Furnace.
+thegrumpygamerdad activated Grappling Gun.
+TURN 14
+THEGRUMPYGAMERDAD
+Deployed Pengullet to slot 4 for 4 Souls.
+Pengullet gets power +500 and the explode skill until end of turn.
+Pengullet gets Power +200 until end of turn.
+Pengullet gains vigilance until end of turn.
+Pengullet gets power +200 until end of turn.
+Drew 1.
+Dealt 1500 to every thegrumpygamerdad Pal, then sacrificed this card.
+Deployed Elphidran to slot 4 for 4 Souls.
+Chose not to reveal a Dragon.
+TURN 15
+FARAWAY
+Elphidran attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life.
+TURN 16
+THEGRUMPYGAMERDAD
+thegrumpygamerdad deployed Suzaku.
+Elphidran took 900 damage and was destroyed.
+thegrumpygamerdad activated Grappling Gun.
+thegrumpygamerdad's Suzaku attacks Faraway for 3.
+Suzaku hit Faraway for 3. Damage Check: 3 cards milled, no Lucky. Faraway 10 to 7 life.
+TURN 17
+THEGRUMPYGAMERDAD
+Played Aurora Guide for 2 Souls.
+Drew 1 card.
+Deployed Elphidran Aqua to slot 4 for 6 Souls.
+Drew 2 cards.
+Put Cryolinx on top of the deck.
+Elphidran Aqua gets power +200 until end of turn.
+Elphidran Aqua gets Power +200 until end of turn.
+Elphidran Aqua gains vigilance until end of turn.
+Elphidran Aqua gets power +200 until end of turn.
+TURN 18
+FARAWAY
+Foxparks
+Elphidran Aqua's attack was interrupted.
+TURN 19
+THEGRUMPYGAMERDAD
+thegrumpygamerdad activated Primitive Furnace.
+thegrumpygamerdad deployed Single-Shot Rifle.
+Elphidran Aqua took 1700 damage and was destroyed.
+thegrumpygamerdad activated Grappling Gun.
+thegrumpygamerdad's Suzaku attacks Faraway for 3.
+Faraway interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+thegrumpygamerdad deployed Jormuntide Ignis.
+thegrumpygamerdad's Jormuntide Ignis attacks Faraway for 4.
+Faraway interrupted with Reindrix, paid 1 Soul. The attack was nullified.
+thegrumpygamerdad activated Jormuntide Ignis.
+thegrumpygamerdad discarded Primitive Furnace, Makeshift Handgun to pay a cost.
+thegrumpygamerdad's Jormuntide Ignis attacks Faraway for 4.
+✦
+Jormuntide Ignis attacked Faraway for 4; Faraway's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)
+TURN 20
+THEGRUMPYGAMERDAD
+Deployed Chillet to slot 4 for 5 Souls.
+Revealed Jormuntide.
+Deployed Jormuntide.
+Drew 1.
+TURN 21
+FARAWAY
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life.
+Cryolinx
+Jormuntide's attack was interrupted.
+Played Axel's Strategy for 4 Souls.
+Choose up to 2 rested Pals to stand.
+Chillet was Stood.
+Jormuntide was Stood.
+Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 4 to 2 life.
+Jormuntide gets Power +200 until end of turn.
+Jormuntide gains vigilance until end of turn.
+Jormuntide gets power +200 until end of turn.
+Jormuntide gets power +200 until end of turn.
+Jormuntide (1600+600 = 2200) attacked Jormuntide Ignis (1700).
+Jormuntide
+Jormuntide Ignis destroyed, 2200 damage vs 1700 Power.
+TURN 22
+THEGRUMPYGAMERDAD
+thegrumpygamerdad activated Grappling Gun.
+thegrumpygamerdad deployed Foxparks.
+thegrumpygamerdad activated Primitive Furnace.
+TURN 23
+THEGRUMPYGAMERDAD
+Deployed Pump-Action Shotgun to slot 6 for 7 Souls.
+Dealt 1200 to every thegrumpygamerdad Pal.
+TURN 24
+FARAWAY
+Reindrix
+Chillet's attack was interrupted.
+Jormuntide attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 2 to 0 life.
+
+FARAWAY WINS
+thegrumpygamerdad's life hit zero.
+FINAL LIFE: Faraway (WINNER) 7, thegrumpygamerdad 0.
+
+---------------------------------------------------------------------
+PROSE SUMMARY (context, not a substitute for the structured log above)
+---------------------------------------------------------------------
+24-turn game, unusually one-sided in Lucky Pal cancels favoring Faraway (six of thegrumpygamerdad's attacks were cancelled across the game). thegrumpygamerdad's Univolt/Suzaku/Reptyro repeatedly attacked but were mostly Lucky-cancelled or bare/full-form interrupted (Reindrix turn 6, Foxparks turn 8, paid-Soul Cryolinx/Foxparks turn 13), while Faraway's Pengullet/Elphidran/Elphidran Aqua chipped thegrumpygamerdad down (10->8->6, turns 8/15) despite each Elphidran eventually being destroyed by thegrumpygamerdad's Primitive Furnace/Grappling Gun combo (turns 12, 16, 19). thegrumpygamerdad's Jormuntide Ignis attacks were twice nullified by paid-Soul Reindrix (turn 19) before Faraway's own Jormuntide destroyed it in combat turn 21, following a bare-form Cryolinx interrupt earlier that turn and an Axel's Strategy stand-refresh enabling a second Chillet swing (6->4). thegrumpygamerdad's own turn-23 Pump-Action Shotgun self-damage weakened his board further, and Faraway's Jormuntide closed it out turn 24 (2 to 0) after a final bare-form Reindrix interrupt on Chillet's attack.
+
