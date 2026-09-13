@@ -4,6 +4,13 @@ use engine::state::{CardId, GameState, PlayerId, Zone};
 
 /// TD01-012, Elphidran Aqua -- Gentle Ripples.
 ///
+/// VALIDATION: unit-tested only. Deploys in all three bracketed replays,
+/// but `replay/` replicates its observable effect generically (a "draw"
+/// event calling `game.draw()` twice, a "put_on_top" event materializing
+/// the named card and calling `game.move_to_top_of_deck()` directly)
+/// rather than calling this function. Confirmed by grepping
+/// replay/src/lib.rs, not assumed.
+///
 /// effect_text: "AUTO OnDeploy Draw 2 cards, choose 1 card from your
 /// hand, and put it on the top of the deck."
 ///

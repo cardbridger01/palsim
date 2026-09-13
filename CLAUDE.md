@@ -179,6 +179,35 @@ and must be addable as a new module, not a refactor.
 * Release builds use `target-cpu=native` — this box is a Ryzen 7 9800X3D with
 AVX-512 and 96MB of 3D V-Cache.
 * Seedable PRNG per worker (`rand\_pcg`), never thread-local RNG.
+* Every card script's doc comment carries a validation tag, `/// VALIDATION:
+<tier>`, where `<tier>` is one of `corpus-validated (bracketed)`,
+`corpus-validated (format-a)`, `test-only`, or `unvalidated` — see
+`parser/card_census.py`, which computes the same three-way split (plus
+`corpus-validated`, further split by which replay corpus actually exercises
+it) for every card NOT yet in `cards/`. The point is the same either way:
+when the optimizer calls some unplayed card broken, the tag is what tells
+you, without re-deriving it, whether that implementation was ever checked
+against a real game, an official ruling, or nothing at all. Tag every new
+card script when it's written; don't leave it for a census run to notice.
+* **`corpus-validated` means the specific function is called by a replay
+driver and its result feeds an assertion — not "the card's name appears in
+a corpus log."** Caught retagging the first 8 `cards/` scripts: `replay/`
+(the bracketed-format driver) only calls two of them
+(`chillet_on_deploy`, `rocket_launcher_act`/`rocket_launcher_granted_sweep`)
+directly. The other six — `elphidran_gr_on_attack`, `jormuntide_on_deploy`,
+`pengullet_graveyard_trigger`, `dark_cannon`, `elphidran_aqua_on_deploy`,
+`strike_from_the_darkness` — have their *observable* effect (a draw, a
+graveyard move, a top-of-deck placement) replicated with a generic engine
+primitive instead, because the driver only needs the visible result to
+match, not the real function to run. Those cards genuinely deploy and
+attack in the replays, and that participation is real (their Cost/Strike
+feed real life-total math) — but the scripted ability itself is validated
+only by its own unit test, same confidence tier as if the corpus never
+existed. Expect the same gap once a Format A driver exists: a card
+appearing in a Format A log is not, by itself, evidence its script was
+ever called. Verify by grepping the driver for the function name before
+tagging anything `corpus-validated (format-a)` — don't infer it from
+the card's presence in a log.
 
 \---
 
@@ -197,4 +226,24 @@ may be played) — but never during a battle on your own turn. Encoded in
 * **Whether the online client implements Chillet chaining correctly.** Rules
 and QA say yes; the replay corpus has not yet produced a clean observation
 of a chained On Deploy firing.
+* **Alarm Bell (BP01-018)'s mandatory-attack scope, found during the human
+read of the 19 `unvalidated`-tier cards.** "ACT 1/Turn [①, assign 1 Pal]
+Stand all Pals assigned this turn. Until end of turn, your Pals cannot be
+assigned, and must attack as much as possible (Includes Pals deployed after
+activating this ability)." Two things effect_text doesn't settle: (1) does
+"all Pals assigned this turn" include the Pal spent as this very ACT's own
+`[assign 1 Pal]` cost, or only Pals assigned by some other effect earlier in
+the turn — a self-reference timing question the same shape as trigger-vs-
+resolve elsewhere in this document; (2) what "must attack as much as
+possible" actually requires — every Pal that has a legal target, once each,
+regardless of a player's tactical preference? The QA dataset's only nearby
+ruling (#46) covers the opposite case ("may [do X]" is never mandatory) and
+says nothing about how a mandatory-attack requirement is itself enforced.
+Do not infer an enforcement mechanism; ask before scripting this one.
+* **Soul (SOUL-001)'s place in the 144-card build target.** effect_text is
+literally "Generic Soul card - colorless resource, no ability text." Hard
+rule 5 already excludes Soul cards from deck-validation work as a separate
+10-card deck outside the 50; unclear whether `cards/` needs a script for it
+at all, or whether `parser/card_census.py`'s pool should exclude it (143,
+not 144). Flagging rather than silently deciding either way.
 

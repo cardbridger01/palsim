@@ -35,11 +35,20 @@ VALIDATION STATUS below.
 
 Every not-yet-implemented name gets one of three labels:
 
-  - **corpus-validated**: appears in >=1 Format A log. Once an engine-side
-    replay driver exists for Format A (it doesn't yet -- only the
-    bracketed-format `replay/` crate does), this card's behaviour gets
-    checked against real recorded games, the same way the 8 already-
-    implemented cards are checked by the bracketed fixtures today.
+  - **corpus-validated**: appears in >=1 Format A log. This is weaker than
+    it sounds until a Format A replay driver both exists AND actually
+    calls this specific card's function -- checked directly against the 8
+    already-implemented cards (CLAUDE.md's Conventions section), only 2 of
+    which (`chillet_on_deploy`, `rocket_launcher_act`/
+    `rocket_launcher_granted_sweep`) are genuinely invoked by the
+    bracketed `replay/` driver; the other 6 have their observable effect
+    (a draw, a graveyard move) faked with a generic engine primitive
+    instead, and are validated only by their own unit test regardless of
+    how many replays they appear in. "Appears in the corpus" means the
+    card's stats feed real math (Cost/Strike, life totals); it does NOT
+    by itself mean the ability's own logic was ever exercised -- that has
+    to be confirmed per card once a driver exists, not assumed from
+    presence.
   - **test-only**: zero corpus appearances, but its CardNumber appears in
     `data/palworld_tcg_qa_dataset.json`'s `related_cards` for at least
     one ruling (hard rule 3: matched by number, never name -- see

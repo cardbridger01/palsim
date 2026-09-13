@@ -6,6 +6,15 @@ use crate::opponent_of;
 
 /// BP01-098, Elphidran -- Gentle Radiance.
 ///
+/// VALIDATION: unit-tested only, despite the card itself appearing (and
+/// attacking, Strike-based, corpus-validated as damage) in all three
+/// bracketed replays -- this specific function is never called by
+/// `replay/`, which treats the OnAttack reveal as narration (see that
+/// crate's own module doc comment: "zero observable effect in battle1
+/// ... exercised for real by cards::bp01's own unit tests"). Confirmed
+/// by grepping replay/src/lib.rs for this function name, not assumed
+/// from the card's own presence in a log.
+///
 /// effect_text: "AUTO OnAttack You may reveal 1 card from your hand.
 /// If you revealed a Dragon Pal this way, this card gets Power +500
 /// until end of turn."
@@ -26,6 +35,9 @@ pub fn elphidran_gr_on_attack(game: &mut GameState, attacker: CardId, revealed: 
 }
 
 /// BP01-025, Chillet -- Dragon Whisperer.
+///
+/// VALIDATION: corpus-validated (bracketed) -- the canonical Chillet-chain
+/// test lives in all three bracketed replays (battle1/2/3).
 ///
 /// effect_text: "AUTO OnDeploy Reveal the top card of your deck, and
 /// if it is a ◇8 or less Dragon Pal, you may deploy it. If you did not
@@ -55,6 +67,14 @@ pub fn chillet_on_deploy(game: &mut GameState, player: PlayerId, choose_to_deplo
 
 /// BP01-027, Jormuntide -- Surging Sea Serpent.
 ///
+/// VALIDATION: unit-tested only. The card deploys and attacks (Strike-
+/// based damage, corpus-validated) in all three bracketed replays, but
+/// this function is never called by `replay/` -- the draw is replicated
+/// with the generic `game.draw()` primitive, and "choose up to 1
+/// opponent Pal" is hardcoded to always resolve to no eligible target
+/// for this specific log rather than exercising the real targeting
+/// path. Confirmed by grepping replay/src/lib.rs, not assumed.
+///
 /// effect_text: "AUTO OnDeploy Draw 1 card, choose up to 1 ◇7 or less
 /// Pal, and rest it. That card does not stand during your opponent's
 /// next stand phase."
@@ -80,6 +100,10 @@ pub fn jormuntide_on_deploy(game: &mut GameState, player: PlayerId, target: Opti
 }
 
 /// BP01-044, Pengullet Rocket Launcher.
+///
+/// VALIDATION: corpus-validated (bracketed) -- activated in battle1 and
+/// battle2's bracketed replays, exercising both the plain and the
+/// Pengullet-upgrade branch.
 ///
 /// effect_text: "ACT [Rest this card] Choose 1 Pal, and it gets Power
 /// +200 until end of turn. If its main name is 《Pengullet》, instead
@@ -133,6 +157,14 @@ pub fn rocket_launcher_granted_sweep(game: &mut GameState, holder: CardId, holde
 
 /// BP01-028, Pengullet -- Yearning for the Sky.
 ///
+/// VALIDATION: mixed, checked directly rather than assumed from "the card
+/// appears in a replay" -- this card's own deploy/power-buff/self-
+/// sacrifice-via-granted-skill are corpus-validated (bracketed, battle1),
+/// but battle1's log never shows a "drew 1 card" line for its owner right
+/// after it dies (confirmed by reading the log directly, not inferred),
+/// so THIS specific graveyard trigger is unvalidated by any replay --
+/// unit-tested only, below.
+///
 /// effect_text: "AUTO When this card is put into the graveyard, draw 1
 /// card."
 ///
@@ -146,6 +178,12 @@ pub fn pengullet_graveyard_trigger(game: &mut GameState, owner: PlayerId) {
 }
 
 /// BP01-096, Dark Cannon.
+///
+/// VALIDATION: unit-tested only. Played in battle1's bracketed replay,
+/// but `replay/` treats "play_card" as pure narration and replicates the
+/// observable destroy generically (`move_to_graveyard` off the
+/// following "destroyed" event) rather than calling this function.
+/// Confirmed by grepping replay/src/lib.rs, not assumed.
 ///
 /// effect_text: "Quick Choose 1 ◇5 or less Pal, and put it into the
 /// graveyard."
