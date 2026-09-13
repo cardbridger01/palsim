@@ -249,12 +249,17 @@ regardless of a player's tactical preference? The QA dataset's only nearby
 ruling (#46) covers the opposite case ("may [do X]" is never mandatory) and
 says nothing about how a mandatory-attack requirement is itself enforced.
 Do not infer an enforcement mechanism; ask before scripting this one.
-* **Soul (SOUL-001)'s place in the 144-card build target.** effect_text is
-literally "Generic Soul card - colorless resource, no ability text." Hard
-rule 5 already excludes Soul cards from deck-validation work as a separate
-10-card deck outside the 50; unclear whether `cards/` needs a script for it
-at all, or whether `parser/card_census.py`'s pool should exclude it (143,
-not 144). Flagging rather than silently deciding either way.
+* **Soul (SOUL-001) — SETTLED: excluded from the build-target pool, which is
+143, not 144.** effect_text is literally "Generic Soul card - colorless
+resource, no ability text." Hard rule 5 already excludes Soul cards from
+deck-validation work as a separate 10-card deck outside the 50; a card with
+no ability text and no place in the 50 isn't something the deck optimizer
+can ever put in a deck, so `parser/card_census.py`'s pool excludes it
+(`all_names`/`names_by_log` and every "144" in its output and docstring
+became "143"), and `cards/` needs no script for it. Decided, not merely
+flagged — see `docs/palsim-build-handbook.md` §4.1 and
+`data/replays/README.md`'s "what the corpus needs from `cards/`" section
+for where 143 is cited downstream.
 * **Pengullet – Yearning for the Sky's graveyard trigger (BP01-028) —
 client behavior unconfirmed, needs a live test, not just log-reading.**
 The engine fires this AUTO (unconditional, no "may") once the Pengullet

@@ -4,7 +4,7 @@ anything?
 
     python -m parser.card_census
 
-## The target is all 150 CSV rows (144 distinct names), not the 89 the
+## The target is all 150 CSV rows (143 distinct names), not the 89 the
 ## corpus references
 
 An earlier version of this tool scoped "what to build" to the corpus's
@@ -15,7 +15,14 @@ cards), and a card cards/ doesn't implement is invisible to that search
 to what today's corpus happens to reference would bake the existing meta
 into the search and guarantee the optimizer only ever rediscovers known
 decks. So this tool reports against the full CSV pool (150 rows, 144
-distinct names once reprints are merged), not just the corpus subset.
+distinct Name values), minus one: Soul (SOUL-001) -- effect_text is
+literally "Generic Soul card - colorless resource, no ability text," and
+hard rule 5 already excludes Soul cards from deck-validation work as a
+separate 10-card deck outside the 50. A card with no ability text and no
+place in the 50 isn't something the deck optimizer can ever put in a
+deck, so it isn't part of this tool's build target either -- decided in
+CLAUDE.md's Open Questions, not silently dropped. The real pool, and
+every count below, is **143**.
 
 ## Build order is still corpus-frequency, for a different reason
 
@@ -38,17 +45,21 @@ Every not-yet-implemented name gets one of three labels:
   - **corpus-validated**: appears in >=1 Format A log. This is weaker than
     it sounds until a Format A replay driver both exists AND actually
     calls this specific card's function -- checked directly against the 8
-    already-implemented cards (CLAUDE.md's Conventions section), only 2 of
-    which (`chillet_on_deploy`, `rocket_launcher_act`/
-    `rocket_launcher_granted_sweep`) are genuinely invoked by the
-    bracketed `replay/` driver; the other 6 have their observable effect
-    (a draw, a graveyard move) faked with a generic engine primitive
-    instead, and are validated only by their own unit test regardless of
-    how many replays they appear in. "Appears in the corpus" means the
+    already-implemented cards (CLAUDE.md's Conventions section): an
+    earlier version of the bracketed `replay/` driver genuinely invoked
+    only 2 of them, faking the other 6's observable effect (a draw, a
+    graveyard move) with a generic engine primitive instead, validated
+    only by their own unit test regardless of how many replays they
+    appeared in -- found only by grepping the driver, not by anything a
+    test caught. `replay/` now calls all 8 for real, with a registry
+    (`SCRIPTED_ACTIONS` in `replay/src/lib.rs`) that panics if a
+    registered card's script is ever bypassed again. The general point
+    still holds for the NEXT driver: "appears in the corpus" means the
     card's stats feed real math (Cost/Strike, life totals); it does NOT
     by itself mean the ability's own logic was ever exercised -- that has
-    to be confirmed per card once a driver exists, not assumed from
-    presence.
+    to be confirmed per card once a driver exists (by grepping it, not by
+    inferring from presence), and the driver should enforce it
+    structurally from the start rather than retrofitting it later.
   - **test-only**: zero corpus appearances, but its CardNumber appears in
     `data/palworld_tcg_qa_dataset.json`'s `related_cards` for at least
     one ruling (hard rule 3: matched by number, never name -- see
@@ -273,7 +284,10 @@ def main() -> None:
     appears_in, names_by_log = census(files, csv_by_name)
 
     noise = {n: f for n, f in appears_in.items() if n not in csv_by_name and n not in implemented}
-    all_names = set(csv_by_name)  # the full 144-distinct-name target, per the module doc comment
+    # 144 distinct CSV Name values, minus Soul (SOUL-001) -- no ability
+    # text, no place in the 50, decided in CLAUDE.md's Open Questions.
+    # The real build-target pool is 143.
+    all_names = set(csv_by_name) - {"Soul"}
     remaining = sorted(all_names - implemented)
 
     def is_qa_covered(name: str) -> bool:

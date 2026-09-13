@@ -180,12 +180,14 @@ against stated life totals: those three should fail that audit, the
 ## Format A: what the corpus needs from `cards/` — and what it doesn't decide
 
 `python -m parser.card_census` diffs the CSV's full 150-row pool (144
-distinct names) against `cards/*.rs`. **The build target is all 144, not
-just what this corpus references** — the deck optimizer searches the full
-legal pool per color pair, and a card `cards/` doesn't implement is
-invisible to that search, so scoping to the corpus's own 89 referenced
-names would bake the existing meta into the search and guarantee it only
-ever rediscovers known decks.
+distinct names, minus Soul (SOUL-001) — no ability text and no place in the
+50, excluded per CLAUDE.md's Open Questions, so the real pool is 143)
+against `cards/*.rs`. **The build target is all 143, not just what this
+corpus references** — the deck optimizer searches the full legal pool per
+color pair, and a card `cards/` doesn't implement is invisible to that
+search, so scoping to the corpus's own 89 referenced names would bake the
+existing meta into the search and guarantee it only ever rediscovers known
+decks.
 
 What the corpus *does* decide is build **order**, and validation
 **confidence** — every not-yet-implemented name is labeled
@@ -193,15 +195,17 @@ What the corpus *does* decide is build **order**, and validation
 first, since they're the ones an eventual Format A replay driver can check
 against real games), `test-only` (zero corpus appearances but an official
 QA ruling covers its card number — 36 cards), or `unvalidated` (built from
-`effect_text` alone, checked against nothing — 19 cards). The `unvalidated`
+`effect_text` alone, checked against nothing — 18 cards). The `unvalidated`
 tier is exactly where a wrong `effect_text` reading would hide if the
 optimizer ever surfaces a strong deck built around one of those cards
 (handbook §10.1) — worth knowing which tier a card is in before trusting
-the optimizer's read on it.
+the optimizer's read on it. (81 + 36 + 18 = 135, not 143 — the remaining 8
+are already implemented in `cards/*.rs` and so don't appear in this
+not-yet-implemented diff at all.)
 
 `coverage_curve()` (tier 1 only, i.e. corpus-validated cards) answers "how
 many logs are fully replayable with only the top N of those" — close to
 linear with no natural low-N elbow, since full coverage of one log needs
 *every* card it references. That's a statement about replay-validation
 depth, not about how many cards the optimizer needs built — that number is
-144 regardless of how many are ever exercised by a real log.
+143 regardless of how many are ever exercised by a real log.
