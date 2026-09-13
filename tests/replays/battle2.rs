@@ -38,8 +38,9 @@ fn battle2_chillet_free_deploy_chains_still_fire_their_own_on_deploy() {
     assert_eq!(free_deploys.len(), 2, "battle2 is known to contain exactly 2 reveal-then-free-deploy chains");
 
     let mut game = replay::new_game_for_replay(&log.meta);
+    let mut driver = replay::ReplayDriver::default();
     for event in &log.events {
-        replay::apply_event(&mut game, &log.meta, event);
+        replay::apply_event(&mut driver, &mut game, &log.meta, event);
         if event.caused_by_line.is_some() {
             assert!(replay::last_on_deploy_triggered(&game), "line {}", event.line_index);
         }

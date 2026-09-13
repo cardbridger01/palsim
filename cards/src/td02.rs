@@ -4,12 +4,12 @@ use engine::state::{CardId, GameState, Zone};
 
 /// TD02-021, Strike from the Darkness.
 ///
-/// VALIDATION: unit-tested only. Played in battle1's bracketed replay
-/// (the only one of the three that references it), but `replay/` treats
-/// "play_card" as pure narration and replicates the observable destroy
-/// generically (`move_to_graveyard` off the following "destroyed"
-/// event) rather than calling this function. Confirmed by grepping
-/// replay/src/lib.rs, not assumed.
+/// VALIDATION: corpus-validated (bracketed) -- played in battle1's
+/// bracketed replay (the only one of the three that references it).
+/// `replay/`'s "play_card" arm records that this specific Quick card was
+/// just played, and the following "destroyed" event calls this function
+/// on the named victim instead of a generic graveyard move. Verified by
+/// grepping replay/src/lib.rs, not assumed.
 ///
 /// effect_text: "Choose 1 Pal, and put it into the graveyard."
 ///

@@ -192,22 +192,31 @@ card script when it's written; don't leave it for a census run to notice.
 * **`corpus-validated` means the specific function is called by a replay
 driver and its result feeds an assertion — not "the card's name appears in
 a corpus log."** Caught retagging the first 8 `cards/` scripts: `replay/`
-(the bracketed-format driver) only calls two of them
+(the bracketed-format driver) originally called only two of them
 (`chillet_on_deploy`, `rocket_launcher_act`/`rocket_launcher_granted_sweep`)
-directly. The other six — `elphidran_gr_on_attack`, `jormuntide_on_deploy`,
-`pengullet_graveyard_trigger`, `dark_cannon`, `elphidran_aqua_on_deploy`,
-`strike_from_the_darkness` — have their *observable* effect (a draw, a
-graveyard move, a top-of-deck placement) replicated with a generic engine
-primitive instead, because the driver only needs the visible result to
-match, not the real function to run. Those cards genuinely deploy and
-attack in the replays, and that participation is real (their Cost/Strike
-feed real life-total math) — but the scripted ability itself is validated
-only by its own unit test, same confidence tier as if the corpus never
-existed. Expect the same gap once a Format A driver exists: a card
-appearing in a Format A log is not, by itself, evidence its script was
-ever called. Verify by grepping the driver for the function name before
-tagging anything `corpus-validated (format-a)` — don't infer it from
-the card's presence in a log.
+directly, faking the other six's *observable* effect (a draw, a graveyard
+move, a top-of-deck placement) with a generic engine primitive instead,
+because the driver only needed the visible result to match, not the real
+function to run — so the whole tiering system's "corpus-validated" label
+wasn't actually backed by anything for those six, discovered only by
+grepping the driver, not by anything the tests caught. **Fixed**: `replay/`
+now calls all eight for real (`ReplayDriver`/`SCRIPTED_ACTIONS` in
+`replay/src/lib.rs`) — a card with a script registered in
+`SCRIPTED_ACTIONS` reaching a generic-primitive fallback path is now a hard
+panic, not a silent substitution, so a *future* dispatch gap surfaces
+immediately instead of needing another deliberate grep to notice. The
+retrofit also surfaced a real discrepancy, not just a labeling gap:
+Pengullet – Yearning for the Sky's own graveyard-draw trigger (BP01-028)
+now fires for real when its granted-sweep self-destruct occurs, but
+battle1's own client log never shows the resulting "drew 1 card" line —
+see that function's doc comment and `data/replays/README.md`'s known-
+anomaly section. Expect the same class of gap once a Format A driver
+exists: a card appearing in a Format A log is not, by itself, evidence its
+script was ever called. Verify by grepping the driver for the function
+name before tagging anything `corpus-validated (format-a)` — don't infer
+it from the card's presence in a log, and give that driver the same
+registry-enforcement treatment from the start rather than retrofitting it
+later.
 
 \---
 
@@ -246,4 +255,21 @@ rule 5 already excludes Soul cards from deck-validation work as a separate
 10-card deck outside the 50; unclear whether `cards/` needs a script for it
 at all, or whether `parser/card_census.py`'s pool should exclude it (143,
 not 144). Flagging rather than silently deciding either way.
+* **Pengullet – Yearning for the Sky's graveyard trigger (BP01-028) —
+client behavior unconfirmed, needs a live test, not just log-reading.**
+The engine fires this AUTO (unconditional, no "may") once the Pengullet
+Rocket Launcher's granted sweep moves this card base -> graveyard,
+satisfying QA #41's condition — but battle1's own log shows no resulting
+"drew 1 card" line for the holder's owner anywhere nearby (see
+`replay/src/lib.rs`'s `pengullet_graveyard_trigger` call site and
+`data/replays/README.md`'s known-anomaly entry). Two explanations fit
+the log equally well: the client doesn't render/log this specific draw,
+or the client doesn't implement the trigger at all — only the second is
+an actual rules divergence, and reading the log harder won't distinguish
+them. Testable cheaply, same behavioral-oracle approach as handbook
+§4.3: play a game on the site, get a Pengullet with a Rocket Launcher's
+granted sweep, fire it, and watch hand size directly. Hand grows -> the
+client just doesn't log it, engine's reading stands. Hand doesn't grow
+-> either a client bug or this rules reading is wrong, and that needs
+resolving before trusting this card's implementation. Not yet run.
 

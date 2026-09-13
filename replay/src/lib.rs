@@ -24,19 +24,16 @@
 //!   the primitive that consumes it runs -- never more.
 //! - **A few battle1-specific choices are hardcoded** at the point each
 //!   multi-step card effect starts (Jormuntide's "choose up to 1
-//!   opponent Pal" always resolves to no eligible target in this log;
-//!   Elphidran Aqua's "choose 1 from hand" is always Victor's Strategy;
-//!   Chillet always chooses to deploy an eligible reveal) rather than
-//!   building general target-search/choice logic this replay never
-//!   exercises non-trivially. None of the events in between are
-//!   independently assertion-checked by `tests/replays/battle1.rs` --
-//!   only life-after-attack and on-deploy-triggered are -- so this is a
+//!   opponent Pal" always resolves to no eligible target across the
+//!   WHOLE corpus, not just battle1 -- every occurrence's very next
+//!   event is "no_valid_target", checked directly; Elphidran Aqua's
+//!   "choose 1 from hand" is whatever the log names; Chillet always
+//!   chooses to deploy an eligible reveal) rather than building general
+//!   target-search/choice logic this replay never exercises
+//!   non-trivially. None of the events in between are independently
+//!   assertion-checked by `tests/replays/battle1.rs` -- only
+//!   life-after-attack and on-deploy-triggered are -- so this is a
 //!   replay-driver simplification, not a rules claim.
-//! - **Elphidran GR's OnAttack Power buff is narration only here.** It
-//!   has zero observable effect in battle1: every attack targets the
-//!   player, and player damage is Strike-based (11.2.1), not
-//!   Power-based. The buff itself is exercised for real by
-//!   `cards::bp01`'s own unit tests.
 //! - **Player damage's mill/Lucky outcome is NOT bypassed.** Every
 //!   card's Strike (set from `card_meta` below, sourced from
 //!   `data/11cardattributes-with-elements.csv`) matches the log's
@@ -45,6 +42,30 @@
 //!   Lucky-cancel attacks get exactly one Lucky-tagged card seeded on
 //!   top of the defender's deck first, then the real mill loop runs
 //!   unmodified.
+//!
+//! ## Every card with a `cards::` script must be called for real
+//!
+//! An earlier version of this driver reproduced several cards'
+//! observable effects (a draw, a graveyard move) with generic engine
+//! primitives instead of calling the card's own scripted function --
+//! `game.draw()` standing in for `jormuntide_on_deploy`, and so on.
+//! That made "this card is corpus-validated" a claim about the card's
+//! NAME appearing in a log, not about its LOGIC ever running --
+//! discovered only by grepping this file directly (CLAUDE.md's
+//! calibration note). Two things fix that:
+//!
+//! 1. Every dedicated dispatch arm below (`"reveal"`, `"draw"`,
+//!    `"put_on_top"`, `"destroyed"`, `"activate"`, `"power_buff"`) calls
+//!    the real `cards::` function whenever the event names a card that
+//!    has one, in place of the primitive that used to fake it.
+//! 2. [`SCRIPTED_ACTIONS`] is a small registry of (card name, action)
+//!    pairs that must never reach a generic-primitive fallback path.
+//!    The `"draw"` and `"play_card"` arms consult it and panic if a
+//!    registered pair falls through anyway -- so a *future* card script
+//!    that this driver forgets to wire in fails loudly instead of
+//!    silently reproducing the old bug. Same spirit as the `"power_buff"`
+//!    arm's pre-existing `assert_eq!` guard: a check that fires when the
+//!    assumption breaks, not a comment saying it might.
 
 use engine::combat::AttackTarget;
 use engine::state::{CardId, GameState, PlayerId, Zone};
@@ -88,6 +109,41 @@ pub struct LifeCheck {
     pub player: PlayerId,
     pub expected_life: i64,
 }
+
+/// Cross-event memory a couple of card effects need because the log
+/// splits ONE card effect across two adjacent lines -- "played Dark
+/// Cannon" and the "destroyed" event naming its victim are two log
+/// lines for one Quick card's single effect; there is no engine-level
+/// "last card played" fact to read this back off, unlike
+/// `last_deployed` (used instead for Jormuntide/Elphidran Aqua below,
+/// where such a fact already exists). Not engine state -- purely
+/// replay-driver bookkeeping, hence its own type instead of a
+/// `GameState` field.
+#[derive(Default)]
+pub struct ReplayDriver {
+    pending_quick_destroy: Option<QuickDestroy>,
+}
+
+#[derive(Debug, Clone, Copy)]
+enum QuickDestroy {
+    DarkCannon,
+    StrikeFromTheDarkness,
+}
+
+/// (card name, `ReplayEvent::action`) pairs that have a dedicated
+/// `cards::` script and must never be handled by a generic engine
+/// primitive instead. Consulted only at the specific fallback paths
+/// that could otherwise silently substitute for one of these -- see the
+/// module doc comment's "every card with a script must be called for
+/// real" section. Add an entry here in the same commit that adds a
+/// script this driver needs to call, so a future dispatch gap fails
+/// loudly instead of quietly reproducing the original bug.
+const SCRIPTED_ACTIONS: &[(&str, &str)] = &[
+    ("Jormuntide – Surging Sea Serpent", "draw"),
+    ("Elphidran Aqua – Gentle Ripples", "draw"),
+    ("Dark Cannon", "play_card"),
+    ("Strike from the Darkness", "play_card"),
+];
 
 /// A fresh `GameState` set up for replaying `meta`'s log -- `meta`
 /// carries no fields `test_scenario()`'s defaults don't already match
@@ -222,7 +278,7 @@ fn res_bool(event: &ReplayEvent, key: &str) -> Option<bool> {
 /// event (every non-Lucky "attack" event) -- `None` otherwise,
 /// including for the Lucky-cancel attacks, where the log states no
 /// life change to check.
-pub fn apply_event(game: &mut GameState, meta: &ReplayMeta, event: &ReplayEvent) -> Option<LifeCheck> {
+pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, meta: &ReplayMeta, event: &ReplayEvent) -> Option<LifeCheck> {
     let player = player_for(meta, event);
     let opponent = if player == PlayerId::P1 { PlayerId::P2 } else { PlayerId::P1 };
 
@@ -233,7 +289,31 @@ pub fn apply_event(game: &mut GameState, meta: &ReplayMeta, event: &ReplayEvent)
         // unnamed starting hand in the first place (see the module doc
         // comment's "seeds exactly the one card about to be looked at"
         // scope), so there is nothing here for a redraw to act on.
-        "setup" | "mulligan" | "draw_phase" | "main_phase" | "reveal_declined" | "no_valid_target" | "play_card" => None,
+        "setup" | "mulligan" | "draw_phase" | "main_phase" | "reveal_declined" | "no_valid_target" => None,
+
+        // "Played X." (a Quick card, cast at instant speed) -- Dark
+        // Cannon and Strike from the Darkness both name their victim on
+        // a SEPARATE following "destroyed" event, not here, so this arm
+        // only records which script (if either) that event needs to
+        // finish. Every other played card either has no card script of
+        // its own (nothing to remember) or is a plain "deploy"/
+        // "activate" the corresponding arm already handles directly.
+        "play_card" => {
+            let name = event.cards.first().map(String::as_str);
+            driver.pending_quick_destroy = match name {
+                Some("Dark Cannon") => Some(QuickDestroy::DarkCannon),
+                Some("Strike from the Darkness") => Some(QuickDestroy::StrikeFromTheDarkness),
+                Some(other) => {
+                    assert!(
+                        !SCRIPTED_ACTIONS.contains(&(other, "play_card")),
+                        "apply_event: {other:?} is registered in SCRIPTED_ACTIONS for \"play_card\" but this arm doesn't recognize it -- wire its real cards:: function in here instead of leaving it to fall through to a generic graveyard move at \"destroyed\""
+                    );
+                    None
+                }
+                None => None,
+            };
+            None
+        }
 
         "end_phase" => {
             game.end_phase(player);
@@ -247,10 +327,47 @@ pub fn apply_event(game: &mut GameState, meta: &ReplayMeta, event: &ReplayEvent)
 
         // Covers BOTH an ordinary Draw Phase draw (phase == "draw") and
         // an On Deploy trigger's own draw step (phase == "main",
-        // Jormuntide/Elphidran Aqua) -- both are just "draw N cards"
-        // mechanically; nothing here needs to tell them apart.
+        // Jormuntide/Elphidran Aqua). Unlike an ordinary draw, those two
+        // have a real `cards::` script this driver must call instead of
+        // the generic loop below -- the event itself carries no card
+        // name to dispatch on (`event.cards` is always `[]` here), so
+        // `last_deployed`/`on_deploy_triggered` stands in as "which
+        // card's On Deploy this step belongs to," the same way the
+        // Chillet-chain tests already use it. Holds across every occurrence in
+        // the corpus checked directly: nothing else ever deploys
+        // between one of these two cards' own deploy and its
+        // immediately-following draw event.
         "draw" => {
             let amount = res_u64(event, "amount").unwrap_or(1);
+            if event.phase == "main" && last_on_deploy_triggered(game) {
+                if let Some(last) = game.last_deployed() {
+                    let last_name = game.full_name_of(last);
+                    match (last_name.as_str(), amount) {
+                        ("Jormuntide – Surging Sea Serpent", 1) => {
+                            // "choose up to 1 opponent Pal" always finds no
+                            // eligible target in this corpus -- verified
+                            // directly: every occurrence's very next event
+                            // is "no_valid_target".
+                            cards::bp01::jormuntide_on_deploy(game, player, None);
+                            return None;
+                        }
+                        ("Elphidran Aqua – Gentle Ripples", 2) => {
+                            // Both draws happen as part of the single
+                            // `elphidran_aqua_on_deploy` call made at the
+                            // "put_on_top" event that always follows --
+                            // that function does "draw 2, then put 1 back"
+                            // atomically, so nothing draws here yet.
+                            return None;
+                        }
+                        (other, _) => {
+                            assert!(
+                                !SCRIPTED_ACTIONS.contains(&(other, "draw")),
+                                "apply_event: {other:?}'s OnDeploy draw is registered in SCRIPTED_ACTIONS but this event ({amount} card(s)) didn't match a recognized shape -- a generic draw would silently substitute for its real script"
+                            );
+                        }
+                    }
+                }
+            }
             for _ in 0..amount {
                 game.draw(player);
             }
@@ -284,10 +401,26 @@ pub fn apply_event(game: &mut GameState, meta: &ReplayMeta, event: &ReplayEvent)
         }
 
         "reveal" => {
-            if event.resolution.is_some() {
-                // Elphidran GR's OnAttack reveal (resolution carries
-                // "element"/"power_buff") -- narration only in this
-                // replay, see the module doc comment.
+            if let Some(resolution) = &event.resolution {
+                if resolution.get("element").is_some() {
+                    // BP01-098 Elphidran GR's OnAttack: "reveal 1 card
+                    // from your hand" -- the revealed card is named in
+                    // `event.cards`, but the ATTACKER (whose Power this
+                    // buffs) is not; checked directly against every
+                    // occurrence in the corpus (battle1 x1, battle3 x3):
+                    // the attacker is always Elphidran GR itself, already
+                    // on the field by the time this fires, so it's found
+                    // by name rather than tracked across events.
+                    let revealed_name = &event.cards[0];
+                    let revealed = materialize(game, player, Zone::Hand, revealed_name);
+                    let attacker = find_by_name(game, player, Zone::Base, "Elphidran – Gentle Radiance")
+                        .expect("reveal: Elphidran GR's OnAttack fired but no Elphidran GR in base for this player");
+                    cards::bp01::elphidran_gr_on_attack(game, attacker, Some(revealed));
+                }
+                // Any other resolution shape (e.g. "outcome":
+                // "added_to_hand", seen for "Found an Egg!"/Pyrin Noct)
+                // belongs to an ability with no `cards::` script here --
+                // narration only.
                 return None;
             }
             // BP01-025 Chillet's OnDeploy reveal: seed the deck's top
@@ -300,9 +433,22 @@ pub fn apply_event(game: &mut GameState, meta: &ReplayMeta, event: &ReplayEvent)
         }
 
         "put_on_top" => {
-            // TD01-012 Elphidran Aqua's "choose 1 card from your hand" --
-            // battle1's only occurrence chooses Victor's Strategy.
             let name = &event.cards[0];
+            // TD01-012 Elphidran Aqua's "choose 1 card from your hand" --
+            // the counterpart to the deferred "draw" arm above: same
+            // `last_deployed` discriminator, same corpus-wide invariant
+            // (nothing deploys in between). `elphidran_aqua_on_deploy`
+            // performs both draws AND this move as one call, so this is
+            // the only place that function is ever invoked.
+            if last_on_deploy_triggered(game) {
+                if let Some(last) = game.last_deployed() {
+                    if game.full_name_of(last) == "Elphidran Aqua – Gentle Ripples" {
+                        let chosen = materialize(game, player, Zone::Hand, name);
+                        cards::td01::elphidran_aqua_on_deploy(game, player, chosen);
+                        return None;
+                    }
+                }
+            }
             let card = materialize(game, player, Zone::Hand, name);
             game.move_to_top_of_deck(player, card, Zone::Hand);
             None
@@ -447,8 +593,16 @@ pub fn apply_event(game: &mut GameState, meta: &ReplayMeta, event: &ReplayEvent)
         // ACTOR's opponent -- can be the one destroyed.
         "destroyed" => {
             let name = &event.cards[0];
+            // Consumed unconditionally, whichever branch below runs, so
+            // a stale flag never leaks into a later, unrelated
+            // "destroyed" event (e.g. an ordinary battle kill).
+            let pending = driver.pending_quick_destroy.take();
             if let Some(victim) = find_by_name(game, PlayerId::P1, Zone::Base, name).or_else(|| find_by_name(game, PlayerId::P2, Zone::Base, name)) {
-                game.move_to_graveyard(victim, Zone::Base);
+                match pending {
+                    Some(QuickDestroy::DarkCannon) => cards::bp01::dark_cannon(game, victim),
+                    Some(QuickDestroy::StrikeFromTheDarkness) => cards::td02::strike_from_the_darkness(game, victim),
+                    None => game.move_to_graveyard(victim, Zone::Base),
+                }
             }
             None
         }
@@ -471,7 +625,23 @@ pub fn apply_event(game: &mut GameState, meta: &ReplayMeta, event: &ReplayEvent)
             }
             if let Some(holder) = find_by_name(game, player, Zone::Base, name) {
                 if !game.granted_ability_instances(holder).is_empty() {
+                    let holder_name = game.full_name_of(holder);
                     cards::bp01::rocket_launcher_granted_sweep(game, holder, player);
+                    if holder_name == "Pengullet – Yearning for the Sky" {
+                        // BP01-028's OWN AUTO ability ("when this card is
+                        // put into the graveyard, draw 1 card"), entirely
+                        // separate from the granted sweep above -- it
+                        // fires here because the sweep's own "put this
+                        // card into the graveyard" clause is what moves
+                        // the holder base -> graveyard (QA #41's
+                        // condition). NOTE: battle1's own log records no
+                        // "drew 1 card" line for the holder's owner right
+                        // after this -- see the README's "known anomaly"
+                        // entry. The trigger's condition text is
+                        // unconditional (no "may"), so this driver follows
+                        // the rules text rather than the log's silence.
+                        cards::bp01::pengullet_graveyard_trigger(game, player);
+                    }
                     return None;
                 }
                 game.rest(holder);
@@ -616,7 +786,8 @@ mod tests {
     #[test]
     fn a_direct_deploy_lands_in_base_with_real_stats() {
         let mut game = new_game_for_replay(&meta());
-        apply_event(&mut game, &meta(), &event("deploy", "player", "main", &["Elphidran – Gentle Radiance"], &[], Some(serde_json::json!({"slot": 1, "cost": 4})), None));
+        let mut driver = ReplayDriver::default();
+        apply_event(&mut driver, &mut game, &meta(), &event("deploy", "player", "main", &["Elphidran – Gentle Radiance"], &[], Some(serde_json::json!({"slot": 1, "cost": 4})), None));
 
         let card = find_by_name(&game, PlayerId::P1, Zone::Base, "Elphidran – Gentle Radiance").unwrap();
         assert_eq!(game.cost(card), 4);
@@ -627,7 +798,8 @@ mod tests {
     #[test]
     fn a_chillet_reveal_free_deploys_an_eligible_dragon() {
         let mut game = new_game_for_replay(&meta());
-        apply_event(&mut game, &meta(), &event("reveal", "player", "main", &["Jormuntide – Surging Sea Serpent"], &[], None, None));
+        let mut driver = ReplayDriver::default();
+        apply_event(&mut driver, &mut game, &meta(), &event("reveal", "player", "main", &["Jormuntide – Surging Sea Serpent"], &[], None, None));
 
         let revealed = find_by_name(&game, PlayerId::P1, Zone::Base, "Jormuntide – Surging Sea Serpent").unwrap();
         assert_eq!(game.cost(revealed), 8);
@@ -637,9 +809,11 @@ mod tests {
     #[test]
     fn a_non_lucky_attack_reduces_life_by_the_attackers_strike() {
         let mut game = new_game_for_replay(&meta());
-        apply_event(&mut game, &meta(), &event("deploy", "player", "main", &["Elphidran – Gentle Radiance"], &[], None, None));
+        let mut driver = ReplayDriver::default();
+        apply_event(&mut driver, &mut game, &meta(), &event("deploy", "player", "main", &["Elphidran – Gentle Radiance"], &[], None, None));
 
         let check = apply_event(
+            &mut driver,
             &mut game,
             &meta(),
             &event(
@@ -662,10 +836,12 @@ mod tests {
     #[test]
     fn a_lucky_attack_cancels_and_returns_no_life_check() {
         let mut game = new_game_for_replay(&meta());
-        apply_event(&mut game, &meta(), &event("deploy", "player", "main", &["Chillet – Dragon Whisperer"], &[], None, None));
+        let mut driver = ReplayDriver::default();
+        apply_event(&mut driver, &mut game, &meta(), &event("deploy", "player", "main", &["Chillet – Dragon Whisperer"], &[], None, None));
         let starting_life = game.life(PlayerId::P2);
 
         let check = apply_event(
+            &mut driver,
             &mut game,
             &meta(),
             &event(
@@ -686,10 +862,11 @@ mod tests {
     #[test]
     fn an_interrupted_attack_concludes_the_battle_without_damage() {
         let mut game = new_game_for_replay(&meta());
-        apply_event(&mut game, &meta(), &event("deploy", "player", "main", &["Jormuntide – Surging Sea Serpent"], &[], None, None));
+        let mut driver = ReplayDriver::default();
+        apply_event(&mut driver, &mut game, &meta(), &event("deploy", "player", "main", &["Jormuntide – Surging Sea Serpent"], &[], None, None));
         let starting_life = game.life(PlayerId::P2);
 
-        apply_event(&mut game, &meta(), &event("attack_interrupted", "player", "main", &["Jormuntide – Surging Sea Serpent"], &[], None, None));
+        apply_event(&mut driver, &mut game, &meta(), &event("attack_interrupted", "player", "main", &["Jormuntide – Surging Sea Serpent"], &[], None, None));
 
         let attacker = find_by_name(&game, PlayerId::P1, Zone::Base, "Jormuntide – Surging Sea Serpent").unwrap();
         assert!(game.attack_was_interrupted(attacker));
@@ -697,8 +874,9 @@ mod tests {
 
         // 9.7.4: the battle must have actually concluded, or the next
         // declare_attack would panic -- exercise that directly.
-        apply_event(&mut game, &meta(), &event("stand_phase", "player", "stand", &[], &[], None, None));
+        apply_event(&mut driver, &mut game, &meta(), &event("stand_phase", "player", "stand", &[], &[], None, None));
         apply_event(
+            &mut driver,
             &mut game,
             &meta(),
             &event("attack", "player", "main", &["Jormuntide – Surging Sea Serpent"], &["opponent"], Some(serde_json::json!({"damage": 3, "milled": 3, "lucky": false, "life_before": 10, "life_after": 7})), None),
@@ -709,10 +887,11 @@ mod tests {
     #[test]
     fn destroyed_removes_the_named_opponent_owned_card() {
         let mut game = new_game_for_replay(&meta());
-        apply_event(&mut game, &meta(), &event("deploy", "player", "main", &["Jormuntide – Surging Sea Serpent"], &[], None, None));
+        let mut driver = ReplayDriver::default();
+        apply_event(&mut driver, &mut game, &meta(), &event("deploy", "player", "main", &["Jormuntide – Surging Sea Serpent"], &[], None, None));
 
-        apply_event(&mut game, &meta(), &event("play_card", "opponent", "waiting", &["Strike from the Darkness"], &[], None, None));
-        apply_event(&mut game, &meta(), &event("destroyed", "opponent", "waiting", &["Jormuntide – Surging Sea Serpent"], &[], None, None));
+        apply_event(&mut driver, &mut game, &meta(), &event("play_card", "opponent", "waiting", &["Strike from the Darkness"], &[], None, None));
+        apply_event(&mut driver, &mut game, &meta(), &event("destroyed", "opponent", "waiting", &["Jormuntide – Surging Sea Serpent"], &[], None, None));
 
         let victim = find_by_name(&game, PlayerId::P1, Zone::Graveyard, "Jormuntide – Surging Sea Serpent");
         assert!(victim.is_some(), "the named card must end up in ITS OWNER's graveyard");
@@ -721,20 +900,27 @@ mod tests {
     #[test]
     fn rocket_launcher_act_then_granted_sweep_via_power_buff_and_activate_events() {
         let mut game = new_game_for_replay(&meta());
-        apply_event(&mut game, &meta(), &event("deploy", "opponent", "waiting", &["Pengullet Rocket Launcher"], &[], None, None));
-        apply_event(&mut game, &meta(), &event("deploy", "opponent", "waiting", &["Pengullet – Yearning for the Sky"], &[], None, None));
-        apply_event(&mut game, &meta(), &event("deploy", "player", "main", &["Elphidran – Gentle Radiance"], &[], None, None)); // a victim for the sweep
+        let mut driver = ReplayDriver::default();
+        apply_event(&mut driver, &mut game, &meta(), &event("deploy", "opponent", "waiting", &["Pengullet Rocket Launcher"], &[], None, None));
+        apply_event(&mut driver, &mut game, &meta(), &event("deploy", "opponent", "waiting", &["Pengullet – Yearning for the Sky"], &[], None, None));
+        apply_event(&mut driver, &mut game, &meta(), &event("deploy", "player", "main", &["Elphidran – Gentle Radiance"], &[], None, None)); // a victim for the sweep
 
-        apply_event(&mut game, &meta(), &event("activate", "opponent", "waiting", &["Pengullet Rocket Launcher"], &[], None, None));
-        apply_event(&mut game, &meta(), &event("power_buff", "opponent", "waiting", &["Pengullet – Yearning for the Sky"], &[], Some(serde_json::json!({"amount": 500})), None));
+        apply_event(&mut driver, &mut game, &meta(), &event("activate", "opponent", "waiting", &["Pengullet Rocket Launcher"], &[], None, None));
+        apply_event(&mut driver, &mut game, &meta(), &event("power_buff", "opponent", "waiting", &["Pengullet – Yearning for the Sky"], &[], Some(serde_json::json!({"amount": 500})), None));
 
         let pengullet = find_by_name(&game, PlayerId::P2, Zone::Base, "Pengullet – Yearning for the Sky").unwrap();
         assert_eq!(game.power(pengullet), 1000 + 500, "test_scenario's default Pal Power (1000) plus the Pengullet upgrade's +500");
+        let hand_before_sweep = game.hand_size(PlayerId::P2);
 
-        apply_event(&mut game, &meta(), &event("activate", "opponent", "waiting", &["Pengullet – Yearning for the Sky"], &[], None, None));
+        apply_event(&mut driver, &mut game, &meta(), &event("activate", "opponent", "waiting", &["Pengullet – Yearning for the Sky"], &[], None, None));
 
         let victim = find_by_name(&game, PlayerId::P1, Zone::Base, "Elphidran – Gentle Radiance").unwrap();
         assert_eq!(game.damage_taken(victim), 1500, "X = the holder's Power at sweep time");
         assert_eq!(game.zone_of(pengullet), Zone::Graveyard, "the holder puts itself into the graveyard");
+        assert_eq!(
+            game.hand_size(PlayerId::P2),
+            hand_before_sweep + 1,
+            "BP01-028's own AUTO graveyard trigger (draw 1) must fire here too -- base -> graveyard via the granted sweep's own effect satisfies QA #41's condition, even though battle1's own log never shows this draw (see the README's known-anomaly entry)"
+        );
     }
 }

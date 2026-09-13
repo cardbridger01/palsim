@@ -55,13 +55,28 @@ parsed so far. More Format A volume is expected — see
 
 6. **Rule 8.5 draw** logs as "Rested 3 Souls, drew 1 card."
 
-## Bracketed format: known anomaly
+## Bracketed format: known anomalies
 
 Battle 3, T7: Jormuntide Ignis attacks, re-stands via its ACT, attacks again
 (nullified), then BLOCKS on Edify's turn 7. Per 7.2.1 the stand phase stands
 only the turn player's cards, so Ignis should still have been rested and unable
 to block. Either the client stood it somewhere the log doesn't show, or this is
 a client bug. Resolve before trusting the engine's rest-state model.
+
+Battle 1: Pengullet – Yearning for the Sky (BP01-028) has its own AUTO
+"When this card is put into the graveyard, draw 1 card" — unconditional, no
+"may." Its holder self-destructs via the Pengullet Rocket Launcher's granted
+sweep skill (a base -> graveyard transition, QA #41's condition), so the
+trigger should fire — but the log records no "drew 1 card" line for the
+holder's owner anywhere near that point. `replay/`'s driver fires the trigger
+for real anyway (following the rules text, not the log's silence) and a unit
+test (`rocket_launcher_act_then_granted_sweep_via_power_buff_and_activate_events`,
+`replay/src/lib.rs`) asserts the resulting hand-size increase directly, so
+this divergence from the log is a checked, documented fact rather than an
+unasserted side effect. Either the client doesn't display this specific
+draw, or doesn't implement it — same category of client anomaly as the
+Jormuntide Ignis case above, not evidence the card's own implementation is
+wrong.
 
 ---
 

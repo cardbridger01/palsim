@@ -49,8 +49,9 @@ fn battle3_chillet_free_deploy_chain_still_fires_its_own_on_deploy() {
     assert_eq!(free_deploys.len(), 1, "battle3 is known to contain exactly 1 reveal-then-free-deploy chain (lines 107-108)");
 
     let mut game = replay::new_game_for_replay(&log.meta);
+    let mut driver = replay::ReplayDriver::default();
     for event in &log.events {
-        replay::apply_event(&mut game, &log.meta, event);
+        replay::apply_event(&mut driver, &mut game, &log.meta, event);
         if event.caused_by_line.is_some() {
             assert!(replay::last_on_deploy_triggered(&game), "line {}", event.line_index);
         }
@@ -91,7 +92,8 @@ fn battle3_t7_anomaly_events_are_applied_in_file_line_order_not_turn_order() {
     // sorted by turn, which is exactly the bug this fixture exists to
     // catch.
     let mut game = replay::new_game_for_replay(&log.meta);
+    let mut driver = replay::ReplayDriver::default();
     for event in &log.events {
-        replay::apply_event(&mut game, &log.meta, event);
+        replay::apply_event(&mut driver, &mut game, &log.meta, event);
     }
 }
