@@ -1,25 +1,30 @@
-"""Corpus-wide guardrail.
+"""Corpus-wide guardrail for the bracketed `[Tn phase]` format --
+replay_parser.py's own three hand-authored fixture logs.
 
-Runs across every *.log file actually present in data/replays/ -- not just
-the three known fixtures -- so that when the rest of the ~165-log corpus
-(tier1_format_a_all34.zip, replay_logs.zip) is dropped in, any construct
-these three logs don't cover (a keyword, a new sentence shape, a card-text
-quirk) fails the build loudly as `unparsed`/`unrecognized_line_format`
-instead of silently accumulating in the JSON output.
+Scoped to BRACKETED_FIXTURE_NAMES (conftest.py), an explicit enumerated
+list, not a directory glob. data/replays/ also holds the 44 Format A
+logs split from COMBINED_TIER1_TIER2_44_MATCHES.txt (see
+test_format_a_corpus.py, which claims those under a different grammar
+entirely) -- a glob here would silently re-absorb them and fail loudly
+for a reason that carries no information (wrong grammar, not a real
+parsing gap). A fourth bracketed log has to be added to the list by
+hand; test_corpus_partition.py asserts nothing dropped into
+data/replays/ falls through the crack between this file's list and
+test_format_a_corpus.py's glob.
 
-If this test fails on a new log: read the failing line(s), add a pattern
-(and builder, if it carries resolution detail) to parser/replay_parser.py,
-and extend the fixture tests if the new shape is worth locking down.
+If this test fails on one of the three: read the failing line(s), add a
+pattern (and builder, if it carries resolution detail) to
+parser/replay_parser.py, and extend the fixture tests if the new shape
+is worth locking down.
 """
-
-from pathlib import Path
 
 import pytest
 
 from parser.replay_parser import parse_log
 
-LOG_DIR = Path(__file__).resolve().parents[2] / "data" / "replays"
-LOG_FILES = sorted(LOG_DIR.glob("*.log"))
+from conftest import BRACKETED_FIXTURE_NAMES, LOG_DIR
+
+LOG_FILES = [LOG_DIR / name for name in BRACKETED_FIXTURE_NAMES]
 
 
 @pytest.mark.parametrize("log_path", LOG_FILES, ids=lambda p: p.name)
@@ -34,6 +39,6 @@ def test_no_unparsed_lines_anywhere_in_the_corpus(log_path):
 
 
 def test_corpus_is_not_accidentally_empty():
-    # Guards against a silently-broken glob (e.g. LOG_DIR moved) making the
-    # parametrized test above pass with zero cases.
+    # Guards against BRACKETED_FIXTURE_NAMES being edited down to
+    # nothing and this parametrized test silently passing with zero cases.
     assert len(LOG_FILES) >= 3
