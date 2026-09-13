@@ -487,8 +487,18 @@ PATTERNS: list[tuple[str, "re.Pattern[str]", Builder]] = [
     ("must_discard", re.compile(r"^(?P<subj>.+?) must discard (?P<amount>\d+)\.$"), b_must_discard),
     (
         "discard",
-        re.compile(rf"^{_SUBJ}discarded (?P<cards>.+?) to pay a cost\.$"),
+        re.compile(rf"^{_SUBJ}[Dd]iscarded (?P<cards>.+?) to pay a cost\.$"),
         b_discard_multi,
+    ),
+    (
+        # "<Name> discarded N: <Card>." -- a numbered discard-choice
+        # prompt; the leading "N: " is discarded, not part of the card
+        # name (found while separating real cards from census noise --
+        # without this, e.g. "1: Reptyro" reads as a card called
+        # "1: Reptyro").
+        "discard",
+        re.compile(rf"^{_SUBJ}[Dd]iscarded \d+: (?P<card>.+?)\.$"),
+        b_discard_one,
     ),
     ("discard", re.compile(rf"^{_SUBJ}[Dd]iscarded (?P<card>.+?)\.$"), b_discard_one),
     (

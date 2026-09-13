@@ -82,37 +82,83 @@ def implemented_names() -> set[str]:
     return names
 
 
-def load_csv_by_name() -> dict[str, list[tuple[str, str]]]:
-    by_name: dict[str, list[tuple[str, str]]] = defaultdict(list)
+def load_csv_by_name() -> dict[str, list[tuple[str, str, bool]]]:
+    by_name: dict[str, list[tuple[str, str, bool]]] = defaultdict(list)
     with open(CSV_PATH, encoding="utf-8") as f:
         for row in csv.DictReader(f):
-            by_name[row["Name"]].append((row["CardNumber"], row["effect_text"]))
+            by_name[row["Name"]].append((row["CardNumber"], row["effect_text"], row["Lucky"] == "Y"))
     return by_name
+
+
+_TRAILING_SUBTITLE_PAREN_RE = re.compile(r"^(.+?) \([^)]+\)$")
 
 
 def main_name(raw: str) -> str:
     return raw.split(" – ", 1)[0].split(" - ", 1)[0].strip()
 
 
-def resolve_name(raw_name: str, csv_by_name: dict[str, list[tuple[str, str]]]) -> str:
+def resolve_name(raw_name: str, csv_by_name: dict[str, list[tuple[str, str, bool]]]) -> str:
     """See module doc comment's "Card-name resolution" section."""
     if raw_name in csv_by_name:
         return raw_name
     m = _POSSESSIVE_RE.match(raw_name)
     if m and m.group(1) in csv_by_name:
         return m.group(1)
+    # "Foxparks (A Toasty Hug)" -- a card-with-subtitle-in-parens form
+    # used to disambiguate between multiple prints of the same main
+    # name (Foxparks is both BP01-006 and TD01-004); the parenthetical
+    # itself isn't in the CSV's Name column, so strip it and retry.
+    m = _TRAILING_SUBTITLE_PAREN_RE.match(raw_name)
+    if m and m.group(1) in csv_by_name:
+        return m.group(1)
     return raw_name
 
 
-def census(files: list[Path], csv_by_name: dict[str, list[tuple[str, str]]]) -> dict[str, set[str]]:
-    """Returns {resolved_name: {log filenames that reference it}}."""
+def census(files: list[Path], csv_by_name: dict[str, list[tuple[str, str, bool]]]) -> tuple[dict[str, set[str]], dict[str, set[str]]]:
+    """Returns (appears_in, names_by_log): appears_in maps resolved_name
+    -> {log filenames referencing it}; names_by_log is the inverse, log
+    filename -> {resolved names it references} -- needed for the
+    coverage curve, which asks a per-log question ("does this log's
+    full card set fit inside the top N?"), not a per-card one."""
     appears_in: dict[str, set[str]] = defaultdict(set)
+    names_by_log: dict[str, set[str]] = {}
     for path in files:
         result = parse_log(path)
         names_this_file = {resolve_name(main_name(raw), csv_by_name) for e in result["events"] for raw in e["cards"] if raw.strip()}
+        names_by_log[path.name] = names_this_file
         for name in names_this_file:
             appears_in[name].add(path.name)
-    return appears_in
+    return appears_in, names_by_log
+
+
+def coverage_curve(
+    names_by_log: dict[str, set[str]],
+    ranked_real_names: list[str],
+) -> list[tuple[int, int]]:
+    """For N = 0..len(ranked_real_names), how many of the logs are FULLY
+    replayable using only the top N names from `ranked_real_names`
+    (already frequency-sorted) plus whatever's already implemented?
+    Already-implemented and noise (non-card) names never appear in
+    `ranked_real_names`, so intersecting each log's referenced names
+    with it already leaves exactly "what this log still needs" -- no
+    separate implemented/noise exclusion required. Returns only the
+    (N, covered_count) rows where covered_count actually changes, i.e.
+    the step function's steps -- N values where nothing newly becomes
+    coverable are collapsed rather than printed redundantly."""
+    real_name_set = set(ranked_real_names)
+    needs_by_log = {log: (names & real_name_set) for log, names in names_by_log.items()}
+
+    steps: list[tuple[int, int]] = []
+    last_covered = -1
+    top_n: set[str] = set()
+    for n in range(0, len(ranked_real_names) + 1):
+        if n > 0:
+            top_n.add(ranked_real_names[n - 1])
+        covered = sum(1 for needs in needs_by_log.values() if needs <= top_n)
+        if covered != last_covered:
+            steps.append((n, covered))
+            last_covered = covered
+    return steps
 
 
 def main() -> None:
@@ -126,29 +172,44 @@ def main() -> None:
     files = format_a_files()
     csv_by_name = load_csv_by_name()
     implemented = implemented_names()
-    appears_in = census(files, csv_by_name)
+    appears_in, names_by_log = census(files, csv_by_name)
 
     not_implemented = {n: f for n, f in appears_in.items() if n not in implemented}
     real = {n: f for n, f in not_implemented.items() if n in csv_by_name}
     noise = {n: f for n, f in not_implemented.items() if n not in csv_by_name}
+    ranked_real_names = [n for n, _ in sorted(real.items(), key=lambda kv: -len(kv[1]))]
 
     print(f"Parsed {len(files)} Format A logs.")
     print(f"Distinct names referenced: {len(appears_in)}  |  already in cards/: {len(implemented)}")
     print(f"Real, CSV-matched, not-yet-implemented: {len(real)}  |  unresolved 1-log artifacts: {len(noise)}")
     print()
-    print(f"{'#':<4}{'name':<32}{'logs':>5}  {'CardNumber':<14}effect_text")
-    for idx, (name, logs) in enumerate(sorted(real.items(), key=lambda kv: -len(kv[1])), start=1):
+    # Lucky is read straight from the CSV per card, never assumed --
+    # every damage check in the corpus (the mill loop's is_lucky read)
+    # depends on it, and a wrong flag would silently corrupt a life
+    # total in exactly the way the replay life-check assertions are
+    # built to catch, but only if the flag actually comes from data.
+    # 24 of ~150 CSV rows are Lucky; shown here so it's visible at
+    # build time, not discovered later.
+    print(f"{'#':<4}{'name':<32}{'logs':>5}  {'CardNumber':<14}{'Lucky':<6}effect_text")
+    for idx, name in enumerate(ranked_real_names, start=1):
         rows = csv_by_name[name]
-        num = "+".join(n for n, _ in rows)
+        num = "+".join(n for n, _, _ in rows)
         effect = rows[0][1]
+        lucky = "Y" if any(is_lucky for _, _, is_lucky in rows) else ""
         effect_short = (effect[:80] + "...") if len(effect) > 80 else effect
-        print(f"{idx:<4}{name:<32}{len(logs):>5}  {num:<14}{effect_short}")
+        print(f"{idx:<4}{name:<32}{len(real[name]):>5}  {num:<14}{lucky:<6}{effect_short}")
 
     if noise:
         print()
         print(f"=== {len(noise)} unresolved 1-log artifacts (not in build order; see module doc comment) ===")
         for name, logs in sorted(noise.items(), key=lambda kv: -len(kv[1])):
             print(f"  {name!r} -- e.g. {sorted(logs)[0]}")
+
+    print()
+    print(f"=== coverage curve: N cards (top of the build order) -> logs fully replayable with only those N + the {len(implemented)} already implemented ===")
+    print(f"{'N':>4}{'logs covered':>15}  / {len(files)}")
+    for n, covered in coverage_curve(names_by_log, ranked_real_names):
+        print(f"{n:>4}{covered:>15}  / {len(files)}")
 
 
 if __name__ == "__main__":
