@@ -1,16 +1,60 @@
-"""Card census: what does the 64-log Format A corpus actually need from
-cards/, and in what order should the rest of Phase 3 build it?
+"""Card census: what does cards/ still need to build, in what order, and
+-- separately -- how much of each has ever actually been checked against
+anything?
 
     python -m parser.card_census
 
-Parses every Format A log (format_a_parser.parse_log), collects the
-distinct card/gear/event names each one references, cross-references
-against data/11cardattributes-with-elements.csv (hard rule 3: keyed by
-name only as a display lookup, never used to infer behaviour -- see
-IMPLEMENTED below), and reports every name NOT yet scripted in cards/,
-sorted by how many distinct logs reference it. That ordering -- not
-"whatever card looked interesting" -- is the build order the corpus
-itself is asking for.
+## The target is all 150 CSV rows (144 distinct names), not the 89 the
+## corpus references
+
+An earlier version of this tool scoped "what to build" to the corpus's
+own 89 referenced names. That's wrong for this project's actual use: the
+deck optimizer searches the full legal card pool per color pair (~80
+cards), and a card cards/ doesn't implement is invisible to that search
+-- any deck built around it can't be found. Restricting the build target
+to what today's corpus happens to reference would bake the existing meta
+into the search and guarantee the optimizer only ever rediscovers known
+decks. So this tool reports against the full CSV pool (150 rows, 144
+distinct names once reprints are merged), not just the corpus subset.
+
+## Build order is still corpus-frequency, for a different reason
+
+Frequency in the corpus doesn't mean "matters more to the metagame" --
+150 - 89 = 61 cards have zero corpus appearances and may well be exactly
+the ones a "secret deck" search would want. It means "checkable": a card
+appearing in 40 logs is a card whose implementation gets exercised, and
+disagreed with, by real recorded games the moment there's an engine-side
+Format A replay driver. Building those first means every later,
+unvalidated card is written against engine primitives (deploy, attack,
+damage, the mill loop) that have already been hammered on hard. So the
+build order is three tiers, corpus-validated first (ranked by log count,
+same ordering as before) then test-only then unvalidated -- see
+VALIDATION STATUS below.
+
+## VALIDATION STATUS -- the real point of this tool now
+
+Every not-yet-implemented name gets one of three labels:
+
+  - **corpus-validated**: appears in >=1 Format A log. Once an engine-side
+    replay driver exists for Format A (it doesn't yet -- only the
+    bracketed-format `replay/` crate does), this card's behaviour gets
+    checked against real recorded games, the same way the 8 already-
+    implemented cards are checked by the bracketed fixtures today.
+  - **test-only**: zero corpus appearances, but its CardNumber appears in
+    `data/palworld_tcg_qa_dataset.json`'s `related_cards` for at least
+    one ruling (hard rule 3: matched by number, never name -- see
+    `qa_covered_card_numbers()`). Checked against an official ruling,
+    never against an actual game.
+  - **unvalidated**: neither. Built from `effect_text` and general rules
+    knowledge alone, checked against nothing.
+
+This distinction is where CLAUDE.md's own worry about the optimizer
+finding a "secret deck" actually lands: if the search surfaces a strong
+deck built around an unvalidated card, the first question is whether
+that card's effect is really that strong or whether it's a wrong
+`effect_text` reading that's never been exercised by anything -- and the
+census is what tells you, at a glance, which of those two is even
+plausible for that specific card.
 
 ## IMPLEMENTED, and why it's a hand-maintained set
 
@@ -42,6 +86,7 @@ doesn't chase each one down.
 from __future__ import annotations
 
 import csv
+import json
 import re
 import sys
 from collections import defaultdict
@@ -53,6 +98,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 LOG_DIR = REPO_ROOT / "data" / "replays"
 CARDS_SRC_DIR = REPO_ROOT / "cards" / "src"
 CSV_PATH = REPO_ROOT / "data" / "11cardattributes-with-elements.csv"
+QA_DATASET_PATH = REPO_ROOT / "data" / "palworld_tcg_qa_dataset.json"
 
 _BRACKETED_FIXTURES = {
     "battle1_bg-chillet_vs_blue-purple_WIN.log",
@@ -80,6 +126,29 @@ def implemented_names() -> set[str]:
             if m:
                 names.add(m.group("name").strip())
     return names
+
+
+# The QA dataset's own related_cards IDs carry a leading "E" (an
+# extraction/print marker, not part of the card number) and sometimes a
+# trailing rarity-variant suffix (OSR/SP/SR/SSP/TSP/TSR) for a specific
+# print -- neither is in the CSV's CardNumber column, so both are
+# stripped before comparing. A few refs (e.g. "BT01-039") are a product
+# ("BT01") not in this CSV at all; those just never match, correctly.
+_QA_REF_RE = re.compile(r"^E?(?P<set>BP\d+|TD\d+|BT\d+|PR)-(?P<num>\d+)[A-Za-z]*$")
+
+
+def qa_covered_card_numbers() -> set[str]:
+    """Base CardNumbers (e.g. "BP01-073") referenced by at least one QA
+    ruling's related_cards -- hard rule 3: matched by number, extracted
+    from the dataset's own IDs, never by name."""
+    data = json.loads(QA_DATASET_PATH.read_text(encoding="utf-8"))
+    numbers: set[str] = set()
+    for item in data["items"]:
+        for ref in item.get("related_cards", []):
+            m = _QA_REF_RE.match(ref)
+            if m:
+                numbers.add(f"{m.group('set')}-{m.group('num')}")
+    return numbers
 
 
 def load_csv_by_name() -> dict[str, list[tuple[str, str, bool]]]:
@@ -161,6 +230,25 @@ def coverage_curve(
     return steps
 
 
+def _print_tier(title: str, names: list[str], csv_by_name, real_appears_in, start: int) -> int:
+    if not names:
+        return start
+    print()
+    print(f"=== {title} ({len(names)}) ===")
+    print(f"{'#':<4}{'name':<32}{'logs':>5}  {'CardNumber':<14}{'Lucky':<6}effect_text")
+    idx = start
+    for name in names:
+        rows = csv_by_name[name]
+        num = "+".join(n for n, _, _ in rows)
+        effect = rows[0][1]
+        lucky = "Y" if any(is_lucky for _, _, is_lucky in rows) else ""
+        effect_short = (effect[:80] + "...") if len(effect) > 80 else effect
+        logs = len(real_appears_in.get(name, ()))
+        print(f"{idx:<4}{name:<32}{logs:>5}  {num:<14}{lucky:<6}{effect_short}")
+        idx += 1
+    return idx
+
+
 def main() -> None:
     # Card effect_text uses circled-digit Soul-cost glyphs (①②③) that
     # Windows' default console codepage can't encode -- this tool is
@@ -172,43 +260,64 @@ def main() -> None:
     files = format_a_files()
     csv_by_name = load_csv_by_name()
     implemented = implemented_names()
+    qa_numbers = qa_covered_card_numbers()
     appears_in, names_by_log = census(files, csv_by_name)
 
-    not_implemented = {n: f for n, f in appears_in.items() if n not in implemented}
-    real = {n: f for n, f in not_implemented.items() if n in csv_by_name}
-    noise = {n: f for n, f in not_implemented.items() if n not in csv_by_name}
-    ranked_real_names = [n for n, _ in sorted(real.items(), key=lambda kv: -len(kv[1]))]
+    noise = {n: f for n, f in appears_in.items() if n not in csv_by_name and n not in implemented}
+    all_names = set(csv_by_name)  # the full 144-distinct-name target, per the module doc comment
+    remaining = sorted(all_names - implemented)
+
+    def is_qa_covered(name: str) -> bool:
+        card_numbers = {num for num, _, _ in csv_by_name[name]}
+        return bool(card_numbers & qa_numbers)
+
+    corpus_validated = [n for n in remaining if n in appears_in]
+    test_only = [n for n in remaining if n not in appears_in and is_qa_covered(n)]
+    unvalidated = [n for n in remaining if n not in appears_in and not is_qa_covered(n)]
+    corpus_validated.sort(key=lambda n: -len(appears_in[n]))
+    test_only.sort()
+    unvalidated.sort()
 
     print(f"Parsed {len(files)} Format A logs.")
-    print(f"Distinct names referenced: {len(appears_in)}  |  already in cards/: {len(implemented)}")
-    print(f"Real, CSV-matched, not-yet-implemented: {len(real)}  |  unresolved 1-log artifacts: {len(noise)}")
-    print()
-    # Lucky is read straight from the CSV per card, never assumed --
-    # every damage check in the corpus (the mill loop's is_lucky read)
-    # depends on it, and a wrong flag would silently corrupt a life
-    # total in exactly the way the replay life-check assertions are
-    # built to catch, but only if the flag actually comes from data.
-    # 24 of ~150 CSV rows are Lucky; shown here so it's visible at
-    # build time, not discovered later.
-    print(f"{'#':<4}{'name':<32}{'logs':>5}  {'CardNumber':<14}{'Lucky':<6}effect_text")
-    for idx, name in enumerate(ranked_real_names, start=1):
-        rows = csv_by_name[name]
-        num = "+".join(n for n, _, _ in rows)
-        effect = rows[0][1]
-        lucky = "Y" if any(is_lucky for _, _, is_lucky in rows) else ""
-        effect_short = (effect[:80] + "...") if len(effect) > 80 else effect
-        print(f"{idx:<4}{name:<32}{len(real[name]):>5}  {num:<14}{lucky:<6}{effect_short}")
+    print(f"CSV: {sum(len(v) for v in csv_by_name.values())} rows, {len(all_names)} distinct names  |  already in cards/: {len(implemented)}")
+    print(f"Remaining {len(remaining)}: {len(corpus_validated)} corpus-validated, {len(test_only)} test-only, {len(unvalidated)} unvalidated")
+    if noise:
+        print(f"(plus {len(noise)} unresolved corpus-parse artifacts, not real cards -- see below)")
+
+    # Lucky is read straight from the CSV per card, never assumed -- every
+    # damage check in the corpus (the mill loop's is_lucky read) depends
+    # on it, and a wrong flag would silently corrupt a life total in
+    # exactly the way the replay life-check assertions are built to
+    # catch, but only if the flag actually comes from data. 24 of 150 CSV
+    # rows are Lucky; shown here so it's visible at build time.
+    next_idx = 1
+    next_idx = _print_tier(
+        "TIER 1 -- corpus-validated (build these first: checkable against real games once a Format A replay driver exists)",
+        corpus_validated, csv_by_name, appears_in, next_idx,
+    )
+    next_idx = _print_tier(
+        "TIER 2 -- test-only (an official QA ruling covers this card's number; no replay evidence)",
+        test_only, csv_by_name, appears_in, next_idx,
+    )
+    _print_tier(
+        "TIER 3 -- unvalidated (built from effect_text alone; checked against nothing -- see module doc comment's optimizer-secret-deck note)",
+        unvalidated, csv_by_name, appears_in, next_idx,
+    )
 
     if noise:
         print()
-        print(f"=== {len(noise)} unresolved 1-log artifacts (not in build order; see module doc comment) ===")
+        print(f"=== {len(noise)} unresolved 1-log parse artifacts (not real cards, not in any tier above) ===")
         for name, logs in sorted(noise.items(), key=lambda kv: -len(kv[1])):
             print(f"  {name!r} -- e.g. {sorted(logs)[0]}")
 
+    ranked_corpus_validated = corpus_validated  # already sorted by -log count
     print()
-    print(f"=== coverage curve: N cards (top of the build order) -> logs fully replayable with only those N + the {len(implemented)} already implemented ===")
+    print(
+        f"=== corpus REPLAY-VALIDATION depth curve: N cards (tier 1, in order) -> logs fully replayable with only those N + the "
+        f"{len(implemented)} already implemented -- NOT the optimizer's legal-pool requirement, which is all {len(all_names)} regardless ==="
+    )
     print(f"{'N':>4}{'logs covered':>15}  / {len(files)}")
-    for n, covered in coverage_curve(names_by_log, ranked_real_names):
+    for n, covered in coverage_curve(names_by_log, ranked_corpus_validated):
         print(f"{n:>4}{covered:>15}  / {len(files)}")
 
 

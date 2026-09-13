@@ -172,8 +172,11 @@ palsim/
 │   └── watch-server.ps1   RCON poll → writes control/state.txt
 ├── tests/
 │   ├── qa_rulings/        97 official rulings as unit tests
-│   └── replays/           ~165 logs as regression tests
+│   └── replays/           64 logs in hand, two grammars — see §4.1
 ├── parser/                Python — client log → structured move sequence
+│                          (replay_parser.py: bracketed grammar; format_a_parser.py:
+│                          the site's own narrative export; card_census.py: corpus
+│                          card-name census + coverage curve, see §4.1)
 ├── optimize/              Python — field management, mutation, reporting
 └── data/
     ├── 11cardattributes-with-elements.csv
@@ -233,9 +236,19 @@ Read every session; the cheapest defence against this project's biggest historic
 
 Two things most people building this don't have. **They are the project.**
 
-### 4.1 Replay corpus (~165 logs)
+### 4.1 Replay corpus — 207 URLs catalogued, 64 logs actually in hand, two grammars
 
-Parse each into a move sequence, replay through the engine, assert state matches at every line. An automated regression suite for timing bugs — the exact class that produces a simulator that runs fine and ranks decks wrongly.
+**Correcting this section's own earlier estimate.** "~165 replay logs" was a guess made before any log had been parsed. The real numbers, now that Phase 1 has actually happened: 207 match URLs are catalogued as sources; 64 have been pulled and parsed so far (3 hand-authored bracketed fixtures + 44 split from a combined championship-tier extraction + 20 from two top players' personal match history). Parse each into a move sequence, replay through the engine, assert state matches at every line — an automated regression suite for timing bugs, the exact class that produces a simulator that runs fine and ranks decks wrongly.
+
+**Two structurally unrelated log grammars, not one:**
+
+- **Bracketed `[Tn phase]` format** — `parser/replay_parser.py`, 3 hand-authored fixture logs (`battle1/2/3`). A fixed "Edify" perspective; phase tag (`main`/`stand`/`draw`/`soul`/`end` vs `waiting`) determines actor.
+- **"Format A"** — the site's own narrative export, `parser/format_a_parser.py`, 64 real logs across two on-disk shapes that share one grammar: `data/replays/*.log` (44 files, split from a combined extraction; no hand-reveal data) and `data/replays/top_players_all20/*.txt` (20 files; a per-turn "Turn opened — Souls N/N · Hand: ..." line reveals one seat's hand and soul count, the richest thing in the corpus and what makes strict engine validation — assert hand contents turn by turn, not just life totals — possible later). Format A has no fixed perspective: either named player can be the active actor, so nothing in this parser hardcodes a name — actor identity, and the "Opponent"-anonymization case, are both derived from each match's own declared participants. See `data/replays/README.md` for the full grammar writeup, including three attribution traps that cost real time to work out.
+- Both grammars get the same output schema (`line_index, turn, phase, actor, action, cards, targets, resolution, caused_by_line, text`) and the same treatment: `tests/parser/test_corpus.py` (bracketed, explicit 3-file list) and `tests/parser/test_format_a_corpus.py` (Format A, 64-file glob) each assert zero unparsed lines across their own scope; `tests/parser/test_corpus_partition.py` asserts every top-level `.log` is claimed by exactly one of the two, so nothing dropped into `data/replays/` can silently fall outside both guards.
+
+**The card census this corpus produces, and what it means for Phase 3.** `python -m parser.card_census` diffs the CSV's full pool (150 rows, 144 distinct names once reprints are merged) against what `cards/*.rs` actually implements (derived live from its own doc-comment headers, not hand-maintained). **The target is all 144, not the 89 the corpus references and not an earlier "~30 cards the tests need" guess** — the deck optimizer searches the full legal pool per color pair, and a card `cards/` doesn't implement is invisible to that search, so scoping the build to what today's corpus happens to reference would bake the existing meta into the search and guarantee it only ever rediscovers known decks. 8 are built; of the 136 remaining, the tool labels each with a **validation status** — `corpus-validated` (appears in ≥1 of the 64 logs, ranked by how many — 81 cards), `test-only` (zero corpus appearances, but an official QA ruling covers its card number — 36 cards), or `unvalidated` (built from `effect_text` alone, checked against nothing — 19 cards). Build order is still corpus-frequency first, but for a different reason than "covers more logs": those are the cards a Format A replay driver will actually be able to check against real games, so every later, unvalidated card gets written against engine primitives already hammered on by real replays. The `unvalidated` tier is exactly where a wrong `effect_text` reading would hide if the optimizer ever surfaces a strong deck built around one of those cards (§10.1's failure mode) — the census is what tells you that tier even exists for a given card. Also includes each card's `Lucky` flag read straight from the CSV (24 of 150 rows), since the mill loop's damage-check reads it and a wrong flag silently corrupts a life total.
+
+Before spending that budget, know what it buys: `card_census.py`'s `coverage_curve()` answers "how many of the 64 logs are fully replayable using only the top N cards" for every N. The curve is close to linear, not steep-early-then-flat — full coverage of one log needs *every* card that log references (an AND across its whole card set, not an OR), so one missing rare card blocks that log regardless of how many common cards are already done. It reaches 64/64 only at N=81. There is no natural low-N stopping point; a partial pass (say, the top 20–30 by frequency) buys partial-log validation, not a clean subset of fully-covered games, and that trade should be made deliberately rather than assumed away.
 
 ### 4.2 QA dataset (97 official rulings)
 
@@ -559,20 +572,22 @@ Light server use means most of a 24-hour run proceeds uninterrupted. Budget **~3
 
 Each phase has a real exit point. Stopping after Phase 3 still delivers value.
 
-### Phase 1 — Log parser (days)
+### Phase 1 — Log parser (days) — DONE for the 64 logs in hand, two grammars
 
 **Do this first, before the engine.** Output: turn, phase, actor, action, targets, resolution.
 
-Independently useful — turns ~165 replays into analysable data regardless of whether the engine ships, and forces you to nail down the state representation before writing rules code.
+Independently useful — turns replays into analysable data regardless of whether the engine ships, and forces you to nail down the state representation before writing rules code. Turned out to be two independent parsers, not one — see §4.1 for why, and it's not over: 207 URLs are catalogued against 64 logs actually parsed, so more Format A volume is still expected, and each new batch is one `python -m pytest tests/parser/` away from telling you whether it needs new grammar or just slots in.
 
-- [ ] Start with the three known logs; you know what correct output looks like
-- [ ] Handle interleaved `[Tn waiting]` / `[Tn main]` tagging — turn numbers don't always increase monotonically
-- [ ] **Exit value:** structured replay data, queryable
+- [x] Bracketed `[Tn phase]` grammar (`replay_parser.py`) — start with the three known logs; you know what correct output looks like
+- [x] Handle interleaved `[Tn waiting]` / `[Tn main]` tagging — turn numbers don't always increase monotonically
+- [x] Format A grammar (`format_a_parser.py`) for the site's own narrative export — a second grammar, not an extension of the first; see §4.1's three attribution traps before touching this one
+- [x] Card census (`card_census.py`) — what Phase 3 actually needs to build, and in what order; see §4.1
+- [ ] **Exit value:** structured replay data, queryable — met for 64 logs; re-run as more of the 207 catalogued URLs get pulled
 
 ### Phase 2 — Test harness (days)
 
 - [ ] 97 QA rulings → unit tests
-- [ ] Replay corpus → regression tests
+- [ ] Replay corpus → regression tests (currently: 3 bracketed fixtures fully engine-validated; the 64 Format A logs are parsed and structurally clean but not yet run through the engine — that replay driver only exists for the bracketed grammar so far)
 - [ ] ~50 oracle observations from a live sim → unit tests
 
 **Build this before the engine.** With it, agentic coding works: write effect, run suite, see failure, fix. Without it, the agent writes plausible code and you don't find out it's wrong until the optimizer recommends a deck that loses to everything.
@@ -586,7 +601,7 @@ Independently useful — turns ~165 replays into analysable data regardless of w
 - [ ] Zones, phases, souls, check timing, standby state
 - [ ] Damage resolution with Lucky mill
 - [ ] Quick step and interrupts
-- [ ] 150 card effect scripts (days once the engine holds)
+- [ ] Card effect scripts — **the target is all 144 distinct names (150 CSV rows), not the 89 the corpus references** — the optimizer searches the full legal pool, and an unbuilt card is invisible to that search, guaranteeing only known decks get rediscovered. `python -m parser.card_census` ranks the remaining 136 into `corpus-validated` (81, build first — checkable against real games) / `test-only` (36, a QA ruling covers the number but no replay evidence) / `unvalidated` (19, checked against nothing, §10.1's failure mode lives here). Its coverage curve (how many of the 64 logs replay fully at N corpus-validated cards) is close to linear with no low-N elbow — that curve measures replay-validation depth, not the optimizer's legal-pool requirement, which is all 144 regardless of what's validated
 - [ ] **Exit value:** with a random-playout agent, deck screening plus Monte Carlo answers to open questions
 
 ### Phase 4 — ISMCTS agent (1–2 weeks)
