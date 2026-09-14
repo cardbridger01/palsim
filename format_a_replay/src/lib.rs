@@ -32,62 +32,71 @@
 //! is deliberately absent from the table for exactly this reason -- see
 //! the "play_card" arm's own comment.
 //!
-//! Aurora Guide and Pal Sphere are the same shape, but the evidence here
-//! is empirical, not just textual. Of Aurora Guide's 4 plays, only the
-//! first (line 35-37) shows the resulting "Drew 1."/"Put X on top" text;
-//! the other 3, and Pal Sphere's one play (line 138), show neither --
-//! despite both effects being unconditional ("Draw N cards", no "may").
-//! An earlier version of this driver called the real function anyway for
-//! the silent occurrences, on the theory the text was just missing, not
-//! the effect. The hand-size check this format is built around (below)
-//! falsified that: it drifted -1, then -2, exactly matching 2 of those
-//! silent plays landing before the next two "turn_opened" checkpoints.
-//! So the missing text really does mean no draw happened, at least for
-//! REPEAT plays of the same effect within one game -- this driver now
-//! only calls `aurora_guide`/`pal_sphere` where the log gives direct
-//! evidence, same as Strike from the Darkness, and CLAUDE.md's Open
-//! Questions records this as a confirmed (not just suspected) anomaly:
-//! whether that's a client bug or an undocumented rule is still open,
-//! but "the effect silently doesn't happen" is not.
+//! Aurora Guide and Pal Sphere are the same shape as Strike from the
+//! Darkness in one way but not another. Of Aurora Guide's 4 plays, only
+//! the first (line 35-37) shows the resulting "Drew 1."/"Put X on top"
+//! text; the other 3, and Pal Sphere's one play (line 138), show
+//! neither. An earlier version of this driver treated that silence the
+//! way it treats Strike from the Darkness's -- as evidence the effect
+//! didn't happen. Live-client testing overturned that directly: both
+//! draw every time they're cast, including twice in the same turn.
+//! `aurora_guide`/`pal_sphere` are therefore called UNCONDITIONALLY at
+//! every play now, same as `chillet_on_deploy`'s "add it to hand"
+//! branch (also live-client-confirmed to persist every time, Pal or
+//! Gear -- an earlier version of that arm had gated it to Pals only,
+//! fitted to a hand-size mismatch that turned out to have a different
+//! cause). The missing text is a rendering gap in this specific log
+//! export, not evidence about the card.
 //!
-//! ## Hand and soul checks -- what this format adds over life checks
+//! ## Hand and soul checks -- built, but not currently trusted
 //!
-//! Format A's "Turn opened -- Souls N/N . Hand: ..." lines are ground
-//! truth for one player's exact hand contents and soul count at that
-//! moment -- pingu_01 only ever reveals Chylith's, never Pingu's (see
-//! the fixture test's own doc comment). `apply_event`'s "turn_opened"
-//! arm returns a [`Check::Hand`] whenever it fires, checked the same way
-//! `replay/`'s life checks are: a count of checks actually returned,
-//! compared against a count computed straight from the fixture, so a
-//! silently-skipped turn_opened line can't pass by doing nothing (see
-//! [`expected_hand_check_count`]).
+//! Format A's "Turn opened -- Souls N/N . Hand: ..." lines look like
+//! ground truth for one player's exact hand contents and soul count at
+//! that moment -- pingu_01 only ever reveals Chylith's, never Pingu's
+//! (see the fixture test's own doc comment). `apply_event`'s
+//! "turn_opened" arm still returns a [`Check::Hand`] whenever it fires,
+//! and [`expected_hand_check_count`] still lets a caller guard against
+//! silently skipping one -- but `tests/format_a_replays/pingu_01.rs`
+//! does not currently ASSERT hand size against it. Once the Aurora
+//! Guide/Pal Sphere/Chillet correction above was made (all three now
+//! definitely firing every time, per the client, not per this log), the
+//! driver's simulated hand size diverges from these lines, growingly,
+//! reaching double the log's own stated count by turn 15. That's too
+//! large to be the identity limitation below explains -- it means
+//! either this export's own hand-count text ALSO lags for repeated
+//! effects (plausible: the underlying rendering gap already found for
+//! individual action lines could easily extend to the summary line
+//! too), or something else is removing cards from hand with zero
+//! logged evidence. Only a live-client check distinguishes those, and
+//! it hasn't been run -- see CLAUDE.md's Open Questions and the
+//! fixture test's own doc comment.
 //!
-//! **Deliberately scoped to hand SIZE, not full name-for-name identity.**
-//! Format A's "draw" events never name what was drawn (`event.cards` is
-//! always `[]`) -- only the NEXT turn_opened line reveals the resulting
-//! hand. Reconciling that backward into real per-card identity for every
+//! **Deliberately scoped to hand SIZE, not full name-for-name identity,
+//! for whenever the check above is re-enabled.** Format A's "draw"
+//! events never name what was drawn (`event.cards` is always `[]`) --
+//! only the NEXT turn_opened line reveals the resulting hand.
+//! Reconciling that backward into real per-card identity for every
 //! anonymous draw is a real, buildable feature this driver doesn't
-//! attempt yet; `game.hand_size(player)` is fully accurate from real
-//! draw/discard/play calls without it, and is exactly what catches a
-//! wrong draw count -- which is the actual finding this fixture
-//! produced (see the "play_card" arm's comment on Aurora Guide/Pal
-//! Sphere). Every event that DOES give direct name evidence (a deploy
+//! attempt; every event that DOES give direct name evidence (a deploy
 //! from hand, a discard, a play) still resolves the SPECIFIC existing
 //! `CardId` via `take_from_hand`, not a fresh fabrication, wherever that
-//! card is already being tracked.
-//!
-//! One checkpoint (turn 21, line 191) comes back one card short of the
-//! log's own stated size and stayed that way through every specific
-//! explanation this session tried -- see `tests/format_a_replays/
-//! pingu_01.rs`'s own doc comment and CLAUDE.md's Open Questions. Left
-//! unresolved and explicitly not asserted there, rather than forced to
-//! match by an increasingly special-cased heuristic.
+//! card is already being tracked -- but a card played by name AFTER its
+//! only tracked instance already left hand (Aurora Guide's 2nd+ play,
+//! once it unconditionally fires every time) has no tracked instance to
+//! find, and `take_from_hand`'s fallback (materialize fresh, right
+//! there) is net-neutral for that one step even though, in the real
+//! hand, an actual anonymous draw is genuinely leaving. That
+//! undercounts departures relative to the true hand exactly as often as
+//! this shape recurs -- a second, compounding reason (on top of the
+//! open question above) the size check can't be trusted yet.
 //!
 //! Souls are checked the same way, straight off the same event
 //! (`game.zone_count(player, Zone::SoulArea)` against the log's `souls`
 //! field) -- Format A never logs a separate "placed N souls" line the
 //! way the bracketed format does; the turn_opened line is the only
-//! place this state is ever stated.
+//! place this state is ever stated. Not implicated in the hand-size
+//! question above (souls are a plain running total, not a drawn-card
+//! identity problem), so no reason to distrust it the same way.
 //!
 //! ## Seat resolution -- derived from the body, never assumed
 //!
@@ -317,7 +326,7 @@ impl ReplayDriver {
 /// correctly -- see the module doc comment's two sections on this. Add
 /// an entry here in the same commit that adds a script this driver
 /// needs to call.
-const SCRIPTED_ACTIONS: &[(&str, &str)] = &[("Aurora Guide", "play_card"), ("Zoe's Strategy", "play_card")];
+const SCRIPTED_ACTIONS: &[(&str, &str)] = &[("Aurora Guide", "play_card"), ("Pal Sphere", "play_card"), ("Zoe's Strategy", "play_card")];
 
 pub fn new_game_for_replay(_meta: &FormatAMeta) -> GameState {
     GameState::test_scenario()
@@ -573,29 +582,20 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
                     cards::bp01::elphidran_gr_on_attack(game, attacker, Some(revealed));
                 }
                 // "outcome": "added_to_hand" -- Chillet's OWN OnDeploy
-                // reveal, declined or ineligible branch. Empirically,
-                // not just textually: when the revealed card is a Pal
-                // (Pyrin Noct line 29, Lyleen Noct line 94), it's still
-                // in hand at the next checkpoint; when it's a Gear
-                // (Pengullet Rocket Launcher, line 120), it isn't --
-                // confirmed by hand-size arithmetic matching exactly
-                // through turn 9 with the first two persisting, then
-                // drifting -1 at turn 12 unless the Gear case doesn't.
-                // This driver calls the real function every time (still
-                // exercising it for real), but only lets the result
-                // persist for a Pal -- see CLAUDE.md's Open Questions;
-                // not yet checked against the OTHER Gear/Pal occurrences
-                // later in this same file (lines 152, 157, 199).
+                // reveal, declined or ineligible branch. Live-client-
+                // confirmed (not log-inferred): "if it's ineligible to
+                // be deployed, it goes into the hand... cast two
+                // Chillets in one turn, you get two chances" -- always
+                // persists, Pal or Gear, every occurrence. An earlier
+                // version of this arm gated persistence to Pal-only,
+                // fitted to a hand-size mismatch that turned out to have
+                // a different cause (see CLAUDE.md's Open Questions);
+                // reverted once the real client behavior was checked
+                // directly instead of inferred from log arithmetic.
                 if resolution.get("outcome").map(|v| v == "added_to_hand").unwrap_or(false) {
                     let name = &event.cards[0];
                     materialize(game, player, Zone::Deck, name);
-                    let added = cards::bp01::chillet_on_deploy(game, player, false);
-                    let is_pal = card_meta(name).map(|m| !m.elements.is_empty()).unwrap_or(false);
-                    if !is_pal {
-                        if let Some(card) = added {
-                            game.move_to_graveyard(card, Zone::Hand);
-                        }
-                    }
+                    cards::bp01::chillet_on_deploy(game, player, false);
                 }
                 return None;
             }
@@ -656,25 +656,29 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
                     // "Draw 1 card, choose up to 1 card from your hand,
                     // and put it on the top of the deck" is ONE function
                     // call, deferred here because the log splits it
-                    // across up to two more lines. Only the FIRST of
-                    // pingu_01's 4 occurrences shows them (line 35-37);
-                    // the other 3 show neither -- and EMPIRICALLY, not
-                    // just textually: calling `aurora_guide` anyway for
-                    // those 3 (an earlier version of this arm did)
-                    // produced a hand-size check that drifted -1, then
-                    // -2, exactly matching 2 of those 3 silent plays
-                    // happening before the next two checkpoints. So the
-                    // missing text really does mean no draw happened
-                    // here, not just an unlogged one -- this driver
-                    // therefore only calls the real function where the
-                    // log gives direct evidence of its effect, same
-                    // treatment as Strike from the Darkness below. See
-                    // CLAUDE.md's Open Questions for the client-bug-vs-
-                    // undocumented-rule question this leaves open.
+                    // across up to two more lines when it renders them at
+                    // all. Only the FIRST of pingu_01's 4 occurrences
+                    // shows the "Drew 1."/"Put X on top" text (line
+                    // 35-37); the other 3 show neither -- but this is a
+                    // LOGGING gap, not a real one: live-client-confirmed
+                    // (not inferred from this log), Aurora Guide draws
+                    // every time it's cast, even twice in one turn. An
+                    // earlier version of this arm only called the real
+                    // function where the log gave direct textual
+                    // evidence, on the theory the missing text meant a
+                    // missing effect -- checked directly against the
+                    // client and found wrong; see CLAUDE.md's Open
+                    // Questions for what changed and why. Always called
+                    // now; the "chosen" card is only knowable from a
+                    // following "put_on_top" line when the log happens to
+                    // render it, so it stays `None` otherwise -- same
+                    // "only what's directly observable" scope as every
+                    // other hardcoded choice in this driver, just no
+                    // longer gating the UNCONDITIONAL draw behind it.
+                    let mut chosen = None;
                     if let Some(draw_evt) = events.get(i + 1) {
                         if draw_evt.action == "draw" {
                             driver.mark_narration(i + 1);
-                            let mut chosen = None;
                             if let Some(put_evt) = events.get(i + 2) {
                                 if put_evt.action == "put_on_top" {
                                     let put_name = &put_evt.cards[0];
@@ -682,15 +686,15 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
                                     driver.mark_narration(i + 2);
                                 }
                             }
-                            cards::bp01::aurora_guide(game, player, chosen);
                         }
                     }
+                    cards::bp01::aurora_guide(game, player, chosen);
                 }
-                // Pal Sphere's own one occurrence (line 138) is ALSO
-                // silent (no "Drew 3." follows) -- same empirical finding
-                // as Aurora Guide above, so this is deliberately never
-                // called in pingu_01; not in SCRIPTED_ACTIONS either.
-                "Pal Sphere" => {}
+                // "Draw 3 cards" -- same logging gap as Aurora Guide
+                // above, same live-client confirmation ("if you want to
+                // cast it twice in one turn, you could draw 6"). Always
+                // called now.
+                "Pal Sphere" => cards::bp01::pal_sphere(game, player),
                 "Zoe's Strategy" => {
                     // Three observed shapes -- see the doc comment on
                     // cards::bp01's own zoes_strategy_* functions for
@@ -932,13 +936,16 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
             // pick the victim: the already-validated rules reading
             // (`rocket_launcher_granted_sweep`, corpus-validated against
             // battle1's bracketed replay) says the holder's OWN
-            // opponent is hit. pingu_01's SECOND occurrence (line 110,
-            // "every Chylith Pal" = opponent of the Pingu-owned holder)
-            // matches that. The FIRST (line 64, "every Chylith Pal" =
-            // the SAME player who controls the holder) does not --
-            // flagged as an open question (CLAUDE.md), not silently
-            // resolved by trusting the log's own scope text over the
-            // real, already-validated function.
+            // opponent is hit -- live-client-confirmed directly (not
+            // log-inferred): "Pengullet rocket launcher specifically
+            // states target opponent's pals." pingu_01's SECOND
+            // occurrence (line 110, "every Chylith Pal" = opponent of
+            // the Pingu-owned holder) matches that. The FIRST (line 64,
+            // "every Chylith Pal" = the SAME player who controls the
+            // holder) does not -- meaning that one occurrence's own
+            // "scope" text is simply wrong/misleading, not evidence of a
+            // rules exception. Resolved in favor of the rules text, not
+            // the log, per the client check.
             let holder = game.last_deployed().expect("mass_damage: no last_deployed card to identify the sweep's holder");
             let holder_owner = game.owner_of(holder);
             cards::bp01::rocket_launcher_granted_sweep(game, holder, holder_owner);
