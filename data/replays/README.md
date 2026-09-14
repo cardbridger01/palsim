@@ -211,30 +211,36 @@ one fixture so far, `pingu_01` (chosen for the same reasons `test_format_
 a_pingu01.py` picked it: 22 turns, curated provenance, a clean life audit
 in its own header). Built with a `SCRIPTED_ACTIONS` registry from the
 start (see CLAUDE.md's Conventions) rather than retrofitted, and it also
-checks hand SIZE and soul count at every "Turn opened" line, not just life
-totals — stricter, and the reason the corpus-quality findings below exist
-at all rather than staying invisible.
+computes hand SIZE and soul count at every "Turn opened" line, not just
+life totals — stricter, and the reason the corpus-quality findings below
+exist at all rather than staying invisible.
 
-Three things this one fixture surfaced, all recorded in CLAUDE.md's Open
-Questions with the full reasoning:
+pingu_01's own silence on repeat plays (Aurora Guide's first cast shows
+"Drew 1."/"Put X on top" text, its other 3 don't; Pal Sphere's one cast
+shows nothing; two "TURN N" numbers can belong to the same player back to
+back) first read as real rules gaps from log arithmetic alone. A
+live-client test (the user played it directly, not log-inferred)
+overturned that for the drawing effects: Aurora Guide and Pal Sphere draw
+every single time, including twice in one turn; Chillet's "add it to
+hand" branch persists every time too, Pal or Gear; the Rocket Launcher's
+granted sweep targets the holder's opponent exactly as printed. The
+missing text is a rendering gap in this export, not evidence about the
+card — see CLAUDE.md's Open Questions for the full retraction.
 
-- **Repeat plays of the same drawing effect within a game appear to
-  genuinely not draw**, not just skip rendering the text — confirmed by
-  hand-size arithmetic, not just a missing line. Aurora Guide's first play
-  shows its full "Drew 1."/"Put X on top" text; its other 3 (of 4) don't,
-  and neither does Pal Sphere's one play. Whether this is a client bug or
-  an undocumented rule is open.
-- **Chillet's "add it to hand" branch persists only for a Pal, not a
-  Gear** — checked against 3 of pingu_01's 6 such reveals so far.
-- **Two consecutive "TURN N" numbers can belong to the same player**, with
-  no logged turn for their opponent in between (`TURN 1`/`TURN 2`,
-  `TURN 11`/`TURN 12`) — treated as at most one real stand phase, not two,
-  after standing an already-rested card early exposed it as an illegal
-  attack target.
+That correction, now built into `format_a_replay`, makes the driver's
+simulated hand size diverge sharply from what pingu_01's own "Turn
+opened -- Hand: ..." lines state (12 vs. 5 by turn 15) — too large to be
+the known per-card-identity limitation below. Hand size is therefore
+computed at every checkpoint but NOT currently asserted in
+`tests/format_a_replays/pingu_01.rs`, pending a live-client check on
+whether THIS specific export field also lags for repeated effects, or
+something else is going on — see CLAUDE.md's Open Questions.
 
-One hand-size checkpoint (turn 21) is one card short and is left
-unasserted rather than forced to match — see
-`tests/format_a_replays/pingu_01.rs`'s own doc comment for what was tried.
+Two consecutive "TURN N" numbers belonging to the same player (`TURN
+1`/`TURN 2`, `TURN 11`/`TURN 12`) is still open and unaffected by the
+above — `format_a_replay` treats it as at most one real stand phase, not
+two, after standing an already-rested card early exposed it as an
+illegal attack target.
 
 `coverage_curve()` (tier 1 only, i.e. corpus-validated cards) answers "how
 many logs are fully replayable with only the top N of those" — close to

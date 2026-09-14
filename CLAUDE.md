@@ -219,10 +219,12 @@ far — `pingu_01`, `tests/format_a_replays/pingu_01.rs`), built with the
 `astegon_on_deploy`, `aurora_guide`, `pal_sphere`, `relaxaurus_on_deploy`,
 and the three `zoes_strategy_*` functions are the first cards genuinely
 tagged `corpus-validated (format-a)`, grep-verified against
-`format_a_replay/src/lib.rs`, not inferred. It also adds hand-SIZE and
-soul-count checks at every "Turn opened" line — stricter than life
+`format_a_replay/src/lib.rs`, not inferred. It also computes hand-SIZE
+and soul-count checks at every "Turn opened" line — stricter than life
 totals alone, and what actually surfaced the findings in the next few
-Open Questions entries.
+Open Questions entries — though the hand-size half is currently computed
+but NOT asserted in `tests/format_a_replays/pingu_01.rs`, pending the
+"whichever data source... is unclear" entry below.
 
 \---
 
@@ -283,37 +285,43 @@ granted sweep, fire it, and watch hand size directly. Hand grows -> the
 client just doesn't log it, engine's reading stands. Hand doesn't grow
 -> either a client bug or this rules reading is wrong, and that needs
 resolving before trusting this card's implementation. Not yet run.
-* **Repeat plays of the same drawing effect within one Format A game
-appear to genuinely not draw, not just skip rendering the text —
-confirmed empirically, not just suspected.** pingu_01: Aurora Guide
-(BP01-048, "Draw 1 card...") shows the resulting "Drew 1."/"Put X on
-top" text on its first play only; the other 3 of 4 plays, and Pal
-Sphere's (BP01-047, "Draw 3 cards") one play, show neither. An earlier
-version of `format_a_replay` called the real function anyway for the
-silent occurrences (the text-omission theory); the hand-size checks this
-driver is built around drifted -1 then -2, exactly matching those silent
-plays. Both functions are now only called where the log gives direct
-evidence, and are flagged in their own doc comments. Whether this is a
-client bug (the effect really doesn't fire) or an undocumented rule
-("draw" abilities are once-per-game, or similar) is unresolved — a
-live-client test analogous to the Pengullet entry above would settle it,
-and would also settle the next two entries at the same time, since all
-three look like instances of one broader phenomenon in how this site
-renders/executes repeated identical effects within a game.
-* **Chillet's own "if you did not deploy it, add it to hand" branch:
-persists in the tracked hand only when the revealed card is a Pal, not a
-Gear/Spell — confirmed against 3 of pingu_01's occurrences, not yet
-checked against the other 3 in that same file.** Revealing a Pal
-(Pyrin Noct line 29, Lyleen Noct line 94) and adding it to hand matches
-the next "Turn opened" checkpoint; revealing a Gear (Pengullet Rocket
-Launcher, line 120) and adding it to hand does not — the card is simply
-absent from the next checkpoint's stated hand, with no discard/play line
-accounting for its departure (and QA #10 already rules out a hand-size
-limit as the explanation). `format_a_replay`'s "reveal" arm calls the
-real function every time either way, but only lets a Pal's result
-persist. Not yet checked against pingu_01's other 3 "added to hand"
-reveals (lines 152, 157, 199) or any other Format A file — this is the
-narrowest claim the data supports so far, not a general rule.
+* **SETTLED by live-client test (the user played it directly, not
+inferred from a log): Aurora Guide and Pal Sphere draw every single time
+they're cast, including twice in the same turn ("you could draw 6").
+Chillet's "add it to hand" branch persists every time too, Pal or
+Gear, and stacks across multiple Chillets in one turn. The Rocket
+Launcher's granted sweep targets the holder's opponent, exactly as
+printed — confirming `rocket_launcher_granted_sweep`'s existing
+implementation was already right, and that pingu_01's own line 64 ("every
+Chylith Pal" naming the WRONG side) is that one occurrence's log text
+being misleading, not a rules exception.** This overturned an earlier
+(wrong) reading built from pingu_01's own hand-size arithmetic alone,
+which had concluded the opposite for the first three: that repeat plays
+silently don't fire, and that Chillet's persistence was Pal-only.
+`format_a_replay` now calls all of these unconditionally, matching the
+confirmed behavior — see its own module doc comment for the retraction
+in detail. The general lesson: this log's missing text on repeat plays
+is confirmed to be a RENDERING gap in the export, not evidence about
+what the game did, and log-only arithmetic reached the wrong conclusion
+by itself twice in one session — a live-client check is worth running
+before trusting a log-inferred behavioral claim, not just after.
+* **New open question this correction produced: whichever data source
+`format_a_replay` should trust for hand SIZE is unclear.** Calling
+Aurora Guide/Pal Sphere/Chillet unconditionally (now known-correct) makes
+the driver's simulated hand diverge, growingly, from what pingu_01's own
+"Turn opened -- Hand: ..." lines state — by turn 15, engine and log read
+12 vs. 5. Two explanations, and only a live-client check can tell them
+apart: (1) this export's own hand-count TEXT lags for repeated effects
+the same way individual action lines do (the live in-game hand counter
+the user watched go up while testing may not be what generates this
+particular field), or (2) something else removes cards from hand with
+zero logged evidence (not a hand-size limit — QA #10 rules that out).
+`tests/format_a_replays/pingu_01.rs` does not currently assert hand size
+at all, pending this — see that file's own doc comment. A useful next
+live-client check: cast Aurora Guide twice in one turn, then check
+whether the CLIENT'S OWN turn-summary/history view (if it has one) shows
+2 drawn cards or looks the same as if only text-based logging missed
+them — that's the same question this export's "Turn opened" line raises.
 * **Two consecutive Format A "TURN N" numbers can belong to the same
 player, with no logged turn for their opponent in between.** pingu_01:
 "TURN 1"/"TURN 2" and "TURN 11"/"TURN 12" are both Chylith back to back.
@@ -325,17 +333,6 @@ skipped, e.g. an extra-turn effect neither player's deck obviously has)
 or is another rendering gap in this export is unresolved. Cross-checking
 against `top_players_all20/match_list.tsv` or another file with the same
 pattern would help.
-* **One hand-size checkpoint in pingu_01 (turn 21, line 191) is one card
-short and resisted every specific fix tried.** Not asserted in
-`tests/format_a_replays/pingu_01.rs` — see that file's own doc comment
-for what was tried (a stand-phase bug, a Pal-vs-Gear persistence rule,
-several "reuse an anonymous drawn card" heuristics) and why each was
-rejected (either it didn't fix this checkpoint, or it fixed this one by
-breaking an earlier one). Likely the same general class as the
-anonymous-draw-identity limitation `format_a_replay`'s own module doc
-comment already documents (hand checks are scoped to size, not
-name-for-name identity, specifically because Format A's "draw" events
-never name what was drawn) — but not confirmed as that specific cause.
 * **Zoe's Strategy's (BP01-095) "return a Pal to hand" and "your
 opponent discards" bullets always co-occur in pingu_01, never
 separately.** Twice (of 6 total plays), both fire from the same play;
