@@ -18,6 +18,7 @@ publish = false
 [dependencies]
 engine = { path = "../engine" }
 replay = { path = "../replay" }
+format_a_replay = { path = "../format_a_replay" }
 
 [dev-dependencies]
 serde = { version = "1.0", features = ["derive"] }

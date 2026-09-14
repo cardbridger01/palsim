@@ -14,6 +14,16 @@ name = "engine"
 version = "0.1.0"
 
 [[package]]
+name = "format_a_replay"
+version = "0.1.0"
+dependencies = [
+ "cards",
+ "engine",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "itoa"
 version = "1.0.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -30,6 +40,7 @@ name = "palsim_tests"
 version = "0.1.0"
 dependencies = [
  "engine",
+ "format_a_replay",
  "replay",
  "serde",
  "serde_json",

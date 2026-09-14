@@ -50,7 +50,10 @@ immediately follows gets `caused_by_line` pointing back at it.
 
 from __future__ import annotations
 
+import argparse
+import json
 import re
+import sys
 from pathlib import Path
 from typing import Any, Callable, Optional
 
@@ -844,3 +847,24 @@ def _link_reveal_then_free_deploy(events: list[dict[str, Any]]) -> None:
             and cur["cards"]
         ):
             cur["caused_by_line"] = prev["line_index"]
+
+
+def main(argv: Optional[list[str]] = None) -> int:
+    parser = argparse.ArgumentParser(description="Parse a Format A replay log into a structured move sequence (JSON) -- same schema as replay_parser.py's own CLI.")
+    parser.add_argument("log_path", type=Path)
+    parser.add_argument("-o", "--output", type=Path, default=None, help="write JSON here instead of stdout")
+    parser.add_argument("--indent", type=int, default=2)
+    args = parser.parse_args(argv)
+
+    result = parse_log(args.log_path)
+    out = json.dumps(result, indent=args.indent, ensure_ascii=False)
+
+    if args.output:
+        args.output.write_text(out + "\n", encoding="utf-8")
+    else:
+        print(out)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

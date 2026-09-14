@@ -1,0 +1,2298 @@
+{
+  "meta": {
+    "match_title": "Pingu vs Chylith  [Pingu's match #1 of 10 pulled, most recent]",
+    "recordId": "ca8ae191-e71e-4e94-9f86-e0dd0f8a6952",
+    "result": "PINGU WINS - \"Chylith's life hit zero.\" Final life: Pingu (WINNER) 4, Chylith 0.",
+    "notes": [
+      "UNLIKE Ze (whose account name \"ze\" shows in-game as \"bel\"), Pingu's account name and in-game/log display name are THE SAME — \"Pingu\" throughout, no alias. Worth noting as a contrast with the Ze batch, where the name substitution needed explicit tracking.",
+      "Pingu's deck HUD reads \"BLUE/PURPLE DRAGON CONTROL\" — a named archetype label, unlike Ze's generic \"BLUE/PURPLE DECK\" seen across all 10 of Ze's games. Not yet cross-referenced against a saved Pingu decklist (out of scope for this pass, same as Ze).",
+      "Both life totals are fully accounted for by named damage lines — Pingu drops 10->8->6->4 via three named Chillet hits (turns 1, 4, 17); Chylith drops 10->8->6->4->2->0 via five named hits (turns 3, 16, 19, 22 x2) — NO unexplained gap. A clean game to open the Pingu dataset.",
+      "4 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim below for decklist cross-check: Turn 3:  Pyrin Noct interrupts Relaxaurus's attack Turn 7:  Cryolinx interrupts Elphidran's attack (1st of 2 occurrences) Turn 10: Cryolinx interrupts Elphidran's attack (2nd occurrence, same card/target type) Turn 19: Reindrix interrupts Chillet's attack 2 additional FULL-form interrupts occurred (Turn 5 \"Pingu interrupted with Cryolinx, paid 1 Soul\"; Turn 20 \"Pingu interrupted with Pyrin Noct, paid 1 Soul\") — not counted in the bare-form total, included in the verbatim body only."
+    ],
+    "provenance": "curated",
+    "gap_expectation": "clean",
+    "opponent_anonymized": false,
+    "word_wrap_joins": 0
+  },
+  "events": [
+    {
+      "line_index": 26,
+      "turn": 1,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 5,
+        "souls_cap": 5,
+        "hand": [
+          "Aurora Guide",
+          "Elphidran",
+          "Elphidran",
+          "Pengullet",
+          "Pengullet Rocket Launcher",
+          "Relaxaurus",
+          "Strike from the Darkness",
+          "Strike from the Darkness"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 5/5 · Hand: Aurora Guide, Elphidran, Elphidran, Pengullet, Pengullet Rocket Launcher, Relaxaurus, Strike from the Darkness, Strike from the Darkness"
+    },
+    {
+      "line_index": 27,
+      "turn": 1,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Pengullet Rocket Launcher"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 1,
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Deployed Pengullet Rocket Launcher to slot 1 for 4 Souls."
+    },
+    {
+      "line_index": 28,
+      "turn": 1,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith deployed Chillet."
+    },
+    {
+      "line_index": 29,
+      "turn": 1,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "reveal",
+      "cards": [
+        "Pyrin Noct"
+      ],
+      "targets": [],
+      "resolution": {
+        "outcome": "added_to_hand"
+      },
+      "caused_by_line": null,
+      "text": "Chylith revealed Pyrin Noct and added it to their hand."
+    },
+    {
+      "line_index": 30,
+      "turn": 1,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack_declare",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 2
+      },
+      "caused_by_line": null,
+      "text": "Chylith's Chillet attacks Pingu for 2."
+    },
+    {
+      "line_index": 31,
+      "turn": 1,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 10,
+        "life_after": 8
+      },
+      "caused_by_line": null,
+      "text": "Chillet hit Pingu for 2. Damage Check: 2 cards milled, no Lucky. Pingu 10 to 8 life."
+    },
+    {
+      "line_index": 34,
+      "turn": 2,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 7,
+        "souls_cap": 7,
+        "hand": [
+          "Aurora Guide",
+          "Chillet",
+          "Elphidran",
+          "Elphidran",
+          "Pengullet",
+          "Relaxaurus",
+          "Strike from the Darkness",
+          "Strike from the Darkness"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 7/7 · Hand: Aurora Guide, Chillet, Elphidran, Elphidran, Pengullet, Relaxaurus, Strike from the Darkness, Strike from the Darkness"
+    },
+    {
+      "line_index": 35,
+      "turn": 2,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "play_card",
+      "cards": [
+        "Aurora Guide"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 2
+      },
+      "caused_by_line": null,
+      "text": "Played Aurora Guide for 2 Souls."
+    },
+    {
+      "line_index": 36,
+      "turn": 2,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1 card."
+    },
+    {
+      "line_index": 37,
+      "turn": 2,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "put_on_top",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Put Relaxaurus on top of the deck."
+    },
+    {
+      "line_index": 38,
+      "turn": 2,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 2,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Chillet to slot 2 for 5 Souls."
+    },
+    {
+      "line_index": 39,
+      "turn": 2,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "reveal",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Revealed Relaxaurus."
+    },
+    {
+      "line_index": 40,
+      "turn": 2,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 39,
+      "text": "Deployed Relaxaurus."
+    },
+    {
+      "line_index": 43,
+      "turn": 3,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [
+        "Pyrin Noct"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Pyrin Noct"
+    },
+    {
+      "line_index": 44,
+      "turn": 3,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack_interrupted",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 43,
+      "text": "Relaxaurus's attack was interrupted."
+    },
+    {
+      "line_index": 45,
+      "turn": 3,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 10,
+        "life_after": 8
+      },
+      "caused_by_line": null,
+      "text": "Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life."
+    },
+    {
+      "line_index": 48,
+      "turn": 4,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "play_card",
+      "cards": [
+        "Aurora Guide"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith played Aurora Guide."
+    },
+    {
+      "line_index": 49,
+      "turn": 4,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith deployed Chillet."
+    },
+    {
+      "line_index": 50,
+      "turn": 4,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Astegon"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith deployed Astegon."
+    },
+    {
+      "line_index": 51,
+      "turn": 4,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "power_buff",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": -1000
+      },
+      "caused_by_line": null,
+      "text": "Relaxaurus gets power -1000 until end of turn."
+    },
+    {
+      "line_index": 52,
+      "turn": 4,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack_declare",
+      "cards": [
+        "Astegon"
+      ],
+      "targets": [
+        "Chillet"
+      ],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith's Astegon attacks Pingu's Chillet."
+    },
+    {
+      "line_index": 53,
+      "turn": 4,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "battle_attack",
+      "cards": [
+        "Astegon"
+      ],
+      "targets": [
+        "Chillet"
+      ],
+      "resolution": {
+        "attacker_power_expr": "1200",
+        "attacker_power": 1200,
+        "defender_power_expr": "900",
+        "defender_power": 900
+      },
+      "caused_by_line": null,
+      "text": "Astegon (1200) attacked Chillet (900)."
+    },
+    {
+      "line_index": 54,
+      "turn": 4,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "bare_marker",
+      "cards": [
+        "Astegon"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Astegon"
+    },
+    {
+      "line_index": 55,
+      "turn": 4,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "destroyed",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 1200,
+        "power": 900
+      },
+      "caused_by_line": 54,
+      "text": "Chillet destroyed, 1200 damage vs 900 Power."
+    },
+    {
+      "line_index": 56,
+      "turn": 4,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack_declare",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 2
+      },
+      "caused_by_line": null,
+      "text": "Chylith's Chillet attacks Pingu for 2."
+    },
+    {
+      "line_index": 57,
+      "turn": 4,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 8,
+        "life_after": 6
+      },
+      "caused_by_line": null,
+      "text": "Chillet hit Pingu for 2. Damage Check: 2 cards milled, no Lucky. Pingu 8 to 6 life."
+    },
+    {
+      "line_index": 60,
+      "turn": 5,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 9,
+        "souls_cap": 9,
+        "hand": [
+          "Elphidran",
+          "Elphidran",
+          "Jormuntide",
+          "Pengullet",
+          "Strike from the Darkness",
+          "Strike from the Darkness",
+          "Zoe's Strategy"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 9/9 · Hand: Elphidran, Elphidran, Jormuntide, Pengullet, Strike from the Darkness, Strike from the Darkness, Zoe's Strategy"
+    },
+    {
+      "line_index": 61,
+      "turn": 5,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Pengullet"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 2,
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Deployed Pengullet to slot 2 for 4 Souls."
+    },
+    {
+      "line_index": 62,
+      "turn": 5,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "power_buff",
+      "cards": [
+        "Pengullet"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 500,
+        "granted_skill": "explode"
+      },
+      "caused_by_line": null,
+      "text": "Pengullet gets power +500 and the explode skill until end of turn."
+    },
+    {
+      "line_index": 63,
+      "turn": 5,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1."
+    },
+    {
+      "line_index": 64,
+      "turn": 5,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "mass_damage",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1100,
+        "scope": "Chylith",
+        "self_sacrifice": true
+      },
+      "caused_by_line": null,
+      "text": "Dealt 1100 to every Chylith Pal, then sacrificed this card."
+    },
+    {
+      "line_index": 65,
+      "turn": 5,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "play_card",
+      "cards": [
+        "Strike from the Darkness"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Played Strike from the Darkness for 4 Souls."
+    },
+    {
+      "line_index": 66,
+      "turn": 5,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Lyleen Noct"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith deployed Lyleen Noct."
+    },
+    {
+      "line_index": 67,
+      "turn": 5,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "play_card",
+      "cards": [
+        "Aurora Guide"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith played Aurora Guide."
+    },
+    {
+      "line_index": 68,
+      "turn": 5,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "activate",
+      "cards": [
+        "Lyleen Noct"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith activated Lyleen Noct."
+    },
+    {
+      "line_index": 69,
+      "turn": 5,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "discard",
+      "cards": [
+        "Pengullet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith discarded Pengullet to pay a cost."
+    },
+    {
+      "line_index": 70,
+      "turn": 5,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith deployed Relaxaurus."
+    },
+    {
+      "line_index": 71,
+      "turn": 5,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack_declare",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 3
+      },
+      "caused_by_line": null,
+      "text": "Chylith's Relaxaurus attacks Pingu for 3."
+    },
+    {
+      "line_index": 72,
+      "turn": 5,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "interrupt",
+      "cards": [
+        "Cryolinx"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": {
+          "type": "soul",
+          "amount": 1
+        },
+        "result": "nullified"
+      },
+      "caused_by_line": null,
+      "text": "Pingu interrupted with Cryolinx, paid 1 Soul. The attack was nullified."
+    },
+    {
+      "line_index": 75,
+      "turn": 6,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 10,
+        "souls_cap": 10,
+        "hand": [
+          "Elphidran",
+          "Elphidran",
+          "Jormuntide",
+          "Pengullet",
+          "Strike from the Darkness",
+          "Zoe's Strategy"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 10/10 · Hand: Elphidran, Elphidran, Jormuntide, Pengullet, Strike from the Darkness, Zoe's Strategy"
+    },
+    {
+      "line_index": 76,
+      "turn": 6,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "play_card",
+      "cards": [
+        "Strike from the Darkness"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Played Strike from the Darkness for 4 Souls."
+    },
+    {
+      "line_index": 77,
+      "turn": 6,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Elphidran"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 2,
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Deployed Elphidran to slot 2 for 4 Souls."
+    },
+    {
+      "line_index": 78,
+      "turn": 6,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "power_buff",
+      "cards": [
+        "Elphidran"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 200
+      },
+      "caused_by_line": null,
+      "text": "Elphidran gets power +200 until end of turn."
+    },
+    {
+      "line_index": 79,
+      "turn": 6,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "reveal",
+      "cards": [
+        "Elphidran"
+      ],
+      "targets": [],
+      "resolution": {
+        "element": "Dragon",
+        "power_buff": 500
+      },
+      "caused_by_line": null,
+      "text": "Revealed Elphidran (Dragon). Power +500 until end of turn."
+    },
+    {
+      "line_index": 82,
+      "turn": 7,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [
+        "Cryolinx"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Cryolinx"
+    },
+    {
+      "line_index": 83,
+      "turn": 7,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack_interrupted",
+      "cards": [
+        "Elphidran"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 82,
+      "text": "Elphidran's attack was interrupted."
+    },
+    {
+      "line_index": 86,
+      "turn": 8,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack_declare",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "Elphidran"
+      ],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith's Chillet attacks Pingu's Elphidran."
+    },
+    {
+      "line_index": 87,
+      "turn": 8,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "battle_attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "Elphidran"
+      ],
+      "resolution": {
+        "attacker_power_expr": "900",
+        "attacker_power": 900,
+        "defender_power_expr": "600",
+        "defender_power": 600
+      },
+      "caused_by_line": null,
+      "text": "Chillet (900) attacked Elphidran (600)."
+    },
+    {
+      "line_index": 88,
+      "turn": 8,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "bare_marker",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chillet"
+    },
+    {
+      "line_index": 89,
+      "turn": 8,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "destroyed",
+      "cards": [
+        "Elphidran"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 900,
+        "power": 600
+      },
+      "caused_by_line": 88,
+      "text": "Elphidran destroyed, 900 damage vs 600 Power."
+    },
+    {
+      "line_index": 90,
+      "turn": 8,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack_declare",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 3
+      },
+      "caused_by_line": null,
+      "text": "Chylith's Relaxaurus attacks Pingu for 3."
+    },
+    {
+      "line_index": 91,
+      "turn": 8,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "bare_marker",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "✦"
+    },
+    {
+      "line_index": 92,
+      "turn": 8,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage_attempted": 3,
+        "damage": 0,
+        "milled": 2,
+        "lucky": true
+      },
+      "caused_by_line": 91,
+      "text": "Relaxaurus attacked Pingu for 3; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)"
+    },
+    {
+      "line_index": 93,
+      "turn": 8,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith deployed Chillet."
+    },
+    {
+      "line_index": 94,
+      "turn": 8,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "reveal",
+      "cards": [
+        "Lyleen Noct"
+      ],
+      "targets": [],
+      "resolution": {
+        "outcome": "added_to_hand"
+      },
+      "caused_by_line": null,
+      "text": "Chylith revealed Lyleen Noct and added it to their hand."
+    },
+    {
+      "line_index": 95,
+      "turn": 8,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack_declare",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 2
+      },
+      "caused_by_line": null,
+      "text": "Chylith's Chillet attacks Pingu for 2."
+    },
+    {
+      "line_index": 96,
+      "turn": 8,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "bare_marker",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "✦"
+    },
+    {
+      "line_index": 97,
+      "turn": 8,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage_attempted": 2,
+        "damage": 0,
+        "milled": 2,
+        "lucky": true
+      },
+      "caused_by_line": 96,
+      "text": "Chillet attacked Pingu for 2; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)"
+    },
+    {
+      "line_index": 100,
+      "turn": 9,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 10,
+        "souls_cap": 10,
+        "hand": [
+          "Elphidran",
+          "Jormuntide",
+          "Pengullet",
+          "Zoe's Strategy",
+          "Zoe's Strategy"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 10/10 · Hand: Elphidran, Jormuntide, Pengullet, Zoe's Strategy, Zoe's Strategy"
+    },
+    {
+      "line_index": 101,
+      "turn": 9,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Elphidran"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 2,
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Deployed Elphidran to slot 2 for 4 Souls."
+    },
+    {
+      "line_index": 102,
+      "turn": 9,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "reveal_declined",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chose not to reveal a Dragon."
+    },
+    {
+      "line_index": 105,
+      "turn": 10,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [
+        "Cryolinx"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Cryolinx"
+    },
+    {
+      "line_index": 106,
+      "turn": 10,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack_interrupted",
+      "cards": [
+        "Elphidran"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 105,
+      "text": "Elphidran's attack was interrupted."
+    },
+    {
+      "line_index": 107,
+      "turn": 10,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "deploy",
+      "cards": [
+        "Pengullet"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 3,
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Deployed Pengullet to slot 3 for 4 Souls."
+    },
+    {
+      "line_index": 108,
+      "turn": 10,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "power_buff",
+      "cards": [
+        "Pengullet"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 500,
+        "granted_skill": "explode"
+      },
+      "caused_by_line": null,
+      "text": "Pengullet gets power +500 and the explode skill until end of turn."
+    },
+    {
+      "line_index": 109,
+      "turn": 10,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1."
+    },
+    {
+      "line_index": 110,
+      "turn": 10,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "mass_damage",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1100,
+        "scope": "Chylith",
+        "self_sacrifice": true
+      },
+      "caused_by_line": null,
+      "text": "Dealt 1100 to every Chylith Pal, then sacrificed this card."
+    },
+    {
+      "line_index": 113,
+      "turn": 11,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack_declare",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 3
+      },
+      "caused_by_line": null,
+      "text": "Chylith's Relaxaurus attacks Pingu for 3."
+    },
+    {
+      "line_index": 114,
+      "turn": 11,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "bare_marker",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "✦"
+    },
+    {
+      "line_index": 115,
+      "turn": 11,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage_attempted": 3,
+        "damage": 0,
+        "milled": 3,
+        "lucky": true
+      },
+      "caused_by_line": 114,
+      "text": "Relaxaurus attacked Pingu for 3; Pingu's Damage Check revealed a Lucky Pal, cancelled, no damage. (3 cards milled)"
+    },
+    {
+      "line_index": 116,
+      "turn": 11,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "play_card",
+      "cards": [
+        "Zoe's Strategy"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith played Zoe's Strategy."
+    },
+    {
+      "line_index": 117,
+      "turn": 11,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "return_to_hand",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith returned Chillet from their graveyard to hand."
+    },
+    {
+      "line_index": 118,
+      "turn": 11,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "discard",
+      "cards": [
+        "Zoe's Strategy"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Discarded Zoe's Strategy."
+    },
+    {
+      "line_index": 119,
+      "turn": 11,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith deployed Chillet."
+    },
+    {
+      "line_index": 120,
+      "turn": 11,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "reveal",
+      "cards": [
+        "Pengullet Rocket Launcher"
+      ],
+      "targets": [],
+      "resolution": {
+        "outcome": "added_to_hand"
+      },
+      "caused_by_line": null,
+      "text": "Chylith revealed Pengullet Rocket Launcher and added it to their hand."
+    },
+    {
+      "line_index": 121,
+      "turn": 11,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack_declare",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "Elphidran"
+      ],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith's Chillet attacks Pingu's Elphidran."
+    },
+    {
+      "line_index": 122,
+      "turn": 11,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "battle_attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "Elphidran"
+      ],
+      "resolution": {
+        "attacker_power_expr": "900",
+        "attacker_power": 900,
+        "defender_power_expr": "600",
+        "defender_power": 600
+      },
+      "caused_by_line": null,
+      "text": "Chillet (900) attacked Elphidran (600)."
+    },
+    {
+      "line_index": 123,
+      "turn": 11,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "bare_marker",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chillet"
+    },
+    {
+      "line_index": 124,
+      "turn": 11,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "destroyed",
+      "cards": [
+        "Elphidran"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 900,
+        "power": 600
+      },
+      "caused_by_line": 123,
+      "text": "Elphidran destroyed, 900 damage vs 600 Power."
+    },
+    {
+      "line_index": 127,
+      "turn": 12,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 10,
+        "souls_cap": 10,
+        "hand": [
+          "Cryolinx",
+          "Jormuntide",
+          "Zoe's Strategy",
+          "Zoe's Strategy"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 10/10 · Hand: Cryolinx, Jormuntide, Zoe's Strategy, Zoe's Strategy"
+    },
+    {
+      "line_index": 128,
+      "turn": 12,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Jormuntide"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 2,
+        "cost": 8
+      },
+      "caused_by_line": null,
+      "text": "Deployed Jormuntide to slot 2 for 8 Souls."
+    },
+    {
+      "line_index": 129,
+      "turn": 12,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1."
+    },
+    {
+      "line_index": 132,
+      "turn": 13,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "battle_attack",
+      "cards": [
+        "Jormuntide"
+      ],
+      "targets": [
+        "Chillet"
+      ],
+      "resolution": {
+        "attacker_power_expr": "1600",
+        "attacker_power": 1600,
+        "defender_power_expr": "900",
+        "defender_power": 900
+      },
+      "caused_by_line": null,
+      "text": "Jormuntide (1600) attacked Chillet (900)."
+    },
+    {
+      "line_index": 133,
+      "turn": 13,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [
+        "Jormuntide"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Jormuntide"
+    },
+    {
+      "line_index": 134,
+      "turn": 13,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "destroyed",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 1600,
+        "power": 900
+      },
+      "caused_by_line": 133,
+      "text": "Chillet destroyed, 1600 damage vs 900 Power."
+    },
+    {
+      "line_index": 137,
+      "turn": 14,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "play_card",
+      "cards": [
+        "Aurora Guide"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith played Aurora Guide."
+    },
+    {
+      "line_index": 138,
+      "turn": 14,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "play_card",
+      "cards": [
+        "Pal Sphere"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith played Pal Sphere."
+    },
+    {
+      "line_index": 141,
+      "turn": 15,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 10,
+        "souls_cap": 10,
+        "hand": [
+          "Cryolinx",
+          "Reindrix",
+          "Reindrix",
+          "Zoe's Strategy",
+          "Zoe's Strategy"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 10/10 · Hand: Cryolinx, Reindrix, Reindrix, Zoe's Strategy, Zoe's Strategy"
+    },
+    {
+      "line_index": 144,
+      "turn": 16,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "battle_attack",
+      "cards": [
+        "Jormuntide"
+      ],
+      "targets": [
+        "Relaxaurus"
+      ],
+      "resolution": {
+        "attacker_power_expr": "1600",
+        "attacker_power": 1600,
+        "defender_power_expr": "1200",
+        "defender_power": 1200
+      },
+      "caused_by_line": null,
+      "text": "Jormuntide (1600) attacked Relaxaurus (1200)."
+    },
+    {
+      "line_index": 145,
+      "turn": 16,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [
+        "Jormuntide"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Jormuntide"
+    },
+    {
+      "line_index": 146,
+      "turn": 16,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "destroyed",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 1600,
+        "power": 1200
+      },
+      "caused_by_line": 145,
+      "text": "Relaxaurus destroyed, 1600 damage vs 1200 Power."
+    },
+    {
+      "line_index": 147,
+      "turn": 16,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "play_card",
+      "cards": [
+        "Zoe's Strategy"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 3
+      },
+      "caused_by_line": null,
+      "text": "Played Zoe's Strategy for 3 Souls."
+    },
+    {
+      "line_index": 148,
+      "turn": 16,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "return_to_hand",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Returned Chillet from graveyard to hand."
+    },
+    {
+      "line_index": 149,
+      "turn": 16,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "must_discard",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Chylith must discard 1."
+    },
+    {
+      "line_index": 150,
+      "turn": 16,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "discard",
+      "cards": [
+        "Pengullet Rocket Launcher"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith discarded Pengullet Rocket Launcher."
+    },
+    {
+      "line_index": 151,
+      "turn": 16,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "deploy",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 3,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Chillet to slot 3 for 5 Souls."
+    },
+    {
+      "line_index": 152,
+      "turn": 16,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "reveal",
+      "cards": [
+        "Strike from the Darkness"
+      ],
+      "targets": [],
+      "resolution": {
+        "outcome": "added_to_hand"
+      },
+      "caused_by_line": null,
+      "text": "Revealed Strike from the Darkness, added to hand."
+    },
+    {
+      "line_index": 153,
+      "turn": 16,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 8,
+        "life_after": 6
+      },
+      "caused_by_line": null,
+      "text": "Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 8 to 6 life."
+    },
+    {
+      "line_index": 156,
+      "turn": 17,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith deployed Chillet."
+    },
+    {
+      "line_index": 157,
+      "turn": 17,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "reveal",
+      "cards": [
+        "Reindrix"
+      ],
+      "targets": [],
+      "resolution": {
+        "outcome": "added_to_hand"
+      },
+      "caused_by_line": null,
+      "text": "Chylith revealed Reindrix and added it to their hand."
+    },
+    {
+      "line_index": 158,
+      "turn": 17,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack_declare",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 2
+      },
+      "caused_by_line": null,
+      "text": "Chylith's Chillet attacks Pingu for 2."
+    },
+    {
+      "line_index": 159,
+      "turn": 17,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 6,
+        "life_after": 4
+      },
+      "caused_by_line": null,
+      "text": "Chillet hit Pingu for 2. Damage Check: 2 cards milled, no Lucky. Pingu 6 to 4 life."
+    },
+    {
+      "line_index": 160,
+      "turn": 17,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "play_card",
+      "cards": [
+        "Zoe's Strategy"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith played Zoe's Strategy."
+    },
+    {
+      "line_index": 161,
+      "turn": 17,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "destroyed",
+      "cards": [
+        "Jormuntide"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Jormuntide was destroyed."
+    },
+    {
+      "line_index": 164,
+      "turn": 18,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 10,
+        "souls_cap": 10,
+        "hand": [
+          "Cryolinx",
+          "Pyrin Noct",
+          "Reindrix",
+          "Reindrix",
+          "Strike from the Darkness",
+          "Zoe's Strategy"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 10/10 · Hand: Cryolinx, Pyrin Noct, Reindrix, Reindrix, Strike from the Darkness, Zoe's Strategy"
+    },
+    {
+      "line_index": 167,
+      "turn": 19,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 6,
+        "life_after": 4
+      },
+      "caused_by_line": null,
+      "text": "Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 6 to 4 life."
+    },
+    {
+      "line_index": 168,
+      "turn": 19,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "play_card",
+      "cards": [
+        "Zoe's Strategy"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 3
+      },
+      "caused_by_line": null,
+      "text": "Played Zoe's Strategy for 3 Souls."
+    },
+    {
+      "line_index": 169,
+      "turn": 19,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "return_to_hand",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Returned Chillet from graveyard to hand."
+    },
+    {
+      "line_index": 170,
+      "turn": 19,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "must_discard",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Chylith must discard 1."
+    },
+    {
+      "line_index": 171,
+      "turn": 19,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "discard",
+      "cards": [
+        "Pengullet Rocket Launcher"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith discarded Pengullet Rocket Launcher."
+    },
+    {
+      "line_index": 172,
+      "turn": 19,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "deploy",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 2,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Chillet to slot 2 for 5 Souls."
+    },
+    {
+      "line_index": 173,
+      "turn": 19,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "reveal",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Revealed Relaxaurus."
+    },
+    {
+      "line_index": 174,
+      "turn": 19,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "deploy",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 173,
+      "text": "Deployed Relaxaurus."
+    },
+    {
+      "line_index": 175,
+      "turn": 19,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "no_valid_target",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "No valid target."
+    },
+    {
+      "line_index": 176,
+      "turn": 19,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "✦"
+    },
+    {
+      "line_index": 177,
+      "turn": 19,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage_attempted": 3,
+        "damage": 0,
+        "milled": 2,
+        "lucky": true
+      },
+      "caused_by_line": 176,
+      "text": "Relaxaurus attacked them for 3; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)"
+    },
+    {
+      "line_index": 178,
+      "turn": 19,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [
+        "Reindrix"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Reindrix"
+    },
+    {
+      "line_index": 179,
+      "turn": 19,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack_interrupted",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 178,
+      "text": "Chillet's attack was interrupted."
+    },
+    {
+      "line_index": 182,
+      "turn": 20,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "deploy",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith deployed Relaxaurus."
+    },
+    {
+      "line_index": 183,
+      "turn": 20,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "rested",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chillet was Rested."
+    },
+    {
+      "line_index": 184,
+      "turn": 20,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "status_effect",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": {
+        "effect": "wont_stand_while_source_in_play"
+      },
+      "caused_by_line": null,
+      "text": "Chillet won't stand while the source stays in play."
+    },
+    {
+      "line_index": 185,
+      "turn": 20,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "attack_declare",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [
+        "Chillet"
+      ],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith's Relaxaurus attacks Pingu's Chillet."
+    },
+    {
+      "line_index": 186,
+      "turn": 20,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "interrupt",
+      "cards": [
+        "Pyrin Noct"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": {
+          "type": "soul",
+          "amount": 1
+        },
+        "result": "nullified"
+      },
+      "caused_by_line": null,
+      "text": "Pingu interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified."
+    },
+    {
+      "line_index": 187,
+      "turn": 20,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "play_card",
+      "cards": [
+        "Zoe's Strategy"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chylith played Zoe's Strategy."
+    },
+    {
+      "line_index": 188,
+      "turn": 20,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "destroyed",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Relaxaurus was destroyed."
+    },
+    {
+      "line_index": 191,
+      "turn": 21,
+      "phase": null,
+      "actor": "Chylith",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 10,
+        "souls_cap": 10,
+        "hand": [
+          "Chillet",
+          "Cryolinx",
+          "Reindrix",
+          "Reindrix",
+          "Strike from the Darkness"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 10/10 · Hand: Chillet, Cryolinx, Reindrix, Reindrix, Strike from the Darkness"
+    },
+    {
+      "line_index": 194,
+      "turn": 22,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "✦"
+    },
+    {
+      "line_index": 195,
+      "turn": 22,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage_attempted": 2,
+        "damage": 0,
+        "milled": 1,
+        "lucky": true
+      },
+      "caused_by_line": 194,
+      "text": "Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)"
+    },
+    {
+      "line_index": 196,
+      "turn": 22,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "✦"
+    },
+    {
+      "line_index": 197,
+      "turn": 22,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage_attempted": 2,
+        "damage": 0,
+        "milled": 2,
+        "lucky": true
+      },
+      "caused_by_line": 196,
+      "text": "Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)"
+    },
+    {
+      "line_index": 198,
+      "turn": 22,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "deploy",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 4,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Chillet to slot 4 for 5 Souls."
+    },
+    {
+      "line_index": 199,
+      "turn": 22,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "reveal",
+      "cards": [
+        "Pyrin Noct"
+      ],
+      "targets": [],
+      "resolution": {
+        "outcome": "added_to_hand"
+      },
+      "caused_by_line": null,
+      "text": "Revealed Pyrin Noct, added to hand."
+    },
+    {
+      "line_index": 200,
+      "turn": 22,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 4,
+        "life_after": 2
+      },
+      "caused_by_line": null,
+      "text": "Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 4 to 2 life."
+    },
+    {
+      "line_index": 201,
+      "turn": 22,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "deploy",
+      "cards": [
+        "Reindrix"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 5,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Reindrix to slot 5 for 5 Souls."
+    },
+    {
+      "line_index": 202,
+      "turn": 22,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Reindrix"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 2,
+        "life_after": 0
+      },
+      "caused_by_line": null,
+      "text": "Reindrix attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 2 to 0 life."
+    },
+    {
+      "line_index": 204,
+      "turn": 22,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "win_declared",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "winner": "PINGU"
+      },
+      "caused_by_line": null,
+      "text": "PINGU WINS"
+    },
+    {
+      "line_index": 205,
+      "turn": 22,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "loss_reason",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "loser": "Chylith",
+        "reason": "life_hit_zero"
+      },
+      "caused_by_line": null,
+      "text": "Chylith's life hit zero."
+    },
+    {
+      "line_index": 206,
+      "turn": 22,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "final_life",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "winner": "Pingu",
+        "winner_life": 4,
+        "loser": "Chylith",
+        "loser_life": 0
+      },
+      "caused_by_line": null,
+      "text": "FINAL LIFE: Pingu (WINNER) 4, Chylith 0."
+    }
+  ]
+}

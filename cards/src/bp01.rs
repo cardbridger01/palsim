@@ -203,6 +203,128 @@ pub fn dark_cannon(game: &mut GameState, target: CardId) {
     game.move_to_graveyard(target, Zone::Base);
 }
 
+/// BP01-048, Aurora Guide.
+///
+/// VALIDATION: corpus-validated (format-a), with a flagged discrepancy --
+/// format_a_replay calls this for real at every "play_card" event
+/// naming Aurora Guide (pingu_01: 4 occurrences), but only the FIRST
+/// shows the resulting "Drew 1."/"Put X on top" text; the other 3 show
+/// neither, despite "Draw 1 card" having no "may" (QA #34 is what makes
+/// "choose up to 1 [to put back]" itself optional, not the draw). Same
+/// pattern independently observed for Pal Sphere below. This driver
+/// draws for real regardless of the log's silence and checks the result
+/// against the corpus's own ground truth -- the hand contents Format A
+/// states at the next "Turn opened" line -- rather than either trusting
+/// or ignoring the missing text; see the Open Questions entry this
+/// added to CLAUDE.md.
+///
+/// effect_text: "Quick Draw 1 card, choose up to 1 card from your hand,
+/// and put it on the top of the deck."
+///
+/// `chosen` is `None` for "choose up to 1" declining/finding nothing
+/// (QA #34) -- unlike TD01-012 Elphidran Aqua's mandatory "choose 1"
+/// (QA #33 lists that card directly; this one is genuinely optional).
+pub fn aurora_guide(game: &mut GameState, player: PlayerId, chosen: Option<CardId>) {
+    game.draw(player);
+    if let Some(card) = chosen {
+        game.move_to_top_of_deck(player, card, Zone::Hand);
+    }
+}
+
+/// BP01-047, Pal Sphere.
+///
+/// VALIDATION: corpus-validated (format-a) -- format_a_replay calls this
+/// for real (pingu_01, line 138), with the same missing-draw-text
+/// pattern documented on `aurora_guide` above (no "Drew 3." line follows
+/// in the log either).
+///
+/// effect_text: "Draw 3 cards."
+pub fn pal_sphere(game: &mut GameState, player: PlayerId) {
+    game.draw(player);
+    game.draw(player);
+    game.draw(player);
+}
+
+/// BP01-026, Relaxaurus -- Hungry Gunner.
+///
+/// VALIDATION: corpus-validated (format-a) -- format_a_replay's
+/// "status_effect" arm calls this for real (pingu_01, line 184: "Chillet
+/// won't stand while the source stays in play," immediately following
+/// Relaxaurus's own deploy at line 182). Of Relaxaurus's THREE deploys
+/// in pingu_01, only this one shows the targeting-rest effect actually
+/// firing -- the other two show no target chosen (QA #34: "up to 1"
+/// permits 0), matching `target: None` below rather than a forced call.
+///
+/// effect_text: "AUTO OnDeploy Choose up to 1 ◇6 or less Pal, and rest
+/// it. While this card is in the base, that card does not stand."
+///
+/// QA #61 ("choose up to X (specific condition) Pals, and rest them")
+/// and QA #62 -- THIS CARD BY NAME -- both apply directly. `source` is
+/// this specific Relaxaurus instance, not a player: QA #62's own ruling
+/// ("cannot be stood up even by card effects as long as Relaxaurus
+/// remains in the base," CLAUDE.md's timing-model doc) is a lock tied to
+/// ONE card staying in the base, not a one-shot suppression -- the
+/// opposite duration shape from Jormuntide's `choose_and_rest_wont_stand_next`
+/// (one stand phase only), so `lock_from_standing` (QA #62's own tested
+/// primitive) is the right one here, not that.
+pub fn relaxaurus_on_deploy(game: &mut GameState, target: Option<CardId>, source: CardId) {
+    if let Some(card) = target {
+        game.rest(card);
+        game.lock_from_standing(card, source);
+    }
+}
+
+/// BP01-095, Zoe's Strategy.
+///
+/// Three small functions, one per bullet this card's printed text
+/// lists, rather than one function branching on a caller-supplied
+/// "which bullet" flag.
+///
+/// VALIDATION: corpus-validated (format-a) for exactly the shapes below
+/// -- format_a_replay calls the matching function at each of pingu_01's
+/// 6 occurrences. Flagged, not resolved: twice (of 6), `return_to_hand`
+/// and `force_discard` are BOTH exercised from the SAME play (log lines
+/// 147+149 and 168+170), never `return_to_hand` alone paired with
+/// nothing else there. Once (line 116), `return_to_hand` fires ALONE.
+/// Twice (lines 160, 187), only `butcher` fires. Whether "return a Pal
+/// to hand" and "your opponent discards" are truly two separate
+/// bullets of "choose 1 of the following" (and this game just always
+/// happened to pick the second one right after the first) or the CSV's
+/// flattened effect_text lost a bullet-grouping the physical card
+/// actually prints as one combined option is an open question -- see
+/// CLAUDE.md. The resource-loss bullet (up to 5 Material/Ingredient) is
+/// never exercised in pingu_01 and has no function here.
+///
+/// effect_text: "Choose 1 of the following: Choose up to 5 of your
+/// opponent's Material and/or Ingredient in total, and your opponent
+/// loses them. Choose up to 1 Pal from your graveyard, and return it to
+/// hand. Your opponent chooses 1 card from their hand, and discards it.
+/// Choose 1 of your Pals, and butcher it. If you butchered 1 or more
+/// cards this way, choose 1 of your opponent's Pals, and put it into
+/// the graveyard."
+pub fn zoes_strategy_return_to_hand(game: &mut GameState, player: PlayerId, returned: CardId) {
+    game.deploy_from(player, returned, Zone::Graveyard, Zone::Hand);
+}
+
+/// See `zoes_strategy_return_to_hand`. `opponent` is the player who is
+/// forced to discard (the printed text's "your opponent," relative to
+/// this card's controller) -- `discarded` is whichever card of THEIRS
+/// the log already names.
+pub fn zoes_strategy_force_discard(game: &mut GameState, opponent: PlayerId, discarded: CardId) {
+    game.deploy_from(opponent, discarded, Zone::Hand, Zone::Graveyard);
+}
+
+/// See `zoes_strategy_return_to_hand`. QA #81 defines Butcher as
+/// choosing N of your OWN base Pals and graveyarding them -- always a
+/// base -> graveyard move, so `graveyard_trigger_fired` reads true for
+/// a butchered card, same as any other base-originating death. Neither
+/// of pingu_01's two occurrences shows the "if you butchered ... put 1
+/// of your opponent's Pals into the graveyard" bonus firing, so that
+/// half isn't implemented here.
+pub fn zoes_strategy_butcher(game: &mut GameState, own_pal: CardId) {
+    game.butcher(own_pal);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -377,5 +499,94 @@ mod tests {
         dark_cannon(&mut game, target);
 
         assert_eq!(game.zone_of(target), Zone::Graveyard);
+    }
+
+    #[test]
+    fn aurora_guide_draws_one_and_puts_the_chosen_card_on_top() {
+        let mut game = GameState::test_scenario();
+        let starting_hand = game.hand_size(PlayerId::P1);
+        let chosen = game.place(PlayerId::P1, "EFILLER-000", Zone::Hand);
+
+        aurora_guide(&mut game, PlayerId::P1, Some(chosen));
+
+        assert_eq!(game.hand_size(PlayerId::P1), starting_hand + 1, "+1 pre-existing, +1 drawn, -1 put back on top");
+        assert_eq!(game.top_of_deck(PlayerId::P1), Some(chosen));
+    }
+
+    #[test]
+    fn aurora_guide_with_nothing_chosen_still_draws() {
+        let mut game = GameState::test_scenario();
+        let starting_hand = game.hand_size(PlayerId::P1);
+
+        aurora_guide(&mut game, PlayerId::P1, None);
+
+        assert_eq!(game.hand_size(PlayerId::P1), starting_hand + 1, "'choose up to 1' declining must not block the unconditional draw");
+    }
+
+    #[test]
+    fn pal_sphere_draws_three() {
+        let mut game = GameState::test_scenario();
+        let starting_hand = game.hand_size(PlayerId::P1);
+
+        pal_sphere(&mut game, PlayerId::P1);
+
+        assert_eq!(game.hand_size(PlayerId::P1), starting_hand + 3);
+    }
+
+    #[test]
+    fn relaxaurus_on_deploy_rests_and_locks_the_chosen_target_from_standing() {
+        let mut game = GameState::test_scenario();
+        let relaxaurus = game.deploy(PlayerId::P1, "EBP01-026", Zone::Base).unwrap();
+        let target = game.deploy(PlayerId::P2, "EFILLER-000", Zone::Base).unwrap();
+
+        relaxaurus_on_deploy(&mut game, Some(target), relaxaurus);
+
+        assert!(game.is_resting(target));
+        assert!(game.stand_via_effect(target).is_err(), "QA #62: the lock survives card effects, not just the stand phase");
+    }
+
+    #[test]
+    fn relaxaurus_on_deploy_with_no_target_does_nothing() {
+        let mut game = GameState::test_scenario();
+        let relaxaurus = game.deploy(PlayerId::P1, "EBP01-026", Zone::Base).unwrap();
+        let target = game.deploy(PlayerId::P2, "EFILLER-000", Zone::Base).unwrap();
+
+        relaxaurus_on_deploy(&mut game, None, relaxaurus);
+
+        assert!(!game.is_resting(target), "'up to 1' declining must not rest anything (QA #34)");
+    }
+
+    #[test]
+    fn zoes_strategy_return_to_hand_moves_a_graveyard_pal_to_hand() {
+        let mut game = GameState::test_scenario();
+        let card = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+        game.move_to_graveyard(card, Zone::Base);
+        let starting_hand = game.hand_size(PlayerId::P1);
+
+        zoes_strategy_return_to_hand(&mut game, PlayerId::P1, card);
+
+        assert_eq!(game.zone_of(card), Zone::Hand);
+        assert_eq!(game.hand_size(PlayerId::P1), starting_hand + 1);
+    }
+
+    #[test]
+    fn zoes_strategy_force_discard_moves_the_named_hand_card_to_the_graveyard() {
+        let mut game = GameState::test_scenario();
+        let card = game.place(PlayerId::P2, "EFILLER-000", Zone::Hand);
+
+        zoes_strategy_force_discard(&mut game, PlayerId::P2, card);
+
+        assert_eq!(game.zone_of(card), Zone::Graveyard);
+    }
+
+    #[test]
+    fn zoes_strategy_butcher_graveyards_the_chosen_own_pal_from_the_base() {
+        let mut game = GameState::test_scenario();
+        let card = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+
+        zoes_strategy_butcher(&mut game, card);
+
+        assert_eq!(game.zone_of(card), Zone::Graveyard);
+        assert!(game.graveyard_trigger_fired(card), "QA #81: Butcher is always a base -> graveyard move");
     }
 }

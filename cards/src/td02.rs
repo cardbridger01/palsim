@@ -25,6 +25,34 @@ pub fn strike_from_the_darkness(game: &mut GameState, target: CardId) {
     game.move_to_graveyard(target, Zone::Base);
 }
 
+/// TD02-012, Astegon.
+///
+/// VALIDATION: corpus-validated (format-a) -- format_a_replay's "deploy"
+/// arm calls this for real (pingu_01, line 51: "Relaxaurus gets power
+/// -1000 until end of turn," immediately following Astegon's own
+/// deploy). Only the OnDeploy half is implemented -- pingu_01's one
+/// Astegon attack (line 53) kills its direct Pal-vs-Pal target through
+/// ordinary Strike/Power combat, not through the OnAttack sweep below;
+/// nothing in this replay exercises "choose all Pals with Power 300 or
+/// less," so that half is left unbuilt rather than shipped unvalidated.
+///
+/// effect_text: "AUTO OnDeploy Choose up to 1 Pal, and it gets Power
+/// -1000 until end of turn (It is not put into the graveyard even if
+/// Power becomes 0 or less); AUTO OnAttack Choose all Pals with Power
+/// 300 or less, and put them into the graveyard (Choose your Pals
+/// too)."
+///
+/// No owner qualifier on "choose up to 1 Pal" -- pingu_01's own
+/// occurrence targets its OWN controller's Relaxaurus, not the
+/// opponent's, so this must not assume an opponent-only target.
+/// `reduce_power` is deliberately unclamped (1.3.2.4, QA #92/#93): the
+/// parenthetical "not put into the graveyard even if Power becomes 0 or
+/// less" is confirming the general engine rule already applies here, not
+/// adding a special case.
+pub fn astegon_on_deploy(game: &mut GameState, target: CardId) {
+    game.reduce_power(target, 1000);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -38,5 +66,17 @@ mod tests {
         strike_from_the_darkness(&mut game, target);
 
         assert_eq!(game.zone_of(target), Zone::Graveyard);
+    }
+
+    #[test]
+    fn astegon_on_deploy_reduces_power_by_1000_even_below_zero_without_dying() {
+        let mut game = GameState::test_scenario();
+        let target = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+        game.set_power(target, 500);
+
+        astegon_on_deploy(&mut game, target);
+
+        assert_eq!(game.power(target), -500, "unclamped -- 1.3.2.4");
+        assert_eq!(game.zone_of(target), Zone::Base, "negative Power alone must not kill (QA #92/#93)");
     }
 }
