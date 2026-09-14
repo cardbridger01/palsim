@@ -210,13 +210,19 @@ Pengullet – Yearning for the Sky's own graveyard-draw trigger (BP01-028)
 now fires for real when its granted-sweep self-destruct occurs, but
 battle1's own client log never shows the resulting "drew 1 card" line —
 see that function's doc comment and `data/replays/README.md`'s known-
-anomaly section. Expect the same class of gap once a Format A driver
-exists: a card appearing in a Format A log is not, by itself, evidence its
-script was ever called. Verify by grepping the driver for the function
-name before tagging anything `corpus-validated (format-a)` — don't infer
-it from the card's presence in a log, and give that driver the same
-registry-enforcement treatment from the start rather than retrofitting it
-later.
+anomaly section. Verify by grepping the driver for the function name
+before tagging anything `corpus-validated (format-a)` — don't infer it
+from the card's presence in a log.
+* **A Format A driver now exists** (`format_a_replay/`, one fixture so
+far — `pingu_01`, `tests/format_a_replays/pingu_01.rs`), built with the
+`SCRIPTED_ACTIONS` registry from the start rather than retrofitted —
+`astegon_on_deploy`, `aurora_guide`, `pal_sphere`, `relaxaurus_on_deploy`,
+and the three `zoes_strategy_*` functions are the first cards genuinely
+tagged `corpus-validated (format-a)`, grep-verified against
+`format_a_replay/src/lib.rs`, not inferred. It also adds hand-SIZE and
+soul-count checks at every "Turn opened" line — stricter than life
+totals alone, and what actually surfaced the findings in the next few
+Open Questions entries.
 
 \---
 
@@ -277,4 +283,69 @@ granted sweep, fire it, and watch hand size directly. Hand grows -> the
 client just doesn't log it, engine's reading stands. Hand doesn't grow
 -> either a client bug or this rules reading is wrong, and that needs
 resolving before trusting this card's implementation. Not yet run.
+* **Repeat plays of the same drawing effect within one Format A game
+appear to genuinely not draw, not just skip rendering the text —
+confirmed empirically, not just suspected.** pingu_01: Aurora Guide
+(BP01-048, "Draw 1 card...") shows the resulting "Drew 1."/"Put X on
+top" text on its first play only; the other 3 of 4 plays, and Pal
+Sphere's (BP01-047, "Draw 3 cards") one play, show neither. An earlier
+version of `format_a_replay` called the real function anyway for the
+silent occurrences (the text-omission theory); the hand-size checks this
+driver is built around drifted -1 then -2, exactly matching those silent
+plays. Both functions are now only called where the log gives direct
+evidence, and are flagged in their own doc comments. Whether this is a
+client bug (the effect really doesn't fire) or an undocumented rule
+("draw" abilities are once-per-game, or similar) is unresolved — a
+live-client test analogous to the Pengullet entry above would settle it,
+and would also settle the next two entries at the same time, since all
+three look like instances of one broader phenomenon in how this site
+renders/executes repeated identical effects within a game.
+* **Chillet's own "if you did not deploy it, add it to hand" branch:
+persists in the tracked hand only when the revealed card is a Pal, not a
+Gear/Spell — confirmed against 3 of pingu_01's occurrences, not yet
+checked against the other 3 in that same file.** Revealing a Pal
+(Pyrin Noct line 29, Lyleen Noct line 94) and adding it to hand matches
+the next "Turn opened" checkpoint; revealing a Gear (Pengullet Rocket
+Launcher, line 120) and adding it to hand does not — the card is simply
+absent from the next checkpoint's stated hand, with no discard/play line
+accounting for its departure (and QA #10 already rules out a hand-size
+limit as the explanation). `format_a_replay`'s "reveal" arm calls the
+real function every time either way, but only lets a Pal's result
+persist. Not yet checked against pingu_01's other 3 "added to hand"
+reveals (lines 152, 157, 199) or any other Format A file — this is the
+narrowest claim the data supports so far, not a general rule.
+* **Two consecutive Format A "TURN N" numbers can belong to the same
+player, with no logged turn for their opponent in between.** pingu_01:
+"TURN 1"/"TURN 2" and "TURN 11"/"TURN 12" are both Chylith back to back.
+`format_a_replay` treats this as at most one real stand phase for that
+player, not two (standing already-standing cards again exposed a real
+Pal as an illegal attack target three lines later, in the "TURN 12"
+case) — but whether this reflects the actual game (Pingu genuinely gets
+skipped, e.g. an extra-turn effect neither player's deck obviously has)
+or is another rendering gap in this export is unresolved. Cross-checking
+against `top_players_all20/match_list.tsv` or another file with the same
+pattern would help.
+* **One hand-size checkpoint in pingu_01 (turn 21, line 191) is one card
+short and resisted every specific fix tried.** Not asserted in
+`tests/format_a_replays/pingu_01.rs` — see that file's own doc comment
+for what was tried (a stand-phase bug, a Pal-vs-Gear persistence rule,
+several "reuse an anonymous drawn card" heuristics) and why each was
+rejected (either it didn't fix this checkpoint, or it fixed this one by
+breaking an earlier one). Likely the same general class as the
+anonymous-draw-identity limitation `format_a_replay`'s own module doc
+comment already documents (hand checks are scoped to size, not
+name-for-name identity, specifically because Format A's "draw" events
+never name what was drawn) — but not confirmed as that specific cause.
+* **Zoe's Strategy's (BP01-095) "return a Pal to hand" and "your
+opponent discards" bullets always co-occur in pingu_01, never
+separately.** Twice (of 6 total plays), both fire from the same play;
+once, "return to hand" fires alone; twice, only the butcher bullet
+fires; the resource-loss bullet never fires. Whether the physical
+card's real bulleted structure groups "return + opponent discards" as
+ONE combined option (and the CSV's flattened `effect_text` lost that
+line break) or these are genuinely two separate "choose 1 of the
+following" bullets that this game's 2 relevant plays both happened to
+pick together is unresolved — see `cards::bp01`'s own doc comment on
+`zoes_strategy_return_to_hand`. Exactly a QA-question-pile item, not
+something to invent an answer for.
 

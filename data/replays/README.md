@@ -191,17 +191,50 @@ decks.
 
 What the corpus *does* decide is build **order**, and validation
 **confidence** — every not-yet-implemented name is labeled
-`corpus-validated` (appears in ≥1 of the 64 logs — 81 cards, build these
-first, since they're the ones an eventual Format A replay driver can check
+`corpus-validated` (appears in ≥1 of the 64 logs — 76 cards, build these
+first, since they're the ones a Format A replay driver can check
 against real games), `test-only` (zero corpus appearances but an official
 QA ruling covers its card number — 36 cards), or `unvalidated` (built from
 `effect_text` alone, checked against nothing — 18 cards). The `unvalidated`
 tier is exactly where a wrong `effect_text` reading would hide if the
 optimizer ever surfaces a strong deck built around one of those cards
 (handbook §10.1) — worth knowing which tier a card is in before trusting
-the optimizer's read on it. (81 + 36 + 18 = 135, not 143 — the remaining 8
+the optimizer's read on it. (76 + 36 + 18 = 130, not 143 — the remaining 13
 are already implemented in `cards/*.rs` and so don't appear in this
 not-yet-implemented diff at all.)
+
+## Format A: a replay driver exists now, and what its first fixture found
+
+`format_a_replay/` (`tests/format_a_replays/`) replays Format A logs
+through the engine the same way `replay/` does for the bracketed format —
+one fixture so far, `pingu_01` (chosen for the same reasons `test_format_
+a_pingu01.py` picked it: 22 turns, curated provenance, a clean life audit
+in its own header). Built with a `SCRIPTED_ACTIONS` registry from the
+start (see CLAUDE.md's Conventions) rather than retrofitted, and it also
+checks hand SIZE and soul count at every "Turn opened" line, not just life
+totals — stricter, and the reason the corpus-quality findings below exist
+at all rather than staying invisible.
+
+Three things this one fixture surfaced, all recorded in CLAUDE.md's Open
+Questions with the full reasoning:
+
+- **Repeat plays of the same drawing effect within a game appear to
+  genuinely not draw**, not just skip rendering the text — confirmed by
+  hand-size arithmetic, not just a missing line. Aurora Guide's first play
+  shows its full "Drew 1."/"Put X on top" text; its other 3 (of 4) don't,
+  and neither does Pal Sphere's one play. Whether this is a client bug or
+  an undocumented rule is open.
+- **Chillet's "add it to hand" branch persists only for a Pal, not a
+  Gear** — checked against 3 of pingu_01's 6 such reveals so far.
+- **Two consecutive "TURN N" numbers can belong to the same player**, with
+  no logged turn for their opponent in between (`TURN 1`/`TURN 2`,
+  `TURN 11`/`TURN 12`) — treated as at most one real stand phase, not two,
+  after standing an already-rested card early exposed it as an illegal
+  attack target.
+
+One hand-size checkpoint (turn 21) is one card short and is left
+unasserted rather than forced to match — see
+`tests/format_a_replays/pingu_01.rs`'s own doc comment for what was tried.
 
 `coverage_curve()` (tier 1 only, i.e. corpus-validated cards) answers "how
 many logs are fully replayable with only the top N of those" — close to
