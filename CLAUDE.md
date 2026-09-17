@@ -305,23 +305,38 @@ is confirmed to be a RENDERING gap in the export, not evidence about
 what the game did, and log-only arithmetic reached the wrong conclusion
 by itself twice in one session — a live-client check is worth running
 before trusting a log-inferred behavioral claim, not just after.
-* **New open question this correction produced: whichever data source
-`format_a_replay` should trust for hand SIZE is unclear.** Calling
-Aurora Guide/Pal Sphere/Chillet unconditionally (now known-correct) makes
-the driver's simulated hand diverge, growingly, from what pingu_01's own
-"Turn opened -- Hand: ..." lines state — by turn 15, engine and log read
-12 vs. 5. Two explanations, and only a live-client check can tell them
-apart: (1) this export's own hand-count TEXT lags for repeated effects
-the same way individual action lines do (the live in-game hand counter
-the user watched go up while testing may not be what generates this
-particular field), or (2) something else removes cards from hand with
-zero logged evidence (not a hand-size limit — QA #10 rules that out).
-`tests/format_a_replays/pingu_01.rs` does not currently assert hand size
-at all, pending this — see that file's own doc comment. A useful next
-live-client check: cast Aurora Guide twice in one turn, then check
-whether the CLIENT'S OWN turn-summary/history view (if it has one) shows
-2 drawn cards or looks the same as if only text-based logging missed
-them — that's the same question this export's "Turn opened" line raises.
+* **SETTLED, structurally rather than by resolving which data source to
+trust: `format_a_replay` resyncs hand (and souls) from each "Turn
+opened" line instead of deriving them independently and comparing.**
+The prior entry here asked whether the export's own hand-count TEXT
+lags on repeated effects, or something else silently removes cards.
+Neither needed answering: the underlying reason hand size can't be an
+independent check is structural, not a bug to chase — Format A's "draw"
+events never name what was drawn, so any hand the engine builds up
+call-by-call between two "Turn opened" lines is unverifiable against
+the log in principle, however carefully it's tracked. Confirmed the
+hard way: a targeted fix (prefer renaming an existing anonymous-draw
+placeholder over fabricating a new card on a name-lookup miss) was
+implemented and measured directly — it reduced but did NOT close the
+size drift, and worse, it silently mislabeled real cards (a genuine
+Jormuntide, once deployed under the name "Chillet" because an untracked
+second Chillet copy grabbed the wrong placeholder first) — an identity
+corruption bug, strictly worse than the visible, bounded size drift it
+replaced. See `format_a_replay`'s own module doc comment ("Hand resync,
+not hand check" and "Why not reconstruct identity between checkpoints
+instead") for the full mechanism. `tests/format_a_replays/pingu_01.rs`
+does not assert hand size, by design, not pending anything further.
+**Corrected in the same pass: souls are NOT an independently-verified
+check either**, despite an earlier report in this project's history
+treating "souls matched while hand drifted" as evidence the "Turn
+opened" line itself was trustworthy. `increase_soul` only ever resyncs
+the tracked total UP to match the log's own `souls` field — matching at
+every checkpoint proves that resync is self-consistent, not that souls
+are derived independently. That inference is retracted; the line may
+still be trustworthy, but not for that reason, and this codebase
+doesn't currently have one. **Life totals are now the only state Format
+A validates in the stronger, independently-derived-then-compared
+sense** — see `docs/palsim-build-handbook.md` §4.1, corrected to match.
 * **Two consecutive Format A "TURN N" numbers can belong to the same
 player, with no logged turn for their opponent in between.** pingu_01:
 "TURN 1"/"TURN 2" and "TURN 11"/"TURN 12" are both Chylith back to back.
@@ -345,4 +360,35 @@ following" bullets that this game's 2 relevant plays both happened to
 pick together is unresolved — see `cards::bp01`'s own doc comment on
 `zoes_strategy_return_to_hand`. Exactly a QA-question-pile item, not
 something to invent an answer for.
+* **Turn 1's Chillet deploy (pingu_01 line 28) has no matching entry in
+that same turn's own opening "Turn opened" hand list (line 26).**
+Partially answered by the hand-resync decision above: the opening line
+is now treated as authoritative for Chylith's hand at that moment, the
+same as every later one, so a deploy of a card the line never listed
+means either (1) the line itself is an incomplete account of the true
+starting hand, or (2) the deploy drew on something other than hand —
+board state from before this replay's visible window, the same
+off-screen-history judgment call `find_by_name_or_materialize` already
+makes for Pingu's own pre-window Chillet. `take_from_hand` currently
+falls through to fabricating a fresh Chillet either way (see
+`format_a_replay`'s own doc comment on that function), which is a
+reasonable default but doesn't distinguish the two explanations. Not
+blocking anything currently, but worth knowing which before trusting
+turn 1's own checkpoint as tightly as the rest.
+* **Pyrin Noct's 16-turn lag, sharpened into a specific, live-testable
+question.** Added to Chylith's hand via Chillet's reveal-declined
+branch at line 29 (turn 1) — the engine has held it since turn 2, but
+it doesn't appear in the log's own stated hand until turn 18's "Turn
+opened" line. Now that hand is resynced from that line rather than
+compared against it, this isn't just an accounting curiosity: if the
+line is genuinely incomplete for cards added this way, the resync is
+silently DROPPING a real card from the engine's hand for however many
+turns the lag lasts, not just misreporting one. The specific question a
+live client answers directly: does a card added via Chillet's
+reveal-declined-to-hand branch appear in the client's own displayed
+hand immediately, or does it only show up later (e.g. once played)? Not
+run yet. **Batch with the still-outstanding Pengullet graveyard-trigger
+check** (BP01-028's own open question, above) — both are single-
+interaction, twenty-minutes-together live-client observations, not
+separate sessions.
 
