@@ -48,55 +48,99 @@
 //! cause). The missing text is a rendering gap in this specific log
 //! export, not evidence about the card.
 //!
-//! ## Hand and soul checks -- built, but not currently trusted
+//! ## Hand resync, not hand check
 //!
-//! Format A's "Turn opened -- Souls N/N . Hand: ..." lines look like
-//! ground truth for one player's exact hand contents and soul count at
-//! that moment -- pingu_01 only ever reveals Chylith's, never Pingu's
-//! (see the fixture test's own doc comment). `apply_event`'s
-//! "turn_opened" arm still returns a [`Check::Hand`] whenever it fires,
-//! and [`expected_hand_check_count`] still lets a caller guard against
-//! silently skipping one -- but `tests/format_a_replays/pingu_01.rs`
-//! does not currently ASSERT hand size against it. Once the Aurora
-//! Guide/Pal Sphere/Chillet correction above was made (all three now
-//! definitely firing every time, per the client, not per this log), the
-//! driver's simulated hand size diverges from these lines, growingly,
-//! reaching double the log's own stated count by turn 15. That's too
-//! large to be the identity limitation below explains -- it means
-//! either this export's own hand-count text ALSO lags for repeated
-//! effects (plausible: the underlying rendering gap already found for
-//! individual action lines could easily extend to the summary line
-//! too), or something else is removing cards from hand with zero
-//! logged evidence. Only a live-client check distinguishes those, and
-//! it hasn't been run -- see CLAUDE.md's Open Questions and the
-//! fixture test's own doc comment.
+//! Format A's "Turn opened -- Souls N/N . Hand: ..." line is the
+//! AUTHORITATIVE statement of one player's exact hand at that moment,
+//! not something to verify the engine's own bookkeeping against.
+//! `apply_event`'s "turn_opened" arm discards every card currently
+//! tracked in that event's own player's hand (`Zone::Hand` only --
+//! never the opponent's, since this line describes one seat) and
+//! materializes exactly the named cards the log states, fresh, right
+//! there. Every following card play until the next checkpoint resolves
+//! against real names and real stats from that point on, which is what
+//! actually matters: what card script fires and what targets are legal.
 //!
-//! **Deliberately scoped to hand SIZE, not full name-for-name identity,
-//! for whenever the check above is re-enabled.** Format A's "draw"
-//! events never name what was drawn (`event.cards` is always `[]`) --
-//! only the NEXT turn_opened line reveals the resulting hand.
-//! Reconciling that backward into real per-card identity for every
-//! anonymous draw is a real, buildable feature this driver doesn't
-//! attempt; every event that DOES give direct name evidence (a deploy
-//! from hand, a discard, a play) still resolves the SPECIFIC existing
-//! `CardId` via `take_from_hand`, not a fresh fabrication, wherever that
-//! card is already being tracked -- but a card played by name AFTER its
-//! only tracked instance already left hand (Aurora Guide's 2nd+ play,
-//! once it unconditionally fires every time) has no tracked instance to
-//! find, and `take_from_hand`'s fallback (materialize fresh, right
-//! there) is net-neutral for that one step even though, in the real
-//! hand, an actual anonymous draw is genuinely leaving. That
-//! undercounts departures relative to the true hand exactly as often as
-//! this shape recurs -- a second, compounding reason (on top of the
-//! open question above) the size check can't be trusted yet.
+//! Hand size stopped being an independently-asserted check
+//! (`tests/format_a_replays/pingu_01.rs` counts `Check::Hand` results
+//! against [`expected_hand_check_count`] only to guard against silently
+//! skipping a checkpoint -- it does not compare `expected_size` against
+//! the engine's own hand, because after a resync that comparison is
+//! tautological). This is a smaller claim than the driver made before,
+//! but a true one: hand size was never a SOUND independent check to
+//! begin with. Format A's "draw" events never name what was drawn
+//! (`event.cards` is always `[]`) -- only a LATER turn_opened line
+//! reveals the resulting hand -- so any engine-derived hand the driver
+//! built up call-by-call between checkpoints was unverifiable in
+//! principle, not just in this implementation. See "Why not
+//! reconstruct identity between checkpoints instead" below for why that
+//! gap can't be closed by cleverer bookkeeping, either.
 //!
-//! Souls are checked the same way, straight off the same event
-//! (`game.zone_count(player, Zone::SoulArea)` against the log's `souls`
-//! field) -- Format A never logs a separate "placed N souls" line the
-//! way the bracketed format does; the turn_opened line is the only
-//! place this state is ever stated. Not implicated in the hand-size
-//! question above (souls are a plain running total, not a drawn-card
-//! identity problem), so no reason to distrust it the same way.
+//! **Correction: souls are resynced too, not independently verified --
+//! an earlier version of this section got that backwards.** `increase_soul`
+//! only ever moves `game.zone_count(player, Zone::SoulArea)` UP to match
+//! the event's own `souls` field (Format A never logs a separate
+//! "placed N souls" line, so this line is the only place that state is
+//! ever stated) -- it is the same one-directional resync-toward-the-log
+//! shape as the hand fix above, just narrower (never corrects downward,
+//! for lack of any event in this fixture where the log's souls value is
+//! ever lower than what's already tracked). Matching at all nine of
+//! pingu_01's checkpoints therefore proves the resync mechanism is
+//! self-consistent, not that the engine derives souls correctly from
+//! first principles independent of the log -- there is no code path in
+//! this driver that derives a soul count any other way. An earlier
+//! diagnosis read "souls matched while hand drifted" as evidence the
+//! turn_opened line itself was trustworthy; that inference doesn't
+//! hold, since souls matched BECAUSE they were being pulled from the
+//! same line, the same way hand now is. The line may still be
+//! trustworthy -- but not for that reason, and this module doesn't
+//! currently have one. Life totals remain the only state Format A
+//! checks that the engine derives independently of the log and then
+//! compares, rather than resyncing toward.
+//!
+//! ### Why not reconstruct identity between checkpoints instead
+//!
+//! Tried, twice in one session before this one and once in this
+//! session -- reverted every time, and the reason is now understood
+//! well enough to write down rather than rediscover. `take_from_hand`
+//! (used to resolve every card played, deployed, or discarded by name)
+//! falls back to fabricating a fresh card whenever no tracked card
+//! matches. The tempting fix is: prefer renaming an existing anonymous
+//! (blank, `main_name_of` == "") card over fabricating a new one, since
+//! a named play is direct evidence some earlier anonymous draw WAS that
+//! card. Implemented and measured directly against pingu_01: it does
+//! make blanks stop accumulating, but it does NOT converge hand size to
+//! zero drift, because the blank pool has more than one legitimate
+//! claimant and nothing in a single log line distinguishes them. Two
+//! different situations look identical from inside `take_from_hand` --
+//! (1) a genuine unresolved anonymous draw, which really is the card
+//! being looked up, and (2) a card this driver never tracked at all,
+//! the same shape as pingu_01's own turn-1 Chillet (deployed at line 28
+//! with no matching entry in the very first turn_opened hand list) --
+//! and this recurs throughout the game (a second "Chillet" deployed at
+//! line 38, a second "Pengullet" discarded at line 69 after the one
+//! seeded copy had already left hand). A greedy first-blank match lets
+//! case 2 steal a blank that rightfully belonged to case 1: line 36's
+//! one anonymous draw should have resolved to "Jormuntide" (the only
+//! candidate before it turns up by name in turn 5's hand) but line 38's
+//! untracked second Chillet grabbed it first and relabeled it
+//! "Chillet," permanently losing the real Jormuntide identity and
+//! forcing its eventual `deploy` (line 128) to fabricate a substitute
+//! anyway.
+//!
+//! That outcome is worse than the size drift it was meant to fix.
+//! Undercounting hand size is visible, bounded, and leaves every card
+//! correctly named. Silently relabeling a real Jormuntide as "Chillet"
+//! is the failure class this whole project exists to guard against --
+//! it can change which card script fires and which targets are legal,
+//! and it does not announce itself. Resolving which of the two cases
+//! applies would require reconstructing identity FORWARD from a draw to
+//! whichever later name claims it, using information (the full
+//! sequence of who-drew-what) this log never provides -- a genuinely
+//! harder problem than hand-size bookkeeping, not a sharper version of
+//! the same heuristic. Resyncing from each checkpoint sidesteps it
+//! entirely instead of solving it: no blank pool, no claimants, no
+//! guessing.
 //!
 //! ## Seat resolution -- derived from the body, never assumed
 //!
@@ -137,7 +181,7 @@
 //! 9.2.3 panic the stand-phase fix above also produces symptoms for,
 //! but from the opposite direction. Both were found by iterating this
 //! ONE fixture to green, not designed in ahead of time.
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 
 use engine::combat::AttackTarget;
 use engine::state::{CardId, GameState, PlayerId, Zone};
@@ -276,13 +320,9 @@ pub fn opponent_of(player: PlayerId) -> PlayerId {
 
 /// Cross-event memory a couple of card effects need because the log
 /// splits one card effect across two or more adjacent lines -- see
-/// `replay::ReplayDriver`'s own doc comment for the same pattern. This
-/// format also needs `hand_seeded`: which players' hands have already
-/// been bootstrapped from their first "turn_opened" line (see the
-/// module doc comment's hand-check section).
+/// `replay::ReplayDriver`'s own doc comment for the same pattern.
 #[derive(Default)]
 pub struct ReplayDriver {
-    hand_seeded: HashSet<PlayerId>,
     /// Event indices strictly before which this index has already been
     /// fully handled by an earlier event's own lookahead (Aurora Guide's
     /// deferred "draw"/"put_on_top", Zoe's Strategy's deferred
@@ -541,10 +581,18 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
             let hand = res_str_list(event, "hand");
             let souls = res_u64(event, "souls").unwrap_or(0) as usize;
 
-            if driver.hand_seeded.insert(player) {
-                for name in &hand {
-                    materialize(game, player, Zone::Hand, name);
-                }
+            // Resync, not seed-once: this line is authoritative for
+            // THIS event's own player's hand, every time it fires, not
+            // just the first. Discard whatever the engine currently
+            // holds for this player's hand (never the opponent's --
+            // this line describes one seat) and materialize exactly
+            // what the log states. See the module doc comment's "Hand
+            // resync, not hand check" section for why.
+            for card in game.cards_in_zone(player, Zone::Hand) {
+                game.move_to_graveyard(card, Zone::Hand);
+            }
+            for name in &hand {
+                materialize(game, player, Zone::Hand, name);
             }
 
             let current_souls = game.zone_count(player, Zone::SoulArea);

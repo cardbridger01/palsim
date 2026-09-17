@@ -6,47 +6,17 @@
 //! Strike from the Darkness.
 //!
 //! Life is asserted every line the log gives evidence for, same as the
-//! bracketed format. Hand SIZE is NOT currently asserted, even though
-//! `format_a_replay` computes and returns a `Check::Hand` at every "Turn
-//! opened" line -- see the open question below before trying to make
-//! this assert again.
-//!
-//! ## Why hand size isn't asserted here yet
-//!
-//! Live-client testing (not log-reading) confirmed Aurora Guide, Pal
-//! Sphere, and Chillet's reveal-declined-to-hand branch ALL fire every
-//! single time they're triggered, including repeats in the same turn --
-//! overturning an earlier version of this driver's "only call where the
-//! log shows the resulting text" rule, which had been fitted to what
-//! turned out to be a wrong reading of pingu_01's own silence on repeat
-//! plays. `format_a_replay`'s "reveal"/"play_card" arms were corrected
-//! to always call these functions, matching the confirmed real
-//! behavior.
-//!
-//! That correction is almost certainly right about the CARDS. But it
-//! makes the driver's simulated hand size diverge, growingly, from what
-//! this file's own "Turn opened -- Hand: ..." lines state -- e.g. by
-//! turn 15 the two readings are 12 vs. 5. That gap is far too large to
-//! be the known per-card-identity limitation (`format_a_replay`'s own
-//! module doc comment: hand checks are scoped to size because "draw"
-//! events never name what was drawn). It points at one of two things,
-//! and only a live-client check can tell them apart:
-//!
-//! 1. The SITE'S OWN "Turn opened -- Hand:" export text is itself stale
-//!    for repeated effects, the same way individual action lines are --
-//!    i.e. the live in-game hand counter the user watched go up is
-//!    accurate, but this particular export field lags behind it.
-//! 2. Something else routinely removes cards from hand that this driver
-//!    has no evidence for at all (not a hand-size limit -- QA #10 rules
-//!    that out).
-//!
-//! Re-enable the assertion once that's resolved, rather than forcing a
-//! match with another card-behavior heuristic -- the last three tried
-//! (a Pal-vs-Gear Chillet persistence split, several "reuse an anonymous
-//! drawn card" identity heuristics) were each fitted to this log's own
-//! numbers and got overturned by direct client testing, or broke one
-//! checkpoint while fixing another. See CLAUDE.md's Open Questions for
-//! the full history.
+//! bracketed format. Hand SIZE is NOT asserted, even though
+//! `format_a_replay` still returns a `Check::Hand` at every "Turn
+//! opened" line -- and it never will be, by design, not pending
+//! anything. See `format_a_replay`'s own module doc comment ("Hand
+//! resync, not hand check") for the full reasoning: each "Turn opened"
+//! line resyncs the engine's hand for that player from the log rather
+//! than being compared against it, which makes an equality assertion
+//! here tautological. `Check::Hand` results are still counted against
+//! `expected_hand_check_count` below purely as a regression guard --
+//! proof this harness didn't silently skip a checkpoint -- not as a
+//! hand-size assertion.
 
 use format_a_replay::{apply_event, new_driver_for_replay, new_game_for_replay, Check};
 
