@@ -345,6 +345,21 @@ def b_no_response(g: Groups):
 # same discipline as replay_parser.py's own PATTERNS table.
 _SUBJ = r"(?:(?P<subj>\w[\w' .\-]*?) )?"
 
+# An optional leading "NAME's " possessive, for the shape attack_declare's
+# own patterns already handle explicitly ("Chylith's Elphidran attacks...")
+# but which the power_buff patterns below did not, until pingu_03 (this
+# corpus's own second fixture) surfaced a real bug from it: "Chylith's
+# Jormuntide gets power +200..." has no possessive-stripping anywhere in
+# power_buff's patterns, so `card` swallowed the whole "Chylith's
+# Jormuntide" as one literal string -- caught only because pingu_03 has
+# multiple opponents' Pals both getting power_buff lines in the same
+# turn (pingu_01's own single-actor power_buff sentences never carried a
+# possessive prefix at all, so this gap never had a chance to surface
+# there). `subj`, when it matches, goes through the same
+# `classify()`-level actor-override path every other _SUBJ/possessive
+# group already uses.
+_POSSESSIVE_SUBJ = r"(?:(?P<subj>\w[\w' .\-]*?)'s )?"
+
 PATTERNS: list[tuple[str, "re.Pattern[str]", Builder]] = [
     ("setup", re.compile(r"^Shuffled 50 cards\. Drew 5\. Placed 2 Souls\. Main Phase\.$"), b_none),
     ("mulligan", re.compile(r"^Mulliganed\. Redrew 5\.$"), b_none),
@@ -454,12 +469,12 @@ PATTERNS: list[tuple[str, "re.Pattern[str]", Builder]] = [
     ("play_card", re.compile(rf"^{_SUBJ}[Pp]layed (?P<card>.+?)\.$"), b_card_only),
     (
         "power_buff",
-        re.compile(r"^(?P<card>.+?) gets [Pp]ower [+-](?P<amount>\d+) and the (?P<skill>.+?) skill until end of turn\.$"),
+        re.compile(rf"^{_POSSESSIVE_SUBJ}(?P<card>.+?) gets [Pp]ower [+-](?P<amount>\d+) and the (?P<skill>.+?) skill until end of turn\.$"),
         lambda g: ([g["card"]], [], {"amount": _signed(g), "granted_skill": g["skill"]}),
     ),
     (
         "power_buff",
-        re.compile(r"^(?P<card>.+?) gets [Pp]ower (?P<sign>[+-])(?P<amount>\d+) until end of turn\.$"),
+        re.compile(rf"^{_POSSESSIVE_SUBJ}(?P<card>.+?) gets [Pp]ower (?P<sign>[+-])(?P<amount>\d+) until end of turn\.$"),
         lambda g: ([g["card"]], [], {"amount": int(g["amount"]) * (1 if g["sign"] == "+" else -1)}),
     ),
     (

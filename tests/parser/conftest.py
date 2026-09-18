@@ -43,3 +43,8 @@ def battle3_path() -> Path:
 @pytest.fixture
 def pingu01_path() -> Path:
     return LOG_DIR / "top_players_all20" / "pingu_01_ca8ae191.txt"
+
+
+@pytest.fixture
+def pingu03_path() -> Path:
+    return LOG_DIR / "top_players_all20" / "pingu_03_edc15d3a.txt"

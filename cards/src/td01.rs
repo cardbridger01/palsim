@@ -4,11 +4,14 @@ use engine::state::{CardId, GameState, PlayerId, Zone};
 
 /// TD01-012, Elphidran Aqua -- Gentle Ripples.
 ///
-/// VALIDATION: corpus-validated (bracketed) -- `replay/`'s "put_on_top"
-/// arm calls this function directly (both draws and the top-of-deck
-/// move together, as one call) for every occurrence in all three
-/// bracketed replays (4 total: battle1 x1, battle2 x2, battle3 x1).
-/// Verified by grepping replay/src/lib.rs, not assumed.
+/// VALIDATION: corpus-validated (bracketed), corpus-validated (format-a)
+/// -- `replay/`'s "put_on_top" arm calls this function directly (both
+/// draws and the top-of-deck move together, as one call) for every
+/// occurrence in all three bracketed replays (4 total: battle1 x1,
+/// battle2 x2, battle3 x1); `format_a_replay`'s own "deploy" arm calls
+/// it too, via a deferred draw+put_on_top lookahead (same shape as
+/// Aurora Guide's own), for pingu_03's one occurrence (lines 48-50).
+/// Verified by grepping both drivers' src/lib.rs, not assumed.
 ///
 /// effect_text: "AUTO OnDeploy Draw 2 cards, choose 1 card from your
 /// hand, and put it on the top of the deck."

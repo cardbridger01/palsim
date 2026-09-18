@@ -1,14 +1,58 @@
 //! Drives a parsed Format A replay log (`parser/format_a_parser.py`'s own
 //! JSON schema -- line_index, turn, phase, actor, action, cards, targets,
 //! resolution, caused_by_line, text) through `engine::` + `cards::`,
-//! scoped to exactly one hand-verified fixture: `pingu_01`
+//! scoped to two hand-verified fixtures: `pingu_01`
 //! (`tests/parser/test_format_a_pingu01.py`'s own 138-event fixture,
-//! `tests/format_a_replays/fixtures/pingu_01.json`). Not a general Format
+//! `tests/format_a_replays/fixtures/pingu_01.json`) and `pingu_03`
+//! (`tests/parser/test_format_a_pingu03.py`'s own 91-event fixture,
+//! `tests/format_a_replays/fixtures/pingu_03.json`). Not a general Format
 //! A driver -- see `replay/`'s own module doc comment for why a driver
-//! scoped to one known sequence is allowed judgment calls a real
+//! scoped to known sequences is allowed judgment calls a real
 //! player-facing driver couldn't make; every one of those judgment calls
 //! applies here too, plus the ones below that are specific to this
 //! format.
+//!
+//! ## pingu_03: same opponent, does the driver generalize
+//!
+//! Deliberately chosen against Pingu vs Chylith again (pingu_01's own
+//! matchup) rather than a new opponent, to isolate one variable: does
+//! the driver generalize across different GAMES against the same card
+//! pool, separately from whether it generalizes across different
+//! POOLS. Getting to green needed real additions -- a `"setup"`/
+//! `"rest_draw"` no-op/draw pair for turn-1-only narration pingu_01
+//! never exercised, a standalone `"butcher"` arm for Zoe's Strategy's
+//! butcher bullet phrased as "Butchered X." instead of "X destroyed,"
+//! and wiring Elphidran Aqua's (TD01-012) own OnDeploy (draw 2, put 1
+//! back -- already implemented and bracketed-corpus-validated,
+//! `cards::td01::elphidran_aqua_on_deploy`) into the "deploy" arm via
+//! the same deferred-lookahead shape Aurora Guide's own "play_card" arm
+//! already uses -- but NONE of it touched `take_from_hand`, the resync
+//! logic, or the stand-phase detection's own `last_stood_owner` check.
+//! That last one is worth stating precisely: pingu_03's own turn
+//! sequence has 7 consecutive same-owner turn transitions (Pingu,
+//! Pingu, Chylith, Chylith, Chylith, Pingu, Chylith, Chylith, Pingu, ...),
+//! against pingu_01's 2 -- a considerably harder test of "stand only on
+//! a genuine owner change," and it held with no changes at all. A real
+//! parser bug surfaced along the way too, not a driver bug -- see
+//! `tests/parser/test_format_a_pingu03.py`'s own doc comment and
+//! `parser/format_a_parser.py`'s `_POSSESSIVE_SUBJ`.
+//!
+//! One open question this fixture raised, not resolved: line 55
+//! ("Chylith revealed Elphidran (Dragon).", turn 6, Pingu's own turn)
+//! hits the "reveal" arm's `resolution.get("element").is_some()` branch
+//! and fires Elphidran -- Gentle Radiance's OnAttack power buff on
+//! Chylith's own Elphidran (deployed turn 4), the same as pingu_01's
+//! own two occurrences of this shape. But pingu_01's occurrences are
+//! both genuinely mid-Chylith's-own-turn; this one fires during PINGU's
+//! turn, with no attack_declare/battle_attack naming Chylith's Elphidran
+//! anywhere nearby -- there's no textual evidence this is really an
+//! OnAttack trigger rather than some other reveal this driver is
+//! misattributing. Didn't break this fixture's life-total checks (a
+//! stray "until end of turn" buff on a card that isn't destroyed before
+//! its own end phase has no checkable effect), which is exactly why a
+//! wrong attribution here wouldn't necessarily be CAUGHT by this test
+//! discipline -- left as-is rather than guessed at, per hard rule 1;
+//! see CLAUDE.md's Open Questions.
 //!
 //! ## Every card with a `cards::` script must be called for real
 //!
@@ -409,9 +453,11 @@ fn card_meta(main_name: &str) -> Option<CardMeta> {
     match main_name {
         "Astegon" => Some(CardMeta { cost: 8, strike: 3, elements: &["Dragon", "Dark"] }),
         "Aurora Guide" => Some(CardMeta { cost: 2, strike: 0, elements: &[] }),
+        "Blazehowl Noct" => Some(CardMeta { cost: 6, strike: 2, elements: &["Fire", "Dark"] }),
         "Chillet" => Some(CardMeta { cost: 5, strike: 2, elements: &["Ice", "Dragon"] }),
         "Cryolinx" => Some(CardMeta { cost: 6, strike: 2, elements: &["Ice"] }),
         "Elphidran" => Some(CardMeta { cost: 4, strike: 2, elements: &["Dragon"] }),
+        "Elphidran Aqua" => Some(CardMeta { cost: 6, strike: 2, elements: &["Dragon", "Water"] }),
         "Jormuntide" => Some(CardMeta { cost: 8, strike: 3, elements: &["Dragon", "Water"] }),
         "Lyleen Noct" => Some(CardMeta { cost: 8, strike: 3, elements: &["Dark"] }),
         "Pal Sphere" => Some(CardMeta { cost: 4, strike: 0, elements: &[] }),
@@ -583,8 +629,15 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
         // explicit-in-text declined "up to 1" choice (Relaxaurus's
         // OnDeploy, this replay's one occurrence). "bare_marker" is
         // covered by its own arm below, which still returns None but
-        // documents why separately.
-        "rested" | "reveal_declined" | "no_valid_target" | "activate" | "win_declared" | "loss_reason" | "final_life" => None,
+        // documents why separately. "setup" ("Shuffled 50 cards. Drew 5.
+        // Placed 2 Souls. Main Phase.") is turn 1's own opening-hand
+        // narration -- pingu_01 never exercised it (its own turn 1
+        // starts mid-sequence), pingu_03's turn 1 does. Carries no
+        // information beyond what the very next turn_opened line's
+        // resync already captures (souls, hand), so it's a no-op here
+        // the same way it would be even if it DID carry information --
+        // see the module doc comment's "Hand resync, not hand check".
+        "rested" | "reveal_declined" | "no_valid_target" | "activate" | "win_declared" | "loss_reason" | "final_life" | "setup" => None,
 
         // A lone card name or "*" marker with no verb of its own --
         // format_a_parser's own module doc comment: "its exact rules
@@ -633,6 +686,32 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
             }
             let card = take_from_hand(game, player, name);
             game.deploy_from(player, card, Zone::Hand, Zone::Base);
+
+            if name == "Elphidran Aqua" {
+                // TD01-012's own OnDeploy ("Draw 2 cards, choose 1 card
+                // from your hand, and put it on the top of the deck") --
+                // QA #33: "choose 1" is mandatory, not "up to 1", so the
+                // log always shows the resulting draw+put_on_top pair
+                // (pingu_03's only occurrence, lines 49-50, right after
+                // this deploy at line 48). Same deferred-lookahead shape
+                // as Aurora Guide's own "play_card" arm below, just
+                // triggered from a deploy instead of a play -- consumed
+                // here so the generic "draw" arm never double-counts it,
+                // same discipline as that lookahead.
+                if let Some(draw_evt) = events.get(i + 1) {
+                    if draw_evt.action == "draw" && res_u64(draw_evt, "amount") == Some(2) {
+                        driver.mark_narration(i + 1);
+                        if let Some(put_evt) = events.get(i + 2) {
+                            if put_evt.action == "put_on_top" {
+                                let put_name = &put_evt.cards[0];
+                                let chosen = take_from_hand(game, player, put_name);
+                                driver.mark_narration(i + 2);
+                                cards::td01::elphidran_aqua_on_deploy(game, player, chosen);
+                            }
+                        }
+                    }
+                }
+            }
             None
         }
 
@@ -685,6 +764,22 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
             let name = &event.cards[0];
             let card = take_from_hand(game, player, name);
             game.move_to_top_of_deck(player, card, Zone::Hand);
+            None
+        }
+
+        "rest_draw" => {
+            // "Rested N Souls, drew M cards." (`data/replays/README.md`'s
+            // own "Rule 8.5 draw" entry) -- pingu_01 never exercised
+            // this shape (its own turn 1/2 draws are logged as plain
+            // "draw" events instead); pingu_03's turns 1-2 use it.
+            // Resting doesn't change `Zone::SoulArea`'s own count (souls
+            // aren't spent, just marked rested, a per-card standing/
+            // rested state this driver doesn't track at that
+            // granularity -- only the draw is a real zone change here.
+            let drew = res_u64(event, "drew").unwrap_or(0);
+            for _ in 0..drew {
+                game.draw(player);
+            }
             None
         }
 
@@ -1031,6 +1126,31 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
             let target = find_by_name_either_owner(game, Zone::Base, name).expect("status_effect: target not found in either base");
             let source = game.last_deployed().expect("status_effect: no last_deployed card to identify Relaxaurus");
             cards::bp01::relaxaurus_on_deploy(game, Some(target), source);
+            None
+        }
+
+        "butcher" => {
+            // Zoe's Strategy's (BP01-095) own "Choose 1 of your Pals,
+            // and butcher it" bullet -- QA #81: Butcher always means the
+            // ACTING player's own base Pals, so found in `player`'s own
+            // base, matching `zoes_strategy_butcher`'s existing
+            // precondition. A standalone top-level arm rather than
+            // folded into "play_card"'s own Zoe's Strategy lookahead
+            // (which handles the "destroyed" phrasing of this same
+            // bullet, pingu_01's two occurrences): pingu_03's occurrence
+            // (line 124) has an unrelated "draw" event (line 123, no
+            // effect_text basis for attributing it to this card -- left
+            // as a plain generic draw, handled by the ordinary "draw"
+            // arm) between the play and this line, breaking the simple
+            // i+1 adjacency the "destroyed" shape relies on. Neither
+            // occurrence in either fixture shows the bonus "if you
+            // butchered 1+, put 1 of your opponent's Pals into the
+            // graveyard" firing, so that half stays unimplemented here
+            // too, same as `zoes_strategy_butcher`'s own doc comment
+            // already notes.
+            let name = &event.cards[0];
+            let victim = find_by_name(game, player, Zone::Base, name).expect("butcher: target not found in own base");
+            cards::bp01::zoes_strategy_butcher(game, victim);
             None
         }
 

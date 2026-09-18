@@ -319,10 +319,16 @@ pub fn zoes_strategy_force_discard(game: &mut GameState, opponent: PlayerId, dis
 /// See `zoes_strategy_return_to_hand`. QA #81 defines Butcher as
 /// choosing N of your OWN base Pals and graveyarding them -- always a
 /// base -> graveyard move, so `graveyard_trigger_fired` reads true for
-/// a butchered card, same as any other base-originating death. Neither
-/// of pingu_01's two occurrences shows the "if you butchered ... put 1
-/// of your opponent's Pals into the graveyard" bonus firing, so that
-/// half isn't implemented here.
+/// a butchered card, same as any other base-originating death. None of
+/// pingu_01's two occurrences (the "X destroyed, N damage vs M Power."
+/// phrasing) or pingu_03's one (the "Butchered X." phrasing -- a
+/// different literal sentence for the same bullet, dispatched via
+/// `format_a_replay`'s own standalone top-level "butcher" arm rather
+/// than through "play_card"'s Zoe's Strategy lookahead, since pingu_03's
+/// occurrence has an unrelated draw event breaking that lookahead's
+/// simple adjacency) shows the "if you butchered ... put 1 of your
+/// opponent's Pals into the graveyard" bonus firing, so that half isn't
+/// implemented here.
 pub fn zoes_strategy_butcher(game: &mut GameState, own_pal: CardId) {
     game.butcher(own_pal);
 }
