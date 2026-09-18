@@ -1,16 +1,67 @@
 //! Drives a parsed Format A replay log (`parser/format_a_parser.py`'s own
 //! JSON schema -- line_index, turn, phase, actor, action, cards, targets,
 //! resolution, caused_by_line, text) through `engine::` + `cards::`,
-//! scoped to two hand-verified fixtures: `pingu_01`
+//! scoped to three hand-verified fixtures: `pingu_01`
 //! (`tests/parser/test_format_a_pingu01.py`'s own 138-event fixture,
-//! `tests/format_a_replays/fixtures/pingu_01.json`) and `pingu_03`
+//! `tests/format_a_replays/fixtures/pingu_01.json`), `pingu_03`
 //! (`tests/parser/test_format_a_pingu03.py`'s own 91-event fixture,
-//! `tests/format_a_replays/fixtures/pingu_03.json`). Not a general Format
+//! `tests/format_a_replays/fixtures/pingu_03.json`), and `pingu_02`
+//! (`tests/parser/test_format_a_pingu02.py`'s own 119-event fixture,
+//! `tests/format_a_replays/fixtures/pingu_02.json`). Not a general Format
 //! A driver -- see `replay/`'s own module doc comment for why a driver
 //! scoped to known sequences is allowed judgment calls a real
 //! player-facing driver couldn't make; every one of those judgment calls
 //! applies here too, plus the ones below that are specific to this
 //! format.
+//!
+//! ## pingu_02: different opponent, the card-POOL axis pingu_03 skipped
+//!
+//! pingu_03 deliberately held the opponent constant to isolate the
+//! game-generalization question; pingu_02 changes it (redpurple, not
+//! Chylith) to test the OTHER axis -- a genuinely different card pool
+//! (Foxparks, Foxparks' Harness, Single-Shot Rifle, Menasting, Reptyro,
+//! Leezpunk, Medical Supplies, none seen in either pingu_01 or
+//! pingu_03). None of them needed a new `cards::` script: every new
+//! event shape this fixture required (`"damage_taken"` for Single-Shot
+//! Rifle's flat-damage OnDeploy, `"reveal_and_deploy"`/`"look_and_take"`
+//! for Reptyro's own ACT, `"mulligan"`/`"setup"`/`"retaliate"` as
+//! no-ops) dispatches through existing generic engine primitives
+//! (`apply_damage`, `materialize`, `move_to_graveyard`) the same way
+//! `find_by_name_or_materialize` already does for combat -- consistent
+//! with this driver's standing rule that a script is only written when
+//! a card's effect needs real, checked logic, not for every card a log
+//! happens to name.
+//!
+//! One real, new-class driver bug did surface: `find_defender_or_
+//! materialize` picked an ILLEGAL (standing) attack target when two
+//! live copies of the same name existed under one owner at once
+//! (redpurple's two Menastings, turns 9-11) -- the "most recently
+//! deployed, else most recently created" heuristic has no way to know
+//! a freshly-deployed duplicate that never attacked isn't the one a
+//! later line means. Different shape than the Chillet-revival case
+//! `find_by_name`'s own doc comment already covers (one card reused
+//! across zones over time, not two coexisting at once). Fixed by using
+//! 9.2.3 itself as the disambiguator: a defender lookup now prefers
+//! whichever same-named candidate IS resting, since the log's own
+//! declaration is already proof the real target was legal, before
+//! falling back to the existing heuristic. See
+//! `find_defender_or_materialize`'s own doc comment for the full
+//! account. A second, less severe bug (an ACTOR-corrupting gap in
+//! `parser/format_a_parser.py`'s own `look_and_take` patterns, not a
+//! driver bug) is documented at the parser level --
+//! `tests/parser/test_format_a_pingu02.py`'s own doc comment.
+//!
+//! Elphidran -- Gentle Radiance's OnAttack (the open attribution
+//! question pingu_03's line 55 raised, still unresolved) got a data
+//! point here too, though not the kind that settles it: pingu_02's own
+//! occurrence (line 109) is a textbook-clean case -- Pingu's own
+//! Elphidran, revealed on Pingu's OWN turn, immediately followed by
+//! that same Elphidran attacking (line 110). It doesn't recur in
+//! pingu_03's specific ambiguous SHAPE (a reveal during the opponent's
+//! turn with no nearby attack), so it doesn't resolve that question --
+//! but the contrast is informative: this is what a normal, unambiguous
+//! occurrence of the same code path looks like, which is exactly what
+//! pingu_03's line 55 wasn't.
 //!
 //! ## pingu_03: same opponent, does the driver generalize
 //!
@@ -458,14 +509,27 @@ fn card_meta(main_name: &str) -> Option<CardMeta> {
         "Cryolinx" => Some(CardMeta { cost: 6, strike: 2, elements: &["Ice"] }),
         "Elphidran" => Some(CardMeta { cost: 4, strike: 2, elements: &["Dragon"] }),
         "Elphidran Aqua" => Some(CardMeta { cost: 6, strike: 2, elements: &["Dragon", "Water"] }),
+        // BP01-006 print (Cost 2, Strike 1, Brave 300) -- not TD01-004
+        // (Cost 4, Strike 2, Interrupt). Format A gives only the bare
+        // main name, so the print is picked by matching the log's own
+        // observed behavior: pingu_02's Foxparks deals exactly 1 direct
+        // player damage per unblocked attack (lines 29, 41, 161), which
+        // is BP01-006's own printed Strike, not TD01-004's.
+        "Foxparks" => Some(CardMeta { cost: 2, strike: 1, elements: &["Fire"] }),
+        "Foxparks' Harness" => Some(CardMeta { cost: 3, strike: 0, elements: &[] }),
         "Jormuntide" => Some(CardMeta { cost: 8, strike: 3, elements: &["Dragon", "Water"] }),
+        "Leezpunk" => Some(CardMeta { cost: 3, strike: 1, elements: &["Dark"] }),
         "Lyleen Noct" => Some(CardMeta { cost: 8, strike: 3, elements: &["Dark"] }),
+        "Medical Supplies" => Some(CardMeta { cost: 7, strike: 0, elements: &[] }),
+        "Menasting" => Some(CardMeta { cost: 5, strike: 2, elements: &["Dark", "Ground"] }),
         "Pal Sphere" => Some(CardMeta { cost: 4, strike: 0, elements: &[] }),
         "Pengullet" => Some(CardMeta { cost: 4, strike: 2, elements: &["Water", "Ice"] }),
         "Pengullet Rocket Launcher" => Some(CardMeta { cost: 4, strike: 0, elements: &[] }),
         "Pyrin Noct" => Some(CardMeta { cost: 7, strike: 3, elements: &["Fire", "Dark"] }),
         "Reindrix" => Some(CardMeta { cost: 5, strike: 2, elements: &["Ice"] }),
         "Relaxaurus" => Some(CardMeta { cost: 7, strike: 3, elements: &["Dragon", "Water"] }),
+        "Reptyro" => Some(CardMeta { cost: 8, strike: 3, elements: &["Fire", "Ground"] }),
+        "Single-Shot Rifle" => Some(CardMeta { cost: 4, strike: 0, elements: &[] }),
         "Strike from the Darkness" => Some(CardMeta { cost: 4, strike: 0, elements: &[] }),
         "Zoe's Strategy" => Some(CardMeta { cost: 3, strike: 0, elements: &[] }),
         _ => None,
@@ -540,7 +604,29 @@ fn find_by_name_or_materialize(game: &mut GameState, owner: PlayerId, main_name:
 /// materialized one (freshly created, standing by default) is rested
 /// immediately here rather than left in the state that would make the
 /// very call site that needed it illegal.
+///
+/// That same 9.2.3 guarantee is also used FIRST, before falling back to
+/// `find_by_name`'s own "most recently deployed, else most recently
+/// created" heuristic: when more than one same-named, same-owner card
+/// is alive in Base at once, prefer whichever candidate IS resting.
+/// Found in pingu_02 (not pingu_01/03, neither of which ever has two
+/// live same-named Pals under one owner): redpurple's two Menastings
+/// (deployed turns 9 and 9 again, lines 90/96) -- the FIRST attacked
+/// and got rested via its own declared-then-interrupted attack (line
+/// 94; 5.18.1: an interrupted attacker stays rested), the SECOND never
+/// did anything and stayed standing. By turn 11 `find_by_name`'s own
+/// heuristic picks the SECOND (the more recently created one, since
+/// `last_deployed` had already moved on to something else by then) --
+/// the wrong one, and an illegal (standing) target for Elphidran's own
+/// attack at line 110. This is a different shape than the Chillet-
+/// revival case `find_by_name`'s own doc comment already covers (one
+/// card reused across zones over time) -- here TWO SEPARATE instances
+/// coexist simultaneously, and only 9.2.3's own legality constraint
+/// distinguishes which one the log means.
 fn find_defender_or_materialize(game: &mut GameState, owner: PlayerId, main_name: &str) -> CardId {
+    if let Some(card) = game.cards_in_zone(owner, Zone::Base).into_iter().rev().find(|&id| game.main_name_of(id) == main_name && game.is_resting(id)) {
+        return card;
+    }
     match find_by_name(game, owner, Zone::Base, main_name) {
         Some(card) => card,
         None => {
@@ -637,7 +723,15 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
         // resync already captures (souls, hand), so it's a no-op here
         // the same way it would be even if it DID carry information --
         // see the module doc comment's "Hand resync, not hand check".
-        "rested" | "reveal_declined" | "no_valid_target" | "activate" | "win_declared" | "loss_reason" | "final_life" | "setup" => None,
+        // "retaliate" (Menasting's own AUTO -- "when this card is put
+        // into the graveyard during battle, put the opposing combat Pal
+        // into the graveyard too") is narration here: it explains WHY
+        // the following "destroyed" line for the attacker exists, but
+        // that line still does the actual graveyard move generically,
+        // same as every other battle_attack -> destroyed sequence in
+        // this driver -- the log states outcomes, this driver enacts
+        // them literally rather than re-deriving combat math.
+        "rested" | "reveal_declined" | "no_valid_target" | "activate" | "win_declared" | "loss_reason" | "final_life" | "setup" | "mulligan" | "retaliate" => None,
 
         // A lone card name or "*" marker with no verb of its own --
         // format_a_parser's own module doc comment: "its exact rules
@@ -1037,6 +1131,25 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
             None
         }
 
+        "damage_taken" => {
+            // Single-Shot Rifle's own OnDeploy ("Choose up to 1 Pal, and
+            // deal 1500 Damage") and its own ACT ("...it gets Power
+            // +200...") both target "1 Pal" with no ownership
+            // restriction in the printed text -- found across either
+            // base, same cross-player lookup status_effect/power_buff's
+            // "explode" branch already use. A card surviving non-lethal
+            // damage (pingu_02's Jormuntide, 1500 here then a separate
+            // 700-and-destroyed line) is exactly 1.3.2.4's unclamped-
+            // Power model -- `apply_damage` alone, no graveyard move;
+            // the SEPARATE "destroyed" shape ("X took N damage and was
+            // destroyed.") handles the lethal case as its own action.
+            let name = &event.cards[0];
+            let damage = res_u64(event, "damage").unwrap_or(0) as u32;
+            let target = find_by_name_either_owner(game, Zone::Base, name).expect("damage_taken: target not found in either base");
+            game.apply_damage(target, damage);
+            None
+        }
+
         "discard" => {
             // A plain cost-payment discard (e.g. Lyleen Noct's own ACT
             // cost) -- Zoe's Strategy's forced-discard shape is already
@@ -1054,8 +1167,22 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
         "return_to_hand" => {
             // Fallback only -- pingu_01's 3 occurrences are all
             // consumed by Zoe's Strategy's own "play_card" lookahead.
+            // pingu_02 adds two standalone occurrences with an explicit
+            // subj ("redpurple returned X from their graveyard to
+            // hand."), both plausibly Menasting's own graveyard trigger
+            // ("choose up to 1 normal Pal from your graveyard, return
+            // it to hand") -- confirmed for the SECOND (line 115,
+            // firing right after Menasting's own line-113 death), but
+            // the FIRST (line 106, "Reptyro") has no logged Menasting
+            // death nearby and no other visible cause either; Reptyro
+            // itself was never shown entering any graveyard at all.
+            // Same off-screen-history judgment call as
+            // `find_by_name_or_materialize`: materialize it directly
+            // into `player`'s own graveyard, right where it's first
+            // needed, rather than treat an unexplained-but-plausible
+            // prior graveyard arrival as a driver bug.
             let name = &event.cards[0];
-            let card = find_by_name_either_owner(game, Zone::Graveyard, name).expect("return_to_hand: card not found in either graveyard");
+            let card = find_by_name_either_owner(game, Zone::Graveyard, name).unwrap_or_else(|| materialize(game, player, Zone::Graveyard, name));
             let owner = game.owner_of(card);
             game.deploy_from(owner, card, Zone::Graveyard, Zone::Hand);
             None
@@ -1083,6 +1210,31 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
                     // until end of turn," the only negative power_buff
                     // in this corpus.
                     cards::td02::astegon_on_deploy(game, target);
+                }
+            }
+            None
+        }
+
+        "reveal_and_deploy" => {
+            // BP01-005 Reptyro's own ACT ("Look at the top 5 cards of
+            // your deck, choose up to 1 gear from among them and
+            // deploy it, and shuffle the rest of the cards with the
+            // deck") -- pingu_02's one occurrence narrates this SAME
+            // single outcome across two adjacent, differently-phrased
+            // sentences: this one ("revealed X and deployed it"), then
+            // a "looked at N cards and deployed X" line immediately
+            // after, naming the same card. Treated as one combined
+            // effect, not two separate deploys -- materializing
+            // "Foxparks' Harness" twice would put a second, unearned
+            // copy on the board. Materializes straight into Base (its
+            // true origin is several cards down the deck, not worth
+            // modeling the shuffle-away-the-rest half of this ACT,
+            // since nothing checked here depends on deck contents).
+            let name = &event.cards[0];
+            materialize(game, player, Zone::Base, name);
+            if let Some(next) = events.get(i + 1) {
+                if next.action == "look_and_take" && next.cards.first() == Some(name) {
+                    driver.mark_narration(i + 1);
                 }
             }
             None

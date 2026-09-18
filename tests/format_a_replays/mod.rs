@@ -7,4 +7,6 @@ mod support;
 
 mod pingu_01;
 
+mod pingu_02;
+
 mod pingu_03;
