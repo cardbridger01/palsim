@@ -1,0 +1,1978 @@
+{
+  "meta": {
+    "match_title": "Pingu vs redpurple  [Pingu's match #2 of 10 pulled]",
+    "recordId": "3e67de53-ec3e-4fc8-a18d-a5a9eab427f8",
+    "result": "PINGU WINS - \"redpurple's life hit zero.\" Final life: Pingu (WINNER) 7, redpurple 0.",
+    "notes": [
+      "Both life totals are fully accounted for by named damage lines — Pingu drops 10->9->8->7 via three single-point Foxparks hits (turns 1, 3, 15); redpurple drops 10->8->5->3->0 via four named hits (turns 11 x2, 14, 17) — NO unexplained gap, same as Pingu's match 1. Two for two clean games to open the Pingu dataset.",
+      "Deck labeled \"BLUE/PURPLE DRAGON CONTROL\" on Pingu's HUD, same as match 1.",
+      "2 bare-form interrupts (card name on its own line, no player/cost) preserved verbatim below for decklist cross-check: Turn 5: Pyrin Noct interrupts Jormuntide's attack Turn 8: Pyrin Noct interrupts Relaxaurus's attack 4 additional FULL-form interrupts occurred (Turn 6 \"Pingu interrupted with Reindrix, discarded Pal Sphere\"; Turn 9 \"Pingu interrupted with Reindrix, paid 1 Soul\"; Turn 12 x2, \"Pingu interrupted with Pyrin Noct, paid 1 Soul\" and \"Pingu interrupted with Reindrix, paid 1 Soul\") — not counted in the bare-form total, included in the verbatim body only.",
+      "redpurple is the same opponent name seen in two of Ze's games (ze_02, ze_08's context) — not confirmed to be the literal same account without a profile lookup, but worth flagging as a recurring name across both Ze's and Pingu's recent opponent pools."
+    ],
+    "provenance": "curated",
+    "gap_expectation": "clean",
+    "opponent_anonymized": false,
+    "word_wrap_joins": 0
+  },
+  "events": [
+    {
+      "line_index": 24,
+      "turn": 1,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 1,
+        "souls_cap": 1,
+        "hand": [
+          "Chillet",
+          "Pengullet",
+          "Pyrin Noct",
+          "Strike from the Darkness",
+          "Strike from the Darkness"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 1/1 · Hand: Chillet, Pengullet, Pyrin Noct, Strike from the Darkness, Strike from the Darkness"
+    },
+    {
+      "line_index": 25,
+      "turn": 1,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "setup",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Shuffled 50 cards. Drew 5. Placed 2 Souls. Main Phase."
+    },
+    {
+      "line_index": 26,
+      "turn": 1,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "mulligan",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Mulliganed. Redrew 5."
+    },
+    {
+      "line_index": 27,
+      "turn": 1,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "deploy",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple deployed Foxparks."
+    },
+    {
+      "line_index": 28,
+      "turn": 1,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "attack_declare",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 1
+      },
+      "caused_by_line": null,
+      "text": "redpurple's Foxparks attacks Pingu for 1."
+    },
+    {
+      "line_index": 29,
+      "turn": 1,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "attack",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 1,
+        "milled": 1,
+        "lucky": false,
+        "life_before": 10,
+        "life_after": 9
+      },
+      "caused_by_line": null,
+      "text": "Foxparks hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 10 to 9 life."
+    },
+    {
+      "line_index": 32,
+      "turn": 2,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 3,
+        "souls_cap": 3,
+        "hand": [
+          "Aurora Guide",
+          "Chillet",
+          "Pal Sphere",
+          "Pyrin Noct",
+          "Reindrix",
+          "Relaxaurus"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 3/3 · Hand: Aurora Guide, Chillet, Pal Sphere, Pyrin Noct, Reindrix, Relaxaurus"
+    },
+    {
+      "line_index": 33,
+      "turn": 2,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "rest_draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls_spent": 3,
+        "drew": 1
+      },
+      "caused_by_line": null,
+      "text": "Rested 3 Souls, drew 1 card."
+    },
+    {
+      "line_index": 34,
+      "turn": 2,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "deploy",
+      "cards": [
+        "Foxparks' Harness"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple deployed Foxparks' Harness."
+    },
+    {
+      "line_index": 37,
+      "turn": 3,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 5,
+        "souls_cap": 5,
+        "hand": [
+          "Aurora Guide",
+          "Chillet",
+          "Jormuntide",
+          "Pal Sphere",
+          "Pal Sphere",
+          "Pyrin Noct",
+          "Reindrix",
+          "Relaxaurus"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 5/5 · Hand: Aurora Guide, Chillet, Jormuntide, Pal Sphere, Pal Sphere, Pyrin Noct, Reindrix, Relaxaurus"
+    },
+    {
+      "line_index": 38,
+      "turn": 3,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "play_card",
+      "cards": [
+        "Pal Sphere"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Played Pal Sphere for 4 Souls."
+    },
+    {
+      "line_index": 39,
+      "turn": 3,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 3
+      },
+      "caused_by_line": null,
+      "text": "Drew 3."
+    },
+    {
+      "line_index": 40,
+      "turn": 3,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "attack_declare",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 1
+      },
+      "caused_by_line": null,
+      "text": "redpurple's Foxparks attacks Pingu for 1."
+    },
+    {
+      "line_index": 41,
+      "turn": 3,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "attack",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 1,
+        "milled": 1,
+        "lucky": false,
+        "life_before": 9,
+        "life_after": 8
+      },
+      "caused_by_line": null,
+      "text": "Foxparks hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 9 to 8 life."
+    },
+    {
+      "line_index": 44,
+      "turn": 4,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 7,
+        "souls_cap": 7,
+        "hand": [
+          "Aurora Guide",
+          "Aurora Guide",
+          "Chillet",
+          "Jormuntide",
+          "Pal Sphere",
+          "Pyrin Noct",
+          "Reindrix",
+          "Reindrix",
+          "Reindrix",
+          "Relaxaurus",
+          "Strike from the Darkness"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 7/7 · Hand: Aurora Guide, Aurora Guide, Chillet, Jormuntide, Pal Sphere, Pyrin Noct, Reindrix, Reindrix, Reindrix, Relaxaurus, Strike from the Darkness"
+    },
+    {
+      "line_index": 45,
+      "turn": 4,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "play_card",
+      "cards": [
+        "Aurora Guide"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 2
+      },
+      "caused_by_line": null,
+      "text": "Played Aurora Guide for 2 Souls."
+    },
+    {
+      "line_index": 46,
+      "turn": 4,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1 card."
+    },
+    {
+      "line_index": 47,
+      "turn": 4,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "put_on_top",
+      "cards": [
+        "Jormuntide"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Put Jormuntide on top of the deck."
+    },
+    {
+      "line_index": 48,
+      "turn": 4,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "deploy",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 1,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Chillet to slot 1 for 5 Souls."
+    },
+    {
+      "line_index": 49,
+      "turn": 4,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "reveal",
+      "cards": [
+        "Jormuntide"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Revealed Jormuntide."
+    },
+    {
+      "line_index": 50,
+      "turn": 4,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "deploy",
+      "cards": [
+        "Jormuntide"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 49,
+      "text": "Deployed Jormuntide."
+    },
+    {
+      "line_index": 51,
+      "turn": 4,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1."
+    },
+    {
+      "line_index": 54,
+      "turn": 5,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [
+        "Pyrin Noct"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Pyrin Noct"
+    },
+    {
+      "line_index": 55,
+      "turn": 5,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack_interrupted",
+      "cards": [
+        "Jormuntide"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 54,
+      "text": "Jormuntide's attack was interrupted."
+    },
+    {
+      "line_index": 56,
+      "turn": 5,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "✦"
+    },
+    {
+      "line_index": 57,
+      "turn": 5,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage_attempted": 2,
+        "damage": 0,
+        "milled": 2,
+        "lucky": true
+      },
+      "caused_by_line": 56,
+      "text": "Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)"
+    },
+    {
+      "line_index": 60,
+      "turn": 6,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "deploy",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple deployed Foxparks."
+    },
+    {
+      "line_index": 61,
+      "turn": 6,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "activate",
+      "cards": [
+        "Foxparks' Harness"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple activated Foxparks' Harness."
+    },
+    {
+      "line_index": 62,
+      "turn": 6,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "deploy",
+      "cards": [
+        "Single-Shot Rifle"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple deployed Single-Shot Rifle."
+    },
+    {
+      "line_index": 63,
+      "turn": 6,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "damage_taken",
+      "cards": [
+        "Jormuntide"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 1500
+      },
+      "caused_by_line": null,
+      "text": "Jormuntide took 1500 damage."
+    },
+    {
+      "line_index": 64,
+      "turn": 6,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "activate",
+      "cards": [
+        "Single-Shot Rifle"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple activated Single-Shot Rifle."
+    },
+    {
+      "line_index": 65,
+      "turn": 6,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "power_buff",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 200
+      },
+      "caused_by_line": null,
+      "text": "redpurple's Foxparks gets power +200 until end of turn."
+    },
+    {
+      "line_index": 66,
+      "turn": 6,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "destroyed",
+      "cards": [
+        "Jormuntide"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 700
+      },
+      "caused_by_line": null,
+      "text": "Jormuntide took 700 damage and was destroyed."
+    },
+    {
+      "line_index": 67,
+      "turn": 6,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "attack_declare",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [
+        "Chillet"
+      ],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple's Foxparks attacks Pingu's Chillet."
+    },
+    {
+      "line_index": 68,
+      "turn": 6,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "interrupt",
+      "cards": [
+        "Reindrix"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": {
+          "type": "discard",
+          "card": "Pal Sphere"
+        },
+        "result": "nullified"
+      },
+      "caused_by_line": null,
+      "text": "Pingu interrupted with Reindrix, discarded Pal Sphere. The attack was nullified."
+    },
+    {
+      "line_index": 71,
+      "turn": 7,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 9,
+        "souls_cap": 9,
+        "hand": [
+          "Aurora Guide",
+          "Chillet",
+          "Elphidran",
+          "Elphidran",
+          "Pyrin Noct",
+          "Reindrix",
+          "Reindrix",
+          "Relaxaurus",
+          "Strike from the Darkness"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 9/9 · Hand: Aurora Guide, Chillet, Elphidran, Elphidran, Pyrin Noct, Reindrix, Reindrix, Relaxaurus, Strike from the Darkness"
+    },
+    {
+      "line_index": 74,
+      "turn": 8,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "battle_attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "Foxparks"
+      ],
+      "resolution": {
+        "attacker_power_expr": "900",
+        "attacker_power": 900,
+        "defender_power_expr": "200",
+        "defender_power": 200
+      },
+      "caused_by_line": null,
+      "text": "Chillet (900) attacked Foxparks (200)."
+    },
+    {
+      "line_index": 75,
+      "turn": 8,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chillet"
+    },
+    {
+      "line_index": 76,
+      "turn": 8,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "destroyed",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 900,
+        "power": 200
+      },
+      "caused_by_line": 75,
+      "text": "Foxparks destroyed, 900 damage vs 200 Power."
+    },
+    {
+      "line_index": 77,
+      "turn": 8,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "play_card",
+      "cards": [
+        "Aurora Guide"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 2
+      },
+      "caused_by_line": null,
+      "text": "Played Aurora Guide for 2 Souls."
+    },
+    {
+      "line_index": 78,
+      "turn": 8,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1 card."
+    },
+    {
+      "line_index": 79,
+      "turn": 8,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "put_on_top",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Put Relaxaurus on top of the deck."
+    },
+    {
+      "line_index": 80,
+      "turn": 8,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "deploy",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 2,
+        "cost": 5
+      },
+      "caused_by_line": null,
+      "text": "Deployed Chillet to slot 2 for 5 Souls."
+    },
+    {
+      "line_index": 81,
+      "turn": 8,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "reveal",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Revealed Relaxaurus."
+    },
+    {
+      "line_index": 82,
+      "turn": 8,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "deploy",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 81,
+      "text": "Deployed Relaxaurus."
+    },
+    {
+      "line_index": 83,
+      "turn": 8,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [
+        "Pyrin Noct"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Pyrin Noct"
+    },
+    {
+      "line_index": 84,
+      "turn": 8,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack_interrupted",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": 83,
+      "text": "Relaxaurus's attack was interrupted."
+    },
+    {
+      "line_index": 85,
+      "turn": 8,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "battle_attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "Foxparks"
+      ],
+      "resolution": {
+        "attacker_power_expr": "900",
+        "attacker_power": 900,
+        "defender_power_expr": "200",
+        "defender_power": 200
+      },
+      "caused_by_line": null,
+      "text": "Chillet (900) attacked Foxparks (200)."
+    },
+    {
+      "line_index": 86,
+      "turn": 8,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Chillet"
+    },
+    {
+      "line_index": 87,
+      "turn": 8,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "destroyed",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 900,
+        "power": 200
+      },
+      "caused_by_line": 86,
+      "text": "Foxparks destroyed, 900 damage vs 200 Power."
+    },
+    {
+      "line_index": 90,
+      "turn": 9,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "deploy",
+      "cards": [
+        "Menasting"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple deployed Menasting."
+    },
+    {
+      "line_index": 91,
+      "turn": 9,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "activate",
+      "cards": [
+        "Single-Shot Rifle"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple activated Single-Shot Rifle."
+    },
+    {
+      "line_index": 92,
+      "turn": 9,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "power_buff",
+      "cards": [
+        "Menasting"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 200
+      },
+      "caused_by_line": null,
+      "text": "redpurple's Menasting gets power +200 until end of turn."
+    },
+    {
+      "line_index": 93,
+      "turn": 9,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "activate",
+      "cards": [
+        "Foxparks' Harness"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple activated Foxparks' Harness."
+    },
+    {
+      "line_index": 94,
+      "turn": 9,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "attack_declare",
+      "cards": [
+        "Menasting"
+      ],
+      "targets": [
+        "Chillet"
+      ],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple's Menasting attacks Pingu's Chillet."
+    },
+    {
+      "line_index": 95,
+      "turn": 9,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "interrupt",
+      "cards": [
+        "Reindrix"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": {
+          "type": "soul",
+          "amount": 1
+        },
+        "result": "nullified"
+      },
+      "caused_by_line": null,
+      "text": "Pingu interrupted with Reindrix, paid 1 Soul. The attack was nullified."
+    },
+    {
+      "line_index": 96,
+      "turn": 9,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "deploy",
+      "cards": [
+        "Menasting"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple deployed Menasting."
+    },
+    {
+      "line_index": 99,
+      "turn": 10,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 10,
+        "souls_cap": 10,
+        "hand": [
+          "Elphidran",
+          "Elphidran",
+          "Pengullet",
+          "Pyrin Noct",
+          "Reindrix",
+          "Strike from the Darkness",
+          "Zoe's Strategy"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 10/10 · Hand: Elphidran, Elphidran, Pengullet, Pyrin Noct, Reindrix, Strike from the Darkness, Zoe's Strategy"
+    },
+    {
+      "line_index": 102,
+      "turn": 11,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 10,
+        "life_after": 8
+      },
+      "caused_by_line": null,
+      "text": "Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 10 to 8 life."
+    },
+    {
+      "line_index": 103,
+      "turn": 11,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "✦"
+    },
+    {
+      "line_index": 104,
+      "turn": 11,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage_attempted": 2,
+        "damage": 0,
+        "milled": 2,
+        "lucky": true
+      },
+      "caused_by_line": 103,
+      "text": "Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (2 cards milled)"
+    },
+    {
+      "line_index": 105,
+      "turn": 11,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "play_card",
+      "cards": [
+        "Strike from the Darkness"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Played Strike from the Darkness for 4 Souls."
+    },
+    {
+      "line_index": 106,
+      "turn": 11,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "return_to_hand",
+      "cards": [
+        "Reptyro"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple returned Reptyro from their graveyard to hand."
+    },
+    {
+      "line_index": 107,
+      "turn": 11,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage": 3,
+        "milled": 3,
+        "lucky": false,
+        "life_before": 8,
+        "life_after": 5
+      },
+      "caused_by_line": null,
+      "text": "Relaxaurus attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 8 to 5 life."
+    },
+    {
+      "line_index": 108,
+      "turn": 11,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "deploy",
+      "cards": [
+        "Elphidran"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 4,
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Deployed Elphidran to slot 4 for 4 Souls."
+    },
+    {
+      "line_index": 109,
+      "turn": 11,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "reveal",
+      "cards": [
+        "Elphidran"
+      ],
+      "targets": [],
+      "resolution": {
+        "element": "Dragon",
+        "power_buff": 500
+      },
+      "caused_by_line": null,
+      "text": "Revealed Elphidran (Dragon). Power +500 until end of turn."
+    },
+    {
+      "line_index": 110,
+      "turn": 11,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "battle_attack",
+      "cards": [
+        "Elphidran"
+      ],
+      "targets": [
+        "Menasting"
+      ],
+      "resolution": {
+        "attacker_power_expr": "600+500 = 1100",
+        "attacker_power": 1100,
+        "defender_power_expr": "700",
+        "defender_power": 700
+      },
+      "caused_by_line": null,
+      "text": "Elphidran (600+500 = 1100) attacked Menasting (700)."
+    },
+    {
+      "line_index": 111,
+      "turn": 11,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "retaliate",
+      "cards": [
+        "Elphidran"
+      ],
+      "targets": [],
+      "resolution": {
+        "source": "Menasting"
+      },
+      "caused_by_line": null,
+      "text": "Elphidran was dragged down by Menasting's Retaliate."
+    },
+    {
+      "line_index": 112,
+      "turn": 11,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [
+        "Elphidran"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Elphidran"
+    },
+    {
+      "line_index": 113,
+      "turn": 11,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "destroyed",
+      "cards": [
+        "Menasting"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 1100,
+        "power": 700
+      },
+      "caused_by_line": 112,
+      "text": "Menasting destroyed, 1100 damage vs 700 Power."
+    },
+    {
+      "line_index": 114,
+      "turn": 11,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "destroyed",
+      "cards": [
+        "Elphidran"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 700,
+        "power": 1100
+      },
+      "caused_by_line": null,
+      "text": "Elphidran destroyed, 700 damage vs 1100 Power."
+    },
+    {
+      "line_index": 115,
+      "turn": 11,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "return_to_hand",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple returned Foxparks from their graveyard to hand."
+    },
+    {
+      "line_index": 118,
+      "turn": 12,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "deploy",
+      "cards": [
+        "Reptyro"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple deployed Reptyro."
+    },
+    {
+      "line_index": 119,
+      "turn": 12,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "activate",
+      "cards": [
+        "Reptyro"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple activated Reptyro."
+    },
+    {
+      "line_index": 120,
+      "turn": 12,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "reveal_and_deploy",
+      "cards": [
+        "Foxparks' Harness"
+      ],
+      "targets": [],
+      "resolution": {
+        "deployed": true
+      },
+      "caused_by_line": null,
+      "text": "redpurple revealed Foxparks' Harness and deployed it."
+    },
+    {
+      "line_index": 121,
+      "turn": 12,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "look_and_take",
+      "cards": [
+        "Foxparks' Harness"
+      ],
+      "targets": [],
+      "resolution": {
+        "looked": 5,
+        "outcome": "deployed"
+      },
+      "caused_by_line": null,
+      "text": "redpurple looked at 5 cards and deployed Foxparks' Harness."
+    },
+    {
+      "line_index": 122,
+      "turn": 12,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "deploy",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple deployed Foxparks."
+    },
+    {
+      "line_index": 123,
+      "turn": 12,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "activate",
+      "cards": [
+        "Foxparks' Harness"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple activated Foxparks' Harness."
+    },
+    {
+      "line_index": 124,
+      "turn": 12,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "activate",
+      "cards": [
+        "Foxparks' Harness"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple activated Foxparks' Harness."
+    },
+    {
+      "line_index": 125,
+      "turn": 12,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "activate",
+      "cards": [
+        "Single-Shot Rifle"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple activated Single-Shot Rifle."
+    },
+    {
+      "line_index": 126,
+      "turn": 12,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "power_buff",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [],
+      "resolution": {
+        "amount": 200
+      },
+      "caused_by_line": null,
+      "text": "redpurple's Foxparks gets power +200 until end of turn."
+    },
+    {
+      "line_index": 127,
+      "turn": 12,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "damage_taken",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 700
+      },
+      "caused_by_line": null,
+      "text": "Relaxaurus took 700 damage."
+    },
+    {
+      "line_index": 128,
+      "turn": 12,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "destroyed",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 700
+      },
+      "caused_by_line": null,
+      "text": "Relaxaurus took 700 damage and was destroyed."
+    },
+    {
+      "line_index": 129,
+      "turn": 12,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "attack_declare",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [
+        "Chillet"
+      ],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple's Foxparks attacks Pingu's Chillet."
+    },
+    {
+      "line_index": 130,
+      "turn": 12,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "interrupt",
+      "cards": [
+        "Pyrin Noct"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": {
+          "type": "soul",
+          "amount": 1
+        },
+        "result": "nullified"
+      },
+      "caused_by_line": null,
+      "text": "Pingu interrupted with Pyrin Noct, paid 1 Soul. The attack was nullified."
+    },
+    {
+      "line_index": 131,
+      "turn": 12,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "attack_declare",
+      "cards": [
+        "Reptyro"
+      ],
+      "targets": [
+        "Chillet"
+      ],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple's Reptyro attacks Pingu's Chillet."
+    },
+    {
+      "line_index": 132,
+      "turn": 12,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "interrupt",
+      "cards": [
+        "Reindrix"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": {
+          "type": "soul",
+          "amount": 1
+        },
+        "result": "nullified"
+      },
+      "caused_by_line": null,
+      "text": "Pingu interrupted with Reindrix, paid 1 Soul. The attack was nullified."
+    },
+    {
+      "line_index": 135,
+      "turn": 13,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 10,
+        "souls_cap": 10,
+        "hand": [
+          "Elphidran",
+          "Pengullet",
+          "Zoe's Strategy",
+          "Zoe's Strategy"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 10/10 · Hand: Elphidran, Pengullet, Zoe's Strategy, Zoe's Strategy"
+    },
+    {
+      "line_index": 138,
+      "turn": 14,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage": 2,
+        "milled": 2,
+        "lucky": false,
+        "life_before": 5,
+        "life_after": 3
+      },
+      "caused_by_line": null,
+      "text": "Chillet attacked them for 2. Damage Check: 2 cards milled, no Lucky. They 5 to 3 life."
+    },
+    {
+      "line_index": 139,
+      "turn": 14,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "✦"
+    },
+    {
+      "line_index": 140,
+      "turn": 14,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage_attempted": 2,
+        "damage": 0,
+        "milled": 1,
+        "lucky": true
+      },
+      "caused_by_line": 139,
+      "text": "Chillet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)"
+    },
+    {
+      "line_index": 141,
+      "turn": 14,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "deploy",
+      "cards": [
+        "Pengullet"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 3,
+        "cost": 4
+      },
+      "caused_by_line": null,
+      "text": "Deployed Pengullet to slot 3 for 4 Souls."
+    },
+    {
+      "line_index": 142,
+      "turn": 14,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "bare_marker",
+      "cards": [],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "✦"
+    },
+    {
+      "line_index": 143,
+      "turn": 14,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Pengullet"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage_attempted": 2,
+        "damage": 0,
+        "milled": 1,
+        "lucky": true
+      },
+      "caused_by_line": 142,
+      "text": "Pengullet attacked them for 2; their Damage Check revealed a Lucky Pal, cancelled, no damage. (1 card milled)"
+    },
+    {
+      "line_index": 144,
+      "turn": 14,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "play_card",
+      "cards": [
+        "Zoe's Strategy"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 3
+      },
+      "caused_by_line": null,
+      "text": "Played Zoe's Strategy for 3 Souls."
+    },
+    {
+      "line_index": 145,
+      "turn": 14,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1."
+    },
+    {
+      "line_index": 146,
+      "turn": 14,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "butcher",
+      "cards": [
+        "Pengullet"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Butchered Pengullet."
+    },
+    {
+      "line_index": 147,
+      "turn": 14,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "play_card",
+      "cards": [
+        "Zoe's Strategy"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 3
+      },
+      "caused_by_line": null,
+      "text": "Played Zoe's Strategy for 3 Souls."
+    },
+    {
+      "line_index": 148,
+      "turn": 14,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "return_to_hand",
+      "cards": [
+        "Jormuntide"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "Returned Jormuntide from graveyard to hand."
+    },
+    {
+      "line_index": 149,
+      "turn": 14,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "must_discard",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "redpurple must discard 1."
+    },
+    {
+      "line_index": 150,
+      "turn": 14,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "discard",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple discarded Foxparks."
+    },
+    {
+      "line_index": 153,
+      "turn": 15,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "play_card",
+      "cards": [
+        "Medical Supplies"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple played Medical Supplies."
+    },
+    {
+      "line_index": 154,
+      "turn": 15,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "activate",
+      "cards": [
+        "Foxparks' Harness"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple activated Foxparks' Harness."
+    },
+    {
+      "line_index": 155,
+      "turn": 15,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "activate",
+      "cards": [
+        "Foxparks' Harness"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple activated Foxparks' Harness."
+    },
+    {
+      "line_index": 156,
+      "turn": 15,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "damage_taken",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 700
+      },
+      "caused_by_line": null,
+      "text": "Chillet took 700 damage."
+    },
+    {
+      "line_index": 157,
+      "turn": 15,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "destroyed",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 700
+      },
+      "caused_by_line": null,
+      "text": "Chillet took 700 damage and was destroyed."
+    },
+    {
+      "line_index": 158,
+      "turn": 15,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "damage_taken",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 700
+      },
+      "caused_by_line": null,
+      "text": "Chillet took 700 damage."
+    },
+    {
+      "line_index": 159,
+      "turn": 15,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "destroyed",
+      "cards": [
+        "Chillet"
+      ],
+      "targets": [],
+      "resolution": {
+        "damage": 700
+      },
+      "caused_by_line": null,
+      "text": "Chillet took 700 damage and was destroyed."
+    },
+    {
+      "line_index": 160,
+      "turn": 15,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "attack_declare",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 1
+      },
+      "caused_by_line": null,
+      "text": "redpurple's Foxparks attacks Pingu for 1."
+    },
+    {
+      "line_index": 161,
+      "turn": 15,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "attack",
+      "cards": [
+        "Foxparks"
+      ],
+      "targets": [
+        "Pingu"
+      ],
+      "resolution": {
+        "damage": 1,
+        "milled": 1,
+        "lucky": false,
+        "life_before": 8,
+        "life_after": 7
+      },
+      "caused_by_line": null,
+      "text": "Foxparks hit Pingu for 1. Damage Check: 1 card milled, no Lucky. Pingu 8 to 7 life."
+    },
+    {
+      "line_index": 162,
+      "turn": 15,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "deploy",
+      "cards": [
+        "Leezpunk"
+      ],
+      "targets": [],
+      "resolution": null,
+      "caused_by_line": null,
+      "text": "redpurple deployed Leezpunk."
+    },
+    {
+      "line_index": 165,
+      "turn": 16,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "turn_opened",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "souls": 10,
+        "souls_cap": 10,
+        "hand": [
+          "Aurora Guide",
+          "Elphidran",
+          "Elphidran Aqua",
+          "Jormuntide"
+        ]
+      },
+      "caused_by_line": null,
+      "text": "Turn opened — Souls 10/10 · Hand: Aurora Guide, Elphidran, Elphidran Aqua, Jormuntide"
+    },
+    {
+      "line_index": 166,
+      "turn": 16,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "play_card",
+      "cards": [
+        "Aurora Guide"
+      ],
+      "targets": [],
+      "resolution": {
+        "cost": 2
+      },
+      "caused_by_line": null,
+      "text": "Played Aurora Guide for 2 Souls."
+    },
+    {
+      "line_index": 167,
+      "turn": 16,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "draw",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "amount": 1
+      },
+      "caused_by_line": null,
+      "text": "Drew 1 card."
+    },
+    {
+      "line_index": 168,
+      "turn": 16,
+      "phase": null,
+      "actor": "redpurple",
+      "action": "deploy",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [],
+      "resolution": {
+        "slot": 1,
+        "cost": 7
+      },
+      "caused_by_line": null,
+      "text": "Deployed Relaxaurus to slot 1 for 7 Souls."
+    },
+    {
+      "line_index": 171,
+      "turn": 17,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "attack",
+      "cards": [
+        "Relaxaurus"
+      ],
+      "targets": [
+        "them"
+      ],
+      "resolution": {
+        "damage": 3,
+        "milled": 3,
+        "lucky": false,
+        "life_before": 3,
+        "life_after": 0
+      },
+      "caused_by_line": null,
+      "text": "Relaxaurus attacked them for 3. Damage Check: 3 cards milled, no Lucky. They 3 to 0 life."
+    },
+    {
+      "line_index": 173,
+      "turn": 17,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "win_declared",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "winner": "PINGU"
+      },
+      "caused_by_line": null,
+      "text": "PINGU WINS"
+    },
+    {
+      "line_index": 174,
+      "turn": 17,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "loss_reason",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "loser": "redpurple",
+        "reason": "life_hit_zero"
+      },
+      "caused_by_line": null,
+      "text": "redpurple's life hit zero."
+    },
+    {
+      "line_index": 175,
+      "turn": 17,
+      "phase": null,
+      "actor": "Pingu",
+      "action": "final_life",
+      "cards": [],
+      "targets": [],
+      "resolution": {
+        "winner": "Pingu",
+        "winner_life": 7,
+        "loser": "redpurple",
+        "loser_life": 0
+      },
+      "caused_by_line": null,
+      "text": "FINAL LIFE: Pingu (WINNER) 7, redpurple 0."
+    }
+  ]
+}

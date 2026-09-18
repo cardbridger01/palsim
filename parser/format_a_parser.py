@@ -397,6 +397,27 @@ PATTERNS: list[tuple[str, "re.Pattern[str]", Builder]] = [
     ),
     ("reveal", re.compile(rf"^{_SUBJ}[Rr]evealed (?P<card>.+?)\.$"), b_card_only),
     (
+        # BP01-005 Reptyro's own ACT ("Look at the top 5 cards of your
+        # deck, choose up to 1 gear from among them and deploy it...")
+        # narrated as one combined sentence -- must come before the
+        # generic bare "deploy" pattern below, or `_SUBJ`'s permissive
+        # character class (word chars, apostrophe, space, hyphen -- no
+        # concept of "this isn't a real subject name") backtracks across
+        # the ENTIRE "X looked at N cards and" prefix to reach this
+        # sentence's own "deployed", corrupting the actor field itself
+        # (not just losing the look-at-N information) -- caught in
+        # pingu_02, where it silently produced actor="redpurple looked
+        # at 5 cards and" instead of "redpurple". `look_and_take`'s own
+        # other three phrasings ("looked at N and took M into hand",
+        # "Looked at top N: took X to hand[. Graveyard: ...]", "Looked
+        # at top N: deployed X.") are each their own separate literal
+        # shape too -- this is a fourth, not a generalization of any of
+        # them, matching how those three don't share one pattern either.
+        "look_and_take",
+        re.compile(r"^(?P<subj>.+?) looked at (?P<n>\d+) cards? and deployed (?P<card>.+?)\.$"),
+        lambda g: ([g["card"]], [], {"looked": int(g["n"]), "outcome": "deployed"}),
+    ),
+    (
         "deploy",
         re.compile(rf"^{_SUBJ}[Dd]eployed (?P<card>.+?) to slot (?P<slot>\d+) for (?P<cost>\d+) Souls?\.$"),
         b_deploy_slot,
