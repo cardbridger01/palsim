@@ -221,9 +221,9 @@ see that function's doc comment and `data/replays/README.md`'s known-
 anomaly section. Verify by grepping the driver for the function name
 before tagging anything `corpus-validated (format-a)` — don't infer it
 from the card's presence in a log.
-* **A Format A driver now exists** (`format_a_replay/`, two fixtures —
-`pingu_01` and `pingu_03`, `tests/format_a_replays/pingu_01.rs` /
-`pingu_03.rs`), built with the `SCRIPTED_ACTIONS` registry from the
+* **A Format A driver now exists** (`format_a_replay/`, three fixtures —
+`pingu_01`, `pingu_03`, `pingu_02`, `tests/format_a_replays/pingu_01.rs` /
+`pingu_03.rs` / `pingu_02.rs`), built with the `SCRIPTED_ACTIONS` registry from the
 start rather than retrofitted — `astegon_on_deploy`, `aurora_guide`,
 `pal_sphere`, `relaxaurus_on_deploy`, `elphidran_aqua_on_deploy`, and
 the three `zoes_strategy_*` functions are tagged `corpus-validated
@@ -276,7 +276,42 @@ that isn't destroyed before its own end phase has no checkable effect
 — which is exactly the concern: a wrong attribution here is SILENT,
 not caught by this test's own pass/fail signal. Left as-is rather than
 guessed at (hard rule 1) — see `format_a_replay`'s own module doc
-comment for where this is flagged in the code.
+comment for where this is flagged in the code. **pingu_02 added one
+data point, not a resolution:** its own Elphidran reveal (line 109) is
+a textbook-clean occurrence — Pingu's own Elphidran, revealed on
+Pingu's OWN turn, immediately followed by that same Elphidran
+attacking (line 110) — so it doesn't recur in pingu_03's specific
+ambiguous shape (opponent's turn, no nearby attack) and doesn't settle
+the question. Useful as a contrast case for what this code path looks
+like when it's unambiguously right, nothing more.
+* **`pingu_02` — third fixture, opponent changed to redpurple on
+purpose, testing the card-POOL axis `pingu_03` was scoped not to
+touch.** A genuinely different card pool (Foxparks, Foxparks' Harness,
+Single-Shot Rifle, Menasting, Reptyro, Leezpunk, Medical Supplies) —
+and NONE of them needed a new `cards::` script; `parser/card_census.py`'s
+"already in cards/: 13" is unchanged. Every new event shape dispatches
+through existing generic engine primitives (`apply_damage` for
+Single-Shot Rifle's flat-damage OnDeploy, `materialize` for Reptyro's
+own combined-sentence ACT, plain no-ops for "mulligan"/"setup"/
+"retaliate"), the same discipline `find_by_name_or_materialize` already
+uses for combat — a script gets written when a card's effect needs
+real, checked logic, not for every card a log happens to name. One
+real, NEW-CLASS driver bug did surface: `find_defender_or_materialize`
+picked an ILLEGAL (standing) attack target when two live copies of the
+same name existed under one owner at once (redpurple's two Menastings,
+turns 9-11) — a different shape than the already-documented Chillet-
+revival case (one card reused across zones over time, not two
+coexisting at once), and the existing "most recently deployed, else
+most recently created" heuristic has no way to know a freshly-deployed
+duplicate that never attacked isn't the one a later line means. Fixed
+by using 9.2.3 itself as the disambiguator: prefer whichever same-named
+candidate IS resting (the log's own declaration is already proof the
+real target was legal) before falling back to the old heuristic — see
+`find_defender_or_materialize`'s own doc comment. A second, less severe
+bug (an ACTOR-corrupting gap in the parser's own `look_and_take`
+patterns, not a driver bug — see `tests/parser/test_format_a_pingu02.py`'s
+own doc comment) was fixed at the parser layer before this fixture's
+driver work even started.
 
 \---
 
