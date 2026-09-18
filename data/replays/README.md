@@ -73,10 +73,13 @@ for real anyway (following the rules text, not the log's silence) and a unit
 test (`rocket_launcher_act_then_granted_sweep_via_power_buff_and_activate_events`,
 `replay/src/lib.rs`) asserts the resulting hand-size increase directly, so
 this divergence from the log is a checked, documented fact rather than an
-unasserted side effect. Either the client doesn't display this specific
-draw, or doesn't implement it — same category of client anomaly as the
-Jormuntide Ignis case above, not evidence the card's own implementation is
-wrong.
+unasserted side effect. **CONFIRMED client display gap, not an open
+question** — live-client test (the user played it directly, not inferred
+from a log): the trigger fires and the hand genuinely grows by one. The
+client simply doesn't render this specific draw's log line; the engine's
+implementation, and the driver's decision to follow the rules text over the
+log's silence, were already correct. The unit test's assertion stands as
+documentation of confirmed-correct behavior, not a flagged discrepancy.
 
 ---
 

@@ -129,6 +129,14 @@ Damage accumulates on a Pal within a turn and resets at end phase (5.14.1, 7.6.3
 The stand phase stands **only the turn player's cards** (7.2.1) — a Pal that
 ends the opponent's turn rested is a legal attack target on yours.
 
+**9.2.3 (a standing Pal cannot be targeted by an attack, only chosen as a
+blocker) confirmed against the live client**, not just against rules text
+and the Quick Manual Q&A — same live-client session as the two Format A
+confirmations below. Load-bearing for the whole combat model and for deck
+analysis built on top of it (`rule_9_2_3_standing_pals_are_not_legal_attack_targets`
+in `tests/qa_rulings/card_abilities.rs` already encodes it); now also
+client-verified, not solely derived.
+
 \---
 
 ## Long-running jobs
@@ -268,23 +276,20 @@ became "143"), and `cards/` needs no script for it. Decided, not merely
 flagged — see `docs/palsim-build-handbook.md` §4.1 and
 `data/replays/README.md`'s "what the corpus needs from `cards/`" section
 for where 143 is cited downstream.
-* **Pengullet – Yearning for the Sky's graveyard trigger (BP01-028) —
-client behavior unconfirmed, needs a live test, not just log-reading.**
-The engine fires this AUTO (unconditional, no "may") once the Pengullet
-Rocket Launcher's granted sweep moves this card base -> graveyard,
-satisfying QA #41's condition — but battle1's own log shows no resulting
-"drew 1 card" line for the holder's owner anywhere nearby (see
-`replay/src/lib.rs`'s `pengullet_graveyard_trigger` call site and
-`data/replays/README.md`'s known-anomaly entry). Two explanations fit
-the log equally well: the client doesn't render/log this specific draw,
-or the client doesn't implement the trigger at all — only the second is
-an actual rules divergence, and reading the log harder won't distinguish
-them. Testable cheaply, same behavioral-oracle approach as handbook
-§4.3: play a game on the site, get a Pengullet with a Rocket Launcher's
-granted sweep, fire it, and watch hand size directly. Hand grows -> the
-client just doesn't log it, engine's reading stands. Hand doesn't grow
--> either a client bug or this rules reading is wrong, and that needs
-resolving before trusting this card's implementation. Not yet run.
+* **SETTLED by live-client test (the user played it directly): Pengullet
+– Yearning for the Sky's graveyard trigger (BP01-028) fires and draws,
+confirming the engine's reading.** Once the Pengullet Rocket Launcher's
+granted sweep moves this card base -> graveyard (QA #41's condition),
+the AUTO (unconditional, no "may") draws a card for real -- hand
+genuinely grows by one. battle1's own log shows no resulting "drew 1
+card" line for the holder's owner anywhere nearby, but that's now
+confirmed a client display gap, not a rules divergence: the client
+simply doesn't render this specific draw. `replay/`'s driver (already
+following the rules text over the log's silence) and its hand-size
+assertion in `rocket_launcher_act_then_granted_sweep_...`
+(replay/src/lib.rs) were already correct -- see
+`data/replays/README.md`'s known-anomaly entry, now updated to record
+this as confirmed rather than open.
 * **SETTLED by live-client test (the user played it directly, not
 inferred from a log): Aurora Guide and Pal Sphere draw every single time
 they're cast, including twice in the same turn ("you could draw 6").
@@ -360,35 +365,40 @@ following" bullets that this game's 2 relevant plays both happened to
 pick together is unresolved — see `cards::bp01`'s own doc comment on
 `zoes_strategy_return_to_hand`. Exactly a QA-question-pile item, not
 something to invent an answer for.
-* **Turn 1's Chillet deploy (pingu_01 line 28) has no matching entry in
-that same turn's own opening "Turn opened" hand list (line 26).**
-Partially answered by the hand-resync decision above: the opening line
-is now treated as authoritative for Chylith's hand at that moment, the
-same as every later one, so a deploy of a card the line never listed
-means either (1) the line itself is an incomplete account of the true
-starting hand, or (2) the deploy drew on something other than hand —
-board state from before this replay's visible window, the same
-off-screen-history judgment call `find_by_name_or_materialize` already
-makes for Pingu's own pre-window Chillet. `take_from_hand` currently
-falls through to fabricating a fresh Chillet either way (see
-`format_a_replay`'s own doc comment on that function), which is a
-reasonable default but doesn't distinguish the two explanations. Not
-blocking anything currently, but worth knowing which before trusting
-turn 1's own checkpoint as tightly as the rest.
-* **Pyrin Noct's 16-turn lag, sharpened into a specific, live-testable
-question.** Added to Chylith's hand via Chillet's reveal-declined
-branch at line 29 (turn 1) — the engine has held it since turn 2, but
-it doesn't appear in the log's own stated hand until turn 18's "Turn
-opened" line. Now that hand is resynced from that line rather than
-compared against it, this isn't just an accounting curiosity: if the
-line is genuinely incomplete for cards added this way, the resync is
-silently DROPPING a real card from the engine's hand for however many
-turns the lag lasts, not just misreporting one. The specific question a
-live client answers directly: does a card added via Chillet's
-reveal-declined-to-hand branch appear in the client's own displayed
-hand immediately, or does it only show up later (e.g. once played)? Not
-run yet. **Batch with the still-outstanding Pengullet graveyard-trigger
-check** (BP01-028's own open question, above) — both are single-
-interaction, twenty-minutes-together live-client observations, not
-separate sessions.
+* **SETTLED by live-client test, and the answer is the bad one: the
+"Turn opened" line can omit cards the player genuinely holds.** Chillet's
+reveal-declined branch was confirmed to go to hand immediately (the
+same session that confirmed Pengullet's trigger, above) — so Pyrin Noct
+really was in Chylith's hand from turn 2 onward (added at line 29), and
+the log's own "Turn opened" line simply didn't list it until turn 18.
+That means the line is a **partial view, not ground truth** — resyncing
+the engine's hand to it can silently DROP a real card the engine
+correctly held, for as long as the log's omission lasts. **This does
+not reverse the resync decision.** The alternative (heuristic
+reconciliation between checkpoints) was tried and measured directly: it
+produced silent card-IDENTITY corruption (a real Jormuntide mislabeled
+"Chillet"), which is strictly worse than a resync occasionally dropping
+a card the engine already had right. It does change the documentation:
+`format_a_replay`'s module doc comment and this file previously called
+the line "authoritative" — corrected to "preferred over an unverifiable
+derived hand," a weaker and more honest claim that doesn't invite a
+future reader to trust the line somewhere it can mislead. It may also
+explain part of the original hand-size drift this whole investigation
+started from: an engine correctly holding a card the log never lists
+looks, from the outside, exactly like over-drawing.
+  **Chased one level further, per the standing question of whether this
+  is a characterizable rule or an arbitrary display gap:** grepped
+  every event in pingu_01 mentioning "Pyrin Noct" by name. Between line
+  29 (added to Chylith's hand) and line 164 (first appears in Chylith's
+  own "Turn opened" hand list), there is exactly zero intervening
+  reference to it for Chylith — no play, deploy, discard, interrupt, or
+  reveal. (Line 43's bare-marker "Pyrin Noct" at turn 3, and lines 186/199
+  later, are all Pingu's own separate copy, a different player's card
+  entirely — confirmed by actor, not assumed from the name.) Nothing
+  correlates with turn 18 specifically; the card just starts appearing.
+  Sample size of one occurrence in one log — hard rule 7 applies, this
+  doesn't support inferring a rule ("cards added outside a draw don't
+  show until X") over "arbitrary client display bug the resync has to
+  live with." Treat as the latter until a second occurrence says
+  otherwise.
 

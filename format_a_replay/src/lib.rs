@@ -50,16 +50,21 @@
 //!
 //! ## Hand resync, not hand check
 //!
-//! Format A's "Turn opened -- Souls N/N . Hand: ..." line is the
-//! AUTHORITATIVE statement of one player's exact hand at that moment,
-//! not something to verify the engine's own bookkeeping against.
-//! `apply_event`'s "turn_opened" arm discards every card currently
-//! tracked in that event's own player's hand (`Zone::Hand` only --
-//! never the opponent's, since this line describes one seat) and
-//! materializes exactly the named cards the log states, fresh, right
-//! there. Every following card play until the next checkpoint resolves
-//! against real names and real stats from that point on, which is what
-//! actually matters: what card script fires and what targets are legal.
+//! Format A's "Turn opened -- Souls N/N . Hand: ..." line is PREFERRED
+//! over an unverifiable engine-derived hand, not AUTHORITATIVE --
+//! confirmed weaker by a live-client test (see the correction below):
+//! the line can omit cards the player genuinely holds, so treating it
+//! as ground truth would be its own bug, just a differently-shaped one.
+//! "Preferred" is the honest claim: `apply_event`'s "turn_opened" arm
+//! discards every card currently tracked in that event's own player's
+//! hand (`Zone::Hand` only -- never the opponent's, since this line
+//! describes one seat) and materializes exactly the named cards the log
+//! states, fresh, right there. Every following card play until the next
+//! checkpoint resolves against real names and real stats from that
+//! point on, which is what actually matters: what card script fires and
+//! what targets are legal. It is still the better of the two available
+//! options -- see "Why not reconstruct identity between checkpoints
+//! instead" below -- just not a claim that nothing gets lost.
 //!
 //! Hand size stopped being an independently-asserted check
 //! (`tests/format_a_replays/pingu_01.rs` counts `Check::Hand` results
@@ -97,6 +102,19 @@
 //! currently have one. Life totals remain the only state Format A
 //! checks that the engine derives independently of the log and then
 //! compares, rather than resyncing toward.
+//!
+//! **Confirmed by a separate live-client test: the "Turn opened" line
+//! can omit a card the player genuinely holds.** pingu_01's own Pyrin
+//! Noct (added to Chylith's hand via Chillet's reveal-declined branch,
+//! line 29, turn 1) was live-client-confirmed to enter hand immediately
+//! -- yet the log's own hand list doesn't name it until turn 18, with
+//! zero intervening reference to it anywhere in between (checked
+//! directly; see CLAUDE.md's Open Questions for the full trace). This
+//! is exactly why "preferred," not "authoritative," above -- the resync
+//! can silently drop a real card for as long as the log's own omission
+//! lasts. Doesn't reverse the resync decision (still strictly better
+//! than the identity corruption the alternative produced, below), but
+//! it's a real, accepted cost of it, not a hypothetical one.
 //!
 //! ### Why not reconstruct identity between checkpoints instead
 //!
@@ -581,13 +599,16 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
             let hand = res_str_list(event, "hand");
             let souls = res_u64(event, "souls").unwrap_or(0) as usize;
 
-            // Resync, not seed-once: this line is authoritative for
-            // THIS event's own player's hand, every time it fires, not
-            // just the first. Discard whatever the engine currently
-            // holds for this player's hand (never the opponent's --
-            // this line describes one seat) and materialize exactly
-            // what the log states. See the module doc comment's "Hand
-            // resync, not hand check" section for why.
+            // Resync, not seed-once: this line is PREFERRED over an
+            // unverifiable engine-derived hand for THIS event's own
+            // player, every time it fires, not just the first -- not
+            // authoritative (confirmed capable of omitting a real card;
+            // see the module doc comment). Discard whatever the engine
+            // currently holds for this player's hand (never the
+            // opponent's -- this line describes one seat) and
+            // materialize exactly what the log states. See the module
+            // doc comment's "Hand resync, not hand check" section for
+            // why.
             for card in game.cards_in_zone(player, Zone::Hand) {
                 game.move_to_graveyard(card, Zone::Hand);
             }

@@ -159,15 +159,17 @@ pub fn rocket_launcher_granted_sweep(game: &mut GameState, holder: CardId, holde
 /// calls this function directly after the granted sweep moves this
 /// card's holder into the graveyard (battle1), since that zone
 /// transition satisfies QA #41's base -> graveyard condition for this
-/// card's own AUTO. Flagged, not silently assumed: battle1's own log
-/// never shows a "drew 1 card" line for the holder's owner right after
-/// this happens (confirmed by reading the log directly), even though
-/// the effect text is unconditional (no "may"). The driver follows the
-/// rules text rather than the log's silence -- see
-/// `data/replays/README.md`'s "known anomaly" section and the
-/// hand-size assertion in `rocket_launcher_act_then_granted_sweep_...`
-/// (replay/src/lib.rs) that makes this discrepancy an explicit, checked
-/// fact instead of an unasserted side effect.
+/// card's own AUTO. battle1's own log never shows a "drew 1 card" line
+/// for the holder's owner right after this happens, even though the
+/// effect text is unconditional (no "may") -- but this is a CONFIRMED
+/// client display gap, not an open question: live-client testing (the
+/// user played it directly) confirmed the trigger fires and the hand
+/// genuinely grows by one; the client just doesn't render this specific
+/// draw's log line. See `data/replays/README.md`'s "known anomaly"
+/// section and the hand-size assertion in
+/// `rocket_launcher_act_then_granted_sweep_...` (replay/src/lib.rs),
+/// which documents confirmed-correct behavior rather than flagging a
+/// discrepancy.
 ///
 /// effect_text: "AUTO When this card is put into the graveyard, draw 1
 /// card."
