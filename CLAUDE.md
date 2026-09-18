@@ -221,18 +221,62 @@ see that function's doc comment and `data/replays/README.md`'s known-
 anomaly section. Verify by grepping the driver for the function name
 before tagging anything `corpus-validated (format-a)` — don't infer it
 from the card's presence in a log.
-* **A Format A driver now exists** (`format_a_replay/`, one fixture so
-far — `pingu_01`, `tests/format_a_replays/pingu_01.rs`), built with the
-`SCRIPTED_ACTIONS` registry from the start rather than retrofitted —
-`astegon_on_deploy`, `aurora_guide`, `pal_sphere`, `relaxaurus_on_deploy`,
-and the three `zoes_strategy_*` functions are the first cards genuinely
-tagged `corpus-validated (format-a)`, grep-verified against
-`format_a_replay/src/lib.rs`, not inferred. It also computes hand-SIZE
-and soul-count checks at every "Turn opened" line — stricter than life
-totals alone, and what actually surfaced the findings in the next few
-Open Questions entries — though the hand-size half is currently computed
-but NOT asserted in `tests/format_a_replays/pingu_01.rs`, pending the
-"whichever data source... is unclear" entry below.
+* **A Format A driver now exists** (`format_a_replay/`, two fixtures —
+`pingu_01` and `pingu_03`, `tests/format_a_replays/pingu_01.rs` /
+`pingu_03.rs`), built with the `SCRIPTED_ACTIONS` registry from the
+start rather than retrofitted — `astegon_on_deploy`, `aurora_guide`,
+`pal_sphere`, `relaxaurus_on_deploy`, `elphidran_aqua_on_deploy`, and
+the three `zoes_strategy_*` functions are tagged `corpus-validated
+(format-a)`, grep-verified against `format_a_replay/src/lib.rs`, not
+inferred. Life totals are the only state this driver independently
+derives and checks; hand and souls are resynced from each "Turn
+opened" line rather than compared against it — see
+`format_a_replay`'s own module doc comment, "Hand resync, not hand
+check," for why, and the SETTLED entry below for the correction that
+established it.
+* **`pingu_03` — second fixture, same opponent (Pingu vs Chylith again)
+on purpose, to isolate whether the driver generalizes across GAMES
+before testing whether it generalizes across card POOLS.** Got to
+green with only additive changes: a `"setup"`/`"rest_draw"` pair for
+turn-1-only narration pingu_01 never exercised, a standalone
+`"butcher"` arm for Zoe's Strategy's butcher bullet phrased as
+"Butchered X." (pingu_01's own two occurrences were phrased "X
+destroyed," a different literal sentence for the same bullet), and
+wiring the already-implemented, already-bracketed-validated
+`elphidran_aqua_on_deploy` into the "deploy" arm's own deferred-
+lookahead, same shape as Aurora Guide's. `take_from_hand`, the resync
+logic, and the stand-phase detection's `last_stood_owner` check needed
+ZERO changes — and the last one is a harder test than it sounds:
+pingu_03's own turn sequence has 7 consecutive same-owner turn
+transitions (pingu_01 had 2), and it held. A real PARSER bug (not a
+driver bug) surfaced too: `power_buff`'s two patterns had no
+possessive-subject stripping, unlike every other subject-bearing
+pattern in the grammar — "Chylith's Jormuntide gets power +200..."
+parsed as card name `"Chylith's Jormuntide"` literally, caught only
+because pingu_03 has multiple players' Pals getting power_buff lines
+in the same fixture (pingu_01's own analogous lines never carried a
+possessive prefix). Fixed with `_POSSESSIVE_SUBJ` in
+`parser/format_a_parser.py`; see `tests/parser/test_format_a_pingu03.py`'s
+own doc comment for the full account, confirmed via the pre-fix parser
+run directly, not inferred.
+* **Open question this fixture raised, not resolved: a possible
+Elphidran -- Gentle Radiance OnAttack mis-attribution that this test
+discipline wouldn't necessarily catch.** pingu_03 line 55 ("Chylith
+revealed Elphidran (Dragon).", turn 6, PINGU's own turn) hits
+`format_a_replay`'s "reveal" arm's `element`-present branch and fires
+Elphidran's OnAttack power buff on Chylith's own Elphidran (deployed
+turn 4) — the same code path pingu_01's own two occurrences of this
+shape use, and those are both genuinely mid-Chylith's-own-turn. This
+one fires during the OPPONENT's turn, with no attack_declare/
+battle_attack naming Chylith's Elphidran anywhere nearby, so there's no
+textual evidence this really is an OnAttack trigger rather than some
+other reveal being misattributed to it. It didn't break pingu_03's
+life-total checks — a stray "until end of turn" power buff on a card
+that isn't destroyed before its own end phase has no checkable effect
+— which is exactly the concern: a wrong attribution here is SILENT,
+not caught by this test's own pass/fail signal. Left as-is rather than
+guessed at (hard rule 1) — see `format_a_replay`'s own module doc
+comment for where this is flagged in the code.
 
 \---
 
