@@ -24,18 +24,23 @@ distinct Name values), minus two exclusions:
     the 50 isn't something the deck optimizer can ever put in a deck,
     so it isn't part of this tool's build target either -- decided in
     CLAUDE.md's Open Questions, not silently dropped.
-  - `KEYWORD_ONLY_NAMES` (7 cards) -- pure `ACT Interrupt (Hand Quick
-    [(1), discard this card] OR [discard this card and 1 other card
-    from hand] Nullify the opponent's attack...)` text and nothing
-    else: Reindrix, Cryolinx, Blazehowl, Blazehowl Noct, Wumpo Botan,
-    Foxparks, Dinossom. Interrupt is an engine mechanic (12.8.2), not a
-    card-specific behavior -- there is no card-specific logic left to
-    ever write a script for, the same way there's nothing to script for
-    Soul. See CLAUDE.md's Conventions section, "Does a card need a
-    script at all? Three categories, not two," for the full principle
-    this exclusion is one instance of.
+  - `KEYWORD_ONLY_NAMES` (8 cards) -- seven of pure `ACT Interrupt
+    (Hand Quick [(1), discard this card] OR [discard this card and 1
+    other card from hand] Nullify the opponent's attack...)` text and
+    nothing else (Reindrix, Cryolinx, Blazehowl, Blazehowl Noct, Wumpo
+    Botan, Foxparks, Dinossom), plus one (Pyrin Noct) that prepends the
+    identical `CONT Nocturnal (If it is night, this card gets Power
+    +300)` reminder to that same Interrupt text -- Nocturnal is
+    ALSO already a generic engine mechanic (5.3, 12.13), so pairing two
+    keyword reminders with nothing else is still keyword-only, not a
+    third category. Interrupt/Nocturnal are engine mechanics (12.8.2;
+    5.3, 12.13), not card-specific behavior -- there is no card-specific
+    logic left to ever write a script for, the same way there's nothing
+    to script for Soul. See CLAUDE.md's Conventions section, "Does a
+    card need a script at all? Three categories, not two," for the full
+    principle this exclusion is one instance of.
 
-The real pool, and every count below, is **136**.
+The real pool, and every count below, is **135**.
 
 ## A THIRD status this tool tracks, alongside VALIDATION tier: does the
 ## card need a script AT ALL, and has that been checked
@@ -193,6 +198,17 @@ KEYWORD_ONLY_NAMES = {
     "Wumpo Botan",
     "Foxparks",
     "Dinossom",
+    # Pyrin Noct (BP01-077) -- checked, not assumed: effect_text is
+    # exactly "CONT Nocturnal (If it is night, this card gets Power
+    # +300) " prepended to the IDENTICAL Interrupt reminder text the
+    # 7 cards above already use, verbatim, nothing else. Nocturnal is
+    # already a generic engine mechanic too (5.3, 12.13; see the
+    # qa_094/rule_5_21_1 tests), so both of this card's clauses are
+    # pure keyword reminders -- no card-specific number, target, or
+    # condition beyond either keyword's own standard text. Confirmed
+    # this is the ONLY card combining Nocturnal with the Interrupt
+    # reminder verbatim -- not a pattern to assume recurs elsewhere.
+    "Pyrin Noct",
 }
 
 # Cards whose replay-observable behavior is fully log-resolved-choice --
@@ -227,6 +243,34 @@ def implemented_names() -> set[str]:
             if m:
                 names.add(m.group("name").strip())
     return names
+
+
+_VALIDATION_TAG_RE = re.compile(r"^/// VALIDATION:")
+
+
+def validation_tag_count() -> int:
+    """Count of `/// VALIDATION: <tier>` doc-comment lines across
+    cards/*.rs -- extracted with its OWN simple regex, deliberately
+    independent of `_DOC_HEADER_RE`, so the two counts can be
+    cross-checked against each other in `main()`. Every implemented
+    card gets exactly one doc header and one VALIDATION line
+    immediately after it, even when several functions share them
+    (Pengullet Rocket Launcher's two, Zoe's Strategy's three) -- so
+    this count and `len(implemented_names())` must always be equal.
+    Exists because they silently weren't: `_DOC_HEADER_RE`'s old
+    `[^-]+?` name group failed to match "Pump-Action Shotgun" (a
+    hyphen inside the main name, not the " -- Subtitle" separator),
+    undercounting `implemented_names()` by one with nothing to catch
+    it -- the VALIDATION tag on that same card was there the whole
+    time and would have caught the mismatch immediately had anything
+    been comparing the two counts. Guards against the same shape of
+    bug recurring for a reason neither regex's author anticipated."""
+    count = 0
+    for path in CARDS_SRC_DIR.glob("*.rs"):
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if _VALIDATION_TAG_RE.match(line.strip()):
+                count += 1
+    return count
 
 
 # The QA dataset's own related_cards IDs carry a leading "E" (an
@@ -361,6 +405,14 @@ def main() -> None:
     files = format_a_files()
     csv_by_name = load_csv_by_name()
     implemented = implemented_names()
+    tag_count = validation_tag_count()
+    if tag_count != len(implemented):
+        raise AssertionError(
+            f"implemented_names() found {len(implemented)} doc-header names but cards/*.rs has "
+            f"{tag_count} VALIDATION tags -- one of the two extraction regexes missed a card "
+            f"(exactly the class of bug Pump-Action Shotgun's hyphenated name caught once already). "
+            f"Every count below would be wrong; fix the mismatch before trusting this report."
+        )
     qa_numbers = qa_covered_card_numbers()
     appears_in, names_by_log = census(files, csv_by_name)
 
@@ -369,7 +421,7 @@ def main() -> None:
     # text, no place in the 50) and KEYWORD_ONLY_NAMES (pure Interrupt
     # text, no card-specific behavior to ever script) -- both decided in
     # CLAUDE.md's Open Questions/Conventions, not silently dropped. The
-    # real build-target pool is 136.
+    # real build-target pool is 135.
     all_names = set(csv_by_name) - {"Soul"} - KEYWORD_ONLY_NAMES
     remaining = sorted(all_names - implemented)
 

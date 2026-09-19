@@ -184,10 +184,10 @@ against stated life totals: those three should fail that audit, the
 
 `python -m parser.card_census` diffs the CSV's full 150-row pool (144
 distinct names, minus Soul (SOUL-001) — no ability text and no place in the
-50 — and minus 7 `KEYWORD_ONLY_NAMES` — pure `ACT Interrupt` text with no
+50 — and minus 8 `KEYWORD_ONLY_NAMES` — pure `ACT Interrupt` text with no
 card-specific behavior to ever script, e.g. Reindrix, Cryolinx, Foxparks —
 both excluded per CLAUDE.md's Open Questions/Conventions, so the real pool
-is 136) against `cards/*.rs`. **The build target is all 136, not just what
+is 135) against `cards/*.rs`. **The build target is all 135, not just what
 this corpus references** — the deck optimizer searches the full legal pool
 per color pair, and a card `cards/` doesn't implement is invisible to that
 search, so scoping to the corpus's own 89 referenced names would bake the
@@ -196,7 +196,7 @@ decks.
 
 What the corpus *does* decide is build **order**, and validation
 **confidence** — every not-yet-implemented name is labeled
-`corpus-validated` (appears in ≥1 of the 64 logs — 68 cards, build these
+`corpus-validated` (appears in ≥1 of the 64 logs — 67 cards, build these
 first, since they're the ones a Format A replay driver can check
 against real games), `test-only` (zero corpus appearances but an official
 QA ruling covers its card number — 36 cards), or `unvalidated` (built from
@@ -204,7 +204,7 @@ QA ruling covers its card number — 36 cards), or `unvalidated` (built from
 tier is exactly where a wrong `effect_text` reading would hide if the
 optimizer ever surfaces a strong deck built around one of those cards
 (handbook §10.1) — worth knowing which tier a card is in before trusting
-the optimizer's read on it. (68 + 36 + 18 = 122, not 136 — the remaining 14
+the optimizer's read on it. (67 + 36 + 18 = 121, not 135 — the remaining 14
 are already implemented in `cards/*.rs` and so don't appear in this
 not-yet-implemented diff at all.)
 
@@ -261,4 +261,4 @@ many logs are fully replayable with only the top N of those" — close to
 linear with no natural low-N elbow, since full coverage of one log needs
 *every* card it references. That's a statement about replay-validation
 depth, not about how many cards the optimizer needs built — that number is
-136 regardless of how many are ever exercised by a real log.
+135 regardless of how many are ever exercised by a real log.
