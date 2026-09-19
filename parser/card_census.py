@@ -164,7 +164,21 @@ _BRACKETED_FIXTURES = {
     "battle2_bg-chillet_vs_blue-purple_LOSS.log",
     "battle3_bg-chillet_vs_blue-red_WIN.log",
 }
-_DOC_HEADER_RE = re.compile(r"^/// (?:BP\d+|TD\d+|PR)-\d+, (?P<name>[^-]+?)(?: -- .*)?\.\s*$")
+# `(?P<name>.+?)` -- NOT `[^-]+?`. The name group must allow a bare
+# hyphen WITHIN a main name (Pump-Action Shotgun, Single-Shot Rifle):
+# excluding hyphens entirely was meant to stop the match before the "
+# -- Subtitle" separator, but that separator is the literal " -- "
+# (spaced double-hyphen) the suffix group already anchors on, not any
+# lone "-" character. Caught only because Pump-Action Shotgun (BP01-020)
+# was the first IMPLEMENTED card with a hyphen in its own main name --
+# every earlier implemented card's name happened to be hyphen-free, so
+# this silently undercounted `implemented_names()` by one without any
+# test catching it (nothing asserts a specific count). Non-greedy `.+?`
+# still stops at the shortest match satisfying the trailing anchor, so
+# "Elphidran -- Gentle Radiance." and "Chillet -- Dragon Whisperer."
+# still resolve to their bare main names exactly as before -- verified
+# directly against both shapes, not assumed from the regex alone.
+_DOC_HEADER_RE = re.compile(r"^/// (?:BP\d+|TD\d+|PR)-\d+, (?P<name>.+?)(?: -- .*)?\.\s*$")
 _POSSESSIVE_RE = re.compile(r"^.+?'s (.+)$")
 
 # Pure `ACT Interrupt (Hand Quick [...])` text, nothing else -- Interrupt
