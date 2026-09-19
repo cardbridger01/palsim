@@ -184,17 +184,19 @@ against stated life totals: those three should fail that audit, the
 
 `python -m parser.card_census` diffs the CSV's full 150-row pool (144
 distinct names, minus Soul (SOUL-001) — no ability text and no place in the
-50, excluded per CLAUDE.md's Open Questions, so the real pool is 143)
-against `cards/*.rs`. **The build target is all 143, not just what this
-corpus references** — the deck optimizer searches the full legal pool per
-color pair, and a card `cards/` doesn't implement is invisible to that
+50 — and minus 7 `KEYWORD_ONLY_NAMES` — pure `ACT Interrupt` text with no
+card-specific behavior to ever script, e.g. Reindrix, Cryolinx, Foxparks —
+both excluded per CLAUDE.md's Open Questions/Conventions, so the real pool
+is 136) against `cards/*.rs`. **The build target is all 136, not just what
+this corpus references** — the deck optimizer searches the full legal pool
+per color pair, and a card `cards/` doesn't implement is invisible to that
 search, so scoping to the corpus's own 89 referenced names would bake the
 existing meta into the search and guarantee it only ever rediscovers known
 decks.
 
 What the corpus *does* decide is build **order**, and validation
 **confidence** — every not-yet-implemented name is labeled
-`corpus-validated` (appears in ≥1 of the 64 logs — 76 cards, build these
+`corpus-validated` (appears in ≥1 of the 64 logs — 69 cards, build these
 first, since they're the ones a Format A replay driver can check
 against real games), `test-only` (zero corpus appearances but an official
 QA ruling covers its card number — 36 cards), or `unvalidated` (built from
@@ -202,9 +204,18 @@ QA ruling covers its card number — 36 cards), or `unvalidated` (built from
 tier is exactly where a wrong `effect_text` reading would hide if the
 optimizer ever surfaces a strong deck built around one of those cards
 (handbook §10.1) — worth knowing which tier a card is in before trusting
-the optimizer's read on it. (76 + 36 + 18 = 130, not 143 — the remaining 13
+the optimizer's read on it. (69 + 36 + 18 = 123, not 136 — the remaining 13
 are already implemented in `cards/*.rs` and so don't appear in this
 not-yet-implemented diff at all.)
+
+A separate, cross-cutting `DEFERRED_LOG_RESOLVED_NAMES` list (currently
+Single-Shot Rifle, Reptyro) flags cards whose replay passes cleanly via
+generic engine-primitive dispatch — the log states the choice, so there's
+nothing for a replay driver to resolve — but that still need a real
+`cards::` script before the optimizer (which has no log to read a choice
+off of) can use them. These stay counted in their normal tier above; the
+census prints them again in their own section specifically so a clean
+replay is never mistaken for "done."
 
 ## Format A: a replay driver exists now, and what its first fixture found
 
@@ -250,4 +261,4 @@ many logs are fully replayable with only the top N of those" — close to
 linear with no natural low-N elbow, since full coverage of one log needs
 *every* card it references. That's a statement about replay-validation
 depth, not about how many cards the optimizer needs built — that number is
-143 regardless of how many are ever exercised by a real log.
+136 regardless of how many are ever exercised by a real log.

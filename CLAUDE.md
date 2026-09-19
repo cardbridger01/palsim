@@ -221,6 +221,31 @@ see that function's doc comment and `data/replays/README.md`'s known-
 anomaly section. Verify by grepping the driver for the function name
 before tagging anything `corpus-validated (format-a)` — don't infer it
 from the card's presence in a log.
+* **Does a card need a script at all? Three categories, not two — and
+this is a different question from what SCRIPTED_ACTIONS governs.**
+SCRIPTED_ACTIONS answers "if a script exists, is it actually being
+called, or is a generic primitive silently standing in for it" (the
+drift the bullet above describes). It says nothing about whether a
+script needs to exist in the first place — that's this principle, and
+the two aren't in tension, just answering different questions:
+
+  | Category | Script? | Why |
+  |-|-|-|
+  | **Keyword-only** | Never | The effect IS an engine mechanic (Interrupt 12.8.2, Nocturnal, Taunt) — no card-specific behavior exists to script. Confirmed permanently free: Reindrix, Cryolinx, Blazehowl, Blazehowl Noct, Wumpo Botan, Foxparks, Dinossom (all pure `ACT Interrupt (Hand Quick...)` text) — `parser/card_census.py` excludes these from the build-target pool, same treatment as Soul. |
+  | **Log-resolved choice** | Yes, deferred | A replay driver reads the choice off the log (which Pal was targeted, how much damage, what was drawn) — generic dispatch is correct and sufficient FOR REPLAY. But Phase 6's optimizer has no log to read; it has to MAKE that choice itself, so the card isn't actually usable by the optimizer until it gets real logic, however cleanly its replay passes. Single-Shot Rifle's OnDeploy (deal 1500 to a chosen Pal — `format_a_replay`'s own `"damage_taken"` arm) and Reptyro's ACT (look at 5, choose a gear, deploy it — `"reveal_and_deploy"`/`"look_and_take"`) are both this category: replay-complete, optimizer-incomplete. |
+  | **Branching / conditional** | Yes, now | Real conditional logic no generic dispatch could resolve even during replay (Zoe's Strategy's multiple bullets, Chillet's reveal-then-maybe-free-deploy). Scripted as soon as they're built, same as always. |
+
+  The enforcement gap this leaves: SCRIPTED_ACTIONS only catches a
+  script being BYPASSED (a category-3 card quietly falling back to a
+  primitive). Nothing catches the other direction — a category-2 card
+  mistaken for done because its replay passes cleanly with no script at
+  all. If ~20 cards got filed that way, Phase 6 would start with a
+  fifth of the pool silently inert, and the failure mode is the
+  optimizer quietly never building decks around them — which looks
+  like a result, not a bug. `parser/card_census.py` prints category-2
+  cards in their own section (hand-maintained the same way
+  `BRACKETED_FIXTURE_NAMES` is) so they can't be lost in either the
+  "done" pile or the ordinary "not yet built" pile.
 * **A Format A driver now exists** (`format_a_replay/`, three fixtures —
 `pingu_01`, `pingu_03`, `pingu_02`, `tests/format_a_replays/pingu_01.rs` /
 `pingu_03.rs` / `pingu_02.rs`), built with the `SCRIPTED_ACTIONS` registry from the

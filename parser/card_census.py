@@ -15,14 +15,53 @@ cards), and a card cards/ doesn't implement is invisible to that search
 to what today's corpus happens to reference would bake the existing meta
 into the search and guarantee the optimizer only ever rediscovers known
 decks. So this tool reports against the full CSV pool (150 rows, 144
-distinct Name values), minus one: Soul (SOUL-001) -- effect_text is
-literally "Generic Soul card - colorless resource, no ability text," and
-hard rule 5 already excludes Soul cards from deck-validation work as a
-separate 10-card deck outside the 50. A card with no ability text and no
-place in the 50 isn't something the deck optimizer can ever put in a
-deck, so it isn't part of this tool's build target either -- decided in
-CLAUDE.md's Open Questions, not silently dropped. The real pool, and
-every count below, is **143**.
+distinct Name values), minus two exclusions:
+
+  - Soul (SOUL-001) -- effect_text is literally "Generic Soul card -
+    colorless resource, no ability text," and hard rule 5 already
+    excludes Soul cards from deck-validation work as a separate 10-card
+    deck outside the 50. A card with no ability text and no place in
+    the 50 isn't something the deck optimizer can ever put in a deck,
+    so it isn't part of this tool's build target either -- decided in
+    CLAUDE.md's Open Questions, not silently dropped.
+  - `KEYWORD_ONLY_NAMES` (7 cards) -- pure `ACT Interrupt (Hand Quick
+    [(1), discard this card] OR [discard this card and 1 other card
+    from hand] Nullify the opponent's attack...)` text and nothing
+    else: Reindrix, Cryolinx, Blazehowl, Blazehowl Noct, Wumpo Botan,
+    Foxparks, Dinossom. Interrupt is an engine mechanic (12.8.2), not a
+    card-specific behavior -- there is no card-specific logic left to
+    ever write a script for, the same way there's nothing to script for
+    Soul. See CLAUDE.md's Conventions section, "Does a card need a
+    script at all? Three categories, not two," for the full principle
+    this exclusion is one instance of.
+
+The real pool, and every count below, is **136**.
+
+## A THIRD status this tool tracks, alongside VALIDATION tier: does the
+## card need a script AT ALL, and has that been checked
+
+Corpus-validated/test-only/unvalidated (below) answers "how much has
+this card's *behavior* ever been checked against anything." That's a
+different question from "does cards/ actually need to write a script
+for this," and conflating them is a real, quiet risk for the optimizer
+Phase 6 depends on this census to build toward. A replay driver only
+needs to reproduce what the LOG already states -- if the log names the
+target and the damage amount, generic engine-primitive dispatch
+resolves it with no card-specific code, and the replay passes cleanly.
+But the optimizer has no log: it has to MAKE that choice itself, which
+means the card is not actually usable by the optimizer until it gets
+real logic, however cleanly its replay passes elsewhere. A card whose
+replay-observable behavior is fully log-resolved-choice can look done
+(a green replay, an unremarkable presence in some Tier's ordinary
+listing) while still being exactly as unbuilt, from the optimizer's
+side, as anything in TIER 3. `DEFERRED_LOG_RESOLVED_NAMES` is the
+hand-maintained list (same discipline as `_BRACKETED_FIXTURES`) of
+names known to be in this state, printed in their own section below so
+they can't be lost in either the "done" pile or the ordinary
+not-yet-built pile. Add a name here the moment a replay driver's own
+generic dispatch is confirmed to be standing in for a card that will
+need real choice-making logic later -- don't wait for a census run to
+notice, same rule as tagging VALIDATION on a new script.
 
 ## Build order is still corpus-frequency, for a different reason
 
@@ -127,6 +166,34 @@ _BRACKETED_FIXTURES = {
 }
 _DOC_HEADER_RE = re.compile(r"^/// (?:BP\d+|TD\d+|PR)-\d+, (?P<name>[^-]+?)(?: -- .*)?\.\s*$")
 _POSSESSIVE_RE = re.compile(r"^.+?'s (.+)$")
+
+# Pure `ACT Interrupt (Hand Quick [...])` text, nothing else -- Interrupt
+# is an engine mechanic (12.8.2), not card-specific behavior, so there is
+# no script to ever write. Excluded from the build-target pool entirely,
+# same treatment as Soul -- see module doc comment.
+KEYWORD_ONLY_NAMES = {
+    "Reindrix",
+    "Cryolinx",
+    "Blazehowl",
+    "Blazehowl Noct",
+    "Wumpo Botan",
+    "Foxparks",
+    "Dinossom",
+}
+
+# Cards whose replay-observable behavior is fully log-resolved-choice --
+# a Format A driver's generic engine-primitive dispatch reproduces them
+# correctly because the LOG states the target/amount/outcome directly,
+# so their replay passes with no cards:: script at all. That's correct
+# for replay and incomplete for the optimizer (Phase 6 has no log to
+# read a choice off of) -- see module doc comment's "A THIRD status"
+# section. Hand-maintained, same discipline as `_BRACKETED_FIXTURES`:
+# add a name here the moment this is confirmed for it, don't wait for a
+# census run to notice.
+DEFERRED_LOG_RESOLVED_NAMES = {
+    "Single-Shot Rifle": 'OnDeploy "choose up to 1 Pal, deal 1500 Damage" -- format_a_replay\'s "damage_taken" arm reads the target off the log',
+    "Reptyro": 'ACT "look at 5, choose up to 1 gear among them and deploy it" -- format_a_replay\'s "reveal_and_deploy"/"look_and_take" arms read the choice off the log',
+}
 
 
 def format_a_files() -> list[Path]:
@@ -284,10 +351,12 @@ def main() -> None:
     appears_in, names_by_log = census(files, csv_by_name)
 
     noise = {n: f for n, f in appears_in.items() if n not in csv_by_name and n not in implemented}
-    # 144 distinct CSV Name values, minus Soul (SOUL-001) -- no ability
-    # text, no place in the 50, decided in CLAUDE.md's Open Questions.
-    # The real build-target pool is 143.
-    all_names = set(csv_by_name) - {"Soul"}
+    # 144 distinct CSV Name values, minus Soul (SOUL-001, no ability
+    # text, no place in the 50) and KEYWORD_ONLY_NAMES (pure Interrupt
+    # text, no card-specific behavior to ever script) -- both decided in
+    # CLAUDE.md's Open Questions/Conventions, not silently dropped. The
+    # real build-target pool is 136.
+    all_names = set(csv_by_name) - {"Soul"} - KEYWORD_ONLY_NAMES
     remaining = sorted(all_names - implemented)
 
     def is_qa_covered(name: str) -> bool:
@@ -332,6 +401,20 @@ def main() -> None:
         print(f"=== {len(noise)} unresolved 1-log parse artifacts (not real cards, not in any tier above) ===")
         for name, logs in sorted(noise.items(), key=lambda kv: -len(kv[1])):
             print(f"  {name!r} -- e.g. {sorted(logs)[0]}")
+
+    deferred_still_pending = {n: why for n, why in DEFERRED_LOG_RESOLVED_NAMES.items() if n in remaining}
+    if deferred_still_pending:
+        print()
+        print(
+            f"=== {len(deferred_still_pending)} DEFERRED: replay-observable behavior is fully "
+            f"log-resolved-choice -- do NOT mistake a clean replay for this card being done ==="
+        )
+        print(
+            "(the optimizer has no log to read a choice off of; each of these still needs a "
+            "real cards:: script before Phase 6 can use it -- see module doc comment)"
+        )
+        for name, why in sorted(deferred_still_pending.items()):
+            print(f"  {name} -- {why}")
 
     ranked_corpus_validated = corpus_validated  # already sorted by -log count
     print()
