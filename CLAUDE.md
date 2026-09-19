@@ -231,8 +231,8 @@ the two aren't in tension, just answering different questions:
 
   | Category | Script? | Why |
   |-|-|-|
-  | **Keyword-only** | Never | The effect IS an engine mechanic (Interrupt 12.8.2, Nocturnal, Taunt) — no card-specific behavior exists to script. Confirmed permanently free: Reindrix, Cryolinx, Blazehowl, Blazehowl Noct, Wumpo Botan, Foxparks, Dinossom (all pure `ACT Interrupt (Hand Quick...)` text) — `parser/card_census.py` excludes these from the build-target pool, same treatment as Soul. |
-  | **Log-resolved choice** | Yes, deferred | A replay driver reads the choice off the log (which Pal was targeted, how much damage, what was drawn) — generic dispatch is correct and sufficient FOR REPLAY. But Phase 6's optimizer has no log to read; it has to MAKE that choice itself, so the card isn't actually usable by the optimizer until it gets real logic, however cleanly its replay passes. Single-Shot Rifle's OnDeploy (deal 1500 to a chosen Pal — `format_a_replay`'s own `"damage_taken"` arm) and Reptyro's ACT (look at 5, choose a gear, deploy it — `"reveal_and_deploy"`/`"look_and_take"`) are both this category: replay-complete, optimizer-incomplete. |
+  | **Keyword-only** | Never | The effect IS an engine mechanic (Interrupt 12.8.2, Nocturnal, Taunt) — no card-specific behavior exists to script. Confirmed permanently free: Reindrix, Cryolinx, Blazehowl, Blazehowl Noct, Wumpo Botan, Foxparks, Dinossom (pure `ACT Interrupt (Hand Quick...)` text), plus Pyrin Noct (that same Interrupt text with the Nocturnal reminder prepended, checked to confirm no clause beyond either keyword) — `parser/card_census.py` excludes all 8 from the build-target pool, same treatment as Soul. |
+  | **Log-resolved choice** | Usually cheap to resolve, not free | A replay driver reads the choice off the log (which Pal was targeted, how much damage, what was drawn) — generic dispatch is correct and sufficient FOR REPLAY. But Phase 6's optimizer has no log to read; it has to MAKE that choice itself, so the card isn't actually usable by the optimizer until it gets real logic, however cleanly its replay passes. Turned out, for a straight "choose up to 1 Pal, deal N Damage" shape, to cost almost nothing to resolve: `single_shot_rifle_on_deploy` was written taking `target: Option<CardId>` as a parameter (the caller's problem, not the function's) and immediately stopped being deferred — the missing piece was never the choice, only the function. Reptyro's ACT (look at 5, choose a gear, deploy it, shuffle the rest — real deck-manipulation state, not one primitive call) is the harder remaining case and stays in `DEFERRED_LOG_RESOLVED_NAMES`. |
   | **Branching / conditional** | Yes, now | Real conditional logic no generic dispatch could resolve even during replay (Zoe's Strategy's multiple bullets, Chillet's reveal-then-maybe-free-deploy). Scripted as soon as they're built, same as always. |
 
   The enforcement gap this leaves: SCRIPTED_ACTIONS only catches a
@@ -246,6 +246,48 @@ the two aren't in tension, just answering different questions:
   cards in their own section (hand-maintained the same way
   `BRACKETED_FIXTURE_NAMES` is) so they can't be lost in either the
   "done" pile or the ordinary "not yet built" pile.
+* **A fourth blocker, found working down the frequency list, that isn't
+either "needs a script" or "doesn't": some Tier 1 cards need a new
+ENGINE primitive before any card script could be written at all.**
+Distinct from all three categories above — those all assume the
+engine already has whatever primitive the script would call
+(`apply_damage`, `deploy_from`, `grant_keyword`...). A few of the
+highest-frequency remaining cards don't clear that bar yet:
+  - **Suzaku** (BP01-002, 17 logs) — its CONT ("your red card deals
+    +200 Damage on non-battle damage") is a standing modifier that
+    would need to intercept every OTHER card's damage-dealing effect
+    engine-wide, not a one-shot primitive call. No such hook exists.
+  - **Grappling Gun** (BP01-045, 15 logs) — its ACT grants the
+    Vigilance skill (`〈AUTO Vigilance (At the end of your turn, stand
+    this card)〉`). `grant_keyword` can attach the keyword itself, but
+    nothing in the engine's end phase currently checks for it and
+    stands the card — the keyword's own EFFECT isn't implemented yet.
+  - **Menasting** (BP01-084, 11 logs) — Retaliate itself ("when this
+    card is put into the graveyard during battle, put the opposing
+    combat Pal into the graveyard too") has no engine implementation
+    at all (unlike Breakthrough, Interrupt, Nocturnal, Taunt, all of
+    which do) — confirmed by grep, not assumed. Needs battle-context
+    tracking (which Pal was this one's opponent in the battle that
+    just killed it), not just a keyword flag.
+  - **Univolt** (BP01-009, 10 logs) and **Foxparks**'s own Brave-only
+    print — Brave is a REAL keyword (QA #21 lists it alongside
+    Interrupt/Taunt as one whose parenthetical reminder text is
+    non-binding, same ruling that makes Interrupt/Nocturnal
+    keyword-only), but it has no engine implementation either.
+  - **Victor's Strategy** (BP01-046, 18 logs) — one of its three
+    bullets draws X cards where X = the caller's own STRUCTURE count.
+    `CardKind` only distinguishes `Pal` from `StructureOrGear` — the
+    engine cannot currently tell a Structure from a Gear, so this
+    bullet can't be counted correctly, only approximated (and
+    approximating a number hard rule 1 says to get from data, not
+    guesswork, is exactly the mistake this file exists to prevent).
+
+  None of these were built this session — writing a card script around
+  a missing primitive would either silently misrepresent what's
+  implemented or require inventing engine behavior without a rules
+  citation, both worse than leaving the card unbuilt with the reason
+  on record. Worth a scoped pass of their own (new engine primitives,
+  not card scripts) before the frequency list reaches them naturally.
 * **A Format A driver now exists** (`format_a_replay/`, three fixtures —
 `pingu_01`, `pingu_03`, `pingu_02`, `tests/format_a_replays/pingu_01.rs` /
 `pingu_03.rs` / `pingu_02.rs`), built with the `SCRIPTED_ACTIONS` registry from the

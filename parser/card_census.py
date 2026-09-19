@@ -221,9 +221,15 @@ KEYWORD_ONLY_NAMES = {
 # add a name here the moment this is confirmed for it, don't wait for a
 # census run to notice.
 DEFERRED_LOG_RESOLVED_NAMES = {
-    "Single-Shot Rifle": 'OnDeploy "choose up to 1 Pal, deal 1500 Damage" -- format_a_replay\'s "damage_taken" arm reads the target off the log',
     "Reptyro": 'ACT "look at 5, choose up to 1 gear among them and deploy it" -- format_a_replay\'s "reveal_and_deploy"/"look_and_take" arms read the choice off the log',
 }
+# Single-Shot Rifle was here too -- removed once `single_shot_rifle_on_deploy`
+# was actually written (cards/src/td01.rs) and wired into format_a_replay's
+# own "damage_taken" arm for real. The real cost was never the choice
+# ("choose up to 1 Pal" is a parameter the caller supplies, not something
+# the function resolves), only the missing function -- exactly the pattern
+# CLAUDE.md's Conventions section flags as worth reconsidering once this
+# list is examined card by card rather than left to grow.
 
 
 def format_a_files() -> list[Path]:

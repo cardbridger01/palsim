@@ -196,7 +196,7 @@ decks.
 
 What the corpus *does* decide is build **order**, and validation
 **confidence** — every not-yet-implemented name is labeled
-`corpus-validated` (appears in ≥1 of the 64 logs — 67 cards, build these
+`corpus-validated` (appears in ≥1 of the 64 logs — 59 cards, build these
 first, since they're the ones a Format A replay driver can check
 against real games), `test-only` (zero corpus appearances but an official
 QA ruling covers its card number — 36 cards), or `unvalidated` (built from
@@ -204,12 +204,12 @@ QA ruling covers its card number — 36 cards), or `unvalidated` (built from
 tier is exactly where a wrong `effect_text` reading would hide if the
 optimizer ever surfaces a strong deck built around one of those cards
 (handbook §10.1) — worth knowing which tier a card is in before trusting
-the optimizer's read on it. (67 + 36 + 18 = 121, not 135 — the remaining 14
+the optimizer's read on it. (59 + 36 + 18 = 113, not 135 — the remaining 22
 are already implemented in `cards/*.rs` and so don't appear in this
 not-yet-implemented diff at all.)
 
 A separate, cross-cutting `DEFERRED_LOG_RESOLVED_NAMES` list (currently
-Single-Shot Rifle, Reptyro) flags cards whose replay passes cleanly via
+Reptyro) flags cards whose replay passes cleanly via
 generic engine-primitive dispatch — the log states the choice, so there's
 nothing for a replay driver to resolve — but that still need a real
 `cards::` script before the optimizer (which has no log to read a choice
