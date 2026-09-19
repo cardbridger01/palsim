@@ -153,6 +153,32 @@ pub fn rocket_launcher_granted_sweep(game: &mut GameState, holder: CardId, holde
     game.move_to_graveyard(holder, Zone::Base); // "put this card into the graveyard"
 }
 
+/// BP01-020, Pump-Action Shotgun.
+///
+/// VALIDATION: unvalidated -- appears in 32 Format A logs (card_census's
+/// own Tier 1 ranking), but no fixture built so far happens to exercise
+/// it, and no QA ruling covers BP01-020 either. Built from effect_text
+/// alone; checked only by this module's own unit test below.
+///
+/// effect_text: "AUTO OnDeploy Choose all of your opponent's Pals, and
+/// deal 1200 Damage. ACT [Rest this card] Choose 1 Pal, and it gets
+/// Power +200 until end of turn."
+///
+/// Only the OnDeploy half gets a script. It's unconditional ("all,"
+/// not "choose up to N") -- no decision for a caller to make, same
+/// shape as `rocket_launcher_granted_sweep`'s own sweep, just without
+/// a granted-ability holder to track. The ACT half ("[Rest this card]
+/// Choose 1 Pal, +200 Power") is the exact generic "Gear ACT power
+/// buff" shape already left unscripted for Grappling Gun/Single-Shot
+/// Rifle (see `replay/`'s own module doc comment) -- a replay driver
+/// applies it generically at its own "power_buff" event, no
+/// card-specific logic needed.
+pub fn pump_action_shotgun_on_deploy(game: &mut GameState, owner: PlayerId) {
+    for pal in game.pals_in_base(opponent_of(owner)) {
+        game.apply_damage(pal, 1200);
+    }
+}
+
 /// BP01-028, Pengullet -- Yearning for the Sky.
 ///
 /// VALIDATION: corpus-validated (bracketed) -- `replay/`'s "activate" arm
@@ -486,6 +512,20 @@ mod tests {
         assert_eq!(game.damage_taken(victim_a), holder_power, "X = this card's [the holder's] Power");
         assert_eq!(game.damage_taken(victim_b), holder_power);
         assert_eq!(game.zone_of(holder), Zone::Graveyard, "'put this card into the graveyard' -- the holder destroys itself");
+    }
+
+    #[test]
+    fn pump_action_shotgun_on_deploy_deals_1200_to_every_opponent_pal_and_leaves_owners_own_pals_untouched() {
+        let mut game = GameState::test_scenario();
+        let opponent_a = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
+        let opponent_b = game.deploy(PlayerId::P1, "EFILLER-B", Zone::Base).unwrap();
+        let own_pal = game.deploy(PlayerId::P2, "EFILLER-C", Zone::Base).unwrap();
+
+        pump_action_shotgun_on_deploy(&mut game, PlayerId::P2);
+
+        assert_eq!(game.damage_taken(opponent_a), 1200);
+        assert_eq!(game.damage_taken(opponent_b), 1200);
+        assert_eq!(game.damage_taken(own_pal), 0, "\"your opponent's Pals\" -- the controller's own Pals are untouched");
     }
 
     #[test]
