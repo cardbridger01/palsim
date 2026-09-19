@@ -1140,13 +1140,29 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
             // "explode" branch already use. A card surviving non-lethal
             // damage (pingu_02's Jormuntide, 1500 here then a separate
             // 700-and-destroyed line) is exactly 1.3.2.4's unclamped-
-            // Power model -- `apply_damage` alone, no graveyard move;
-            // the SEPARATE "destroyed" shape ("X took N damage and was
+            // Power model -- damage alone, no graveyard move; the
+            // SEPARATE "destroyed" shape ("X took N damage and was
             // destroyed.") handles the lethal case as its own action.
             let name = &event.cards[0];
             let damage = res_u64(event, "damage").unwrap_or(0) as u32;
             let target = find_by_name_either_owner(game, Zone::Base, name).expect("damage_taken: target not found in either base");
-            game.apply_damage(target, damage);
+            // TD01-010's own OnDeploy -- pingu_02's occurrence (line 63,
+            // right after "redpurple deployed Single-Shot Rifle." at
+            // line 62) is genuinely this card's own trigger, same
+            // discriminator `last_deployed` + main-name check the
+            // "draw" arm already uses for Jormuntide's OnDeploy. Calling
+            // the real function here (not the generic apply_damage this
+            // arm still uses for anything else) is what makes this
+            // occurrence corpus-validated (format-a) for real, per the
+            // discipline CLAUDE.md's Conventions section already
+            // established -- amount==1500 is load-bearing, not
+            // decorative: the ACT half grants +200 Power, a different
+            // number, so this can't misfire on that branch instead.
+            if damage == 1500 && game.last_deployed().map(|c| game.main_name_of(c) == "Single-Shot Rifle").unwrap_or(false) {
+                cards::td01::single_shot_rifle_on_deploy(game, Some(target));
+            } else {
+                game.apply_damage(target, damage);
+            }
             None
         }
 

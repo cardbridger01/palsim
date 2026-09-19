@@ -1,6 +1,6 @@
 //! TD02 trial deck card scripts needed by battle1.
 
-use engine::state::{CardId, GameState, Zone};
+use engine::state::{CardId, GameState, PlayerId, Zone};
 
 /// TD02-021, Strike from the Darkness.
 ///
@@ -53,10 +53,32 @@ pub fn astegon_on_deploy(game: &mut GameState, target: CardId) {
     game.reduce_power(target, 1000);
 }
 
+/// TD02-014, Leezpunk.
+///
+/// VALIDATION: unvalidated -- appears in 13 Format A logs, but no
+/// fixture built so far happens to exercise it; no QA ruling covers
+/// TD02-014 either.
+///
+/// effect_text: "AUTO When this card is put into the graveyard, your
+/// opponent chooses 1 card from their hand, and discards it."
+///
+/// A base -> graveyard-triggered forced discard of the OPPONENT'S own
+/// hand card -- same zone move as `zoes_strategy_force_discard`
+/// (`deploy_from(..., Zone::Hand, Zone::Graveyard)`), just this card's
+/// own trigger instead of Zoe's Strategy's. `discarded` is the
+/// opponent's already-chosen card (QA #10 rules out any hand-size
+/// limit forcing a specific choice; "their" own pick is the caller's
+/// to resolve, not this function's). Callers are responsible for
+/// checking `graveyard_trigger_fired` (QA #41: base -> graveyard only)
+/// before calling this, same division of labor as every other
+/// graveyard-trigger script in this crate.
+pub fn leezpunk_graveyard_trigger(game: &mut GameState, opponent: PlayerId, discarded: CardId) {
+    game.deploy_from(opponent, discarded, Zone::Hand, Zone::Graveyard);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
-    use engine::state::PlayerId;
 
     #[test]
     fn strike_from_the_darkness_puts_the_chosen_pal_into_the_graveyard() {
@@ -78,5 +100,15 @@ mod tests {
 
         assert_eq!(game.power(target), -500, "unclamped -- 1.3.2.4");
         assert_eq!(game.zone_of(target), Zone::Base, "negative Power alone must not kill (QA #92/#93)");
+    }
+
+    #[test]
+    fn leezpunk_graveyard_trigger_discards_the_chosen_opponent_hand_card() {
+        let mut game = GameState::test_scenario();
+        let discarded = game.place(PlayerId::P2, "EFILLER-000", Zone::Hand);
+
+        leezpunk_graveyard_trigger(&mut game, PlayerId::P2, discarded);
+
+        assert_eq!(game.zone_of(discarded), Zone::Graveyard);
     }
 }

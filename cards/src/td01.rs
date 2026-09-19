@@ -29,6 +29,36 @@ pub fn elphidran_aqua_on_deploy(game: &mut GameState, player: PlayerId, chosen: 
     game.move_to_top_of_deck(player, chosen, Zone::Hand);
 }
 
+/// TD01-010, Single-Shot Rifle.
+///
+/// VALIDATION: corpus-validated (format-a) -- `format_a_replay`'s own
+/// "damage_taken" arm calls this function for real (discriminated by
+/// `last_deployed` + amount==1500, same shape as Jormuntide's own
+/// OnDeploy draw), for pingu_02's one occurrence (line 63, right after
+/// this card's own deploy at line 62). Grep-verified against
+/// `format_a_replay/src/lib.rs`, not inferred from the card's presence
+/// in a log. Previously tracked in `parser/card_census.py`'s
+/// `DEFERRED_LOG_RESOLVED_NAMES` on the theory that "the log already
+/// resolves the choice" made deferring costless -- removed from that
+/// list in the same commit as this function, since the real cost was
+/// never the choice (`target` is a parameter the caller supplies, not
+/// something this function resolves itself), only the missing
+/// function.
+///
+/// effect_text: "AUTO OnDeploy Choose up to 1 Pal, and deal 1500
+/// Damage; ACT [Rest this card] Choose 1 Pal, and it gets Power +200
+/// until end of turn."
+///
+/// Only the OnDeploy half gets a script. The ACT half ("[Rest this
+/// card] Choose 1 Pal, +200 Power") is the generic "Gear ACT power
+/// buff" shape `replay/`'s own module doc comment already leaves
+/// unscripted for this exact card and Grappling Gun.
+pub fn single_shot_rifle_on_deploy(game: &mut GameState, target: Option<CardId>) {
+    if let Some(target) = target {
+        game.apply_damage(target, 1500);
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -53,5 +83,25 @@ mod tests {
         // be cosmetic -- the very next draw must return THIS card.
         let next_drawn = game.draw(PlayerId::P1);
         assert_eq!(next_drawn, victors_strategy);
+    }
+
+    #[test]
+    fn single_shot_rifle_on_deploy_deals_1500_when_a_target_is_chosen() {
+        let mut game = GameState::test_scenario();
+        let target = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
+
+        single_shot_rifle_on_deploy(&mut game, Some(target));
+
+        assert_eq!(game.damage_taken(target), 1500);
+    }
+
+    #[test]
+    fn single_shot_rifle_on_deploy_with_no_target_does_nothing() {
+        let mut game = GameState::test_scenario();
+        let bystander = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
+
+        single_shot_rifle_on_deploy(&mut game, None);
+
+        assert_eq!(game.damage_taken(bystander), 0);
     }
 }

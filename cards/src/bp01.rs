@@ -359,6 +359,139 @@ pub fn zoes_strategy_butcher(game: &mut GameState, own_pal: CardId) {
     game.butcher(own_pal);
 }
 
+/// BP01-007, Kitsun.
+///
+/// VALIDATION: unvalidated -- appears in 8 Format A logs, but no
+/// fixture built so far happens to exercise it; no QA ruling covers
+/// BP01-007 either.
+///
+/// effect_text: "AUTO OnDeploy Choose up to 1 <7-diamond-or-greater>
+/// Pal, and deal 1200 Damage."
+///
+/// The <7-diamond-or-greater> cost restriction on the legal target is
+/// enforced by whoever calls this (the same division of labor
+/// `find_defender_or_materialize`'s own doc comment already describes
+/// for 9.2.3 -- a caller that hands this function an illegal target is
+/// this driver's own bug, not something the card script re-validates).
+/// `target` mirrors `single_shot_rifle_on_deploy`'s own shape exactly
+/// -- same "choose up to 1 Pal, deal N Damage" effect, different N.
+pub fn kitsun_on_deploy(game: &mut GameState, target: Option<CardId>) {
+    if let Some(target) = target {
+        game.apply_damage(target, 1200);
+    }
+}
+
+/// BP01-021, Makeshift Handgun.
+///
+/// VALIDATION: unvalidated -- appears in 9 Format A logs, but no
+/// fixture built so far happens to exercise it; no QA ruling covers
+/// BP01-021 either.
+///
+/// effect_text: "AUTO OnDeploy Choose up to 1 Pal, and deal 500
+/// Damage. ACT [Rest this card] Choose 1 Pal, and it gets Power +200
+/// until end of turn."
+///
+/// Only the OnDeploy half gets a script, same reasoning as
+/// `single_shot_rifle_on_deploy`'s own doc comment: the ACT half is
+/// the generic "Gear ACT power buff" shape already left unscripted for
+/// Grappling Gun/Single-Shot Rifle.
+pub fn makeshift_handgun_on_deploy(game: &mut GameState, target: Option<CardId>) {
+    if let Some(target) = target {
+        game.apply_damage(target, 500);
+    }
+}
+
+/// BP01-015, Mounted Machine Gun.
+///
+/// VALIDATION: unvalidated -- appears in 8 Format A logs, but no
+/// fixture built so far happens to exercise it; no QA ruling covers
+/// BP01-015 either.
+///
+/// effect_text: "ACT 1/Turn [Consume X Material, assign 1 Pal] Perform
+/// <Choose 1 Pal, and deal 500 Damage.> X times."
+///
+/// X (how much Material to consume, and therefore how many times the
+/// bracketed effect repeats) and each iteration's own target are both
+/// the caller's choice, same division of labor as everywhere else in
+/// this crate -- `targets` is the already-resolved list, one chosen
+/// Pal per repetition (the same Pal may legally appear more than
+/// once). Once-per-turn tracking and the Material cost payment itself
+/// are the caller's responsibility too, not re-validated here.
+pub fn mounted_machine_gun_act(game: &mut GameState, targets: &[CardId]) {
+    for &target in targets {
+        game.apply_damage(target, 500);
+    }
+}
+
+/// BP01-001, Jormuntide Ignis.
+///
+/// VALIDATION: unvalidated -- appears in 21 Format A logs, but no
+/// fixture built so far happens to exercise it; QA #92/#93 cover this
+/// card's own unclamped-Power edge cases, not this ACT, so this
+/// specific ability has no ruling either.
+///
+/// effect_text: "ACT 1/Turn [(3)] OR [Discard 2 cards from hand] Stand
+/// this card."
+///
+/// The either/or cost (3 Souls, or discard 2 cards) is the caller's
+/// to pay -- already-generic engine primitives (soul spend, discard)
+/// handle either path; this function is only the effect itself.
+/// `stand_via_effect` (not `rest`'s own inverse, which doesn't exist)
+/// is QA #61/Relaxaurus's own lock-respecting stand path -- the
+/// correct one for a card-effect-driven stand, as opposed to the
+/// stand PHASE's own unconditional one.
+pub fn jormuntide_ignis_stand(game: &mut GameState, this_card: CardId) -> Result<(), String> {
+    game.stand_via_effect(this_card)
+}
+
+/// BP01-078, Lyleen Noct.
+///
+/// VALIDATION: unvalidated -- appears in 15 Format A logs, but no
+/// fixture built so far happens to exercise it; no QA ruling covers
+/// BP01-078 either.
+///
+/// effect_text: "ACT [Rest this card, discard 1 card from hand] Choose
+/// 1 <6-diamond-or-less> Pal from your graveyard, and deploy it in the
+/// rest state."
+///
+/// This card's own [Rest this card, discard 1 card from hand] cost and
+/// the <6-diamond-or-less> restriction on `chosen` are both the
+/// caller's responsibility, same division of labor as every other
+/// script in this crate. "Deploy it in the rest state" is the one
+/// thing worth getting right here: an ordinary `deploy_from` leaves a
+/// card standing by default (QA #11's usual case), so `rest` is called
+/// immediately after, not left to whatever the next stand phase would
+/// do anyway.
+pub fn lyleen_noct_act(game: &mut GameState, owner: PlayerId, chosen: CardId) {
+    game.deploy_from(owner, chosen, Zone::Graveyard, Zone::Base);
+    game.rest(chosen);
+}
+
+/// BP01-004, Bushi.
+///
+/// VALIDATION: unvalidated -- appears in 9 Format A logs, but no
+/// fixture built so far happens to exercise it; no QA ruling covers
+/// BP01-004 either.
+///
+/// effect_text: "AUTO At the end of the battle this card attacked, you
+/// may return this card to hand. ACT Interrupt (Hand Quick [(1),
+/// discard this card] OR [Discard this card and 1 other card from
+/// hand] Nullify the opponent's attack. Battle damage does not occur)"
+///
+/// Only the end-of-battle half gets a script -- the ACT Interrupt half
+/// is the fully generic keyword mechanic `KEYWORD_ONLY_NAMES`'s own 8
+/// cards already cover (`parser/card_census.py`), just paired here with
+/// a second, real ability the way Pyrin Noct's Nocturnal ISN'T (Pyrin
+/// Noct has no second clause beyond its two keywords; Bushi does).
+/// "You may" (QA #46: never mandatory) makes `returned` the caller's
+/// own choice, not resolved here -- `false` is a legal, common choice,
+/// not a missing one.
+pub fn bushi_end_of_battle(game: &mut GameState, owner: PlayerId, this_card: CardId, returned: bool) {
+    if returned {
+        game.deploy_from(owner, this_card, Zone::Base, Zone::Hand);
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -636,5 +769,84 @@ mod tests {
 
         assert_eq!(game.zone_of(card), Zone::Graveyard);
         assert!(game.graveyard_trigger_fired(card), "QA #81: Butcher is always a base -> graveyard move");
+    }
+
+    #[test]
+    fn kitsun_on_deploy_deals_1200_when_a_target_is_chosen() {
+        let mut game = GameState::test_scenario();
+        let target = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
+
+        kitsun_on_deploy(&mut game, Some(target));
+
+        assert_eq!(game.damage_taken(target), 1200);
+    }
+
+    #[test]
+    fn kitsun_on_deploy_with_no_target_does_nothing() {
+        let mut game = GameState::test_scenario();
+        let bystander = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
+
+        kitsun_on_deploy(&mut game, None);
+
+        assert_eq!(game.damage_taken(bystander), 0);
+    }
+
+    #[test]
+    fn makeshift_handgun_on_deploy_deals_500_when_a_target_is_chosen() {
+        let mut game = GameState::test_scenario();
+        let target = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
+
+        makeshift_handgun_on_deploy(&mut game, Some(target));
+
+        assert_eq!(game.damage_taken(target), 500);
+    }
+
+    #[test]
+    fn mounted_machine_gun_act_deals_500_per_target_including_a_repeated_one() {
+        let mut game = GameState::test_scenario();
+        let a = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
+        let b = game.deploy(PlayerId::P1, "EFILLER-B", Zone::Base).unwrap();
+
+        mounted_machine_gun_act(&mut game, &[a, b, a]);
+
+        assert_eq!(game.damage_taken(a), 1000, "X = 3 repetitions, two of them targeting the same Pal");
+        assert_eq!(game.damage_taken(b), 500);
+    }
+
+    #[test]
+    fn jormuntide_ignis_stand_stands_a_rested_card() {
+        let mut game = GameState::test_scenario();
+        let card = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
+        game.rest(card);
+
+        let result = jormuntide_ignis_stand(&mut game, card);
+
+        assert!(result.is_ok());
+        assert!(!game.is_resting(card));
+    }
+
+    #[test]
+    fn lyleen_noct_act_deploys_the_chosen_graveyard_pal_already_rested() {
+        let mut game = GameState::test_scenario();
+        let card = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
+        game.move_to_graveyard(card, Zone::Base);
+
+        lyleen_noct_act(&mut game, PlayerId::P1, card);
+
+        assert_eq!(game.zone_of(card), Zone::Base);
+        assert!(game.is_resting(card), "\"deploy it in the rest state\" -- not left standing by an ordinary deploy's own default");
+    }
+
+    #[test]
+    fn bushi_end_of_battle_returns_to_hand_only_when_chosen() {
+        let mut game = GameState::test_scenario();
+        let stays = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
+        let returns = game.deploy(PlayerId::P1, "EFILLER-B", Zone::Base).unwrap();
+
+        bushi_end_of_battle(&mut game, PlayerId::P1, stays, false);
+        bushi_end_of_battle(&mut game, PlayerId::P1, returns, true);
+
+        assert_eq!(game.zone_of(stays), Zone::Base, "\"you may\" -- declining is a legal, common choice");
+        assert_eq!(game.zone_of(returns), Zone::Hand);
     }
 }
