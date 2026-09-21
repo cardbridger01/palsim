@@ -53,9 +53,17 @@ pub fn elphidran_aqua_on_deploy(game: &mut GameState, player: PlayerId, chosen: 
 /// card] Choose 1 Pal, +200 Power") is the generic "Gear ACT power
 /// buff" shape `replay/`'s own module doc comment already leaves
 /// unscripted for this exact card and Grappling Gun.
-pub fn single_shot_rifle_on_deploy(game: &mut GameState, target: Option<CardId>) {
+///
+/// This is a Red card (BP01-002 Suzaku's own +200 non-battle-damage
+/// boost applies to it -- QA #53), so damage goes through
+/// `deal_damage_from_source(source, ...)`, never `apply_damage`
+/// directly -- caught only by review, not by this crate's own tests,
+/// since no fixture deploys Suzaku alongside any of these cards yet.
+/// `source` is `self` (this card is the one dealing the damage), not
+/// the caller's Suzaku.
+pub fn single_shot_rifle_on_deploy(game: &mut GameState, source: CardId, target: Option<CardId>) {
     if let Some(target) = target {
-        game.apply_damage(target, 1500);
+        game.deal_damage_from_source(source, target, 1500);
     }
 }
 
@@ -88,20 +96,43 @@ mod tests {
     #[test]
     fn single_shot_rifle_on_deploy_deals_1500_when_a_target_is_chosen() {
         let mut game = GameState::test_scenario();
-        let target = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
+        let source = game.deploy(PlayerId::P1, "EFILLER-RIFLE", Zone::Base).unwrap();
+        game.set_color(source, "Red");
+        let target = game.deploy(PlayerId::P2, "EFILLER-A", Zone::Base).unwrap();
 
-        single_shot_rifle_on_deploy(&mut game, Some(target));
+        single_shot_rifle_on_deploy(&mut game, source, Some(target));
 
-        assert_eq!(game.damage_taken(target), 1500);
+        assert_eq!(game.damage_taken(target), 1500, "no Suzaku on the field -- unboosted");
     }
 
     #[test]
     fn single_shot_rifle_on_deploy_with_no_target_does_nothing() {
         let mut game = GameState::test_scenario();
+        let source = game.deploy(PlayerId::P1, "EFILLER-RIFLE", Zone::Base).unwrap();
+        game.set_color(source, "Red");
         let bystander = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
 
-        single_shot_rifle_on_deploy(&mut game, None);
+        single_shot_rifle_on_deploy(&mut game, source, None);
 
         assert_eq!(game.damage_taken(bystander), 0);
+    }
+
+    #[test]
+    fn single_shot_rifle_on_deploy_gets_suzakus_plus_200_since_the_source_is_red() {
+        // QA #53: Suzaku's CONT boosts non-battle damage from ANY red
+        // card the controller has in base, gears included -- the exact
+        // interaction this function's own doc comment flags as
+        // uncaught by any fixture. `deal_damage_from_source` (not
+        // `apply_damage`) is what makes this pass.
+        let mut game = GameState::test_scenario();
+        let suzaku = game.deploy(PlayerId::P1, "EFILLER-SUZAKU", Zone::Base).unwrap();
+        game.set_boosts_red_pal_damage(suzaku, true);
+        let source = game.deploy(PlayerId::P1, "EFILLER-RIFLE", Zone::Base).unwrap();
+        game.set_color(source, "Red");
+        let target = game.deploy(PlayerId::P2, "EFILLER-A", Zone::Base).unwrap();
+
+        single_shot_rifle_on_deploy(&mut game, source, Some(target));
+
+        assert_eq!(game.damage_taken(target), 1700, "1500 + Suzaku's +200");
     }
 }

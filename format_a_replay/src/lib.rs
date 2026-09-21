@@ -487,51 +487,63 @@ pub fn new_game_for_replay(_meta: &FormatAMeta) -> GameState {
 
 /// Per-card facts this replay needs that aren't in the JSON itself --
 /// sourced from `data/11cardattributes-with-elements.csv`'s Cost/
-/// Strike/Elements columns, keyed by bare MAIN name (Format A never
-/// gives the full "Main -- Subtitle" form, unlike the bracketed
+/// Strike/Elements/Color columns, keyed by bare MAIN name (Format A
+/// never gives the full "Main -- Subtitle" form, unlike the bracketed
 /// format's own `card_meta`) -- hard rule 1/3. Where a main name has
 /// more than one print (Pengullet: BP01-028 and TD01-014), the print
 /// this replay's own events actually need is the one used; nothing in
 /// pingu_01 depends on Pengullet's own Strike, so the choice between
 /// prints doesn't affect any checked outcome here.
+///
+/// `color` was added after `materialize` shipped without it, once
+/// writing `deal_damage_from_source`-based card scripts (Single-Shot
+/// Rifle et al.) surfaced that every driver-materialized card had
+/// `color: None` -- QA #53's Suzaku boost checks the DAMAGE SOURCE's
+/// own color, so a real script calling the real primitive would still
+/// silently never boost anything this driver ever deploys, without
+/// this. Same shape as Color being a separate axis from Element (hard
+/// rule 2): read from data, never inferred (Color=Colorless is a real,
+/// distinct value, not "no color set").
 struct CardMeta {
     cost: u32,
     strike: i32,
     elements: &'static [&'static str],
+    color: &'static str,
 }
 
 fn card_meta(main_name: &str) -> Option<CardMeta> {
     match main_name {
-        "Astegon" => Some(CardMeta { cost: 8, strike: 3, elements: &["Dragon", "Dark"] }),
-        "Aurora Guide" => Some(CardMeta { cost: 2, strike: 0, elements: &[] }),
-        "Blazehowl Noct" => Some(CardMeta { cost: 6, strike: 2, elements: &["Fire", "Dark"] }),
-        "Chillet" => Some(CardMeta { cost: 5, strike: 2, elements: &["Ice", "Dragon"] }),
-        "Cryolinx" => Some(CardMeta { cost: 6, strike: 2, elements: &["Ice"] }),
-        "Elphidran" => Some(CardMeta { cost: 4, strike: 2, elements: &["Dragon"] }),
-        "Elphidran Aqua" => Some(CardMeta { cost: 6, strike: 2, elements: &["Dragon", "Water"] }),
+        "Astegon" => Some(CardMeta { cost: 8, strike: 3, elements: &["Dragon", "Dark"], color: "Purple" }),
+        "Aurora Guide" => Some(CardMeta { cost: 2, strike: 0, elements: &[], color: "Blue" }),
+        "Blazehowl Noct" => Some(CardMeta { cost: 6, strike: 2, elements: &["Fire", "Dark"], color: "Purple" }),
+        "Chillet" => Some(CardMeta { cost: 5, strike: 2, elements: &["Ice", "Dragon"], color: "Blue" }),
+        "Cryolinx" => Some(CardMeta { cost: 6, strike: 2, elements: &["Ice"], color: "Blue" }),
+        "Elphidran" => Some(CardMeta { cost: 4, strike: 2, elements: &["Dragon"], color: "Colorless" }),
+        "Elphidran Aqua" => Some(CardMeta { cost: 6, strike: 2, elements: &["Dragon", "Water"], color: "Blue" }),
         // BP01-006 print (Cost 2, Strike 1, Brave 300) -- not TD01-004
         // (Cost 4, Strike 2, Interrupt). Format A gives only the bare
         // main name, so the print is picked by matching the log's own
         // observed behavior: pingu_02's Foxparks deals exactly 1 direct
         // player damage per unblocked attack (lines 29, 41, 161), which
-        // is BP01-006's own printed Strike, not TD01-004's.
-        "Foxparks" => Some(CardMeta { cost: 2, strike: 1, elements: &["Fire"] }),
-        "Foxparks' Harness" => Some(CardMeta { cost: 3, strike: 0, elements: &[] }),
-        "Jormuntide" => Some(CardMeta { cost: 8, strike: 3, elements: &["Dragon", "Water"] }),
-        "Leezpunk" => Some(CardMeta { cost: 3, strike: 1, elements: &["Dark"] }),
-        "Lyleen Noct" => Some(CardMeta { cost: 8, strike: 3, elements: &["Dark"] }),
-        "Medical Supplies" => Some(CardMeta { cost: 7, strike: 0, elements: &[] }),
-        "Menasting" => Some(CardMeta { cost: 5, strike: 2, elements: &["Dark", "Ground"] }),
-        "Pal Sphere" => Some(CardMeta { cost: 4, strike: 0, elements: &[] }),
-        "Pengullet" => Some(CardMeta { cost: 4, strike: 2, elements: &["Water", "Ice"] }),
-        "Pengullet Rocket Launcher" => Some(CardMeta { cost: 4, strike: 0, elements: &[] }),
-        "Pyrin Noct" => Some(CardMeta { cost: 7, strike: 3, elements: &["Fire", "Dark"] }),
-        "Reindrix" => Some(CardMeta { cost: 5, strike: 2, elements: &["Ice"] }),
-        "Relaxaurus" => Some(CardMeta { cost: 7, strike: 3, elements: &["Dragon", "Water"] }),
-        "Reptyro" => Some(CardMeta { cost: 8, strike: 3, elements: &["Fire", "Ground"] }),
-        "Single-Shot Rifle" => Some(CardMeta { cost: 4, strike: 0, elements: &[] }),
-        "Strike from the Darkness" => Some(CardMeta { cost: 4, strike: 0, elements: &[] }),
-        "Zoe's Strategy" => Some(CardMeta { cost: 3, strike: 0, elements: &[] }),
+        // is BP01-006's own printed Strike, not TD01-004's. Both prints
+        // are Red regardless, so this choice never affected `color`.
+        "Foxparks" => Some(CardMeta { cost: 2, strike: 1, elements: &["Fire"], color: "Red" }),
+        "Foxparks' Harness" => Some(CardMeta { cost: 3, strike: 0, elements: &[], color: "Red" }),
+        "Jormuntide" => Some(CardMeta { cost: 8, strike: 3, elements: &["Dragon", "Water"], color: "Blue" }),
+        "Leezpunk" => Some(CardMeta { cost: 3, strike: 1, elements: &["Dark"], color: "Purple" }),
+        "Lyleen Noct" => Some(CardMeta { cost: 8, strike: 3, elements: &["Dark"], color: "Purple" }),
+        "Medical Supplies" => Some(CardMeta { cost: 7, strike: 0, elements: &[], color: "Purple" }),
+        "Menasting" => Some(CardMeta { cost: 5, strike: 2, elements: &["Dark", "Ground"], color: "Purple" }),
+        "Pal Sphere" => Some(CardMeta { cost: 4, strike: 0, elements: &[], color: "Blue" }),
+        "Pengullet" => Some(CardMeta { cost: 4, strike: 2, elements: &["Water", "Ice"], color: "Blue" }),
+        "Pengullet Rocket Launcher" => Some(CardMeta { cost: 4, strike: 0, elements: &[], color: "Blue" }),
+        "Pyrin Noct" => Some(CardMeta { cost: 7, strike: 3, elements: &["Fire", "Dark"], color: "Purple" }),
+        "Reindrix" => Some(CardMeta { cost: 5, strike: 2, elements: &["Ice"], color: "Blue" }),
+        "Relaxaurus" => Some(CardMeta { cost: 7, strike: 3, elements: &["Dragon", "Water"], color: "Blue" }),
+        "Reptyro" => Some(CardMeta { cost: 8, strike: 3, elements: &["Fire", "Ground"], color: "Red" }),
+        "Single-Shot Rifle" => Some(CardMeta { cost: 4, strike: 0, elements: &[], color: "Red" }),
+        "Strike from the Darkness" => Some(CardMeta { cost: 4, strike: 0, elements: &[], color: "Purple" }),
+        "Zoe's Strategy" => Some(CardMeta { cost: 3, strike: 0, elements: &[], color: "Purple" }),
         _ => None,
     }
 }
@@ -546,6 +558,7 @@ fn materialize(game: &mut GameState, owner: PlayerId, zone: Zone, main_name: &st
         game.set_cost(card, meta.cost);
         game.set_strike(card, meta.strike);
         game.set_elements(card, meta.elements.iter().map(|s| s.to_string()).collect());
+        game.set_color(card, meta.color);
     }
     card
 }
@@ -1158,10 +1171,10 @@ pub fn apply_event(driver: &mut ReplayDriver, game: &mut GameState, participants
             // established -- amount==1500 is load-bearing, not
             // decorative: the ACT half grants +200 Power, a different
             // number, so this can't misfire on that branch instead.
-            if damage == 1500 && game.last_deployed().map(|c| game.main_name_of(c) == "Single-Shot Rifle").unwrap_or(false) {
-                cards::td01::single_shot_rifle_on_deploy(game, Some(target));
-            } else {
-                game.apply_damage(target, damage);
+            let single_shot_rifle_source = game.last_deployed().filter(|&c| game.main_name_of(c) == "Single-Shot Rifle");
+            match (damage, single_shot_rifle_source) {
+                (1500, Some(source)) => cards::td01::single_shot_rifle_on_deploy(game, source, Some(target)),
+                _ => game.apply_damage(target, damage),
             }
             None
         }

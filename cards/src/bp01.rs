@@ -158,7 +158,7 @@ pub fn rocket_launcher_granted_sweep(game: &mut GameState, holder: CardId, holde
 /// VALIDATION: unvalidated -- appears in 32 Format A logs (card_census's
 /// own Tier 1 ranking), but no fixture built so far happens to exercise
 /// it, and no QA ruling covers BP01-020 either. Built from effect_text
-/// alone; checked only by this module's own unit test below.
+/// alone; checked only by this module's own unit tests below.
 ///
 /// effect_text: "AUTO OnDeploy Choose all of your opponent's Pals, and
 /// deal 1200 Damage. ACT [Rest this card] Choose 1 Pal, and it gets
@@ -173,9 +173,19 @@ pub fn rocket_launcher_granted_sweep(game: &mut GameState, holder: CardId, holde
 /// Rifle (see `replay/`'s own module doc comment) -- a replay driver
 /// applies it generically at its own "power_buff" event, no
 /// card-specific logic needed.
-pub fn pump_action_shotgun_on_deploy(game: &mut GameState, owner: PlayerId) {
+///
+/// This is a Red card -- QA #53 (Suzaku): non-battle damage from a red
+/// source gets +200 if its controller has an active boosting CONT in
+/// base. `source` (this card itself) is threaded through
+/// `deal_damage_from_source`, never `apply_damage` directly; `owner` is
+/// derived from `source` rather than taken as its own parameter, since
+/// `deal_damage_from_source` already needs the source card's identity
+/// and re-deriving owner from it avoids two params that could
+/// disagree.
+pub fn pump_action_shotgun_on_deploy(game: &mut GameState, source: CardId) {
+    let owner = game.owner_of(source);
     for pal in game.pals_in_base(opponent_of(owner)) {
-        game.apply_damage(pal, 1200);
+        game.deal_damage_from_source(source, pal, 1200);
     }
 }
 
@@ -375,9 +385,14 @@ pub fn zoes_strategy_butcher(game: &mut GameState, own_pal: CardId) {
 /// this driver's own bug, not something the card script re-validates).
 /// `target` mirrors `single_shot_rifle_on_deploy`'s own shape exactly
 /// -- same "choose up to 1 Pal, deal N Damage" effect, different N.
-pub fn kitsun_on_deploy(game: &mut GameState, target: Option<CardId>) {
+///
+/// This is a Red card -- QA #53 (Suzaku): threaded through
+/// `deal_damage_from_source(source, ...)`, not `apply_damage` directly
+/// -- see `single_shot_rifle_on_deploy`'s own doc comment for why this
+/// matters and where it was first caught.
+pub fn kitsun_on_deploy(game: &mut GameState, source: CardId, target: Option<CardId>) {
     if let Some(target) = target {
-        game.apply_damage(target, 1200);
+        game.deal_damage_from_source(source, target, 1200);
     }
 }
 
@@ -395,9 +410,12 @@ pub fn kitsun_on_deploy(game: &mut GameState, target: Option<CardId>) {
 /// `single_shot_rifle_on_deploy`'s own doc comment: the ACT half is
 /// the generic "Gear ACT power buff" shape already left unscripted for
 /// Grappling Gun/Single-Shot Rifle.
-pub fn makeshift_handgun_on_deploy(game: &mut GameState, target: Option<CardId>) {
+///
+/// This is a Red card -- QA #53 (Suzaku): threaded through
+/// `deal_damage_from_source(source, ...)`, not `apply_damage` directly.
+pub fn makeshift_handgun_on_deploy(game: &mut GameState, source: CardId, target: Option<CardId>) {
     if let Some(target) = target {
-        game.apply_damage(target, 500);
+        game.deal_damage_from_source(source, target, 500);
     }
 }
 
@@ -417,9 +435,15 @@ pub fn makeshift_handgun_on_deploy(game: &mut GameState, target: Option<CardId>)
 /// Pal per repetition (the same Pal may legally appear more than
 /// once). Once-per-turn tracking and the Material cost payment itself
 /// are the caller's responsibility too, not re-validated here.
-pub fn mounted_machine_gun_act(game: &mut GameState, targets: &[CardId]) {
+///
+/// This is a Red card -- QA #53 (Suzaku): threaded through
+/// `deal_damage_from_source(source, ...)`, not `apply_damage` directly
+/// -- applies to EACH of the X repetitions independently, since
+/// `deal_damage_from_source` re-checks the boosting CONT per call
+/// rather than caching it.
+pub fn mounted_machine_gun_act(game: &mut GameState, source: CardId, targets: &[CardId]) {
     for &target in targets {
-        game.apply_damage(target, 500);
+        game.deal_damage_from_source(source, target, 500);
     }
 }
 
@@ -650,15 +674,33 @@ mod tests {
     #[test]
     fn pump_action_shotgun_on_deploy_deals_1200_to_every_opponent_pal_and_leaves_owners_own_pals_untouched() {
         let mut game = GameState::test_scenario();
+        let source = game.deploy(PlayerId::P2, "EFILLER-SHOTGUN", Zone::Base).unwrap();
+        game.set_color(source, "Red");
         let opponent_a = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
         let opponent_b = game.deploy(PlayerId::P1, "EFILLER-B", Zone::Base).unwrap();
         let own_pal = game.deploy(PlayerId::P2, "EFILLER-C", Zone::Base).unwrap();
 
-        pump_action_shotgun_on_deploy(&mut game, PlayerId::P2);
+        pump_action_shotgun_on_deploy(&mut game, source);
 
         assert_eq!(game.damage_taken(opponent_a), 1200);
         assert_eq!(game.damage_taken(opponent_b), 1200);
         assert_eq!(game.damage_taken(own_pal), 0, "\"your opponent's Pals\" -- the controller's own Pals are untouched");
+    }
+
+    #[test]
+    fn pump_action_shotgun_on_deploy_gets_suzakus_plus_200_per_target_since_the_source_is_red() {
+        let mut game = GameState::test_scenario();
+        let suzaku = game.deploy(PlayerId::P2, "EFILLER-SUZAKU", Zone::Base).unwrap();
+        game.set_boosts_red_pal_damage(suzaku, true);
+        let source = game.deploy(PlayerId::P2, "EFILLER-SHOTGUN", Zone::Base).unwrap();
+        game.set_color(source, "Red");
+        let opponent_a = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
+        let opponent_b = game.deploy(PlayerId::P1, "EFILLER-B", Zone::Base).unwrap();
+
+        pump_action_shotgun_on_deploy(&mut game, source);
+
+        assert_eq!(game.damage_taken(opponent_a), 1400, "1200 + Suzaku's +200, applied per target hit");
+        assert_eq!(game.damage_taken(opponent_b), 1400);
     }
 
     #[test]
@@ -774,9 +816,11 @@ mod tests {
     #[test]
     fn kitsun_on_deploy_deals_1200_when_a_target_is_chosen() {
         let mut game = GameState::test_scenario();
-        let target = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
+        let source = game.deploy(PlayerId::P1, "EFILLER-KITSUN", Zone::Base).unwrap();
+        game.set_color(source, "Red");
+        let target = game.deploy(PlayerId::P2, "EFILLER-A", Zone::Base).unwrap();
 
-        kitsun_on_deploy(&mut game, Some(target));
+        kitsun_on_deploy(&mut game, source, Some(target));
 
         assert_eq!(game.damage_taken(target), 1200);
     }
@@ -784,19 +828,37 @@ mod tests {
     #[test]
     fn kitsun_on_deploy_with_no_target_does_nothing() {
         let mut game = GameState::test_scenario();
+        let source = game.deploy(PlayerId::P1, "EFILLER-KITSUN", Zone::Base).unwrap();
+        game.set_color(source, "Red");
         let bystander = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
 
-        kitsun_on_deploy(&mut game, None);
+        kitsun_on_deploy(&mut game, source, None);
 
         assert_eq!(game.damage_taken(bystander), 0);
     }
 
     #[test]
+    fn kitsun_on_deploy_gets_suzakus_plus_200_since_the_source_is_red() {
+        let mut game = GameState::test_scenario();
+        let suzaku = game.deploy(PlayerId::P1, "EFILLER-SUZAKU", Zone::Base).unwrap();
+        game.set_boosts_red_pal_damage(suzaku, true);
+        let source = game.deploy(PlayerId::P1, "EFILLER-KITSUN", Zone::Base).unwrap();
+        game.set_color(source, "Red");
+        let target = game.deploy(PlayerId::P2, "EFILLER-A", Zone::Base).unwrap();
+
+        kitsun_on_deploy(&mut game, source, Some(target));
+
+        assert_eq!(game.damage_taken(target), 1400, "1200 + Suzaku's +200");
+    }
+
+    #[test]
     fn makeshift_handgun_on_deploy_deals_500_when_a_target_is_chosen() {
         let mut game = GameState::test_scenario();
-        let target = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
+        let source = game.deploy(PlayerId::P1, "EFILLER-HANDGUN", Zone::Base).unwrap();
+        game.set_color(source, "Red");
+        let target = game.deploy(PlayerId::P2, "EFILLER-A", Zone::Base).unwrap();
 
-        makeshift_handgun_on_deploy(&mut game, Some(target));
+        makeshift_handgun_on_deploy(&mut game, source, Some(target));
 
         assert_eq!(game.damage_taken(target), 500);
     }
@@ -804,13 +866,29 @@ mod tests {
     #[test]
     fn mounted_machine_gun_act_deals_500_per_target_including_a_repeated_one() {
         let mut game = GameState::test_scenario();
-        let a = game.deploy(PlayerId::P1, "EFILLER-A", Zone::Base).unwrap();
-        let b = game.deploy(PlayerId::P1, "EFILLER-B", Zone::Base).unwrap();
+        let source = game.deploy(PlayerId::P1, "EFILLER-MMG", Zone::Base).unwrap();
+        game.set_color(source, "Red");
+        let a = game.deploy(PlayerId::P2, "EFILLER-A", Zone::Base).unwrap();
+        let b = game.deploy(PlayerId::P2, "EFILLER-B", Zone::Base).unwrap();
 
-        mounted_machine_gun_act(&mut game, &[a, b, a]);
+        mounted_machine_gun_act(&mut game, source, &[a, b, a]);
 
         assert_eq!(game.damage_taken(a), 1000, "X = 3 repetitions, two of them targeting the same Pal");
         assert_eq!(game.damage_taken(b), 500);
+    }
+
+    #[test]
+    fn mounted_machine_gun_act_gets_suzakus_plus_200_on_each_repetition() {
+        let mut game = GameState::test_scenario();
+        let suzaku = game.deploy(PlayerId::P1, "EFILLER-SUZAKU", Zone::Base).unwrap();
+        game.set_boosts_red_pal_damage(suzaku, true);
+        let source = game.deploy(PlayerId::P1, "EFILLER-MMG", Zone::Base).unwrap();
+        game.set_color(source, "Red");
+        let target = game.deploy(PlayerId::P2, "EFILLER-A", Zone::Base).unwrap();
+
+        mounted_machine_gun_act(&mut game, source, &[target, target]);
+
+        assert_eq!(game.damage_taken(target), 1400, "(500 + 200) x 2 -- boosted independently each repetition");
     }
 
     #[test]
