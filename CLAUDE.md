@@ -246,17 +246,46 @@ the two aren't in tension, just answering different questions:
   cards in their own section (hand-maintained the same way
   `BRACKETED_FIXTURE_NAMES` is) so they can't be lost in either the
   "done" pile or the ordinary "not yet built" pile.
-* **A fourth blocker, found working down the frequency list, that isn't
-either "needs a script" or "doesn't": some Tier 1 cards need a new
+* **CORRECTION to an earlier version of this entry: Suzaku is not
+blocked, and the batch of 8 cards below it had a real bug because of
+that wrong assumption.** `deal_damage_from_source(source, target,
+amount)` and `set_boosts_red_pal_damage` already exist
+(`engine/src/state.rs`), built specifically for QA #53 (Suzaku: +200 to
+non-battle damage from any red card, gears included) — that QA-ruling
+test passes today. The mistake was assuming "no engine hook" from a
+grep for "Suzaku"/"Brave"/"Retaliate" that never checked for the
+GENERIC primitive Suzaku's own ruling produced. **Real consequence, not
+just a documentation error**: Kitsun, Makeshift Handgun, Mounted
+Machine Gun, Single-Shot Rifle, and Pump-Action Shotgun (all five Red,
+all dealing non-battle damage) called `apply_damage` directly instead
+of `deal_damage_from_source` — every one of them would have dealt the
+WRONG amount, silently, the moment a fixture deployed Suzaku alongside
+any of them, and none of the three existing fixtures do, so nothing
+caught it. Fixed: all five now take a `source: CardId` parameter and
+route through `deal_damage_from_source`; each has its own unit test
+deploying a `boosts_red_pal_damage` source and asserting the +200
+actually lands. A second, deeper layer of the same bug: `deal_damage_
+from_source`'s own red-check reads the SOURCE card's `color` field, and
+`format_a_replay`'s own `materialize()` never called `set_color` at
+all — every driver-materialized card had `color: None`, so even with
+the scripts fixed, the boost would still have silently never fired for
+anything this driver deploys. `CardMeta` gained a `color` field
+(populated from the CSV for all 18 existing entries) and `materialize`
+now calls `set_color`. `replay/` (the bracketed driver) has the same
+gap and was NOT fixed in this pass — flagged, not silently carried
+forward: none of its three fixtures deploy Suzaku either, so it's
+dormant there too, but worth the same fix before it isn't.
+* **A separate, genuine blocker found working down the frequency list,
+that isn't either "needs a script" or "doesn't" (Suzaku, corrected
+above, turned out not to be one of these): some Tier 1 cards need a new
 ENGINE primitive before any card script could be written at all.**
 Distinct from all three categories above — those all assume the
 engine already has whatever primitive the script would call
 (`apply_damage`, `deploy_from`, `grant_keyword`...). A few of the
-highest-frequency remaining cards don't clear that bar yet:
-  - **Suzaku** (BP01-002, 17 logs) — its CONT ("your red card deals
-    +200 Damage on non-battle damage") is a standing modifier that
-    would need to intercept every OTHER card's damage-dealing effect
-    engine-wide, not a one-shot primitive call. No such hook exists.
+highest-frequency remaining cards don't clear that bar yet — worth a
+scoped pass of their own before the frequency list reaches them
+naturally, since each one is a keyword or type distinction that
+unlocks every OTHER card using it, not just the one that surfaced it:
   - **Grappling Gun** (BP01-045, 15 logs) — its ACT grants the
     Vigilance skill (`〈AUTO Vigilance (At the end of your turn, stand
     this card)〉`). `grant_keyword` can attach the keyword itself, but
@@ -280,7 +309,13 @@ highest-frequency remaining cards don't clear that bar yet:
     engine cannot currently tell a Structure from a Gear, so this
     bullet can't be counted correctly, only approximated (and
     approximating a number hard rule 1 says to get from data, not
-    guesswork, is exactly the mistake this file exists to prevent).
+    guesswork, is exactly the mistake this file exists to prevent). The
+    same Structure-vs-Gear gap is probably WHY Reptyro (`parser/
+    card_census.py`'s `DEFERRED_LOG_RESOLVED_NAMES`) stays deferred too
+    -- its own ACT chooses specifically among "gear," not any card, off
+    the top 5 -- worth confirming when this distinction gets built,
+    since Reptyro might turn out to need only that, not the harder
+    look-then-shuffle mechanic its current deferral reason emphasizes.
 
   None of these were built this session — writing a card script around
   a missing primitive would either silently misrepresent what's
