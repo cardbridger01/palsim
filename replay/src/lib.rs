@@ -185,53 +185,35 @@ pub fn last_on_deploy_triggered(game: &GameState) -> bool {
     game.last_deployed().map(|card| game.last_deploy_result(card).on_deploy_triggered).unwrap_or(false)
 }
 
-/// Per-card facts this replay needs that aren't in the JSON itself --
-/// sourced from `data/11cardattributes-with-elements.csv`'s Cost/
-/// Strike/Elements columns (hard rule 1), keyed by the card's exact
-/// printed name (hard rule 3's sanctioned alias table: the log only
-/// ever records names, never card numbers).
-struct CardMeta {
-    cost: u32,
-    strike: i32,
-    elements: &'static [&'static str],
-}
-
-fn card_meta(name: &str) -> Option<CardMeta> {
-    match name {
-        "Elphidran – Gentle Radiance" => Some(CardMeta { cost: 4, strike: 2, elements: &["Dragon"] }),
-        "Chillet – Dragon Whisperer" => Some(CardMeta { cost: 5, strike: 2, elements: &["Ice", "Dragon"] }),
-        "Jormuntide – Surging Sea Serpent" => Some(CardMeta { cost: 8, strike: 3, elements: &["Dragon", "Water"] }),
-        "Elphidran Aqua – Gentle Ripples" => Some(CardMeta { cost: 6, strike: 2, elements: &["Dragon", "Water"] }),
-        "Victor's Strategy" => Some(CardMeta { cost: 3, strike: 0, elements: &[] }),
-        "Pengullet Rocket Launcher" => Some(CardMeta { cost: 4, strike: 0, elements: &[] }),
-        "Pengullet – Yearning for the Sky" => Some(CardMeta { cost: 4, strike: 2, elements: &["Water", "Ice"] }),
-        "Strike from the Darkness" => Some(CardMeta { cost: 4, strike: 0, elements: &[] }),
-        "Dark Cannon" => Some(CardMeta { cost: 3, strike: 0, elements: &[] }),
-        "Relaxaurus – Hungry Gunner" => Some(CardMeta { cost: 7, strike: 3, elements: &["Dragon", "Water"] }),
-        "Jormuntide Ignis – Savage Lava Dragon" => Some(CardMeta { cost: 8, strike: 4, elements: &["Dragon", "Fire"] }),
-        "Suzaku – Hellfire Wings" => Some(CardMeta { cost: 7, strike: 3, elements: &["Fire"] }),
-        "Kitsun – Wyrmbane Fangs" => Some(CardMeta { cost: 5, strike: 2, elements: &["Fire"] }),
-        "Cryolinx – Arctic Ordeal" => Some(CardMeta { cost: 6, strike: 2, elements: &["Ice"] }),
-        "Pyrin Noct – Steed of Azure Flames" => Some(CardMeta { cost: 7, strike: 3, elements: &["Fire", "Dark"] }),
-        "Reindrix – Icy Gaze" => Some(CardMeta { cost: 5, strike: 2, elements: &["Ice"] }),
-        "Dinossom – Radiant Fragrance" => Some(CardMeta { cost: 4, strike: 2, elements: &["Grass", "Dragon"] }),
-        _ => None,
-    }
-}
-
 /// Creates a fresh, real-named, real-statted card in `zone` for
 /// `owner` -- every "this name appears for the first time" moment
 /// (a real deploy from hand, a Chillet-style deck reveal, a card
 /// materialized into hand for `put_on_top`).
+/// `card_data::card_meta_by_full_name` is resolved FIRST (the
+/// bracketed log always states a card's exact full printed name --
+/// hard rule 3's sanctioned alias table, "Name" or "Name – Subtitle"
+/// exactly as the CSV prints it, so no disambiguation is needed the
+/// way Format A's bare main names sometimes require) and its absence
+/// is a hard panic, not a silent Pal-shaped stub -- same discipline
+/// `format_a_replay`'s own `materialize` already uses, for the same
+/// reason: a miss here means a real name/alias gap, not a card
+/// genuinely without data.
+///
+/// Used to be a second hand-typed copy of `format_a_replay`'s own
+/// table (17 entries, keyed by full name instead of main name) and its
+/// own `place`-only `materialize` -- meaning this driver had the
+/// IDENTICAL color-missing and CardKind::Pal-for-everything bugs
+/// `format_a_replay`'s own fixes addressed, just never fixed here:
+/// battle3 (this corpus's own Blue/Red fixture) materializes
+/// Single-Shot Rifle, a Gear, and nothing asserted it wasn't silently
+/// tracked as a Pal until `card_data`'s own regression tests. Now
+/// shares `card_data::card_meta_by_full_name`/`materialize_with_meta`
+/// with `format_a_replay` instead of a second copy -- see that crate's
+/// own module doc comment.
 fn materialize(game: &mut GameState, owner: PlayerId, zone: Zone, name: &str) -> CardId {
-    let card = game.place(owner, name, zone);
-    game.set_card_name(card, name);
-    if let Some(meta) = card_meta(name) {
-        game.set_cost(card, meta.cost);
-        game.set_strike(card, meta.strike);
-        game.set_elements(card, meta.elements.iter().map(|s| s.to_string()).collect());
-    }
-    card
+    let meta = card_data::card_meta_by_full_name(name)
+        .unwrap_or_else(|| panic!("materialize: no card_meta for {name:?} -- check the name against the CSV (hard rule 3: by number, not name, if this is an alias mismatch)"));
+    card_data::materialize_with_meta(game, owner, zone, name, &meta)
 }
 
 /// The most recently created card owned by `owner`, in `zone`, whose

@@ -297,7 +297,7 @@
 use std::collections::HashMap;
 
 use engine::combat::AttackTarget;
-use engine::state::{CardId, CardKind, GameState, PlayerId, Zone};
+use engine::state::{CardId, GameState, PlayerId, Zone};
 use serde::Deserialize;
 
 #[derive(Debug, Clone, Deserialize)]
@@ -485,168 +485,27 @@ pub fn new_game_for_replay(_meta: &FormatAMeta) -> GameState {
     GameState::test_scenario()
 }
 
-/// Per-card facts this replay needs that aren't in the JSON itself --
-/// generated from `data/11cardattributes-with-elements.csv`'s own
-/// Cost/Strike/Elements/Color/Type columns, keyed by bare MAIN name
-/// (Format A never gives the full "Main -- Subtitle" form, unlike the
-/// bracketed format's own `card_meta`) -- hard rule 1/3.
-///
-/// NOT hand-typed, on purpose, as of the commit that added `color`.
-/// The hand-typed table this replaces was itself why `color` went
-/// missing in the first place: a field added to the STRUCT still has
-/// to be typed correctly on every one of ~20 existing MATCH ARMS by
-/// hand, and nothing enforces that a future field (this table was
-/// about to grow a `kind: CardKind` too) gets set for all of them --
-/// exactly the same "mechanism exists, one input silently defaults"
-/// shape as `consume_materials`, the census regex, and `color` itself.
-/// Generating from the CSV at first use means a new column just
-/// arrives populated for every card, and the only thing left to type
-/// by hand is genuine judgment calls the data can't make for itself
-/// (`PREFERRED_PRINT`, below).
-///
-/// `color` was added after `materialize` shipped without it, once
-/// writing `deal_damage_from_source`-based card scripts (Single-Shot
-/// Rifle et al.) surfaced that every driver-materialized card had
-/// `color: None` -- QA #53's Suzaku boost checks the DAMAGE SOURCE's
-/// own color, so a real script calling the real primitive would still
-/// silently never boost anything this driver ever deploys, without
-/// this. Same shape as Color being a separate axis from Element (hard
-/// rule 2): read from data, never inferred (Color=Colorless is a real,
-/// distinct value, not "no color set"). `kind` (CardKind::Pal/
-/// Structure/Gear, from the CSV's own Type column) was added in the
-/// same commit as `place_typed` -- see that function's own doc comment
-/// for the identical-shaped bug it fixes.
-#[derive(Clone)]
-struct CardMeta {
-    cost: u32,
-    strike: i32,
-    elements: Vec<String>,
-    color: String,
-    kind: CardKind,
-}
-
-/// (main name -> preferred CardNumber) for the handful of names the
-/// CSV prints more than once (checked directly: Foxparks, Pengullet,
-/// Digtoise, Gumoss, Daedream, Lamball, as of this CSV snapshot).
-/// Format A gives only the bare main name, so which print's stats
-/// apply is a real judgment call the data alone can't make -- resolved
-/// here ONLY for names a real log has actually forced the question
-/// for, never guessed ahead of need.
-///
-/// - Foxparks: BP01-006 (Cost 2, Strike 1, Brave 300), not TD01-004
-///   (Cost 4, Strike 2, Interrupt) -- pingu_02's own Foxparks deals
-///   exactly 1 direct player damage per unblocked attack (lines 29,
-///   41, 161), matching BP01-006's printed Strike, not TD01-004's.
-/// - Pengullet: BP01-028 "Yearning for the Sky" (Cost 4, Strike 2),
-///   not TD01-014 "Frequent Flyer" (Cost 3, Strike 1) -- BP01-028 is
-///   the print with the graveyard-draw trigger
-///   (`cards::bp01::pengullet_graveyard_trigger`) this crate's own
-///   "activate" arm already calls for real when the Pengullet Rocket
-///   Launcher's granted sweep destroys its holder, in both pingu_01
-///   and battle1 (the bracketed corpus). The choice doesn't affect
-///   any currently-checked life total either way (matches the
-///   pre-CSV-generation table's own note), but the print IS
-///   identifiable here, unlike Foxparks, so it's recorded as a fact
-///   rather than left arbitrary.
-/// - Digtoise, Gumoss, Daedream, Lamball: not yet resolved -- none of
-///   the three fixtures materializes any of these names, so `card_meta`
-///   correctly returns `None` for them today. Add an entry here the
-///   moment a real log forces the choice, never ahead of need.
-///
-/// A multi-print name with NO entry here is skipped during loading,
-/// not defaulted to either print -- `card_meta` returns `None` for it,
-/// same as a name genuinely absent from the CSV, until it's resolved
-/// the same deliberate way.
-const PREFERRED_PRINT: &[(&str, &str)] = &[("Foxparks", "BP01-006"), ("Pengullet", "BP01-028")];
-
-fn all_card_meta() -> &'static HashMap<String, CardMeta> {
-    static META: std::sync::OnceLock<HashMap<String, CardMeta>> = std::sync::OnceLock::new();
-    META.get_or_init(load_card_meta_from_csv)
-}
-
-fn load_card_meta_from_csv() -> HashMap<String, CardMeta> {
-    // Anchored on THIS crate's own manifest dir (env! is resolved at
-    // this crate's compile time, not whichever crate depends on it),
-    // same pattern tests/format_a_replays/support.rs's load_fixture
-    // already uses for the JSON fixtures.
-    let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("..").join("data").join("11cardattributes-with-elements.csv");
-    let mut reader = csv::Reader::from_path(&path).unwrap_or_else(|e| panic!("card_meta: failed to open {path:?}: {e}"));
-
-    let mut rows_by_name: HashMap<String, Vec<HashMap<String, String>>> = HashMap::new();
-    for result in reader.deserialize::<HashMap<String, String>>() {
-        let row = result.unwrap_or_else(|e| panic!("card_meta: failed to parse a row of {path:?}: {e}"));
-        let name = row.get("Name").unwrap_or_else(|| panic!("card_meta: a row of {path:?} has no Name column")).clone();
-        rows_by_name.entry(name).or_default().push(row);
-    }
-
-    let preferred: HashMap<&str, &str> = PREFERRED_PRINT.iter().copied().collect();
-    let mut out = HashMap::new();
-    for (name, mut rows) in rows_by_name {
-        // Hard rule 5: Soul has no ability text and no place in the
-        // 50-card pool -- excluded from this table the same way
-        // parser/card_census.py excludes it from the build target.
-        if name == "Soul" {
-            continue;
-        }
-        let row = match rows.len() {
-            1 => rows.pop().unwrap(),
-            _ => match preferred.get(name.as_str()) {
-                Some(&card_number) => rows
-                    .into_iter()
-                    .find(|r| r.get("CardNumber").map(String::as_str) == Some(card_number))
-                    .unwrap_or_else(|| panic!("card_meta: PREFERRED_PRINT names {card_number:?} for {name:?}, but no such CardNumber exists in {path:?}")),
-                // Multiple prints, no resolved preference -- don't
-                // guess (hard rule 3). Skipped rather than defaulted
-                // to either print; card_meta(name) reads as None for
-                // it until PREFERRED_PRINT is updated deliberately.
-                None => continue,
-            },
-        };
-
-        let get = |col: &str| row.get(col).map(|s| s.trim()).filter(|s| !s.is_empty());
-        let cost = get("Cost").map(|s| s.parse::<f64>().unwrap_or_else(|e| panic!("card_meta: bad Cost {s:?} for {name:?}: {e}")) as u32).unwrap_or(0);
-        let strike = get("Strike").map(|s| s.parse::<f64>().unwrap_or_else(|e| panic!("card_meta: bad Strike {s:?} for {name:?}: {e}")) as i32).unwrap_or(0);
-        let elements = get("Elements").map(|s| s.split(';').map(|e| e.trim().to_string()).collect()).unwrap_or_default();
-        let color = get("Color").unwrap_or_else(|| panic!("card_meta: missing Color for {name:?} in {path:?}")).to_string();
-        let kind = match get("Type") {
-            Some("Pal") => CardKind::Pal,
-            Some("Structure") => CardKind::Structure,
-            Some("Gear") => CardKind::Gear,
-            Some("Event") => CardKind::Event,
-            // Soul, or an unrecognized future Type value -- skipped
-            // rather than guessed a kind for, same as an unresolved
-            // multi-print name above (hard rule 3).
-            _ => continue,
-        };
-
-        out.insert(name, CardMeta { cost, strike, elements, color, kind });
-    }
-    out
-}
-
-fn card_meta(main_name: &str) -> Option<CardMeta> {
-    all_card_meta().get(main_name).cloned()
-}
-
 /// Creates a fresh, real-named, real-statted card in `zone` for `owner`
 /// -- the "first time this name appears" moment, same role as
-/// `replay::materialize`. `card_meta` is resolved FIRST and its
-/// absence is a hard panic, not a silent Pal-shaped stub: every name
-/// this driver has ever actually materialized already has a CSV entry
-/// (checked directly against all three fixtures' own distinct card
-/// names before this commit), so a miss here means a real name/alias
-/// gap, not a card genuinely without data -- exactly the kind of thing
-/// that should surface immediately rather than quietly deploy as an
-/// unstatted, wrongly-kinded Pal.
+/// `replay::materialize`. `card_data::card_meta_by_main_name` is
+/// resolved FIRST (Format A gives only the bare main name -- hard rule
+/// 3, `card_data`'s own `PREFERRED_PRINT` resolves the rare multi-print
+/// case) and its absence is a hard panic, not a silent Pal-shaped
+/// stub: every name this driver has ever actually materialized already
+/// has a CSV entry (checked directly against all three fixtures' own
+/// distinct card names), so a miss here means a real name/alias gap,
+/// not a card genuinely without data -- exactly the kind of thing that
+/// should surface immediately rather than quietly deploy as an
+/// unstatted, wrongly-kinded Pal. `card_data::materialize_with_meta`
+/// does the actual card construction -- shared with `replay/`, not
+/// duplicated here, so there is exactly one CSV-driven table and one
+/// `place_typed` call site for both drivers, not two that could drift
+/// from each other the way `format_a_replay`'s own hand-typed table
+/// once drifted from the CSV.
 fn materialize(game: &mut GameState, owner: PlayerId, zone: Zone, main_name: &str) -> CardId {
-    let meta = card_meta(main_name).unwrap_or_else(|| panic!("materialize: no card_meta for {main_name:?} -- check the name against the CSV (hard rule 3: by number, not name, if this is an alias mismatch)"));
-    let card = game.place_typed(owner, main_name, zone, meta.kind);
-    game.set_card_name(card, main_name);
-    game.set_cost(card, meta.cost);
-    game.set_strike(card, meta.strike);
-    game.set_elements(card, meta.elements.clone());
-    game.set_color(card, &meta.color);
-    card
+    let meta = card_data::card_meta_by_main_name(main_name)
+        .unwrap_or_else(|| panic!("materialize: no card_meta for {main_name:?} -- check the name against the CSV (hard rule 3: by number, not name, if this is an alias mismatch)"));
+    card_data::materialize_with_meta(game, owner, zone, main_name, &meta)
 }
 
 /// The card representing `main_name` for `owner` in `zone` -- for
@@ -1439,16 +1298,15 @@ pub fn new_driver_for_replay(log: &FormatALog) -> (Participants, ReplayDriver) {
 mod tests {
     use super::*;
 
-    /// Pins the exact bug `place_typed` was written to fix: before it,
-    /// `materialize` called `place` for every card unconditionally,
-    /// which hardcodes `CardKind::Pal` -- so a materialized Gear (BP01-044
-    /// Pengullet Rocket Launcher, real Type "Gear" in the CSV) would
-    /// have been silently counted by `pals_in_base`. Nothing existing
-    /// caught this: no fixture crosses a threshold where the extra
-    /// count (Pump-Action Shotgun's "all opponent Pals" sweep, the
-    /// 5-Pal base limit, Astegon's own "all Pals with Power 300 or
-    /// less") would visibly diverge. This test would have failed on
-    /// the pre-fix code; it must keep passing on every future one.
+    /// `card_data`'s own test suite pins the underlying
+    /// `materialize_with_meta` primitive against synthetic Gear/Pal
+    /// metadata directly. This one, and its Pal-direction sibling
+    /// below, confirm THIS crate's own thin `materialize()` wrapper --
+    /// the thing that actually resolves a real name through
+    /// `card_data::card_meta_by_main_name` -- still delegates
+    /// correctly end to end, using a real CSV name (BP01-044 Pengullet
+    /// Rocket Launcher, real Type "Gear"). A regression here would mean
+    /// this driver's own wrapper broke, not the shared primitive.
     #[test]
     fn materializing_a_gear_is_excluded_from_pals_in_base_and_included_in_gears_in_base() {
         let mut game = GameState::test_scenario();

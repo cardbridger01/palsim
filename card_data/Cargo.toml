@@ -1,0 +1,14 @@
+[package]
+name = "card_data"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# Shared by both replay drivers (replay/, format_a_replay/) so there is
+# exactly one CSV-driven card_meta and one materialize primitive, not
+# two hand-maintained copies that can drift from each other the same
+# way the hand-typed table drifted from the CSV -- see this crate's own
+# module doc comment and CLAUDE.md's Conventions section.
+[dependencies]
+engine = { path = "../engine" }
+csv = "1.3"

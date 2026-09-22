@@ -11,9 +11,9 @@ publish = false
 [dependencies]
 engine = { path = "../engine" }
 cards = { path = "../cards" }
+# card_meta/materialize are shared with replay/ (its own hand-typed
+# copy had the identical color/CardKind bugs this crate's own already
+# fixed) -- see card_data's own module doc comment.
+card_data = { path = "../card_data" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-# card_meta is generated from data/11cardattributes-with-elements.csv at
-# first use, not hand-typed -- see card_meta's own doc comment for why
-# (the hand-typed table was itself the reason `color` went missing).
-csv = "1.3"

@@ -97,3 +97,29 @@ fn battle3_t7_anomaly_events_are_applied_in_file_line_order_not_turn_order() {
         replay::apply_event(&mut driver, &mut game, &log.meta, event);
     }
 }
+
+/// The concrete symptom that motivated card_data/'s own regression
+/// tests: before this driver's `materialize` shared `place_typed` with
+/// `format_a_replay`, `place()` hardcoded `CardKind::Pal` for every
+/// card, including battle3's own two Single-Shot Rifle deploys
+/// (FluffysFury, lines 24 and 36 -- both Gears). Nothing asserted this
+/// was wrong; this pins it against a real replayed fixture, not just
+/// the synthetic metadata card_data's own tests use.
+#[test]
+fn battle3_single_shot_rifles_are_gears_not_pals() {
+    let log = load_fixture("battle3");
+    let mut game = replay::new_game_for_replay(&log.meta);
+    let mut driver = replay::ReplayDriver::default();
+    for event in &log.events {
+        replay::apply_event(&mut driver, &mut game, &log.meta, event);
+    }
+
+    let opponent = replay::opponent_of_replay_owner(&log.meta);
+    let gears = game.gears_in_base(opponent);
+    assert!(!gears.is_empty(), "battle3 deploys Single-Shot Rifle for FluffysFury -- expected at least one tracked Gear");
+
+    let pals = game.pals_in_base(opponent);
+    for gear in &gears {
+        assert!(!pals.contains(gear), "a materialized Gear (Single-Shot Rifle) must not be counted among pals_in_base");
+    }
+}

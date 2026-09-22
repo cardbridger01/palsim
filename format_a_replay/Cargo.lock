@@ -3,6 +3,14 @@
 version = 4
 
 [[package]]
+name = "card_data"
+version = "0.1.0"
+dependencies = [
+ "csv",
+ "engine",
+]
+
+[[package]]
 name = "cards"
 version = "0.1.0"
 dependencies = [
@@ -38,8 +46,8 @@ version = "0.1.0"
 name = "format_a_replay"
 version = "0.1.0"
 dependencies = [
+ "card_data",
  "cards",
- "csv",
  "engine",
  "serde",
  "serde_json",
