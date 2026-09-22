@@ -338,43 +338,77 @@ sites across `cards/`'s own unit tests, where "a generic card, kind
 irrelevant" is a legitimate thing to want; `place_typed(player,
 number, zone, kind)` is the one both drivers' `materialize()` now
 calls, with `kind` read from `card_meta` (CSV `Type` column), never
-`place()` directly. Two regression tests in `format_a_replay/src/
-lib.rs` pin this both directions (a materialized Gear excluded from
-`pals_in_base`, a materialized Pal excluded from `gears_in_base`) —
-they would have failed on the pre-fix code and must keep passing on
-every future one.
-* **`card_meta` (`format_a_replay/src/lib.rs`) is now GENERATED from
-`data/11cardattributes-with-elements.csv` at first use, not hand-typed
-— the hand-typed table was itself why `color` went missing.** A field
-added to the struct still had to be typed correctly across ~20 match
-arms by hand, and nothing enforced that; `kind` was about to become a
-second such field the moment `place_typed` needed one. Loads the CSV
-once (`std::sync::OnceLock`, `csv` crate, anchored on this crate's own
-`CARGO_MANIFEST_DIR` — same pattern `tests/format_a_replays/support.rs`
-already uses for fixture JSON) and caches it; a name with no CSV entry
-is now a hard panic in `materialize`, not a silent Pal-shaped stub —
-safe because every name either driver has ever actually materialized
-already had a hand-typed entry before this change (checked directly
-against all three fixtures' own card lists). The one thing still typed
-by hand: `PREFERRED_PRINT`, a short list of (name, CardNumber) pairs
-for the handful of main names the CSV prints more than once (Foxparks,
-Pengullet resolved so far, each with its own documented reason) — a
-real judgment call the data can't make for itself, kept separate from
-everything the data CAN answer on its own.
+`place()` directly.
+* **`card_meta`/`materialize` moved into their own shared crate,
+`card_data/`, used by BOTH `replay/` and `format_a_replay/` — not
+hand-typed by either, and not even generated twice.** The first pass
+(previous bullet) generated `format_a_replay`'s own `card_meta` from
+`data/11cardattributes-with-elements.csv` instead of hand-typing it,
+but left it as a second, `format_a_replay`-only copy — which missed
+that `replay/` (the bracketed driver) had a THIRD, independently
+hand-typed `card_meta` with the IDENTICAL bugs: no `color` field at
+all, and its own `materialize` calling `place()` (`CardKind::Pal` for
+everything) exactly like `format_a_replay`'s did before its own fix.
+Concretely live, not hypothetical: `battle3` (the bracketed corpus's
+own Blue/Red fixture) materializes Single-Shot Rifle, a Gear, and
+nothing asserted it wasn't silently tracked as a Pal — see
+`tests/replays/battle3.rs`'s own new regression test, added specifically
+because nothing already existing would have caught it. Generating the
+SAME data twice was still the drift the CSV-generation change was
+meant to eliminate, just moved from "table vs data" to "driver vs
+driver." `card_data/` loads the CSV once (`std::sync::OnceLock`, `csv`
+crate, anchored on ITS OWN `CARGO_MANIFEST_DIR`) and exposes two lookup
+views over that one cache: `card_meta_by_full_name` (what `replay/`
+needs — the bracketed log always states a card's exact full printed
+name, so no disambiguation is needed) and `card_meta_by_main_name`
+(what `format_a_replay` needs — Format A gives only the bare main name,
+so `PREFERRED_PRINT`, the one thing still typed by hand, resolves the
+rare multi-print case: Foxparks and Pengullet so far, each with its own
+documented reason — a real judgment call the data can't make for
+itself). `materialize_with_meta` is the one shared `place_typed`-based
+constructor both drivers' own thin `materialize()` wrappers call after
+resolving whichever lookup their log format needs; a miss is a hard
+panic in both, not a silent Pal-shaped stub — safe because every name
+either driver has ever actually materialized already had a hand-typed
+entry before either crate's own CSV-generation pass (checked directly
+against both drivers' own fixture/corpus card lists). Regression tests
+live in THREE places on purpose, not duplicated: `card_data`'s own
+suite pins the shared primitive against synthetic Gear/Pal metadata
+directly (kind-agnostic of which driver ever calls it); `format_a_replay`
+and `tests/replays/battle3.rs` each keep one end-to-end test confirming
+THEIR OWN driver's wrapper still delegates correctly through real CSV
+data — a regression in either would mean that driver's own adapter
+broke, not the shared logic.
 * **The pattern behind all of this — a mechanism or field that existed
 but was silently defaulted or unverified for one specific input path —
-has now recurred four times: `consume_materials`'s saturating floor
-(only exercised once a test finally consumed without gaining first),
-the census's doc-header regex (hyphen in a name), `color` (never set by
-`materialize`), and `CardKind` (`place()` defaulting to Pal for
-everything).** Worth asking explicitly whenever a new card attribute,
-zone, or engine primitive gets added: every place a card (or resource,
-or record) is CREATED — does each one actually set this, or does at
-least one path fall through to a default that happens to compile? A
-type that makes the field mandatory (this session's `place_typed`) or
-an explicit generation step (this session's CSV-driven `card_meta`)
-closes the gap structurally; a comment reminding the next person does
-not, going by this history.
+has recurred six times now, counting `color` and `CardKind` each
+twice (once in `format_a_replay`, found and fixed; once more in
+`replay/`, found only because the fix was pushed one step further
+into a shared crate instead of stopping at "the one driver in front of
+me is now correct"): `consume_materials`'s saturating floor (only
+exercised once a test finally consumed without gaining first), the
+census's doc-header regex (hyphen in a name), `color`, and `CardKind`.**
+Worth asking explicitly whenever a new card attribute, zone, or engine
+primitive gets added: every place a card (or resource, or record) is
+CREATED — does each one actually set this, or does at least one path
+fall through to a default that happens to compile? And past that:
+if the same shape of bug was just found and fixed in ONE place, is
+there a SIBLING place (another driver, another copy of the same table)
+carrying the identical bug, not yet looked at because the fix already
+felt done? Two structural fixes close this, and both did real work
+this session, not just documentation:
+  - **A missing value that stops the build beats a default that
+    compiles.** `materialize`'s hard panic on an unresolved name is
+    what caught `CardKind::Event` being a real, live gap (5 of
+    `format_a_replay`'s own 24 fixture-referenced names) on the FIRST
+    test run after the CSV-generation change landed — not a
+    hypothetical benefit argued for in the abstract, an actual bug an
+    actual test run surfaced immediately, that a silent Pal-shaped
+    stub would have let compile and pass with wrong data instead.
+  - A type that makes a field mandatory (`place_typed`) or an explicit
+    generation step (CSV-driven `card_meta`) closes the gap
+    structurally; a comment reminding the next person does not, going
+    by this history.
 * **A Format A driver now exists** (`format_a_replay/`, three fixtures —
 `pingu_01`, `pingu_03`, `pingu_02`, `tests/format_a_replays/pingu_01.rs` /
 `pingu_03.rs` / `pingu_02.rs`), built with the `SCRIPTED_ACTIONS` registry from the
