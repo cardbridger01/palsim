@@ -281,11 +281,22 @@ above, turned out not to be one of these): some Tier 1 cards need a new
 ENGINE primitive before any card script could be written at all.**
 Distinct from all three categories above — those all assume the
 engine already has whatever primitive the script would call
-(`apply_damage`, `deploy_from`, `grant_keyword`...). A few of the
-highest-frequency remaining cards don't clear that bar yet — worth a
-scoped pass of their own before the frequency list reaches them
-naturally, since each one is a keyword or type distinction that
-unlocks every OTHER card using it, not just the one that surfaced it:
+(`apply_damage`, `deploy_from`, `grant_keyword`...). Each one is a
+keyword or type distinction that unlocks every OTHER card using it, not
+just the one that surfaced it, which is why this got its own scoped
+pass rather than waiting for the frequency list to reach each card in
+turn:
+  - **Structure vs. Gear in `CardKind` — DONE.** `CardKind` used to
+    have one combined `StructureOrGear` variant; split into
+    `Structure`/`Gear` (`engine/src/state.rs`) so Victor's Strategy's
+    own "draw X, X = your structure count" bullet and Reptyro's own
+    "choose up to 1 gear" can both be answered correctly instead of
+    approximated. Doing this FIRST, ahead of Grappling Gun/Menasting/
+    Univolt below, was deliberate: it's a data-model change, and those
+    get more expensive to make the more code accumulates against the
+    old shape, while the keyword mechanics are purely additive and can
+    land in any order. See the next bullet for what fixing this
+    properly turned out to require.
   - **Grappling Gun** (BP01-045, 15 logs) — its ACT grants the
     Vigilance skill (`〈AUTO Vigilance (At the end of your turn, stand
     this card)〉`). `grant_keyword` can attach the keyword itself, but
@@ -303,26 +314,67 @@ unlocks every OTHER card using it, not just the one that surfaced it:
     Interrupt/Taunt as one whose parenthetical reminder text is
     non-binding, same ruling that makes Interrupt/Nocturnal
     keyword-only), but it has no engine implementation either.
-  - **Victor's Strategy** (BP01-046, 18 logs) — one of its three
-    bullets draws X cards where X = the caller's own STRUCTURE count.
-    `CardKind` only distinguishes `Pal` from `StructureOrGear` — the
-    engine cannot currently tell a Structure from a Gear, so this
-    bullet can't be counted correctly, only approximated (and
-    approximating a number hard rule 1 says to get from data, not
-    guesswork, is exactly the mistake this file exists to prevent). The
-    same Structure-vs-Gear gap is probably WHY Reptyro (`parser/
-    card_census.py`'s `DEFERRED_LOG_RESOLVED_NAMES`) stays deferred too
-    -- its own ACT chooses specifically among "gear," not any card, off
-    the top 5 -- worth confirming when this distinction gets built,
-    since Reptyro might turn out to need only that, not the harder
-    look-then-shuffle mechanic its current deferral reason emphasizes.
 
-  None of these were built this session — writing a card script around
-  a missing primitive would either silently misrepresent what's
-  implemented or require inventing engine behavior without a rules
-  citation, both worse than leaving the card unbuilt with the reason
-  on record. Worth a scoped pass of their own (new engine primitives,
-  not card scripts) before the frequency list reaches them naturally.
+  Grappling Gun/Menasting/Univolt weren't built this session — writing
+  a card script around a missing primitive would either silently
+  misrepresent what's implemented or require inventing engine behavior
+  without a rules citation, both worse than leaving the card unbuilt
+  with the reason on record.
+* **Fixing "Structure vs. Gear" properly meant fixing a real, deeper
+bug first: `place()` hardcoded `CardKind::Pal` for EVERY card either
+driver ever materialized, including obviously-non-Pal ones.** Neither
+driver ever called the old `deploy_structure_or_gear`; every Gear or
+Structure `format_a_replay`/`replay` ever built (Pengullet Rocket
+Launcher, Single-Shot Rifle, Zoe's Strategy...) went through `place()`
+and was silently tracked as `CardKind::Pal`. That's not hypothetical:
+`pals_in_base()` filters by that tag, so Pump-Action Shotgun's "all
+opponent Pals" sweep, the 5-Pal base limit (11.5.2), and Astegon's own
+"all Pals with Power 300 or less" would all have silently swept up
+materialized gears too. No fixture crossed one of those thresholds, so
+nothing caught it — same shape as the color gap, not a new kind of
+mistake. Fixed with a typed sibling, not a signature change: `place()`
+stays exactly as it was (defaults to Pal) for the ~30 filler-card call
+sites across `cards/`'s own unit tests, where "a generic card, kind
+irrelevant" is a legitimate thing to want; `place_typed(player,
+number, zone, kind)` is the one both drivers' `materialize()` now
+calls, with `kind` read from `card_meta` (CSV `Type` column), never
+`place()` directly. Two regression tests in `format_a_replay/src/
+lib.rs` pin this both directions (a materialized Gear excluded from
+`pals_in_base`, a materialized Pal excluded from `gears_in_base`) —
+they would have failed on the pre-fix code and must keep passing on
+every future one.
+* **`card_meta` (`format_a_replay/src/lib.rs`) is now GENERATED from
+`data/11cardattributes-with-elements.csv` at first use, not hand-typed
+— the hand-typed table was itself why `color` went missing.** A field
+added to the struct still had to be typed correctly across ~20 match
+arms by hand, and nothing enforced that; `kind` was about to become a
+second such field the moment `place_typed` needed one. Loads the CSV
+once (`std::sync::OnceLock`, `csv` crate, anchored on this crate's own
+`CARGO_MANIFEST_DIR` — same pattern `tests/format_a_replays/support.rs`
+already uses for fixture JSON) and caches it; a name with no CSV entry
+is now a hard panic in `materialize`, not a silent Pal-shaped stub —
+safe because every name either driver has ever actually materialized
+already had a hand-typed entry before this change (checked directly
+against all three fixtures' own card lists). The one thing still typed
+by hand: `PREFERRED_PRINT`, a short list of (name, CardNumber) pairs
+for the handful of main names the CSV prints more than once (Foxparks,
+Pengullet resolved so far, each with its own documented reason) — a
+real judgment call the data can't make for itself, kept separate from
+everything the data CAN answer on its own.
+* **The pattern behind all of this — a mechanism or field that existed
+but was silently defaulted or unverified for one specific input path —
+has now recurred four times: `consume_materials`'s saturating floor
+(only exercised once a test finally consumed without gaining first),
+the census's doc-header regex (hyphen in a name), `color` (never set by
+`materialize`), and `CardKind` (`place()` defaulting to Pal for
+everything).** Worth asking explicitly whenever a new card attribute,
+zone, or engine primitive gets added: every place a card (or resource,
+or record) is CREATED — does each one actually set this, or does at
+least one path fall through to a default that happens to compile? A
+type that makes the field mandatory (this session's `place_typed`) or
+an explicit generation step (this session's CSV-driven `card_meta`)
+closes the gap structurally; a comment reminding the next person does
+not, going by this history.
 * **A Format A driver now exists** (`format_a_replay/`, three fixtures —
 `pingu_01`, `pingu_03`, `pingu_02`, `tests/format_a_replays/pingu_01.rs` /
 `pingu_03.rs` / `pingu_02.rs`), built with the `SCRIPTED_ACTIONS` registry from the
