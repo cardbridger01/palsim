@@ -3,7 +3,7 @@
 //! standby/check-timing resolution order that CLAUDE.md calls out as the
 //! part most likely to be silently wrong (10.5, 10.8).
 
-use engine::state::{GameState, PlayerId, Timing, Zone};
+use engine::state::{CardKind, GameState, PlayerId, Timing, Zone};
 
 /// QA #10: "Is there a limit to hand size?" -> "No, there isn't."
 #[test]
@@ -54,11 +54,18 @@ fn qa_012_no_structure_or_gear_limit() {
     let mut game = GameState::test_scenario();
     // deploy() defaults to Pal semantics (most callers in this suite are
     // deploying Pals); structures/gears go through this explicit sibling
-    // instead of inferring "kind" from the card number.
-    for i in 0..12 {
-        game.deploy_structure_or_gear(PlayerId::P1, &format!("EGEAR-{i:03}")).unwrap();
+    // instead of inferring "kind" from the card number. Split 6/6 across
+    // both real kinds (Structure/Gear used to be one combined CardKind
+    // variant) rather than 12 of one -- both need to be uncapped, not
+    // just their sum.
+    for i in 0..6 {
+        game.deploy_structure_or_gear(PlayerId::P1, &format!("ESTRUCT-{i:03}"), CardKind::Structure).unwrap();
     }
-    assert_eq!(game.structures_and_gears_in_base(PlayerId::P1).len(), 12);
+    for i in 0..6 {
+        game.deploy_structure_or_gear(PlayerId::P1, &format!("EGEAR-{i:03}"), CardKind::Gear).unwrap();
+    }
+    assert_eq!(game.structures_in_base(PlayerId::P1).len(), 6);
+    assert_eq!(game.gears_in_base(PlayerId::P1).len(), 6);
 }
 
 /// QA #22: "Is it possible to choose not to draw a card during the Draw

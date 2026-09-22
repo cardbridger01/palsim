@@ -133,10 +133,34 @@ pub enum Timing {
     OpponentTurnDuringBattle,
 }
 
+/// `pub`, not module-private -- a caller outside this crate has to be
+/// able to name a real kind to pass into `place_typed`. Split into
+/// `Structure`/`Gear` (was one combined `StructureOrGear` variant)
+/// because Victor's Strategy needs to count a controller's structures
+/// specifically and Reptyro needs to find a gear specifically -- a
+/// combined kind couldn't answer either question.
+///
+/// `Event` (the CSV's own `Type` for a Quick/spell card -- Aurora
+/// Guide, Pal Sphere, Zoe's Strategy, Strike from the Darkness,
+/// Medical Supplies) turned out NOT to be a "nothing needs it yet"
+/// case the way an earlier version of this comment assumed: those are
+/// 5 of `format_a_replay`'s own 24 fixture-referenced names, not a
+/// hypothetical. `place_typed` making a real kind mandatory (see its
+/// own doc comment) means every one of them needs a real answer to
+/// "what kind is this," not just Pals/Structures/Gears -- tagging them
+/// `Pal` because they never sit in `Zone::Base` anyway would have been
+/// the exact silent-default shape this type exists to rule out, just
+/// moved one step over. `Soul` (the fifth CSV value) still isn't a
+/// variant here: Soul cards never occupy `Zone::Base` OR get
+/// materialized by either driver at all (hard rule 5 excludes them
+/// from the build pool entirely), so there is still no real card this
+/// type would ever need to tag with it.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-enum CardKind {
+pub enum CardKind {
     Pal,
-    StructureOrGear,
+    Event,
+    Structure,
+    Gear,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
@@ -519,12 +543,42 @@ impl GameState {
     /// carries -- QA #32's test uses this to stage a card in Hand/Deck/
     /// Graveyard before moving it into the base via `deploy_from`, and
     /// several other tests use it to seed a specific card in Hand/Deck
-    /// for a selection ability to find. Kind defaults to Pal (matches
-    /// `deploy`'s default; nothing currently needs `place` for a
-    /// structure/gear).
+    /// for a selection ability to find. Kind defaults to Pal -- this is
+    /// the test harness's own generic filler-card constructor ("a card,
+    /// type irrelevant"), used by ~30 call sites across `cards/`'s own
+    /// unit tests that genuinely don't care what kind they're placing.
+    /// A real driver materializing an actual named card (which DOES
+    /// know, from `card_meta`, whether it's a Pal/Structure/Gear) must
+    /// use `place_typed` instead, never this one -- see that function's
+    /// own doc comment for why the distinction is load-bearing, not
+    /// stylistic.
     pub fn place(&mut self, player: PlayerId, _number: &str, zone: Zone) -> CardId {
+        self.place_typed(player, _number, zone, CardKind::Pal)
+    }
+
+    /// Same as `place`, but the caller states the real kind instead of
+    /// getting Pal by default. This exists because `place` defaulting
+    /// silently was itself a real bug, not a hypothetical one:
+    /// `format_a_replay`'s `materialize()` called `place` for EVERY
+    /// card it ever built, including obviously-non-Pal ones (Pengullet
+    /// Rocket Launcher, Single-Shot Rifle, Zoe's Strategy...), so every
+    /// driver-materialized Gear or Structure has been silently tracked
+    /// as `CardKind::Pal` since before this function existed --
+    /// `pals_in_base` would have included them, meaning Pump-Action
+    /// Shotgun's "all opponent Pals" sweep, the 5-Pal base limit
+    /// (11.5.2), and Astegon's own "all Pals with Power 300 or less"
+    /// would all have silently swept up materialized gears too. No
+    /// fixture crossed one of those thresholds, so nothing caught it --
+    /// see `qa_kind_regression_pals_in_base_excludes_a_materialized_gear`
+    /// below, added specifically because nothing already existing
+    /// would have. `materialize()` is now the only door either driver
+    /// uses to build a real card, and it always calls this, never
+    /// `place` -- see CLAUDE.md's Conventions section on why a second,
+    /// shorter, wrong-by-default constructor staying reachable is its
+    /// own risk independent of this specific bug.
+    pub fn place_typed(&mut self, player: PlayerId, _number: &str, zone: Zone, kind: CardKind) -> CardId {
         let id = self.fresh_card_id();
-        self.cards.insert(id, Self::new_card_instance(player, zone, CardKind::Pal));
+        self.cards.insert(id, Self::new_card_instance(player, zone, kind));
         *self.zone_counts.get_mut(&(player, zone)).unwrap() += 1;
         id
     }
@@ -554,13 +608,14 @@ impl GameState {
         self.last_deployed
     }
 
-    /// QA #12: structures/gears in the base, with no limit. A sibling of
-    /// `deploy` rather than a `CardKind` parameter on it, so "kind" is
-    /// always stated explicitly by the caller instead of guessed from
-    /// the card number (hard rule 3).
-    pub fn deploy_structure_or_gear(&mut self, player: PlayerId, _number: &str) -> Result<CardId, DeployError> {
+    /// QA #12: structures/gears in the base, with no limit. `kind` is
+    /// always stated explicitly by the caller (`CardKind::Structure` or
+    /// `CardKind::Gear`) instead of guessed from the card number (hard
+    /// rule 3) -- same principle `place_typed` follows, applied to the
+    /// `deploy` side instead of the `place` side.
+    pub fn deploy_structure_or_gear(&mut self, player: PlayerId, _number: &str, kind: CardKind) -> Result<CardId, DeployError> {
         let id = self.fresh_card_id();
-        self.cards.insert(id, Self::new_card_instance(player, Zone::Base, CardKind::StructureOrGear));
+        self.cards.insert(id, Self::new_card_instance(player, Zone::Base, kind));
         *self.zone_counts.get_mut(&(player, Zone::Base)).unwrap() += 1;
         Ok(id)
     }
@@ -574,8 +629,20 @@ impl GameState {
         self.cards_in_zone_of_kind(player, Zone::Base, CardKind::Pal)
     }
 
-    pub fn structures_and_gears_in_base(&self, player: PlayerId) -> Vec<CardId> {
-        self.cards_in_zone_of_kind(player, Zone::Base, CardKind::StructureOrGear)
+    /// BP01-046 Victor's Strategy's own "draw X, X = your structure
+    /// count" bullet is the reason this exists as its own function
+    /// rather than staying folded into a combined structures-and-gears
+    /// count -- Structure and Gear used to be one `CardKind` variant,
+    /// which could never have answered this correctly.
+    pub fn structures_in_base(&self, player: PlayerId) -> Vec<CardId> {
+        self.cards_in_zone_of_kind(player, Zone::Base, CardKind::Structure)
+    }
+
+    /// BP01-005 Reptyro's own ACT ("choose up to 1 gear" among looked-at
+    /// cards) is the reason this exists separately from
+    /// `structures_in_base` -- same split, opposite half.
+    pub fn gears_in_base(&self, player: PlayerId) -> Vec<CardId> {
+        self.cards_in_zone_of_kind(player, Zone::Base, CardKind::Gear)
     }
 
     fn cards_in_zone_of_kind(&self, player: PlayerId, zone: Zone, kind: CardKind) -> Vec<CardId> {
