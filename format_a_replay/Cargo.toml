@@ -13,3 +13,7 @@ engine = { path = "../engine" }
 cards = { path = "../cards" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+# card_meta is generated from data/11cardattributes-with-elements.csv at
+# first use, not hand-typed -- see card_meta's own doc comment for why
+# (the hand-typed table was itself the reason `color` went missing).
+csv = "1.3"
