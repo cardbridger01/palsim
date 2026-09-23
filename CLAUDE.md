@@ -365,6 +365,26 @@ turn:
     printing actually been checked too, rather than assumed to share the
     same fate). Pool 134 → 133.
 
+    **The Foxparks nuance turned out to be a structural hole, not a
+    one-card oversight — audited, then closed structurally, not just
+    noted.** `KEYWORD_ONLY_NAMES` excludes a bare NAME, and
+    `csv_by_name` aggregates every printing sharing it, so any entry
+    with more than one printing was silently unverified coverage unless
+    every printing had actually been checked — Foxparks happened to
+    still be sound, by luck, not verification. Audited all 10 entries
+    against real CardNumber counts (Blazehowl, Blazehowl Noct, and
+    Dinossom were the plausible reprint candidates given Palworld's
+    reprint patterns): Foxparks is the only multi-printing name: every
+    other entry is a single printing, already confirmed. Rather than
+    leave this as a comment for the next keyword pass to remember,
+    `parser/card_census.py` gained
+    `check_keyword_only_printings_are_confirmed`, called at the top of
+    `main()` — every name's actual printing count must match an
+    explicit confirmed count (default 1), or the census run raises
+    instead of quietly reporting a possibly-wrong pool. Same shape as
+    `validation_tag_count`'s own cross-check guard: structural
+    enforcement, not a reminder that can go stale.
+
   Grappling Gun and Univolt weren't built in the session this list was
   first written — writing a card script around a missing primitive
   would either silently misrepresent what's implemented or require
