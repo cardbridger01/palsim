@@ -55,7 +55,13 @@ distinct Name values), minus two exclusions:
     script for, the same way there's nothing to script for Soul. See
     CLAUDE.md's Conventions section, "Does a card need a script at all?
     Three categories, not two," for the full principle this exclusion is
-    one instance of.
+    one instance of. `main()` calls
+    `check_keyword_only_printings_are_confirmed` before reporting
+    anything, structurally enforcing that every printing sharing an
+    excluded bare name has actually been checked (not just the one that
+    happened to get looked at first) -- the Foxparks/Brave hole above
+    was found by luck once; this makes the next one a loud failure
+    instead of a repeat of the same luck.
 
 The real pool, and every count below, is **133**.
 
@@ -268,6 +274,54 @@ KEYWORD_ONLY_NAMES = {
     "Univolt",
 }
 
+# How many real printings each KEYWORD_ONLY_NAMES entry is confirmed to
+# have -- default 1, override only when EVERY printing sharing that bare
+# name has actually been checked (see `check_keyword_only_printings_are_
+# confirmed`'s own doc comment for why this exists). Foxparks is the only
+# current override: two printings (BP01-006 Brave, TD01-004 Interrupt),
+# both individually confirmed keyword-only.
+_KEYWORD_ONLY_CONFIRMED_PRINTING_COUNTS: dict[str, int] = {
+    "Foxparks": 2,
+}
+
+
+def check_keyword_only_printings_are_confirmed(csv_by_name: dict[str, list[tuple[str, str, bool]]]) -> None:
+    """Structural version of the comment discipline `KEYWORD_ONLY_NAMES`
+    already relies on, not a replacement for it: a bare name in that set
+    excludes EVERY printing sharing it (`all_names = set(csv_by_name) -
+    {"Soul"} - KEYWORD_ONLY_NAMES` operates on the name, not the card
+    number), so a name with an unconfirmed second printing is silently
+    unverified coverage, not a checked exclusion.
+
+    Found exactly this hole for real, not hypothetically: "Foxparks" was
+    added to `KEYWORD_ONLY_NAMES` for TD01-004's pure Interrupt text, but
+    BP01-006 (a completely different printing, pure Brave text) was never
+    checked until Brave itself got implemented -- it happened to also be
+    keyword-only, but that was luck, not verification. A comment alone
+    doesn't stop the NEXT keyword pass from reintroducing the same hole
+    for some other name, so this fails loudly instead: every name in
+    `KEYWORD_ONLY_NAMES` must have exactly as many printings in the CSV
+    as `_KEYWORD_ONLY_CONFIRMED_PRINTING_COUNTS` says have been checked
+    (default 1) -- a mismatch means either a new printing appeared that
+    nobody has looked at, or the override count itself is stale, and
+    either way this must be resolved (by checking the new printing's
+    effect_text and updating the count with the same "checked, not
+    assumed" comment Foxparks now has) before the census can be trusted."""
+    mismatches = []
+    for name in sorted(KEYWORD_ONLY_NAMES):
+        actual = len(csv_by_name.get(name, []))
+        expected = _KEYWORD_ONLY_CONFIRMED_PRINTING_COUNTS.get(name, 1)
+        if actual != expected:
+            mismatches.append(f"  {name!r}: {actual} printing(s) in the CSV, but only {expected} confirmed keyword-only")
+    if mismatches:
+        raise AssertionError(
+            "KEYWORD_ONLY_NAMES excludes a bare name whose printing count doesn't match what's been "
+            "checked -- every printing sharing an excluded name must be individually confirmed pure "
+            "keyword text, or the exclusion silently covers an unverified card (exactly the Foxparks/"
+            "Brave hole this guard exists to catch):\n" + "\n".join(mismatches)
+        )
+
+
 # Cards whose replay-observable behavior is fully log-resolved-choice --
 # a Format A driver's generic engine-primitive dispatch reproduces them
 # correctly because the LOG states the target/amount/outcome directly,
@@ -467,6 +521,7 @@ def main() -> None:
 
     files = format_a_files()
     csv_by_name = load_csv_by_name()
+    check_keyword_only_printings_are_confirmed(csv_by_name)
     implemented = implemented_names()
     tag_count = validation_tag_count()
     if tag_count != len(implemented):
