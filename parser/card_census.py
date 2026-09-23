@@ -24,23 +24,28 @@ distinct Name values), minus two exclusions:
     the 50 isn't something the deck optimizer can ever put in a deck,
     so it isn't part of this tool's build target either -- decided in
     CLAUDE.md's Open Questions, not silently dropped.
-  - `KEYWORD_ONLY_NAMES` (8 cards) -- seven of pure `ACT Interrupt
+  - `KEYWORD_ONLY_NAMES` (9 cards) -- seven of pure `ACT Interrupt
     (Hand Quick [(1), discard this card] OR [discard this card and 1
     other card from hand] Nullify the opponent's attack...)` text and
     nothing else (Reindrix, Cryolinx, Blazehowl, Blazehowl Noct, Wumpo
-    Botan, Foxparks, Dinossom), plus one (Pyrin Noct) that prepends the
+    Botan, Foxparks, Dinossom), one (Pyrin Noct) that prepends the
     identical `CONT Nocturnal (If it is night, this card gets Power
     +300)` reminder to that same Interrupt text -- Nocturnal is
     ALSO already a generic engine mechanic (5.3, 12.13), so pairing two
     keyword reminders with nothing else is still keyword-only, not a
-    third category. Interrupt/Nocturnal are engine mechanics (12.8.2;
-    5.3, 12.13), not card-specific behavior -- there is no card-specific
-    logic left to ever write a script for, the same way there's nothing
-    to script for Soul. See CLAUDE.md's Conventions section, "Does a
-    card need a script at all? Three categories, not two," for the full
-    principle this exclusion is one instance of.
+    third category -- plus one (Suzaku Aqua) whose entire effect_text is
+    `AUTO Vigilance (At the end of your turn, stand this card)`, nothing
+    else; Vigilance's own effect is `stand_via_effect`, also already a
+    generic engine primitive (see `cards::bp01::grappling_gun_act`'s doc
+    comment). Interrupt/Nocturnal/Vigilance are engine mechanics
+    (12.8.2; 5.3, 12.13; 10.8.2+7.6.1-7.6.2), not card-specific
+    behavior -- there is no card-specific logic left to ever write a
+    script for, the same way there's nothing to script for Soul. See
+    CLAUDE.md's Conventions section, "Does a card need a script at all?
+    Three categories, not two," for the full principle this exclusion is
+    one instance of.
 
-The real pool, and every count below, is **135**.
+The real pool, and every count below, is **134**.
 
 ## A THIRD status this tool tracks, alongside VALIDATION tier: does the
 ## card need a script AT ALL, and has that been checked
@@ -209,6 +214,17 @@ KEYWORD_ONLY_NAMES = {
     # this is the ONLY card combining Nocturnal with the Interrupt
     # reminder verbatim -- not a pattern to assume recurs elsewhere.
     "Pyrin Noct",
+    # Suzaku Aqua (TD01-017) -- checked, not assumed: effect_text is
+    # exactly "AUTO Vigilance (At the end of your turn, stand this
+    # card)", nothing else. Vigilance's own effect is `stand_via_effect`
+    # (already a generic engine primitive; see
+    # `cards::bp01::grappling_gun_act`'s doc comment, which grants the
+    # identical keyword via `grant_ability_instance` for Grappling Gun's
+    # ACT and needed no script of its own for the stand itself either) --
+    # no card-specific number, target, or condition beyond the keyword's
+    # own standard text, same shape as Pyrin Noct's Nocturnal+Interrupt
+    # pairing above.
+    "Suzaku Aqua",
 }
 
 # Cards whose replay-observable behavior is fully log-resolved-choice --
@@ -424,10 +440,10 @@ def main() -> None:
 
     noise = {n: f for n, f in appears_in.items() if n not in csv_by_name and n not in implemented}
     # 144 distinct CSV Name values, minus Soul (SOUL-001, no ability
-    # text, no place in the 50) and KEYWORD_ONLY_NAMES (pure Interrupt
-    # text, no card-specific behavior to ever script) -- both decided in
-    # CLAUDE.md's Open Questions/Conventions, not silently dropped. The
-    # real build-target pool is 135.
+    # text, no place in the 50) and KEYWORD_ONLY_NAMES (pure Interrupt/
+    # Nocturnal/Vigilance keyword text, no card-specific behavior to ever
+    # script) -- both decided in CLAUDE.md's Open Questions/Conventions,
+    # not silently dropped. The real build-target pool is 134.
     all_names = set(csv_by_name) - {"Soul"} - KEYWORD_ONLY_NAMES
     remaining = sorted(all_names - implemented)
 

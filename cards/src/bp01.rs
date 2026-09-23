@@ -312,6 +312,66 @@ pub fn relaxaurus_on_deploy(game: &mut GameState, target: Option<CardId>, source
     }
 }
 
+/// BP01-045, Grappling Gun.
+///
+/// effect_text: "ACT [Rest this card] Choose 1 Pal, and it gets Power +200
+/// and the skill in 〈〉 until end of turn. 〈AUTO Vigilance (At the end of
+/// your turn, stand this card)〉."
+///
+/// Same "Gear ACT power buff" shape as Single-Shot Rifle/Pump-Action
+/// Shotgun (see `pump_action_shotgun_on_deploy`'s doc comment) -- the
+/// Power +200 half is applied generically by a replay driver's own
+/// "power_buff" event, no script needed for it. This function is only the
+/// OTHER half: "the skill in 〈〉" names Vigilance, printed on this same
+/// card, so granting it uses the identical `grant_ability_instance`
+/// mechanism as Foxparks' Harness (QA #57/#58) -- a genuine, distinct
+/// instance, not a shared flag (two Grappling Guns granting Vigilance to
+/// the same target would be two instances, per `granted_ability_instances`'
+/// own doc comment).
+///
+/// Vigilance itself needs no card script: its own effect (10.8.2's "AUTO
+/// ... stand this card") is exactly `stand_via_effect`, already generic.
+/// What makes it interact correctly with Relaxaurus (QA #62) is
+/// sequencing, not new lock logic. Vigilance is an AUTO, so per this
+/// project's own timing model it triggers into standby and resolves at
+/// check timing (10.8.2, 10.5.3.2) -- `stand_via_effect` reads the lock
+/// source's CURRENT zone at the moment it's called, which is resolution
+/// time, not grant time or targeting time. Comprehensive rules 7.6 (End
+/// Phase) confirms the ordering rather than assuming it: 7.6.1 (trigger
+/// conditions are fulfilled) and 7.6.2 (check timing resolves them) both
+/// happen BEFORE 7.6.4 (until-end-of-turn effects are invalidated) -- so
+/// a Vigilance grant is still fully active both when it triggers and when
+/// it resolves. (7.6.4's own expiry -- removing the granted instance so
+/// Vigilance doesn't recur next turn -- is out of scope here: nothing yet
+/// expires any granted instance or Power buff at end of turn, for any
+/// card, and building that generic mechanism isn't needed by the three
+/// tests below.)
+///
+/// Per SPEC EDIT #4's precedent (`qa_084_shadowbeaks_self_butcher_end_of_
+/// turn_queues_correctly_for_both_cards`, tests/qa_rulings/qa_about_cards.rs),
+/// the engine is deliberately not taught "this granted instance is named
+/// Vigilance, so fire it automatically at end of turn" -- that's
+/// card-specific knowledge, which stays in `cards/`, narrated explicitly
+/// by the caller the same way QA #43/#84 narrate `trigger_auto`/
+/// `resolve_auto` by hand rather than teaching the engine a dispatch
+/// table. The three tests below narrate it: `trigger_auto` at the point
+/// "end of your turn" is met, `stand_via_effect` as the resolution, then
+/// `resolve_auto` to drain the queue.
+///
+/// VALIDATION: unvalidated -- battle3 (Blue/Red gears vs bg-Chillet) is
+/// the one fixture with a Grappling Gun in it, activated twice (lines 70,
+/// 96), but neither activation is followed by a "gets Power" result line
+/// anywhere in that log -- every one of the log's 4 "gets Power" lines
+/// names Kitsun and follows a Single-Shot Rifle activation instead. That
+/// makes it impossible to confirm OR rule out from log text alone whether
+/// either Grappling Gun activation targeted Jormuntide Ignis, which would
+/// explain that fixture's own known anomaly (Ignis blocks on the
+/// opponent's turn despite 7.2.1) -- see data/replays/README.md's "known
+/// anomalies" section. Genuinely inconclusive, not assumed either way.
+pub fn grappling_gun_act(game: &mut GameState, source: CardId, target: CardId) -> GrantedInstanceId {
+    game.grant_ability_instance(source, target, "Vigilance")
+}
+
 /// BP01-095, Zoe's Strategy.
 ///
 /// Three small functions, one per bullet this card's printed text
@@ -777,6 +837,88 @@ mod tests {
         relaxaurus_on_deploy(&mut game, None, relaxaurus);
 
         assert!(!game.is_resting(target), "'up to 1' declining must not rest anything (QA #34)");
+    }
+
+    /// Case 1 of 3 (see `grappling_gun_act`'s own doc comment): Relaxaurus
+    /// is still in the base when Vigilance's own "at the end of your
+    /// turn" trigger condition is met. The trigger still enters standby
+    /// (7.6.1 -- fulfilled unconditionally, the lock has no bearing on
+    /// whether the CONDITION is met) but resolution (7.6.2) is where QA
+    /// #62's lock actually applies: `stand_via_effect` checks Relaxaurus's
+    /// CURRENT zone right here, finds it still in the base, and the stand
+    /// fails. The Pal stays rested.
+    #[test]
+    fn vigilance_trigger_fires_but_the_stand_fails_while_relaxaurus_still_locks_it() {
+        let mut game = GameState::test_scenario();
+        let relaxaurus = game.deploy(PlayerId::P1, "EBP01-026", Zone::Base).unwrap();
+        let gun = game.deploy(PlayerId::P2, "EBP01-045", Zone::Base).unwrap();
+        let target = game.deploy(PlayerId::P2, "EFILLER-000", Zone::Base).unwrap();
+
+        relaxaurus_on_deploy(&mut game, Some(target), relaxaurus);
+        grappling_gun_act(&mut game, gun, target);
+
+        game.trigger_auto(PlayerId::P2, target);
+        assert!(game.pending_autos(PlayerId::P2).contains(&target), "the trigger condition is met regardless of the lock -- it enters standby");
+
+        let result = game.stand_via_effect(target);
+        game.resolve_auto(PlayerId::P2, target);
+
+        assert!(result.is_err(), "QA #62: the lock survives card effects, including a granted stand ability");
+        assert!(game.is_resting(target), "the stand failed at resolution -- the Pal stays rested");
+    }
+
+    /// Case 2 of 3: Relaxaurus is gone (killed) BEFORE the Gun is even
+    /// used. The lock's own condition ("while this card is in the base")
+    /// is already false by the time Vigilance is granted, let alone by
+    /// the time it resolves -- the ordinary case, included as the
+    /// baseline the third case is contrasted against.
+    #[test]
+    fn vigilance_stands_the_pal_when_relaxaurus_is_already_gone_before_the_grant() {
+        let mut game = GameState::test_scenario();
+        let relaxaurus = game.deploy(PlayerId::P1, "EBP01-026", Zone::Base).unwrap();
+        let gun = game.deploy(PlayerId::P2, "EBP01-045", Zone::Base).unwrap();
+        let target = game.deploy(PlayerId::P2, "EFILLER-000", Zone::Base).unwrap();
+
+        relaxaurus_on_deploy(&mut game, Some(target), relaxaurus);
+        game.butcher(relaxaurus); // leaves the base -- the lock's own condition is now false
+
+        grappling_gun_act(&mut game, gun, target);
+        game.trigger_auto(PlayerId::P2, target);
+        let result = game.stand_via_effect(target);
+        game.resolve_auto(PlayerId::P2, target);
+
+        assert!(result.is_ok());
+        assert!(!game.is_resting(target), "Relaxaurus is gone -- Vigilance stands the Pal");
+    }
+
+    /// Case 3 of 3 -- the one that pins the semantics. The Gun targets
+    /// `target` WHILE Relaxaurus still locks it (legal: Grappling Gun's
+    /// own ACT is "Choose 1 Pal," no condition -- QA #62's lock is a
+    /// stand restriction, not a targeting restriction, so there is
+    /// nothing here for a targeting check to reject). Only afterwards
+    /// does Relaxaurus leave the base. If the lock were checked at
+    /// targeting time, this Pal would be stuck rested forever once
+    /// locked, even after Relaxaurus dies -- it isn't, because
+    /// `stand_via_effect` re-reads Relaxaurus's zone at resolution, which
+    /// is after the kill. Proves the order of "grant" vs. "kill" doesn't
+    /// matter; only the order of "kill" vs. "resolve" does.
+    #[test]
+    fn vigilance_resolves_against_the_lock_state_at_resolution_not_at_targeting() {
+        let mut game = GameState::test_scenario();
+        let relaxaurus = game.deploy(PlayerId::P1, "EBP01-026", Zone::Base).unwrap();
+        let gun = game.deploy(PlayerId::P2, "EBP01-045", Zone::Base).unwrap();
+        let target = game.deploy(PlayerId::P2, "EFILLER-000", Zone::Base).unwrap();
+
+        relaxaurus_on_deploy(&mut game, Some(target), relaxaurus);
+        grappling_gun_act(&mut game, gun, target); // targeted while still locked -- legal, no-op check-wise
+        game.butcher(relaxaurus); // the lock's condition ends AFTER the grant, BEFORE end of turn
+
+        game.trigger_auto(PlayerId::P2, target);
+        let result = game.stand_via_effect(target);
+        game.resolve_auto(PlayerId::P2, target);
+
+        assert!(result.is_ok(), "the lock is gone by the time Vigilance resolves, even though it wasn't gone when the Gun targeted this Pal");
+        assert!(!game.is_resting(target));
     }
 
     #[test]
