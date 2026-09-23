@@ -45,11 +45,26 @@ thin enough that direction is all the data supports.
 2. **Official QA rulings** — `data/palworld\_tcg\_qa\_dataset.json` (97 entries)
 3. **Comprehensive Rules v1.00**, 2026-07-30 — `docs/POCGeComprehensive-Rules\_0730.pdf`
 4. **Quick Manual**, 2026-06-27 — the SOLE source of the 2-color deck rule
+5. **Online client behaviour** — last, and not itself a rules authority
 
 Note on (4): the two-color deck construction rule does **not** appear in the
 comprehensive rules despite the comprehensive rules being newer. It is printed
 on the box and enforced by every online simulator. Do not drop it from the
 deck validator.
+
+Note on (5): the online client was built by its own developers, not the
+publisher, so what it does on screen is evidence about a possible rules
+reading, never a substitute for (1)-(4). Every client-vs-engine divergence
+found in this project so far has resolved in the engine's favor — Pengullet's
+graveyard draw, Aurora Guide/Pal Sphere repeat-cast behavior, and Chillet's
+declined-reveal-to-hand timing were all confirmed to be the CLIENT's own
+rendering/logging gaps, not rules exceptions the engine was missing. That
+track record is not a guarantee it always goes this way. Where a replay
+fixture shows the client's logged behaviour diverging from what card text (1)
+plus QA rulings (2) plus the comprehensive rules (3) actually say, the engine
+follows the text and the fixture records the divergence as a known client
+quirk (see `data/replays/README.md`'s "known anomalies" section) — it is not
+grounds to bend the engine to match the client.
 
 \---
 
@@ -111,6 +126,7 @@ Test all three separately.
 |**Retaliate**|Triggers on being put in the graveyard **during a battle** (12.12).|
 |**Assault**|May target **standing** Pals — the exception to 9.2.3.|
 |**Nocturnal**|+300 Power only while the "night" specific state is active (5.3, 12.13).|
+|**Vigilance**|An AUTO (`〈AUTO Vigilance (At the end of your turn, stand this card)〉`), not an inherent state — it triggers into standby (10.8.2) and resolves at check timing (10.5.3.2) like any other AUTO. A restriction on standing (e.g. QA #62's Relaxaurus lock) is checked at **resolution**, not when the ability was granted or targeted — see `cards::bp01::grappling_gun_act`'s doc comment and its three tests for the full reasoning, including the exact End Phase citation (7.6.1/7.6.2 before 7.6.4) proving the granting card's own buff hasn't expired yet when Vigilance triggers or resolves.|
 
 \---
 
@@ -231,7 +247,7 @@ the two aren't in tension, just answering different questions:
 
   | Category | Script? | Why |
   |-|-|-|
-  | **Keyword-only** | Never | The effect IS an engine mechanic (Interrupt 12.8.2, Nocturnal, Taunt) — no card-specific behavior exists to script. Confirmed permanently free: Reindrix, Cryolinx, Blazehowl, Blazehowl Noct, Wumpo Botan, Foxparks, Dinossom (pure `ACT Interrupt (Hand Quick...)` text), plus Pyrin Noct (that same Interrupt text with the Nocturnal reminder prepended, checked to confirm no clause beyond either keyword) — `parser/card_census.py` excludes all 8 from the build-target pool, same treatment as Soul. |
+  | **Keyword-only** | Never | The effect IS an engine mechanic (Interrupt 12.8.2, Nocturnal, Taunt, Vigilance) — no card-specific behavior exists to script. Confirmed permanently free: Reindrix, Cryolinx, Blazehowl, Blazehowl Noct, Wumpo Botan, Foxparks, Dinossom (pure `ACT Interrupt (Hand Quick...)` text), Pyrin Noct (that same Interrupt text with the Nocturnal reminder prepended, checked to confirm no clause beyond either keyword), plus Suzaku Aqua (TD01-017 — effect_text is exactly `AUTO Vigilance (At the end of your turn, stand this card)`, checked in full, nothing beyond the keyword's own reminder; Vigilance's own effect is `stand_via_effect`, already generic — see `cards::bp01::grappling_gun_act`'s doc comment) — `parser/card_census.py` excludes all 9 from the build-target pool (135 → 134), same treatment as Soul. |
   | **Log-resolved choice** | Usually cheap to resolve, not free | A replay driver reads the choice off the log (which Pal was targeted, how much damage, what was drawn) — generic dispatch is correct and sufficient FOR REPLAY. But Phase 6's optimizer has no log to read; it has to MAKE that choice itself, so the card isn't actually usable by the optimizer until it gets real logic, however cleanly its replay passes. Turned out, for a straight "choose up to 1 Pal, deal N Damage" shape, to cost almost nothing to resolve: `single_shot_rifle_on_deploy` was written taking `target: Option<CardId>` as a parameter (the caller's problem, not the function's) and immediately stopped being deferred — the missing piece was never the choice, only the function. Reptyro's ACT (look at 5, choose a gear, deploy it, shuffle the rest — real deck-manipulation state, not one primitive call) is the harder remaining case and stays in `DEFERRED_LOG_RESOLVED_NAMES`. |
   | **Branching / conditional** | Yes, now | Real conditional logic no generic dispatch could resolve even during replay (Zoe's Strategy's multiple bullets, Chillet's reveal-then-maybe-free-deploy). Scripted as soon as they're built, same as always. |
 
@@ -297,11 +313,25 @@ turn:
     old shape, while the keyword mechanics are purely additive and can
     land in any order. See the next bullet for what fixing this
     properly turned out to require.
-  - **Grappling Gun** (BP01-045, 15 logs) — its ACT grants the
-    Vigilance skill (`〈AUTO Vigilance (At the end of your turn, stand
-    this card)〉`). `grant_keyword` can attach the keyword itself, but
-    nothing in the engine's end phase currently checks for it and
-    stands the card — the keyword's own EFFECT isn't implemented yet.
+  - **Grappling Gun (Vigilance) — DONE.** Its ACT grants the Vigilance
+    skill (`〈AUTO Vigilance (At the end of your turn, stand this
+    card)〉`). Needed no new engine primitive after all, once actually
+    designed: Vigilance is an AUTO, so it's exactly `trigger_auto` +
+    `stand_via_effect` + `resolve_auto`, all of which already existed —
+    `stand_via_effect` in particular already reads its lock source's
+    CURRENT zone at call time, which is what makes it interact
+    correctly with Relaxaurus's lock (QA #62) with zero new lock logic.
+    `cards::bp01::grappling_gun_act` grants the instance
+    (`grant_ability_instance`, same mechanism as Foxparks' Harness);
+    see its own doc comment for the End Phase ordering citation
+    (7.6.1/7.6.2 before 7.6.4) and its three tests for the
+    Relaxaurus-interaction semantics, including the one that grants to
+    a still-locked Pal and kills the lock's source afterward. Also
+    surfaced a second keyword-only card once Vigilance had a real
+    implementation to check against: Suzaku Aqua (TD01-017)'s entire
+    effect_text is that same Vigilance line and nothing else — added to
+    `KEYWORD_ONLY_NAMES` (pool 135 → 134), see the Keyword-only row
+    above.
   - **Menasting** (BP01-084, 11 logs) — Retaliate itself ("when this
     card is put into the graveyard during battle, put the opposing
     combat Pal into the graveyard too") has no engine implementation
@@ -668,4 +698,28 @@ looks, from the outside, exactly like over-drawing.
   show until X") over "arbitrary client display bug the resync has to
   live with." Treat as the latter until a second occurrence says
   otherwise.
+
+\---
+
+## Future agent-quality test ideas (not engine-correctness requirements)
+
+These are things worth checking about Phase 4's ISMCTS agent once it exists —
+not gaps in the rules engine, and not blocking anything before then. Recorded
+here so the idea isn't lost between now and Phase 4, not because the engine
+needs to do anything about them.
+
+* **Does the agent defer a once-per-turn effect until the information
+deciding its target is known, rather than firing it at the earliest legal
+moment?** Grappling Gun's ACT is a good concrete example: a real player
+targets it LAST in their turn, not because targeting it earlier is illegal
+(it isn't — see `cards::bp01::grappling_gun_act`'s third test, which
+specifically exercises granting Vigilance to a still-Relaxaurus-locked Pal),
+but to keep the option of retargeting a different Pal if an earlier kill
+attempt gets blocked. A strong agent should learn this kind of sequencing on
+its own from search; a weak one might commit a once-per-turn effect the
+moment a legal target exists, discarding option value for no gain. Worth a
+targeted test once Phase 4 exists: construct a scenario where the "obvious"
+early target can be denied by a block, and check whether the agent's chosen
+line defers the Gun (or an equivalent once-per-turn effect) until after that
+decision point resolves, the way a human player would.
 

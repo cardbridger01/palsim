@@ -63,6 +63,18 @@ only the turn player's cards, so Ignis should still have been rested and unable
 to block. Either the client stood it somewhere the log doesn't show, or this is
 a client bug. Resolve before trusting the engine's rest-state model.
 
+Checked the most plausible non-bug explanation: this same log's opponent is on
+Blue/Red gears and does activate a Grappling Gun twice (lines 70, 96) — Vigilance
+(`〈AUTO Vigilance (At the end of your turn, stand this card)〉`) would explain
+Ignis standing into the opponent's turn if it had been granted to Ignis. But
+neither Grappling Gun activation in this log is followed by a "gets Power"
+result line anywhere — the log's only 4 such lines all name Kitsun and all
+follow a Single-Shot Rifle activation instead. There is no text in this log
+either confirming or ruling out a Grappling Gun → Ignis grant. Inconclusive,
+not resolved — see `cards::bp01::grappling_gun_act`'s doc comment (now
+implemented and tested against Relaxaurus's lock, independent of this
+question) and CLAUDE.md's Vigilance keyword-trap entry.
+
 Battle 1: Pengullet – Yearning for the Sky (BP01-028) has its own AUTO
 "When this card is put into the graveyard, draw 1 card" — unconditional, no
 "may." Its holder self-destructs via the Pengullet Rocket Launcher's granted
