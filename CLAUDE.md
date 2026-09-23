@@ -126,6 +126,7 @@ Test all three separately.
 |**Retaliate**|Triggers on being put in the graveyard **during a battle** (12.12).|
 |**Assault**|May target **standing** Pals — the exception to 9.2.3.|
 |**Nocturnal**|+300 Power only while the "night" specific state is active (5.3, 12.13).|
+|**Brave**|An AUTO, not a CONT — checked against 12.6.1/12.6.2 specifically because the "+N Power" surface shape resembles Nocturnal. 12.6.1: "Brave is an automatic ability that triggers when the card attacks." 12.6.2: "'Brave (number)' means 'On Attack, this card's power increases by (number) until end of turn'." One-shot `increase_power` on the card itself at its own attack-declare trigger, not a continuously-reevaluated modifier — see `parser/card_census.py`'s `KEYWORD_ONLY_NAMES` comment for the two printings (Foxparks BP01-006, Univolt BP01-009) this keyword alone accounts for.|
 |**Vigilance**|An AUTO (`〈AUTO Vigilance (At the end of your turn, stand this card)〉`), not an inherent state — it triggers into standby (10.8.2) and resolves at check timing (10.5.3.2) like any other AUTO. A restriction on standing (e.g. QA #62's Relaxaurus lock) is checked at **resolution**, not when the ability was granted or targeted — see `cards::bp01::grappling_gun_act`'s doc comment and its three tests for the full reasoning, including the exact End Phase citation (7.6.1/7.6.2 before 7.6.4) proving the granting card's own buff hasn't expired yet when Vigilance triggers or resolves.|
 
 \---
@@ -247,7 +248,7 @@ the two aren't in tension, just answering different questions:
 
   | Category | Script? | Why |
   |-|-|-|
-  | **Keyword-only** | Never | The effect IS an engine mechanic (Interrupt 12.8.2, Nocturnal, Taunt, Vigilance) — no card-specific behavior exists to script. Confirmed permanently free: Reindrix, Cryolinx, Blazehowl, Blazehowl Noct, Wumpo Botan, Foxparks, Dinossom (pure `ACT Interrupt (Hand Quick...)` text), Pyrin Noct (that same Interrupt text with the Nocturnal reminder prepended, checked to confirm no clause beyond either keyword), plus Suzaku Aqua (TD01-017 — effect_text is exactly `AUTO Vigilance (At the end of your turn, stand this card)`, checked in full, nothing beyond the keyword's own reminder; Vigilance's own effect is `stand_via_effect`, already generic — see `cards::bp01::grappling_gun_act`'s doc comment) — `parser/card_census.py` excludes all 9 from the build-target pool (135 → 134), same treatment as Soul. |
+  | **Keyword-only** | Never | The effect IS an engine mechanic (Interrupt 12.8.2, Nocturnal, Taunt, Vigilance, Brave) — no card-specific behavior exists to script. Confirmed permanently free: Reindrix, Cryolinx, Blazehowl, Blazehowl Noct, Wumpo Botan, Foxparks, Dinossom (pure `ACT Interrupt (Hand Quick...)` text), Pyrin Noct (that same Interrupt text with the Nocturnal reminder prepended, checked to confirm no clause beyond either keyword), Suzaku Aqua (TD01-017 — effect_text is exactly `AUTO Vigilance (At the end of your turn, stand this card)`, checked in full, nothing beyond the keyword's own reminder; Vigilance's own effect is `stand_via_effect`, already generic — see `cards::bp01::grappling_gun_act`'s doc comment), plus Univolt (BP01-009 — effect_text is exactly `AUTO Brave 300 (OnAttack This card gets Power +300 until end of turn)`, checked in full; Brave's own effect is a one-shot `increase_power`, also already generic — see the Keyword traps table's Brave row for the 12.6.1/12.6.2 citation that ruled out treating it as a CONT). Foxparks is one bare name covering two real printings — BP01-006 (pure Brave, identical text to Univolt's) and TD01-004 (pure Interrupt) — both independently checked, since excluding the bare name excludes both prints as one unit. `parser/card_census.py` excludes all 10 names from the build-target pool (135 → 134 → 133 across the Vigilance and Brave passes), same treatment as Soul. |
   | **Log-resolved choice** | Usually cheap to resolve, not free | A replay driver reads the choice off the log (which Pal was targeted, how much damage, what was drawn) — generic dispatch is correct and sufficient FOR REPLAY. But Phase 6's optimizer has no log to read; it has to MAKE that choice itself, so the card isn't actually usable by the optimizer until it gets real logic, however cleanly its replay passes. Turned out, for a straight "choose up to 1 Pal, deal N Damage" shape, to cost almost nothing to resolve: `single_shot_rifle_on_deploy` was written taking `target: Option<CardId>` as a parameter (the caller's problem, not the function's) and immediately stopped being deferred — the missing piece was never the choice, only the function. Reptyro's ACT (look at 5, choose a gear, deploy it, shuffle the rest — real deck-manipulation state, not one primitive call) is the harder remaining case and stays in `DEFERRED_LOG_RESOLVED_NAMES`. |
   | **Branching / conditional** | Yes, now | Real conditional logic no generic dispatch could resolve even during replay (Zoe's Strategy's multiple bullets, Chillet's reveal-then-maybe-free-deploy). Scripted as soon as they're built, same as always. |
 
@@ -339,17 +340,54 @@ turn:
     which do) — confirmed by grep, not assumed. Needs battle-context
     tracking (which Pal was this one's opponent in the battle that
     just killed it), not just a keyword flag.
-  - **Univolt** (BP01-009, 10 logs) and **Foxparks**'s own Brave-only
-    print — Brave is a REAL keyword (QA #21 lists it alongside
-    Interrupt/Taunt as one whose parenthetical reminder text is
-    non-binding, same ruling that makes Interrupt/Nocturnal
-    keyword-only), but it has no engine implementation either.
+  - **Univolt (Brave) — DONE, and turned out to be the smallest of the
+    four once checked instead of estimated: no new primitive, no
+    script, not even new wiring.** QA #21 lists Brave alongside
+    Interrupt/Taunt as a keyword whose parenthetical reminder text is
+    non-binding — so its real definition was checked against the
+    comprehensive rules (12.6.1/12.6.2) rather than assumed from the
+    reminder or from the card's own stats. That citation ruled out the
+    natural-looking guess (a CONT, Nocturnal-shaped, since both are
+    "+N Power"): Brave is explicitly "an automatic ability that
+    triggers when the card attacks" (12.6.1), an AUTO like Vigilance,
+    not a continuous ability like Nocturnal (12.13.1). Its effect —
+    "this card's power increases by (number) until end of turn"
+    (12.6.2) — is a one-shot `increase_power` call on the card itself
+    at its own attack-declare trigger, and that primitive already
+    existed too. Both cards carrying Brave as a keyword (checked via
+    the CSV's own Keywords column, not inferred) turned out to have
+    effect_text that's the keyword reminder and nothing else — Univolt
+    (BP01-009) and Foxparks' BP01-006 printing — so both are
+    `KEYWORD_ONLY_NAMES`, not scripted cards; see that constant's own
+    comment in `parser/card_census.py` for the Foxparks-is-two-printings
+    nuance this surfaced (the bare name was already excluded for its
+    OTHER printing's Interrupt text, and only NOW has the Brave-carrying
+    printing actually been checked too, rather than assumed to share the
+    same fate). Pool 134 → 133.
 
-  Grappling Gun/Menasting/Univolt weren't built this session — writing
-  a card script around a missing primitive would either silently
-  misrepresent what's implemented or require inventing engine behavior
-  without a rules citation, both worse than leaving the card unbuilt
-  with the reason on record.
+  Grappling Gun and Univolt weren't built in the session this list was
+  first written — writing a card script around a missing primitive
+  would either silently misrepresent what's implemented or require
+  inventing engine behavior without a rules citation, both worse than
+  leaving the card unbuilt with the reason on record. Both are now
+  DONE, above; Menasting is still in that original state.
+
+  **Worth reading the two DONE items against the original framing, not
+  just individually: this list's own header called all four a "new
+  ENGINE primitive" requirement, and that estimate was wrong for half
+  of them.** Grappling Gun needed `trigger_auto`/`stand_via_effect`/
+  `grant_ability_instance`, all pre-existing; Univolt needed
+  `increase_power`, also pre-existing. Neither needed anything new once
+  actually designed against a rules citation rather than estimated from
+  the card's own text at a glance. That's a reason to check Menasting
+  the same way before assuming its own "needs new state" framing is
+  right either — not a reason to doubt it outright (Retaliate's own
+  trigger condition, "put into the graveyard during a battle," is
+  reasonably concrete about needing to know which Pal it fought, which
+  neither Vigilance nor Brave needed to know anything comparable to),
+  but a caution against building battle-context tracking before
+  confirming the engine doesn't already have a way to answer that
+  question some other way.
 * **Fixing "Structure vs. Gear" properly meant fixing a real, deeper
 bug first: `place()` hardcoded `CardKind::Pal` for EVERY card either
 driver ever materialized, including obviously-non-Pal ones.** Neither
