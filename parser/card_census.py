@@ -24,28 +24,40 @@ distinct Name values), minus two exclusions:
     the 50 isn't something the deck optimizer can ever put in a deck,
     so it isn't part of this tool's build target either -- decided in
     CLAUDE.md's Open Questions, not silently dropped.
-  - `KEYWORD_ONLY_NAMES` (9 cards) -- seven of pure `ACT Interrupt
+  - `KEYWORD_ONLY_NAMES` (10 cards) -- seven of pure `ACT Interrupt
     (Hand Quick [(1), discard this card] OR [discard this card and 1
     other card from hand] Nullify the opponent's attack...)` text and
     nothing else (Reindrix, Cryolinx, Blazehowl, Blazehowl Noct, Wumpo
-    Botan, Foxparks, Dinossom), one (Pyrin Noct) that prepends the
-    identical `CONT Nocturnal (If it is night, this card gets Power
-    +300)` reminder to that same Interrupt text -- Nocturnal is
-    ALSO already a generic engine mechanic (5.3, 12.13), so pairing two
-    keyword reminders with nothing else is still keyword-only, not a
-    third category -- plus one (Suzaku Aqua) whose entire effect_text is
-    `AUTO Vigilance (At the end of your turn, stand this card)`, nothing
-    else; Vigilance's own effect is `stand_via_effect`, also already a
-    generic engine primitive (see `cards::bp01::grappling_gun_act`'s doc
-    comment). Interrupt/Nocturnal/Vigilance are engine mechanics
-    (12.8.2; 5.3, 12.13; 10.8.2+7.6.1-7.6.2), not card-specific
+    Botan, Foxparks -- one of Foxparks' TWO printings, see below, one
+    (Pyrin Noct) that prepends the identical `CONT Nocturnal (If it is
+    night, this card gets Power +300)` reminder to that same Interrupt
+    text -- Nocturnal is ALSO already a generic engine mechanic (5.3,
+    12.13), so pairing two keyword reminders with nothing else is still
+    keyword-only, not a third category -- one (Suzaku Aqua) whose entire
+    effect_text is `AUTO Vigilance (At the end of your turn, stand this
+    card)`, nothing else, Vigilance's own effect being `stand_via_effect`,
+    also already a generic engine primitive (see
+    `cards::bp01::grappling_gun_act`'s doc comment) -- and one (Univolt)
+    whose entire effect_text is `AUTO Brave 300 (OnAttack This card gets
+    Power +300 until end of turn)`, nothing else; Brave is confirmed by
+    comprehensive rules 12.6.1/12.6.2 to be an AUTO (triggers when the
+    card attacks), NOT a continuous ability like Nocturnal despite the
+    surface resemblance, so its effect is a one-shot `increase_power`
+    call, also already generic. Foxparks itself is a bare name covering
+    TWO distinct printings (BP01-006 "Light of Courage", pure Brave --
+    same text as Univolt's, verbatim; TD01-004 "A Toasty Hug", pure
+    Interrupt) -- excluding the bare name removes both printings as one
+    unit, which is only sound because BOTH have now been checked
+    independently, not just the one originally verified. Interrupt/
+    Nocturnal/Vigilance/Brave are all engine mechanics (12.8.2; 5.3,
+    12.13; 10.8.2+7.6.1-7.6.2; 12.6.1-12.6.2), not card-specific
     behavior -- there is no card-specific logic left to ever write a
     script for, the same way there's nothing to script for Soul. See
     CLAUDE.md's Conventions section, "Does a card need a script at all?
     Three categories, not two," for the full principle this exclusion is
     one instance of.
 
-The real pool, and every count below, is **134**.
+The real pool, and every count below, is **133**.
 
 ## A THIRD status this tool tracks, alongside VALIDATION tier: does the
 ## card need a script AT ALL, and has that been checked
@@ -201,6 +213,16 @@ KEYWORD_ONLY_NAMES = {
     "Blazehowl",
     "Blazehowl Noct",
     "Wumpo Botan",
+    # Foxparks -- a bare name with TWO real printings (`resolve_name`'s
+    # own comment already knows this: BP01-006 "Light of Courage" and
+    # TD01-004 "A Toasty Hug"), and `csv_by_name`/`all_names` operate on
+    # the bare name, so excluding "Foxparks" excludes BOTH prints as one
+    # unit -- unsound unless EVERY print sharing the name is
+    # independently keyword-only, not just the one originally checked.
+    # TD01-004's effect_text is the Interrupt reminder this comment
+    # block is about; BP01-006's is checked separately below, next to
+    # Univolt (same Brave text, verbatim) -- both now confirmed, not
+    # just the one that happened to get checked first.
     "Foxparks",
     "Dinossom",
     # Pyrin Noct (BP01-077) -- checked, not assumed: effect_text is
@@ -225,6 +247,25 @@ KEYWORD_ONLY_NAMES = {
     # own standard text, same shape as Pyrin Noct's Nocturnal+Interrupt
     # pairing above.
     "Suzaku Aqua",
+    # Brave -- comprehensive rules 12.6.1/12.6.2 checked before assuming
+    # anything from the reminder text or the card's own stats: "Brave is
+    # an automatic ability that triggers when the card attacks, and its
+    # effect increases its power" / "'Brave (number)' means 'On Attack,
+    # this card's power increases by (number) until end of turn'". An
+    # AUTO (triggered), like Vigilance -- NOT continuous like Nocturnal,
+    # despite the surface-level "+N Power" resemblance; the real
+    # distinction is 12.6.1's "automatic ability that triggers" vs.
+    # 12.13.1's "continuous ability... while ... active". Effect is a
+    # one-shot `increase_power(self, N)` at the OnAttack trigger, same
+    # generic primitive already used by the "power_buff" event dispatch
+    # -- no CONT modifier, no new engine primitive, no per-card script.
+    # Exactly 2 printings carry Brave as a keyword (checked via the CSV's
+    # own Keywords column, not inferred from a name or from Univolt
+    # alone): Foxparks (BP01-006, "Light of Courage") and Univolt
+    # (BP01-009, "Valiant Thunderclap") -- both effect_text fields are
+    # verbatim "AUTO Brave 300 (OnAttack This card gets Power +300 until
+    # end of turn)", nothing else.
+    "Univolt",
 }
 
 # Cards whose replay-observable behavior is fully log-resolved-choice --
@@ -441,9 +482,9 @@ def main() -> None:
     noise = {n: f for n, f in appears_in.items() if n not in csv_by_name and n not in implemented}
     # 144 distinct CSV Name values, minus Soul (SOUL-001, no ability
     # text, no place in the 50) and KEYWORD_ONLY_NAMES (pure Interrupt/
-    # Nocturnal/Vigilance keyword text, no card-specific behavior to ever
-    # script) -- both decided in CLAUDE.md's Open Questions/Conventions,
-    # not silently dropped. The real build-target pool is 134.
+    # Nocturnal/Vigilance/Brave keyword text, no card-specific behavior to
+    # ever script) -- both decided in CLAUDE.md's Open Questions/Conventions,
+    # not silently dropped. The real build-target pool is 133.
     all_names = set(csv_by_name) - {"Soul"} - KEYWORD_ONLY_NAMES
     remaining = sorted(all_names - implemented)
 
