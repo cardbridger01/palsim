@@ -333,13 +333,79 @@ turn:
     effect_text is that same Vigilance line and nothing else — added to
     `KEYWORD_ONLY_NAMES` (pool 135 → 134), see the Keyword-only row
     above.
-  - **Menasting** (BP01-084, 11 logs) — Retaliate itself ("when this
-    card is put into the graveyard during battle, put the opposing
-    combat Pal into the graveyard too") has no engine implementation
-    at all (unlike Breakthrough, Interrupt, Nocturnal, Taunt, all of
-    which do) — confirmed by grep, not assumed. Needs battle-context
-    tracking (which Pal was this one's opponent in the battle that
-    just killed it), not just a keyword flag.
+  - **Prerequisite fix, landed before Menasting itself: rule-action
+    resolution (11.1.2/`run_check_timing`) is now genuinely
+    simultaneous and deterministic, not one-at-a-time in whatever order
+    a `HashMap` iterates.** `find_pending_rule_actions` (renamed from
+    `find_pending_rule_action`) used to pick a single lethal Pal via
+    `.find()` over `self.cards`, a plain `std::collections::HashMap` --
+    Rust's own docs guarantee its iteration order is re-randomized per
+    instance, so which of two SIMULTANEOUSLY lethal Pals (an equal-Power
+    trade) got resolved "first" varied between runs of an otherwise
+    byte-identical seeded game, violating this file's own "Long-running
+    jobs" reproducibility requirement. Comprehensive rules 10.5.3.1 is
+    explicit that this is wrong on the rules' own terms too, not only
+    for reproducibility: "All rule actions that must be resolved at
+    this point are **simultaneously resolved**. If, as a result, there
+    are new rule actions to be resolved, this step is repeated." Fixed
+    by collecting every currently-true rule action from ONE snapshot,
+    sorting by `CardId` for a deterministic (not just consistent)
+    order, and applying all of them together in
+    `apply_rule_actions` before the outer loop ever re-derives a fresh
+    set — matching 10.5.3.1's actual batch semantics, not merely hiding
+    the randomness. New test:
+    `rule_10_5_3_1_equal_power_trade_is_deterministic_across_many_runs`
+    (200 fresh `GameState`s, each independently re-seeded) — worth
+    being precise that this exact fixture's FINAL zones were already
+    order-independent even before the fix (resolving one mutual-kill
+    side doesn't change whether the other qualifies), so it's a
+    forward-looking regression guard, not proof the old code could fail
+    this specific assertion.
+
+    **Checked, not assumed, whether this ALSO removes Menasting's own
+    simultaneous-trade panic risk (see below): it does not, and that's
+    worth stating precisely rather than let a convenient assumption
+    stand.** The panic risk is structural, independent of iteration
+    order: `run_check_timing`'s loop drains ALL pending rule actions to
+    a fixpoint before EVER resolving an automatic ability (10.5.3.1
+    fully settling is a precondition for 10.5.3.2 to run at all) — true
+    of the OLD one-at-a-time implementation just as much as the new
+    batch one, since the old loop's own `continue` already re-tried
+    rule actions before ever checking for a pending AUTO. By the time
+    ANY auto (Retaliate included) could resolve, both simultaneously-
+    lethal Pals were ALREADY in the graveyard in either implementation.
+    The determinism fix makes WHICH internal order they resolved in
+    reproducible; it was never what caused, or would have prevented,
+    Retaliate's own opponent-already-gone case. The read-zone-at-
+    resolution guard in `menasting_retaliate` (below) is the actual and
+    only fix for that, confirmed by a dedicated test that would have
+    panicked without it.
+  - **Menasting (Retaliate) — DONE, and the framing correction below
+    called it right: this one DID cost something, just not the thing
+    originally feared.** The battle pairing itself turned out free —
+    `engine::combat::Battle` already stores `attacker`/`target` per
+    `AttackId` and never clears an entry once concluded, so
+    `attacker_of`/`battle_target` answer "who was the opposing combat
+    Pal" symmetrically whether Menasting was the attacker or the
+    (post-`block`) blocker, with zero new state. The real cost was a
+    genuine, code-breaking edge case, found by reading `resolve_battle`
+    and `run_check_timing` before writing anything, exactly as asked:
+    9.6.3.1's damage step is simultaneous, so an equal-Power trade
+    leaves BOTH sides lethal at once, and 10.5.3.1/10.5.3.2 (rule
+    actions fully drain before ANY automatic ability gets a turn) means
+    the opposing Pal can already be in the graveyard — from its OWN
+    simultaneous lethal damage — by the time Retaliate's own AUTO would
+    resolve. Calling `move_to_graveyard` unconditionally there would
+    panic on its own zone assertion. `cards::bp01::menasting_retaliate`
+    reads the opponent's CURRENT zone before moving it — confirmed
+    load-bearing, not just defensive, by a dedicated test
+    (`menasting_retaliate_is_a_no_op_when_the_opponent_already_died_to_
+    the_same_simultaneous_trade`) that passed on the first run. Only
+    the Retaliate half is built — Menasting's own SECOND ability
+    ("choose up to 1 normal Pal from your graveyard, return it to
+    hand," unconditional on ANY graveyard entry, not just a battle
+    death) is flagged, not silently dropped, same treatment as Bushi's
+    own second clause got.
   - **Univolt (Brave) — DONE, and turned out to be the smallest of the
     four once checked instead of estimated: no new primitive, no
     script, not even new wiring.** QA #21 lists Brave alongside
@@ -385,29 +451,35 @@ turn:
     `validation_tag_count`'s own cross-check guard: structural
     enforcement, not a reminder that can go stale.
 
-  Grappling Gun and Univolt weren't built in the session this list was
-  first written — writing a card script around a missing primitive
-  would either silently misrepresent what's implemented or require
-  inventing engine behavior without a rules citation, both worse than
-  leaving the card unbuilt with the reason on record. Both are now
-  DONE, above; Menasting is still in that original state.
+  Grappling Gun, Univolt, and Menasting weren't built in the session
+  this list was first written — writing a card script around a missing
+  primitive would either silently misrepresent what's implemented or
+  require inventing engine behavior without a rules citation, both
+  worse than leaving the card unbuilt with the reason on record. All
+  three are now DONE, above.
 
-  **Worth reading the two DONE items against the original framing, not
-  just individually: this list's own header called all four a "new
-  ENGINE primitive" requirement, and that estimate was wrong for half
-  of them.** Grappling Gun needed `trigger_auto`/`stand_via_effect`/
-  `grant_ability_instance`, all pre-existing; Univolt needed
-  `increase_power`, also pre-existing. Neither needed anything new once
-  actually designed against a rules citation rather than estimated from
-  the card's own text at a glance. That's a reason to check Menasting
-  the same way before assuming its own "needs new state" framing is
-  right either — not a reason to doubt it outright (Retaliate's own
-  trigger condition, "put into the graveyard during a battle," is
-  reasonably concrete about needing to know which Pal it fought, which
-  neither Vigilance nor Brave needed to know anything comparable to),
-  but a caution against building battle-context tracking before
-  confirming the engine doesn't already have a way to answer that
-  question some other way.
+  **Worth reading all three DONE items against the original framing,
+  not just individually: this list's own header called all four a "new
+  ENGINE primitive" requirement, and that estimate was wrong for three
+  of them — but not in the same way.** Grappling Gun needed
+  `trigger_auto`/`stand_via_effect`/`grant_ability_instance`, all
+  pre-existing; Univolt needed `increase_power`, also pre-existing;
+  neither needed anything new at all once actually designed against a
+  rules citation instead of estimated from the card's own text at a
+  glance. Menasting's OWN battle-pairing data was equally free
+  (`engine::combat::Battle` already retains it, permanently, once a
+  battle concludes) — but checking it the same way surfaced a real cost
+  the "needs new state" framing hadn't named at all: not missing state,
+  but a genuine ordering hazard (9.6.3.1's simultaneous damage step
+  combined with 10.5.3.1/10.5.3.2's rule-actions-before-autos priority
+  means the opposing Pal can already be gone by the time Retaliate
+  resolves), load-bearing enough to panic if built without checking for
+  it first. The general lesson holds across all three, just not
+  identically: checking a primitive-need estimate against the actual
+  rules and actual engine code, rather than trusting the estimate,
+  changes the answer far more often than it confirms it — sometimes by
+  finding the primitive already exists, sometimes by finding a
+  different cost hiding where the estimate didn't look.
 * **Fixing "Structure vs. Gear" properly meant fixing a real, deeper
 bug first: `place()` hardcoded `CardKind::Pal` for EVERY card either
 driver ever materialized, including obviously-non-Pal ones.** Neither
