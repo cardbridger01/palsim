@@ -861,20 +861,18 @@ impl GameState {
     }
 
     /// Comprehensive rule 10.5.3, written as the literal loop: drain
-    /// every pending rule action to a genuine fixpoint FIRST (10.5.3.1 --
-    /// if resolving one produces another, resolve that too, before ever
-    /// touching AUTOs), and only once none remain does an automatic
-    /// ability get resolved at all -- one at a time, via `priority_player`
-    /// (turn player if they have any pending AUTO, else the non-turn
-    /// player), looping back to the rule-action check after every single
-    /// resolution. That "back to the top after each" is what makes QA
-    /// #43's two supplementary rules fall out for free rather than
-    /// needing special-case code: a newly-generated AUTO is just as
-    /// eligible as anything already pending the moment priority is
-    /// re-derived, and a turn-player AUTO created mid-resolution of the
-    /// non-turn player's queue reclaims priority on the very next
-    /// iteration, because `priority_player` always checks the turn
-    /// player first.
+    /// every pending rule action to a genuine fixpoint FIRST (10.5.3.1),
+    /// and only once none remain does an automatic ability get resolved
+    /// at all -- one at a time, via `priority_player` (turn player if
+    /// they have any pending AUTO, else the non-turn player), looping
+    /// back to the rule-action check after every single AUTO resolution.
+    /// That "back to the top after each" is what makes QA #43's two
+    /// supplementary rules fall out for free rather than needing
+    /// special-case code: a newly-generated AUTO is just as eligible as
+    /// anything already pending the moment priority is re-derived, and a
+    /// turn-player AUTO created mid-resolution of the non-turn player's
+    /// queue reclaims priority on the very next iteration, because
+    /// `priority_player` always checks the turn player first.
     ///
     /// If a losing verdict is among the rule actions resolved, this
     /// stops immediately (1.2.1: the game ends right there) and never
@@ -882,7 +880,7 @@ impl GameState {
     /// already pending before the verdict resolved.
     pub fn run_check_timing(&mut self) {
         loop {
-            if self.resolve_one_pending_rule_action() {
+            if self.resolve_pending_rule_actions() {
                 if self.game_over.is_some() {
                     break;
                 }
@@ -907,8 +905,8 @@ impl GameState {
         }
     }
 
-    /// Finds ONE currently-true check-type rule action (11.1.2), if any,
-    /// re-evaluated fresh from current state every call -- never a
+    /// Finds every currently-true check-type rule action (11.1.2) in ONE
+    /// pass over present state, re-evaluated fresh every call -- never a
     /// stale/precomputed list. That freshness is what makes
     /// `run_check_timing`'s loop a genuine fixpoint: binning an
     /// overloaded Pal (not resolved here, see `RuleAction`'s doc
@@ -920,38 +918,67 @@ impl GameState {
     /// `LosingVerdict` halts everything (1.2.1) -- checking it first
     /// means a check timing where a player is already at 0 life never
     /// bothers resolving an unrelated Pal's lethal damage first.
-    fn find_pending_rule_action(&self) -> Option<RuleAction> {
+    ///
+    /// **10.5.3.1's own wording is "simultaneously resolved," not "one at
+    /// a time in some order"** -- returning every currently-lethal card
+    /// from ONE snapshot (a `.filter()`, not a `.find()`) is what that
+    /// literally means: all of them are true at once, from the same
+    /// unmutated state, and all get applied together in
+    /// `apply_rule_actions` before anything is re-derived. A single
+    /// `.find()` picking just one, then relying on the outer loop to
+    /// notice the other still qualifies on the NEXT call, is a
+    /// procedurally-different (if often coincidentally-equal) reading:
+    /// it can only be correct if resolving the first one never changes
+    /// whether the second one still qualifies (a CONT modifier keyed on
+    /// the first card's own presence would violate that). Sorted by
+    /// `CardId` -- `self.cards` is a `HashMap`, whose iteration order
+    /// Rust randomizes per instance; an equal-Power mutual kill has TWO
+    /// simultaneously-true `LethalDamage` entries, and picking one via
+    /// unsorted iteration order made which-one-"first" non-reproducible
+    /// across runs of the identical seeded game (see
+    /// `rule_10_5_3_1_equal_power_trade_is_deterministic_across_many_runs`).
+    fn find_pending_rule_actions(&self) -> Vec<RuleAction> {
         for player in [PlayerId::P1, PlayerId::P2] {
             if self.life[&player] <= 0 {
-                return Some(RuleAction::LosingVerdict(player));
+                return vec![RuleAction::LosingVerdict(player)];
             }
         }
-        let lethal = self.cards.iter().find(|(id, c)| {
-            c.zone == Zone::Base && c.kind == CardKind::Pal && c.damage_taken > 0 && (c.damage_taken as i64) >= (self.effective_power(**id) as i64)
-        });
-        lethal.map(|(id, _)| RuleAction::LethalDamage(*id))
+        let mut lethal: Vec<CardId> = self
+            .cards
+            .iter()
+            .filter(|(id, c)| c.zone == Zone::Base && c.kind == CardKind::Pal && c.damage_taken > 0 && (c.damage_taken as i64) >= (self.effective_power(**id) as i64))
+            .map(|(id, _)| *id)
+            .collect();
+        lethal.sort();
+        lethal.into_iter().map(RuleAction::LethalDamage).collect()
     }
 
-    fn apply_rule_action(&mut self, action: RuleAction) {
-        match action {
-            RuleAction::LosingVerdict(player) => {
-                self.game_over = Some(player);
-            }
-            RuleAction::LethalDamage(card) => {
-                let from_zone = self.cards[&card].zone;
-                self.move_to_graveyard(card, from_zone);
+    /// Applies every rule action `find_pending_rule_actions` found
+    /// simultaneously-true, in the order that function already made
+    /// deterministic -- this function doesn't re-sort or re-derive
+    /// anything, it just executes what was already decided as one batch
+    /// (10.5.3.1).
+    fn apply_rule_actions(&mut self, actions: Vec<RuleAction>) {
+        for action in actions {
+            match action {
+                RuleAction::LosingVerdict(player) => {
+                    self.game_over = Some(player);
+                }
+                RuleAction::LethalDamage(card) => {
+                    let from_zone = self.cards[&card].zone;
+                    self.move_to_graveyard(card, from_zone);
+                }
             }
         }
     }
 
-    fn resolve_one_pending_rule_action(&mut self) -> bool {
-        match self.find_pending_rule_action() {
-            Some(action) => {
-                self.apply_rule_action(action);
-                true
-            }
-            None => false,
+    fn resolve_pending_rule_actions(&mut self) -> bool {
+        let actions = self.find_pending_rule_actions();
+        if actions.is_empty() {
+            return false;
         }
+        self.apply_rule_actions(actions);
+        true
     }
 
     // --- power / damage / life (11.3.3, 11.4.1/#92/#93) -------------------
@@ -960,7 +987,7 @@ impl GameState {
     /// plus every currently-active `apply_cont_power_modifier` targeting
     /// this card. QA #74 depends on this being computed fresh every
     /// call, not cached -- removing a modifier must be reflected
-    /// immediately, including by `find_pending_rule_action`'s lethal
+    /// immediately, including by `find_pending_rule_actions`'s lethal
     /// check (see there).
     pub fn power(&self, card: CardId) -> i32 {
         self.effective_power(card)

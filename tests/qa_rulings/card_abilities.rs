@@ -158,10 +158,12 @@ fn rule_11_4_1_damage_taken_below_power_is_not_lethal_even_when_positive() {
 /// stopped would still pass every test above.
 ///
 /// This one doesn't let that slide: two Pals are lethal SIMULTANEOUSLY
-/// before the call, so `find_pending_rule_action` has to be asked again
-/// -- and find the second one -- after resolving the first, within the
-/// same `run_check_timing()` call. A single-pass implementation would
-/// resolve exactly one and leave the other sitting in the base.
+/// before the call, so `find_pending_rule_actions` must return BOTH in
+/// the same batch (10.5.3.1: "simultaneously resolved"), and
+/// `apply_rule_actions` must apply both within the same
+/// `run_check_timing()` call. An implementation that only ever found and
+/// applied one at a time would resolve exactly one and leave the other
+/// sitting in the base.
 #[test]
 fn rule_10_5_3_1_check_timing_drains_multiple_pending_rule_actions_in_one_call() {
     let mut game = GameState::test_scenario();
@@ -695,6 +697,57 @@ fn rule_9_6_3_1_equal_power_pal_battle_kills_both_sides() {
 
     assert_eq!(game.zone_of(attacker), Zone::Graveyard, "the attacker must also die to an equal-Power trade");
     assert_eq!(game.zone_of(defender), Zone::Graveyard, "the defender must die to an equal-Power trade");
+}
+
+/// Reproducibility regression guard for `find_pending_rule_actions`
+/// (`engine/src/state.rs`): `GameState`'s `cards` field is a plain
+/// `std::collections::HashMap`, whose default hasher is re-seeded from
+/// OS randomness on every instance -- Rust's own docs guarantee its
+/// iteration order is not just unspecified but varies BETWEEN separate
+/// `HashMap`s, not only between process runs. `find_pending_rule_actions`
+/// used to pick the first lethal card via `.iter().find(...)`, one at a
+/// time; this test's own fixture (an equal-Power mutual kill, two
+/// SIMULTANEOUSLY lethal cards) is exactly the shape where that iteration
+/// order decided which card's `LethalDamage` rule action got applied
+/// first on any given run of an otherwise byte-identical seeded game --
+/// a direct violation of CLAUDE.md's "a resumed run is bit-identical to
+/// an uninterrupted one" requirement, since two runs of the identical
+/// scripted sequence could disagree on internal resolution order purely
+/// from HashMap re-seeding, not from anything about the game itself.
+///
+/// Worth being precise about what this test does and doesn't prove: for
+/// THIS exact fixture, the final zones (both Graveyard) were already
+/// order-independent even before the fix -- resolving one mutual-kill
+/// side doesn't change whether the other independently qualifies, so
+/// nothing here would have failed on the old `.find()`-based
+/// implementation. What changed is internal, not this test's own
+/// observable assertion: `find_pending_rule_actions` now collects every
+/// simultaneously-true entry from one snapshot and sorts by `CardId`
+/// before applying (10.5.3.1's own "simultaneously resolved," not "one
+/// at a time in whatever order the iterator yields"). This test's real
+/// job is a forward-looking guard against reintroducing hash-order
+/// dependence generally -- a fresh `GameState::test_scenario()` each
+/// iteration gets an independently re-seeded `HashMap` hasher, so running
+/// many iterations and asserting identical results is a genuine stress
+/// test of "does this scenario's outcome depend on this process's
+/// particular hash seeding," even though this specific scenario's answer
+/// happens to be "no" either way.
+#[test]
+fn rule_10_5_3_1_equal_power_trade_is_deterministic_across_many_runs() {
+    for _ in 0..200 {
+        let mut game = GameState::test_scenario();
+        let attacker = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+        let defender = game.deploy(PlayerId::P2, "EFILLER-001", Zone::Base).unwrap();
+        game.rest(defender);
+        assert_eq!(game.power(attacker), game.power(defender), "fixture check: equal Power on both sides");
+
+        let attack = game.declare_attack(attacker, engine::combat::AttackTarget::Pal(defender));
+        game.resolve_battle(attack);
+        game.run_check_timing();
+
+        assert_eq!(game.zone_of(attacker), Zone::Graveyard, "must be identical on every run, not just most");
+        assert_eq!(game.zone_of(defender), Zone::Graveyard, "must be identical on every run, not just most");
+    }
 }
 
 /// 9.6.2's short-circuit isn't only QA #49's "target removed" case --

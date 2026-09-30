@@ -1,5 +1,6 @@
 //! BP01 "Genesis" card scripts needed by battle1.
 
+use engine::combat::{AttackId, AttackTarget};
 use engine::state::{CardId, GameState, GrantedInstanceId, PlayerId, Zone};
 
 use crate::opponent_of;
@@ -576,6 +577,65 @@ pub fn bushi_end_of_battle(game: &mut GameState, owner: PlayerId, this_card: Car
     }
 }
 
+/// BP01-084, Menasting.
+///
+/// effect_text: "AUTO Retaliate (When this card is put into the graveyard
+/// during battle, put the opposing combat Pal into the graveyard) AUTO
+/// When this card is put into the graveyard, choose up to 1 normal Pal
+/// from your graveyard, and return it to hand."
+///
+/// Only the Retaliate half gets a script here, same "only one half"
+/// shape as `bushi_end_of_battle` above -- the second AUTO ("choose up
+/// to 1 normal Pal from your graveyard, return it to hand") is a real,
+/// separate, UNCONDITIONAL graveyard trigger (fires on any base ->
+/// graveyard move, not just "during battle" -- the same
+/// `entered_graveyard_from_base`/`graveyard_trigger_fired` shape
+/// Pengullet's and Leezpunk's own graveyard triggers already use).
+/// Flagged, not silently dropped -- not built this pass.
+///
+/// 12.12.2: "when this card is put into the graveyard, if this was a Pal
+/// that battled, put the opposing combat Pal into the graveyard". Needs
+/// no new engine state: `attack` is the SAME `AttackId` the caller
+/// already holds from calling `resolve_battle` -- `attacker_of`/
+/// `battle_target` read it back and are symmetric whether `retaliating`
+/// was the attacker or the (post-`block`) defender, since `block`
+/// already reassigns the battle's own target to the blocker (see that
+/// method's own doc comment).
+///
+/// The zone check on `opponent` is not defense in depth here, it's
+/// load-bearing. 9.6.3.1's damage step is simultaneous, so an equal-Power
+/// trade can leave BOTH sides lethal at once, and `run_check_timing`'s
+/// own rule-action fixpoint (10.5.3.1) always fully drains -- including
+/// BOTH simultaneous `LethalDamage` entries -- before any AUTO, including
+/// this one, ever gets a turn to resolve (10.5.3.2 only runs once 10.5.3.1
+/// has nothing left). That means `opponent` may already be in the
+/// graveyard from ITS OWN simultaneous lethal damage by the time this
+/// runs, regardless of internal resolution order -- making
+/// `find_pending_rule_actions` deterministic (engine/src/state.rs) does
+/// NOT remove this case, confirmed rather than assumed: rule actions
+/// finish draining before ANY auto gets priority either way. Calling
+/// `move_to_graveyard` unconditionally would panic on its own
+/// `assert_eq!` in that case; reading the current zone first and
+/// treating "already gone" as nothing left to do is what makes this
+/// correct for a mutual kill, not just tidy.
+///
+/// VALIDATION: unvalidated -- no fixture in this corpus exercises
+/// Menasting dying in battle yet; built and checked directly against
+/// 12.12.2 and the three scenarios below.
+pub fn menasting_retaliate(game: &mut GameState, attack: AttackId, retaliating: CardId) {
+    let opponent_target = if game.attacker_of(attack) == retaliating {
+        game.battle_target(attack)
+    } else {
+        Some(AttackTarget::Pal(game.attacker_of(attack)))
+    };
+    let Some(AttackTarget::Pal(opponent)) = opponent_target else {
+        return; // no opposing COMBAT PAL (attacked a player/structure, or the target was already removed mid-battle -- QA #49) -- nothing to retaliate against
+    };
+    if game.zone_of(opponent) == Zone::Base {
+        game.move_to_graveyard(opponent, Zone::Base);
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -1068,5 +1128,79 @@ mod tests {
 
         assert_eq!(game.zone_of(stays), Zone::Base, "\"you may\" -- declining is a legal, common choice");
         assert_eq!(game.zone_of(returns), Zone::Hand);
+    }
+
+    /// Menasting as the ATTACKER: it dies to the defender's counter-hit,
+    /// the defender survives on its own. Exercises the `battle_target`
+    /// branch of `menasting_retaliate`.
+    #[test]
+    fn menasting_retaliate_moves_the_opposing_pal_when_menasting_was_the_attacker() {
+        let mut game = GameState::test_scenario();
+        let menasting = game.deploy(PlayerId::P1, "EBP01-084", Zone::Base).unwrap();
+        let opponent = game.deploy(PlayerId::P2, "EFILLER-000", Zone::Base).unwrap();
+        game.rest(opponent); // 9.2.3: only a rested Pal is a legal attack target
+        game.increase_power(opponent, 10_000); // lethal to Menasting; opponent survives Menasting's own (unboosted) damage back
+
+        let attack = game.declare_attack(menasting, AttackTarget::Pal(opponent));
+        game.resolve_battle(attack);
+        game.run_check_timing(); // 9.6.4: only Menasting is lethal here
+
+        assert_eq!(game.zone_of(menasting), Zone::Graveyard, "fixture check: Menasting must actually have died");
+        assert_eq!(game.zone_of(opponent), Zone::Base, "fixture check: the opponent must have survived on its own");
+
+        menasting_retaliate(&mut game, attack, menasting);
+
+        assert_eq!(game.zone_of(opponent), Zone::Graveyard, "Retaliate moves the opposing combat Pal too, even though it wasn't independently lethal");
+    }
+
+    /// Menasting as the BLOCKER: `block` reassigns the battle's target to
+    /// Menasting, so `attacker_of(attack) != menasting` here -- exercises
+    /// the OTHER branch of `menasting_retaliate` (opponent = the
+    /// attacker, not `battle_target`).
+    #[test]
+    fn menasting_retaliate_moves_the_opposing_pal_when_menasting_was_the_blocker() {
+        let mut game = GameState::test_scenario();
+        let attacker = game.deploy(PlayerId::P1, "EFILLER-000", Zone::Base).unwrap();
+        let menasting = game.deploy(PlayerId::P2, "EBP01-084", Zone::Base).unwrap();
+        game.increase_power(attacker, 10_000); // lethal to Menasting when it blocks
+
+        let attack = game.declare_attack(attacker, AttackTarget::Player(PlayerId::P2));
+        game.block(attack, menasting); // 9.4.2: only a standing Pal may block -- `deploy`'s own default
+        game.resolve_battle(attack);
+        game.run_check_timing();
+
+        assert_eq!(game.zone_of(menasting), Zone::Graveyard, "fixture check: Menasting must actually have died blocking");
+        assert_eq!(game.zone_of(attacker), Zone::Base, "fixture check: the attacker must have survived");
+
+        menasting_retaliate(&mut game, attack, menasting);
+
+        assert_eq!(game.zone_of(attacker), Zone::Graveyard, "Retaliate reaches the attacker too, resolved via attacker_of rather than battle_target");
+    }
+
+    /// The scenario `menasting_retaliate`'s own doc comment calls
+    /// load-bearing, not merely defensive: an equal-Power mutual kill
+    /// already moves BOTH sides to the graveyard via ordinary lethal-
+    /// damage rule actions (9.6.3.1/10.5.3.1), before Retaliate's own AUTO
+    /// would ever get a turn to resolve. Calling `menasting_retaliate`
+    /// afterward must find the opponent already gone and do nothing --
+    /// not panic on `move_to_graveyard`'s own zone assertion.
+    #[test]
+    fn menasting_retaliate_is_a_no_op_when_the_opponent_already_died_to_the_same_simultaneous_trade() {
+        let mut game = GameState::test_scenario();
+        let menasting = game.deploy(PlayerId::P1, "EBP01-084", Zone::Base).unwrap();
+        let opponent = game.deploy(PlayerId::P2, "EFILLER-000", Zone::Base).unwrap();
+        game.rest(opponent);
+        assert_eq!(game.power(menasting), game.power(opponent), "fixture check: equal Power on both sides");
+
+        let attack = game.declare_attack(menasting, AttackTarget::Pal(opponent));
+        game.resolve_battle(attack);
+        game.run_check_timing(); // both sides lethal simultaneously -- both already in the graveyard after this call
+
+        assert_eq!(game.zone_of(menasting), Zone::Graveyard, "fixture check: an equal-Power trade kills both sides");
+        assert_eq!(game.zone_of(opponent), Zone::Graveyard, "fixture check: the opponent is ALREADY gone before Retaliate ever runs");
+
+        menasting_retaliate(&mut game, attack, menasting); // must not panic
+
+        assert_eq!(game.zone_of(opponent), Zone::Graveyard, "still gone -- Retaliate found nothing left to do, not an error");
     }
 }
